@@ -1,25 +1,59 @@
-site_name: HPC Framework Docs
-site_url: https://gorgomel.github.io/Heuristic_Benchmarking_Framework/
-repo_url: https://github.com/Gorgomel/Heuristic_Benchmarking_Framework
+site_name: FORJA Docs
+site_description: Reproducible benchmarking lab for graph partitioning (k-way, edge-cut, fair budgets).
+site_url: https://LBSL98.github.io/Heuristic_Benchmarking_Framework/
+repo_url: https://github.com/LBSL98/Heuristic_Benchmarking_Framework
+repo_name: GitHub
+edit_uri: edit/main/docs/
+
 theme:
   name: material
+  language: en
+  features:
+    - navigation.instant
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - navigation.tracking
+    - toc.integrate
+    - header.autohide
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.tabs.link
+    - content.action.edit
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
 
 nav:
   - Home: index.md
   - Protocol: protocol/proto_v3.1.1.md
   - API:
-    - Generator CLI: api/generator_cli.md
-    - Heuristics (Greedy): api/heuristics_greedy.md
-    - Framework CLI: api/hpc_framework_cli.md
-    - SSH Orchestrator: api/orchestrator_ssh_executor.md
+      - Generator CLI: api/generator_cli.md
+      - Heuristics (Greedy): api/heuristics_greedy.md
+      - Framework CLI: api/hpc_framework_cli.md
+      - SSH Orchestrator: api/orchestrator_ssh_executor.md
   - Reports:
-    - Instance Generator: reports/01_instance_generator.md
-    - Experimental Campaign: reports/02_experimental_campaign.md
+      - Instance Generator: reports/01_instance_generator.md
+      - Experimental Campaign: reports/02_experimental_campaign.md
   - Decisions:
-    - 001 Language Choice: decisions/001_choice_heuristic_language.md
-    - 003 Methodology: decisions/003_metodologia_gerador_e_analise.md
-    - 004 Testing & CI: decisions/004_testing_and_ci.md
-
+      - 001 Language Choice: decisions/001_choice_heuristic_language.md
+      - 003 Methodology: decisions/003_metodologia_gerador_e_analise.md
+      - 004 Testing & CI: decisions/004_testing_and_ci.md
+  - Specs:
+      - Baseline (v1.0): specs/baseline_evolutive_v1.md
+      - Reproducibility Checklist: specs/reproducibility_checklist.md
+      - MEALPY Integration Plan: specs/mealpy_integration_plan.md
 
 plugins:
   - search
@@ -35,5 +69,33 @@ plugins:
             show_signature: true
             separate_signature: true
             merge_init_into_class: true
+  - git-revision-date-localized:
+      enabled: true
+      fallback_to_build_date: true
+      type: timeago
+  - glightbox
   - minify:
       minify_html: true
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.superfences
+  - pymdownx.details
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.emoji
+  - pymdownx.arithmatex:
+      generic: true
+
+extra_javascript:
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
