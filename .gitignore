@@ -91,3 +91,9 @@ docs/*_bak/
 
 # local artifacts
 artifacts/
+
+# Ignore Windows ADS
+*:[Zz]one.Identifier
+
+# Local freeze snapshots
+env/pip-freeze.txt
