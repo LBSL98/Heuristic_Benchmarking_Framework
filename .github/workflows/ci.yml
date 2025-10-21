@@ -15,25 +15,43 @@ concurrency:
 jobs:
   tests:
     runs-on: ubuntu-22.04
-
     steps:
       - name: Checkout (with LFS)
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0          # mais robusto para LFS
-          lfs: true               # baixa blobs do Git LFS (evita ponteiros)
+          fetch-depth: 0
+          lfs: true
 
-      - name: Ensure Git LFS present & pull instance blobs
+      - name: Ensure Git LFS & force blob checkout
         run: |
+          set -euxo pipefail
           if ! command -v git-lfs >/dev/null 2>&1; then
             sudo apt-get update
             sudo apt-get install -y git-lfs
           fi
-          git lfs version
-          # força baixar os *.json.gz do dataset (cintura e cadarço)
-          git lfs pull --exclude="" --include="data/instances/synthetic/*"
-          # sanidade: arquivos precisam ser gzip de verdade, não ponteiros LFS
-          file data/instances/synthetic/*.json.gz | head -n 5 || true
+          git lfs install --local
+          # Garanta blobs reais (não ponteiros) para o dataset
+          git lfs fetch --include="data/instances/synthetic/*" --exclude=""
+          git lfs pull  --include="data/instances/synthetic/*" --exclude=""
+          git lfs checkout --include="data/instances/synthetic/*"
+
+      - name: GZIP sanity (magic 1f8b)
+        run: |
+          set -e
+          shopt -s nullglob
+          files=(data/instances/synthetic/*.json.gz)
+          if [ ${#files[@]} -eq 0 ]; then
+            echo "No *.json.gz under data/instances/synthetic" >&2
+            exit 2
+          fi
+          for f in "${files[@]}"; do
+            magic=$(head -c 2 "$f" | xxd -p -l 2)
+            echo "$f magic=$magic"
+            if [ "$magic" != "1f8b" ]; then
+              echo "Not a gzip blob (looks like LFS pointer): $f" >&2
+              exit 2
+            fi
+          done
 
       - name: Setup Python
         uses: actions/setup-python@v5
@@ -55,7 +73,6 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -U pytest
-          # instala o projeto a partir do pyproject (usa poetry-core como backend)
           pip install .
 
       - name: Run tests
