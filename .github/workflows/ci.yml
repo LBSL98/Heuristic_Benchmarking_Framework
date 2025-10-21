@@ -2,11 +2,12 @@ name: CI (minimal)
 
 on:
   push:
-    branches: [main, dev]
-    paths-ignore: ["site/**"]
+    branches: ['**']
+    paths-ignore: ['site/**']
   pull_request:
     branches: [main, dev]
-    paths-ignore: ["site/**"]
+    paths-ignore: ['site/**']
+
 
 concurrency:
   group: ci-${{ github.ref }}
