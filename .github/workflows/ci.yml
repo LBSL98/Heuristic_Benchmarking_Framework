@@ -15,6 +15,7 @@ concurrency:
 jobs:
   tests:
     runs-on: ubuntu-22.04
+
     steps:
       - name: Checkout (with LFS)
         uses: actions/checkout@v4
@@ -22,18 +23,24 @@ jobs:
           fetch-depth: 0
           lfs: true
 
-      - name: Ensure Git LFS & force blob checkout
+      - name: Ensure Git LFS & materialize blobs
         run: |
           set -euxo pipefail
           if ! command -v git-lfs >/dev/null 2>&1; then
             sudo apt-get update
             sudo apt-get install -y git-lfs
           fi
+          git lfs version
           git lfs install --local
-          # Garanta blobs reais (não ponteiros) para o dataset
-          git lfs fetch --include="data/instances/synthetic/*" --exclude=""
-          git lfs pull  --include="data/instances/synthetic/*" --exclude=""
-          git lfs checkout --include="data/instances/synthetic/*"
+          # Baixa TODOS os objetos LFS referenciados pelo commit
+          git lfs fetch --all
+          # Substitui ponteiros por blobs reais (varre o repo)
+          git lfs checkout
+          # Sanidade: nenhum ponteiro LFS deve restar nos .json.gz
+          if grep -R -n "version https://git-lfs.github.com/spec/v1" data/instances/synthetic/*.json.gz >/dev/null 2>&1; then
+            echo "ERRO: ainda há ponteiros LFS nos *.json.gz" >&2
+            exit 2
+          fi
 
       - name: GZIP sanity (magic 1f8b)
         run: |
@@ -45,10 +52,11 @@ jobs:
             exit 2
           fi
           for f in "${files[@]}"; do
-            magic=$(head -c 2 "$f" | xxd -p -l 2)
+            magic=$(head -c 2 "$f" | xxd -p -l 2 || true)
             echo "$f magic=$magic"
             if [ "$magic" != "1f8b" ]; then
-              echo "Not a gzip blob (looks like LFS pointer): $f" >&2
+              echo "Not a gzip blob (parece ponteiro LFS): $f" >&2
+              head -c 64 "$f" | xxd || true
               exit 2
             fi
           done
