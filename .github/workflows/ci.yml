@@ -1,13 +1,12 @@
----
 name: CI (minimal)
 
 on:
   push:
     branches: [main, dev]
-    paths-ignore: [ "site/**" ]
+    paths-ignore: ["site/**"]
   pull_request:
     branches: [main, dev]
-    paths-ignore: [ "site/**" ]
+    paths-ignore: ["site/**"]
 
 concurrency:
   group: ci-${{ github.ref }}
@@ -16,14 +15,35 @@ concurrency:
 jobs:
   tests:
     runs-on: ubuntu-22.04
+
     steps:
-      - name: Checkout
+      - name: Checkout (with LFS)
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0          # mais robusto para LFS
+          lfs: true               # baixa blobs do Git LFS (evita ponteiros)
+
+      - name: Ensure Git LFS present & pull instance blobs
+        run: |
+          if ! command -v git-lfs >/dev/null 2>&1; then
+            sudo apt-get update
+            sudo apt-get install -y git-lfs
+          fi
+          git lfs version
+          # força baixar os *.json.gz do dataset (cintura e cadarço)
+          git lfs pull --exclude="" --include="data/instances/synthetic/*"
+          # sanidade: arquivos precisam ser gzip de verdade, não ponteiros LFS
+          file data/instances/synthetic/*.json.gz | head -n 5 || true
 
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
+          python-version: "3.11"
+          cache: "pip"
+          cache-dependency-path: |
+            pyproject.toml
+            setup.cfg
+            setup.py
 
       - name: System deps (METIS for gpmetis)
         run: |
@@ -34,9 +54,8 @@ jobs:
       - name: Install Python deps (pip only)
         run: |
           python -m pip install --upgrade pip
-          # test runner
-          pip install pytest
-          # instala o projeto a partir do pyproject (poetry-core)
+          pip install -U pytest
+          # instala o projeto a partir do pyproject (usa poetry-core como backend)
           pip install .
 
       - name: Run tests
