@@ -32,34 +32,36 @@ jobs:
           fi
           git lfs version
           git lfs install --local
-          # Baixa TODOS os objetos LFS referenciados pelo commit
+          # Traga TODOS os objetos LFS do commit e materialize no working tree
           git lfs fetch --all
-          # Substitui ponteiros por blobs reais (varre o repo)
           git lfs checkout
-          # Sanidade: nenhum ponteiro LFS deve restar nos .json.gz
+          # Diagnóstico rápido
+          git lfs ls-files || true
+          ls -lh data/instances/synthetic || true
+          # Garante que não restou ponteiro LFS nos .json.gz
           if grep -R -n "version https://git-lfs.github.com/spec/v1" data/instances/synthetic/*.json.gz >/dev/null 2>&1; then
             echo "ERRO: ainda há ponteiros LFS nos *.json.gz" >&2
             exit 2
           fi
 
-      - name: GZIP sanity (magic 1f8b)
+      - name: GZIP sanity (usa gzip -t)
         run: |
           set -e
           shopt -s nullglob
           files=(data/instances/synthetic/*.json.gz)
           if [ ${#files[@]} -eq 0 ]; then
-            echo "No *.json.gz under data/instances/synthetic" >&2
+            echo "Sem *.json.gz em data/instances/synthetic" >&2
             exit 2
           fi
           for f in "${files[@]}"; do
-            magic=$(head -c 2 "$f" | xxd -p -l 2 || true)
-            echo "$f magic=$magic"
-            if [ "$magic" != "1f8b" ]; then
-              echo "Not a gzip blob (parece ponteiro LFS): $f" >&2
-              head -c 64 "$f" | xxd || true
+            echo "Testando gzip: $f"
+            if ! gzip -t "$f"; then
+              echo "Arquivo corrompido ou ponteiro LFS: $f" >&2
+              head -c 64 "$f" | sed 's/[^[:print:]]/./g' || true
               exit 2
             fi
           done
+          echo "GZIP OK"
 
       - name: Setup Python
         uses: actions/setup-python@v5
