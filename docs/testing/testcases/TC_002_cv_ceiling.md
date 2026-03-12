@@ -1,25 +1,84 @@
-# TC_002 — Teto de CV (1/3) e Warnings
+````markdown
+# TC_002 – Degree / “speed” CV bands and ceilings
 
-**Objetivo**
-Validar a política de **cap de CV = 1/3** (média central) e emissão de *warning* quando a meta solicitada excede o teto.
+**ID:** TC_002
+**Title:** Degree / “speed” coefficient-of-variation constraints
+**Type:** Regime validation
 
-**Pré-condições**
-- Python 3.11, CLI disponível
-- Geração de atributo "velocidade" ativa
+---
 
-**Entradas (parametrizadas)**
-- `cv_target ∈ {0.29, 0.33, 0.40}`
+## 1. Purpose
 
-**Passos**
-Para cada `cv_target`:
-1. Executar o gerador produzindo o JSON.
-2. Ler `instance_metrics.cv_vel_final` (ou campo equivalente).
-3. Capturar logs/STDERR para warnings (quando capado).
+Verify that synthetic instances obey the **coefficient-of-variation (CV) bands and ceilings**
+defined in the experimental design for degree or “speed” distributions.
 
-**Resultados esperados**
-- `0.29`: **sem warning**; erro relativo `|cv_final - 0.29| ≤ 0.02`.
-- `0.33`: comportamento limite; pode existir *warning* informativo (aceitável).
-- `0.40`: **warning de cap**; `cv_final ≈ 1/3 ± 0.02`.
+This test case is linked to `tests/test_degree_cv_bands.py` and `tests/test_degree_cv_cap.py`.
 
-**Notas**
-- Documentado também no `README` (“Limites do CV”) e no `CHANGELOG`.
+---
+
+## 2. Preconditions
+
+- The project is installed and tests are runnable (via Poetry or a plain virtualenv).
+- Synthetic instances have been generated according to `configs/instances_to_generate.yaml`.
+- Bounds for CV bands / ceilings are defined in the appropriate specification files
+  (e.g. `specs/bounds.json`).
+
+---
+
+## 3. Procedure
+
+1. Ensure the development environment is set up:
+
+   ```bash
+   cd ~/MPP
+   poetry install --with dev -E metrics
+````
+
+2. Run the CV-related tests:
+
+   ```bash
+   poetry run pytest tests/test_degree_cv_bands.py tests/test_degree_cv_cap.py
+   ```
+
+3. Inspect any failures or warnings, focusing on:
+
+   * instances whose CV falls outside the intended bands;
+   * violations of CV ceilings for specific regimes.
+
+---
+
+## 4. Expected results
+
+* All tests in `test_degree_cv_bands.py` and `test_degree_cv_cap.py` **pass**.
+* Reported CV values adhere to the bands and ceilings encoded in the tests and in the configuration.
+
+If failures occur, investigate whether they are due to:
+
+* changes in the generator algorithm;
+* changes in `configs/instances_to_generate.yaml`;
+* inconsistent bounds in `specs/bounds.json`.
+
+Only adjust test expectations when there is a deliberate and documented change in the experimental
+regimes.
+
+---
+
+## 5. Related artefacts
+
+* **Code / tests**
+
+  * `tests/test_degree_cv_bands.py`
+  * `tests/test_degree_cv_cap.py`
+
+* **Specs / configuration**
+
+  * `specs/bounds.json`
+  * `configs/instances_to_generate.yaml`
+
+* **Documentation**
+
+  * `docs/reports/01_instance_generator.md`
+  * `docs/testing/TRACEABILITY.md` (CV-related section)
+
+```
+```
