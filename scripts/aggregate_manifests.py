@@ -10,7 +10,7 @@ import json
 from pathlib import Path
 from typing import Any
 
-# Colunas padrão (você pode ampliar sem quebrar nada)
+# Colunas padrão (pode ampliar sem quebrar nada)
 FIELDS = [
     "timestamp",
     "instance_id",

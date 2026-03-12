@@ -41,6 +41,7 @@ packages = [
   { include = "heuristics",    from = "src" },
   { include = "hpc_framework", from = "src" },
   { include = "orchestrator",  from = "src" },
+  { include = "gpp_core",      from = "src" },
 ]
 
 # Dev / ferramentas
