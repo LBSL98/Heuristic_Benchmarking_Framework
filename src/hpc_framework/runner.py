@@ -1,4 +1,3 @@
-# src/hpc_framework/runner.py
 """Orquestrador single-run para METIS/KaHIP.
 Usado pelos testes e pelo CLI para exportar .graph, invocar o solver e salvar artefatos/JSON.
 """
@@ -51,20 +50,51 @@ def feasible_beta(labels: np.ndarray, k: int, beta: float) -> tuple[bool, dict]:
 
 
 def extract_graph_from_instance(inst: dict[str, Any]) -> tuple[int, np.ndarray]:
-    """Extrai (n, edges) de uma instância v1.1 (aceita várias chaves para n)."""
-    n_raw: Any | None = inst.get("n")
-    if n_raw is None:
-        n_raw = inst.get("num_nodes") or inst.get("numVertices") or inst.get("num_nodes_v1_1")
-    if n_raw is None:
-        raise KeyError("instance missing 'n'/'num_nodes'")
-    n = int(n_raw)
+    """Extrai (n, edges) de uma instância.
 
-    edges = inst.get("edges")
+    Suporta tanto instâncias com campos na raiz quanto instâncias
+    no formato sintético atual, com chaves:
+      - schema_version, epsilon, instance_metrics, nodes, edges
+    """
+    # 1) Se existir um sub-bloco óbvio de grafo, usa ele; senão, usa a raiz.
+    graph = inst.get("graph") or inst
+
+    # 2) Descobrir n:
+    #    (a) Se vier explícito (n, num_nodes, ...) usa.
+    #    (b) Se não vier, mas houver 'nodes', usa len(nodes).
+    n_raw: Any | None = (
+        graph.get("n")
+        or graph.get("num_nodes")
+        or graph.get("numVertices")
+        or graph.get("num_nodes_v1_1")
+        or graph.get("n_vertices")
+        or graph.get("nNodes")
+    )
+
+    if n_raw is not None:
+        n = int(n_raw)
+    elif "nodes" in graph:
+        # Formato sintético atual: lista de nós + lista de arestas
+        n = len(graph["nodes"])
+    else:
+        raise KeyError(
+            f"instance missing 'n'/'num_nodes' and no 'nodes' array "
+            f"(keys disponíveis: {list(graph.keys())})"
+        )
+
+    # 3) Arestras: no seu schema já existe 'edges'
+    edges = (
+        graph.get("edges")
+        or graph.get("edge_list")
+        or graph.get("edgeIndex")
+        or graph.get("edge_index")
+    )
     if edges is None:
-        raise KeyError("instance missing 'edges'")
+        raise KeyError(f"instance missing 'edges' (keys disponíveis: {list(graph.keys())})")
+
     edges_arr = np.asarray(edges, dtype=np.int64)
     if edges_arr.ndim != 2 or edges_arr.shape[1] != 2:
-        raise ValueError("edges must be an (m,2) list/array")
+        raise ValueError("edges must be an (m,2) list/array of endpoints")
     return n, edges_arr
 
 
@@ -100,7 +130,7 @@ def run(
     out_json: Path,
     workdir: Path,
     kahip_preset: str = "fast",
-    log_level: str = "info",  # aceito (compat testes), mas sem logging verboso
+    log_level: str = "info",
 ) -> RunArtifact:
     """Executa um único run end-to-end e persiste JSON de saída."""
     # logging mínimo (compat)
@@ -110,11 +140,21 @@ def run(
     inst = _read_instance(instance_path)
     n, edges = extract_graph_from_instance(inst)
 
+    # Snapshot do ambiente e versões para auditoria
+    env_info = _env_snapshot()
+    tool_info = {}
+    if algo == "metis":
+        tool_info["gpmetis"] = _tool_version(["gpmetis"])
+    elif algo == "kahip":
+        tool_info["kaffpa"] = _tool_version(["kaffpa"])
+
     workdir.mkdir(parents=True, exist_ok=True)
     graph_path = workdir / "graph.graph"
     write_metis_graph(graph_path, n, edges)
 
-    t0 = time.perf_counter()
+    # Medição de parede local (overhead do Python incluído) para debug
+    t0_wall = time.perf_counter()
+
     if algo == "metis":
         res = run_gpmetis(graph_path, k=k, beta=beta, seed=seed, timeout_s=budget_time_ms / 1000.0)
     elif algo == "kahip":
@@ -129,7 +169,9 @@ def run(
     else:
         raise ValueError("algo must be 'metis' or 'kahip'")
 
-    elapsed = int((time.perf_counter() - t0) * 1000)
+    elapsed_wall = int((time.perf_counter() - t0_wall) * 1000)
+    solver_elapsed_ms = int(res.elapsed_ms) if res.elapsed_ms is not None else elapsed_wall
+
     labels = (
         read_partition_labels(res.part_path) if res.part_path and res.part_path.exists() else None
     )
@@ -150,12 +192,14 @@ def run(
         "graph_path": str(graph_path),
         "status": status_json,
         "returncode": res.returncode,
-        "elapsed_ms": res.elapsed_ms,
+        "elapsed_ms": solver_elapsed_ms,  # Tempo oficial do solver; fallback para wall se ausente
+        "elapsed_wall_ms": elapsed_wall,  # Tempo total com overhead Python (debug)
         "stdout": res.stdout,
         "stderr": res.stderr,
         "part_path": str(res.part_path) if res.part_path else None,
-        # chave exigida pelos testes:
         "cutsize_best": int(cut) if cut is not None else None,
+        "env": env_info,  # Telemetria de hardware/OS
+        "tools": tool_info,  # Versões dos binários
     }
     out_json.parent.mkdir(parents=True, exist_ok=True)
     with out_json.open("w", encoding="utf-8") as f:
@@ -166,7 +210,7 @@ def run(
         algo=algo,
         status=status_json,
         cut=cut,
-        elapsed_ms=elapsed,
+        elapsed_ms=solver_elapsed_ms,  # Prioriza o tempo do solver; fallback controlado
         part_file=res.part_path if res.part_path and res.part_path.exists() else None,
     )
 
