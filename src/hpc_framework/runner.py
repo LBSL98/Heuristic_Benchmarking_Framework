@@ -170,6 +170,7 @@ def run(
         raise ValueError("algo must be 'metis' or 'kahip'")
 
     elapsed_wall = int((time.perf_counter() - t0_wall) * 1000)
+    solver_elapsed_ms = int(res.elapsed_ms) if res.elapsed_ms is not None else elapsed_wall
 
     labels = (
         read_partition_labels(res.part_path) if res.part_path and res.part_path.exists() else None
@@ -191,7 +192,7 @@ def run(
         "graph_path": str(graph_path),
         "status": status_json,
         "returncode": res.returncode,
-        "elapsed_ms": res.elapsed_ms,  # Tempo limpo reportado pelo wrapper/solver
+        "elapsed_ms": solver_elapsed_ms,  # Tempo oficial do solver; fallback para wall se ausente
         "elapsed_wall_ms": elapsed_wall,  # Tempo total com overhead Python (debug)
         "stdout": res.stdout,
         "stderr": res.stderr,
@@ -209,7 +210,7 @@ def run(
         algo=algo,
         status=status_json,
         cut=cut,
-        elapsed_ms=res.elapsed_ms,  # Prioriza o tempo limpo para análises
+        elapsed_ms=solver_elapsed_ms,  # Prioriza o tempo do solver; fallback controlado
         part_file=res.part_path if res.part_path and res.part_path.exists() else None,
     )
 

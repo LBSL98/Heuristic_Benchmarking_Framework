@@ -1,1 +1,1 @@
-"""operator overloading for gpp_core package"""
+"""Operator overloading helpers for the ``gpp_core`` package."""

@@ -1,4 +1,5 @@
 # scripts/run_phase_1.sh
+#!/usr/bin/env bash
 set -Eeuo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")"/.. && pwd)"
@@ -29,7 +30,7 @@ fi
 run_cli() {
   # 1) Usar Poetry se existir no projeto
   if command -v poetry >/dev/null 2>&1 && [[ -f "$ROOT/pyproject.toml" ]]; then
-    poetry run python -m hpc_framework.cli run --plan "$PLAN"
+    exec poetry run python -m hpc_framework.cli run --plan "$PLAN"
   fi
 
   # 2) Se o pacote já estiver disponível no Python do sistema

@@ -41,6 +41,7 @@ class PartitionState:
 
     @property
     def n(self) -> int:
+        """Retorna o número de vértices da partição atual."""
         return len(self.part_of)
 
 
@@ -99,10 +100,7 @@ def is_move_feasible(state: PartitionState, v: Vertex, target_block: Block) -> b
 
     if new_size_a > max_block_size:
         return False
-    if new_size_b > max_block_size:
-        return False
-
-    return True
+    return not (new_size_b > max_block_size)
 
 
 def eval_move_delta_cut(state: PartitionState, v: Vertex, target_block: Block) -> int:

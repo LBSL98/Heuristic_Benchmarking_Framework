@@ -1,3 +1,5 @@
+"""Smoke helpers for the ``gpp_core`` operator module."""
+
 # src/gpp_core/smoke_operator.py
 
 from gpp_core.operator import compute_cutsize_naive

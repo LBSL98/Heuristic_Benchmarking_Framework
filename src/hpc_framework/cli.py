@@ -59,3 +59,9 @@ def main(argv: list[str] | None = None) -> None:
         "part_file": str(art.part_file) if art.part_file else None,
     }
     print(json.dumps(obj, ensure_ascii=False))
+
+
+if __name__ == "__main__":
+    import sys
+
+    main(sys.argv[1:])
