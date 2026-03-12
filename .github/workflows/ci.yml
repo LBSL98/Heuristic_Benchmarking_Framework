@@ -1,13 +1,13 @@
----
 name: CI (minimal)
 
 on:
   push:
-    branches: [main, dev]
-    paths-ignore: [ "site/**" ]
+    branches: ['**']
+    paths-ignore: ['site/**']
   pull_request:
     branches: [main, dev]
-    paths-ignore: [ "site/**" ]
+    paths-ignore: ['site/**']
+
 
 concurrency:
   group: ci-${{ github.ref }}
@@ -16,14 +16,63 @@ concurrency:
 jobs:
   tests:
     runs-on: ubuntu-22.04
+
     steps:
-      - name: Checkout
+      - name: Checkout (with LFS)
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          lfs: true
+
+      - name: Ensure Git LFS & materialize blobs
+        run: |
+          set -euxo pipefail
+          if ! command -v git-lfs >/dev/null 2>&1; then
+            sudo apt-get update
+            sudo apt-get install -y git-lfs
+          fi
+          git lfs version
+          git lfs install --local
+          # Traga TODOS os objetos LFS do commit e materialize no working tree
+          git lfs fetch --all
+          git lfs checkout
+          # Diagnóstico rápido
+          git lfs ls-files || true
+          ls -lh data/instances/synthetic || true
+          # Garante que não restou ponteiro LFS nos .json.gz
+          if grep -R -n "version https://git-lfs.github.com/spec/v1" data/instances/synthetic/*.json.gz >/dev/null 2>&1; then
+            echo "ERRO: ainda há ponteiros LFS nos *.json.gz" >&2
+            exit 2
+          fi
+
+      - name: GZIP sanity (usa gzip -t)
+        run: |
+          set -e
+          shopt -s nullglob
+          files=(data/instances/synthetic/*.json.gz)
+          if [ ${#files[@]} -eq 0 ]; then
+            echo "Sem *.json.gz em data/instances/synthetic" >&2
+            exit 2
+          fi
+          for f in "${files[@]}"; do
+            echo "Testando gzip: $f"
+            if ! gzip -t "$f"; then
+              echo "Arquivo corrompido ou ponteiro LFS: $f" >&2
+              head -c 64 "$f" | sed 's/[^[:print:]]/./g' || true
+              exit 2
+            fi
+          done
+          echo "GZIP OK"
 
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
+          python-version: "3.11"
+          cache: "pip"
+          cache-dependency-path: |
+            pyproject.toml
+            setup.cfg
+            setup.py
 
       - name: System deps (METIS for gpmetis)
         run: |
@@ -34,9 +83,7 @@ jobs:
       - name: Install Python deps (pip only)
         run: |
           python -m pip install --upgrade pip
-          # test runner
-          pip install pytest
-          # instala o projeto a partir do pyproject (poetry-core)
+          pip install -U pytest
           pip install .
 
       - name: Run tests

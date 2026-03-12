@@ -1,6 +1,6 @@
 site_name: HPC Framework Docs
-site_url: https://gorgomel.github.io/Heuristic_Benchmarking_Framework/
-repo_url: https://github.com/Gorgomel/Heuristic_Benchmarking_Framework
+site_url: https://lbsl98.github.io/Heuristic_Benchmarking_Framework/
+repo_url: https://github.com/LBSL98/Heuristic_Benchmarking_Framework
 theme:
   name: material
 
@@ -8,18 +8,25 @@ nav:
   - Home: index.md
   - Protocol: protocol/proto_v3.1.1.md
   - API:
-    - Generator CLI: api/generator_cli.md
-    - Heuristics (Greedy): api/heuristics_greedy.md
-    - Framework CLI: api/hpc_framework_cli.md
-    - SSH Orchestrator: api/orchestrator_ssh_executor.md
+      - Generator CLI: api/generator_cli.md
+      - Heuristics (Greedy): api/heuristics_greedy.md
+      - SSH Orchestrator: api/orchestrator_ssh_executor.md
   - Reports:
-    - Instance Generator: reports/01_instance_generator.md
-    - Experimental Campaign: reports/02_experimental_campaign.md
+      - Instance Generator: reports/01_instance_generator.md
+  - Testing:
+      - CI: testing/CI.md
+      - Testing Guide: testing/TESTING.md
+      - Traceability: testing/TRACEABILITY.md
+      - Test Cases:
+          - TC_001 Modularity Gate: testing/testcases/TC_001_modularity_gate.md
+          - TC_002 CV Ceiling: testing/testcases/TC_002_cv_ceiling.md
+          - TC_003 Schema Freeze: testing/testcases/TC_003_schema_freeze.md
+          - TC_004 CLI Examples: testing/testcases/TC_004_cli_examples.md
+          - TC_005 Perf Smoke: testing/testcases/TC_005_perf_smoke.md
   - Decisions:
-    - 001 Language Choice: decisions/001_choice_heuristic_language.md
-    - 003 Methodology: decisions/003_metodologia_gerador_e_analise.md
-    - 004 Testing & CI: decisions/004_testing_and_ci.md
-
+      - 001 Language Choice: decisions/001_choice_heuristic_language.md
+      - 003 Methodology: decisions/003_metodologia_gerador_e_analise.md
+      - 004 Testing & CI: decisions/004_testing_and_ci.md
 
 plugins:
   - search
