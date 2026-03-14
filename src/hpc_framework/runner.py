@@ -15,6 +15,7 @@ import subprocess
 import sys
 import time
 from dataclasses import dataclass
+from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
@@ -142,11 +143,16 @@ def run(
 
     # Snapshot do ambiente e versões para auditoria
     env_info = _env_snapshot()
-    tool_info = {}
-    if algo == "metis":
-        tool_info["gpmetis"] = _tool_version(["gpmetis"])
-    elif algo == "kahip":
-        tool_info["kaffpa"] = _tool_version(["kaffpa"])
+    tool_info = {
+        "gpmetis": {
+            "exists": bool(_which("gpmetis")),
+            "version": _tool_version(["gpmetis"]) if _which("gpmetis") else "",
+        },
+        "kaffpa": {
+            "exists": bool(_which("kaffpa")),
+            "version": _tool_version(["kaffpa"]) if _which("kaffpa") else "",
+        },
+    }
 
     workdir.mkdir(parents=True, exist_ok=True)
     graph_path = workdir / "graph.graph"
@@ -177,29 +183,59 @@ def run(
     )
     cut = compute_cutsize_edges_labels(edges, labels) if labels is not None else None
 
+    feasible = None
+    validation = None
+    if labels is not None:
+        labels_norm = normalize_labels_zero_based(labels)
+        feasible, validation = feasible_beta(labels_norm, k=k, beta=beta)
+
     # Mapeia status do solver para o status esperado pelos testes de runner
     status_json = res.status if res.status in {"ok", "timeout"} else "solver_failed"
 
     # Persistência do JSON (apenas tipos nativos)
     out = {
+        "timestamp": datetime.now(UTC).isoformat(),
         "instance_id": inst.get("instance_id", ""),
         "algo": algo,
         "k": k,
         "beta": beta,
         "seed": seed,
         "budget_time_ms": budget_time_ms,
-        "workdir": str(workdir),
-        "graph_path": str(graph_path),
         "status": status_json,
         "returncode": res.returncode,
-        "elapsed_ms": solver_elapsed_ms,  # Tempo oficial do solver; fallback para wall se ausente
-        "elapsed_wall_ms": elapsed_wall,  # Tempo total com overhead Python (debug)
+        "elapsed_ms": solver_elapsed_ms,
         "stdout": res.stdout,
         "stderr": res.stderr,
+        "metrics": {
+            "cutsize_best": int(cut) if cut is not None else None,
+            "n_nodes": int(n),
+            "balance_tolerance": float(beta),
+            "imbalance_raw": None,
+        },
+        "paths": {
+            "workdir": str(workdir),
+            "graph_path": str(graph_path),
+            "part_path": str(res.part_path) if res.part_path else None,
+        },
+        "env": env_info,
+        "tools": tool_info,
+        "feasible": feasible,
+        "validation": validation,
+        "checkpoints": [
+            {
+                "time_ms": solver_elapsed_ms,
+                "cutsize_best": int(cut) if cut is not None else None,
+                "nfe": None,
+            }
+        ],
+        "schema_version": "1.0.0",
+        "schema_path": "specs/jsonschema/solver_run.schema.v1.json",
+        # Campos legados preservados por compatibilidade:
+        "workdir": str(workdir),
+        "graph_path": str(graph_path),
+        "elapsed_wall_ms": elapsed_wall,
         "part_path": str(res.part_path) if res.part_path else None,
         "cutsize_best": int(cut) if cut is not None else None,
-        "env": env_info,  # Telemetria de hardware/OS
-        "tools": tool_info,  # Versões dos binários
     }
     out_json.parent.mkdir(parents=True, exist_ok=True)
     with out_json.open("w", encoding="utf-8") as f:

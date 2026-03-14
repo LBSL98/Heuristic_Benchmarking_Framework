@@ -69,3 +69,35 @@ def test_runner_kahip_smoke(tmp_path: Path):
     assert data["status"] in {"ok", "timeout", "solver_failed"}
     if data["status"] == "ok":
         assert isinstance(data["cutsize_best"], int)
+
+
+@pytest.mark.skipif(shutil.which("gpmetis") is None, reason="gpmetis não está no PATH")
+def test_runner_metis_emits_single_final_checkpoint(tmp_path: Path):
+    inst_path = _write_instance_edges(tmp_path, n=10)
+    out_json = tmp_path / "out_metis.json"
+    workdir = tmp_path / "work"
+
+    run_one(
+        instance_path=inst_path,
+        algo="metis",
+        k=2,
+        beta=0.03,
+        seed=42,
+        budget_time_ms=5000,
+        out_json=out_json,
+        workdir=workdir,
+        kahip_preset="fast",
+        log_level="info",
+    )
+
+    data = json.loads(out_json.read_text(encoding="utf-8"))
+
+    assert "checkpoints" in data
+    assert isinstance(data["checkpoints"], list)
+    assert len(data["checkpoints"]) == 1
+
+    cp = data["checkpoints"][0]
+    assert "time_ms" in cp
+    assert "cutsize_best" in cp
+    assert "nfe" in cp
+    assert cp["nfe"] is None

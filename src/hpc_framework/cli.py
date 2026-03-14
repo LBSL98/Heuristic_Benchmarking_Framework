@@ -1,4 +1,4 @@
-"""CLI do HPC Framework (modo single-run)."""
+"""CLI do HPC Framework."""
 
 from __future__ import annotations
 
@@ -6,13 +6,11 @@ import argparse
 import json
 from pathlib import Path
 
+from .plan_runner import run_plan
 from .runner import run_one
 
 
-def _build_parser() -> argparse.ArgumentParser:
-    p = argparse.ArgumentParser(
-        description="Runner single-run: exporta .graph, chama METIS/KaHIP e emite JSON de resultados."
-    )
+def _add_single_run_arguments(p: argparse.ArgumentParser) -> None:
     p.add_argument("--instance", required=True, help="Arquivo da instância (.json|.json.gz)")
     p.add_argument("--algo", required=True, choices=["metis", "kahip"])
     p.add_argument("--k", required=True, type=int)
@@ -25,21 +23,33 @@ def _build_parser() -> argparse.ArgumentParser:
     )
     p.add_argument("--log-level", choices=["debug", "info", "warning", "error"], default="info")
     p.add_argument("--kahip-preset", choices=["fast", "eco", "strong"], default="fast")
+
+
+def _build_flat_single_run_parser() -> argparse.ArgumentParser:
+    p = argparse.ArgumentParser(
+        description="Runner single-run: exporta .graph, chama METIS/KaHIP e emite JSON."
+    )
+    _add_single_run_arguments(p)
     return p
 
 
-def main(argv: list[str] | None = None) -> None:
-    # Para os testes de entrypoint: se chamado sem argv, apenas "alive".
-    if argv is None:
-        print("alive")
-        return
+def _build_root_parser() -> argparse.ArgumentParser:
+    p = argparse.ArgumentParser(description="CLI do HPC Framework")
+    sub = p.add_subparsers(dest="command")
 
-    parser = _build_parser()
-    args = parser.parse_args(argv)
+    run_p = sub.add_parser("run", help="Executa campanha declarativa a partir de um plano YAML")
+    run_p.add_argument("--plan", required=True, type=Path, help="Caminho para o plano YAML")
 
+    single_p = sub.add_parser("single-run", help="Executa um único solver em uma única instância")
+    _add_single_run_arguments(single_p)
+
+    return p
+
+
+def _execute_single_run(args: argparse.Namespace) -> None:
     art = run_one(
         instance_path=Path(args.instance),
-        algo=args.algo,
+        algo=str(args.algo),
         k=int(args.k),
         beta=float(args.beta),
         seed=int(args.seed),
@@ -59,6 +69,34 @@ def main(argv: list[str] | None = None) -> None:
         "part_file": str(art.part_file) if art.part_file else None,
     }
     print(json.dumps(obj, ensure_ascii=False))
+
+
+def main(argv: list[str] | None = None) -> None:
+    if argv is None:
+        print("alive")
+        return
+
+    # Compatibilidade retroativa: se não houver subcomando conhecido,
+    # interpreta argv como o modo single-run legado.
+    if argv and argv[0] not in {"run", "single-run"}:
+        parser = _build_flat_single_run_parser()
+        args = parser.parse_args(argv)
+        _execute_single_run(args)
+        return
+
+    parser = _build_root_parser()
+    args = parser.parse_args(argv)
+
+    if args.command == "single-run":
+        _execute_single_run(args)
+        return
+
+    if args.command == "run":
+        run_plan(Path(args.plan))
+        return
+
+    parser.print_help()
+    raise SystemExit(0)
 
 
 if __name__ == "__main__":
