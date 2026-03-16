@@ -53,20 +53,44 @@ def main():
     else:
         imb_raw = None
 
-    env = _env_snapshot()
-    tools = {
-        "gpmetis": {
-            "exists": bool(_which("gpmetis")),
-            "version": _tool_version(["gpmetis"]) if _which("gpmetis") else "",
-        },
-        "kaffpa": {
-            "exists": bool(_which("kaffpa")),
-            "version": _tool_version(["kaffpa"]) if _which("kaffpa") else "",
-        },
-    }
+    env = obj.get("env")
+    if not isinstance(env, dict):
+        env = _env_snapshot()
+
+    tools = obj.get("tools")
+    if not isinstance(tools, dict):
+        tools = {
+            "gpmetis": {
+                "exists": bool(_which("gpmetis")),
+                "version": _tool_version(["gpmetis"]) if _which("gpmetis") else "",
+            },
+            "kaffpa": {
+                "exists": bool(_which("kaffpa")),
+                "version": _tool_version(["kaffpa"]) if _which("kaffpa") else "",
+            },
+        }
+
+    metrics = obj.get("metrics")
+    if not isinstance(metrics, dict):
+        metrics = {
+            "cutsize_best": obj.get("cutsize_best"),
+            "n_nodes": None,  # pode preencher no futuro
+            "balance_tolerance": beta,
+            "imbalance_raw": imb_raw,
+        }
+
+    paths = obj.get("paths")
+    if not isinstance(paths, dict):
+        paths = {
+            "workdir": obj.get("workdir", ""),
+            "graph_path": obj.get("graph_path", ""),
+            "part_path": obj.get("part_path"),
+        }
+
+    checkpoints = obj.get("checkpoints", [])
 
     manifest = {
-        "timestamp": datetime.now(UTC).isoformat(),
+        "timestamp": obj.get("timestamp", datetime.now(UTC).isoformat()),
         "instance_id": obj.get("instance_id", ""),
         "algo": algo,
         "k": k,
@@ -78,22 +102,14 @@ def main():
         "elapsed_ms": int(obj.get("elapsed_ms", 0)),
         "stdout": obj.get("stdout", ""),
         "stderr": obj.get("stderr", ""),
-        "metrics": {
-            "cutsize_best": obj.get("cutsize_best"),
-            "n_nodes": None,  # pode preencher no futuro
-            "balance_tolerance": beta,
-            "imbalance_raw": imb_raw,
-        },
+        "metrics": metrics,
         "env": env,
         "tools": tools,
-        "paths": {
-            "workdir": obj.get("workdir", ""),
-            "graph_path": obj.get("graph_path", ""),
-            "part_path": obj.get("part_path"),
-        },
+        "paths": paths,
+        "checkpoints": checkpoints,
         # metadados do schema:
-        "schema_version": "1.0.0",
-        "schema_path": "specs/jsonschema/solver_run.schema.v1.json",
+        "schema_version": obj.get("schema_version", "1.0.0"),
+        "schema_path": obj.get("schema_path", "specs/jsonschema/solver_run.schema.v1.json"),
     }
 
     dst.parent.mkdir(parents=True, exist_ok=True)
