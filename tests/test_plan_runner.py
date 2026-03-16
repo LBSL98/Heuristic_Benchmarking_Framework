@@ -1,0 +1,211 @@
+from pathlib import Path
+
+import pytest
+import yaml
+
+from hpc_framework.plan_runner import (
+    _enabled_supported_solvers,
+    _included_instances,
+    _planned_runs,
+    _rng_seeds,
+    _solver_beta,
+    _solver_budget_time_ms,
+    _solver_k,
+    run_plan,
+)
+
+
+def test_plan_runner_rejects_enabled_greedy(tmp_path: Path):
+    """Se o plano declarar greedy.enabled=true, o executor deve falhar explicitamente."""
+    plan = {
+        "schema": "forja-exp-v1",
+        "experiment_id": "test-plan",
+        "solvers": {
+            "greedy": {"enabled": True},
+            "metis": {"enabled": True, "k": 2, "budget": {"type": "time", "seconds": 1}},
+            "kahip": {"enabled": False, "k": 2, "budget": {"type": "time", "seconds": 1}},
+        },
+        "instances": {"base_dir": "data/instances/synthetic", "include": ["n2000_p50.json.gz"]},
+        "rng": {"seeds": [42]},
+        "output": {"raw_dir": "data/results_raw", "tables_dir": "data/results_parquet"},
+    }
+
+    plan_path = tmp_path / "plan.yaml"
+    plan_path.write_text(yaml.safe_dump(plan), encoding="utf-8")
+
+    with pytest.raises(NotImplementedError, match="greedy"):
+        run_plan(plan_path)
+
+
+def test_enabled_supported_solvers_returns_only_supported_enabled_solvers():
+    plan = {
+        "solvers": {
+            "greedy": {"enabled": False},
+            "metis": {"enabled": True},
+            "kahip": {"enabled": False},
+        }
+    }
+
+    assert _enabled_supported_solvers(plan) == ["metis"]
+
+
+def test_enabled_supported_solvers_returns_both_supported_solvers_when_enabled():
+    plan = {
+        "solvers": {
+            "greedy": {"enabled": False},
+            "metis": {"enabled": True},
+            "kahip": {"enabled": True},
+        }
+    }
+
+    assert _enabled_supported_solvers(plan) == ["metis", "kahip"]
+
+
+def test_included_instances_returns_declared_include_list():
+    plan = {
+        "instances": {
+            "base_dir": "data/instances/synthetic",
+            "include": ["a.json.gz", "b.json.gz"],
+        }
+    }
+
+    assert _included_instances(plan) == ["a.json.gz", "b.json.gz"]
+
+
+def test_rng_seeds_returns_declared_seed_list():
+    plan = {"rng": {"seeds": [7, 42, 99]}}
+
+    assert _rng_seeds(plan) == [7, 42, 99]
+
+
+def test_solver_k_reads_solver_specific_k():
+    plan = {
+        "solvers": {
+            "metis": {"enabled": True, "k": 8},
+            "kahip": {"enabled": True, "k": 4},
+        }
+    }
+
+    assert _solver_k(plan, "metis") == 8
+    assert _solver_k(plan, "kahip") == 4
+
+
+def test_solver_beta_reads_kahip_imbalance_and_defaults_metis():
+    plan = {
+        "solvers": {
+            "metis": {"enabled": True},
+            "kahip": {"enabled": True, "imbalance": 0.07},
+        }
+    }
+
+    assert _solver_beta(plan, "metis") == 0.03
+    assert _solver_beta(plan, "kahip") == 0.07
+
+
+def test_solver_budget_time_ms_converts_seconds_to_ms():
+    plan = {
+        "solvers": {
+            "metis": {"enabled": True, "budget": {"type": "time", "seconds": 5}},
+        }
+    }
+
+    assert _solver_budget_time_ms(plan, "metis") == 5000
+
+
+def test_planned_runs_builds_cartesian_product_with_solver_parameters():
+    plan = {
+        "solvers": {
+            "greedy": {"enabled": False},
+            "metis": {"enabled": True, "k": 8, "budget": {"type": "time", "seconds": 5}},
+            "kahip": {
+                "enabled": True,
+                "k": 4,
+                "imbalance": 0.07,
+                "budget": {"type": "time", "seconds": 2},
+            },
+        },
+        "instances": {
+            "include": ["a.json.gz"],
+        },
+        "rng": {"seeds": [1, 2]},
+    }
+
+    runs = _planned_runs(plan)
+
+    assert len(runs) == 4
+    assert runs[0] == {
+        "instance": "a.json.gz",
+        "solver": "metis",
+        "seed": 1,
+        "k": 8,
+        "beta": 0.03,
+        "budget_time_ms": 5000,
+    }
+    assert runs[-1] == {
+        "instance": "a.json.gz",
+        "solver": "kahip",
+        "seed": 2,
+        "k": 4,
+        "beta": 0.07,
+        "budget_time_ms": 2000,
+    }
+
+
+def test_run_plan_delegates_all_planned_runs_to_runner(monkeypatch, tmp_path: Path):
+    calls = []
+
+    def fake_run_one(**kwargs):
+        calls.append(kwargs)
+        return object()
+
+    import hpc_framework.plan_runner as plan_runner_mod
+
+    monkeypatch.setattr(plan_runner_mod, "run_one", fake_run_one, raising=False)
+
+    instances_dir = tmp_path / "instances"
+    instances_dir.mkdir()
+    (instances_dir / "toy.json.gz").write_text("placeholder", encoding="utf-8")
+
+    raw_dir = tmp_path / "raw"
+    tables_dir = tmp_path / "tables"
+
+    plan = {
+        "schema": "forja-exp-v1",
+        "experiment_id": "test-plan",
+        "solvers": {
+            "greedy": {"enabled": False},
+            "metis": {"enabled": True, "k": 8, "budget": {"type": "time", "seconds": 5}},
+            "kahip": {
+                "enabled": True,
+                "k": 4,
+                "imbalance": 0.07,
+                "budget": {"type": "time", "seconds": 2},
+            },
+        },
+        "instances": {"base_dir": str(instances_dir), "include": ["toy.json.gz"]},
+        "rng": {"seeds": [1, 2]},
+        "output": {"raw_dir": str(raw_dir), "tables_dir": str(tables_dir)},
+    }
+
+    plan_path = tmp_path / "plan.yaml"
+    plan_path.write_text(yaml.safe_dump(plan), encoding="utf-8")
+
+    run_plan(plan_path)
+
+    assert len(calls) == 4
+
+    assert calls[0]["algo"] == "metis"
+    assert calls[0]["seed"] == 1
+    assert calls[0]["k"] == 8
+    assert calls[0]["beta"] == 0.03
+    assert calls[0]["budget_time_ms"] == 5000
+
+    assert calls[-1]["algo"] == "kahip"
+    assert calls[-1]["seed"] == 2
+    assert calls[-1]["k"] == 4
+    assert calls[-1]["beta"] == 0.07
+    assert calls[-1]["budget_time_ms"] == 2000
+
+    for call in calls:
+        assert call["instance_path"] == instances_dir / "toy.json.gz"
+        assert call["out_json"].suffix == ".json"
