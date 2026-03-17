@@ -22,7 +22,7 @@
   "properties": {
     "timestamp": { "type": "string", "format": "date-time" },
     "instance_id": { "type": "string" },
-    "algo": { "type": "string", "enum": ["metis", "kahip"] },
+    "algo": { "type": "string", "enum": ["metis", "kahip", "greedy"] },
     "k": { "type": "integer", "minimum": 2 },
     "beta": { "type": "number", "minimum": 0 },
     "seed": { "type": "integer", "minimum": 0 },
