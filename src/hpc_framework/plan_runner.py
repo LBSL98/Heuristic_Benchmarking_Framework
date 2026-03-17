@@ -143,7 +143,8 @@ def _write_greedy_result(
     budget_time_ms: int,
     obs: dict,
 ) -> None:
-    out_json = raw_dir / f"{Path(instance_name).name}__greedy__seed{seed}.json"
+    delta_tag = f"{float(delta_v):.2f}"
+    out_json = raw_dir / f"{Path(instance_name).name}__greedy__dv{delta_tag}__seed{seed}.json"
 
     labels = obs["labels"]
     labels_json = labels.tolist() if hasattr(labels, "tolist") else list(labels)
@@ -224,8 +225,13 @@ def run_plan(plan_path: Path) -> None:
             continue
 
         stem = Path(run["instance"]).name
-        out_json = raw_dir / f"{stem}__{run['solver']}__seed{run['seed']}.json"
-        workdir = raw_dir / f"run_{run['solver']}__{stem}__seed{run['seed']}"
+        beta_tag = f"{float(run['beta']):.2f}"
+        out_json = raw_dir / (
+            f"{stem}__{run['solver']}__k{run['k']}__b{beta_tag}__seed{run['seed']}.json"
+        )
+        workdir = raw_dir / (
+            f"run_{run['solver']}__{stem}__k{run['k']}__b{beta_tag}__seed{run['seed']}"
+        )
 
         run_one(
             instance_path=instance_path,
