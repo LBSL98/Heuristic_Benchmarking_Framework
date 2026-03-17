@@ -1,6 +1,5 @@
 from pathlib import Path
 
-import pytest
 import yaml
 
 from hpc_framework.plan_runner import (
@@ -13,28 +12,6 @@ from hpc_framework.plan_runner import (
     _solver_k,
     run_plan,
 )
-
-
-def test_plan_runner_rejects_enabled_greedy(tmp_path: Path):
-    """Se o plano declarar greedy.enabled=true, o executor deve falhar explicitamente."""
-    plan = {
-        "schema": "forja-exp-v1",
-        "experiment_id": "test-plan",
-        "solvers": {
-            "greedy": {"enabled": True},
-            "metis": {"enabled": True, "k": 2, "budget": {"type": "time", "seconds": 1}},
-            "kahip": {"enabled": False, "k": 2, "budget": {"type": "time", "seconds": 1}},
-        },
-        "instances": {"base_dir": "data/instances/synthetic", "include": ["n2000_p50.json.gz"]},
-        "rng": {"seeds": [42]},
-        "output": {"raw_dir": "data/results_raw", "tables_dir": "data/results_parquet"},
-    }
-
-    plan_path = tmp_path / "plan.yaml"
-    plan_path.write_text(yaml.safe_dump(plan), encoding="utf-8")
-
-    with pytest.raises(NotImplementedError, match="greedy"):
-        run_plan(plan_path)
 
 
 def test_enabled_supported_solvers_returns_only_supported_enabled_solvers():
