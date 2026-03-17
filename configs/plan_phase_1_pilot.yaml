@@ -32,7 +32,7 @@ instances:
   - cv_degree
 solvers:
   greedy:
-    enabled: false
+    enabled: true
     params:
       delta_v: 0.1
     budget:
