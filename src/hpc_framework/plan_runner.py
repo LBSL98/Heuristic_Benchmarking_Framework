@@ -171,10 +171,10 @@ def _get(d: dict[str, Any], dotted: str) -> Any:
     return cur
 
 
-def _write_manifest_index(*, raw_dir: Path, manifest_out: Path) -> None:
+def _write_manifest_index(*, output_files: list[Path], manifest_out: Path) -> None:
     rows: list[dict[str, Any]] = []
 
-    for path in sorted(raw_dir.glob("*.json")):
+    for path in sorted(output_files, key=lambda p: str(p)):
         obj = json.loads(path.read_text(encoding="utf-8"))
         row = {field: _get(obj, field) for field in MANIFEST_FIELDS}
         row["_file"] = str(path)
@@ -196,7 +196,7 @@ def _write_greedy_result(
     delta_v: float,
     budget_time_ms: int,
     obs: dict,
-) -> None:
+) -> Path:
     delta_tag = f"{float(delta_v):.2f}"
     out_json = raw_dir / f"{Path(instance_name).name}__greedy__dv{delta_tag}__seed{seed}.json"
 
@@ -238,12 +238,12 @@ def _write_greedy_result(
         ],
         "schema_version": "1.0.0",
         "schema_path": "specs/jsonschema/solver_run.schema.v1.json",
-        # compat legado
         "cutsize_best": int(obs["cutsize_best"]),
         "observed_k": int(obs["observed_k"]),
         "labels": labels_json,
     }
     out_json.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
+    return out_json
 
 
 def run_plan(plan_path: Path) -> None:
@@ -263,21 +263,23 @@ def run_plan(plan_path: Path) -> None:
     raw_dir = Path(output_cfg.get("raw_dir", "data/results_raw"))
     raw_dir.mkdir(parents=True, exist_ok=True)
 
+    produced_outputs: list[Path] = []
+
     for run in runs:
         instance_path = base_dir / run["instance"]
 
         if run["solver"] == "greedy":
             inst = _read_instance_json(instance_path)
-            obs = run_greedy_observation(inst, delta_v=float(run["delta_v"]))
-            _write_greedy_result(
+            out_json = _write_greedy_result(
                 raw_dir=raw_dir,
                 instance_name=run["instance"],
                 instance_id=str(inst.get("instance_id", Path(run["instance"]).stem)),
                 seed=int(run["seed"]),
                 delta_v=float(run["delta_v"]),
                 budget_time_ms=int(run["budget_time_ms"]),
-                obs=obs,
+                obs=run_greedy_observation(inst, delta_v=float(run["delta_v"])),
             )
+            produced_outputs.append(out_json)
             continue
 
         stem = Path(run["instance"]).name
@@ -301,6 +303,7 @@ def run_plan(plan_path: Path) -> None:
             kahip_preset="fast",
             log_level="info",
         )
+        produced_outputs.append(out_json)
 
     if manifest_out is not None:
-        _write_manifest_index(raw_dir=raw_dir, manifest_out=manifest_out)
+        _write_manifest_index(output_files=produced_outputs, manifest_out=manifest_out)
