@@ -231,10 +231,6 @@ def run(
         "schema_version": "1.0.0",
         "schema_path": "specs/jsonschema/solver_run.schema.v1.json",
         # Campos legados preservados por compatibilidade:
-        "workdir": str(workdir),
-        "graph_path": str(graph_path),
-        "elapsed_wall_ms": elapsed_wall,
-        "part_path": str(res.part_path) if res.part_path else None,
         "cutsize_best": int(cut) if cut is not None else None,
     }
     out_json.parent.mkdir(parents=True, exist_ok=True)
