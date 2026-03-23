@@ -267,3 +267,83 @@ def test_run_plan_writes_manifest_index_when_declared(monkeypatch, tmp_path: Pat
     assert len(rows) == 4
     assert {row["_file"] for row in rows} == {str(call["out_json"]) for call in calls}
     assert sorted(row["algo"] for row in rows) == ["kahip", "kahip", "metis", "metis"]
+
+
+def test_run_plan_manifest_index_excludes_preexisting_root_jsons(monkeypatch, tmp_path: Path):
+    calls = []
+
+    def fake_run_one(**kwargs):
+        calls.append(kwargs)
+        payload = {
+            "timestamp": "2026-03-23T00:00:00+00:00",
+            "instance_id": "toy",
+            "algo": kwargs["algo"],
+            "k": kwargs["k"],
+            "beta": kwargs["beta"],
+            "seed": kwargs["seed"],
+            "budget_time_ms": kwargs["budget_time_ms"],
+            "status": "ok",
+            "returncode": 0,
+            "elapsed_ms": 1,
+            "metrics": {
+                "cutsize_best": 10,
+                "imbalance_raw": 0.0,
+            },
+            "paths": {
+                "workdir": str(kwargs["workdir"]),
+                "graph_path": "",
+                "part_path": None,
+            },
+        }
+        kwargs["out_json"].parent.mkdir(parents=True, exist_ok=True)
+        kwargs["out_json"].write_text(json.dumps(payload), encoding="utf-8")
+        return object()
+
+    import hpc_framework.plan_runner as plan_runner_mod
+
+    monkeypatch.setattr(plan_runner_mod, "run_one", fake_run_one, raising=False)
+
+    instances_dir = tmp_path / "instances"
+    instances_dir.mkdir()
+    (instances_dir / "toy.json.gz").write_text("placeholder", encoding="utf-8")
+
+    raw_dir = tmp_path / "raw"
+    raw_dir.mkdir()
+    (raw_dir / "smoke_metis.json").write_text('{"algo":"metis"}', encoding="utf-8")
+
+    tables_dir = tmp_path / "tables"
+    manifest_out = raw_dir / "manifest_index.csv"
+
+    plan = {
+        "schema": "forja-exp-v1",
+        "experiment_id": "test-plan-manifest-scope",
+        "solvers": {
+            "greedy": {"enabled": False},
+            "metis": {"enabled": True, "k": 8, "budget": {"type": "time", "seconds": 5}},
+            "kahip": {
+                "enabled": True,
+                "k": 4,
+                "imbalance": 0.07,
+                "budget": {"type": "time", "seconds": 2},
+            },
+        },
+        "instances": {
+            "base_dir": str(instances_dir),
+            "include": ["toy.json.gz"],
+            "manifest_out": str(manifest_out),
+        },
+        "rng": {"seeds": [1, 2]},
+        "output": {"raw_dir": str(raw_dir), "tables_dir": str(tables_dir)},
+    }
+
+    plan_path = tmp_path / "plan.yaml"
+    plan_path.write_text(yaml.safe_dump(plan), encoding="utf-8")
+
+    run_plan(plan_path)
+
+    with manifest_out.open(newline="", encoding="utf-8") as f:
+        rows = list(csv.DictReader(f))
+
+    assert len(rows) == 4
+    assert "smoke_metis.json" not in {Path(row["_file"]).name for row in rows}
+    assert {row["_file"] for row in rows} == {str(call["out_json"]) for call in calls}
