@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import csv
 import gzip
 import json
 from datetime import UTC, datetime
@@ -14,6 +15,34 @@ from .greedy_adapter import run_greedy_observation
 from .runner import _env_snapshot, _tool_version, _which, run_one
 
 SUPPORTED_SOLVERS = ("metis", "kahip")
+MANIFEST_FIELDS = [
+    "timestamp",
+    "instance_id",
+    "algo",
+    "k",
+    "beta",
+    "seed",
+    "budget_time_ms",
+    "status",
+    "returncode",
+    "elapsed_ms",
+    "metrics.cutsize_best",
+    "metrics.imbalance_raw",
+    "paths.workdir",
+    "paths.graph_path",
+    "paths.part_path",
+    "env.python",
+    "env.os",
+    "env.os_release",
+    "env.cpu.model",
+    "env.cpu.cores_logical",
+    "env.cpu.cores_physical",
+    "env.cpu.freq_mhz",
+    "tools.gpmetis.exists",
+    "tools.gpmetis.version",
+    "tools.kaffpa.exists",
+    "tools.kaffpa.version",
+]
 
 
 def _load_plan(plan_path: Path) -> dict:
@@ -133,6 +162,31 @@ def _greedy_tools_snapshot() -> dict:
     }
 
 
+def _get(d: dict[str, Any], dotted: str) -> Any:
+    cur: Any = d
+    for part in dotted.split("."):
+        if not isinstance(cur, dict):
+            return None
+        cur = cur.get(part)
+    return cur
+
+
+def _write_manifest_index(*, raw_dir: Path, manifest_out: Path) -> None:
+    rows: list[dict[str, Any]] = []
+
+    for path in sorted(raw_dir.glob("*.json")):
+        obj = json.loads(path.read_text(encoding="utf-8"))
+        row = {field: _get(obj, field) for field in MANIFEST_FIELDS}
+        row["_file"] = str(path)
+        rows.append(row)
+
+    manifest_out.parent.mkdir(parents=True, exist_ok=True)
+    with manifest_out.open("w", encoding="utf-8", newline="") as fo:
+        writer = csv.DictWriter(fo, fieldnames=["_file"] + MANIFEST_FIELDS)
+        writer.writeheader()
+        writer.writerows(rows)
+
+
 def _write_greedy_result(
     *,
     raw_dir: Path,
@@ -204,6 +258,8 @@ def run_plan(plan_path: Path) -> None:
     output_cfg = plan.get("output", {}) or {}
 
     base_dir = Path(instances_cfg.get("base_dir", "."))
+    manifest_out_value = instances_cfg.get("manifest_out")
+    manifest_out = Path(manifest_out_value) if manifest_out_value else None
     raw_dir = Path(output_cfg.get("raw_dir", "data/results_raw"))
     raw_dir.mkdir(parents=True, exist_ok=True)
 
@@ -245,3 +301,6 @@ def run_plan(plan_path: Path) -> None:
             kahip_preset="fast",
             log_level="info",
         )
+
+    if manifest_out is not None:
+        _write_manifest_index(raw_dir=raw_dir, manifest_out=manifest_out)
