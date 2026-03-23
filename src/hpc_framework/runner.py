@@ -195,7 +195,7 @@ def run(
     # Persistência do JSON (apenas tipos nativos)
     out = {
         "timestamp": datetime.now(UTC).isoformat(),
-        "instance_id": inst.get("instance_id", ""),
+        "instance_id": str(inst.get("instance_id") or Path(instance_path).stem),
         "algo": algo,
         "k": k,
         "beta": beta,
