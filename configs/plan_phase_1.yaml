@@ -1,6 +1,7 @@
 schema: forja-exp-v1
-experiment_id: tcc-phase1
-description: Greedy vs METIS (KaHIP opcional) em instâncias sintéticas
+experiment_id: tcc-phase1-official-canonical-scope
+description: Official executable flow aligned with current canonical thesis governance;
+  greedy excluded from official benchmark scope.
 rng:
   seeds:
   - 42
@@ -31,13 +32,6 @@ instances:
   - density
   - cv_degree
 solvers:
-  greedy:
-    enabled: true
-    params:
-      delta_v: 0.1
-    budget:
-      type: time
-      seconds: 5
   metis:
     enabled: true
     k: 8

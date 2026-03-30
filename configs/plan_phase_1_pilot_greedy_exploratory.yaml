@@ -1,7 +1,7 @@
 schema: forja-exp-v1
-experiment_id: tcc-phase1-pilot-official-canonical-scope
-description: Official executable flow aligned with current canonical thesis governance;
-  greedy excluded from official benchmark scope.
+experiment_id: tcc-phase1-pilot-greedy-exploratory
+description: Exploratory flow with greedy preserved outside the canonical thesis benchmark
+  scope.
 rng:
   seeds:
   - 42
@@ -32,6 +32,13 @@ instances:
   - density
   - cv_degree
 solvers:
+  greedy:
+    enabled: true
+    params:
+      delta_v: 0.1
+    budget:
+      type: time
+      seconds: 5
   metis:
     enabled: true
     k: 8
