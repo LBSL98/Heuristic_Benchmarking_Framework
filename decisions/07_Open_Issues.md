@@ -47,3 +47,17 @@ This file tracks unresolved project problems that can affect coherence, correctn
 - **Origin:** Canon vs pipeline audit
 - **Current status:** Open
 - **Needed action:** Keep `greedy` out of official plans and later align the executable official campaign with the canonical portfolio (SA, TS, ILS, GRASP, METIS, KaHIP) without allowing exploratory baselines to contaminate thesis claims.
+
+### OI-007 — Canonical anytime portfolio is still not executable in the main runner
+- **Type:** Code / methodology alignment
+- **Severity:** High
+- **Origin:** Canonical portfolio readiness audit
+- **Current status:** Open
+- **Needed action:** Integrate SA, ILS, and GRASP into the main runner one by one, keeping the official flow unchanged until each solver is validated against the current artifact schema and wall-clock protocol.
+
+### OI-008 — Tabu Search implementation source is currently unavailable for porting
+- **Type:** Code availability / portfolio completion
+- **Severity:** High
+- **Origin:** Legacy repository portability audit
+- **Current status:** Open
+- **Needed action:** Locate a valid TS implementation or implement it later under the same canonical runner contract. Until then, TS remains a documented portfolio gap rather than an implicit promise.

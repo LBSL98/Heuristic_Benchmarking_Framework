@@ -59,3 +59,19 @@ This file is the canonical ledger for experiments, runs, outputs, and traceable 
 - **Limitations / caveats:** This entry supports engineering/governance discussion only. It does not authorize monograph claims treating greedy as an official benchmark participant.
 - **Can this support prose in the monograph?** No
 - **Mapped in `08_Results_to_Text_Map.md`:** Yes
+
+### EXP-PORT-001 — Legacy SA/ILS/GRASP portability audit
+- **Status:** Completed
+- **Date:** 2026-03-30
+- **Question answered:** Can the legacy PA-Novo repository be ported directly into the canonical FORJA runner for SA, ILS, GRASP, and TS?
+- **Code reference / branch / commit:** `main` after PR #24 plus legacy repository snapshot used in PR17 bootstrap audit
+- **Input instances:** N/A (static code and structure audit)
+- **Algorithms compared:** SA, ILS, GRASP, greedy/improvement auxiliaries, TS availability check
+- **Budget protocol:** N/A
+- **Environment constraints:** Static portability inspection against the current FORJA runner contract
+- **Primary metrics:** Dependency structure, objective compatibility, instance-format compatibility, TS file availability
+- **Outputs generated:** `audit_reports/pr17_sa_bootstrap/225_sa_portability_summary.md`
+- **Main finding:** The legacy repository provides structural references for SA, ILS, and GRASP, but it solves a different clustering/FO1 problem and does not contain Tabu Search. Direct porting is not safe.
+- **Limitations / caveats:** Supports integration planning only; it does not validate any canonical solver implementation yet.
+- **Can this support prose in the monograph?** No
+- **Mapped in `08_Results_to_Text_Map.md`:** No
