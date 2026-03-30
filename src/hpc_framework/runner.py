@@ -1,4 +1,4 @@
-"""Orquestrador single-run para METIS/KaHIP.
+"""Orquestrador single-run para METIS/KaHIP/SA.
 Usado pelos testes e pelo CLI para exportar .graph, invocar o solver e salvar artefatos/JSON.
 """
 
@@ -21,6 +21,7 @@ from typing import Any
 
 import numpy as np
 
+from heuristics.sa import SAConfig, run_sa_partition
 from hpc_framework.solvers.common import read_partition_labels, write_metis_graph
 from hpc_framework.solvers.kahip import run_kaffpa
 from hpc_framework.solvers.metis import run_gpmetis
@@ -99,6 +100,24 @@ def extract_graph_from_instance(inst: dict[str, Any]) -> tuple[int, np.ndarray]:
     return n, edges_arr
 
 
+def _adj_from_edges(n: int, edges: np.ndarray) -> dict[int, set[int]]:
+    """Build an undirected adjacency map from an edge array."""
+    adj: dict[int, set[int]] = {i: set() for i in range(int(n))}
+    for u, v in edges:
+        ui = int(u)
+        vi = int(v)
+        if ui == vi:
+            continue
+        adj[ui].add(vi)
+        adj[vi].add(ui)
+    return adj
+
+
+def _labels_from_part_of(part_of: dict[int, int], n: int) -> np.ndarray:
+    """Convert a part-of mapping into a dense labels array."""
+    return np.asarray([int(part_of[i]) for i in range(int(n))], dtype=int)
+
+
 def _read_instance(p: Path) -> dict[str, Any]:
     """Lê JSON (possivelmente .gz) de instância."""
     if str(p).endswith(".gz"):
@@ -161,36 +180,95 @@ def run(
     # Medição de parede local (overhead do Python incluído) para debug
     t0_wall = time.perf_counter()
 
-    if algo == "metis":
-        res = run_gpmetis(graph_path, k=k, beta=beta, seed=seed, timeout_s=budget_time_ms / 1000.0)
-    elif algo == "kahip":
-        res = run_kaffpa(
-            graph_path,
-            k=k,
-            beta=beta,
-            seed=seed,
-            timeout_s=budget_time_ms / 1000.0,
-            preset=kahip_preset,
-        )
-    else:
-        raise ValueError("algo must be 'metis' or 'kahip'")
-
-    elapsed_wall = int((time.perf_counter() - t0_wall) * 1000)
-    solver_elapsed_ms = int(res.elapsed_ms) if res.elapsed_ms is not None else elapsed_wall
-
-    labels = (
-        read_partition_labels(res.part_path) if res.part_path and res.part_path.exists() else None
-    )
-    cut = compute_cutsize_edges_labels(edges, labels) if labels is not None else None
-
+    stdout = ""
+    stderr = ""
+    returncode: int | None = 0
+    part_file: Path | None = None
+    labels: np.ndarray | None = None
+    checkpoints: list[dict[str, int | None]] = []
+    cut: int | None = None
     feasible = None
     validation = None
-    if labels is not None:
+
+    if algo == "sa":
+        adj = _adj_from_edges(n, edges)
+        sa_result = run_sa_partition(
+            adj,
+            k=k,
+            epsilon=beta,
+            config=SAConfig(
+                seed=seed,
+                budget_time_ms=budget_time_ms,
+            ),
+        )
+        elapsed_wall = int((time.perf_counter() - t0_wall) * 1000)
+        solver_elapsed_ms = (
+            int(sa_result.elapsed_ms) if sa_result.elapsed_ms is not None else elapsed_wall
+        )
+
+        labels = _labels_from_part_of(sa_result.best_part_of, n)
+        cut = int(sa_result.best_cutsize)
+
+        part_file = workdir / "sa.part"
+        part_file.write_text(
+            "".join(f"{int(label)}\n" for label in labels.tolist()), encoding="utf-8"
+        )
+
         labels_norm = normalize_labels_zero_based(labels)
         feasible, validation = feasible_beta(labels_norm, k=k, beta=beta)
+        status_json = sa_result.status
+        checkpoints = [
+            {
+                "time_ms": int(cp.time_ms),
+                "cutsize_best": int(cp.cutsize_best),
+                "nfe": int(cp.nfe),
+            }
+            for cp in sa_result.checkpoints
+        ]
+    else:
+        if algo == "metis":
+            res = run_gpmetis(
+                graph_path, k=k, beta=beta, seed=seed, timeout_s=budget_time_ms / 1000.0
+            )
+        elif algo == "kahip":
+            res = run_kaffpa(
+                graph_path,
+                k=k,
+                beta=beta,
+                seed=seed,
+                timeout_s=budget_time_ms / 1000.0,
+                preset=kahip_preset,
+            )
+        else:
+            raise ValueError("algo must be 'metis', 'kahip' or 'sa'")
 
-    # Mapeia status do solver para o status esperado pelos testes de runner
-    status_json = res.status if res.status in {"ok", "timeout"} else "solver_failed"
+        elapsed_wall = int((time.perf_counter() - t0_wall) * 1000)
+        solver_elapsed_ms = int(res.elapsed_ms) if res.elapsed_ms is not None else elapsed_wall
+
+        stdout = res.stdout
+        stderr = res.stderr
+        returncode = res.returncode
+
+        labels = (
+            read_partition_labels(res.part_path)
+            if res.part_path and res.part_path.exists()
+            else None
+        )
+        cut = compute_cutsize_edges_labels(edges, labels) if labels is not None else None
+
+        if labels is not None:
+            labels_norm = normalize_labels_zero_based(labels)
+            feasible, validation = feasible_beta(labels_norm, k=k, beta=beta)
+
+        status_json = res.status if res.status in {"ok", "timeout"} else "solver_failed"
+        part_file = res.part_path if res.part_path and res.part_path.exists() else None
+        checkpoints = [
+            {
+                "time_ms": solver_elapsed_ms,
+                "cutsize_best": int(cut) if cut is not None else None,
+                "nfe": None,
+            }
+        ]
 
     # Persistência do JSON (apenas tipos nativos)
     out = {
@@ -202,10 +280,10 @@ def run(
         "seed": seed,
         "budget_time_ms": budget_time_ms,
         "status": status_json,
-        "returncode": res.returncode,
+        "returncode": returncode,
         "elapsed_ms": solver_elapsed_ms,
-        "stdout": res.stdout,
-        "stderr": res.stderr,
+        "stdout": stdout,
+        "stderr": stderr,
         "metrics": {
             "cutsize_best": int(cut) if cut is not None else None,
             "n_nodes": int(n),
@@ -215,19 +293,13 @@ def run(
         "paths": {
             "workdir": str(workdir),
             "graph_path": str(graph_path),
-            "part_path": str(res.part_path) if res.part_path else None,
+            "part_path": str(part_file) if part_file else None,
         },
         "env": env_info,
         "tools": tool_info,
         "feasible": feasible,
         "validation": validation,
-        "checkpoints": [
-            {
-                "time_ms": solver_elapsed_ms,
-                "cutsize_best": int(cut) if cut is not None else None,
-                "nfe": None,
-            }
-        ],
+        "checkpoints": checkpoints,
         "schema_version": "1.0.0",
         "schema_path": "specs/jsonschema/solver_run.schema.v1.json",
         # Campos legados preservados por compatibilidade:
@@ -242,8 +314,8 @@ def run(
         algo=algo,
         status=status_json,
         cut=cut,
-        elapsed_ms=solver_elapsed_ms,  # Prioriza o tempo do solver; fallback controlado
-        part_file=res.part_path if res.part_path and res.part_path.exists() else None,
+        elapsed_ms=solver_elapsed_ms,
+        part_file=part_file,
     )
 
 
