@@ -33,7 +33,8 @@
         "metis",
         "kahip",
         "greedy",
-        "sa"
+        "sa",
+        "ils"
       ]
     },
     "k": {
