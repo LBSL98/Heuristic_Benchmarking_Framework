@@ -1,3 +1,4 @@
+# mypy: disable-error-code=import-untyped
 """Executor declarativo mínimo para campanhas descritas em YAML."""
 
 from __future__ import annotations
@@ -11,7 +12,7 @@ from pathlib import Path
 from typing import Any
 
 import numpy as np
-import yaml  # type: ignore[import-untyped]
+import yaml
 
 from heuristics.sa import SAConfig, SAResult, run_sa_partition
 
