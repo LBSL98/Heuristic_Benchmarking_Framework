@@ -14,6 +14,7 @@ from typing import Any
 import numpy as np
 import yaml
 
+from heuristics.ils import ILSConfig, ILSResult, run_ils_partition
 from heuristics.sa import SAConfig, SAResult, run_sa_partition
 
 from .greedy_adapter import run_greedy_observation
@@ -28,7 +29,7 @@ from .runner import (
 )
 from .solvers.common import write_metis_graph
 
-SUPPORTED_SOLVERS = ("metis", "kahip", "sa")
+SUPPORTED_SOLVERS = ("metis", "kahip", "sa", "ils")
 MANIFEST_FIELDS = [
     "timestamp",
     "instance_id",
@@ -355,6 +356,84 @@ def _write_sa_result(
     return out_json
 
 
+def _write_ils_result(
+    *,
+    raw_dir: Path,
+    instance_name: str,
+    instance_id: str,
+    n: int,
+    edges: Any,
+    k: int,
+    beta: float,
+    seed: int,
+    budget_time_ms: int,
+    result: ILSResult,
+) -> Path:
+    """Persist a canonical ILS run in the same JSON contract used by the runner."""
+    beta_tag = f"{float(beta):.2f}"
+    out_json = raw_dir / f"{Path(instance_name).name}__ils__k{k}__b{beta_tag}__seed{seed}.json"
+    workdir = raw_dir / f"run_ils__{Path(instance_name).name}__k{k}__b{beta_tag}__seed{seed}"
+    workdir.mkdir(parents=True, exist_ok=True)
+
+    graph_path = workdir / "graph.graph"
+    write_metis_graph(graph_path, int(n), edges)
+
+    labels = _labels_from_part_of(result.best_part_of, int(n))
+    labels_np = np.asarray(labels, dtype=int)
+
+    part_path = workdir / "ils.part"
+    part_path.write_text("".join(f"{int(label)}\n" for label in labels), encoding="utf-8")
+
+    feasible, validation = feasible_beta(
+        normalize_labels_zero_based(labels_np),
+        k=int(k),
+        beta=float(beta),
+    )
+
+    payload = {
+        "timestamp": datetime.now(UTC).isoformat(),
+        "instance_id": instance_id,
+        "algo": "ils",
+        "k": int(k),
+        "beta": float(beta),
+        "seed": int(seed),
+        "budget_time_ms": int(budget_time_ms),
+        "status": result.status,
+        "returncode": 0,
+        "elapsed_ms": int(result.elapsed_ms),
+        "stdout": "",
+        "stderr": "",
+        "metrics": {
+            "cutsize_best": int(result.best_cutsize),
+            "n_nodes": int(n),
+            "balance_tolerance": float(beta),
+            "imbalance_raw": None,
+        },
+        "paths": {
+            "workdir": str(workdir),
+            "graph_path": str(graph_path),
+            "part_path": str(part_path),
+        },
+        "env": _env_snapshot(),
+        "tools": _greedy_tools_snapshot(),
+        "feasible": feasible,
+        "validation": validation,
+        "checkpoints": [
+            {
+                "time_ms": int(cp.time_ms),
+                "cutsize_best": int(cp.cutsize_best),
+                "nfe": int(cp.nfe),
+            }
+            for cp in result.checkpoints
+        ],
+        "schema_version": "1.0.0",
+        "schema_path": "specs/jsonschema/solver_run.schema.v1.json",
+        "cutsize_best": int(result.best_cutsize),
+    }
+    out_json.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
+    return out_json
+
+
 def run_plan(plan_path: Path) -> None:
     """Executa uma campanha mínima a partir de um plano YAML."""
     plan = _load_plan(plan_path)
@@ -403,7 +482,7 @@ def run_plan(plan_path: Path) -> None:
             sa_cfg = (plan.get("solvers", {}) or {}).get("sa", {}) or {}
             sa_params = sa_cfg.get("params", {}) or {}
 
-            result = run_sa_partition(
+            sa_result = run_sa_partition(
                 adj,
                 k=int(run["k"]),
                 epsilon=float(run["beta"]),
@@ -428,11 +507,46 @@ def run_plan(plan_path: Path) -> None:
                 beta=float(run["beta"]),
                 seed=int(run["seed"]),
                 budget_time_ms=int(run["budget_time_ms"]),
-                result=result,
+                result=sa_result,
             )
             produced_outputs.append(out_json)
             continue
 
+        if run["solver"] == "ils":
+            inst = _read_instance_json(instance_path)
+            n, edges = extract_graph_from_instance(inst)
+            adj = _adj_from_edges(n, edges)
+
+            ils_cfg = (plan.get("solvers", {}) or {}).get("ils", {}) or {}
+            ils_params = ils_cfg.get("params", {}) or {}
+
+            ils_result = run_ils_partition(
+                adj,
+                k=int(run["k"]),
+                epsilon=float(run["beta"]),
+                config=ILSConfig(
+                    seed=int(run["seed"]),
+                    budget_time_ms=int(run["budget_time_ms"]),
+                    max_iters=int(ils_params.get("max_iters", 100)),
+                    perturb_moves=int(ils_params.get("perturb_moves", 2)),
+                    checkpoint_every_iter=int(ils_params.get("checkpoint_every_iter", 1)),
+                ),
+            )
+
+            out_json = _write_ils_result(
+                raw_dir=raw_dir,
+                instance_name=run["instance"],
+                instance_id=str(inst.get("instance_id", Path(run["instance"]).stem)),
+                n=int(n),
+                edges=edges,
+                k=int(run["k"]),
+                beta=float(run["beta"]),
+                seed=int(run["seed"]),
+                budget_time_ms=int(run["budget_time_ms"]),
+                result=ils_result,
+            )
+            produced_outputs.append(out_json)
+            continue
         stem = Path(run["instance"]).name
         beta_tag = f"{float(run['beta']):.2f}"
         out_json = raw_dir / (
