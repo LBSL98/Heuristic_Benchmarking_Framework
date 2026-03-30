@@ -72,3 +72,11 @@ This file records frozen project decisions. A decision only becomes canonical af
 - **Rationale:** The canonical monograph portfolio is currently frozen as SA, TS, ILS, GRASP, METIS, and KaHIP. Keeping `greedy` in the official flow would create scope drift between canon, pipeline, and prose.
 - **Impact:** Official plans exclude `greedy`; exploratory plans may preserve it under separate filenames; no monograph claim may treat `greedy` as a canonical benchmark participant unless a later canonical decision supersedes this one.
 - **Supersedes / Superseded by:**
+
+### D-008 — Canonical anytime integration sequence
+- **Status:** Frozen
+- **Date:** 2026-03-30
+- **Decision:** Canonical anytime integration will proceed one solver at a time in the sequence SA, then ILS, then GRASP, with TS last.
+- **Rationale:** The legacy repository provides reusable structural references for SA, ILS, and GRASP, but no Tabu Search implementation. Integrating one solver at a time minimizes regression ambiguity and keeps each adapter auditable against the current runner and schema.
+- **Impact:** No official plan expansion occurs until each solver passes its own local integration gate. TS remains an explicit pending gap until a valid source implementation is located or written.
+- **Supersedes / Superseded by:**
