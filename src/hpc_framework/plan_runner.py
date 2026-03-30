@@ -5,6 +5,7 @@ from __future__ import annotations
 import csv
 import gzip
 import json
+import time
 from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
@@ -196,6 +197,7 @@ def _write_greedy_result(
     delta_v: float,
     budget_time_ms: int,
     obs: dict,
+    elapsed_ms: int,
 ) -> Path:
     delta_tag = f"{float(delta_v):.2f}"
     out_json = raw_dir / f"{Path(instance_name).name}__greedy__dv{delta_tag}__seed{seed}.json"
@@ -213,7 +215,7 @@ def _write_greedy_result(
         "budget_time_ms": int(budget_time_ms),
         "status": "ok",
         "returncode": 0,
-        "elapsed_ms": 0,
+        "elapsed_ms": int(elapsed_ms),
         "stdout": "",
         "stderr": "",
         "metrics": {
@@ -231,7 +233,7 @@ def _write_greedy_result(
         },
         "checkpoints": [
             {
-                "time_ms": 0,
+                "time_ms": int(elapsed_ms),
                 "cutsize_best": int(obs["cutsize_best"]),
                 "nfe": None,
             }
@@ -270,6 +272,9 @@ def run_plan(plan_path: Path) -> None:
 
         if run["solver"] == "greedy":
             inst = _read_instance_json(instance_path)
+            t0 = time.perf_counter()
+            obs = run_greedy_observation(inst, delta_v=float(run["delta_v"]))
+            elapsed_ms = int((time.perf_counter() - t0) * 1000)
             out_json = _write_greedy_result(
                 raw_dir=raw_dir,
                 instance_name=run["instance"],
@@ -277,7 +282,8 @@ def run_plan(plan_path: Path) -> None:
                 seed=int(run["seed"]),
                 delta_v=float(run["delta_v"]),
                 budget_time_ms=int(run["budget_time_ms"]),
-                obs=run_greedy_observation(inst, delta_v=float(run["delta_v"])),
+                obs=obs,
+                elapsed_ms=elapsed_ms,
             )
             produced_outputs.append(out_json)
             continue
