@@ -24,6 +24,7 @@ import numpy as np
 from heuristics.grasp import GRASPConfig, run_grasp_partition
 from heuristics.ils import ILSConfig, run_ils_partition
 from heuristics.sa import SAConfig, run_sa_partition
+from heuristics.ts import TSConfig, run_ts_partition
 from hpc_framework.solvers.common import read_partition_labels, write_metis_graph
 from hpc_framework.solvers.kahip import run_kaffpa
 from hpc_framework.solvers.metis import run_gpmetis
@@ -262,6 +263,41 @@ def run(
             }
             for cp in grasp_result.checkpoints
         ]
+    elif algo == "ts":
+        adj = _adj_from_edges(n, edges)
+        ts_result = run_ts_partition(
+            adj,
+            k=k,
+            epsilon=beta,
+            config=TSConfig(
+                seed=seed,
+                budget_time_ms=budget_time_ms,
+            ),
+        )
+        elapsed_wall = int((time.perf_counter() - t0_wall) * 1000)
+        solver_elapsed_ms = (
+            int(ts_result.elapsed_ms) if ts_result.elapsed_ms is not None else elapsed_wall
+        )
+
+        labels = _labels_from_part_of(ts_result.best_part_of, n)
+        cut = int(ts_result.best_cutsize)
+
+        part_file = workdir / "ts.part"
+        part_file.write_text(
+            "".join(f"{int(label)}\n" for label in labels.tolist()), encoding="utf-8"
+        )
+
+        labels_norm = normalize_labels_zero_based(labels)
+        feasible, validation = feasible_beta(labels_norm, k=k, beta=beta)
+        status_json = ts_result.status
+        checkpoints = [
+            {
+                "time_ms": int(cp.time_ms),
+                "cutsize_best": int(cp.cutsize_best),
+                "nfe": int(cp.nfe),
+            }
+            for cp in ts_result.checkpoints
+        ]
     elif algo == "ils":
         adj = _adj_from_edges(n, edges)
         ils_result = run_ils_partition(
@@ -312,7 +348,7 @@ def run(
                 preset=kahip_preset,
             )
         else:
-            raise ValueError("algo must be 'metis', 'kahip', 'sa', 'ils' or 'grasp'")
+            raise ValueError("algo must be 'metis', 'kahip', 'sa', 'ils', 'grasp' or 'ts'")
 
         elapsed_wall = int((time.perf_counter() - t0_wall) * 1000)
         solver_elapsed_ms = int(res.elapsed_ms) if res.elapsed_ms is not None else elapsed_wall
