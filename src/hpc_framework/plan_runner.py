@@ -17,6 +17,7 @@ import yaml
 from heuristics.grasp import GRASPConfig, GRASPResult, run_grasp_partition
 from heuristics.ils import ILSConfig, ILSResult, run_ils_partition
 from heuristics.sa import SAConfig, SAResult, run_sa_partition
+from heuristics.ts import TSConfig, TSResult, run_ts_partition
 
 from .greedy_adapter import run_greedy_observation
 from .runner import (
@@ -30,7 +31,7 @@ from .runner import (
 )
 from .solvers.common import write_metis_graph
 
-SUPPORTED_SOLVERS = ("metis", "kahip", "sa", "ils", "grasp")
+SUPPORTED_SOLVERS = ("metis", "kahip", "sa", "ils", "grasp", "ts")
 MANIFEST_FIELDS = [
     "timestamp",
     "instance_id",
@@ -513,6 +514,84 @@ def _write_grasp_result(
     return out_json
 
 
+def _write_ts_result(
+    *,
+    raw_dir: Path,
+    instance_name: str,
+    instance_id: str,
+    n: int,
+    edges: Any,
+    k: int,
+    beta: float,
+    seed: int,
+    budget_time_ms: int,
+    result: TSResult,
+) -> Path:
+    """Persist a canonical TS run in the same JSON contract used by the runner."""
+    beta_tag = f"{float(beta):.2f}"
+    out_json = raw_dir / f"{Path(instance_name).name}__ts__k{k}__b{beta_tag}__seed{seed}.json"
+    workdir = raw_dir / f"run_ts__{Path(instance_name).name}__k{k}__b{beta_tag}__seed{seed}"
+    workdir.mkdir(parents=True, exist_ok=True)
+
+    graph_path = workdir / "graph.graph"
+    write_metis_graph(graph_path, int(n), edges)
+
+    labels = _labels_from_part_of(result.best_part_of, int(n))
+    labels_np = np.asarray(labels, dtype=int)
+
+    part_path = workdir / "ts.part"
+    part_path.write_text("".join(f"{int(label)}\n" for label in labels), encoding="utf-8")
+
+    feasible, validation = feasible_beta(
+        normalize_labels_zero_based(labels_np),
+        k=int(k),
+        beta=float(beta),
+    )
+
+    payload = {
+        "timestamp": datetime.now(UTC).isoformat(),
+        "instance_id": instance_id,
+        "algo": "ts",
+        "k": int(k),
+        "beta": float(beta),
+        "seed": int(seed),
+        "budget_time_ms": int(budget_time_ms),
+        "status": result.status,
+        "returncode": 0,
+        "elapsed_ms": int(result.elapsed_ms),
+        "stdout": "",
+        "stderr": "",
+        "metrics": {
+            "cutsize_best": int(result.best_cutsize),
+            "n_nodes": int(n),
+            "balance_tolerance": float(beta),
+            "imbalance_raw": None,
+        },
+        "paths": {
+            "workdir": str(workdir),
+            "graph_path": str(graph_path),
+            "part_path": str(part_path),
+        },
+        "env": _env_snapshot(),
+        "tools": _greedy_tools_snapshot(),
+        "feasible": feasible,
+        "validation": validation,
+        "checkpoints": [
+            {
+                "time_ms": int(cp.time_ms),
+                "cutsize_best": int(cp.cutsize_best),
+                "nfe": int(cp.nfe),
+            }
+            for cp in result.checkpoints
+        ],
+        "schema_version": "1.0.0",
+        "schema_path": "specs/jsonschema/solver_run.schema.v1.json",
+        "cutsize_best": int(result.best_cutsize),
+    }
+    out_json.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
+    return out_json
+
+
 def run_plan(plan_path: Path) -> None:
     """Executa uma campanha mínima a partir de um plano YAML."""
     plan = _load_plan(plan_path)
@@ -658,6 +737,44 @@ def run_plan(plan_path: Path) -> None:
                 seed=int(run["seed"]),
                 budget_time_ms=int(run["budget_time_ms"]),
                 result=grasp_result,
+            )
+            produced_outputs.append(out_json)
+            continue
+        if run["solver"] == "ts":
+            inst = _read_instance_json(instance_path)
+            n, edges = extract_graph_from_instance(inst)
+            adj = _adj_from_edges(n, edges)
+
+            ts_cfg = (plan.get("solvers", {}) or {}).get("ts", {}) or {}
+            ts_params = ts_cfg.get("params", {}) or {}
+
+            ts_result = run_ts_partition(
+                adj,
+                k=int(run["k"]),
+                epsilon=float(run["beta"]),
+                config=TSConfig(
+                    seed=int(run["seed"]),
+                    budget_time_ms=int(run["budget_time_ms"]),
+                    max_steps=int(ts_params.get("max_steps", 10_000)),
+                    min_tenure=int(ts_params.get("min_tenure", 5)),
+                    tenure_scale=float(ts_params.get("tenure_scale", 1.0)),
+                    tenure_jitter=int(ts_params.get("tenure_jitter", 4)),
+                    checkpoint_every_nfe=int(ts_params.get("checkpoint_every_nfe", 100)),
+                    frequency_penalty=float(ts_params.get("frequency_penalty", 0.01)),
+                ),
+            )
+
+            out_json = _write_ts_result(
+                raw_dir=raw_dir,
+                instance_name=run["instance"],
+                instance_id=str(inst.get("instance_id", Path(run["instance"]).stem)),
+                n=int(n),
+                edges=edges,
+                k=int(run["k"]),
+                beta=float(run["beta"]),
+                seed=int(run["seed"]),
+                budget_time_ms=int(run["budget_time_ms"]),
+                result=ts_result,
             )
             produced_outputs.append(out_json)
             continue
