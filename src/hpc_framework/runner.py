@@ -21,6 +21,7 @@ from typing import Any
 
 import numpy as np
 
+from heuristics.grasp import GRASPConfig, run_grasp_partition
 from heuristics.ils import ILSConfig, run_ils_partition
 from heuristics.sa import SAConfig, run_sa_partition
 from hpc_framework.solvers.common import read_partition_labels, write_metis_graph
@@ -226,6 +227,41 @@ def run(
             }
             for cp in sa_result.checkpoints
         ]
+    elif algo == "grasp":
+        adj = _adj_from_edges(n, edges)
+        grasp_result = run_grasp_partition(
+            adj,
+            k=k,
+            epsilon=beta,
+            config=GRASPConfig(
+                seed=seed,
+                budget_time_ms=budget_time_ms,
+            ),
+        )
+        elapsed_wall = int((time.perf_counter() - t0_wall) * 1000)
+        solver_elapsed_ms = (
+            int(grasp_result.elapsed_ms) if grasp_result.elapsed_ms is not None else elapsed_wall
+        )
+
+        labels = _labels_from_part_of(grasp_result.best_part_of, n)
+        cut = int(grasp_result.best_cutsize)
+
+        part_file = workdir / "grasp.part"
+        part_file.write_text(
+            "".join(f"{int(label)}\n" for label in labels.tolist()), encoding="utf-8"
+        )
+
+        labels_norm = normalize_labels_zero_based(labels)
+        feasible, validation = feasible_beta(labels_norm, k=k, beta=beta)
+        status_json = grasp_result.status
+        checkpoints = [
+            {
+                "time_ms": int(cp.time_ms),
+                "cutsize_best": int(cp.cutsize_best),
+                "nfe": int(cp.nfe),
+            }
+            for cp in grasp_result.checkpoints
+        ]
     elif algo == "ils":
         adj = _adj_from_edges(n, edges)
         ils_result = run_ils_partition(
@@ -276,7 +312,7 @@ def run(
                 preset=kahip_preset,
             )
         else:
-            raise ValueError("algo must be 'metis', 'kahip', 'sa' or 'ils'")
+            raise ValueError("algo must be 'metis', 'kahip', 'sa', 'ils' or 'grasp'")
 
         elapsed_wall = int((time.perf_counter() - t0_wall) * 1000)
         solver_elapsed_ms = int(res.elapsed_ms) if res.elapsed_ms is not None else elapsed_wall
