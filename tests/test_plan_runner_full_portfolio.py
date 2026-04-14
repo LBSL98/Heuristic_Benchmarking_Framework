@@ -1,6 +1,7 @@
 import csv
 import gzip
 import json
+import shutil
 from pathlib import Path
 
 import yaml
@@ -25,6 +26,7 @@ def test_run_plan_full_canonical_portfolio_writes_manifest_and_valid_outputs(tmp
 
     raw_dir = tmp_path / "raw"
     manifest_out = raw_dir / "manifest_index.csv"
+    kahip_available = shutil.which("kaffpa") is not None
 
     plan = {
         "schema": "forja-exp-v1",
@@ -37,7 +39,7 @@ def test_run_plan_full_canonical_portfolio_writes_manifest_and_valid_outputs(tmp
                 "budget": {"type": "time", "seconds": 5},
             },
             "kahip": {
-                "enabled": True,
+                "enabled": kahip_available,
                 "k": 2,
                 "imbalance": 0.10,
                 "budget": {"type": "time", "seconds": 5},
@@ -110,12 +112,15 @@ def test_run_plan_full_canonical_portfolio_writes_manifest_and_valid_outputs(tmp
     schema_path = Path("specs/jsonschema/solver_run.schema.v1.json")
     schema = json.loads(schema_path.read_text(encoding="utf-8"))
 
-    expected_algos = {"metis", "kahip", "sa", "ils", "grasp", "ts"}
+    kahip_available = shutil.which("kaffpa") is not None
+    expected_algos = {"metis", "sa", "ils", "grasp", "ts"}
+    if kahip_available:
+        expected_algos.add("kahip")
 
     with manifest_out.open(newline="", encoding="utf-8") as f:
         rows = list(csv.DictReader(f))
 
-    assert len(rows) == 6
+    assert len(rows) == len(expected_algos)
     assert {row["algo"] for row in rows} == expected_algos
     assert {row["instance_id"] for row in rows} == {"toy"}
 
