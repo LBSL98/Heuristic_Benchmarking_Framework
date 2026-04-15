@@ -102,10 +102,14 @@ The checkpoint policy is frozen at the semantic level as follows:
 - Checkpoint collection must not alter the algorithmic flow in a way that creates hidden extra work for one family but not another.
 - Black-box multilevel baselines that do not expose anytime trajectories are represented as single-point final observations under the same reference clock.
 - Checkpoint data and single-point baseline outputs must enter the same artifact chain so that later curves and analyses are reconstructed from the recorded execution trace rather than from informal summaries.
+- The canonical serialized total-time field is `elapsed_ms`.
+- The canonical serialized checkpoint timestamp field is `checkpoints[].time_ms`.
+- `time_ns` may exist only as an internal clock-resolution detail and must not be described as the benchmark artifact field.
+- Legacy names such as `runtime_ms` and `elapsed_wall_ms` are not the active `solver_run.v1` time contract.
 
-## Traceability caveat that remains open
+## Traceability note for repository documentation
 
-A schema-level wording conflict still exists in the current monograph draft: checkpoint time is described with `time_ns` in the artifact discussion and summary table, while some surrounding prose also refers to `time_ms` fields for best-time summaries. The semantic policy is already frozen — checkpoint time must be stored in one canonical field/unit and interpreted on the universal time axis — but the exact field/unit wording in the text must be aligned with the actual runner schema before final freeze. Until that verification is done, no chapter should casually alternate between `time_ms` and `time_ns` for checkpoints.
+Repository documentation should now use the runner-aligned field names above. Historical prose that still alternates between `time_ns`, `runtime_ms`, `elapsed_wall_ms`, and `time_ms` must be treated as legacy wording and corrected before being reused in active documents.
 
 ## Methodological guardrails derived from the freeze
 
@@ -121,7 +125,6 @@ A schema-level wording conflict still exists in the current monograph draft: che
 - Exact project-level meaning of ECDF and when it is reported over time budgets versus target-attainment events.
 - Exact admissibility conditions for performance profiles in this project.
 - Exact operational definition of regret for the selector evaluation.
-- Final schema confirmation for checkpoint time field/unit against the runner implementation.
 
 ### 6. Portfolio scope boundary
 

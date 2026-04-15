@@ -9,33 +9,28 @@
 
 ## 1. Purpose
 
-Ensure that solver result manifests (`*.v1.json`) conform to the **frozen JSON schema**
-`solver_run.schema.v1.json`, and that changes to this schema or to the manifest structure
-are deliberate and traceable.
+Ensure that benchmark result artifacts conform to the frozen JSON schema
+`specs/jsonschema/solver_run.schema.v1.json`, and that changes to the manifest structure remain
+deliberate and traceable.
 
-This test case is linked to `tests/test_results_schema.py` and to the helper scripts used
-in the Phase 1 campaign.
+This test case is linked to `tests/test_results_schema.py` and to the helper scripts used by the
+repository result pipeline.
 
 ---
 
 ## 2. Preconditions
 
-- The project is installed and tests are runnable (via Poetry or a plain virtualenv).
-- Some result manifests exist, for example:
-  - `data/results_raw/smoke_metis.v1.json`
-  - `data/results_raw/phase1/out_metis.v1.json`
-  - `data/results_raw/phase1/out_kahip.v1.json`
-- The schema file is present:
-
-  ```text
-  specs/jsonschema/solver_run.schema.v1.json
-````
+- The project is installed and tests are runnable.
+- At least one result artifact exists, or fixture-based schema tests can be executed.
+- The active contract uses:
+  - `elapsed_ms`
+  - `checkpoints[].time_ms`
 
 ---
 
 ## 3. Procedure
 
-1. Ensure the development environment is set up:
+1. Set up the development environment:
 
    ```bash
    cd ~/MPP
@@ -48,32 +43,28 @@ in the Phase 1 campaign.
    poetry run pytest tests/test_results_schema.py
    ```
 
-3. Optionally, validate specific manifests via the helper script:
+3. Optionally validate specific artifacts:
 
    ```bash
    poetry run python scripts/validate_manifest_v1.py \
      --schema specs/jsonschema/solver_run.schema.v1.json \
-     --in data/results_raw/smoke_metis.v1.json \
-         data/results_raw/phase1/out_metis.v1.json \
-         data/results_raw/phase1/out_kahip.v1.json
+     --in data/results_raw/<artifact>.json
    ```
 
-4. Inspect any failures, focusing on:
+4. Inspect failures for:
 
-   * missing or renamed fields;
-   * type mismatches;
-   * structural changes (e.g., different nesting).
+   * missing or renamed fields
+   * type mismatches
+   * regressions in checkpoint serialization
 
 ---
 
 ## 4. Expected results
 
-* All tests in `test_results_schema.py` **pass**.
-* `validate_manifest_v1.py` reports `[OK]` for all selected manifests.
-* Any change to `solver_run.schema.v1.json` or to the manifest shape is:
-
-  * reflected in tests;
-  * documented in the specification and in the repository changelog.
+* `tests/test_results_schema.py` passes.
+* Checked artifacts satisfy the active schema.
+* No active benchmark artifact serializes checkpoint time as `time_ns`.
+* Any contract change is reflected simultaneously in schema, tests, and active documentation.
 
 ---
 
@@ -92,8 +83,7 @@ in the Phase 1 campaign.
 
 * **Documentation**
 
-  * `docs/reports/02_experimental_campaign.md`
-  * `docs/testing/TRACEABILITY.md` (result schema section)
+  * `docs/protocol/current_benchmark_contract.md`
+  * `docs/testing/TRACEABILITY.md`
 
-```
 ```

@@ -1,10 +1,31 @@
-# MPP — Metodologia, Pipelines e Particionamento
+# FORJA / MPP Docs
 
-Este site reúne documentação técnica do projeto: visão arquitetural, decisões de projeto (ADR),
-relatórios de gerador/execução experimental, protocolo e API (gerada a partir de docstrings).
+Esta documentação foi reorganizada para separar o **contrato ativo** do repositório dos materiais
+preservados apenas por **rastreabilidade histórica**.
 
-- **Como navegar**: use o menu à esquerda para Visão Geral, Decisões, Relatórios e Protocolo.
-- **API**: as páginas em “API” são geradas automaticamente (mkdocstrings) a partir do código em `src/`.
-- **Reprodutibilidade**: links para o protocolo e para os relatórios guiam a execução ponta-a-ponta.
+## Use como fonte ativa
 
-> Dica: mantenha docstrings no estilo Google (ou NumPy) e `type hints` para melhorar as páginas de API.
+- `protocol/current_benchmark_contract.md`
+- `specs/reproducibility_checklist.md`
+- `testing/TESTING.md`
+- `testing/CI.md`
+- `testing/TRACEABILITY.md`
+
+Essas páginas refletem o estado canônico atual do benchmark no repositório:
+
+- portfólio oficial da tese = `SA`, `TS`, `ILS`, `GRASP`, `METIS`, `KaHIP`
+- `greedy` apenas como fluxo exploratório
+- comparação universal por wall-clock / `fair(time)`
+- contrato serializado com `elapsed_ms` e `checkpoints[].time_ms`
+- KaHIP 3.17 como narrativa experimental oficial, sem inferir a verdade experimental da árvore vendorizada `./KaHIP`
+
+## Legado / quarentena
+
+Algumas páginas antigas foram preservadas para auditoria, mas não devem orientar o fluxo atual.
+Elas aparecem explicitamente sob a seção **Legacy / Quarantine** na navegação do site.
+
+Quando houver conflito entre documentação legada e contrato ativo:
+
+1. prevalecem os arquivos canônicos em `decisions/` e `specs/`;
+2. prevalece a página `protocol/current_benchmark_contract.md` dentro deste site;
+3. materiais legados ficam preservados apenas como trilha histórica.

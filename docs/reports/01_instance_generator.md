@@ -176,17 +176,17 @@ flagged early if they break the intended regimes or violate basic invariants.
 
 ## 6. Relation to the experimental protocol
 
-The instance generator is a **preparatory stage** for the experimental protocol described in:
+The instance generator is a **preparatory stage** for the active benchmark contract described in:
 
-* `docs/protocol/proto_v3.1.1.md`;
+* `docs/protocol/current_benchmark_contract.md`;
 * `configs/plan_phase_1*.yaml` (experiment plans);
-* the Phase 1 campaign report (`docs/reports/02_experimental_campaign.md`).
+* `specs/jsonschema/solver_run.schema.v1.json`.
 
 The typical high-level workflow is:
 
 1. **Generate or refresh** the synthetic panel under `data/instances/` using the generator and
    `configs/instances_to_generate.yaml`.
-2. **Run experiments** (e.g. Phase 1) via the `hpc_framework` CLI and the appropriate plan file.
+2. **Run experiments** via the `hpc_framework` CLI and the appropriate plan file.
 3. **Pack, validate and aggregate** results into manifests and CSV tables.
 
 By keeping generator configuration, instance files, plans and results all under version control

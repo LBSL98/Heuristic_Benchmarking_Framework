@@ -1,46 +1,47 @@
 # Reproducibility Checklist — FORJA
 
-> Use this one-pager before each experiment round. Attach it as an appendix to the thesis.
+> Use this checklist before a pilot run, benchmark batch, or audit bundle handoff.
 
-## Environment
-- [ ] OS & kernel recorded (e.g., Ubuntu 22.04; `uname -a`)
-- [ ] CPU/GPU noted (`lscpu`; governor consistent if applicable)
-- [ ] Python 3.11.x; `pip list` / `poetry.lock` archived
-- [ ] `gpmetis` on `PATH`; METIS **version** recorded
-- [ ] `kaffpa` on `PATH` (for final experiments); CI may skip it
-- [ ] FORJA package installed from the target commit/tag
+## 1. Canonical scope
 
-## Determinism & threads
-- [ ] `OMP_NUM_THREADS=1`, `OPENBLAS_NUM_THREADS=1`, `MKL_NUM_THREADS=1`
-- [ ] Master seed set; deterministic derivation scheme documented for replicas
+- [ ] Official benchmark claims are restricted to `SA`, `TS`, `ILS`, `GRASP`, `METIS`, and `KaHIP`.
+- [ ] Any `greedy` run kept in the repository is labeled exploratory and excluded from official benchmark tables, manifests, and selector-label claims.
 
-## Data & plans
-- [ ] Instances under `data/instances/synthetic/` with **canonical names**
-- [ ] Instance **hashes** recorded (and index saved)
-- [ ] Plan YAML uses `schema: forja-exp-v1` and is archived with the commit
-- [ ] `k` and `β` chosen from the baseline (or deviations documented)
+## 2. Environment
 
-## Budgets & checkpoints
-- [ ] `NFE_max = 50 · |E|` applied
-- [ ] `t_max = 0.5 · |E| ms` applied
-- [ ] Anytime checkpoints by NFE recorded: `{1e2, 3e2, 1e3, 3e3, 1e4, 3e4, ...}`
+- [ ] OS, kernel, CPU, and thread controls are recorded.
+- [ ] Python environment is pinned and archived (`poetry.lock`, `pip list`, or equivalent).
+- [ ] `gpmetis` is available when METIS runs are expected, and its runtime-reported version is recorded.
+- [ ] `kaffpa` is available when KaHIP runs are expected, and its runtime-reported version is recorded.
+- [ ] The active experimental narrative treats KaHIP 3.17 as the official repository reference.
+- [ ] If a vendored `./KaHIP` tree is present, it is logged separately as auxiliary repository material rather than assumed to match the runtime binary.
 
-## Execution artifacts
-- [ ] `manifest.json` per run with: `git_sha`, host, time bounds, `k`, `β`, budgets, seed, cmdline, exit_code
-- [ ] `stdout.log` and `stderr.log` saved
-- [ ] Labels normalized to `0..k-1` and **remap** stored if applied
-- [ ] Partition files (METIS format) written if enabled
+## 3. Plans and fairness
 
-## Analysis & reporting
-- [ ] Aggregation script produced tables (parquet/csv)
-- [ ] Plots: performance profiles, anytime curves, TTT (targets: 0/1/2/5%)
-- [ ] Statistical tests: Friedman+Nemenyi; Wilcoxon (paired); correction: Holm
-- [ ] Stratification by density, Q, |V|, CV
-- [ ] All figures/tables list **commit id**, **plan id**, **dataset hash index**
+- [ ] The archived plan YAML uses `schema: forja-exp-v1`.
+- [ ] All compared solvers receive the same per-instance wall-clock budget.
+- [ ] The same balance semantics are enforced across all compared families.
+- [ ] Hyperparameters were frozen in the pilot before the main benchmark claim was made.
+- [ ] Outputs are validated independently after execution.
 
-**Date:** 2025-09-24 • **Operator:** ____________________
+## 4. Result artifacts
 
-### Beta mapping and presets
-- METIS: `-ufactor = round(1000 * beta)` (beta=0.03 → 30).
-- KaHIP: `--imbalance = 100 * beta` (beta=0.03 → 3.000), `--preconfiguration=fast`.
-- Threads: `OMP/BLAS=1`. Seeds documentadas no plano.
+- [ ] Artifacts validate against `specs/jsonschema/solver_run.schema.v1.json`.
+- [ ] Total serialized runtime is stored as `elapsed_ms`.
+- [ ] Checkpoint timestamps are stored as `checkpoints[].time_ms`.
+- [ ] `time_ns` does not appear as an official serialized checkpoint field.
+- [ ] Legacy names such as `runtime_ms` and `elapsed_wall_ms` are absent from current benchmark artifacts.
+- [ ] When NFE is emitted by a metaheuristic, it is treated as diagnostic instrumentation rather than as the universal cross-family budget.
+
+## 5. Execution trace
+
+- [ ] Instance identifiers and hashes are archived.
+- [ ] Commit SHA, hostname, solver name, `k`, `beta`, seed, and budget are preserved per run.
+- [ ] `stdout` / `stderr` are kept when relevant to diagnose external-solver behaviour.
+- [ ] Output locations match the selected plan `output.raw_dir`.
+
+## 6. Reporting
+
+- [ ] Tables and plots cite the commit, plan, and dataset slice used.
+- [ ] Any legacy material consulted during the analysis is identified as such.
+- [ ] Any deviation from the canonical contract is documented explicitly before the result is reused in prose.

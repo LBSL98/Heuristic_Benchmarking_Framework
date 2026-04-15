@@ -1,250 +1,140 @@
-# 🔨 FORJA — Reproducible Heuristic Benchmarking Framework
+# FORJA / MPP
 
-> **FORJA** é um **laboratório computacional encapsulado** para **benchmarking reprodutível** de algoritmos de **particionamento de grafos**.
-> Foco em **justiça experimental**, **reprodutibilidade** e **análise guiada por protocolo**.
+> Framework reprodutível para benchmarking de algoritmos de particionamento de grafos com trilha de auditoria explícita.
 
 [![CI](https://github.com/Gorgomel/Heuristic_Benchmarking_Framework/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/Gorgomel/Heuristic_Benchmarking_Framework/actions)
 ![Python](https://img.shields.io/badge/Python-3.11+-3776AB?logo=python&logoColor=white)
 ![Version](https://img.shields.io/badge/version-0.8.0-blue)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
----
+## Escopo canônico atual
 
-## 🎯 Por que FORJA?
+- Portfólio oficial da tese: `SA`, `TS`, `ILS`, `GRASP`, `METIS`, `KaHIP`.
+- `greedy` pode existir no repositório apenas como trilha exploratória/de engenharia.
+- A régua universal entre famílias é **wall-clock time**.
+- `fair(time)` significa mesmo orçamento temporal por instância, mesma semântica de balanceamento, mesmo ambiente controlado, hiperparâmetros congelados no piloto e validação independente.
+- Nos artefatos `solver_run.v1`, os nomes canônicos de tempo são `elapsed_ms` e `checkpoints[].time_ms`.
+- `time_ns` pode aparecer apenas como detalhe interno de implementação; não é nome canônico de campo serializado.
 
-Comparar meta-heurísticas costuma ser **frágil**: detalhes do ambiente, parâmetros implícitos e protocolos desiguais distorcem resultados.
-O FORJA responde à pergunta central:
+## Estrutura
 
-> **Como a topologia do grafo afeta o desempenho relativo de algoritmos de particionamento?**
-
-**O que o FORJA garante:**
-- ✅ **Justiça** – mesmos orçamentos e métricas para todos os algoritmos;
-- 🔁 **Reprodutibilidade** – ambiente fixo, seeds controladas, contratos YAML;
-- 🧪 **Rigor** – *smoke tests* determinísticos e CI mínima;
-- 🧱 **Baselines sólidos** – heurísticas simples + SOTA como **METIS** (obrigatório) e **KaHIP** (opcional).
-
-> 📚 Veja também: [CHANGELOG.md](./CHANGELOG.md) • [Docs (MkDocs)](./docs/index.md)
-
----
-
-## 🧭 Sumário
-
-- [Estrutura](#-estrutura)
-- [Instalação](#️-instalação)
-- [Smoke test](#-smoke-test)
-- [Executando uma campanha](#️-executando-uma-campanha)
-- [Qualidade & Reprodutibilidade](#-qualidade--reprodutibilidade)
-- [Dados & Artefatos](#-dados--artefatos)
-- [Citação e Licença](#-citação-e-licença)
-- [Contribuindo](#-contribuindo)
-- [Roadmap (próximos passos)](#-roadmap-próximos-passos)
-
----
-
-## 🗂️ Estrutura
-
-```
+```text
 .
-├─ configs/                # Planos de experimento (YAML, schema: forja-exp-v1)
-├─ src/                    # Pacotes: hpc_framework, heuristics, solvers, runner
-├─ tests/                  # Pytest (determinístico; KaHIP opcional)
-├─ scripts/                # Orquestração (ex.: run_phase_1.sh)
-├─ docs/                   # Documentação (MkDocs)
-├─ data/
-│  ├─ instances/synthetic/ # Instâncias exemplo (pequenas, versionadas)
-│  └─ results_*            # Saídas de execuções (ignoradas no Git)
-├─ .github/workflows/ci.yml# CI mínima (pip + pytest + METIS)
-└─ CITATION.cff            # Metadados de citação
+├─ configs/                # Planos YAML de experimento
+├─ src/                    # Código do framework, heurísticas e wrappers
+├─ tests/                  # Pytest (CI mínima sem KaHIP; suíte local mais ampla opcional)
+├─ scripts/                # Orquestração e utilitários de auditoria
+├─ docs/                   # Documentação MkDocs (ativa + legado rotulado)
+├─ decisions/              # Camada canônica de decisões metodológicas
+├─ specs/                  # Schemas e contratos de artefato
+├─ audit_reports/          # Trilhas de auditoria e relatórios
+└─ KaHIP/                  # Árvore vendorizada preservada por rastreabilidade
 ```
 
----
+## Instalação
 
-## ⚙️ Instalação
+Requisitos mínimos:
 
-**Requisitos**: Linux/Ubuntu 22.04+, **Python 3.11+**, **Git**, **METIS** (`gpmetis` no `PATH`).
-**Opcional**: **KaHIP** (`kaffpa` no `PATH`) — testes pulam caso ausente.
+- Linux/Ubuntu 22.04+
+- Python 3.11+
+- Git
+- `gpmetis` no `PATH`
+
+KaHIP:
+
+- `kaffpa` continua opcional na CI mínima e em smokes locais.
+- Para rodadas com KaHIP, registre a versão efetivamente reportada pelo binário em `PATH`.
+- A narrativa experimental ativa do repositório usa **KaHIP 3.17** como versão oficial.
+- A árvore vendorizada `./KaHIP`, quando presente, é material auxiliar de repositório e não deve ser tratada automaticamente como a fonte de verdade experimental.
+
+Exemplo local:
 
 ```bash
-# Ubuntu 22.04
 sudo apt-get update
 sudo apt-get install -y python3.11 python3.11-venv python3-pip metis
 
-# Ambiente virtual (recomendado)
 python3.11 -m venv .venv
 source .venv/bin/activate
-
-# Instala o framework como pacote
 pip install .
 ```
 
-> ℹ️ **KaHIP**: siga as instruções do projeto para compilar/instalar (`kaffpa` no PATH).
-> Se não houver, os testes/planos que dependem dele serão **pulados** com razão informativa.
+## Testes
 
----
-
-## 🧪 Smoke test
-
-Determinístico e rápido — garante que o ambiente está íntegro.
+Smoke local:
 
 ```bash
-OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 \
-pytest -q
+OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 pytest -q
 ```
 
-* Se **METIS** estiver ausente, os testes de `gpmetis` serão pulados.
-* Se **KaHIP** estiver ausente, os testes de `kaffpa` serão pulados.
+Observações:
 
----
+- Se `gpmetis` estiver ausente, os testes dependentes de METIS serão pulados.
+- Se `kaffpa` estiver ausente, os testes dependentes de KaHIP serão pulados.
+- A CI mínima exclui testes pesados de solver externo; a suíte local pode ser mais ampla quando o ambiente estiver completo.
 
-## 🏃‍♂️ Executando uma campanha
+## Planos e fluxo
 
-Os experimentos são definidos via **YAML** em `configs/`.
-O script `scripts/run_phase_1.sh` orquestra o plano.
+Os planos são declarativos e vivem em `configs/`.
+
+Planos rastreados atualmente:
+
+- `configs/plan_phase_1.yaml`: slice executável de baseline (`METIS` + `KaHIP`) com `greedy` excluído.
+- `configs/plan_phase_1_pilot.yaml`: slice piloto equivalente.
+- `configs/plan_phase_1_greedy_exploratory.yaml`: trilha exploratória com `greedy`, fora do benchmark oficial.
+- `configs/plan_phase_1_pilot_greedy_exploratory.yaml`: variante piloto da trilha exploratória.
+
+Uso padrão:
 
 ```bash
-# padrão (usa configs/plan_phase_1.yaml)
 ./scripts/run_phase_1.sh
-
-# ou passando um plano específico (ex.: piloto rápido)
 ./scripts/run_phase_1.sh configs/plan_phase_1_pilot.yaml
 ```
 
-<details>
-<summary><b>Exemplo: <code>configs/plan_phase_1.yaml</code></b></summary>
+Ao interpretar resultados:
 
-```yaml
----
-schema: "forja-exp-v1"
-experiment_id: "tcc-phase1"
-description: "Greedy vs METIS (KaHIP opcional) em instâncias sintéticas"
+- não trate os planos exploratórios com `greedy` como benchmark oficial;
+- não use NFE como régua universal entre famílias;
+- valide sempre os artefatos contra `specs/jsonschema/solver_run.schema.v1.json`.
 
-rng:
-  seeds: [42]
+## Artefatos de resultado
 
-env:
-  threads:
-    omp: 1
-    blas: 1
-  require_bins: ["gpmetis"]
-  allow_missing_bins: ["kaffpa"]
+O contrato ativo de saída é `solver_run.v1`:
 
-instances:
-  base_dir: "data/instances/synthetic"
-  include:
-    - "n2000_p50.json.gz"
-    - "modnull_n3000_p50.json.gz"
-    - "modnull_n3500_p40.json.gz"
-    - "mix_betas_n3000_p35_cv045.json.gz"
-    - "n4000_cv_high.json.gz"
-    - "n5000_cv_low.json.gz"
-    - "wilson_tree_n10000.json.gz"
-    - "n2000_dense_fast.json.gz"
-  manifest_out: "data/results_raw/manifest_index.csv"
-  fields: ["filename", "n", "m", "density", "cv_degree"]
+- tempo total serializado: `elapsed_ms`
+- timestamp de checkpoint: `checkpoints[].time_ms`
+- NFE em checkpoint: diagnóstico opcional para metaheurísticas instrumentadas
 
-solvers:
-  greedy:
-    enabled: true
-    params: { delta_v: 0.1 }
-    budget: { type: "time", seconds: 5 }
+Campos legados como `time_ns`, `runtime_ms` e `elapsed_wall_ms` não devem ser descritos como contrato serializado ativo do benchmark.
 
-  metis:
-    enabled: true
-    k: 8
-    budget: { type: "time", seconds: 5 }
+## Qualidade e reprodutibilidade
 
-  kahip:
-    enabled: true           # roda local; no CI é pulado se ausente
-    skip_if_missing: true
-    k: 8
-    imbalance: 0.03
-    preset: "fast"
-    budget: { type: "time", seconds: 5 }
+- `specs/jsonschema/solver_run.schema.v1.json` é o schema canônico do artefato de resultado.
+- `decisions/03_Methodology_Canonical_consolidated.md` congela os significados de wall-clock, `fair(time)`, NFE e política de checkpoints.
+- `docs/protocol/current_benchmark_contract.md` resume o contrato operacional atual para quem estiver navegando a documentação do repositório.
+- `docs/specs/reproducibility_checklist.md` consolida a checklist de reprodutibilidade para piloto e campanha.
 
-protocol:
-  repeats: 1
-  randomize_instance_order: false
-  write_partition_files: true
+Build local da documentação, sem sujar o diretório `site/` rastreado:
 
-output:
-  raw_dir: "data/results_raw"
-  tables_dir: "data/results_parquet"
-  log_level: "INFO"
-  capture:
-    git_sha: true
-    hostname: true
-    started_at: true
-    finished_at: true
+```bash
+python -m mkdocs build --strict --site-dir /tmp/forja-mkdocs
 ```
 
-</details>
+## Dados e auditoria
 
----
+- `data/results_*` permanece fora do Git.
+- Instâncias sintéticas pequenas permanecem no repositório para smoke e rastreabilidade.
+- Bundles de auditoria podem excluir a árvore vendorizada `KaHIP/`, desde que a versão efetiva do `kaffpa` utilizado e o commit do repositório tenham sido registrados separadamente.
 
-## 🔐 Qualidade & Reprodutibilidade
+## Contribuição
 
-* **pre-commit**: trailing whitespace, EOF, YAML/JSON, Black, Ruff, Mypy, smoke (`pytest -m smoke`).
+1. Trabalhe em branch dedicada.
+2. Mantenha commits pequenos e temáticos.
+3. Rode as checagens mínimas relevantes antes de abrir revisão.
+4. Preserve a trilha de auditoria quando houver tensão entre limpeza visual e rastreabilidade.
 
-  ```bash
-  poetry run pre-commit install -f
-  poetry run pre-commit run -a
-  ```
-* **CI mínima** (GitHub Actions): `pip + pytest`, instala **METIS** via APT.
-  Arquivo: `.github/workflows/ci.yml`.
-* **Determinismo**: seeds + threads fixas; testes KaHIP/METIS com *skip-if-missing*.
-* **Documentação**:
+## Referências rápidas
 
-  ```bash
-  poetry run mkdocs build --strict
-  ```
-* **Pacote de auditoria** (compacta código + instâncias pequenas + relatório):
-
-  ```bash
-  # gera índice/diagnóstico (opcional)
-  ls -1 data/instances/synthetic > data/instances/instances_index.txt
-  [ -x tools/diagnostics.sh ] && tools/diagnostics.sh > data/system_report.txt || true
-
-  tar -czf FORJA_audit_$(date +%Y%m%d_%H%M).tar.gz \
-    --exclude='site' --exclude='.venv' --exclude='dist' --exclude='__pycache__' \
-    --exclude='.mypy_cache' --exclude='.ruff_cache' --exclude='*.egg-info' \
-    --exclude='.git' --exclude='data/results_raw' --exclude='data/results_parquet' \
-    --exclude='KaHIP' \
-    pyproject.toml poetry.lock README.md CHANGELOG.md mkdocs.yml \
-    .pre-commit-config.yaml .gitattributes .gitignore pytest.ini \
-    .github/workflows/ci.yml \
-    src tests configs scripts tools docs \
-    data/instances/instances_index.txt \
-    data/instances/synthetic/n2000_p50.json.gz \
-    data/instances/synthetic/n2000_dense_fast.json.gz \
-    data/system_report.txt
-  ```
-
----
-
-## 🗃️ Dados & Artefatos
-
-* **Instâncias grandes**: não versionadas; use *releases assets* ou armazenamento externo.
-* **Resultados**: `data/results_*` ignorados pelo Git (limpeza do repositório).
-* **Contratos**: planos declarativos YAML (`schema: forja-exp-v1`) são a **interface oficial**.
-
----
-
-## 📝 Citação e Licença
-
-Este projeto é licenciado sob **MIT** (veja [LICENSE](LICENSE)).
-
-Se usar o FORJA em pesquisa, **cite este repositório**.
-Incluímos um [CITATION.cff](./CITATION.cff); no GitHub, use o botão **"Cite this repository"** na página do projeto.
-
----
-
-## 🤝 Contribuindo
-
-1. Crie sua branch a partir de `dev`;
-2. Rode `pre-commit run -a` e `pytest -q` localmente;
-3. Abra PR para `dev` (nunca direto para `main`);
-4. Após revisão, `dev → main` via PR.
-
-> Branch protegida: `main` aceita apenas PRs aprovados com CI.
-
----
+- [CHANGELOG.md](./CHANGELOG.md)
+- [docs/index.md](./docs/index.md)
+- `decisions/03_Methodology_Canonical_consolidated.md`
+- `specs/jsonschema/solver_run.schema.v1.json`

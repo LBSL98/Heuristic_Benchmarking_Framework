@@ -1,4 +1,4 @@
-site_name: HPC Framework Docs
+site_name: FORJA / MPP Docs
 site_url: https://lbsl98.github.io/Heuristic_Benchmarking_Framework/
 repo_url: https://github.com/LBSL98/Heuristic_Benchmarking_Framework
 theme:
@@ -6,16 +6,11 @@ theme:
 
 nav:
   - Home: index.md
-  - Protocol: protocol/proto_v3.1.1.md
-  - API:
-      - Generator CLI: api/generator_cli.md
-      - Heuristics (Greedy): api/heuristics_greedy.md
-      - SSH Orchestrator: api/orchestrator_ssh_executor.md
-  - Reports:
-      - Instance Generator: reports/01_instance_generator.md
-  - Testing:
-      - CI: testing/CI.md
+  - Active Contract:
+      - Current Benchmark Contract: protocol/current_benchmark_contract.md
+      - Reproducibility Checklist: specs/reproducibility_checklist.md
       - Testing Guide: testing/TESTING.md
+      - CI: testing/CI.md
       - Traceability: testing/TRACEABILITY.md
       - Test Cases:
           - TC_001 Modularity Gate: testing/testcases/TC_001_modularity_gate.md
@@ -23,10 +18,22 @@ nav:
           - TC_003 Schema Freeze: testing/testcases/TC_003_schema_freeze.md
           - TC_004 CLI Examples: testing/testcases/TC_004_cli_examples.md
           - TC_005 Perf Smoke: testing/testcases/TC_005_perf_smoke.md
-  - Decisions:
-      - 001 Language Choice: decisions/001_choice_heuristic_language.md
-      - 003 Methodology: decisions/003_metodologia_gerador_e_analise.md
-      - 004 Testing & CI: decisions/004_testing_and_ci.md
+  - API:
+      - Generator CLI: api/generator_cli.md
+      - HPC Framework CLI: api/hpc_framework_cli.md
+      - Heuristics (Greedy): api/heuristics_greedy.md
+      - SSH Orchestrator: api/orchestrator_ssh_executor.md
+  - Reports:
+      - Instance Generator: reports/01_instance_generator.md
+  - Legacy / Quarantine:
+      - Archived Protocol v3.1.1: protocol/proto_v3.1.1.md
+      - Archived Architecture Overview: 00_architectural_overview.md
+      - Archived Workflow Plan: 01_project_plan_and_workflow.md
+      - Archived Campaign Report: reports/02_experimental_campaign.md
+      - Archived Baseline v1.0: specs/baseline_evolutive_v1.md
+      - Archived ADR 003: decisions/003_metodologia_gerador_e_analise.md
+      - ADR 001 Language Choice: decisions/001_choice_heuristic_language.md
+      - ADR 004 Testing & CI: decisions/004_testing_and_ci.md
 
 plugins:
   - search
