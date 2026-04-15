@@ -1,3 +1,14 @@
+> Legacy / quarantine notice
+>
+> This file is preserved only for historical traceability. It does **not** define the current
+> FORJA / MPP benchmark contract and must not be used as active protocol guidance.
+>
+> The active repository contract is summarised in:
+>
+> - `docs/protocol/current_benchmark_contract.md`
+> - `decisions/03_Methodology_Canonical_consolidated.md`
+> - `specs/jsonschema/solver_run.schema.v1.json`
+
 # Protocolo Experimental: Caracterização de Heurísticas (proto\_v3.1.1)
 
 * **Versão:** 3.1.1

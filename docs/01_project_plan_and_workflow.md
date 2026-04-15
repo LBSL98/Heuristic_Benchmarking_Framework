@@ -1,3 +1,9 @@
+> Legacy / quarantine notice
+>
+> This workflow plan reflects an older project split involving static solution exchange and
+> simulation integration. It is preserved for historical context and must not be read as the
+> active repository workflow.
+
 # Plano de Trabalho e Fluxo de Desenvolvimento
 
 Este documento detalha a estratégia de implementação para as Fases 1 (Benchmarking de Heurísticas) e 2 (Validação em Simulação) do projeto. O desenvolvimento ocorrerá em duas frentes de trabalho paralelas, desacopladas por um contrato de dados bem definido.

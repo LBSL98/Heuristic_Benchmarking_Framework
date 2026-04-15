@@ -1,3 +1,9 @@
+> Legacy / quarantine notice
+>
+> This baseline note is preserved as a historical design artifact. It contains superseded
+> assumptions, including `KaHIP 3.14`, greedy inside the benchmark yardstick, and NFE-first
+> budgeting language. Do not use it as the active benchmark specification.
+
 # FORJA — Evolutive Benchmarking Baseline v1.0 (revisable)
 
 > This baseline is the initial, **revisable** yardstick for FORJA. It codifies fairness, budgets, metrics, and provenance. It can be updated after the pilot; record changes in the Revision History.
