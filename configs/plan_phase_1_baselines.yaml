@@ -1,0 +1,47 @@
+schema: forja-exp-v1
+experiment_id: tcc-phase1-baselines
+description: >
+  Official phase-1 baseline campaign for the canonical thesis portfolio.
+  This plan contains only METIS and KaHIP under the fair(time) protocol.
+solvers:
+  metis:
+    enabled: true
+    k: 8
+    budget:
+      type: time
+      seconds: 5
+    params: {}
+  kahip:
+    enabled: true
+    k: 8
+    imbalance: 0.03
+    budget:
+      type: time
+      seconds: 5
+    params:
+      preset: fast
+  sa:
+    enabled: false
+  ils:
+    enabled: false
+  grasp:
+    enabled: false
+  ts:
+    enabled: false
+rng:
+  seeds: [42]
+instances:
+  base_dir: data/instances/synthetic
+  include:
+    - n2000_p50.json.gz
+    - modnull_n3000_p50.json.gz
+    - modnull_n3500_p40.json.gz
+    - mix_betas_n3000_p35_cv045.json.gz
+    - n4000_cv_high.json.gz
+    - n5000_cv_low.json.gz
+    - wilson_tree_n10000.json.gz
+    - n2000_dense_fast.json.gz
+  manifest_out: data/results_raw/manifest_index.csv
+  fields: [filename, n, m, density, cv_degree]
+output:
+  raw_dir: data/results_raw
