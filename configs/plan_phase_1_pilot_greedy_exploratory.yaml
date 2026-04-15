@@ -1,7 +1,7 @@
 schema: forja-exp-v1
 experiment_id: tcc-phase1-pilot-greedy-exploratory
 description: Exploratory flow with greedy preserved outside the canonical thesis benchmark
-  scope.
+  scope; never part of the official benchmark portfolio or selector label space.
 rng:
   seeds:
   - 42
