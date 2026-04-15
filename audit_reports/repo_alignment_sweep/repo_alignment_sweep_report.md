@@ -130,8 +130,12 @@ Limitations:
 - The tracked `configs/plan_phase_1*.yaml` contents
   I did not silently expand the baseline-only tracked plans to include `SA`, `TS`, `ILS`, and `GRASP`, even though the canonical portfolio is broader. That would change executable pipeline semantics rather than just documentation. The wording was corrected instead, leaving the normative structural decision for a separate human-reviewed step.
 
-- Pre-existing untracked split-plan files in `configs/` and `tests/`
-  Local untracked files such as `configs/plan_phase_1_baselines.yaml`, `configs/plan_phase_1_metaheuristics.yaml`, and `tests/test_canonical_benchmark_plans.py` were discovered in the workspace but intentionally not adopted into these commits, to avoid taking implicit ownership of unpublished local work.
+- Canonical split benchmark plans
+  The split-plan files `configs/plan_phase_1_baselines.yaml`, `configs/plan_phase_1_metaheuristics.yaml`, `configs/plan_phase_1_pilot_baselines.yaml`, `configs/plan_phase_1_pilot_metaheuristics.yaml`, plus `tests/test_canonical_benchmark_plans.py`, were later validated as executable under the current `plan_runner` flow and adopted into this branch explicitly rather than left as ambiguous local-only material.
+
+
+- `configs/plan_phase_1_baselines.yaml`, `configs/plan_phase_1_metaheuristics.yaml`, `configs/plan_phase_1_pilot_baselines.yaml`, `configs/plan_phase_1_pilot_metaheuristics.yaml`, and `tests/test_canonical_benchmark_plans.py`
+  These files were initially left untracked during the conservative documentation sweep, but were later validated for executability and governance consistency and then adopted explicitly into the branch.
 
 ## 8. Validation performed
 

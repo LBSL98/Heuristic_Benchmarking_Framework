@@ -65,3 +65,14 @@ Main change areas:
 - No merge was performed.
 - No blind removal was performed.
 - Vendored `KaHIP/` was preserved and documented as traceability material rather than treated as automatic experimental truth.
+
+
+5. Canonical split plans adopted after executability validation
+- Added tracked split plans:
+  - `configs/plan_phase_1_baselines.yaml`
+  - `configs/plan_phase_1_metaheuristics.yaml`
+  - `configs/plan_phase_1_pilot_baselines.yaml`
+  - `configs/plan_phase_1_pilot_metaheuristics.yaml`
+- Added governance test:
+  - `tests/test_canonical_benchmark_plans.py`
+- These files were adopted only after direct executability validation through `plan_runner`, manifest generation, and schema validation.
