@@ -75,3 +75,37 @@ This file is the canonical ledger for experiments, runs, outputs, and traceable 
 - **Limitations / caveats:** Supports integration planning only; it does not validate any canonical solver implementation yet.
 - **Can this support prose in the monograph?** No
 - **Mapped in `08_Results_to_Text_Map.md`:** No
+
+
+### EXP-BENCH-PILOT-001 — Benchmark pilot preregistration placeholder
+- **Status:** Planned
+- **Date:** 2026-04-16
+- **Question answered:** To be finalized after the remaining benchmark-release methodological blockers are frozen.
+- **Code reference / branch / commit:** Release-candidate branch/commit to be filled after final benchmark-release preparation.
+- **Input instances:** Canonical pilot panel to be finalized after benchmark-release checklist closure.
+- **Algorithms compared:** Canonical benchmark portfolio (METIS, KaHIP, SA, TS, ILS, GRASP), subject to the currently frozen execution and aggregation rules.
+- **Budget protocol:** To be copied from the final frozen benchmark protocol after closure of the still-open benchmark-release blockers.
+- **Environment constraints:** Controlled mono-thread audited environment; final external-validity wording still pending the relevant benchmark-release decision.
+- **Primary metrics:** To be finalized after the analytical benchmark synthesis freeze.
+- **Outputs generated:** Validated raw artifacts, manifest, aggregated per-instance table, selector-ready dataset inputs, pilot audit trail.
+- **Main finding:** N/A — preregistration placeholder only.
+- **Limitations / caveats:** This entry is a scaffolding placeholder and does not authorize pilot execution while the benchmark-release blockers remain open.
+- **Can this support prose in the monograph?** No
+- **Mapped in `08_Results_to_Text_Map.md`:** No
+
+
+### EXP-BENCH-MAIN-001 — Main benchmark campaign preregistration placeholder
+- **Status:** Planned
+- **Date:** 2026-04-16
+- **Question answered:** To be finalized after the benchmark-release protocol is fully frozen and the pilot review is completed.
+- **Code reference / branch / commit:** Release-candidate branch/commit to be filled before campaign start.
+- **Input instances:** Canonical main campaign panel to be filled after final release approval.
+- **Algorithms compared:** Canonical benchmark portfolio (METIS, KaHIP, SA, TS, ILS, GRASP), subject to the final frozen campaign contract.
+- **Budget protocol:** To be copied from the final frozen benchmark protocol after closure of the still-open benchmark-release blockers.
+- **Environment constraints:** Controlled mono-thread audited environment with final caveats to be filled from the canonical methodology at release time.
+- **Primary metrics:** To be finalized after the analytical benchmark synthesis freeze.
+- **Outputs generated:** Main raw artifacts, validated manifests, aggregated benchmark tables, selector training/evaluation inputs, campaign audit trail.
+- **Main finding:** N/A — preregistration placeholder only.
+- **Limitations / caveats:** This entry is a scaffolding placeholder and does not authorize the main campaign before pilot review and final methodological freeze.
+- **Can this support prose in the monograph?** No
+- **Mapped in `08_Results_to_Text_Map.md`:** No
