@@ -109,3 +109,20 @@ This file is the canonical ledger for experiments, runs, outputs, and traceable 
 - **Limitations / caveats:** This entry is a scaffolding placeholder and does not authorize the main campaign before pilot review and final methodological freeze.
 - **Can this support prose in the monograph?** No
 - **Mapped in `08_Results_to_Text_Map.md`:** No
+
+
+### EXP-CALIB-001 — Bounded pre-benchmark hyperparameter calibration
+- **Status:** Planned
+- **Date:** 2026-04-25
+- **Question answered:** Which single global hyperparameter profile should be frozen for each stochastic participant (`SA`, `TS`, `ILS`, `GRASP`) before the main benchmark campaign starts?
+- **Code reference / branch / commit:** `chore-repo-canonical-alignment-sweep`; final commit to be filled when the calibration run is executed.
+- **Input instances:** Six-instance calibration panel declared in `configs/hyperparameter_calibration_matrix.yaml`.
+- **Algorithms compared:** `SA`, `TS`, `ILS`, `GRASP`, each evaluated against a bounded candidate-profile set. This experiment does not benchmark METIS or KaHIP.
+- **Budget protocol:** Same fair(time) semantics and validation contract as the benchmark release; Stage 1 screening with seeds `[42, 43, 44]`; Stage 2 confirmation with seeds `[42, 43, 44, 45, 46]`; same `k` and imbalance values declared in the calibration matrix.
+- **Environment constraints:** Controlled mono-thread audited environment, same execution controls as the benchmark release candidate. This calibration is preparatory and must not be described as the main benchmark itself.
+- **Primary metrics:** Per-instance collapsed validated quality across candidate profiles, with median final validated cutsize as primary aggregate and median `elapsed_ms` as tie-break.
+- **Outputs generated:** Candidate-profile comparison table, finalist-selection summary per algorithm, final recommended profile per stochastic participant, calibration audit trail, and the material required to update `D-012`.
+- **Main finding:** N/A — planned calibration stage only.
+- **Limitations / caveats:** This experiment exists only to support the final hyperparameter freeze. It does not authorize post hoc retuning during the main benchmark campaign and must not be reported as if it were benchmark-performance evidence.
+- **Can this support prose in the monograph?** Not before completion and later mapping
+- **Mapped in `08_Results_to_Text_Map.md`:** No

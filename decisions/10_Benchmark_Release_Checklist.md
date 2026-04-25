@@ -59,6 +59,7 @@ The benchmark release is considered decision-ready only after the following gate
 - [ ] D-009 finalized or superseded
 - [ ] D-010 finalized or superseded
 - [ ] D-011 finalized or superseded
+- [ ] EXP-CALIB-001 completed and reviewed
 - [ ] D-012 finalized or superseded
 - [ ] D-014 finalized or superseded
 - [ ] D-015 finalized or superseded
