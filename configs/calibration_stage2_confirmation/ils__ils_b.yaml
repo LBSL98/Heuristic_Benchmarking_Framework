@@ -1,0 +1,33 @@
+schema: forja-exp-v1
+experiment_id: calib-stage2-ils-ils_b
+solvers:
+  ils:
+    enabled: true
+    k: 8
+    imbalance: 0.03
+    budget:
+      type: time
+      seconds: 5
+    params:
+      max_iters: 100
+      perturb_moves: 4
+      checkpoint_every_iter: 1
+instances:
+  base_dir: data/instances/synthetic
+  include:
+  - n2000_p50.json.gz
+  - modnull_n3000_p50.json.gz
+  - mix_betas_n3000_p35_cv045.json.gz
+  - n4000_cv_high.json.gz
+  - n5000_cv_low.json.gz
+  - wilson_tree_n10000.json.gz
+  manifest_out: data/results_raw/calibration_stage2_confirmation/ils/ils_b/manifest_index.csv
+rng:
+  seeds:
+  - 42
+  - 43
+  - 44
+  - 45
+  - 46
+output:
+  raw_dir: data/results_raw/calibration_stage2_confirmation/ils/ils_b
