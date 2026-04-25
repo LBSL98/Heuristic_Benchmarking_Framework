@@ -1,8 +1,8 @@
 schema: forja-exp-v1
 experiment_id: tcc-phase1-pilot-baseline-slice
-description: Pilot baseline slice preserved in the active repository flow; wall-clock contract
-  aligned with the canonical thesis benchmark, greedy excluded, and the full canonical
-  portfolio documented separately as SA, TS, ILS, GRASP, METIS, and KaHIP.
+description: Pilot baseline slice preserved in the active repository flow; wall-clock
+  contract aligned with the canonical thesis benchmark, greedy excluded, and the full
+  canonical portfolio documented separately as SA, TS, ILS, GRASP, METIS, and KaHIP.
 rng:
   seeds:
   - 42

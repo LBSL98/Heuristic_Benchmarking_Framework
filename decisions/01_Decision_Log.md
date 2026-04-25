@@ -80,3 +80,37 @@ This file records frozen project decisions. A decision only becomes canonical af
 - **Rationale:** The legacy repository provides reusable structural references for SA, ILS, and GRASP, but no Tabu Search implementation. Integrating one solver at a time minimizes regression ambiguity and keeps each adapter auditable against the current runner and schema.
 - **Impact:** No official plan expansion occurs until each solver passes its own local integration gate. TS remains an explicit pending gap until a valid source implementation is located or written.
 - **Supersedes / Superseded by:**
+
+### D-012 — Final stochastic hyperparameter freeze for the benchmark release
+- **Status:** Frozen
+- **Date:** 2026-04-25
+- **Decision:** The canonical benchmark release freezes one global hyperparameter profile per stochastic participant as follows:
+
+  - `GRASP`: `grasp_b`
+    - `alpha = 0.30`
+    - `max_iters = 100`
+    - `checkpoint_every_iter = 1`
+
+  - `ILS`: `ils_b`
+    - `max_iters = 100`
+    - `perturb_moves = 4`
+    - `checkpoint_every_iter = 1`
+
+  - `SA`: `sa_e_maxsteps_100000`
+    - `initial_temp = 1.0`
+    - `cooling = 0.997`
+    - `min_temp = 0.001`
+    - `max_steps = 100000`
+    - `checkpoint_every_nfe = 100`
+
+  - `TS`: `ts_c`
+    - `max_steps = 10000`
+    - `min_tenure = 7`
+    - `tenure_scale = 1.0`
+    - `tenure_jitter = 4`
+    - `checkpoint_every_nfe = 100`
+    - `frequency_penalty = 0.01`
+
+- **Rationale:** The bounded pre-benchmark calibration stage `EXP-CALIB-001` was completed with a two-stage protocol: coarse screening, an SA-only saturation micro-round to ensure budget-compatible SA behavior, and short confirmation with the full seed policy. The selected profiles are the winners of the confirmation stage under the project collapse and tie rules. No per-instance retuning is allowed in the main benchmark campaign.
+- **Impact:** The benchmark pilot, the main campaign, the selector layer, and all benchmark-release claims must use exactly these frozen profiles unless a later canonical decision explicitly supersedes them.
+- **Supersedes / Superseded by:** Freezes the policy previously left open in OI-010.

@@ -75,6 +75,38 @@ portfolio.
 Exploratory greedy plans remain separated under their own filenames and must stay outside official
 benchmark claims.
 
+
+## Frozen stochastic profiles for the current release candidate
+
+The current release-candidate benchmark profiles are frozen as follows:
+
+- `GRASP` → `grasp_b`
+  - `alpha = 0.30`
+  - `max_iters = 100`
+  - `checkpoint_every_iter = 1`
+
+- `ILS` → `ils_b`
+  - `max_iters = 100`
+  - `perturb_moves = 4`
+  - `checkpoint_every_iter = 1`
+
+- `SA` → `sa_e_maxsteps_100000`
+  - `initial_temp = 1.0`
+  - `cooling = 0.997`
+  - `min_temp = 0.001`
+  - `max_steps = 100000`
+  - `checkpoint_every_nfe = 100`
+
+- `TS` → `ts_c`
+  - `max_steps = 10000`
+  - `min_tenure = 7`
+  - `tenure_scale = 1.0`
+  - `tenure_jitter = 4`
+  - `checkpoint_every_nfe = 100`
+  - `frequency_penalty = 0.01`
+
+These are global benchmark-release profiles. They must not be retuned per instance inside the main campaign.
+
 ## Source-of-truth pointers
 
 When wording must be exact, consult:

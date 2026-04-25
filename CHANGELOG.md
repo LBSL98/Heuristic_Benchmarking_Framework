@@ -50,6 +50,15 @@
 - Revalidated Docker/compose execution under WSL2 after integration was restored.
 - Removed the obsolete `version` key from `docker-compose.yml`.
 
+### Calibration completion
+
+- Completed `EXP-CALIB-001` and froze the stochastic benchmark-release profiles through `D-012`.
+- Final frozen winners:
+  - `GRASP = grasp_b`
+  - `ILS = ils_b`
+  - `SA = sa_e_maxsteps_100000`
+  - `TS = ts_c`
+
 ### Notes
 
 - `mkdocs build --strict` remains green.

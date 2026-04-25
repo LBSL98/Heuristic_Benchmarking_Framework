@@ -73,8 +73,8 @@ This file tracks unresolved project problems that can still affect coherence, co
 - **Type:** Methodology / calibration / benchmark protocol
 - **Severity:** High
 - **Origin:** Benchmark release preparation
-- **Current status:** Open
-- **Needed action:** Replace candidate hyperparameter values with one frozen final profile for each stochastic participant (`SA`, `TS`, `ILS`, `GRASP`) before the main campaign. The intended resolution path is the bounded pre-benchmark calibration stage documented in `11_Hyperparameter_Calibration_Protocol.md` and preregistered as `EXP-CALIB-001`.
+- **Current status:** Resolved
+- **Needed action:** Frozen by `D-012` after completion of `EXP-CALIB-001`. The canonical release profiles are now `grasp_b`, `ils_b`, `sa_e_maxsteps_100000`, and `ts_c`, and no retuning is allowed in the main benchmark campaign.
 
 ### OI-011 — Final artifact-schema confirmation must be canonically closed
 - **Type:** Artifact contract / schema / runner

@@ -112,17 +112,17 @@ This file is the canonical ledger for experiments, runs, outputs, and traceable 
 
 
 ### EXP-CALIB-001 — Bounded pre-benchmark hyperparameter calibration
-- **Status:** Planned
+- **Status:** Completed
 - **Date:** 2026-04-25
 - **Question answered:** Which single global hyperparameter profile should be frozen for each stochastic participant (`SA`, `TS`, `ILS`, `GRASP`) before the main benchmark campaign starts?
-- **Code reference / branch / commit:** `chore-repo-canonical-alignment-sweep`; final commit to be filled when the calibration run is executed.
-- **Input instances:** Six-instance calibration panel declared in `configs/hyperparameter_calibration_matrix.yaml`.
-- **Algorithms compared:** `SA`, `TS`, `ILS`, `GRASP`, each evaluated against a bounded candidate-profile set. This experiment does not benchmark METIS or KaHIP.
-- **Budget protocol:** Same fair(time) semantics and validation contract as the benchmark release; Stage 1 screening with seeds `[42, 43, 44]`; Stage 2 confirmation with seeds `[42, 43, 44, 45, 46]`; same `k` and imbalance values declared in the calibration matrix.
-- **Environment constraints:** Controlled mono-thread audited environment, same execution controls as the benchmark release candidate. This calibration is preparatory and must not be described as the main benchmark itself.
+- **Code reference / branch / commit:** `chore-repo-canonical-alignment-sweep`; calibration scaffolds committed through `5c49e75`, `6e09433`, and `789d616`
+- **Input instances:** Six-instance calibration panel declared in `configs/hyperparameter_calibration_matrix.yaml`
+- **Algorithms compared:** `SA`, `TS`, `ILS`, `GRASP`, each evaluated against a bounded candidate-profile set. This experiment did not benchmark METIS or KaHIP.
+- **Budget protocol:** Stage 1 coarse screening used six instances, seeds `[42, 43, 44]`, and 5-second wall-clock budgets. Because Stage 1 showed that SA was not saturating the temporal budget, an SA-only saturation micro-round was executed for `sa_d` and `sa_e` with increased `max_steps`. Stage 2 short confirmation then compared the final two candidates per algorithm under seeds `[42, 43, 44, 45, 46]`, the same 5-second budget, and the same validation/collapse rules.
+- **Environment constraints:** Controlled mono-thread audited environment, same execution controls as the benchmark release candidate.
 - **Primary metrics:** Per-instance collapsed validated quality across candidate profiles, with median final validated cutsize as primary aggregate and median `elapsed_ms` as tie-break.
-- **Outputs generated:** Candidate-profile comparison table, finalist-selection summary per algorithm, final recommended profile per stochastic participant, calibration audit trail, and the material required to update `D-012`.
-- **Main finding:** N/A — planned calibration stage only.
-- **Limitations / caveats:** This experiment exists only to support the final hyperparameter freeze. It does not authorize post hoc retuning during the main benchmark campaign and must not be reported as if it were benchmark-performance evidence.
-- **Can this support prose in the monograph?** Not before completion and later mapping
+- **Outputs generated:** Stage 1 coarse-screening artifacts, SA saturation artifacts, Stage 2 confirmation artifacts, collapsed per-instance summaries, candidate scoreboards, finalist-selection material, and the evidence required to freeze `D-012`.
+- **Main finding:** The final frozen stochastic profiles for the benchmark release are `grasp_b`, `ils_b`, `sa_e_maxsteps_100000`, and `ts_c`.
+- **Limitations / caveats:** This experiment supports only hyperparameter-freeze and benchmark-method prose. It does not by itself support claims of overall benchmark superiority.
+- **Can this support prose in the monograph?** Partial
 - **Mapped in `08_Results_to_Text_Map.md`:** No

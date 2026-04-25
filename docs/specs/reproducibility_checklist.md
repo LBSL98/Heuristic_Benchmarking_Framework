@@ -22,6 +22,7 @@
 - [ ] All compared solvers receive the same per-instance wall-clock budget.
 - [ ] The same balance semantics are enforced across all compared families.
 - [ ] Hyperparameters were frozen in the pilot before the main benchmark claim was made.
+- [ ] Metaheuristic benchmark plans use the D-012 frozen profiles for `SA`, `TS`, `ILS`, and `GRASP`.
 - [ ] Outputs are validated independently after execution.
 
 ## 4. Result artifacts

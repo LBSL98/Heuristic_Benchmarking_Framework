@@ -139,3 +139,45 @@ Operational consequences:
 Canonical short wording for prose:
 
 > The canonical thesis portfolio comprises SA, TS, ILS, GRASP, METIS, and KaHIP; any greedy baseline retained in the repository is exploratory and outside the official benchmark flow.
+
+
+## Frozen stochastic hyperparameter profiles for the benchmark release
+
+The bounded pre-benchmark calibration stage `EXP-CALIB-001` is now complete, and the current benchmark release freezes one global profile per stochastic participant.
+
+The frozen profiles are:
+
+- `GRASP` → `grasp_b`
+  - `alpha = 0.30`
+  - `max_iters = 100`
+  - `checkpoint_every_iter = 1`
+
+- `ILS` → `ils_b`
+  - `max_iters = 100`
+  - `perturb_moves = 4`
+  - `checkpoint_every_iter = 1`
+
+- `SA` → `sa_e_maxsteps_100000`
+  - `initial_temp = 1.0`
+  - `cooling = 0.997`
+  - `min_temp = 0.001`
+  - `max_steps = 100000`
+  - `checkpoint_every_nfe = 100`
+
+- `TS` → `ts_c`
+  - `max_steps = 10000`
+  - `min_tenure = 7`
+  - `tenure_scale = 1.0`
+  - `tenure_jitter = 4`
+  - `checkpoint_every_nfe = 100`
+  - `frequency_penalty = 0.01`
+
+Methodological rule:
+
+- these are global release-level profiles, not instance-specific profiles;
+- they were selected through the bounded calibration protocol rather than through retuning inside the main campaign;
+- no post hoc profile switching is allowed after the benchmark release starts unless the canon is explicitly reopened.
+
+Operational consequence:
+
+The official metaheuristic benchmark plans and their pilot counterparts must use these same profiles.
