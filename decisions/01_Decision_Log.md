@@ -114,3 +114,11 @@ This file records frozen project decisions. A decision only becomes canonical af
 - **Rationale:** The bounded pre-benchmark calibration stage `EXP-CALIB-001` was completed with a two-stage protocol: coarse screening, an SA-only saturation micro-round to ensure budget-compatible SA behavior, and short confirmation with the full seed policy. The selected profiles are the winners of the confirmation stage under the project collapse and tie rules. No per-instance retuning is allowed in the main benchmark campaign.
 - **Impact:** The benchmark pilot, the main campaign, the selector layer, and all benchmark-release claims must use exactly these frozen profiles unless a later canonical decision explicitly supersedes them.
 - **Supersedes / Superseded by:** Freezes the policy previously left open in OI-010.
+
+### D-009 — WSL2 external-validity boundary for the benchmark release
+- **Status:** Frozen
+- **Date:** 2026-04-25
+- **Decision:** The benchmark release is allowed to run in the audited WSL2 release-candidate environment, provided that all compared solvers execute under the same controlled mono-thread conditions, the same validation contract, and the same runtime-governance surface. Comparative claims inside the project are therefore valid as controlled within-environment claims, not as hardware-agnostic absolute performance claims.
+- **Rationale:** The repository execution surface, Docker/compose path, and benchmark tooling were revalidated in the actual WSL2 environment used by the project. The remaining methodological risk is not internal unfairness between participants, but overclaiming external generality from a virtualized host-dependent environment.
+- **Impact:** The monograph, defense, and repository documentation must state that the benchmark results are valid for the audited controlled environment used in the campaign. They must not claim that absolute timings automatically generalize to native bare-metal Linux or to arbitrary external hardware/software stacks without additional confirmation.
+- **Supersedes / Superseded by:** Freezes the policy previously left open in OI-007.

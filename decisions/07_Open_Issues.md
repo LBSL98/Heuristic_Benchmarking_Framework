@@ -52,8 +52,8 @@ This file tracks unresolved project problems that can still affect coherence, co
 - **Type:** Methodology / environment / validity
 - **Severity:** Medium
 - **Origin:** Benchmark release preparation
-- **Current status:** Open
-- **Needed action:** Freeze the wording that limits external-validity claims when experiments are executed under the audited WSL2 release-candidate environment.
+- **Current status:** Resolved
+- **Needed action:** Frozen by `D-009`. The audited WSL2 environment is accepted as the controlled benchmark surface for internal comparison, with explicit restriction against overgeneralizing absolute timing results to bare-metal or arbitrary external environments.
 
 ### OI-008 — Analytical benchmark synthesis metrics are still not frozen
 - **Type:** Methodology / analysis

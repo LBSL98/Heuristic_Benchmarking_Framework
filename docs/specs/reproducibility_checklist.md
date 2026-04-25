@@ -10,6 +10,7 @@
 ## 2. Environment
 
 - [ ] OS, kernel, CPU, and thread controls are recorded.
+- [ ] Any report using this release states that the benchmark ran in an audited WSL2 environment and does not overclaim bare-metal timing equivalence.
 - [ ] Python environment is pinned and archived (`poetry.lock`, `pip list`, or equivalent).
 - [ ] `gpmetis` is available when METIS runs are expected, and its runtime-reported version is recorded.
 - [ ] `kaffpa` is available when KaHIP runs are expected, and its runtime-reported version is recorded.

@@ -181,3 +181,26 @@ Methodological rule:
 Operational consequence:
 
 The official metaheuristic benchmark plans and their pilot counterparts must use these same profiles.
+
+
+## External-validity boundary of the audited WSL2 environment
+
+The benchmark release uses a controlled WSL2 execution environment that was explicitly revalidated during release preparation.
+
+Methodological interpretation:
+
+- comparative benchmark claims remain admissible inside this audited environment because all compared solvers are exposed to the same execution surface, wall-clock budget semantics, validation contract, and mono-thread controls;
+- the project therefore treats the environment as a valid controlled benchmark surface for internal comparison;
+- however, absolute timing results must not be overgeneralized as if they were automatically identical to native bare-metal Linux or to arbitrary external machines.
+
+Operational wording rule:
+
+- the text may say that the benchmark was executed in an audited controlled WSL2 environment;
+- the text may say that cross-solver comparisons are valid under this shared environment;
+- the text must not claim hardware-independent absolute timing equivalence beyond the audited environment unless a separate confirmation is produced.
+
+Threat-to-validity consequence:
+
+Any monograph section discussing validity should separate:
+1. internal fairness under the controlled environment; and
+2. external generalization of absolute runtime magnitudes beyond that environment.

@@ -76,6 +76,18 @@ Exploratory greedy plans remain separated under their own filenames and must sta
 benchmark claims.
 
 
+
+## Environment validity boundary
+
+The current benchmark release candidate runs in an audited controlled WSL2 environment.
+
+Interpretation rule:
+
+- cross-solver comparisons remain valid inside this shared controlled environment;
+- absolute timing magnitudes must not be presented as automatically identical to native bare-metal Linux or to arbitrary external environments without separate confirmation.
+
+The repository therefore treats WSL2 here as an audited execution surface, not as a claim of universal runtime portability.
+
 ## Frozen stochastic profiles for the current release candidate
 
 The current release-candidate benchmark profiles are frozen as follows:

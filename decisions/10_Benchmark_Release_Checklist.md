@@ -56,7 +56,7 @@ The benchmark release is considered decision-ready only after the following gate
 - [ ] Branch hygiene reviewed before release cut
 
 ### Gate C — Methodological freeze insertion
-- [ ] D-009 finalized or superseded
+- [x] D-009 finalized or superseded
 - [ ] D-010 finalized or superseded
 - [ ] D-011 finalized or superseded
 - [x] EXP-CALIB-001 completed and reviewed

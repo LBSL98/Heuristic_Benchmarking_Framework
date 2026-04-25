@@ -50,6 +50,10 @@
 - Revalidated Docker/compose execution under WSL2 after integration was restored.
 - Removed the obsolete `version` key from `docker-compose.yml`.
 
+### Environment-validity freeze
+
+- Froze `D-009`, defining the audited WSL2 environment as acceptable for internal benchmark comparison while explicitly limiting external claims about absolute runtime portability.
+
 ### Calibration completion
 
 - Completed `EXP-CALIB-001` and froze the stochastic benchmark-release profiles through `D-012`.
