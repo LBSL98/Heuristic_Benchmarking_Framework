@@ -30,14 +30,14 @@ These items are treated here as prerequisites, not as open design questions.
 
 | Blocker | Current source | What is still missing | Canonical insertion target |
 |---|---|---|---|
-| External-validity boundary of WSL2 environment | OI-008 / D-009 | Final wording and explicit methodological caveat | `01_Decision_Log.md`, `03_Methodology_Canonical_consolidated.md`, monograph threats-to-validity section |
-| Analytical benchmark synthesis metrics | OI-009 / D-010 | Exact operational definitions of TTT, ECDF, performance profiles, and regret | `01_Decision_Log.md`, `03_Methodology_Canonical_consolidated.md`, analysis scripts |
-| ASP outer validation protocol | OI-010 / D-011 | Final external split policy | `01_Decision_Log.md`, `03_Methodology_Canonical_consolidated.md`, selector evaluation scripts |
-| Final stochastic hyperparameter profiles | OI-011 / D-012 | Frozen final values for SA, TS, ILS, GRASP | `01_Decision_Log.md`, `03_Methodology_Canonical_consolidated.md`, plans/configs |
-| Final artifact-schema confirmation | OI-013 | Final cross-check of runner/manifest/schema contract | `03_Methodology_Canonical_consolidated.md`, docs/specs, audit report |
-| Campaign preregistration | OI-014 / D-014 | Final planned ledger entries for pilot and main campaign | `06_Experiment_Ledger.md` |
-| Conceptual benchmark figures clearance | OI-015 | Final technical clearance and conceptual-only wording where required | `05_Figures_Equations_Register.md`, monograph figure captions/body |
-| CART model-selection regime | OI-016 / D-015 | Final choice between fixed configuration and searched regime | `01_Decision_Log.md`, `03_Methodology_Canonical_consolidated.md`, selector scripts |
+| External-validity boundary of WSL2 environment | OI-007 / D-009 | Final wording and explicit methodological caveat | `01_Decision_Log.md`, `03_Methodology_Canonical_consolidated.md`, monograph threats-to-validity section |
+| Analytical benchmark synthesis metrics | OI-008 / D-010 | Exact operational definitions of TTT, ECDF, performance profiles, and regret | `01_Decision_Log.md`, `03_Methodology_Canonical_consolidated.md`, analysis scripts |
+| ASP outer validation protocol | OI-009 / D-011 | Final external split policy | `01_Decision_Log.md`, `03_Methodology_Canonical_consolidated.md`, selector evaluation scripts |
+| Final stochastic hyperparameter profiles | OI-010 / D-012 | Frozen final values for SA, TS, ILS, GRASP | `01_Decision_Log.md`, `03_Methodology_Canonical_consolidated.md`, plans/configs |
+| Final artifact-schema confirmation | OI-011 | Final cross-check of runner/manifest/schema contract | `03_Methodology_Canonical_consolidated.md`, docs/specs, audit report |
+| Campaign preregistration | OI-012 / D-014 | Final planned ledger entries for pilot and main campaign | `06_Experiment_Ledger.md` |
+| Conceptual benchmark figures clearance | OI-013 | Final technical clearance and conceptual-only wording where required | `05_Figures_Equations_Register.md`, monograph figure captions/body |
+| CART model-selection regime | OI-014 / D-015 | Final choice between fixed configuration and searched regime | `01_Decision_Log.md`, `03_Methodology_Canonical_consolidated.md`, selector scripts |
 
 ## Operational release gates
 
