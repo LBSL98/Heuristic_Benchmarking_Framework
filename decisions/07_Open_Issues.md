@@ -2,7 +2,7 @@
 
 ## Purpose
 
-This file tracks unresolved project problems that can affect coherence, correctness, or delivery quality.
+This file tracks unresolved project problems that can still affect coherence, correctness, methodological validity, or delivery quality.
 
 ## Open issues
 
@@ -41,23 +41,77 @@ This file tracks unresolved project problems that can affect coherence, correctn
 - **Current status:** Open
 - **Needed action:** Add clearer first-use explanations for wall-clock time and related concepts.
 
-### OI-006 — Executable official pipeline still does not materialize the canonical anytime portfolio
-- **Type:** Code / methodology alignment
+### OI-006 — Official benchmark prose and final monograph text still require canonical cleanup
+- **Type:** Writing / methodology alignment
 - **Severity:** High
-- **Origin:** Canon vs pipeline audit
+- **Origin:** Canon vs prose audit
 - **Current status:** Open
-- **Needed action:** Keep `greedy` out of official plans and later align the executable official campaign with the canonical portfolio (SA, TS, ILS, GRASP, METIS, KaHIP) without allowing exploratory baselines to contaminate thesis claims.
+- **Needed action:** Keep the official thesis narrative aligned with the canonical portfolio, artifact contract, and release-candidate documentation without reintroducing exploratory scope into benchmark claims.
 
-### OI-007 — Canonical anytime portfolio is still not executable in the main runner
-- **Type:** Code / methodology alignment
-- **Severity:** High
-- **Origin:** Canonical portfolio readiness audit
+### OI-007 — WSL2 external-validity boundary is still not frozen
+- **Type:** Methodology / environment / validity
+- **Severity:** Medium
+- **Origin:** Benchmark release preparation
 - **Current status:** Open
-- **Needed action:** Integrate SA, ILS, and GRASP into the main runner one by one, keeping the official flow unchanged until each solver is validated against the current artifact schema and wall-clock protocol.
+- **Needed action:** Freeze the wording that limits external-validity claims when experiments are executed under the audited WSL2 release-candidate environment.
 
-### OI-008 — Tabu Search implementation source is currently unavailable for porting
-- **Type:** Code availability / portfolio completion
+### OI-008 — Analytical benchmark synthesis metrics are still not frozen
+- **Type:** Methodology / analysis
 - **Severity:** High
-- **Origin:** Legacy repository portability audit
+- **Origin:** Benchmark release preparation
 - **Current status:** Open
-- **Needed action:** Locate a valid TS implementation or implement it later under the same canonical runner contract. Until then, TS remains a documented portfolio gap rather than an implicit promise.
+- **Needed action:** Freeze the exact operational definitions of TTT, ECDF, performance profiles, and regret before the benchmark pilot is promoted to canonical evidence.
+
+### OI-009 — ASP outer validation protocol is still not frozen
+- **Type:** Methodology / selector evaluation
+- **Severity:** High
+- **Origin:** Benchmark release preparation
+- **Current status:** Open
+- **Needed action:** Freeze the outer validation protocol used to evaluate the selector so that selector claims are not left under multiple admissible interpretations.
+
+### OI-010 — Final stochastic hyperparameter freeze is still provisional
+- **Type:** Methodology / calibration / benchmark protocol
+- **Severity:** High
+- **Origin:** Benchmark release preparation
+- **Current status:** Open
+- **Needed action:** Replace candidate hyperparameter values with one frozen final profile for each stochastic participant (`SA`, `TS`, `ILS`, `GRASP`) before the main campaign. The intended resolution path is the bounded pre-benchmark calibration stage documented in `11_Hyperparameter_Calibration_Protocol.md` and preregistered as `EXP-CALIB-001`.
+
+### OI-011 — Final artifact-schema confirmation must be canonically closed
+- **Type:** Artifact contract / schema / runner
+- **Severity:** Medium
+- **Origin:** Benchmark release preparation
+- **Current status:** Open
+- **Needed action:** Promote the already completed runner/schema confirmation into the canonical record so that the release no longer treats artifact-contract confirmation as a pending blocker.
+
+### OI-012 — Benchmark pilot and main campaign preregistration are still placeholders
+- **Type:** Governance / experiment registration
+- **Severity:** High
+- **Origin:** Benchmark release preparation
+- **Current status:** Open
+- **Needed action:** Replace placeholder benchmark ledger entries with execution-authorizing planned entries before pilot and main campaign execution.
+
+### OI-013 — Conceptual benchmark figures still need final technical clearance
+- **Type:** Figures / writing / methodology
+- **Severity:** Medium
+- **Origin:** Benchmark release preparation
+- **Current status:** Open
+- **Needed action:** Review benchmark figures and captions to ensure conceptual-only diagrams are clearly distinguished from empirical result figures.
+
+### OI-014 — CART model-selection regime is still not frozen
+- **Type:** Methodology / selector model selection
+- **Severity:** High
+- **Origin:** Benchmark release preparation
+- **Current status:** Open
+- **Needed action:** Freeze whether the canonical selector evaluation uses a fixed CART configuration or a searched regime, and define its relation to the outer validation protocol.
+
+### OI-015 — MkDocs navigation still leaves one active page outside nav
+- **Type:** Documentation / publication surface
+- **Severity:** Low
+- **Origin:** MkDocs audit
+- **Current status:** Open
+- **Needed action:** Decide whether `docs/specs/mealpy_integration_plan.md` should enter the active nav or remain intentionally unlisted and documented as such.
+
+## Notes
+
+- This file tracks what is still unresolved.
+- Resolved matters should move to the canonical decision, ledger, methodology, or release-checklist layers rather than remain here indefinitely.
