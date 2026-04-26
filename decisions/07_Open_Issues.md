@@ -59,16 +59,15 @@ This file tracks unresolved project problems that can still affect coherence, co
 - **Type:** Methodology / analysis
 - **Severity:** High
 - **Origin:** Benchmark release preparation
-- **Current status:** Open
-- **Needed action:** Freeze the exact operational definitions of TTT, ECDF, performance profiles, and regret before the benchmark pilot is promoted to canonical evidence.
-
+- **Current status:** Resolved
+- **Needed action:** Frozen by `D-010` for the benchmark-synthesis layer. `TTT`, `ECDF`, and `performance profiles` now have canonical operational definitions. Selector regret was deliberately removed from this freeze and remains deferred to the selector-evaluation track under `D-011` / `D-015`.
 ### OI-009 — ASP outer validation protocol is still not frozen
 - **Type:** Methodology / selector evaluation
 - **Severity:** High
 - **Origin:** Benchmark release preparation
 - **Current status:** Open
 - **Needed action:** Freeze the outer validation protocol used to evaluate the selector so that selector claims are not left under multiple admissible interpretations.
-
+- **Clarifying note:** This freeze also becomes the canonical anchor for selector regret, which is intentionally deferred from `D-010` until the outer-validation protocol is uniquely frozen.
 ### OI-010 — Final stochastic hyperparameter freeze is still provisional
 - **Type:** Methodology / calibration / benchmark protocol
 - **Severity:** High

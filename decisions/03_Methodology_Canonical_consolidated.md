@@ -10,7 +10,7 @@ If a methodological term appears in the monograph, code documentation, figure ex
 
 ## Current freeze status
 
-This version freezes the core meanings of wall-clock time, fair(time), NFE, viability/feasibility, and checkpoint policy. It does **not** yet freeze the full analytical definitions of regret, TTT, ECDF, or performance profiles; those depend on the analysis protocol and must remain aligned with Section 3.3.
+This version freezes the core meanings of wall-clock time, fair(time), NFE, viability/feasibility, checkpoint policy, the benchmark-synthesis meanings of TTT, ECDF, and performance profiles, the frozen stochastic benchmark profiles, and the WSL2 external-validity boundary. Selector regret remains unfrozen until the selector-evaluation layer is canonically closed.
 
 ## Frozen methodological definitions
 
