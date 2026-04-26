@@ -31,7 +31,7 @@ These items are treated here as prerequisites, not as open design questions.
 | Blocker | Current source | What is still missing | Canonical insertion target |
 |---|---|---|---|
 | External-validity boundary of WSL2 environment | OI-007 / D-009 | Final wording and explicit methodological caveat | `01_Decision_Log.md`, `03_Methodology_Canonical_consolidated.md`, monograph threats-to-validity section |
-| Analytical benchmark synthesis metrics | OI-008 / D-010 | Exact operational definitions of TTT, ECDF, performance profiles, and regret | `01_Decision_Log.md`, `03_Methodology_Canonical_consolidated.md`, analysis scripts |
+| Analytical benchmark synthesis metrics | OI-008 / D-010 | Exact operational definitions of TTT, ECDF, and performance profiles; selector regret deferred to D-011 / D-015 | `01_Decision_Log.md`, `03_Methodology_Canonical_consolidated.md`, analysis scripts |
 | ASP outer validation protocol | OI-009 / D-011 | Final external split policy | `01_Decision_Log.md`, `03_Methodology_Canonical_consolidated.md`, selector evaluation scripts |
 | Final stochastic hyperparameter profiles | OI-010 / D-012 | Frozen final values for SA, TS, ILS, GRASP | `01_Decision_Log.md`, `03_Methodology_Canonical_consolidated.md`, plans/configs |
 | Final artifact-schema confirmation | OI-011 | Final cross-check of runner/manifest/schema contract | `03_Methodology_Canonical_consolidated.md`, docs/specs, audit report |
@@ -57,7 +57,7 @@ The benchmark release is considered decision-ready only after the following gate
 
 ### Gate C — Methodological freeze insertion
 - [x] D-009 finalized or superseded
-- [ ] D-010 finalized or superseded
+- [x] D-010 finalized or superseded
 - [ ] D-011 finalized or superseded
 - [x] EXP-CALIB-001 completed and reviewed
 - [x] D-012 finalized or superseded
@@ -80,7 +80,7 @@ This section exists only to make final freeze insertion short and local later.
 - Files to update:
 - Notes:
 
-### D-010 — TTT / ECDF / performance profiles / regret
+### D-010 — TTT / ECDF / performance profiles
 - Final status:
 - Final wording:
 - Files to update:

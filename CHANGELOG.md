@@ -54,6 +54,12 @@
 
 - Froze `D-009`, defining the audited WSL2 environment as acceptable for internal benchmark comparison while explicitly limiting external claims about absolute runtime portability.
 
+### Benchmark-synthesis metrics freeze
+
+- Froze `D-010` for the benchmark-synthesis layer.
+- `TTT`, `ECDF`, and `performance profiles` now have canonical project definitions.
+- Selector regret was explicitly deferred to the selector-evaluation freeze (`D-011` / `D-015`) instead of remaining mixed into benchmark-synthesis wording.
+
 ### Calibration completion
 
 - Completed `EXP-CALIB-001` and froze the stochastic benchmark-release profiles through `D-012`.

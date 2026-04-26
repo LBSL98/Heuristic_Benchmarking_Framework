@@ -42,6 +42,9 @@
 - [ ] `stdout` / `stderr` are kept when relevant to diagnose external-solver behaviour.
 - [ ] Output locations match the selected plan `output.raw_dir`.
 
+- [ ] If TTT or ECDF is reported, the target rule, censoring rule, and wall-clock interpretation follow D-010.
+- [ ] If performance profiles are reported, the ratio definition and the common-feasible instance set are stated explicitly.
+
 ## 6. Reporting
 
 - [ ] Tables and plots cite the commit, plan, and dataset slice used.

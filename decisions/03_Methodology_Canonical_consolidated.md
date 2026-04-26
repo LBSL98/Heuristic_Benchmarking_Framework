@@ -121,10 +121,7 @@ Repository documentation should now use the runner-aligned field names above. Hi
 
 ## Still pending freeze items
 
-- Exact project-level meaning of TTT in the presence of point-output baselines and censored observations.
-- Exact project-level meaning of ECDF and when it is reported over time budgets versus target-attainment events.
-- Exact admissibility conditions for performance profiles in this project.
-- Exact operational definition of regret for the selector evaluation.
+- Exact operational definition of selector regret after the outer ASP validation protocol and the CART regime are frozen.
 
 ### 6. Portfolio scope boundary
 
@@ -204,3 +201,58 @@ Threat-to-validity consequence:
 Any monograph section discussing validity should separate:
 1. internal fairness under the controlled environment; and
 2. external generalization of absolute runtime magnitudes beyond that environment.
+
+
+## Frozen benchmark-synthesis metrics
+
+The benchmark-synthesis layer of the project is now frozen for `TTT`, `ECDF`, and `performance profiles`.
+
+### TTT
+
+The project-specific meaning of `TTT` is a wall-clock target-attainment quantity.
+
+Operational rule:
+
+- a target rule must be declared explicitly in the corresponding benchmark analysis batch or preregistration;
+- for instrumented anytime solvers, attainment time is the first checkpoint time at which the validated quality satisfies the target;
+- for point-output baselines, attainment is only observed at the final `elapsed_ms`; if the final validated output satisfies the target, attainment time equals that final time, otherwise the observation is right-censored at the budget boundary;
+- for stochastic participants, run-level attainment observations are first expressed on the same wall-clock axis with right-censoring at the budget, then collapsed to a single per-instance representative time by the median rule; if the collapsed value lands at the budget boundary because attainment was not achieved early enough across repetitions, the slice is treated as right-censored.
+
+Interpretive consequence:
+
+`TTT` is admissible in this project even with point-output baselines, but their contribution is degenerate at the final observation time rather than a full anytime trajectory.
+
+### ECDF
+
+The project-specific meaning of `ECDF` is an attainment-over-time summary on the wall-clock axis.
+
+Operational rule:
+
+- for a declared target rule and a wall-clock budget `t`, `ECDF_a(t)` is the fraction of instances whose collapsed attainment time for algorithm `a` is less than or equal to `t`;
+- right-censored slices count as non-attained up to their censoring point;
+- the ECDF therefore summarizes the same collapsed target-attainment surface used by TTT rather than a separate ad hoc construction.
+
+Interpretive consequence:
+
+ECDF is an admissible cross-family summary because the effort axis remains wall-clock time, but its meaning must remain target-attainment over time, not final-quality-at-timeout.
+
+### Performance profiles
+
+The project-specific meaning of `performance profiles` is restricted to collapsed final-quality comparison at a fixed budget.
+
+Operational rule:
+
+- let `q_{a,i}` denote the collapsed final validated cutsize of algorithm `a` on instance `i` at the fixed budget;
+- since the project minimizes edge cut, the profile ratio is `r_{a,i} = q_{a,i} / min_b q_{b,i}`;
+- performance profiles are admissible only on the common-feasible set where every compared algorithm has a feasible collapsed final observation on the instance;
+- excluded instances caused by infeasibility or missing valid collapsed outputs must be reported separately and must not be silently hidden.
+
+Interpretive consequence:
+
+In this project, performance profiles summarize endpoint relative quality, not anytime attainment behavior.
+
+### Scope boundary
+
+Selector regret is not part of the present benchmark-synthesis freeze.
+
+Its canonical definition is deferred to the selector-evaluation layer and must be frozen only after the outer ASP validation protocol and the CART model-selection regime are frozen.

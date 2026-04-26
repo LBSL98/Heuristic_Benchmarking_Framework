@@ -119,6 +119,18 @@ The current release-candidate benchmark profiles are frozen as follows:
 
 These are global benchmark-release profiles. They must not be retuned per instance inside the main campaign.
 
+
+## Analytical synthesis surface
+
+For comparative benchmark synthesis in the current release candidate:
+
+- `TTT` is interpreted on the wall-clock axis with explicit target declaration and right-censoring at the budget boundary;
+- `ECDF` is interpreted as target-attainment fraction over wall-clock budgets using the same collapsed attainment surface used by TTT;
+- `performance profiles` are interpreted only on the collapsed final-quality table at a fixed budget and only on the common-feasible set of instances;
+- selector regret is not part of this benchmark-synthesis layer and remains deferred to the selector-evaluation freeze.
+
+This prevents drift between endpoint-quality analysis, anytime target-attainment analysis, and selector-specific evaluation.
+
 ## Source-of-truth pointers
 
 When wording must be exact, consult:

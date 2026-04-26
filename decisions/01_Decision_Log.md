@@ -122,3 +122,32 @@ This file records frozen project decisions. A decision only becomes canonical af
 - **Rationale:** The repository execution surface, Docker/compose path, and benchmark tooling were revalidated in the actual WSL2 environment used by the project. The remaining methodological risk is not internal unfairness between participants, but overclaiming external generality from a virtualized host-dependent environment.
 - **Impact:** The monograph, defense, and repository documentation must state that the benchmark results are valid for the audited controlled environment used in the campaign. They must not claim that absolute timings automatically generalize to native bare-metal Linux or to arbitrary external hardware/software stacks without additional confirmation.
 - **Supersedes / Superseded by:** Freezes the policy previously left open in OI-007.
+
+### D-010 — Benchmark synthesis metrics freeze (TTT / ECDF / performance profiles)
+- **Status:** Frozen
+- **Date:** 2026-04-25
+- **Decision:** The benchmark-synthesis layer of the project is frozen as follows:
+
+  1. `TTT` belongs to the benchmark layer and is defined on the universal wall-clock axis.
+     - For instrumented anytime solvers, per-run attainment time is the first recorded checkpoint time at which the validated quality satisfies the declared target rule.
+     - For point-output baselines, attainment is only observable at the final recorded `elapsed_ms`; if the final validated output satisfies the target, the attainment time is that final time, otherwise the observation is right-censored at the budget boundary.
+     - For stochastic participants, run-level attainment observations are first converted to wall-clock times with right-censoring at the budget. The project-level per-instance slice is then collapsed to a single representative time by the median rule; if the collapsed value sits at the budget boundary because attainment was not achieved early enough across repetitions, the slice is treated as right-censored at the budget.
+
+  2. `ECDF` belongs to the benchmark layer and is reported over wall-clock budgets for a declared target rule.
+     - For each algorithm and budget value `t`, the ECDF value is the fraction of instances whose collapsed attainment time is less than or equal to `t`.
+     - Right-censored slices count as non-attained up to the censoring point.
+     - ECDF is therefore an attainment-over-time summary built from the same collapsed per-instance target-attainment surface used by TTT.
+
+  3. `Performance profiles` are admissible in the project only on the collapsed final-quality table at a fixed budget.
+     - For each instance `i` and algorithm `a`, let `q_{a,i}` be the collapsed final validated cutsize at the fixed budget.
+     - The profile ratio is `r_{a,i} = q_{a,i} / min_b q_{b,i}` because the project minimizes edge cut.
+     - Performance profiles are computed only on the common-feasible set of instances for which every compared algorithm has a feasible collapsed final observation.
+     - Any excluded instances due to infeasibility or missing valid collapsed output must be reported separately and must not be silently absorbed into the profile.
+
+  4. `Selector regret` is **not** frozen by `D-010`.
+     - Regret is removed from the benchmark-synthesis freeze and is deferred to the selector-evaluation layer.
+     - Its canonical definition must be frozen later together with the outer ASP validation protocol and the CART model-selection regime under `D-011` / `D-015`.
+
+- **Rationale:** The audit showed that the benchmark-synthesis layer and the selector-evaluation layer were being mixed in the same open item. Freezing `TTT`, `ECDF`, and `performance profiles` now closes the comparative benchmark semantics without prematurely freezing selector regret before the outer-validation and CART-regime decisions exist.
+- **Impact:** Benchmark figures, tables, scripts, and prose that claim comparative synthesis must use only these definitions. Any use of regret remains non-canonical until the selector track is frozen separately.
+- **Supersedes / Superseded by:** Narrows and freezes the part of the earlier open analytical block that belongs strictly to comparative benchmark synthesis; selector regret is explicitly deferred to `D-011` / `D-015`.
