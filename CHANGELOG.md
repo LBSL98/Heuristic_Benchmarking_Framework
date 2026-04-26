@@ -60,6 +60,11 @@
 - `TTT`, `ECDF`, and `performance profiles` now have canonical project definitions.
 - Selector regret was explicitly deferred to the selector-evaluation freeze (`D-011` / `D-015`) instead of remaining mixed into benchmark-synthesis wording.
 
+### Selector outer-validation freeze
+
+- Froze `D-011`, defining selector evaluation on the collapsed per-instance table with a deterministic external holdout at instance level.
+- Explicitly separated the outer validation boundary from the later CART-regime choice (`D-015`).
+
 ### Calibration completion
 
 - Completed `EXP-CALIB-001` and froze the stochastic benchmark-release profiles through `D-012`.

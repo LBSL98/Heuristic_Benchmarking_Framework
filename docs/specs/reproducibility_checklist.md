@@ -45,6 +45,9 @@
 - [ ] If TTT or ECDF is reported, the target rule, censoring rule, and wall-clock interpretation follow D-010.
 - [ ] If performance profiles are reported, the ratio definition and the common-feasible instance set are stated explicitly.
 
+- [ ] Selector evaluation, when reported, uses an instance-level preregistered outer holdout over the collapsed per-instance table.
+- [ ] No selector preprocessing or model choice touches the outer test partition.
+
 ## 6. Reporting
 
 - [ ] Tables and plots cite the commit, plan, and dataset slice used.

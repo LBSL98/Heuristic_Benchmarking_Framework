@@ -131,6 +131,19 @@ For comparative benchmark synthesis in the current release candidate:
 
 This prevents drift between endpoint-quality analysis, anytime target-attainment analysis, and selector-specific evaluation.
 
+
+## Selector evaluation boundary
+
+For selector evaluation in the current release candidate:
+
+- the selector dataset is formed on the collapsed per-instance table, not on raw repeated runs;
+- the external split unit is the instance;
+- the canonical protocol uses a deterministic preregistered outer holdout;
+- the outer test partition must remain untouched until final evaluation;
+- any later CART search chosen under D-015 must remain strictly inside the training partition.
+
+This prevents leakage between benchmark collapse, selector training, and external selector evaluation.
+
 ## Source-of-truth pointers
 
 When wording must be exact, consult:

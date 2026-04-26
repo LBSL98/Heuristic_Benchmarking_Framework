@@ -151,3 +151,32 @@ This file records frozen project decisions. A decision only becomes canonical af
 - **Rationale:** The audit showed that the benchmark-synthesis layer and the selector-evaluation layer were being mixed in the same open item. Freezing `TTT`, `ECDF`, and `performance profiles` now closes the comparative benchmark semantics without prematurely freezing selector regret before the outer-validation and CART-regime decisions exist.
 - **Impact:** Benchmark figures, tables, scripts, and prose that claim comparative synthesis must use only these definitions. Any use of regret remains non-canonical until the selector track is frozen separately.
 - **Supersedes / Superseded by:** Narrows and freezes the part of the earlier open analytical block that belongs strictly to comparative benchmark synthesis; selector regret is explicitly deferred to `D-011` / `D-015`.
+
+### D-011 — Outer validation protocol for selector evaluation
+- **Status:** Frozen
+- **Date:** 2026-04-25
+- **Decision:** The canonical selector-evaluation protocol uses a single external holdout split defined over the collapsed per-instance table.
+
+  1. **Unit of separation**
+     - The outer split unit is the **instance**.
+     - Raw runs, seeds, checkpoints, and per-run rows must never be split independently across train and test.
+     - Selector training and evaluation must use one collapsed row per instance, derived from the canonical repeated-run collapse rules already frozen by the benchmark contract.
+
+  2. **Outer evaluation boundary**
+     - A deterministic, preregistered outer holdout manifest must be created before selector training begins.
+     - The outer test partition remains untouched until the final selector evaluation.
+     - No model choice, threshold choice, feature filtering, missing-data handling decision, or post hoc heuristic adjustment may use outer-test information.
+
+  3. **Training-side freedom**
+     - All preprocessing, feature engineering, class handling, and any later CART model-selection procedure must operate strictly inside the training partition.
+     - If `D-015` later chooses a searched CART regime, that search is restricted to the training side only.
+     - If `D-015` later chooses a fixed CART regime, the fixed model is trained once on the training partition and then evaluated once on the untouched outer test partition.
+
+  4. **Selector target and reporting consequence**
+     - The selector target remains defined on the collapsed benchmark table, not on raw repeated runs.
+     - Final selector claims must be reported on the outer test split only.
+     - Selector regret is anchored to this outer protocol and remains canonically meaningful only under this external holdout boundary.
+
+- **Rationale:** The repository currently has governance text for selector evaluation but no live implementation surface that would justify inferring a split protocol from code. Freezing the outer protocol now prevents leakage and multiple admissible interpretations while keeping the internal CART regime open for `D-015`.
+- **Impact:** Any future selector pipeline, dataset builder, training script, regret computation, or monograph prose must respect instance-level external separation and the untouched-test rule. No selector claim is canonical if it violates this split boundary.
+- **Supersedes / Superseded by:** Freezes the policy previously left open in OI-009. Constrains the meaning of selector regret and sets the external boundary within which D-015 may later choose a fixed or searched CART regime.

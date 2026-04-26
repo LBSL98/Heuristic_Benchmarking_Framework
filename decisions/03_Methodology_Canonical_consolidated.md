@@ -121,7 +121,7 @@ Repository documentation should now use the runner-aligned field names above. Hi
 
 ## Still pending freeze items
 
-- Exact operational definition of selector regret after the outer ASP validation protocol and the CART regime are frozen.
+- Exact internal CART regime (fixed configuration versus searched regime) and the final selector-regret operationalization inside the frozen outer protocol.
 
 ### 6. Portfolio scope boundary
 
@@ -256,3 +256,37 @@ In this project, performance profiles summarize endpoint relative quality, not a
 Selector regret is not part of the present benchmark-synthesis freeze.
 
 Its canonical definition is deferred to the selector-evaluation layer and must be frozen only after the outer ASP validation protocol and the CART model-selection regime are frozen.
+
+
+## Frozen outer validation boundary for selector evaluation
+
+The selector-evaluation layer now freezes its outer validation boundary independently of the later CART-regime choice.
+
+### Outer split unit
+
+The external split unit is the **instance**, using the collapsed per-instance benchmark table as the selector dataset surface.
+
+Operational consequence:
+
+- raw repeated runs, seeds, checkpoints, and per-run observations must not be split independently across train and test;
+- selector evaluation is defined only after the repeated-run collapse and benchmark-label construction stages are complete.
+
+### Untouched external holdout
+
+The canonical selector protocol uses a single deterministic preregistered external holdout manifest.
+
+Operational consequence:
+
+- the outer test partition must remain untouched until the final selector evaluation;
+- no preprocessing, feature decision, hyperparameter choice, model choice, threshold choice, or class-handling adjustment may use outer-test information;
+- final selector claims are reported on the outer test split only.
+
+### Relation to D-015
+
+The outer boundary is frozen now; the internal CART regime is not.
+
+Operational consequence:
+
+- if D-015 later adopts a searched CART regime, the search must occur only inside the training partition;
+- if D-015 later adopts a fixed CART regime, that fixed model is trained on the training side and evaluated once on the untouched outer test side;
+- selector regret is canonically interpretable only inside this outer holdout protocol.

@@ -65,9 +65,8 @@ This file tracks unresolved project problems that can still affect coherence, co
 - **Type:** Methodology / selector evaluation
 - **Severity:** High
 - **Origin:** Benchmark release preparation
-- **Current status:** Open
-- **Needed action:** Freeze the outer validation protocol used to evaluate the selector so that selector claims are not left under multiple admissible interpretations.
-- **Clarifying note:** This freeze also becomes the canonical anchor for selector regret, which is intentionally deferred from `D-010` until the outer-validation protocol is uniquely frozen.
+- **Current status:** Resolved
+- **Needed action:** Frozen by `D-011`. Selector evaluation now uses a deterministic external holdout at the instance level over the collapsed per-instance table, with an untouched-test rule. Selector regret is canonically anchored to this outer protocol, while the internal CART regime remains deferred to `D-015`.
 ### OI-010 — Final stochastic hyperparameter freeze is still provisional
 - **Type:** Methodology / calibration / benchmark protocol
 - **Severity:** High
