@@ -99,9 +99,8 @@ This file tracks unresolved project problems that can still affect coherence, co
 - **Type:** Methodology / selector model selection
 - **Severity:** High
 - **Origin:** Benchmark release preparation
-- **Current status:** Open
-- **Needed action:** Freeze whether the canonical selector evaluation uses a fixed CART configuration or a searched regime, and define its relation to the outer validation protocol.
-
+- **Current status:** Resolved
+- **Needed action:** Frozen by `D-015`. The canonical selector track uses a fixed CART regime, not a searched regime. Any future selector implementation must declare one explicit deterministic CART configuration inside the already frozen outer holdout protocol of `D-011`.
 ### OI-015 — MkDocs navigation still leaves one active page outside nav
 - **Type:** Documentation / publication surface
 - **Severity:** Low

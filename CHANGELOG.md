@@ -65,6 +65,12 @@
 - Froze `D-011`, defining selector evaluation on the collapsed per-instance table with a deterministic external holdout at instance level.
 - Explicitly separated the outer validation boundary from the later CART-regime choice (`D-015`).
 
+### Fixed CART regime freeze
+
+- Froze `D-015`, adopting a fixed CART regime for the canonical selector track.
+- Explicitly rejected searched / nested model-selection regimes in the current canonical release candidate.
+
+
 ### Calibration completion
 
 - Completed `EXP-CALIB-001` and froze the stochastic benchmark-release profiles through `D-012`.

@@ -48,6 +48,9 @@
 - [ ] Selector evaluation, when reported, uses an instance-level preregistered outer holdout over the collapsed per-instance table.
 - [ ] No selector preprocessing or model choice touches the outer test partition.
 
+- [ ] Selector claims do not rely on hyperparameter search or nested model selection unless the canon is explicitly reopened.
+- [ ] The instantiated CART parameter tuple is recorded before selector evaluation is reported.
+
 ## 6. Reporting
 
 - [ ] Tables and plots cite the commit, plan, and dataset slice used.

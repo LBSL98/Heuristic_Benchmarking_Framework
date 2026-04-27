@@ -121,7 +121,7 @@ Repository documentation should now use the runner-aligned field names above. Hi
 
 ## Still pending freeze items
 
-- Exact internal CART regime (fixed configuration versus searched regime) and the final selector-regret operationalization inside the frozen outer protocol.
+- Exact instantiated CART parameter tuple and the final selector-regret operationalization inside the frozen outer protocol.
 
 ### 6. Portfolio scope boundary
 
@@ -290,3 +290,18 @@ Operational consequence:
 - if D-015 later adopts a searched CART regime, the search must occur only inside the training partition;
 - if D-015 later adopts a fixed CART regime, that fixed model is trained on the training side and evaluated once on the untouched outer test side;
 - selector regret is canonically interpretable only inside this outer holdout protocol.
+
+
+## Frozen CART regime for selector evaluation
+
+The canonical selector track adopts a fixed CART regime rather than a searched regime.
+
+Operational rule:
+
+- no grid search, random search, Bayesian optimization, nested model selection, or cross-family model search is allowed in the canonical selector track;
+- one explicit deterministic CART configuration must be declared when the selector implementation is instantiated;
+- this fixed CART operates strictly inside the outer holdout protocol already frozen by D-011.
+
+Interpretive consequence:
+
+Selector results, when eventually produced, must be interpreted as evidence for a controlled interpretable baseline selector under a fixed CART regime, not as evidence that the selector family was exhaustively optimized.

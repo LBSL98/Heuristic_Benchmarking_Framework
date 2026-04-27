@@ -37,7 +37,7 @@ These items are treated here as prerequisites, not as open design questions.
 | Final artifact-schema confirmation | OI-011 | Final cross-check of runner/manifest/schema contract | `03_Methodology_Canonical_consolidated.md`, docs/specs, audit report |
 | Campaign preregistration | OI-012 / D-014 | Final planned ledger entries for pilot and main campaign | `06_Experiment_Ledger.md` |
 | Conceptual benchmark figures clearance | OI-013 | Final technical clearance and conceptual-only wording where required | `05_Figures_Equations_Register.md`, monograph figure captions/body |
-| CART model-selection regime | OI-014 / D-015 | Final choice between fixed configuration and searched regime | `01_Decision_Log.md`, `03_Methodology_Canonical_consolidated.md`, selector scripts |
+| CART model-selection regime | OI-014 / D-015 | Fixed CART regime frozen; exact instantiated tuple still to be declared when selector implementation begins | `01_Decision_Log.md`, `03_Methodology_Canonical_consolidated.md`, future selector scripts |
 
 ## Operational release gates
 
@@ -62,7 +62,7 @@ The benchmark release is considered decision-ready only after the following gate
 - [x] EXP-CALIB-001 completed and reviewed
 - [x] D-012 finalized or superseded
 - [ ] D-014 finalized or superseded
-- [ ] D-015 finalized or superseded
+- [x] D-015 finalized or superseded
 
 ### Gate D — Campaign preregistration
 - [ ] `EXP-BENCH-PILOT-001` completed as a real planned entry

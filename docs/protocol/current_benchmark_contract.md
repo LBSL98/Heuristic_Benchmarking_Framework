@@ -144,6 +144,18 @@ For selector evaluation in the current release candidate:
 
 This prevents leakage between benchmark collapse, selector training, and external selector evaluation.
 
+
+## Selector model regime
+
+For the canonical selector track in the current release candidate:
+
+- the selector family is fixed to CART;
+- the regime is fixed, not searched;
+- any future instantiated CART parameter tuple must be declared explicitly before selector claims are made;
+- any such instantiation must stay strictly inside the already frozen outer holdout boundary.
+
+This keeps selector evaluation interpretable and prevents hidden multiplicity in model selection.
+
 ## Source-of-truth pointers
 
 When wording must be exact, consult:

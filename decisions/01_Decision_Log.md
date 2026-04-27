@@ -180,3 +180,29 @@ This file records frozen project decisions. A decision only becomes canonical af
 - **Rationale:** The repository currently has governance text for selector evaluation but no live implementation surface that would justify inferring a split protocol from code. Freezing the outer protocol now prevents leakage and multiple admissible interpretations while keeping the internal CART regime open for `D-015`.
 - **Impact:** Any future selector pipeline, dataset builder, training script, regret computation, or monograph prose must respect instance-level external separation and the untouched-test rule. No selector claim is canonical if it violates this split boundary.
 - **Supersedes / Superseded by:** Freezes the policy previously left open in OI-009. Constrains the meaning of selector regret and sets the external boundary within which D-015 may later choose a fixed or searched CART regime.
+
+### D-015 — CART model-selection regime for the canonical selector track
+- **Status:** Frozen
+- **Date:** 2026-04-25
+- **Decision:** The canonical selector track adopts a **fixed CART regime**, not a searched regime.
+
+  1. **No hyperparameter search**
+     - The canonical selector evaluation must not use grid search, random search, Bayesian optimization, nested model selection, or post hoc model-family comparison.
+     - The selector track uses one explicit deterministic CART configuration when implementation begins.
+
+  2. **Relation to D-011**
+     - The fixed CART model operates strictly inside the outer validation boundary frozen by `D-011`.
+     - The outer test split remains untouched until final evaluation.
+     - No choice of CART configuration may be justified using outer-test performance.
+
+  3. **Operational consequence**
+     - When the selector implementation is added, it must instantiate a single declared CART configuration and train it on the training partition only.
+     - The exact instantiated parameter tuple must be recorded in the selector preregistration and implementation-facing documentation before any selector result is claimed.
+     - The canonical regime choice itself is already frozen now: fixed, not searched.
+
+  4. **Interpretive consequence**
+     - Selector claims should be presented as evidence for a controlled interpretable baseline selector under a fixed CART regime, not as evidence of having optimized the selector family exhaustively.
+
+- **Rationale:** The current repository does not yet contain a live selector-evaluation implementation surface that would justify a more ambitious searched regime. Freezing a fixed CART regime now minimizes leakage risk, avoids hidden multiplicity, reduces implementation burden, and remains compatible with the already frozen outer holdout protocol of `D-011`.
+- **Impact:** Any later selector script, dataset builder, regret computation, and monograph wording must treat CART as a fixed interpretable selector baseline inside the frozen outer holdout. Searched-regime claims are non-canonical unless the canon is explicitly reopened.
+- **Supersedes / Superseded by:** Freezes the choice previously left open in OI-014 and completes the selector-governance pair begun by D-011.
