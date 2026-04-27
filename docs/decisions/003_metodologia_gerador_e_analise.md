@@ -1,3 +1,8 @@
+> Legacy / quarantine notice
+>
+> This ADR is kept for historical traceability. It predates the current repository benchmark
+> contract and should not be used as the active methodological source of truth.
+
 # ADR-003: Metodologia Final para Geração de Instâncias e Análise de Heurísticas
 
 - **Status:** Decidido

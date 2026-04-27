@@ -1,4 +1,4 @@
-# 03_Methodology_Canonical.md
+# 03_Methodology_Canonical_consolidated.md
 
 ## Purpose
 
@@ -10,7 +10,7 @@ If a methodological term appears in the monograph, code documentation, figure ex
 
 ## Current freeze status
 
-This version freezes the core meanings of wall-clock time, fair(time), NFE, viability/feasibility, and checkpoint policy. It does **not** yet freeze the full analytical definitions of regret, TTT, ECDF, or performance profiles; those depend on the analysis protocol and must remain aligned with Section 3.3.
+This version freezes the core meanings of wall-clock time, fair(time), NFE, viability/feasibility, checkpoint policy, the benchmark-synthesis meanings of TTT, ECDF, and performance profiles, the frozen stochastic benchmark profiles, the WSL2 external-validity boundary, the selector outer holdout boundary, the fixed CART regime, and the active artifact contract. Selector regret is anchored to the frozen outer protocol, but its final operationalization remains pending until the selector layer is fully instantiated.
 
 ## Frozen methodological definitions
 
@@ -103,9 +103,27 @@ The checkpoint policy is frozen at the semantic level as follows:
 - Black-box multilevel baselines that do not expose anytime trajectories are represented as single-point final observations under the same reference clock.
 - Checkpoint data and single-point baseline outputs must enter the same artifact chain so that later curves and analyses are reconstructed from the recorded execution trace rather than from informal summaries.
 
-## Traceability caveat that remains open
+## Temporal field naming freeze for execution artifacts
 
-A schema-level wording conflict still exists in the current monograph draft: checkpoint time is described with `time_ns` in the artifact discussion and summary table, while some surrounding prose also refers to `time_ms` fields for best-time summaries. The semantic policy is already frozen — checkpoint time must be stored in one canonical field/unit and interpreted on the universal time axis — but the exact field/unit wording in the text must be aligned with the actual runner schema before final freeze. Until that verification is done, no chapter should casually alternate between `time_ms` and `time_ns` for checkpoints.
+The semantic policy of the project remains unchanged: wall-clock time is the universal effort axis for cross-solver comparison, and checkpoint data exist to reconstruct observed progress on that same external temporal axis.
+
+This naming is now frozen at the artifact-contract level as follows:
+
+- the canonical serialized execution-time field is `elapsed_ms`;
+- the canonical serialized checkpoint timestamp field is `checkpoints[].time_ms`;
+- `elapsed_wall_ms`, when present, is diagnostic wrapper time and must not replace `elapsed_ms` as the official comparison field;
+- legacy summary labels such as `time_ms_best` must not be treated as the primary naming of the current contract;
+- `time_ns` is not the canonical serialized checkpoint field of the current project contract.
+
+Interpretation rule:
+
+- `elapsed_ms` represents the official runner-measured elapsed solver time under the controlled protocol;
+- `checkpoints[].time_ms` represents the temporal coordinate of each observed checkpoint on the same universal wall-clock axis;
+- optional NFE in checkpoints remains diagnostic and intra-family, not the universal effort axis.
+
+Editorial consequence:
+
+No chapter, table, schema description, or artifact explanation may casually alternate between `time_ns` and `time_ms` for the same checkpoint role. If internal clock resolution in nanoseconds is mentioned for implementation detail, that mention must be clearly separated from the canonical serialized artifact naming.
 
 ## Methodological guardrails derived from the freeze
 
@@ -115,24 +133,228 @@ A schema-level wording conflict still exists in the current monograph draft: che
 4. Do not confuse final-quality comparison at the timeout with anytime trajectory comparison.
 5. Do not treat feasibility, target attainment, and execution success as the same event.
 
+## Repetition policy for stochastic benchmarking
+
+The benchmark release distinguishes between stochastic participants and point-output baselines.
+
+- The stochastic participants of the canonical thesis portfolio are `SA`, `TS`, `ILS`, and `GRASP`.
+- Their repetition unit is `(instance, algorithm, budget)`.
+- Each such slice must be executed with `n_rep = 5` independent repetitions under the fixed seed set `[42, 43, 44, 45, 46]`.
+- The multilevel baselines `METIS` and `KaHIP` remain single-run participants under the same wall-clock budget and validation contract, unless a later audit demonstrates material nondeterminism that requires revisiting this rule.
+
+Interpretation rule:
+
+- repetition exists to stabilize benchmark observations for stochastic participants;
+- repetition is not defined by morphological regime, nor by portfolio-wide batch, but by the concrete `(instance, algorithm, budget)` slice;
+- all repetitions remain subject to the same fair(time) contract, validation contract, and artifact contract.
+
+## Aggregation rule before statistical analysis and ASP labeling
+
+Repeated runs must be collapsed before cross-algorithm comparison and before constructing the ASP supervised target.
+
+The collapse rule is frozen as follows:
+
+1. only independently validated feasible runs may enter the quality aggregation;
+2. the primary aggregated quality value is the median final validated edge-cut result for that `(instance, algorithm, budget)` slice;
+3. ties in aggregated quality are broken by the median `elapsed_ms`;
+4. if a tie still remains, the final fallback is the lexicographic order of the algorithm identifier, and the tied set must be logged explicitly;
+5. if a participant has zero feasible runs on a slice, that participant is marked invalid for winner labeling on that slice, while the failure remains part of the benchmark diagnostics.
+
+## ASP target construction from repeated runs
+
+The supervised target `y_i*(T*)` is defined over the collapsed per-instance table, not over raw runs.
+
+Operationally:
+
+- for each instance `i` and benchmark budget `T*`, each candidate algorithm contributes one collapsed observation after the repetition rule above;
+- `y_i*(T*)` is the algorithm that wins under the frozen aggregation and tie rule;
+- SBS and VBS comparisons must use the same collapsed per-instance representation;
+- an instance for which no participant yields a feasible validated observation is excluded from supervised winner labeling and must be reported separately as an unlabeled benchmark failure case.
+
+Methodological guardrail:
+
+No chapter, script, figure, or selector dataset may alternate between raw repeated runs and collapsed per-instance winners without stating that change explicitly. The canonical benchmark comparison layer and the ASP labeling layer must use the same collapsed rule.
+
 ## Still pending freeze items
 
-- Exact project-level meaning of TTT in the presence of point-output baselines and censored observations.
-- Exact project-level meaning of ECDF and when it is reported over time budgets versus target-attainment events.
-- Exact admissibility conditions for performance profiles in this project.
-- Exact operational definition of regret for the selector evaluation.
-- Final schema confirmation for checkpoint time field/unit against the runner implementation.
+- Exact instantiated CART parameter tuple and the final selector-regret operationalization inside the frozen outer protocol.
 
-### 6. Portfolio scope boundary
+## Frozen stochastic hyperparameter profiles for the benchmark release
 
-The current canonical thesis portfolio is limited to the four anytime metaheuristics SA, TS, ILS, and GRASP, plus the multilevel baselines METIS and KaHIP.
+The bounded pre-benchmark calibration stage `EXP-CALIB-001` is now complete, and the current benchmark release freezes one global profile per stochastic participant.
 
-Operational consequences:
+The frozen profiles are:
 
-- Any `greedy` baseline present in the repository is exploratory and must not be treated as a canonical benchmark participant.
-- Official phase plans, official manifests, and the selector label space must not include `greedy` unless this file is explicitly updated first.
-- Engineering validation of `greedy` may remain in the repository, but its outputs cannot support central benchmark claims in the monograph.
+- `GRASP` → `grasp_b`
+  - `alpha = 0.30`
+  - `max_iters = 100`
+  - `checkpoint_every_iter = 1`
 
-Canonical short wording for prose:
+- `ILS` → `ils_b`
+  - `max_iters = 100`
+  - `perturb_moves = 4`
+  - `checkpoint_every_iter = 1`
 
-> The canonical thesis portfolio comprises SA, TS, ILS, GRASP, METIS, and KaHIP; any greedy baseline retained in the repository is exploratory and outside the official benchmark flow.
+- `SA` → `sa_e_maxsteps_100000`
+  - `initial_temp = 1.0`
+  - `cooling = 0.997`
+  - `min_temp = 0.001`
+  - `max_steps = 100000`
+  - `checkpoint_every_nfe = 100`
+
+- `TS` → `ts_c`
+  - `max_steps = 10000`
+  - `min_tenure = 7`
+  - `tenure_scale = 1.0`
+  - `tenure_jitter = 4`
+  - `checkpoint_every_nfe = 100`
+  - `frequency_penalty = 0.01`
+
+Methodological rule:
+
+- these are global release-level profiles, not instance-specific profiles;
+- they were selected through the bounded calibration protocol rather than through retuning inside the main campaign;
+- no post hoc profile switching is allowed after the benchmark release starts unless the canon is explicitly reopened.
+
+Operational consequence:
+
+The official metaheuristic benchmark plans and their pilot counterparts must use these same profiles.
+
+## External-validity boundary of the audited WSL2 environment
+
+The benchmark release uses a controlled WSL2 execution environment that was explicitly revalidated during release preparation.
+
+Methodological interpretation:
+
+- comparative benchmark claims remain admissible inside this audited environment because all compared solvers are exposed to the same execution surface, wall-clock budget semantics, validation contract, and mono-thread controls;
+- the project therefore treats the environment as a valid controlled benchmark surface for internal comparison;
+- however, absolute timing results must not be overgeneralized as if they were automatically identical to native bare-metal Linux or to arbitrary external machines.
+
+Operational wording rule:
+
+- the text may say that the benchmark was executed in an audited controlled WSL2 environment;
+- the text may say that cross-solver comparisons are valid under this shared environment;
+- the text must not claim hardware-independent absolute timing equivalence beyond the audited environment unless a separate confirmation is produced.
+
+Threat-to-validity consequence:
+
+Any monograph section discussing validity should separate:
+1. internal fairness under the controlled environment; and
+2. external generalization of absolute runtime magnitudes beyond that environment.
+
+## Frozen benchmark-synthesis metrics
+
+The benchmark-synthesis layer of the project is now frozen for `TTT`, `ECDF`, and `performance profiles`.
+
+### TTT
+
+The project-specific meaning of `TTT` is a wall-clock target-attainment quantity.
+
+Operational rule:
+
+- a target rule must be declared explicitly in the corresponding benchmark analysis batch or preregistration;
+- for instrumented anytime solvers, attainment time is the first checkpoint time at which the validated quality satisfies the target;
+- for point-output baselines, attainment is only observed at the final `elapsed_ms`; if the final validated output satisfies the target, attainment time equals that final time, otherwise the observation is right-censored at the budget boundary;
+- for stochastic participants, run-level attainment observations are first expressed on the same wall-clock axis with right-censoring at the budget, then collapsed to a single per-instance representative time by the median rule; if the collapsed value lands at the budget boundary because attainment was not achieved early enough across repetitions, the slice is treated as right-censored.
+
+Interpretive consequence:
+
+`TTT` is admissible in this project even with point-output baselines, but their contribution is degenerate at the final observation time rather than a full anytime trajectory.
+
+### ECDF
+
+The project-specific meaning of `ECDF` is an attainment-over-time summary on the wall-clock axis.
+
+Operational rule:
+
+- for a declared target rule and a wall-clock budget `t`, `ECDF_a(t)` is the fraction of instances whose collapsed attainment time for algorithm `a` is less than or equal to `t`;
+- right-censored slices count as non-attained up to their censoring point;
+- the ECDF therefore summarizes the same collapsed target-attainment surface used by TTT rather than a separate ad hoc construction.
+
+Interpretive consequence:
+
+ECDF is an admissible cross-family summary because the effort axis remains wall-clock time, but its meaning must remain target-attainment over time, not final-quality-at-timeout.
+
+### Performance profiles
+
+The project-specific meaning of `performance profiles` is restricted to collapsed final-quality comparison at a fixed budget.
+
+Operational rule:
+
+- let `q_{a,i}` denote the collapsed final validated cutsize of algorithm `a` on instance `i` at the fixed budget;
+- since the project minimizes edge cut, the profile ratio is `r_{a,i} = q_{a,i} / min_b q_{b,i}`;
+- performance profiles are admissible only on the common-feasible set where every compared algorithm has a feasible collapsed final observation on the instance;
+- excluded instances caused by infeasibility or missing valid collapsed outputs must be reported separately and must not be silently hidden.
+
+Interpretive consequence:
+
+In this project, performance profiles summarize endpoint relative quality, not anytime attainment behavior.
+
+### Scope boundary
+
+Selector regret is not part of the present benchmark-synthesis freeze.
+
+Its canonical definition is deferred to the selector-evaluation layer and must be frozen only after the outer ASP validation protocol and the CART model-selection regime are frozen.
+
+## Frozen outer validation boundary for selector evaluation
+
+The selector-evaluation layer now freezes its outer validation boundary independently of the later CART-regime choice.
+
+### Outer split unit
+
+The external split unit is the **instance**, using the collapsed per-instance benchmark table as the selector dataset surface.
+
+Operational consequence:
+
+- raw repeated runs, seeds, checkpoints, and per-run observations must not be split independently across train and test;
+- selector evaluation is defined only after the repeated-run collapse and benchmark-label construction stages are complete.
+
+### Untouched external holdout
+
+The canonical selector protocol uses a single deterministic preregistered external holdout manifest.
+
+Operational consequence:
+
+- the outer test partition must remain untouched until the final selector evaluation;
+- no preprocessing, feature decision, hyperparameter choice, model choice, threshold choice, or class-handling adjustment may use outer-test information;
+- final selector claims are reported on the outer test split only.
+
+### Relation to D-015
+
+The outer boundary is frozen now; the internal CART regime is not.
+
+Operational consequence:
+
+- if D-015 later adopts a searched CART regime, the search must occur only inside the training partition;
+- if D-015 later adopts a fixed CART regime, that fixed model is trained on the training side and evaluated once on the untouched outer test side;
+- selector regret is canonically interpretable only inside this outer holdout protocol.
+
+## Frozen CART regime for selector evaluation
+
+The canonical selector track adopts a fixed CART regime rather than a searched regime.
+
+Operational rule:
+
+- no grid search, random search, Bayesian optimization, nested model selection, or cross-family model search is allowed in the canonical selector track;
+- one explicit deterministic CART configuration must be declared when the selector implementation is instantiated;
+- this fixed CART operates strictly inside the outer holdout protocol already frozen by D-011.
+
+Interpretive consequence:
+
+Selector results, when eventually produced, must be interpreted as evidence for a controlled interpretable baseline selector under a fixed CART regime, not as evidence that the selector family was exhaustively optimized.
+
+## Active artifact contract confirmation
+
+The benchmark-release artifact contract is now treated as confirmed against the current runner, JSON schema, and manifest chain.
+
+Confirmed contract points:
+
+- `elapsed_ms` is the official serialized elapsed-time field;
+- `checkpoints[].time_ms` is the official serialized checkpoint time field;
+- optional NFE remains diagnostic and restricted to instrumented participants;
+- point-output baselines remain valid single-point final observations under the same wall-clock contract;
+- run status, feasibility, and validation semantics follow the already frozen methodological definitions.
+
+Operational consequence:
+
+No active release-candidate document should continue to describe runner/schema/manifest alignment as a pending methodological blocker.

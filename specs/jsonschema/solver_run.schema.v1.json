@@ -17,7 +17,8 @@
     "metrics",
     "env",
     "tools",
-    "paths"
+    "paths",
+    "checkpoints"
   ],
   "properties": {
     "timestamp": {
@@ -208,6 +209,73 @@
           ]
         }
       }
+    },
+    "checkpoints": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "time_ms",
+          "cutsize_best"
+        ],
+        "properties": {
+          "time_ms": {
+            "type": "integer"
+          },
+          "cutsize_best": {
+            "type": "integer"
+          },
+          "nfe": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "cutsize_best": {
+      "type": "integer"
+    },
+    "feasible": {
+      "type": "boolean"
+    },
+    "schema_path": {
+      "type": "string"
+    },
+    "schema_version": {
+      "type": "string"
+    },
+    "validation": {
+      "type": "object",
+      "properties": {
+        "cut_ok": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "balance_ok": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "recomputed_cutsize": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "imbalance_raw": {
+          "type": [
+            "number",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": true
     }
   },
   "additionalProperties": true

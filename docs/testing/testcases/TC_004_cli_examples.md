@@ -14,42 +14,38 @@ Verify that the documented CLI examples for:
 - the **instance generator** (`generator.cli`), and
 - the **experiment runner** (`hpc_framework.cli`)
 
-remain valid and behave as described in the documentation.
+remain valid and behave as described in the active documentation.
 
 ---
 
 ## 2. Preconditions
 
-- The project is installed (via Poetry or an equivalent virtual environment).
-- External solvers (METIS, KaHIP) are installed and on `PATH` if full experiments are to be run.
-- The documentation pages are up to date:
+- The project is installed.
+- External solvers are installed and on `PATH` when the selected plan requires them.
+- The active docs are up to date:
   - `docs/api/generator_cli.md`
   - `docs/api/hpc_framework_cli.md`
-  - `docs/reports/02_experimental_campaign.md`
+  - `docs/protocol/current_benchmark_contract.md`
+  - `README.md`
 
 ---
 
 ## 3. Procedure
 
-1. Inspect the current CLI help for the generator:
+1. Inspect the generator help:
 
    ```bash
    cd ~/MPP
    poetry run python -m generator.cli --help
-````
+   ```
 
-Compare the available subcommands and options with the description in
-`docs/api/generator_cli.md`.
-
-2. Inspect the current CLI help for the runner:
+2. Inspect the runner help:
 
    ```bash
    poetry run python -m hpc_framework.cli --help
    ```
 
-   Compare the output against `docs/api/hpc_framework_cli.md`.
-
-3. Execute the Phase 1 plan using the documented command:
+3. Execute a documented plan:
 
    ```bash
    ./scripts/run_phase_1.sh
@@ -57,25 +53,22 @@ Compare the available subcommands and options with the description in
 
    Confirm that:
 
-   * the output paths match the description in
-     `docs/reports/02_experimental_campaign.md`;
-   * raw JSON files under `data/results_raw/phase1/` are generated as expected.
+   * the selected plan file matches the intended scope
+   * output files are written under the plan `output.raw_dir`
+   * generated artifacts validate against `specs/jsonschema/solver_run.schema.v1.json`
 
-4. If relevant, test a minimal generator invocation (single instance), following the
-   high-level pattern in `docs/api/generator_cli.md`, and verify that the output file
-   adheres to `specs/schema_input.json`.
+4. If relevant, execute a small generator invocation and confirm that the output respects
+   `specs/schema_input.json`.
 
 ---
 
 ## 4. Expected results
 
-* CLI help output for both modules is consistent with the documentation.
-* The Phase 1 plan runs successfully and writes results to the locations documented
-  in `02_experimental_campaign.md`.
-* Any discrepancies (missing flags, renamed commands, changed defaults) are either:
-
-  * corrected in the code to restore the documented behaviour, or
-  * documented explicitly and propagated to the relevant pages.
+* CLI help output is consistent with the documentation.
+* The selected plan runs with the documented command.
+* Official tracked plans keep `greedy` out of official scope.
+* Exploratory greedy plans remain visibly separated from official benchmark claims.
+* Result artifacts use `elapsed_ms` and `checkpoints[].time_ms`.
 
 ---
 
@@ -90,12 +83,14 @@ Compare the available subcommands and options with the description in
 
   * `docs/api/generator_cli.md`
   * `docs/api/hpc_framework_cli.md`
-  * `docs/reports/02_experimental_campaign.md`
+  * `docs/protocol/current_benchmark_contract.md`
+  * `README.md`
 
-* **Specs**
+* **Specs / configs**
 
   * `specs/schema_input.json`
+  * `specs/jsonschema/solver_run.schema.v1.json`
   * `configs/plan_phase_1.yaml`
+  * `configs/plan_phase_1_pilot.yaml`
 
-```
 ```

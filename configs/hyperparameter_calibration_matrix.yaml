@@ -1,0 +1,163 @@
+calibration_id: exp-calib-001
+description: >
+  Bounded pre-benchmark hyperparameter calibration matrix for the stochastic
+  participants. This file is not the main benchmark plan. It is the companion
+  parameter source for EXP-CALIB-001 and for the later D-012 freeze.
+
+environment:
+  same_fair_time_semantics_as_benchmark: true
+  same_validation_contract_as_benchmark: true
+  mono_thread_expected: true
+
+panel:
+  base_dir: data/instances/synthetic
+  instances:
+    - n2000_p50.json.gz
+    - modnull_n3000_p50.json.gz
+    - mix_betas_n3000_p35_cv045.json.gz
+    - n4000_cv_high.json.gz
+    - n5000_cv_low.json.gz
+    - wilson_tree_n10000.json.gz
+
+budget:
+  k: 8
+  imbalance: 0.03
+  screening_seconds: 5
+  confirmation_seconds: 5
+
+seeds:
+  screening: [42, 43, 44]
+  confirmation: [42, 43, 44, 45, 46]
+
+selection:
+  stage1_finalists_per_algorithm: 2
+  primary_aggregate: median_final_validated_cutsize
+  tie_break: median_elapsed_ms
+  feasibility_required: true
+
+candidates:
+  sa:
+    - id: sa_a
+      initial_temp: 0.5
+      cooling: 0.995
+      min_temp: 0.001
+      max_steps: 10000
+      checkpoint_every_nfe: 100
+    - id: sa_b
+      initial_temp: 1.0
+      cooling: 0.995
+      min_temp: 0.001
+      max_steps: 10000
+      checkpoint_every_nfe: 100
+    - id: sa_c
+      initial_temp: 2.0
+      cooling: 0.995
+      min_temp: 0.001
+      max_steps: 10000
+      checkpoint_every_nfe: 100
+    - id: sa_d
+      initial_temp: 1.0
+      cooling: 0.990
+      min_temp: 0.001
+      max_steps: 10000
+      checkpoint_every_nfe: 100
+    - id: sa_e
+      initial_temp: 1.0
+      cooling: 0.997
+      min_temp: 0.001
+      max_steps: 10000
+      checkpoint_every_nfe: 100
+    - id: sa_f
+      initial_temp: 2.0
+      cooling: 0.990
+      min_temp: 0.001
+      max_steps: 10000
+      checkpoint_every_nfe: 100
+
+  ts:
+    - id: ts_a
+      max_steps: 10000
+      min_tenure: 5
+      tenure_scale: 1.0
+      tenure_jitter: 4
+      checkpoint_every_nfe: 100
+      frequency_penalty: 0.00
+    - id: ts_b
+      max_steps: 10000
+      min_tenure: 5
+      tenure_scale: 1.0
+      tenure_jitter: 4
+      checkpoint_every_nfe: 100
+      frequency_penalty: 0.01
+    - id: ts_c
+      max_steps: 10000
+      min_tenure: 7
+      tenure_scale: 1.0
+      tenure_jitter: 4
+      checkpoint_every_nfe: 100
+      frequency_penalty: 0.01
+    - id: ts_d
+      max_steps: 10000
+      min_tenure: 5
+      tenure_scale: 1.5
+      tenure_jitter: 4
+      checkpoint_every_nfe: 100
+      frequency_penalty: 0.01
+    - id: ts_e
+      max_steps: 10000
+      min_tenure: 7
+      tenure_scale: 1.5
+      tenure_jitter: 6
+      checkpoint_every_nfe: 100
+      frequency_penalty: 0.01
+    - id: ts_f
+      max_steps: 10000
+      min_tenure: 5
+      tenure_scale: 1.0
+      tenure_jitter: 6
+      checkpoint_every_nfe: 100
+      frequency_penalty: 0.02
+
+  ils:
+    - id: ils_a
+      max_iters: 100
+      perturb_moves: 2
+      checkpoint_every_iter: 1
+    - id: ils_b
+      max_iters: 100
+      perturb_moves: 4
+      checkpoint_every_iter: 1
+    - id: ils_c
+      max_iters: 150
+      perturb_moves: 2
+      checkpoint_every_iter: 1
+    - id: ils_d
+      max_iters: 150
+      perturb_moves: 4
+      checkpoint_every_iter: 1
+
+  grasp:
+    - id: grasp_a
+      alpha: 0.15
+      max_iters: 100
+      checkpoint_every_iter: 1
+    - id: grasp_b
+      alpha: 0.30
+      max_iters: 100
+      checkpoint_every_iter: 1
+    - id: grasp_c
+      alpha: 0.45
+      max_iters: 100
+      checkpoint_every_iter: 1
+    - id: grasp_d
+      alpha: 0.15
+      max_iters: 150
+      checkpoint_every_iter: 1
+    - id: grasp_e
+      alpha: 0.30
+      max_iters: 150
+      checkpoint_every_iter: 1
+    - id: grasp_f
+      alpha: 0.45
+      max_iters: 150
+      checkpoint_every_iter: 1

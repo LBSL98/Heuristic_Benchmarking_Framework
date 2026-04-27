@@ -1,3 +1,8 @@
+> Legacy / quarantine notice
+>
+> This overview mixes historical MPP framing and environment assumptions that no longer define the
+> active benchmark flow. It is retained only for auditability.
+
 ### 1. Filosofia e Escopo da Pesquisa
 
 * **Decisão:** O projeto focará na **Fase 1**, uma caracterização de performance de heurísticas em ambiente controlado, para construir um **Modelo Preditivo de Performance (MPP)**.

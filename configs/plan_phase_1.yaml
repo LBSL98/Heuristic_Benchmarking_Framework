@@ -1,7 +1,9 @@
 schema: forja-exp-v1
-experiment_id: tcc-phase1-official-canonical-scope
-description: Official executable flow aligned with current canonical thesis governance;
-  greedy excluded from official benchmark scope.
+experiment_id: tcc-phase1-baseline-slice
+description: Baseline-only executable phase-1 slice preserved in the active repository
+  flow; wall-clock contract aligned with the canonical thesis benchmark, greedy excluded,
+  and the full canonical portfolio documented separately as SA, TS, ILS, GRASP, METIS,
+  and KaHIP.
 rng:
   seeds:
   - 42

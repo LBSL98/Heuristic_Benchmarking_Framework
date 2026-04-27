@@ -1,0 +1,24 @@
+schema: forja-exp-v1
+experiment_id: calib-stage1-smoke-grasp-grasp_a
+solvers:
+  grasp:
+    enabled: true
+    k: 8
+    imbalance: 0.03
+    budget:
+      type: time
+      seconds: 5
+    params:
+      alpha: 0.15
+      max_iters: 100
+      checkpoint_every_iter: 1
+instances:
+  base_dir: data/instances/synthetic
+  include:
+  - n2000_p50.json.gz
+  manifest_out: data/results_raw/calibration_stage1_smoke/grasp/grasp_a/manifest_index.csv
+rng:
+  seeds:
+  - 42
+output:
+  raw_dir: data/results_raw/calibration_stage1_smoke/grasp/grasp_a

@@ -1,3 +1,8 @@
+> Legacy / quarantine notice
+>
+> This report is preserved for traceability only. Its experiment design, objective function, and
+> response metric are not the active benchmark contract of the repository.
+
 # Desenho Experimental da Fase 1
 
 ## 1. Objetivo

@@ -3,6 +3,110 @@
 > Todas as mudanças notáveis neste projeto serão documentadas aqui.
 > Versão atual: **v0.8.0** — 2025-09-12
 
+
+## Unreleased
+
+### Documentation, governance, and benchmark-release preparation
+
+- Added a benchmark-release readiness scaffold in `decisions/10_Benchmark_Release_Checklist.md`, explicitly separating technical release preparation from still-open methodological freezes.
+- Added bounded pre-benchmark hyperparameter calibration scaffolding through:
+  - `decisions/11_Hyperparameter_Calibration_Protocol.md`
+  - `configs/hyperparameter_calibration_matrix.yaml`
+  - preregistration entry `EXP-CALIB-001` in `decisions/06_Experiment_Ledger.md`
+- Updated active repository documentation to reflect the current benchmark contract, including:
+  - canonical artifact time fields `elapsed_ms` and `checkpoints[].time_ms`
+  - official KaHIP 3.17 repository narrative
+  - release-candidate reproducibility and testing guidance
+- Preserved legacy material as explicitly quarantined / archived documentation instead of deleting it blindly.
+
+### Plans and benchmark scope
+
+- Added tracked canonical split plans for baseline-only and metaheuristic slices:
+  - `configs/plan_phase_1_baselines.yaml`
+  - `configs/plan_phase_1_metaheuristics.yaml`
+  - `configs/plan_phase_1_pilot_baselines.yaml`
+  - `configs/plan_phase_1_pilot_metaheuristics.yaml`
+- Kept exploratory greedy plans separated from official benchmark scope.
+- Added governance coverage for canonical benchmark plans through `tests/test_canonical_benchmark_plans.py`.
+
+### Artifact contract and schema
+
+- Aligned `specs/jsonschema/solver_run.schema.v1.json` with the active artifact contract used by the runner.
+- Added explicit schema support for:
+  - `checkpoints`
+  - `cutsize_best`
+  - `feasible`
+  - `schema_path`
+  - `schema_version`
+  - `validation`
+- Revalidated the runner/schema surface against live generated artifacts and targeted contract tests.
+
+### Container and execution surface
+
+- Fixed the Docker build path by:
+  - aligning the image Poetry version with the validated host version
+  - installing dependencies with `--no-root` first
+  - copying `README.md` and source files before installing the root package
+- Revalidated Docker/compose execution under WSL2 after integration was restored.
+- Removed the obsolete `version` key from `docker-compose.yml`.
+
+### Environment-validity freeze
+
+- Froze `D-009`, defining the audited WSL2 environment as acceptable for internal benchmark comparison while explicitly limiting external claims about absolute runtime portability.
+
+### Benchmark-synthesis metrics freeze
+
+- Froze `D-010` for the benchmark-synthesis layer.
+- `TTT`, `ECDF`, and `performance profiles` now have canonical project definitions.
+- Selector regret was explicitly deferred to the selector-evaluation freeze (`D-011` / `D-015`) instead of remaining mixed into benchmark-synthesis wording.
+
+### Selector outer-validation freeze
+
+- Froze `D-011`, defining selector evaluation on the collapsed per-instance table with a deterministic external holdout at instance level.
+- Explicitly separated the outer validation boundary from the later CART-regime choice (`D-015`).
+
+### Fixed CART regime freeze
+
+- Froze `D-015`, adopting a fixed CART regime for the canonical selector track.
+- Explicitly rejected searched / nested model-selection regimes in the current canonical release candidate.
+
+
+### Benchmark preregistration freeze
+
+### Pilot benchmark approval
+
+- Marked `EXP-BENCH-PILOT-001` as completed after positive pilot review.
+- Recorded that the pilot review gate closed with 112 expected artifacts, 112 actual artifacts, and zero schema errors.
+- Recorded that `EXP-BENCH-MAIN-001` became admissible under the same frozen protocol, without starting the main campaign.
+
+
+- Froze `D-014`, separating pilot authorization from main-campaign authorization.
+- Added real planned ledger entries for `EXP-BENCH-PILOT-001` and `EXP-BENCH-MAIN-001`.
+- Kept the main campaign blocked until pilot review is complete.
+
+
+### Artifact-contract confirmation closure
+
+- Closed `OI-011` through `D-016`.
+- Promoted the active runner/schema/manifest surface to the confirmed canonical artifact contract for the release candidate.
+- Removed residual wording that still treated artifact-contract confirmation as pending.
+
+
+### Calibration completion
+
+- Completed `EXP-CALIB-001` and froze the stochastic benchmark-release profiles through `D-012`.
+- Final frozen winners:
+  - `GRASP = grasp_b`
+  - `ILS = ils_b`
+  - `SA = sa_e_maxsteps_100000`
+  - `TS = ts_c`
+
+### Notes
+
+- `mkdocs build --strict` remains green.
+- `docs/specs/mealpy_integration_plan.md` still exists outside the current MkDocs navigation and remains a minor documentation loose end.
+
+
 ## v0.8.0 — 2025-09-12
 
 ### Destaques

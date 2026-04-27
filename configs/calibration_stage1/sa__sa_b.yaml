@@ -1,0 +1,33 @@
+schema: forja-exp-v1
+experiment_id: calib-stage1-sa-sa_b
+solvers:
+  sa:
+    enabled: true
+    k: 8
+    imbalance: 0.03
+    budget:
+      type: time
+      seconds: 5
+    params:
+      initial_temp: 1.0
+      cooling: 0.995
+      min_temp: 0.001
+      max_steps: 10000
+      checkpoint_every_nfe: 100
+instances:
+  base_dir: data/instances/synthetic
+  include:
+  - n2000_p50.json.gz
+  - modnull_n3000_p50.json.gz
+  - mix_betas_n3000_p35_cv045.json.gz
+  - n4000_cv_high.json.gz
+  - n5000_cv_low.json.gz
+  - wilson_tree_n10000.json.gz
+  manifest_out: data/results_raw/calibration_stage1/sa/sa_b/manifest_index.csv
+rng:
+  seeds:
+  - 42
+  - 43
+  - 44
+output:
+  raw_dir: data/results_raw/calibration_stage1/sa/sa_b

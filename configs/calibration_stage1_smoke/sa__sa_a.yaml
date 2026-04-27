@@ -1,0 +1,26 @@
+schema: forja-exp-v1
+experiment_id: calib-stage1-smoke-sa-sa_a
+solvers:
+  sa:
+    enabled: true
+    k: 8
+    imbalance: 0.03
+    budget:
+      type: time
+      seconds: 5
+    params:
+      initial_temp: 0.5
+      cooling: 0.995
+      min_temp: 0.001
+      max_steps: 10000
+      checkpoint_every_nfe: 100
+instances:
+  base_dir: data/instances/synthetic
+  include:
+  - n2000_p50.json.gz
+  manifest_out: data/results_raw/calibration_stage1_smoke/sa/sa_a/manifest_index.csv
+rng:
+  seeds:
+  - 42
+output:
+  raw_dir: data/results_raw/calibration_stage1_smoke/sa/sa_a

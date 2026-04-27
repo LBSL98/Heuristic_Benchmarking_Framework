@@ -17,7 +17,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
 # Instala Poetry (fixe versão que você usa localmente)
-RUN curl -sSL https://install.python-poetry.org | python3 - --version 1.8.3
+RUN curl -sSL https://install.python-poetry.org | python3 - --version 2.2.1
 
 # Copia manifestos primeiro (melhor cache)
 COPY pyproject.toml poetry.lock ./
@@ -25,14 +25,18 @@ COPY pyproject.toml poetry.lock ./
 # Por padrão, sem venv dentro do container
 RUN poetry config virtualenvs.create false
 
-# Instala dependências (inclui dev e extra metrics para networkx)
-RUN poetry install --with dev -E metrics --no-interaction --no-ansi
+# Instala dependências sem instalar o pacote raiz ainda
+RUN poetry install --with dev -E metrics --no-root --no-interaction --no-ansi
 
-# Agora copie o código
+# Agora copie os arquivos necessários para instalar o projeto
+COPY README.md ./README.md
 COPY src ./src
 COPY tests ./tests
 COPY specs ./specs
 COPY scripts ./scripts
+
+# Instala o pacote raiz após o código e o README existirem no container
+RUN poetry install --only-root --no-interaction --no-ansi
 
 # (Opcional) Copie docs se quiser buildar mkdocs
 # COPY docs ./docs
