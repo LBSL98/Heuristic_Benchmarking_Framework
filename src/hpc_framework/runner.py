@@ -370,13 +370,17 @@ def run(
 
         status_json = res.status if res.status in {"ok", "timeout"} else "solver_failed"
         part_file = res.part_path if res.part_path and res.part_path.exists() else None
-        checkpoints = [
-            {
-                "time_ms": solver_elapsed_ms,
-                "cutsize_best": int(cut) if cut is not None else None,
-                "nfe": None,
-            }
-        ]
+        checkpoints = (
+            [
+                {
+                    "time_ms": solver_elapsed_ms,
+                    "cutsize_best": int(cut),
+                    "nfe": None,
+                }
+            ]
+            if cut is not None
+            else []
+        )
 
     # Persistência do JSON (apenas tipos nativos)
     out = {
@@ -405,14 +409,15 @@ def run(
         },
         "env": env_info,
         "tools": tool_info,
-        "feasible": feasible,
-        "validation": validation,
+        "feasible": bool(feasible) if cut is not None else False,
+        "validation": validation if cut is not None else {},
         "checkpoints": checkpoints,
         "schema_version": "1.0.0",
         "schema_path": "specs/jsonschema/solver_run.schema.v1.json",
-        # Campos legados preservados por compatibilidade:
-        "cutsize_best": int(cut) if cut is not None else None,
     }
+    if cut is not None:
+        out["cutsize_best"] = int(cut)
+
     out_json.parent.mkdir(parents=True, exist_ok=True)
     with out_json.open("w", encoding="utf-8") as f:
         json.dump(out, f, ensure_ascii=False, indent=2)
