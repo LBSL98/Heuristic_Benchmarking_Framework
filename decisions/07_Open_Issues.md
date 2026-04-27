@@ -78,9 +78,8 @@ This file tracks unresolved project problems that can still affect coherence, co
 - **Type:** Artifact contract / schema / runner
 - **Severity:** Medium
 - **Origin:** Benchmark release preparation
-- **Current status:** Open
-- **Needed action:** Promote the already completed runner/schema confirmation into the canonical record so that the release no longer treats artifact-contract confirmation as a pending blocker.
-
+- **Current status:** Resolved
+- **Needed action:** Closed by `D-016`. The active release-candidate runner/schema/manifest contract is now treated as canonically confirmed. Timing fields, checkpoint naming, optional NFE semantics, status meanings, and manifest linkage must follow the confirmed active contract rather than remain described as pending.
 ### OI-012 — Benchmark pilot and main campaign preregistration are still placeholders
 - **Type:** Governance / experiment registration
 - **Severity:** High

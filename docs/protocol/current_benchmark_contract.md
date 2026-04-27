@@ -168,6 +168,21 @@ For the current release candidate:
 
 This keeps pilot validation and main comparative evidence as distinct governance events.
 
+
+## Artifact contract confirmation status
+
+The current release candidate treats the active runner/schema/manifest surface as confirmed.
+
+This includes:
+
+- `elapsed_ms` as the official serialized elapsed-time field;
+- `checkpoints[].time_ms` as the official serialized checkpoint timestamp field;
+- optional NFE only as diagnostic instrumentation when available;
+- point-output baselines as valid single-point final observations;
+- the active manifest chain as the auditable linkage between raw artifacts and later analysis.
+
+No active benchmark-release document should continue to present this contract as unresolved.
+
 ## Source-of-truth pointers
 
 When wording must be exact, consult:

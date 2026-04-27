@@ -78,6 +78,13 @@
 - Kept the main campaign blocked until pilot review is complete.
 
 
+### Artifact-contract confirmation closure
+
+- Closed `OI-011` through `D-016`.
+- Promoted the active runner/schema/manifest surface to the confirmed canonical artifact contract for the release candidate.
+- Removed residual wording that still treated artifact-contract confirmation as pending.
+
+
 ### Calibration completion
 
 - Completed `EXP-CALIB-001` and froze the stochastic benchmark-release profiles through `D-012`.

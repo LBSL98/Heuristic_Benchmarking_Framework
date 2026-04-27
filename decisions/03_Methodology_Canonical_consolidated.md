@@ -305,3 +305,20 @@ Operational rule:
 Interpretive consequence:
 
 Selector results, when eventually produced, must be interpreted as evidence for a controlled interpretable baseline selector under a fixed CART regime, not as evidence that the selector family was exhaustively optimized.
+
+
+## Active artifact contract confirmation
+
+The benchmark-release artifact contract is now treated as confirmed against the current runner, JSON schema, and manifest chain.
+
+Confirmed contract points:
+
+- `elapsed_ms` is the official serialized elapsed-time field;
+- `checkpoints[].time_ms` is the official serialized checkpoint time field;
+- optional NFE remains diagnostic and restricted to instrumented participants;
+- point-output baselines remain valid single-point final observations under the same wall-clock contract;
+- run status, feasibility, and validation semantics follow the already frozen methodological definitions.
+
+Operational consequence:
+
+No active release-candidate document should continue to describe runner/schema/manifest alignment as a pending methodological blocker.

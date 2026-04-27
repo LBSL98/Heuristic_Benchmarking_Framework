@@ -230,3 +230,29 @@ This file records frozen project decisions. A decision only becomes canonical af
 - **Rationale:** The benchmark release now has the central methodological freezes in place, so the remaining governance requirement is to ensure that pilot execution and the main campaign are separately registered and that the main campaign cannot begin under an implicitly modified protocol.
 - **Impact:** `06_Experiment_Ledger.md` must contain real planned entries for `EXP-BENCH-PILOT-001` and `EXP-BENCH-MAIN-001`. The checklist must treat preregistration as complete only after those entries are populated. The main campaign remains blocked until pilot review is complete.
 - **Supersedes / Superseded by:** Freezes the policy previously left open in OI-012.
+
+### D-016 — Active artifact contract confirmed against runner, schema, and manifest chain
+- **Status:** Frozen
+- **Date:** 2026-04-25
+- **Decision:** The active benchmark-release artifact contract is canonically confirmed against the current runner behavior, the JSON schema, and the manifest chain.
+
+  1. **Timing fields**
+     - The official serialized elapsed-time field is `elapsed_ms`.
+     - The official serialized checkpoint timestamp field is `checkpoints[].time_ms`.
+     - Optional wall-wrapper diagnostics, when present, do not replace `elapsed_ms` as the official comparison field.
+
+  2. **Checkpoint and instrumentation semantics**
+     - Instrumented anytime participants may expose checkpoint progress plus optional NFE diagnostics.
+     - Point-output baselines remain single-point final observations under the same wall-clock contract.
+     - Missing NFE for black-box baselines is methodological, not a defect.
+
+  3. **Status and validation semantics**
+     - Run status, feasibility, and validation outcomes must keep the meanings already frozen in the methodological canon.
+     - The schema, runner output, and artifact descriptions must not drift into alternate naming or mixed status semantics.
+
+  4. **Manifest-chain consequence**
+     - The manifest and raw-artifact chain currently used by the release candidate is accepted as the active auditable contract for benchmark execution and later analysis reconstruction.
+
+- **Rationale:** Benchmark-release preparation already aligned the active runner, schema, and documentation surface. The remaining problem was canonical housekeeping: the project still carried a stale open issue and residual wording that treated this confirmation as pending. Freezing it now removes avoidable ambiguity before pilot execution.
+- **Impact:** Monograph prose, repository documentation, tables of artifact fields, and benchmark-analysis tooling must treat the current runner/schema/manifest surface as the confirmed active contract. No release-candidate text should continue to describe this confirmation as open.
+- **Supersedes / Superseded by:** Closes the pending confirmation previously tracked as OI-011.

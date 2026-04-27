@@ -54,6 +54,9 @@
 - [ ] Pilot runs are linked to `EXP-BENCH-PILOT-001` and main campaign runs are linked to `EXP-BENCH-MAIN-001`.
 - [ ] Main campaign execution did not begin before documented pilot review.
 
+- [ ] Reported artifact fields match the active confirmed contract (`elapsed_ms`, `checkpoints[].time_ms`, status semantics, optional NFE only when instrumented).
+- [ ] Manifest linkage between raw outputs and later benchmark tables is preserved under the active release-candidate contract.
+
 ## 6. Reporting
 
 - [ ] Tables and plots cite the commit, plan, and dataset slice used.

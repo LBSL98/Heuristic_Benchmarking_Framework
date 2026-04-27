@@ -34,7 +34,7 @@ These items are treated here as prerequisites, not as open design questions.
 | Analytical benchmark synthesis metrics | OI-008 / D-010 | Exact operational definitions of TTT, ECDF, and performance profiles; selector regret deferred to D-011 / D-015 | `01_Decision_Log.md`, `03_Methodology_Canonical_consolidated.md`, analysis scripts |
 | ASP outer validation protocol | OI-009 / D-011 | Final instance-level external holdout policy over the collapsed selector table | `01_Decision_Log.md`, `03_Methodology_Canonical_consolidated.md`, future selector evaluation scripts |
 | Final stochastic hyperparameter profiles | OI-010 / D-012 | Frozen final values for SA, TS, ILS, GRASP | `01_Decision_Log.md`, `03_Methodology_Canonical_consolidated.md`, plans/configs |
-| Final artifact-schema confirmation | OI-011 | Final cross-check of runner/manifest/schema contract | `03_Methodology_Canonical_consolidated.md`, docs/specs, audit report |
+| Final artifact-schema confirmation | OI-011 / D-016 | Active runner/schema/manifest contract canonically confirmed | `01_Decision_Log.md`, `03_Methodology_Canonical_consolidated.md`, docs/protocol, audit trail |
 | Campaign preregistration | OI-012 / D-014 | Final planned ledger entries for pilot and main campaign | `06_Experiment_Ledger.md` |
 | Conceptual benchmark figures clearance | OI-013 | Final technical clearance and conceptual-only wording where required | `05_Figures_Equations_Register.md`, monograph figure captions/body |
 | CART model-selection regime | OI-014 / D-015 | Fixed CART regime frozen; exact instantiated tuple still to be declared when selector implementation begins | `01_Decision_Log.md`, `03_Methodology_Canonical_consolidated.md`, future selector scripts |
@@ -110,7 +110,7 @@ This section exists only to make final freeze insertion short and local later.
 - Files to update:
 - Notes:
 
-## Canonical preregistration placeholders required before execution
+## Canonical preregistration entries required before execution
 
 The benchmark campaign should eventually appear in the ledger as at least two distinct entries:
 
