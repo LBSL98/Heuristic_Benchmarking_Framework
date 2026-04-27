@@ -2,7 +2,7 @@ name: CI (minimal)
 
 on:
   push:
-    branches: ['**']
+    branches-ignore: [gh-pages]
     paths-ignore: ['site/**']
   pull_request:
     branches: [main, dev]

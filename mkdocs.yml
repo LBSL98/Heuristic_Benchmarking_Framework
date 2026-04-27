@@ -1,8 +1,24 @@
 site_name: FORJA / MPP Docs
+site_description: Reproducible benchmarking framework for fair graph partitioning comparisons.
 site_url: https://lbsl98.github.io/Heuristic_Benchmarking_Framework/
 repo_url: https://github.com/LBSL98/Heuristic_Benchmarking_Framework
+repo_name: LBSL98/Heuristic_Benchmarking_Framework
+edit_uri: edit/main/docs/
 theme:
   name: material
+  features:
+    - navigation.sections
+    - navigation.top
+    - search.highlight
+    - search.suggest
+    - content.code.copy
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - tables
+  - toc:
+      permalink: true
 
 nav:
   - Home: index.md

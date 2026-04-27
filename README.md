@@ -1,53 +1,62 @@
-# FORJA / MPP
+# FORJA
+## Framework reproduzível para benchmarking de particionamento de grafos
 
-> Framework reprodutível para benchmarking de algoritmos de particionamento de grafos com trilha de auditoria explícita.
+> Infraestrutura experimental auditável para comparação justa entre solvers multilevel e meta-heurísticas sob um protocolo congelado de `fair(time)`.
 
-[![CI](https://github.com/Gorgomel/Heuristic_Benchmarking_Framework/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/Gorgomel/Heuristic_Benchmarking_Framework/actions)
+[![CI](https://github.com/LBSL98/Heuristic_Benchmarking_Framework/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/LBSL98/Heuristic_Benchmarking_Framework/actions/workflows/ci.yml)
+[![Docs](https://img.shields.io/badge/docs-online-0A7BBB?logo=materialformkdocs&logoColor=white)](https://lbsl98.github.io/Heuristic_Benchmarking_Framework/)
+[![Release](https://img.shields.io/badge/release-benchmark--main--ready--2026--04--27-6f42c1)](https://github.com/LBSL98/Heuristic_Benchmarking_Framework/releases/tag/benchmark-main-ready-2026-04-27)
 ![Python](https://img.shields.io/badge/Python-3.11+-3776AB?logo=python&logoColor=white)
-![Version](https://img.shields.io/badge/version-0.8.0-blue)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-## Escopo canônico atual
+FORJA é o backbone experimental da monografia sobre seleção explicável de algoritmos para particionamento de grafos. O repositório foi estruturado para que comparações entre famílias heterogêneas não dependam de conveniência editorial, mas de um protocolo explícito de execução, validação, rastreabilidade e auditoria.
 
-- Portfólio oficial da tese: `SA`, `TS`, `ILS`, `GRASP`, `METIS`, `KaHIP`.
-- `greedy` pode existir no repositório apenas como trilha exploratória/de engenharia.
-- A régua universal entre famílias é **wall-clock time**.
-- `fair(time)` significa mesmo orçamento temporal por instância, mesma semântica de balanceamento, mesmo ambiente controlado, hiperparâmetros congelados no piloto e validação independente.
-- Nos artefatos `solver_run.v1`, os nomes canônicos de tempo são `elapsed_ms` e `checkpoints[].time_ms`.
-- `time_ns` pode aparecer apenas como detalhe interno de implementação; não é nome canônico de campo serializado.
+Em vez de misturar métricas de esforço, ambientes e contratos de saída, o projeto congela uma superfície metodológica única para o benchmark: mesmo orçamento temporal por instância, mesma semântica de balanceamento, execução mono-thread controlada, validação independente e cadeia de artefatos reconstruível.
 
-## Estrutura
+## O que este repositório entrega
 
-```text
-.
-├─ configs/                # Planos YAML de experimento
-├─ src/                    # Código do framework, heurísticas e wrappers
-├─ tests/                  # Pytest (CI mínima sem KaHIP; suíte local mais ampla opcional)
-├─ scripts/                # Orquestração e utilitários de auditoria
-├─ docs/                   # Documentação MkDocs (ativa + legado rotulado)
-├─ decisions/              # Camada canônica de decisões metodológicas
-├─ specs/                  # Schemas e contratos de artefato
-├─ audit_reports/          # Trilhas de auditoria e relatórios
-└─ KaHIP/                  # Árvore vendorizada preservada por rastreabilidade
-```
+- benchmark reproduzível para o portfólio canônico da tese: `SA`, `TS`, `ILS`, `GRASP`, `METIS` e `KaHIP`;
+- runner único para execução, medição, persistência e validação de artefatos;
+- contratos canônicos para tempo, checkpoints, status e schema de saída;
+- planos YAML rastreáveis para piloto, calibração e campanhas comparativas;
+- documentação navegável via MkDocs;
+- camada explícita de decisões, open issues, ledger experimental e mapa de claims.
 
-## Instalação
+## Estado público atual
 
-Requisitos mínimos:
+O corte público atual do repositório é a tag [`benchmark-main-ready-2026-04-27`](https://github.com/LBSL98/Heuristic_Benchmarking_Framework/releases/tag/benchmark-main-ready-2026-04-27).
 
-- Linux/Ubuntu 22.04+
+Esse estado significa:
+
+- o piloto benchmarkado foi executado e aprovado;
+- a cadeia de artefatos fechou sem erros de schema;
+- a campanha principal ficou metodologicamente admissível sob o mesmo protocolo congelado;
+- a campanha principal ainda **não** foi iniciada.
+
+## Princípios metodológicos centrais
+
+- **Régua universal de esforço:** `wall-clock time`, serializado como `elapsed_ms`.
+- **Checkpoint canônico:** `checkpoints[].time_ms`.
+- **`fair(time)`:** mesmo orçamento temporal por instância, mesma semântica de balanceamento, mesmo ambiente controlado, hiperparâmetros congelados e mesma validação independente.
+- **NFE:** métrica diagnóstica interna quando instrumentação existe; não é a régua universal entre famílias.
+- **Repetição estocástica:** feita por slice `(instância, algoritmo, orçamento)` com colapso posterior antes da análise comparativa e da rotulação ASP.
+
+## Começando rápido
+
+### 1. Requisitos mínimos
+
+- Linux / Ubuntu 22.04+
 - Python 3.11+
 - Git
-- `gpmetis` no `PATH`
+- `gpmetis` disponível no `PATH`
 
-KaHIP:
+Observações sobre KaHIP:
 
-- `kaffpa` continua opcional na CI mínima e em smokes locais.
-- Para rodadas com KaHIP, registre a versão efetivamente reportada pelo binário em `PATH`.
-- A narrativa experimental ativa do repositório usa **KaHIP 3.17** como versão oficial.
-- A árvore vendorizada `./KaHIP`, quando presente, é material auxiliar de repositório e não deve ser tratada automaticamente como a fonte de verdade experimental.
+- `kaffpa` é opcional na CI mínima e em smokes locais;
+- para rodadas com KaHIP, registre a versão realmente usada no `PATH`;
+- a narrativa experimental ativa do repositório usa **KaHIP 3.17** como referência oficial.
 
-Exemplo local:
+### 2. Instalação local
 
 ```bash
 sudo apt-get update
@@ -55,86 +64,105 @@ sudo apt-get install -y python3.11 python3.11-venv python3-pip metis
 
 python3.11 -m venv .venv
 source .venv/bin/activate
+pip install --upgrade pip
 pip install .
 ```
 
-## Testes
-
-Smoke local:
+### 3. Smoke local
 
 ```bash
-OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 pytest -q
+OMP_NUM_THREADS=1 \
+OPENBLAS_NUM_THREADS=1 \
+MKL_NUM_THREADS=1 \
+pytest -q
 ```
 
-Observações:
+Notas:
 
-- Se `gpmetis` estiver ausente, os testes dependentes de METIS serão pulados.
-- Se `kaffpa` estiver ausente, os testes dependentes de KaHIP serão pulados.
-- A CI mínima exclui testes pesados de solver externo; a suíte local pode ser mais ampla quando o ambiente estiver completo.
+- se `gpmetis` estiver ausente, testes dependentes de METIS serão pulados;
+- se `kaffpa` estiver ausente, testes dependentes de KaHIP serão pulados;
+- a CI pública é mínima; a suíte local pode ser mais ampla quando o ambiente estiver completo.
 
-## Planos e fluxo
+### 4. Build local da documentação
 
-Os planos são declarativos e vivem em `configs/`.
+```bash
+python -m mkdocs build --strict --site-dir /tmp/forja-mkdocs
+```
 
-Planos rastreados atualmente:
+### 5. Execução por planos
 
-- `configs/plan_phase_1.yaml`: slice executável de baseline (`METIS` + `KaHIP`) com `greedy` excluído.
-- `configs/plan_phase_1_pilot.yaml`: slice piloto equivalente.
-- `configs/plan_phase_1_greedy_exploratory.yaml`: trilha exploratória com `greedy`, fora do benchmark oficial.
-- `configs/plan_phase_1_pilot_greedy_exploratory.yaml`: variante piloto da trilha exploratória.
+Os planos experimentais são declarativos e vivem em `configs/`.
 
-Uso padrão:
+Exemplos:
 
 ```bash
 ./scripts/run_phase_1.sh
 ./scripts/run_phase_1.sh configs/plan_phase_1_pilot.yaml
 ```
 
-Ao interpretar resultados:
+Também existem planos separados para:
 
-- não trate os planos exploratórios com `greedy` como benchmark oficial;
-- não use NFE como régua universal entre famílias;
-- valide sempre os artefatos contra `specs/jsonschema/solver_run.schema.v1.json`.
+- baselines da campanha principal;
+- meta-heurísticas da campanha principal;
+- baselines do piloto;
+- meta-heurísticas do piloto;
+- trilhas de calibração e confirmação de hiperparâmetros.
 
-## Artefatos de resultado
+## Documentação
 
-O contrato ativo de saída é `solver_run.v1`:
+- Site da documentação: [https://lbsl98.github.io/Heuristic_Benchmarking_Framework/](https://lbsl98.github.io/Heuristic_Benchmarking_Framework/)
+- Página inicial da documentação no repositório: [`docs/index.md`](./docs/index.md)
+- Contrato operacional atual: [`docs/protocol/current_benchmark_contract.md`](./docs/protocol/current_benchmark_contract.md)
+- Checklist de reprodutibilidade: [`docs/specs/reproducibility_checklist.md`](./docs/specs/reproducibility_checklist.md)
 
-- tempo total serializado: `elapsed_ms`
-- timestamp de checkpoint: `checkpoints[].time_ms`
-- NFE em checkpoint: diagnóstico opcional para metaheurísticas instrumentadas
+## Fontes canônicas do projeto
 
-Campos legados como `time_ns`, `runtime_ms` e `elapsed_wall_ms` não devem ser descritos como contrato serializado ativo do benchmark.
+A interpretação metodológica do repositório não deve depender só da prosa do README. As referências normativas centrais são:
 
-## Qualidade e reprodutibilidade
+- [`decisions/01_Decision_Log.md`](./decisions/01_Decision_Log.md)
+- [`decisions/03_Methodology_Canonical_consolidated.md`](./decisions/03_Methodology_Canonical_consolidated.md)
+- [`decisions/06_Experiment_Ledger.md`](./decisions/06_Experiment_Ledger.md)
+- [`decisions/07_Open_Issues.md`](./decisions/07_Open_Issues.md)
+- [`decisions/08_Results_to_Text_Map.md`](./decisions/08_Results_to_Text_Map.md)
+- [`specs/jsonschema/solver_run.schema.v1.json`](./specs/jsonschema/solver_run.schema.v1.json)
 
-- `specs/jsonschema/solver_run.schema.v1.json` é o schema canônico do artefato de resultado.
-- `decisions/03_Methodology_Canonical_consolidated.md` congela os significados de wall-clock, `fair(time)`, NFE e política de checkpoints.
-- `docs/protocol/current_benchmark_contract.md` resume o contrato operacional atual para quem estiver navegando a documentação do repositório.
-- `docs/specs/reproducibility_checklist.md` consolida a checklist de reprodutibilidade para piloto e campanha.
+## Estrutura do repositório
 
-Build local da documentação, sem sujar o diretório `site/` rastreado:
-
-```bash
-python -m mkdocs build --strict --site-dir /tmp/forja-mkdocs
+```text
+.
+├─ configs/                # Planos YAML de execução, calibração e campanhas
+├─ src/                    # Código do framework, heurísticas e wrappers
+├─ tests/                  # Testes automatizados e smoke coverage
+├─ scripts/                # Orquestração e utilitários de auditoria
+├─ docs/                   # Documentação MkDocs
+├─ decisions/              # Camada canônica de decisões e governança
+├─ specs/                  # Schemas e contratos de artefato
+├─ audit_reports/          # Trilhas de auditoria e relatórios técnicos
+└─ KaHIP/                  # Árvore vendorizada preservada por rastreabilidade
 ```
 
-## Dados e auditoria
+## Reprodutibilidade e auditoria
 
-- `data/results_*` permanece fora do Git.
-- Instâncias sintéticas pequenas permanecem no repositório para smoke e rastreabilidade.
-- Bundles de auditoria podem excluir a árvore vendorizada `KaHIP/`, desde que a versão efetiva do `kaffpa` utilizado e o commit do repositório tenham sido registrados separadamente.
+FORJA não trata reprodutibilidade como apêndice. O projeto explicita:
 
-## Contribuição
+- execução mono-thread;
+- contratos de saída validados por schema;
+- distinção entre artefatos ativos e trilhas exploratórias;
+- freeze metodológico antes da campanha principal;
+- ledger experimental para rastrear o que pode ou não sustentar texto da monografia.
+
+## Como contribuir
 
 1. Trabalhe em branch dedicada.
-2. Mantenha commits pequenos e temáticos.
-3. Rode as checagens mínimas relevantes antes de abrir revisão.
-4. Preserve a trilha de auditoria quando houver tensão entre limpeza visual e rastreabilidade.
+2. Preserve commits temáticos e auditáveis.
+3. Execute as checagens mínimas relevantes antes de abrir PR.
+4. Não promova trilhas exploratórias a benchmark oficial sem atualização canônica explícita.
+5. Quando houver conflito entre limpeza visual e rastreabilidade, registre a decisão em vez de esconder a tensão.
 
-## Referências rápidas
+## Links rápidos
 
-- [CHANGELOG.md](./CHANGELOG.md)
-- [docs/index.md](./docs/index.md)
-- `decisions/03_Methodology_Canonical_consolidated.md`
-- `specs/jsonschema/solver_run.schema.v1.json`
+- [Release atual](https://github.com/LBSL98/Heuristic_Benchmarking_Framework/releases/tag/benchmark-main-ready-2026-04-27)
+- [Documentação online](https://lbsl98.github.io/Heuristic_Benchmarking_Framework/)
+- [CHANGELOG](./CHANGELOG.md)
+- [Contrato de benchmark atual](./docs/protocol/current_benchmark_contract.md)
+- [Schema do artefato `solver_run.v1`](./specs/jsonschema/solver_run.schema.v1.json)
