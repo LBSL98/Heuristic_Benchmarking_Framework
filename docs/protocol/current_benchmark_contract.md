@@ -183,6 +183,16 @@ This includes:
 
 No active benchmark-release document should continue to present this contract as unresolved.
 
+## Pilot review status
+
+The pilot benchmark campaign has been completed and positively reviewed under the frozen benchmark protocol.
+
+This means:
+
+- `EXP-BENCH-PILOT-001` completed with full expected artifact coverage and zero schema errors;
+- the main campaign `EXP-BENCH-MAIN-001` became admissible under the same frozen protocol;
+- pilot approval validates executability, artifact generation, and contract conformance, but does not itself support the comparative scientific claims reserved for the main campaign.
+
 ## Source-of-truth pointers
 
 When wording must be exact, consult:

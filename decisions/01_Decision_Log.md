@@ -18,28 +18,24 @@ This file records frozen project decisions. A decision only becomes canonical af
 - **Decision:** The project will use a multi-chat structure with role separation: Governance and Integrity, Theory and Evidence Audit, Writing Surgery, Code and Experiments, and Final Release Audit.
 - **Rationale:** Prevent role collapse, reduce context drift, and force cross-audit between theory, writing, and code.
 - **Impact:** No single chat is treated as authoritative by itself.
-
 ### D-002 — Canonical-source policy
 - **Status:** Frozen
 - **Date:** 2026-03-12
 - **Decision:** Project truth will be maintained in canonical markdown files stored as project sources, not only in conversation history.
 - **Rationale:** Chat continuity alone is not sufficient for a long and high-stakes academic project.
 - **Impact:** All significant revisions must update the corresponding canonical file.
-
 ### D-003 — Dual storage policy for guidance documents
 - **Status:** Frozen
 - **Date:** 2026-03-12
 - **Decision:** Normative project files must exist both in Drive and in the project sources whenever possible.
 - **Rationale:** Drive works as durable repository; project sources work as active context.
 - **Impact:** Editorial and methodological rules should not be kept only in external folders.
-
 ### D-004 — Writing feedback is normative
 - **Status:** Frozen
 - **Date:** 2026-03-12
 - **Decision:** Committee and reviewer comments are treated as normative constraints until explicitly resolved.
 - **Rationale:** The current stage is revision under committee scrutiny, not greenfield drafting.
 - **Impact:** Rewriting must follow `04_Writing_Constraints.md` and `09_Committee_Issues_Log.md`.
-
 ### D-005 — Naming convention
 - **Status:** Frozen
 - **Date:** 2026-03-12
@@ -56,7 +52,6 @@ This file records frozen project decisions. A decision only becomes canonical af
 - **Rationale:**
 - **Impact:**
 - **Supersedes / Superseded by:**
-
 ### D-006 — Final repository stabilization before monograph freeze
 - **Status:** Frozen
 - **Date:** 2026-03-12
@@ -64,23 +59,83 @@ This file records frozen project decisions. A decision only becomes canonical af
 - **Rationale:** Prevented mixing implementation corrections with over-broad documentation claims and ensured that the final branch state matched the auditable project scope.
 - **Impact:** The monograph and defense materials must describe only the repository state and documentation subset that survived this stabilization process.
 - **Supersedes / Superseded by:**
-
-### D-007 — Greedy demoted from official benchmark flow
+### D-007 — Canonical temporal field naming for execution artifacts
 - **Status:** Frozen
-- **Date:** 2026-03-30
-- **Decision:** The `greedy` baseline remains available in the repository only as an exploratory / engineering track and is not part of the official benchmark portfolio, official phase-1 plans, or the canonical selector label space.
-- **Rationale:** The canonical monograph portfolio is currently frozen as SA, TS, ILS, GRASP, METIS, and KaHIP. Keeping `greedy` in the official flow would create scope drift between canon, pipeline, and prose.
-- **Impact:** Official plans exclude `greedy`; exploratory plans may preserve it under separate filenames; no monograph claim may treat `greedy` as a canonical benchmark participant unless a later canonical decision supersedes this one.
-- **Supersedes / Superseded by:**
-
-### D-008 — Canonical anytime integration sequence
+- **Date:** 2026-04-15
+- **Decision:** The canonical serialized execution-time field of the project is `elapsed_ms`, and the canonical serialized checkpoint timestamp field is `checkpoints[].time_ms`. The label `time_ns` is not the canonical artifact field for checkpoint serialization in the current project contract.
+- **Rationale:** The methodological semantics were already frozen around runner-measured wall-clock time as the universal effort budget, but the monograph draft still contained unresolved wording conflict between `time_ns` and `time_ms` for checkpoint representation. Cross-audit of the project documentation, current implementation, and artifact history indicates that the implemented and auditable contract is millisecond-based in the serialized artifacts. Freezing the canonical field names prevents further drift between methodology, monograph prose, schema language, and artifact interpretation.
+- **Impact:** All monograph passages, schema descriptions, artifact tables, and reproducibility-oriented prose must align to `elapsed_ms` and `checkpoints[].time_ms`. Any remaining mention of `time_ns` must be restricted to internal clock-resolution discussion when strictly necessary, not to the canonical serialized checkpoint field.
+- **Supersedes / Superseded by:** Clarifies the open schema wording caveat previously noted in `03_Methodology_Canonical.md`.
+### D-008 — Benchmark repetition policy for stochastic participants
 - **Status:** Frozen
-- **Date:** 2026-03-30
-- **Decision:** Canonical anytime integration will proceed one solver at a time in the sequence SA, then ILS, then GRASP, with TS last.
-- **Rationale:** The legacy repository provides reusable structural references for SA, ILS, and GRASP, but no Tabu Search implementation. Integrating one solver at a time minimizes regression ambiguity and keeps each adapter auditable against the current runner and schema.
-- **Impact:** No official plan expansion occurs until each solver passes its own local integration gate. TS remains an explicit pending gap until a valid source implementation is located or written.
-- **Supersedes / Superseded by:**
+- **Date:** 2026-04-15
+- **Decision:** In the main benchmark campaign, the repetition unit for stochastic benchmarking is `(instance, algorithm, budget)`. The stochastic participants `SA`, `TS`, `ILS`, and `GRASP` must be executed with `n_rep = 5` independent repetitions under the fixed seed set `[42, 43, 44, 45, 46]`. The multilevel baselines `METIS` and `KaHIP` remain single-run participants under the same per-instance wall-clock budget and validation contract, unless a later audit demonstrates material nondeterminism that justifies extending the repetition policy to them.
+- **Rationale:** The project already recognizes that non-fully-deterministic participants require repetition, but leaving the repetition unit, repetition count, and seed policy undefined would make the benchmark release non-auditable and would propagate ambiguity into both statistical analysis and ASP supervision targets.
+- **Impact:** No main benchmark campaign may start without using this repetition unit, repetition count, and seed policy. Plan files, execution scripts, benchmark tables, and methodological prose must use the same rule.
+- **Supersedes / Superseded by:** Freezes the policy previously left open in OI-007.
+### D-009 — WSL2 external-validity boundary for the benchmark release
+- **Status:** Frozen
+- **Date:** 2026-04-25
+- **Decision:** The benchmark release is allowed to run in the audited WSL2 release-candidate environment, provided that all compared solvers execute under the same controlled mono-thread conditions, the same validation contract, and the same runtime-governance surface. Comparative claims inside the project are therefore valid as controlled within-environment claims, not as hardware-agnostic absolute performance claims.
+- **Rationale:** The repository execution surface, Docker/compose path, and benchmark tooling were revalidated in the actual WSL2 environment used by the project. The remaining methodological risk is not internal unfairness between participants, but overclaiming external generality from a virtualized host-dependent environment.
+- **Impact:** The monograph, defense, and repository documentation must state that the benchmark results are valid for the audited controlled environment used in the campaign. They must not claim that absolute timings automatically generalize to native bare-metal Linux or to arbitrary external hardware/software stacks without additional confirmation.
+- **Supersedes / Superseded by:** Freezes the policy previously left open in OI-007.
+### D-010 — Benchmark synthesis metrics freeze (TTT / ECDF / performance profiles)
+- **Status:** Frozen
+- **Date:** 2026-04-25
+- **Decision:** The benchmark-synthesis layer of the project is frozen as follows:
 
+  1. `TTT` belongs to the benchmark layer and is defined on the universal wall-clock axis.
+     - For instrumented anytime solvers, per-run attainment time is the first recorded checkpoint time at which the validated quality satisfies the declared target rule.
+     - For point-output baselines, attainment is only observable at the final recorded `elapsed_ms`; if the final validated output satisfies the target, the attainment time is that final time, otherwise the observation is right-censored at the budget boundary.
+     - For stochastic participants, run-level attainment observations are first converted to wall-clock times with right-censoring at the budget. The project-level per-instance slice is then collapsed to a single representative time by the median rule; if the collapsed value sits at the budget boundary because attainment was not achieved early enough across repetitions, the slice is treated as right-censored at the budget.
+
+  2. `ECDF` belongs to the benchmark layer and is reported over wall-clock budgets for a declared target rule.
+     - For each algorithm and budget value `t`, the ECDF value is the fraction of instances whose collapsed attainment time is less than or equal to `t`.
+     - Right-censored slices count as non-attained up to the censoring point.
+     - ECDF is therefore an attainment-over-time summary built from the same collapsed per-instance target-attainment surface used by TTT.
+
+  3. `Performance profiles` are admissible in the project only on the collapsed final-quality table at a fixed budget.
+     - For each instance `i` and algorithm `a`, let `q_{a,i}` be the collapsed final validated cutsize at the fixed budget.
+     - The profile ratio is `r_{a,i} = q_{a,i} / min_b q_{b,i}` because the project minimizes edge cut.
+     - Performance profiles are computed only on the common-feasible set of instances for which every compared algorithm has a feasible collapsed final observation.
+     - Any excluded instances due to infeasibility or missing valid collapsed output must be reported separately and must not be silently absorbed into the profile.
+
+  4. `Selector regret` is **not** frozen by `D-010`.
+     - Regret is removed from the benchmark-synthesis freeze and is deferred to the selector-evaluation layer.
+     - Its canonical definition must be frozen later together with the outer ASP validation protocol and the CART model-selection regime under `D-011` / `D-015`.
+
+- **Rationale:** The audit showed that the benchmark-synthesis layer and the selector-evaluation layer were being mixed in the same open item. Freezing `TTT`, `ECDF`, and `performance profiles` now closes the comparative benchmark semantics without prematurely freezing selector regret before the outer-validation and CART-regime decisions exist.
+- **Impact:** Benchmark figures, tables, scripts, and prose that claim comparative synthesis must use only these definitions. Any use of regret remains non-canonical until the selector track is frozen separately.
+- **Supersedes / Superseded by:** Narrows and freezes the part of the earlier open analytical block that belongs strictly to comparative benchmark synthesis; selector regret is explicitly deferred to `D-011` / `D-015`.
+### D-011 — Outer validation protocol for selector evaluation
+- **Status:** Frozen
+- **Date:** 2026-04-25
+- **Decision:** The canonical selector-evaluation protocol uses a single external holdout split defined over the collapsed per-instance table.
+
+  1. **Unit of separation**
+     - The outer split unit is the **instance**.
+     - Raw runs, seeds, checkpoints, and per-run rows must never be split independently across train and test.
+     - Selector training and evaluation must use one collapsed row per instance, derived from the canonical repeated-run collapse rules already frozen by the benchmark contract.
+
+  2. **Outer evaluation boundary**
+     - A deterministic, preregistered outer holdout manifest must be created before selector training begins.
+     - The outer test partition remains untouched until the final selector evaluation.
+     - No model choice, threshold choice, feature filtering, missing-data handling decision, or post hoc heuristic adjustment may use outer-test information.
+
+  3. **Training-side freedom**
+     - All preprocessing, feature engineering, class handling, and any later CART model-selection procedure must operate strictly inside the training partition.
+     - If `D-015` later chooses a searched CART regime, that search is restricted to the training side only.
+     - If `D-015` later chooses a fixed CART regime, the fixed model is trained once on the training partition and then evaluated once on the untouched outer test partition.
+
+  4. **Selector target and reporting consequence**
+     - The selector target remains defined on the collapsed benchmark table, not on raw repeated runs.
+     - Final selector claims must be reported on the outer test split only.
+     - Selector regret is anchored to this outer protocol and remains canonically meaningful only under this external holdout boundary.
+
+- **Rationale:** The repository currently has governance text for selector evaluation but no live implementation surface that would justify inferring a split protocol from code. Freezing the outer protocol now prevents leakage and multiple admissible interpretations while keeping the internal CART regime open for `D-015`.
+- **Impact:** Any future selector pipeline, dataset builder, training script, regret computation, or monograph prose must respect instance-level external separation and the untouched-test rule. No selector claim is canonical if it violates this split boundary.
+- **Supersedes / Superseded by:** Freezes the policy previously left open in OI-009. Constrains the meaning of selector regret and sets the external boundary within which D-015 may later choose a fixed or searched CART regime.
 ### D-012 — Final stochastic hyperparameter freeze for the benchmark release
 - **Status:** Frozen
 - **Date:** 2026-04-25
@@ -114,73 +169,36 @@ This file records frozen project decisions. A decision only becomes canonical af
 - **Rationale:** The bounded pre-benchmark calibration stage `EXP-CALIB-001` was completed with a two-stage protocol: coarse screening, an SA-only saturation micro-round to ensure budget-compatible SA behavior, and short confirmation with the full seed policy. The selected profiles are the winners of the confirmation stage under the project collapse and tie rules. No per-instance retuning is allowed in the main benchmark campaign.
 - **Impact:** The benchmark pilot, the main campaign, the selector layer, and all benchmark-release claims must use exactly these frozen profiles unless a later canonical decision explicitly supersedes them.
 - **Supersedes / Superseded by:** Freezes the policy previously left open in OI-010.
-
-### D-009 — WSL2 external-validity boundary for the benchmark release
+### D-013 — Repeated-run aggregation and ASP label construction
+- **Status:** Frozen
+- **Date:** 2026-04-15
+- **Decision:** Repeated runs must be collapsed at the `(instance, algorithm, budget)` level before statistical comparison and before ASP target construction. Only independently validated feasible runs may enter the aggregation of quality. For the current benchmark contract, the primary aggregated quality value is the median final validated edge-cut result of the participant on that instance-budget slice. Ties in aggregated quality must be broken by the median `elapsed_ms`; if a tie still remains, the final fallback is the lexicographic order of the algorithm identifier, and the tied set must be logged explicitly. If a participant produces zero feasible runs for a given `(instance, algorithm, budget)` slice, that participant is marked invalid for winner labeling on that slice, while the failure itself remains part of the benchmark diagnostics. The ASP target label `y_i*(T*)`, as well as SBS/VBS calculations, must be derived from this same collapsed per-instance table rather than from raw repeated runs.
+- **Rationale:** Repetition without a single collapse rule would leave both the statistical benchmark layer and the ASP supervision layer underdefined. Freezing aggregation and winner construction together prevents drift between comparison, labeling, and selector evaluation.
+- **Impact:** The benchmark campaign, ASP dataset construction, SBS/VBS baselines, and later selector claims must all use the same collapsed per-instance representation. Instances with no feasible participant after validation must be reported separately and excluded from supervised winner labeling.
+- **Supersedes / Superseded by:** Freezes the policy previously left open in OI-012.
+### D-014 — Benchmark campaign preregistration policy
 - **Status:** Frozen
 - **Date:** 2026-04-25
-- **Decision:** The benchmark release is allowed to run in the audited WSL2 release-candidate environment, provided that all compared solvers execute under the same controlled mono-thread conditions, the same validation contract, and the same runtime-governance surface. Comparative claims inside the project are therefore valid as controlled within-environment claims, not as hardware-agnostic absolute performance claims.
-- **Rationale:** The repository execution surface, Docker/compose path, and benchmark tooling were revalidated in the actual WSL2 environment used by the project. The remaining methodological risk is not internal unfairness between participants, but overclaiming external generality from a virtualized host-dependent environment.
-- **Impact:** The monograph, defense, and repository documentation must state that the benchmark results are valid for the audited controlled environment used in the campaign. They must not claim that absolute timings automatically generalize to native bare-metal Linux or to arbitrary external hardware/software stacks without additional confirmation.
-- **Supersedes / Superseded by:** Freezes the policy previously left open in OI-007.
+- **Decision:** The benchmark campaign becomes execution-authorizing only through two distinct preregistered ledger entries:
 
-### D-010 — Benchmark synthesis metrics freeze (TTT / ECDF / performance profiles)
-- **Status:** Frozen
-- **Date:** 2026-04-25
-- **Decision:** The benchmark-synthesis layer of the project is frozen as follows:
+  1. **`EXP-BENCH-PILOT-001`**
+     - Role: dry-run / pilot validation under the fully frozen benchmark protocol.
+     - Purpose: validate executability, artifact chain integrity, manifest generation, validation surface, and basic analysis readiness under the release-candidate state.
+     - It is allowed to run only after its planned ledger entry is complete.
 
-  1. `TTT` belongs to the benchmark layer and is defined on the universal wall-clock axis.
-     - For instrumented anytime solvers, per-run attainment time is the first recorded checkpoint time at which the validated quality satisfies the declared target rule.
-     - For point-output baselines, attainment is only observable at the final recorded `elapsed_ms`; if the final validated output satisfies the target, the attainment time is that final time, otherwise the observation is right-censored at the budget boundary.
-     - For stochastic participants, run-level attainment observations are first converted to wall-clock times with right-censoring at the budget. The project-level per-instance slice is then collapsed to a single representative time by the median rule; if the collapsed value sits at the budget boundary because attainment was not achieved early enough across repetitions, the slice is treated as right-censored at the budget.
+  2. **`EXP-BENCH-MAIN-001`**
+     - Role: main comparative benchmark campaign.
+     - Purpose: generate the canonical comparative evidence under the already frozen protocol.
+     - It must not start until the pilot has been executed and reviewed.
 
-  2. `ECDF` belongs to the benchmark layer and is reported over wall-clock budgets for a declared target rule.
-     - For each algorithm and budget value `t`, the ECDF value is the fraction of instances whose collapsed attainment time is less than or equal to `t`.
-     - Right-censored slices count as non-attained up to the censoring point.
-     - ECDF is therefore an attainment-over-time summary built from the same collapsed per-instance target-attainment surface used by TTT.
+  3. **Mutation rule**
+     - If the pilot reveals a protocol-relevant change, the canon must be explicitly reopened before the main campaign.
+     - The main campaign must not silently inherit altered assumptions from pilot execution.
+     - Any material change after pilot review requires updated preregistration rather than quiet overwrite of the original plan.
 
-  3. `Performance profiles` are admissible in the project only on the collapsed final-quality table at a fixed budget.
-     - For each instance `i` and algorithm `a`, let `q_{a,i}` be the collapsed final validated cutsize at the fixed budget.
-     - The profile ratio is `r_{a,i} = q_{a,i} / min_b q_{b,i}` because the project minimizes edge cut.
-     - Performance profiles are computed only on the common-feasible set of instances for which every compared algorithm has a feasible collapsed final observation.
-     - Any excluded instances due to infeasibility or missing valid collapsed output must be reported separately and must not be silently absorbed into the profile.
-
-  4. `Selector regret` is **not** frozen by `D-010`.
-     - Regret is removed from the benchmark-synthesis freeze and is deferred to the selector-evaluation layer.
-     - Its canonical definition must be frozen later together with the outer ASP validation protocol and the CART model-selection regime under `D-011` / `D-015`.
-
-- **Rationale:** The audit showed that the benchmark-synthesis layer and the selector-evaluation layer were being mixed in the same open item. Freezing `TTT`, `ECDF`, and `performance profiles` now closes the comparative benchmark semantics without prematurely freezing selector regret before the outer-validation and CART-regime decisions exist.
-- **Impact:** Benchmark figures, tables, scripts, and prose that claim comparative synthesis must use only these definitions. Any use of regret remains non-canonical until the selector track is frozen separately.
-- **Supersedes / Superseded by:** Narrows and freezes the part of the earlier open analytical block that belongs strictly to comparative benchmark synthesis; selector regret is explicitly deferred to `D-011` / `D-015`.
-
-### D-011 — Outer validation protocol for selector evaluation
-- **Status:** Frozen
-- **Date:** 2026-04-25
-- **Decision:** The canonical selector-evaluation protocol uses a single external holdout split defined over the collapsed per-instance table.
-
-  1. **Unit of separation**
-     - The outer split unit is the **instance**.
-     - Raw runs, seeds, checkpoints, and per-run rows must never be split independently across train and test.
-     - Selector training and evaluation must use one collapsed row per instance, derived from the canonical repeated-run collapse rules already frozen by the benchmark contract.
-
-  2. **Outer evaluation boundary**
-     - A deterministic, preregistered outer holdout manifest must be created before selector training begins.
-     - The outer test partition remains untouched until the final selector evaluation.
-     - No model choice, threshold choice, feature filtering, missing-data handling decision, or post hoc heuristic adjustment may use outer-test information.
-
-  3. **Training-side freedom**
-     - All preprocessing, feature engineering, class handling, and any later CART model-selection procedure must operate strictly inside the training partition.
-     - If `D-015` later chooses a searched CART regime, that search is restricted to the training side only.
-     - If `D-015` later chooses a fixed CART regime, the fixed model is trained once on the training partition and then evaluated once on the untouched outer test partition.
-
-  4. **Selector target and reporting consequence**
-     - The selector target remains defined on the collapsed benchmark table, not on raw repeated runs.
-     - Final selector claims must be reported on the outer test split only.
-     - Selector regret is anchored to this outer protocol and remains canonically meaningful only under this external holdout boundary.
-
-- **Rationale:** The repository currently has governance text for selector evaluation but no live implementation surface that would justify inferring a split protocol from code. Freezing the outer protocol now prevents leakage and multiple admissible interpretations while keeping the internal CART regime open for `D-015`.
-- **Impact:** Any future selector pipeline, dataset builder, training script, regret computation, or monograph prose must respect instance-level external separation and the untouched-test rule. No selector claim is canonical if it violates this split boundary.
-- **Supersedes / Superseded by:** Freezes the policy previously left open in OI-009. Constrains the meaning of selector regret and sets the external boundary within which D-015 may later choose a fixed or searched CART regime.
-
+- **Rationale:** The benchmark release now has the central methodological freezes in place, so the remaining governance requirement is to ensure that pilot execution and the main campaign are separately registered and that the main campaign cannot begin under an implicitly modified protocol.
+- **Impact:** `06_Experiment_Ledger.md` must contain real planned entries for `EXP-BENCH-PILOT-001` and `EXP-BENCH-MAIN-001`. The checklist must treat preregistration as complete only after those entries are populated. The main campaign remains blocked until pilot review is complete.
+- **Supersedes / Superseded by:** Freezes the policy previously left open in OI-012.
 ### D-015 — CART model-selection regime for the canonical selector track
 - **Status:** Frozen
 - **Date:** 2026-04-25
@@ -206,31 +224,6 @@ This file records frozen project decisions. A decision only becomes canonical af
 - **Rationale:** The current repository does not yet contain a live selector-evaluation implementation surface that would justify a more ambitious searched regime. Freezing a fixed CART regime now minimizes leakage risk, avoids hidden multiplicity, reduces implementation burden, and remains compatible with the already frozen outer holdout protocol of `D-011`.
 - **Impact:** Any later selector script, dataset builder, regret computation, and monograph wording must treat CART as a fixed interpretable selector baseline inside the frozen outer holdout. Searched-regime claims are non-canonical unless the canon is explicitly reopened.
 - **Supersedes / Superseded by:** Freezes the choice previously left open in OI-014 and completes the selector-governance pair begun by D-011.
-
-### D-014 — Benchmark campaign preregistration policy
-- **Status:** Frozen
-- **Date:** 2026-04-25
-- **Decision:** The benchmark campaign becomes execution-authorizing only through two distinct preregistered ledger entries:
-
-  1. **`EXP-BENCH-PILOT-001`**
-     - Role: dry-run / pilot validation under the fully frozen benchmark protocol.
-     - Purpose: validate executability, artifact chain integrity, manifest generation, validation surface, and basic analysis readiness under the release-candidate state.
-     - It is allowed to run only after its planned ledger entry is complete.
-
-  2. **`EXP-BENCH-MAIN-001`**
-     - Role: main comparative benchmark campaign.
-     - Purpose: generate the canonical comparative evidence under the already frozen protocol.
-     - It must not start until the pilot has been executed and reviewed.
-
-  3. **Mutation rule**
-     - If the pilot reveals a protocol-relevant change, the canon must be explicitly reopened before the main campaign.
-     - The main campaign must not silently inherit altered assumptions from pilot execution.
-     - Any material change after pilot review requires updated preregistration rather than quiet overwrite of the original plan.
-
-- **Rationale:** The benchmark release now has the central methodological freezes in place, so the remaining governance requirement is to ensure that pilot execution and the main campaign are separately registered and that the main campaign cannot begin under an implicitly modified protocol.
-- **Impact:** `06_Experiment_Ledger.md` must contain real planned entries for `EXP-BENCH-PILOT-001` and `EXP-BENCH-MAIN-001`. The checklist must treat preregistration as complete only after those entries are populated. The main campaign remains blocked until pilot review is complete.
-- **Supersedes / Superseded by:** Freezes the policy previously left open in OI-012.
-
 ### D-016 — Active artifact contract confirmed against runner, schema, and manifest chain
 - **Status:** Frozen
 - **Date:** 2026-04-25

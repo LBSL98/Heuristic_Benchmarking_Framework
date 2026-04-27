@@ -73,6 +73,13 @@
 
 ### Benchmark preregistration freeze
 
+### Pilot benchmark approval
+
+- Marked `EXP-BENCH-PILOT-001` as completed after positive pilot review.
+- Recorded that the pilot review gate closed with 112 expected artifacts, 112 actual artifacts, and zero schema errors.
+- Recorded that `EXP-BENCH-MAIN-001` became admissible under the same frozen protocol, without starting the main campaign.
+
+
 - Froze `D-014`, separating pilot authorization from main-campaign authorization.
 - Added real planned ledger entries for `EXP-BENCH-PILOT-001` and `EXP-BENCH-MAIN-001`.
 - Kept the main campaign blocked until pilot review is complete.

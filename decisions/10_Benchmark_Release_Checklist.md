@@ -64,7 +64,11 @@ The benchmark release is considered decision-ready only after the following gate
 - [x] D-014 finalized or superseded
 - [x] D-015 finalized or superseded
 
-### Gate D — Campaign preregistration
+#### Pilot review closure
+- Pilot review gate closed with `EXPECTED_TOTAL=112`, `ACTUAL_TOTAL=112`, `SCHEMA_ERRORS=0`, and `APPROVAL_CANDIDATE=1`.
+- `EXP-BENCH-MAIN-001` is now admissible under the same frozen protocol, but has not started yet.
+
+## Gate D — Campaign preregistration
 - [x] `EXP-BENCH-PILOT-001` completed as a real planned entry
 - [x] `EXP-BENCH-MAIN-001` completed as a real planned entry
 - [x] The pilot campaign was blocked from execution until its preregistration became complete

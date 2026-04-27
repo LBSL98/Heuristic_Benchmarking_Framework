@@ -2,7 +2,7 @@
 
 ## Purpose
 
-This file tracks unresolved project problems that can still affect coherence, correctness, methodological validity, or delivery quality.
+This file tracks unresolved project problems that can still affect coherence, correctness, or delivery quality.
 
 ## Open issues
 
@@ -61,12 +61,14 @@ This file tracks unresolved project problems that can still affect coherence, co
 - **Origin:** Benchmark release preparation
 - **Current status:** Resolved
 - **Needed action:** Frozen by `D-010` for the benchmark-synthesis layer. `TTT`, `ECDF`, and `performance profiles` now have canonical operational definitions. Selector regret was deliberately removed from this freeze and remains deferred to the selector-evaluation track under `D-011` / `D-015`.
+
 ### OI-009 — ASP outer validation protocol is still not frozen
 - **Type:** Methodology / selector evaluation
 - **Severity:** High
 - **Origin:** Benchmark release preparation
 - **Current status:** Resolved
 - **Needed action:** Frozen by `D-011`. Selector evaluation now uses a deterministic external holdout at the instance level over the collapsed per-instance table, with an untouched-test rule. Selector regret is canonically anchored to this outer protocol, while the internal CART regime remains deferred to `D-015`.
+
 ### OI-010 — Final stochastic hyperparameter freeze is still provisional
 - **Type:** Methodology / calibration / benchmark protocol
 - **Severity:** High
@@ -80,12 +82,14 @@ This file tracks unresolved project problems that can still affect coherence, co
 - **Origin:** Benchmark release preparation
 - **Current status:** Resolved
 - **Needed action:** Closed by `D-016`. The active release-candidate runner/schema/manifest contract is now treated as canonically confirmed. Timing fields, checkpoint naming, optional NFE semantics, status meanings, and manifest linkage must follow the confirmed active contract rather than remain described as pending.
+
 ### OI-012 — Benchmark pilot and main campaign preregistration are still placeholders
 - **Type:** Governance / experiment registration
 - **Severity:** High
 - **Origin:** Benchmark release preparation
 - **Current status:** Resolved
-- **Needed action:** Frozen by `D-014` and materialized in `06_Experiment_Ledger.md` through real planned entries for `EXP-BENCH-PILOT-001` and `EXP-BENCH-MAIN-001`. The main campaign remains blocked until pilot review is complete.
+- **Needed action:** Frozen by `D-014` and materialized in `06_Experiment_Ledger.md` through real planned entries for `EXP-BENCH-PILOT-001` and `EXP-BENCH-MAIN-001`. The main campaign remained blocked until pilot review was complete.
+
 ### OI-013 — Conceptual benchmark figures still need final technical clearance
 - **Type:** Figures / writing / methodology
 - **Severity:** Medium
@@ -99,6 +103,7 @@ This file tracks unresolved project problems that can still affect coherence, co
 - **Origin:** Benchmark release preparation
 - **Current status:** Resolved
 - **Needed action:** Frozen by `D-015`. The canonical selector track uses a fixed CART regime, not a searched regime. Any future selector implementation must declare one explicit deterministic CART configuration inside the already frozen outer holdout protocol of `D-011`.
+
 ### OI-015 — MkDocs navigation still leaves one active page outside nav
 - **Type:** Documentation / publication surface
 - **Severity:** Low
@@ -108,5 +113,4 @@ This file tracks unresolved project problems that can still affect coherence, co
 
 ## Notes
 
-- This file tracks what is still unresolved.
-- Resolved matters should move to the canonical decision, ledger, methodology, or release-checklist layers rather than remain here indefinitely.
+- The pilot benchmark review completed successfully on 2026-04-27 (`EXPECTED_TOTAL=112`, `ACTUAL_TOTAL=112`, `SCHEMA_ERRORS=0`, `APPROVAL_CANDIDATE=1`), but that operational milestone does not by itself close the remaining writing, figure-clearance, or publication-surface issues.
