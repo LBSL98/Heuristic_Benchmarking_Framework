@@ -51,6 +51,9 @@
 - [ ] Selector claims do not rely on hyperparameter search or nested model selection unless the canon is explicitly reopened.
 - [ ] The instantiated CART parameter tuple is recorded before selector evaluation is reported.
 
+- [ ] Pilot runs are linked to `EXP-BENCH-PILOT-001` and main campaign runs are linked to `EXP-BENCH-MAIN-001`.
+- [ ] Main campaign execution did not begin before documented pilot review.
+
 ## 6. Reporting
 
 - [ ] Tables and plots cite the commit, plan, and dataset slice used.

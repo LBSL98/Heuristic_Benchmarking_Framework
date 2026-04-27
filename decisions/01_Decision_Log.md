@@ -206,3 +206,27 @@ This file records frozen project decisions. A decision only becomes canonical af
 - **Rationale:** The current repository does not yet contain a live selector-evaluation implementation surface that would justify a more ambitious searched regime. Freezing a fixed CART regime now minimizes leakage risk, avoids hidden multiplicity, reduces implementation burden, and remains compatible with the already frozen outer holdout protocol of `D-011`.
 - **Impact:** Any later selector script, dataset builder, regret computation, and monograph wording must treat CART as a fixed interpretable selector baseline inside the frozen outer holdout. Searched-regime claims are non-canonical unless the canon is explicitly reopened.
 - **Supersedes / Superseded by:** Freezes the choice previously left open in OI-014 and completes the selector-governance pair begun by D-011.
+
+### D-014 — Benchmark campaign preregistration policy
+- **Status:** Frozen
+- **Date:** 2026-04-25
+- **Decision:** The benchmark campaign becomes execution-authorizing only through two distinct preregistered ledger entries:
+
+  1. **`EXP-BENCH-PILOT-001`**
+     - Role: dry-run / pilot validation under the fully frozen benchmark protocol.
+     - Purpose: validate executability, artifact chain integrity, manifest generation, validation surface, and basic analysis readiness under the release-candidate state.
+     - It is allowed to run only after its planned ledger entry is complete.
+
+  2. **`EXP-BENCH-MAIN-001`**
+     - Role: main comparative benchmark campaign.
+     - Purpose: generate the canonical comparative evidence under the already frozen protocol.
+     - It must not start until the pilot has been executed and reviewed.
+
+  3. **Mutation rule**
+     - If the pilot reveals a protocol-relevant change, the canon must be explicitly reopened before the main campaign.
+     - The main campaign must not silently inherit altered assumptions from pilot execution.
+     - Any material change after pilot review requires updated preregistration rather than quiet overwrite of the original plan.
+
+- **Rationale:** The benchmark release now has the central methodological freezes in place, so the remaining governance requirement is to ensure that pilot execution and the main campaign are separately registered and that the main campaign cannot begin under an implicitly modified protocol.
+- **Impact:** `06_Experiment_Ledger.md` must contain real planned entries for `EXP-BENCH-PILOT-001` and `EXP-BENCH-MAIN-001`. The checklist must treat preregistration as complete only after those entries are populated. The main campaign remains blocked until pilot review is complete.
+- **Supersedes / Superseded by:** Freezes the policy previously left open in OI-012.

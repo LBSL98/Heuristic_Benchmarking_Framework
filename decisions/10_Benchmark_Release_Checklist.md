@@ -61,12 +61,12 @@ The benchmark release is considered decision-ready only after the following gate
 - [x] D-011 finalized or superseded
 - [x] EXP-CALIB-001 completed and reviewed
 - [x] D-012 finalized or superseded
-- [ ] D-014 finalized or superseded
+- [x] D-014 finalized or superseded
 - [x] D-015 finalized or superseded
 
 ### Gate D — Campaign preregistration
-- [ ] `EXP-BENCH-PILOT-001` completed as a real planned entry
-- [ ] `EXP-BENCH-MAIN-001` completed as a real planned entry
+- [x] `EXP-BENCH-PILOT-001` completed as a real planned entry
+- [x] `EXP-BENCH-MAIN-001` completed as a real planned entry
 - [ ] The pilot campaign is blocked from execution until its preregistration is complete
 - [ ] The main campaign is blocked from execution until pilot review is complete
 

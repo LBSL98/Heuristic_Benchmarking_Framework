@@ -85,9 +85,8 @@ This file tracks unresolved project problems that can still affect coherence, co
 - **Type:** Governance / experiment registration
 - **Severity:** High
 - **Origin:** Benchmark release preparation
-- **Current status:** Open
-- **Needed action:** Replace placeholder benchmark ledger entries with execution-authorizing planned entries before pilot and main campaign execution.
-
+- **Current status:** Resolved
+- **Needed action:** Frozen by `D-014` and materialized in `06_Experiment_Ledger.md` through real planned entries for `EXP-BENCH-PILOT-001` and `EXP-BENCH-MAIN-001`. The main campaign remains blocked until pilot review is complete.
 ### OI-013 — Conceptual benchmark figures still need final technical clearance
 - **Type:** Figures / writing / methodology
 - **Severity:** Medium

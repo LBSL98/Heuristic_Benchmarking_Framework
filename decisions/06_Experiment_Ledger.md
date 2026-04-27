@@ -77,36 +77,36 @@ This file is the canonical ledger for experiments, runs, outputs, and traceable 
 - **Mapped in `08_Results_to_Text_Map.md`:** No
 
 
-### EXP-BENCH-PILOT-001 — Benchmark pilot preregistration placeholder
+### EXP-BENCH-PILOT-001 — Pilot benchmark campaign under frozen protocol
 - **Status:** Planned
-- **Date:** 2026-04-16
-- **Question answered:** To be finalized after the remaining benchmark-release methodological blockers are frozen.
-- **Code reference / branch / commit:** Release-candidate branch/commit to be filled after final benchmark-release preparation.
-- **Input instances:** Canonical pilot panel to be finalized after benchmark-release checklist closure.
-- **Algorithms compared:** Canonical benchmark portfolio (METIS, KaHIP, SA, TS, ILS, GRASP), subject to the currently frozen execution and aggregation rules.
-- **Budget protocol:** To be copied from the final frozen benchmark protocol after closure of the still-open benchmark-release blockers.
-- **Environment constraints:** Controlled mono-thread audited environment; final external-validity wording still pending the relevant benchmark-release decision.
-- **Primary metrics:** To be finalized after the analytical benchmark synthesis freeze.
-- **Outputs generated:** Validated raw artifacts, manifest, aggregated per-instance table, selector-ready dataset inputs, pilot audit trail.
-- **Main finding:** N/A — preregistration placeholder only.
-- **Limitations / caveats:** This entry is a scaffolding placeholder and does not authorize pilot execution while the benchmark-release blockers remain open.
+- **Date:** 2026-04-25
+- **Question answered:** Does the fully frozen benchmark release candidate execute end-to-end under the canonical protocol with valid artifacts, manifests, and analysis-ready outputs?
+- **Code reference / branch / commit:** `chore-repo-canonical-alignment-sweep`; preregistered after freezes `D-009`, `D-010`, `D-011`, `D-012`, and `D-015`
+- **Input instances:** Pilot slice defined by the official pilot plans currently tracked in the repository.
+- **Algorithms compared:** Official canonical portfolio under the pilot slice, using the frozen stochastic profiles and the active baseline references.
+- **Plan reference:** `configs/plan_phase_1_pilot_baselines.yaml` and `configs/plan_phase_1_pilot_metaheuristics.yaml`
+- **Budget protocol:** Same wall-clock fairness semantics, same validation contract, same repeated-run collapse rules, and same seed policy as the frozen benchmark contract.
+- **Environment constraints:** Audited controlled WSL2 release-candidate environment under the current benchmark contract.
+- **Primary outputs expected:** Validated raw artifacts, manifest, aggregated pilot table, benchmark-surface audit trail, and confirmation that the main campaign may proceed without reopening the protocol.
+- **Main finding:** N/A — planned pilot entry only
+- **Limitations / caveats:** This entry authorizes pilot execution only. It does not authorize the main campaign and does not itself support substantive comparative claims until the pilot is executed and reviewed.
 - **Can this support prose in the monograph?** No
 - **Mapped in `08_Results_to_Text_Map.md`:** No
 
 
-### EXP-BENCH-MAIN-001 — Main benchmark campaign preregistration placeholder
+### EXP-BENCH-MAIN-001 — Main comparative benchmark campaign
 - **Status:** Planned
-- **Date:** 2026-04-16
-- **Question answered:** To be finalized after the benchmark-release protocol is fully frozen and the pilot review is completed.
-- **Code reference / branch / commit:** Release-candidate branch/commit to be filled before campaign start.
-- **Input instances:** Canonical main campaign panel to be filled after final release approval.
-- **Algorithms compared:** Canonical benchmark portfolio (METIS, KaHIP, SA, TS, ILS, GRASP), subject to the final frozen campaign contract.
-- **Budget protocol:** To be copied from the final frozen benchmark protocol after closure of the still-open benchmark-release blockers.
-- **Environment constraints:** Controlled mono-thread audited environment with final caveats to be filled from the canonical methodology at release time.
-- **Primary metrics:** To be finalized after the analytical benchmark synthesis freeze.
-- **Outputs generated:** Main raw artifacts, validated manifests, aggregated benchmark tables, selector training/evaluation inputs, campaign audit trail.
-- **Main finding:** N/A — preregistration placeholder only.
-- **Limitations / caveats:** This entry is a scaffolding placeholder and does not authorize the main campaign before pilot review and final methodological freeze.
+- **Date:** 2026-04-25
+- **Question answered:** Under the fully frozen benchmark protocol, how do the canonical solver families compare on the declared benchmark slices and analysis surfaces?
+- **Code reference / branch / commit:** `chore-repo-canonical-alignment-sweep`; execution blocked until pilot review under `EXP-BENCH-PILOT-001`
+- **Input instances:** Main benchmark slices defined by the official main plans currently tracked in the repository.
+- **Algorithms compared:** Canonical thesis portfolio (`SA`, `TS`, `ILS`, `GRASP`, `METIS`, `KaHIP`) under the frozen benchmark contract.
+- **Plan reference:** `configs/plan_phase_1_baselines.yaml` and `configs/plan_phase_1_metaheuristics.yaml`
+- **Budget protocol:** Same wall-clock fairness semantics, same validation contract, same repeated-run collapse rules, same seed policy, and the frozen stochastic profiles from `D-012`.
+- **Environment constraints:** Audited controlled WSL2 release-candidate environment under the current benchmark contract.
+- **Primary outputs expected:** Validated main artifacts, manifests, collapsed benchmark tables, benchmark-analysis inputs, and selector-ready collapsed dataset inputs.
+- **Main finding:** N/A — planned main campaign entry only
+- **Limitations / caveats:** This entry is not execution-authorizing until pilot review concludes that no protocol-relevant reopening is needed. Any material protocol change after pilot review requires explicit update rather than silent continuation.
 - **Can this support prose in the monograph?** No
 - **Mapped in `08_Results_to_Text_Map.md`:** No
 

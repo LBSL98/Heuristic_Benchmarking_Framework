@@ -71,6 +71,13 @@
 - Explicitly rejected searched / nested model-selection regimes in the current canonical release candidate.
 
 
+### Benchmark preregistration freeze
+
+- Froze `D-014`, separating pilot authorization from main-campaign authorization.
+- Added real planned ledger entries for `EXP-BENCH-PILOT-001` and `EXP-BENCH-MAIN-001`.
+- Kept the main campaign blocked until pilot review is complete.
+
+
 ### Calibration completion
 
 - Completed `EXP-CALIB-001` and froze the stochastic benchmark-release profiles through `D-012`.

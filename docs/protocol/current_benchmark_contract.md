@@ -156,6 +156,18 @@ For the canonical selector track in the current release candidate:
 
 This keeps selector evaluation interpretable and prevents hidden multiplicity in model selection.
 
+
+## Campaign preregistration boundary
+
+For the current release candidate:
+
+- pilot execution is authorized only through the real planned ledger entry `EXP-BENCH-PILOT-001`;
+- main benchmark execution is authorized only through the real planned ledger entry `EXP-BENCH-MAIN-001`;
+- the main campaign must not begin before pilot review is complete;
+- any protocol-relevant change discovered after the pilot must be handled through explicit canon reopening or updated preregistration rather than silent continuation.
+
+This keeps pilot validation and main comparative evidence as distinct governance events.
+
 ## Source-of-truth pointers
 
 When wording must be exact, consult:
