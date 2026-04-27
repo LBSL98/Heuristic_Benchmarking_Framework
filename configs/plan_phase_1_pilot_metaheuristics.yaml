@@ -74,7 +74,7 @@ instances:
   - n5000_cv_low.json.gz
   - wilson_tree_n10000.json.gz
   - n2000_dense_fast.json.gz
-  manifest_out: data/results_raw/manifest_index.csv
+  manifest_out: data/results_raw/pilot_metaheuristics/manifest_index.csv
   fields:
   - filename
   - n
@@ -82,4 +82,4 @@ instances:
   - density
   - cv_degree
 output:
-  raw_dir: data/results_raw
+  raw_dir: data/results_raw/pilot_metaheuristics
