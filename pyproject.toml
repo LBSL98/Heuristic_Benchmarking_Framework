@@ -55,7 +55,7 @@ black               = "^24.10.0"
 mypy                = "^1.17.1"
 interrogate         = "^1.7.0"
 mkdocs              = "^1.6.1"
-mkdocs-material     = "^9.5.49"
+mkdocs-dracula-theme = "^1.0.9"
 mkdocstrings        = { version = "^0.30.0" }
 mkdocstrings-python = { version = "^1.8.2" }
 griffe              = "^1.5.4"
@@ -64,7 +64,7 @@ mkdocs-minify-plugin = "^0.8.0"
 
 [tool.poetry.group.docs.dependencies]
 mkdocs = "^1.6.1"
-mkdocs-material = "^9.6.19"
+mkdocs-dracula-theme = "^1.0.9"
 mkdocstrings = { extras = ["python"], version = "^0.30.0" }
 mkdocs-autorefs = "^1.4.3"
 mkdocs-minify-plugin = "^0.8.0"

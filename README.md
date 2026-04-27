@@ -4,7 +4,7 @@
 > Infraestrutura experimental auditável para comparação justa entre solvers multilevel e meta-heurísticas sob um protocolo congelado de `fair(time)`.
 
 [![CI](https://github.com/LBSL98/Heuristic_Benchmarking_Framework/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/LBSL98/Heuristic_Benchmarking_Framework/actions/workflows/ci.yml)
-[![Docs](https://img.shields.io/badge/docs-online-0A7BBB?logo=materialformkdocs&logoColor=white)](https://lbsl98.github.io/Heuristic_Benchmarking_Framework/)
+[![Docs](https://img.shields.io/badge/docs-online-6272A4?logo=readthedocs&logoColor=white)](https://lbsl98.github.io/Heuristic_Benchmarking_Framework/)
 [![Release](https://img.shields.io/badge/release-benchmark--main--ready--2026--04--27-6f42c1)](https://github.com/LBSL98/Heuristic_Benchmarking_Framework/releases/tag/benchmark-main-ready-2026-04-27)
 ![Python](https://img.shields.io/badge/Python-3.11+-3776AB?logo=python&logoColor=white)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
