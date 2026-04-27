@@ -67,7 +67,7 @@ The benchmark release is considered decision-ready only after the following gate
 ### Gate D — Campaign preregistration
 - [x] `EXP-BENCH-PILOT-001` completed as a real planned entry
 - [x] `EXP-BENCH-MAIN-001` completed as a real planned entry
-- [ ] The pilot campaign is blocked from execution until its preregistration is complete
+- [x] The pilot campaign was blocked from execution until its preregistration became complete
 - [ ] The main campaign is blocked from execution until pilot review is complete
 
 ## Decision insertion sheet
@@ -116,11 +116,11 @@ The benchmark campaign should eventually appear in the ledger as at least two di
 
 1. `EXP-BENCH-PILOT-001`
    - role: dry-run / pilot validation under the frozen protocol
-   - current state here: placeholder only, not execution-authorizing
+   - current state here: real planned entry exists and authorizes pilot execution under D-014.
 
 2. `EXP-BENCH-MAIN-001`
    - role: main comparative benchmark campaign
-   - current state here: placeholder only, not execution-authorizing
+   - current state here: real planned entry exists, but main execution remains blocked until pilot review is complete.
 
 ## Stop rule
 
