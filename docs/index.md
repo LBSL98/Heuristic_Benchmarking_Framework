@@ -1,31 +1,53 @@
-# FORJA / MPP Docs
+# FORJA
 
-Esta documentação foi reorganizada para separar o **contrato ativo** do repositório dos materiais
-preservados apenas por **rastreabilidade histórica**.
+> Framework auditável para benchmarking reprodutível de particionamento de grafos sob um protocolo congelado de `fair(time)`.
 
-## Use como fonte ativa
+## O que é este site
 
-- `protocol/current_benchmark_contract.md`
-- `specs/reproducibility_checklist.md`
-- `testing/TESTING.md`
-- `testing/CI.md`
-- `testing/TRACEABILITY.md`
+Este site é a porta de entrada da documentação técnica do FORJA. Ele organiza o material do repositório em quatro camadas práticas:
 
-Essas páginas refletem o estado canônico atual do benchmark no repositório:
+- começar a usar;
+- consultar o contrato ativo do benchmark;
+- navegar a engenharia do framework;
+- acessar material histórico preservado por rastreabilidade.
 
-- portfólio oficial da tese = `SA`, `TS`, `ILS`, `GRASP`, `METIS`, `KaHIP`
-- `greedy` apenas como fluxo exploratório
-- comparação universal por wall-clock / `fair(time)`
-- contrato serializado com `elapsed_ms` e `checkpoints[].time_ms`
-- KaHIP 3.17 como narrativa experimental oficial, sem inferir a verdade experimental da árvore vendorizada `./KaHIP`
+## Estado atual do projeto
 
-## Legado / quarentena
+No estado público atual do repositório:
 
-Algumas páginas antigas foram preservadas para auditoria, mas não devem orientar o fluxo atual.
-Elas aparecem explicitamente sob a seção **Legacy / Quarantine** na navegação do site.
+- o piloto benchmarkado foi executado e aprovado;
+- o contrato ativo do benchmark está congelado;
+- a campanha principal está metodologicamente admissível;
+- a campanha principal ainda não foi iniciada.
 
-Quando houver conflito entre documentação legada e contrato ativo:
+## Comece aqui
 
-1. prevalecem os arquivos canônicos em `decisions/` e `specs/`;
-2. prevalece a página `protocol/current_benchmark_contract.md` dentro deste site;
-3. materiais legados ficam preservados apenas como trilha histórica.
+- [Início rápido](getting_started.md)
+- [Contrato atual do benchmark](protocol/current_benchmark_contract.md)
+- [Checklist de reprodutibilidade](specs/reproducibility_checklist.md)
+- [Guia de testes](testing/TESTING.md)
+
+## Navegue por objetivo
+
+### Quero executar ou validar o benchmark
+
+Vá para **Comece Aqui**, **Benchmark** e **Engenharia**.
+
+### Quero consultar o contrato metodológico
+
+Vá para **Benchmark**.
+
+### Quero entender testes, CI e rastreabilidade
+
+Vá para **Engenharia**.
+
+### Quero ver materiais históricos preservados
+
+Vá para **Arquivo**.
+
+## Idiomas
+
+- [Português](./)
+- [English](en/)
+
+A versão em inglês será expandida gradualmente. Quando uma página ainda não tiver tradução revisada, o site poderá usar a versão padrão em português como fallback.
