@@ -91,3 +91,10 @@ docs/*_bak/
 
 # local artifacts
 artifacts/
+
+# local analysis and backup artifacts
+.codex
+ANALISE_QUALIDADE_REPOSITORIO.md
+REPO_ANALYSIS.md
+audit_reports.tar
+data/results_raw_backup*/
