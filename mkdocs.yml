@@ -1,6 +1,5 @@
 site_name: FORJA / MPP Docs
-site_description: Reproducible benchmarking framework for fair graph partitioning
-  comparisons.
+site_description: Reproducible benchmarking framework for fair graph partitioning comparisons.
 site_url: https://lbsl98.github.io/Heuristic_Benchmarking_Framework/
 repo_url: https://github.com/LBSL98/Heuristic_Benchmarking_Framework
 repo_name: LBSL98/Heuristic_Benchmarking_Framework
@@ -15,9 +14,12 @@ markdown_extensions:
     permalink: true
 nav:
 - Home: index.md
-- Active Contract:
+- Get Started:
+  - Quickstart: getting_started.md
+- Benchmark:
   - Current Benchmark Contract: protocol/current_benchmark_contract.md
   - Reproducibility Checklist: specs/reproducibility_checklist.md
+- Engineering:
   - Testing Guide: testing/TESTING.md
   - CI: testing/CI.md
   - Traceability: testing/TRACEABILITY.md
@@ -34,7 +36,7 @@ nav:
   - SSH Orchestrator: api/orchestrator_ssh_executor.md
 - Reports:
   - Instance Generator: reports/01_instance_generator.md
-- Legacy / Quarantine:
+- Archive:
   - Archived Protocol v3.1.1: protocol/proto_v3.1.1.md
   - Archived Architecture Overview: 00_architectural_overview.md
   - Archived Workflow Plan: 01_project_plan_and_workflow.md
@@ -43,7 +45,42 @@ nav:
   - Archived ADR 003: decisions/003_metodologia_gerador_e_analise.md
   - ADR 001 Language Choice: decisions/001_choice_heuristic_language.md
   - ADR 004 Testing & CI: decisions/004_testing_and_ci.md
+- Language:
+  - Português: https://lbsl98.github.io/Heuristic_Benchmarking_Framework/
+  - English: https://lbsl98.github.io/Heuristic_Benchmarking_Framework/en/
 plugins:
+- i18n:
+    docs_structure: suffix
+    fallback_to_default: true
+    languages:
+    - locale: pt
+      name: Português
+      default: true
+      build: true
+      nav_translations:
+        Home: Início
+        Get Started: Comece Aqui
+        Quickstart: Início rápido
+        Benchmark: Benchmark
+        Engineering: Engenharia
+        Reports: Relatórios
+        Archive: Arquivo
+        Language: Idioma
+        Current Benchmark Contract: Contrato Atual do Benchmark
+        Reproducibility Checklist: Checklist de Reprodutibilidade
+        Testing Guide: Guia de Testes
+        Traceability: Rastreabilidade
+        Test Cases: Casos de Teste
+        Instance Generator: Gerador de Instâncias
+        Archived Protocol v3.1.1: Protocolo Arquivado v3.1.1
+        Archived Architecture Overview: Visão Arquitetural Arquivada
+        Archived Workflow Plan: Plano de Trabalho Arquivado
+        Archived Campaign Report: Relatório de Campanha Arquivado
+        Archived Baseline v1.0: Baseline Arquivada v1.0
+        Archived ADR 003: ADR 003 Arquivada
+    - locale: en
+      name: English
+      build: true
 - search
 - autorefs
 - mkdocstrings:

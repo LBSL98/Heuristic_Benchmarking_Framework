@@ -37,7 +37,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install .
-          pip install mkdocs mkdocs-dracula-theme "mkdocstrings[python]" mkdocs-autorefs mkdocs-minify-plugin
+          pip install mkdocs mkdocs-dracula-theme mkdocs-static-i18n "mkdocstrings[python]" mkdocs-autorefs mkdocs-minify-plugin
 
       - name: Build docs (strict)
         run: python -m mkdocs build --strict --site-dir /tmp/forja-mkdocs
