@@ -45,9 +45,5 @@ Go to **Engineering**.
 
 Go to **Archive**.
 
-## Languages
-
-- [Português](../)
-- [English](./)
 
 This English layer is being expanded incrementally. When a reviewed English page is not available yet, the site falls back to the default Portuguese page.

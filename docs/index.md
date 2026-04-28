@@ -45,9 +45,5 @@ Vá para **Engenharia**.
 
 Vá para **Arquivo**.
 
-## Idiomas
-
-- [Português](./)
-- [English](en/)
 
 A versão em inglês será expandida gradualmente. Quando uma página ainda não tiver tradução revisada, o site poderá usar a versão padrão em português como fallback.
