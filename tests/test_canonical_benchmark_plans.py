@@ -25,7 +25,7 @@ def test_phase1_baselines_plan_contains_only_canonical_baselines():
 def test_phase1_metaheuristics_plan_contains_only_canonical_metaheuristics():
     plan = _load_yaml("configs/plan_phase_1_metaheuristics.yaml")
     assert _enabled_solvers(plan) == {"sa", "ils", "grasp", "ts"}
-    assert (plan.get("rng", {}) or {}).get("seeds") == [42, 43, 44]
+    assert (plan.get("rng", {}) or {}).get("seeds") == [42, 43, 44, 45, 46]
 
 
 def test_phase1_pilot_baselines_plan_contains_only_canonical_baselines():
