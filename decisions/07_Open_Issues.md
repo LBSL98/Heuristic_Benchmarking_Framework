@@ -114,3 +114,10 @@ This file tracks unresolved project problems that can still affect coherence, co
 ## Notes
 
 - The pilot benchmark review completed successfully on 2026-04-27 (`EXPECTED_TOTAL=112`, `ACTUAL_TOTAL=112`, `SCHEMA_ERRORS=0`, `APPROVAL_CANDIDATE=1`), but that operational milestone does not by itself close the remaining writing, figure-clearance, or publication-surface issues.
+
+### OI-019 — Main benchmark plans must materialize R1/R2/R3
+- **Type:** Methodology / experiment registration / validity
+- **Severity:** High
+- **Origin:** Instance-panel coverage audit before main campaign
+- **Current status:** Open
+- **Needed action:** Before `EXP-BENCH-MAIN-001` begins, update or supersede the official baseline and metaheuristic plans so that they share the same R1/R2/R3 instance universe. The plan gate must verify instance existence, regime labels, plan parity, shared `k`, balance tolerance, budget semantics, validation settings, and artifact-contract compatibility. Synthetic-only plans may remain pilots or controlled slices, but cannot support the main three-regime benchmark claims.

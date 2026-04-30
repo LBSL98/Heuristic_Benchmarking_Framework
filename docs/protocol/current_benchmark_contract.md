@@ -190,7 +190,7 @@ The pilot benchmark campaign has been completed and positively reviewed under th
 This means:
 
 - `EXP-BENCH-PILOT-001` completed with full expected artifact coverage and zero schema errors;
-- the main campaign `EXP-BENCH-MAIN-001` became admissible under the same frozen protocol;
+- the main campaign `EXP-BENCH-MAIN-001` remains blocked until the R1/R2/R3 instance-panel gate is closed;
 - pilot approval validates executability, artifact generation, and contract conformance, but does not itself support the comparative scientific claims reserved for the main campaign.
 
 ## Source-of-truth pointers
@@ -200,3 +200,9 @@ When wording must be exact, consult:
 - `decisions/03_Methodology_Canonical_consolidated.md`
 - `specs/jsonschema/solver_run.schema.v1.json`
 - `docs/specs/reproducibility_checklist.md`
+
+## R1/R2/R3 panel gate
+
+The pilot benchmark campaign has been completed and positively reviewed under the frozen benchmark protocol. This validates executability, artifact generation, and contract conformance, but it does not by itself authorize the main three-regime benchmark.
+
+At the current project canon, the main campaign remains blocked until the official plans materialize a shared `R1`/`R2`/`R3` instance universe and pass the corresponding plan-level gate. Synthetic-only plans may remain valid as pilots or controlled slices, but they are not sufficient for the main three-regime campaign.

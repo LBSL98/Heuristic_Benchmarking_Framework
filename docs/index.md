@@ -17,7 +17,7 @@ No estado público atual do repositório:
 
 - o piloto benchmarkado foi executado e aprovado;
 - o contrato ativo do benchmark está congelado;
-- a campanha principal está metodologicamente admissível;
+- a campanha principal está bloqueada até o fechamento do gate R1/R2/R3;
 - a campanha principal ainda não foi iniciada.
 
 ## Comece aqui

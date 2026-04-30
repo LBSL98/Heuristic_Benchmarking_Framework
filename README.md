@@ -30,7 +30,7 @@ Esse estado significa:
 
 - o piloto benchmarkado foi executado e aprovado;
 - a cadeia de artefatos fechou sem erros de schema;
-- a campanha principal ficou metodologicamente admissível sob o mesmo protocolo congelado;
+- a campanha principal ficou bloqueada até o fechamento do gate R1/R2/R3 sob o mesmo protocolo congelado;
 - a campanha principal ainda **não** foi iniciada.
 
 ## Princípios metodológicos centrais

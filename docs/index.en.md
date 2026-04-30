@@ -17,7 +17,7 @@ In the current public repository state:
 
 - the benchmark pilot has been executed and approved;
 - the active benchmark contract is frozen;
-- the main campaign is methodologically admissible;
+- the main campaign is blocked until the R1/R2/R3 gate is closed;
 - the main campaign has not started yet.
 
 ## Start here

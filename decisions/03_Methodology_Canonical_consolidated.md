@@ -358,3 +358,21 @@ Confirmed contract points:
 Operational consequence:
 
 No active release-candidate document should continue to describe runner/schema/manifest alignment as a pending methodological blocker.
+
+## Instance-panel coverage gate for the main benchmark
+
+The main benchmark has an instance-panel coverage gate. Executable plans must materialize `R1`, `R2`, and `R3` before benchmark results can support the monograph's three-regime or topology-conditioned selector claims.
+
+Operational rule:
+
+- the official main plans must include explicitly labeled instances from `R1`, `R2`, and `R3`;
+- a synthetic-only plan may remain valid as a pilot, smoke test, calibration slice, or controlled sub-study, but it is not sufficient for the main three-regime benchmark;
+- the baseline plan and the metaheuristic plan must share the same instance universe;
+- the instance identifiers, `k`, balance tolerance, budget protocol, and validation contract must match across the baseline and metaheuristic plans;
+- the main campaign remains blocked until a plan-level gate verifies instance existence, regime labels, plan parity, shared problem parameters, budget consistency, and compatibility with the active artifact contract.
+
+Interpretation boundary:
+
+- non-empty coverage of `R1`, `R2`, and `R3` is necessary for three-regime claims, but it is not automatically sufficient for strong per-regime statistical inference;
+- if a regime has a small sample, regime-level conclusions must be described as descriptive or exploratory;
+- synthetic-only results may support calibration, smoke testing, controlled validation, or exploratory analysis, but they must not be used as evidence for three-regime claims unless `R2` and `R3` are also present in the validated benchmark evidence.
