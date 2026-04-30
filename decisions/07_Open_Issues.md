@@ -111,13 +111,20 @@ This file tracks unresolved project problems that can still affect coherence, co
 - **Current status:** Open
 - **Needed action:** Decide whether `docs/specs/mealpy_integration_plan.md` should enter the active nav or remain intentionally unlisted and documented as such.
 
-## Notes
-
-- The pilot benchmark review completed successfully on 2026-04-27 (`EXPECTED_TOTAL=112`, `ACTUAL_TOTAL=112`, `SCHEMA_ERRORS=0`, `APPROVAL_CANDIDATE=1`), but that operational milestone does not by itself close the remaining writing, figure-clearance, or publication-surface issues.
-
 ### OI-019 — Main benchmark plans must materialize R1/R2/R3
 - **Type:** Methodology / experiment registration / validity
 - **Severity:** High
 - **Origin:** Instance-panel coverage audit before main campaign
+- **Current status:** Resolved
+- **Needed action:** Resolved by the R1/R2/R3 materialization gate and PR #46. The official baseline and metaheuristic plans now share the same 12-instance R1/R2/R3 universe, and the gate was validated through `364_plan_gate_audit.json`, `373_preflight_summary.json`, and `375e_post_campaign_review_gate_final.json`. Synthetic-only outputs remain superseded for three-regime claims.
+
+### OI-020 — Timeout overshoot caveat must be preserved in analysis and prose
+- **Type:** Methodology / analysis / validity
+- **Severity:** Medium
+- **Origin:** `376_timeout_overshoot_and_tiebreak_audit`
 - **Current status:** Open
-- **Needed action:** Before `EXP-BENCH-MAIN-001` begins, update or supersede the official baseline and metaheuristic plans so that they share the same R1/R2/R3 instance universe. The plan gate must verify instance existence, regime labels, plan parity, shared `k`, balance tolerance, budget semantics, validation settings, and artifact-contract compatibility. Synthetic-only plans may remain pilots or controlled slices, but cannot support the main three-regime benchmark claims.
+- **Needed action:** When producing collapsed tables, figures, and monograph prose, preserve the caveat that 181 timeout-status metaheuristic runs exceeded the nominal 5-second wall-clock budget. The audited clipped-time sensitivity check did not alter winner identities, so the raw campaign is not blocked, but result prose must not claim exact hard-stop behavior for those runs.
+
+## Notes
+
+- The pilot benchmark review completed successfully on 2026-04-27 (`EXPECTED_TOTAL=112`, `ACTUAL_TOTAL=112`, `SCHEMA_ERRORS=0`, `APPROVAL_CANDIDATE=1`), but that operational milestone does not by itself close the remaining writing, figure-clearance, or publication-surface issues.

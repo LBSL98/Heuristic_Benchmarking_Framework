@@ -78,34 +78,34 @@ This file is the canonical ledger for experiments, runs, outputs, and traceable 
 - **Mapped in `08_Results_to_Text_Map.md`:** Yes
 
 ### EXP-BENCH-MAIN-001 — Main comparative benchmark campaign
-- **Status:** Planned — blocked until `EXP-PANEL-REGIME-GATE-001` is completed
-- **Date:** 2026-04-25
-- **Question answered:** Under the fully frozen benchmark protocol, how do the canonical solver families compare on the declared benchmark slices and analysis surfaces?
-- **Code reference / branch / commit:** `chore-repo-canonical-alignment-sweep`; execution was preregistered under `D-014` and became admissible after the successful pilot review recorded in `EXP-BENCH-PILOT-001`
-- **Input instances:** Main benchmark slices defined by the official main plans currently tracked in the repository
-- **Algorithms compared:** Canonical thesis portfolio (`SA`, `TS`, `ILS`, `GRASP`, `METIS`, `KaHIP`) under the frozen benchmark contract
-- **Plan reference:** `configs/plan_phase_1_baselines.yaml` and `configs/plan_phase_1_metaheuristics.yaml`
-- **Budget protocol:** Same wall-clock fairness semantics, same validation contract, same repeated-run collapse rules, same seed policy, and the frozen stochastic profiles from `D-012`
-- **Environment constraints:** Audited controlled WSL2 release-candidate environment under the current benchmark contract
-- **Primary metrics:** Validated main artifacts, manifests, collapsed benchmark tables, benchmark-analysis inputs, and selector-ready collapsed dataset inputs
-- **Outputs generated:** N/A — planned main campaign entry only
-- **Main finding:** N/A — planned main campaign entry only
-- **Limitations / caveats:** Although pilot review no longer blocks execution, any protocol-relevant change discovered before or during the main campaign still requires explicit canon reopening or updated preregistration rather than silent continuation.
-- **Can this support prose in the monograph?** No
-- **Mapped in `08_Results_to_Text_Map.md`:** No
+- **Status:** Completed — raw execution and post-campaign review completed; collapsed analysis still pending
+- **Date:** 2026-04-30
+- **Question answered:** Under the frozen benchmark protocol and the completed R1/R2/R3 panel gate, did the official main benchmark execute and produce reviewable raw artifacts for the canonical solver portfolio?
+- **Code reference / branch / commit:** `feat/main-benchmark-r1-r2-r3-preflight`; `fd3d475824cbb9070310dfda1322f7f0ef988177`, aligned with `origin/main`.
+- **Input instances:** 12-instance R1/R2/R3 panel from `data/instances/regime_panel_manifest.csv`: `R1=8`, `R2=2`, `R3=2`.
+- **Algorithms compared:** Canonical thesis portfolio: `METIS`, `KaHIP`, `SA`, `ILS`, `GRASP`, and `TS`.
+- **Plan reference:** `configs/plan_phase_1_baselines.yaml` and `configs/plan_phase_1_metaheuristics.yaml`.
+- **Budget protocol:** Wall-clock fair(time) protocol with `budget_time_ms=5000`, `k=8`, `beta=0.03`; baselines single-run with seed `42`; stochastic participants repeated with seeds `[42, 43, 44, 45, 46]`.
+- **Environment constraints:** Audited controlled WSL2 release-candidate environment under the current benchmark contract.
+- **Primary metrics:** Expected-versus-actual raw artifact counts, JSON parseability, status distribution, feasibility, `elapsed_ms` presence, checkpoint timestamp contract, overshoot sensitivity, and raw artifact readiness for later collapse.
+- **Outputs generated:** Archived stale output directories, active raw outputs in `data/results_raw/main_baselines` and `data/results_raw/main_metaheuristics`, live logs under `audit_reports/main_benchmark_preflight/374_*`, post-campaign review `375e_post_campaign_review_gate_final`, and overshoot audit `376_timeout_overshoot_and_tiebreak_audit`.
+- **Main finding:** The campaign produced the expected 264 raw artifacts: 24 baseline artifacts and 240 metaheuristic artifacts. All artifacts parsed, all were feasible, `elapsed_ms` was present, checkpoint timestamps followed `time_ms`, and the review gate closed with `approval_candidate=true`.
+- **Limitations / caveats:** Timeout overshoot occurred in 181 timeout-status metaheuristic runs, especially GRASP, ILS, and TS. The clipped-time sensitivity audit found no winner change under the audited tie-break comparison, so this caveat does not block the raw campaign, but it must be reported. The current evidence is raw/reviewed execution evidence; collapsed benchmark tables, statistical synthesis, selector-ready data, and final result claims remain pending. The small `R2=2` and `R3=2` slices support coverage and descriptive analysis, not strong per-regime inference.
+- **Can this support prose in the monograph?** Partial
+- **Mapped in `08_Results_to_Text_Map.md`:** Yes
 
 ### EXP-PANEL-REGIME-GATE-001 — R1/R2/R3 main-plan materialization gate
-- **Status:** Planned
+- **Status:** Completed
 - **Date:** 2026-04-30
 - **Question answered:** Do the official main benchmark plans materialize the three declared morphological regimes and preserve parity between baseline and metaheuristic executions?
-- **Code reference / branch / commit:** To be declared when the updated plans are committed.
-- **Input instances:** The planned R1/R2/R3 instance manifest to be used by the main benchmark. The manifest must label each instance as `R1`, `R2`, or `R3` and must be shared by the baseline and metaheuristic plans.
-- **Algorithms compared:** N/A — plan validation gate only. It does not produce algorithmic performance evidence.
-- **Budget protocol:** N/A for performance; the gate checks that budget semantics, `k`, balance tolerance, validation settings, and artifact contract are aligned across the official plans.
-- **Environment constraints:** Repository and plan-validation environment used to inspect plan files, instance paths, metadata, and schema compatibility.
-- **Primary metrics:** Counts per regime, path-existence checks, plan parity between baseline and metaheuristic plans, shared problem-parameter checks, and compatibility with the active artifact contract.
-- **Outputs generated:** An updated R1/R2/R3 plan manifest and a plan-gate report before main execution.
-- **Main finding:** N/A — planned gate entry only.
+- **Code reference / branch / commit:** `feat/main-benchmark-r1-r2-r3-preflight`; `fd3d475824cbb9070310dfda1322f7f0ef988177`
+- **Input instances:** `data/instances/regime_panel_manifest.csv`, with 12 instances distributed as `R1=8`, `R2=2`, and `R3=2`.
+- **Algorithms compared:** N/A — plan validation gate only. It did not produce algorithmic performance evidence.
+- **Budget protocol:** The gate verified shared problem and execution parameters for the official baseline and metaheuristic plans, including `k=8`, `beta=0.03`, `budget_time_ms=5000`, seed policy, and artifact-contract compatibility.
+- **Environment constraints:** Repository plan-validation environment at the cited commit.
+- **Primary metrics:** Regime counts, instance-path existence, baseline/metaheuristic plan parity, shared problem parameters, budget consistency, and artifact-contract compatibility.
+- **Outputs generated:** `audit_reports/regime_panel_gate/364_plan_gate_audit.json`, updated R1/R2/R3 manifest, updated official plan files, PR #46 materialization trail, and preflight artifacts under `audit_reports/main_benchmark_preflight/373_*`.
+- **Main finding:** The official plans materialized a shared 12-instance R1/R2/R3 universe and passed the plan-level gate needed before the main benchmark execution.
 - **Limitations / caveats:** This gate supports execution governance and claim eligibility only. It does not support performance conclusions.
-- **Can this support prose in the monograph?** Partial, for methodology/governance prose only after completion.
-- **Mapped in `08_Results_to_Text_Map.md`:** Yes as prospective guardrail only.
+- **Can this support prose in the monograph?** Partial, for methodology/governance prose only.
+- **Mapped in `08_Results_to_Text_Map.md`:** Yes
