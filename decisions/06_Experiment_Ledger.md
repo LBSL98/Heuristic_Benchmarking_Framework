@@ -157,3 +157,19 @@ This file is the canonical ledger for experiments, runs, outputs, and traceable 
 - **Limitations / caveats:** The `100 ms` diversity must be interpreted as early availability, not as proof that GRASP or ILS outperform available multilevel solvers. Near-tie and competitive cases persist where the multilevel reference is available, but they remain non-winning competitiveness diagnostics. Budget-aware CART is therefore limited to exploratory availability/competitiveness analysis and must not be framed as a strong selector result.
 - **Can this support prose in the monograph?** Partial
 - **Mapped in `08_Results_to_Text_Map.md`:** Yes
+
+### EXP-TS-RUST-CONTRACT-001 — TS-Rust-fidelity contract preregistration
+- **Status:** Completed
+- **Date:** 2026-04-30
+- **Question answered:** What constraints must govern the TS-Rust implementation before it can be used as an implementation-maturity ablation?
+- **Code reference / branch / commit:** Branch `feat/ts-rust-fidelity` from `d24d2d70a502134aa35e40244901a8b6211a7b35`; contract preregistered before implementation.
+- **Input instances:** N/A — protocol/contract entry only.
+- **Algorithms compared:** N/A — implementation not yet executed.
+- **Budget protocol:** Future TS-Rust runs must preserve the same wall-clock budget and checkpoint semantics used by the canonical TS benchmark.
+- **Environment constraints:** Future Rust build and run environment must be recorded before performance claims.
+- **Primary metrics:** N/A for results; this entry freezes the fidelity contract and claim boundaries.
+- **Outputs generated:** `D-023`, methodology contract text, claim-governance rows, and resolved `OI-025`.
+- **Main finding:** N/A — contract preregistration only.
+- **Limitations / caveats:** This entry does not implement TS-Rust, validate it, or support performance claims. It only defines what future TS-Rust evidence may mean.
+- **Can this support prose in the monograph?** Partial, for methodology/protocol prose only.
+- **Mapped in `08_Results_to_Text_Map.md`:** Yes

@@ -281,3 +281,11 @@ This file records frozen project decisions. A decision only becomes canonical af
 - **Rationale:** The project needs to test whether algorithm recommendation changes with available wall-clock budget while avoiding post-hoc temporal thresholds and avoiding artificial anytime trajectories for point-output baselines. Restricting the first analysis to the official `T*` hard cap preserves the fixed-budget campaign boundary and prevents post-timeout overshoot from becoming the source of budget-aware labels.
 - **Impact:** No budget-aware winner table, temporal exception claim, or budget-aware selector claim is canonical unless it uses this grid and labeling protocol, or unless this decision is explicitly superseded before analysis.
 - **Supersedes / Superseded by:** Instantiates the budget-aware layer previously left concrete-pending in the methodology and open issues.
+
+### D-023 — TS-Rust-fidelity implementation-maturity contract
+- **Status:** Frozen
+- **Date:** 2026-04-30
+- **Decision:** `TS-Rust-fidelity` is authorized only as a faithful implementation-maturity ablation of the canonical Python Tabu Search. It must preserve the same problem objective, balance feasibility policy, input graph contract, seed policy, wall-clock budget semantics, checkpoint semantics, and canonical TS profile as far as those elements are implemented in the Python TS. It may improve data structures, memory layout, parsing overhead, and low-level execution efficiency, but it must not change the scientific identity of the algorithm.
+- **Forbidden changes:** No multilevel/coarsening, no METIS/KaHIP warm start, no per-instance retuning, no new solver disguised as TS, no new neighborhood that changes the algorithmic identity, no hidden hybridization, and no claim that TS-Rust results generalize to all metaheuristics.
+- **Required interpretation:** This ablation can support claims about implementation maturity of this TS implementation only. It cannot by itself prove that metaheuristics in general would become competitive with optimized implementations.
+- **Supersedes / Superseded by:** Instantiates the TS-Rust ablation previously listed as planned in the benchmark governance.

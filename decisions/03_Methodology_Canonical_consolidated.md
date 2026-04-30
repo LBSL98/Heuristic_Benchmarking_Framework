@@ -431,3 +431,24 @@ Operational rules:
 7. Repeated stochastic observations are collapsed at `(instance, algorithm, t)` using median validated quality; ties use median observed time and then lexicographic algorithm identifier.
 8. Winner labels `y_i*(t)` and multilevel exception diagnostics are computed only after this per-budget collapse.
 9. Future budget-aware selector splits must remain instance-level: all temporal rows from the same graph stay entirely in training or entirely in test.
+
+### TS-Rust-fidelity implementation-maturity contract
+
+`TS-Rust-fidelity` is a controlled implementation-maturity ablation, not a new solver in the main portfolio. Its purpose is to test whether the Python implementation materially limits the observed wall-clock competitiveness of the canonical Tabu Search design.
+
+The Rust implementation must preserve:
+
+1. the graph partitioning objective: minimize edge cut;
+2. the balance constraint and feasibility policy;
+3. the same input graph interpretation;
+4. the same seed policy whenever stochastic choices are used;
+5. the same wall-clock budget semantics;
+6. the same checkpoint contract, including best-so-far quality over time;
+7. the same canonical TS profile where applicable;
+8. the same neighborhood, tabu, aspiration, and move-acceptance semantics where those are present in the Python implementation.
+
+Allowed implementation changes are restricted to engineering-level improvements: data structures, memory layout, parsing overhead, bookkeeping overhead, and low-level execution efficiency.
+
+Forbidden changes include multilevel/coarsening, warm starts from METIS/KaHIP, per-instance retuning, hidden hybridization, and algorithmic changes that would turn TS-Rust into a different solver.
+
+Claims from this ablation must be scoped to TS implementation maturity. They must not be generalized to ILS, GRASP, SA, or metaheuristics as a whole unless separate ablations are performed.
