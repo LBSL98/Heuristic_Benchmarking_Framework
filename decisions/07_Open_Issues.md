@@ -132,6 +132,13 @@ This file tracks unresolved project problems that can still affect coherence, co
 - **Current status:** Resolved
 - **Needed action:** Resolved by classifying the current fixed-budget result as a multilevel-dominance diagnostic. The result may support fixed-budget dominance prose for the evaluated panel, but it does not authorize strong ASP or selector-utility claims.
 
+### OI-022 — Fixed-budget exception diagnostics must decide selector eligibility
+- **Type:** Results governance / selector validity
+- **Severity:** High
+- **Origin:** Milestone 3 fixed-budget exception diagnostics
+- **Current status:** Resolved
+- **Needed action:** Resolved by `EXP-FIXED-BUDGET-EXCEPTION-DIAGNOSTICS-001`. The current fixed-budget table has negligible SBS-VBS gap and nearly degenerate winner labels, so a strong multiclass fixed-budget selector claim is blocked. Limited exception/competitiveness detection remains admissible as exploratory analysis.
+
 ## Notes
 
 - The pilot benchmark review completed successfully on 2026-04-27 (`EXPECTED_TOTAL=112`, `ACTUAL_TOTAL=112`, `SCHEMA_ERRORS=0`, `APPROVAL_CANDIDATE=1`), but that operational milestone does not by itself close the remaining writing, figure-clearance, or publication-surface issues.

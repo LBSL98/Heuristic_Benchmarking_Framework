@@ -109,3 +109,19 @@ This file is the canonical ledger for experiments, runs, outputs, and traceable 
 - **Limitations / caveats:** This gate supports execution governance and claim eligibility only. It does not support performance conclusions.
 - **Can this support prose in the monograph?** Partial, for methodology/governance prose only.
 - **Mapped in `08_Results_to_Text_Map.md`:** Yes
+
+### EXP-FIXED-BUDGET-EXCEPTION-DIAGNOSTICS-001 — Fixed-budget multilevel exception diagnostics
+- **Status:** Completed
+- **Date:** 2026-04-30
+- **Question answered:** Under the validated R1/R2/R3 fixed-budget collapse at `T*=5000 ms`, are there strong, near-tie, or competitive exceptions to the multilevel reference, and is the winner-label surface sufficient for a positive fixed-budget selector claim?
+- **Code reference / branch / commit:** Branch `feat/fixed-budget-exception-diagnostics` from `b4e4a983b593958dfcaf361cfd5a2cf23628d7dd`; diagnostics generated before commit.
+- **Input instances:** Same 12-instance R1/R2/R3 panel used by `EXP-BENCH-MAIN-001`.
+- **Algorithms compared:** Multilevel reference (`METIS`, `KaHIP`) versus stochastic metaheuristics (`SA`, `ILS`, `GRASP`, `TS`) under the collapsed fixed-budget table.
+- **Budget protocol:** Official fixed budget `T*=5000 ms`; exception gaps computed from collapsed validated quality. Competitive-case overshoot was audited using checkpoints at or before `T*`.
+- **Environment constraints:** Same audited WSL2 benchmark environment and artifact contract as the main campaign.
+- **Primary metrics:** SBS, VBS, SBS-VBS gap, winner-label entropy, best multilevel versus best metaheuristic relative gap, strong exceptions, near ties, competitive cases, and overshoot sensitivity for competitive cases.
+- **Outputs generated:** `421_fixed_budget_exception_diagnostics_*`, `422_validate_fixed_budget_exception_diagnostics`, `423_competitive_overshoot_audit_*`, and `424_fixed_budget_exception_diagnostics_corrected_*`.
+- **Main finding:** `METIS` is the SBS and the winner labels are nearly degenerate (`METIS=11`, `KaHIP=1`). The SBS-VBS gap is only `0.001216%`, so multiclass fixed-budget winner selection has essentially no oracle gain. There are no strong non-multilevel exceptions, but there are 5 near ties within 1% and 7 competitive cases within 5%, all in R1 and all involving `ILS` as the best metaheuristic. The competitive-case overshoot audit showed that all 35 audited raw ILS runs were already competitive before `T*=5000 ms` according to checkpoints.
+- **Limitations / caveats:** R1 contains the competitive cases; R2 and R3 contain only two instances each and show no near-tie or competitive cases. The competitive cases do not justify a strong winner-selector claim, but they support a limited exception/competitiveness-detector framing. Overshoot remains a caveat and is handled here through checkpoint-before-budget validation.
+- **Can this support prose in the monograph?** Partial
+- **Mapped in `08_Results_to_Text_Map.md`:** Yes
