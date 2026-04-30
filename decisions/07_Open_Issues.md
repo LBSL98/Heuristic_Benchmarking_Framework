@@ -125,6 +125,13 @@ This file tracks unresolved project problems that can still affect coherence, co
 - **Current status:** Open
 - **Needed action:** When producing collapsed tables, figures, and monograph prose, preserve the caveat that 181 timeout-status metaheuristic runs exceeded the nominal 5-second wall-clock budget. The audited clipped-time sensitivity check did not alter winner identities, so the raw campaign is not blocked, but result prose must not claim exact hard-stop behavior for those runs.
 
+### OI-021 — Fixed-budget collapse must be classified before selector claims
+- **Type:** Results governance / selector validity
+- **Severity:** High
+- **Origin:** Fixed-budget collapse `393` and independent audit `395`
+- **Current status:** Resolved
+- **Needed action:** Resolved by classifying the current fixed-budget result as a multilevel-dominance diagnostic. The result may support fixed-budget dominance prose for the evaluated panel, but it does not authorize strong ASP or selector-utility claims.
+
 ## Notes
 
 - The pilot benchmark review completed successfully on 2026-04-27 (`EXPECTED_TOTAL=112`, `ACTUAL_TOTAL=112`, `SCHEMA_ERRORS=0`, `APPROVAL_CANDIDATE=1`), but that operational milestone does not by itself close the remaining writing, figure-clearance, or publication-surface issues.

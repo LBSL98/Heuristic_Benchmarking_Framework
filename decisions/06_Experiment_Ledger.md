@@ -78,19 +78,19 @@ This file is the canonical ledger for experiments, runs, outputs, and traceable 
 - **Mapped in `08_Results_to_Text_Map.md`:** Yes
 
 ### EXP-BENCH-MAIN-001 — Main comparative benchmark campaign
-- **Status:** Completed — raw execution and post-campaign review completed; collapsed analysis still pending
+- **Status:** Completed — raw execution, post-campaign review, and fixed-budget collapse completed; selector and expanded analyses still pending
 - **Date:** 2026-04-30
-- **Question answered:** Under the frozen benchmark protocol and the completed R1/R2/R3 panel gate, did the official main benchmark execute and produce reviewable raw artifacts for the canonical solver portfolio?
-- **Code reference / branch / commit:** `feat/main-benchmark-r1-r2-r3-preflight`; `fd3d475824cbb9070310dfda1322f7f0ef988177`, aligned with `origin/main`.
+- **Question answered:** Under the frozen benchmark protocol and the completed R1/R2/R3 panel gate, what fixed-budget result is obtained by the canonical solver portfolio at `T*=5000 ms`, and is the resulting label surface sufficient for immediate selector claims?
+- **Code reference / branch / commit:** Raw campaign and review at `fd3d475824cbb9070310dfda1322f7f0ef988177`; canonical post-review governance merged into `main` at `0f3a742f2f50bb60a5058e0fbdc7988c456aa06c`; collapse generated on branch `feat/main-benchmark-collapse-r1-r2-r3`.
 - **Input instances:** 12-instance R1/R2/R3 panel from `data/instances/regime_panel_manifest.csv`: `R1=8`, `R2=2`, `R3=2`.
 - **Algorithms compared:** Canonical thesis portfolio: `METIS`, `KaHIP`, `SA`, `ILS`, `GRASP`, and `TS`.
 - **Plan reference:** `configs/plan_phase_1_baselines.yaml` and `configs/plan_phase_1_metaheuristics.yaml`.
 - **Budget protocol:** Wall-clock fair(time) protocol with `budget_time_ms=5000`, `k=8`, `beta=0.03`; baselines single-run with seed `42`; stochastic participants repeated with seeds `[42, 43, 44, 45, 46]`.
 - **Environment constraints:** Audited controlled WSL2 release-candidate environment under the current benchmark contract.
-- **Primary metrics:** Expected-versus-actual raw artifact counts, JSON parseability, status distribution, feasibility, `elapsed_ms` presence, checkpoint timestamp contract, overshoot sensitivity, and raw artifact readiness for later collapse.
-- **Outputs generated:** Archived stale output directories, active raw outputs in `data/results_raw/main_baselines` and `data/results_raw/main_metaheuristics`, live logs under `audit_reports/main_benchmark_preflight/374_*`, post-campaign review `375e_post_campaign_review_gate_final`, and overshoot audit `376_timeout_overshoot_and_tiebreak_audit`.
-- **Main finding:** The campaign produced the expected 264 raw artifacts: 24 baseline artifacts and 240 metaheuristic artifacts. All artifacts parsed, all were feasible, `elapsed_ms` was present, checkpoint timestamps followed `time_ms`, and the review gate closed with `approval_candidate=true`.
-- **Limitations / caveats:** Timeout overshoot occurred in 181 timeout-status metaheuristic runs, especially GRASP, ILS, and TS. The clipped-time sensitivity audit found no winner change under the audited tie-break comparison, so this caveat does not block the raw campaign, but it must be reported. The current evidence is raw/reviewed execution evidence; collapsed benchmark tables, statistical synthesis, selector-ready data, and final result claims remain pending. The small `R2=2` and `R3=2` slices support coverage and descriptive analysis, not strong per-regime inference.
+- **Primary metrics:** Raw artifact validity, fixed-budget collapsed median edge cut, median `elapsed_ms` tie-break, common-feasible coverage, winner distribution, tie cases, and overshoot caveat preservation.
+- **Outputs generated:** Active raw outputs in `data/results_raw/main_baselines` and `data/results_raw/main_metaheuristics`; post-campaign review `375e_post_campaign_review_gate_final`; overshoot audit `376_timeout_overshoot_and_tiebreak_audit`; fixed-budget collapse artifacts `393_main_r1r2r3_fixed_budget_*`; structural validation `394_validate_collapse_outputs`; independent collapse audit `395_independent_collapse_audit`.
+- **Main finding:** The reviewed raw campaign produced the expected 264 artifacts and the fixed-budget collapse produced 72 `(instance, algorithm, budget)` rows and 12 winner rows. Under the frozen collapse rule, `METIS` won 11 instances and `KaHIP` won 1 instance; no stochastic metaheuristic won at `T*=5000 ms`. There were no tie cases in the winner table.
+- **Limitations / caveats:** This result is best interpreted as a fixed-budget multilevel-dominance diagnostic for the current 12-instance panel, not as positive evidence that a selector is already useful. Timeout overshoot occurred in 181 timeout-status metaheuristic runs and must remain reported as a validity caveat; the clipped-time sensitivity audit did not change winner identities. The small `R2=2` and `R3=2` slices support coverage and descriptive analysis, not strong per-regime inference. Selector, budget-aware, TS-Rust, and expanded-panel analyses remain pending.
 - **Can this support prose in the monograph?** Partial
 - **Mapped in `08_Results_to_Text_Map.md`:** Yes
 
