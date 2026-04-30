@@ -141,3 +141,19 @@ This file is the canonical ledger for experiments, runs, outputs, and traceable 
 - **Limitations / caveats:** This entry does not support temporal performance conclusions. It only authorizes later construction of `y_i*(t)` under the frozen grid and hard cap.
 - **Can this support prose in the monograph?** Partial, for methodology/protocol prose only.
 - **Mapped in `08_Results_to_Text_Map.md`:** Yes
+
+### EXP-BUDGET-AWARE-YIT-001 — Budget-aware `y_i*(t)` table and temporal exception synthesis
+- **Status:** Completed
+- **Date:** 2026-04-30
+- **Question answered:** Under the preregistered budget-aware grid and hard cap, does the recommended algorithm change with wall-clock budget, and do temporal exceptions justify a strong budget-aware selector claim?
+- **Code reference / branch / commit:** Branch `feat/budget-aware-yit-table` from `fecbadd00c9e5c443962b85372067e617a586e7d`; table and synthesis generated before commit.
+- **Input instances:** Same 12-instance R1/R2/R3 panel used by `EXP-BENCH-MAIN-001`.
+- **Algorithms compared:** `METIS`, `KaHIP`, `SA`, `ILS`, `GRASP`, and `TS`.
+- **Budget protocol:** Preregistered grid `[100, 250, 500, 1000, 2000, 3000, 4000, 5000]` ms, hard cap `T*=5000 ms`; metaheuristics use best checkpoint with `time_ms <= t`; point-output baselines are available only when `elapsed_ms <= t`.
+- **Environment constraints:** Uses already reviewed main benchmark artifacts; no rerun.
+- **Primary metrics:** `y_i*(t)` winner labels, availability by budget, winner transitions, strong exceptions, near ties, competitive cases, and budget-aware selector eligibility.
+- **Outputs generated:** `442_budget_aware_yit_*`, `443_validate_budget_aware_yit_table`, and `444_budget_aware_temporal_exception_synthesis_*`.
+- **Main finding:** The budget-aware table contains 96 winner labels. At `100 ms`, winners are `METIS=5`, `GRASP=4`, and `ILS=3`, but these non-multilevel wins occur when the multilevel reference is often unavailable. From `250 ms` through `3000 ms`, `METIS` wins all 12 labeled instances. At `4000 ms` and `5000 ms`, the table matches the fixed-budget winner distribution, with `METIS=11` and `KaHIP=1`. No strong non-multilevel exception was observed at any preregistered budget.
+- **Limitations / caveats:** The `100 ms` diversity must be interpreted as early availability, not as proof that GRASP or ILS outperform available multilevel solvers. Near-tie and competitive cases persist where the multilevel reference is available, but they remain non-winning competitiveness diagnostics. Budget-aware CART is therefore limited to exploratory availability/competitiveness analysis and must not be framed as a strong selector result.
+- **Can this support prose in the monograph?** Partial
+- **Mapped in `08_Results_to_Text_Map.md`:** Yes
