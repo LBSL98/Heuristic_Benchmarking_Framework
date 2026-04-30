@@ -1,0 +1,13 @@
+instance_id,regime,relative_path,source_family,source_name,curation_policy,target_size_or_component,notes
+n2000_p50,R1,synthetic/n2000_p50.json.gz,synthetic,synthetic_generator,existing_panel,2000,canonical synthetic slice
+modnull_n3000_p50,R1,synthetic/modnull_n3000_p50.json.gz,synthetic,synthetic_generator,existing_panel,3000,canonical synthetic slice
+modnull_n3500_p40,R1,synthetic/modnull_n3500_p40.json.gz,synthetic,synthetic_generator,existing_panel,3500,canonical synthetic slice
+mix_betas_n3000_p35_cv045,R1,synthetic/mix_betas_n3000_p35_cv045.json.gz,synthetic,synthetic_generator,existing_panel,3000,canonical synthetic slice
+n4000_cv_high,R1,synthetic/n4000_cv_high.json.gz,synthetic,synthetic_generator,existing_panel,4000,canonical synthetic slice
+n5000_cv_low,R1,synthetic/n5000_cv_low.json.gz,synthetic,synthetic_generator,existing_panel,5000,canonical synthetic slice
+wilson_tree_n10000,R1,synthetic/wilson_tree_n10000.json.gz,synthetic,synthetic_generator,existing_panel,10000,canonical synthetic slice
+n2000_dense_fast,R1,synthetic/n2000_dense_fast.json.gz,synthetic,synthetic_generator,existing_panel,2000,canonical synthetic slice
+roadnet_ca_bfs_10000_seed42,R2,real/roadnet/roadnet_ca_bfs_10000_seed42.json.gz,roadnet,roadNet-CA,bfs_induced,10000,deterministic BFS slice
+roadnet_ca_bfs_20000_seed43,R2,real/roadnet/roadnet_ca_bfs_20000_seed43.json.gz,roadnet,roadNet-CA,bfs_induced,20000,deterministic BFS slice
+ca_hepth_gcc,R3,real/snap/ca_hepth_gcc.json.gz,snap,ca-HepTh,gcc,8638,giant connected component
+ca_astroph_gcc,R3,real/snap/ca_astroph_gcc.json.gz,snap,ca-AstroPh,gcc,17903,giant connected component
