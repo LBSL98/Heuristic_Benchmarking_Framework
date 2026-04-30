@@ -1,3 +1,4 @@
 * text=auto eol=lf
 *.md text eol=lf
 *.json.gz -text
+data/instances/real/snap/ca_astroph_gcc.json.gz filter=lfs diff=lfs merge=lfs -text

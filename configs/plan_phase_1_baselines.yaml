@@ -33,16 +33,20 @@ rng:
   seeds:
   - 42
 instances:
-  base_dir: data/instances/synthetic
+  base_dir: data/instances
   include:
-  - n2000_p50.json.gz
-  - modnull_n3000_p50.json.gz
-  - modnull_n3500_p40.json.gz
-  - mix_betas_n3000_p35_cv045.json.gz
-  - n4000_cv_high.json.gz
-  - n5000_cv_low.json.gz
-  - wilson_tree_n10000.json.gz
-  - n2000_dense_fast.json.gz
+  - synthetic/n2000_p50.json.gz
+  - synthetic/modnull_n3000_p50.json.gz
+  - synthetic/modnull_n3500_p40.json.gz
+  - synthetic/mix_betas_n3000_p35_cv045.json.gz
+  - synthetic/n4000_cv_high.json.gz
+  - synthetic/n5000_cv_low.json.gz
+  - synthetic/wilson_tree_n10000.json.gz
+  - synthetic/n2000_dense_fast.json.gz
+  - real/roadnet/roadnet_ca_bfs_10000_seed42.json.gz
+  - real/roadnet/roadnet_ca_bfs_20000_seed43.json.gz
+  - real/snap/ca_hepth_gcc.json.gz
+  - real/snap/ca_astroph_gcc.json.gz
   manifest_out: data/results_raw/main_baselines/manifest_index.csv
   fields:
   - filename
