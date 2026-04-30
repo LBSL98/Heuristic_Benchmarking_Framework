@@ -153,6 +153,13 @@ This file tracks unresolved project problems that can still affect coherence, co
 - **Current status:** Resolved
 - **Needed action:** Resolved by `EXP-BUDGET-AWARE-YIT-001`. The budget-aware table contains temporal winner transitions, but the non-multilevel wins at `100 ms` are availability-driven because the multilevel reference is often unavailable. Budget-aware selector claims remain limited to exploratory availability/competitiveness analysis unless superseded by later evidence.
 
+### OI-025 — TS-Rust fidelity contract must precede implementation
+- **Type:** Methodology / implementation-maturity ablation
+- **Severity:** High
+- **Origin:** Milestone TS-Rust fidelity and implementation-maturity ablation
+- **Current status:** Resolved
+- **Needed action:** Resolved by `D-023` and `EXP-TS-RUST-CONTRACT-001`. TS-Rust is authorized only as a faithful TS implementation-maturity ablation. Implementation, validation, and performance claims remain blocked until later issues are completed.
+
 ## Notes
 
 - The pilot benchmark review completed successfully on 2026-04-27 (`EXPECTED_TOTAL=112`, `ACTUAL_TOTAL=112`, `SCHEMA_ERRORS=0`, `APPROVAL_CANDIDATE=1`), but that operational milestone does not by itself close the remaining writing, figure-clearance, or publication-surface issues.
