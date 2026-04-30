@@ -146,6 +146,13 @@ This file tracks unresolved project problems that can still affect coherence, co
 - **Current status:** Resolved
 - **Needed action:** Resolved by `D-022` and `EXP-BUDGET-AWARE-PROTOCOL-001`. The first budget-aware analysis is restricted to the preregistered grid `[100, 250, 500, 1000, 2000, 3000, 4000, 5000]` ms, with hard cap `T*=5000 ms`, checkpoint-derived metaheuristic observations, and point-output baseline observations only after observed `elapsed_ms`.
 
+### OI-024 — Budget-aware temporal labels must be interpreted through availability
+- **Type:** Results governance / budget-aware analysis
+- **Severity:** High
+- **Origin:** `442_budget_aware_yit_table` and `444_budget_aware_temporal_exception_synthesis`
+- **Current status:** Resolved
+- **Needed action:** Resolved by `EXP-BUDGET-AWARE-YIT-001`. The budget-aware table contains temporal winner transitions, but the non-multilevel wins at `100 ms` are availability-driven because the multilevel reference is often unavailable. Budget-aware selector claims remain limited to exploratory availability/competitiveness analysis unless superseded by later evidence.
+
 ## Notes
 
 - The pilot benchmark review completed successfully on 2026-04-27 (`EXPECTED_TOTAL=112`, `ACTUAL_TOTAL=112`, `SCHEMA_ERRORS=0`, `APPROVAL_CANDIDATE=1`), but that operational milestone does not by itself close the remaining writing, figure-clearance, or publication-surface issues.
