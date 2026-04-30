@@ -44,3 +44,15 @@ The project depends on fair and controlled comparison. Theoretical references us
 - Theoretical framing of anytime metaheuristics.
 - Canonical statement of the ASP perspective.
 - Literature-grounded explanation of instance-space reasoning.
+
+### Dominance-conditioned selector framing
+The selector is not theoretically motivated by an assumption that all paradigms should win equally often. Multilevel graph partitioners are treated as strong reference solvers in the GPP literature and in practical engineering use. Therefore, one legitimate and often stronger ASP framing is exception-oriented: identify when the multilevel default is not dominant, not merely which paradigm wins most often.
+
+The canonical question may be read in two layers:
+
+- fixed-budget exception question: given instance features, is the best multilevel reference solver still the best choice at the official `T*`?
+- budget-aware exception question: given instance features and an available wall-clock budget, when does the best multilevel reference solver stop being dominant or become only marginally better?
+
+This framing does not assume that exceptions exist. A benchmark may validly conclude that the multilevel baseline dominates the evaluated slice and that selector usefulness is limited under that condition. If exceptions are observed, they must be described by their scope: strong wins, near ties, competitive gaps, temporal reversals, implementation-maturity shifts, or selector-level oracle gaps.
+
+No-Free-Lunch is therefore used as a theoretical motivation for conditional behavior, not as a result to be proven by the benchmark. The project must not inflate isolated exceptions into a universal claim that metaheuristics dominate multilevel methods.
