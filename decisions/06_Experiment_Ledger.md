@@ -78,7 +78,7 @@ This file is the canonical ledger for experiments, runs, outputs, and traceable 
 - **Mapped in `08_Results_to_Text_Map.md`:** Yes
 
 ### EXP-BENCH-MAIN-001 — Main comparative benchmark campaign
-- **Status:** Planned
+- **Status:** Planned — blocked until `EXP-PANEL-REGIME-GATE-001` is completed
 - **Date:** 2026-04-25
 - **Question answered:** Under the fully frozen benchmark protocol, how do the canonical solver families compare on the declared benchmark slices and analysis surfaces?
 - **Code reference / branch / commit:** `chore-repo-canonical-alignment-sweep`; execution was preregistered under `D-014` and became admissible after the successful pilot review recorded in `EXP-BENCH-PILOT-001`
@@ -93,3 +93,19 @@ This file is the canonical ledger for experiments, runs, outputs, and traceable 
 - **Limitations / caveats:** Although pilot review no longer blocks execution, any protocol-relevant change discovered before or during the main campaign still requires explicit canon reopening or updated preregistration rather than silent continuation.
 - **Can this support prose in the monograph?** No
 - **Mapped in `08_Results_to_Text_Map.md`:** No
+
+### EXP-PANEL-REGIME-GATE-001 — R1/R2/R3 main-plan materialization gate
+- **Status:** Planned
+- **Date:** 2026-04-30
+- **Question answered:** Do the official main benchmark plans materialize the three declared morphological regimes and preserve parity between baseline and metaheuristic executions?
+- **Code reference / branch / commit:** To be declared when the updated plans are committed.
+- **Input instances:** The planned R1/R2/R3 instance manifest to be used by the main benchmark. The manifest must label each instance as `R1`, `R2`, or `R3` and must be shared by the baseline and metaheuristic plans.
+- **Algorithms compared:** N/A — plan validation gate only. It does not produce algorithmic performance evidence.
+- **Budget protocol:** N/A for performance; the gate checks that budget semantics, `k`, balance tolerance, validation settings, and artifact contract are aligned across the official plans.
+- **Environment constraints:** Repository and plan-validation environment used to inspect plan files, instance paths, metadata, and schema compatibility.
+- **Primary metrics:** Counts per regime, path-existence checks, plan parity between baseline and metaheuristic plans, shared problem-parameter checks, and compatibility with the active artifact contract.
+- **Outputs generated:** An updated R1/R2/R3 plan manifest and a plan-gate report before main execution.
+- **Main finding:** N/A — planned gate entry only.
+- **Limitations / caveats:** This gate supports execution governance and claim eligibility only. It does not support performance conclusions.
+- **Can this support prose in the monograph?** Partial, for methodology/governance prose only after completion.
+- **Mapped in `08_Results_to_Text_Map.md`:** Yes as prospective guardrail only.
