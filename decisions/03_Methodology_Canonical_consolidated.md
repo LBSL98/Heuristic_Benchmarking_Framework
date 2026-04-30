@@ -376,3 +376,40 @@ Interpretation boundary:
 - non-empty coverage of `R1`, `R2`, and `R3` is necessary for three-regime claims, but it is not automatically sufficient for strong per-regime statistical inference;
 - if a regime has a small sample, regime-level conclusions must be described as descriptive or exploratory;
 - synthetic-only results may support calibration, smoke testing, controlled validation, or exploratory analysis, but they must not be used as evidence for three-regime claims unless `R2` and `R3` are also present in the validated benchmark evidence.
+
+
+## Dominance-conditioned exception diagnostics
+
+The selector layer must be interpreted against a strong multilevel baseline rather than as a symmetric contest in which every paradigm is expected to win equally often. The benchmark may validly show multilevel dominance. In that case, the selector result is limited or negative under the evaluated slice unless complementary evidence demonstrates meaningful exceptions.
+
+### Multilevel reference baseline
+
+For every `(instance, budget)` slice, define the multilevel reference as the best collapsed feasible observation among `METIS` and `KaHIP` under the same aggregation and tie rules used for the main benchmark.
+
+Operational rule:
+
+- the multilevel reference is a benchmark comparator, not an oracle outside the portfolio;
+- it is computed after feasibility validation and repeated-run collapse;
+- it must use the same official quality metric and budget semantics as the compared participants;
+- if both multilevel participants are invalid on a slice, the slice must be reported as a diagnostic failure rather than used for exception labeling.
+
+### Exception taxonomy
+
+Exception labels are diagnostic layers built from the collapsed benchmark tables. They do not replace the canonical winner `y_i*(T*)` or `y_i*(t)` unless explicitly used in a separately declared selector task.
+
+- **Strong exception:** a non-multilevel participant has lower collapsed validated edge cut than the multilevel reference on the same `(instance, budget)` slice.
+- **Weak exception / near tie:** a non-multilevel participant is within `1%` relative edge-cut gap of the multilevel reference on the same slice.
+- **Competitive exception:** a non-multilevel participant is within `5%` relative edge-cut gap of the multilevel reference on the same slice.
+- **Temporal exception:** a non-multilevel participant wins, near-ties, or becomes competitive at a preregistered wall-clock budget `t`, even if it is not competitive at the official `T*`.
+- **Implementation-maturity exception:** a faithful optimized implementation, such as `TS-Rust-fidelity`, materially shifts the corresponding Python metaheuristic's wall-clock competitiveness without changing algorithmic semantics.
+- **Selector-level exception:** the VBS materially improves over the SBS under the relevant selector target and evaluation protocol.
+
+Relative gap is computed as:
+
+`gap_rel = (quality_non_multilevel - quality_multilevel_reference) / quality_multilevel_reference`
+
+because the project minimizes edge cut. Negative values are strong exceptions. Values in `[0, 0.01]` are near ties. Values in `(0.01, 0.05]` are competitive exceptions. Values above `0.05` are non-exceptions under the frozen diagnostic thresholds.
+
+### Selector consequence
+
+A selector may be trained only as an interpretable model over a declared target. It is scientifically useful only if it improves over the SBS, approaches the VBS, or explains mapped exception regions. If the evaluated slice has a nearly degenerate label distribution and no meaningful exception gap, the selector must be reported as limited, trivial, or negative rather than being presented as a positive ASP result.
