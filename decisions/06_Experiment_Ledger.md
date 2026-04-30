@@ -125,3 +125,19 @@ This file is the canonical ledger for experiments, runs, outputs, and traceable 
 - **Limitations / caveats:** R1 contains the competitive cases; R2 and R3 contain only two instances each and show no near-tie or competitive cases. The competitive cases do not justify a strong winner-selector claim, but they support a limited exception/competitiveness-detector framing. Overshoot remains a caveat and is handled here through checkpoint-before-budget validation.
 - **Can this support prose in the monograph?** Partial
 - **Mapped in `08_Results_to_Text_Map.md`:** Yes
+
+### EXP-BUDGET-AWARE-PROTOCOL-001 — Budget-aware temporal protocol preregistration
+- **Status:** Completed
+- **Date:** 2026-04-30
+- **Question answered:** What temporal grid and labeling protocol must be used before constructing the budget-aware `y_i*(t)` table from the reviewed R1/R2/R3 main benchmark artifacts?
+- **Code reference / branch / commit:** Branch `feat/budget-aware-exception-analysis` from `0dc8c34b37f8a0511718846b676edfd19e102967`; preregistration generated before commit.
+- **Input instances:** Same 12-instance R1/R2/R3 panel used by `EXP-BENCH-MAIN-001`.
+- **Algorithms compared:** No comparison performed in this protocol entry. The later budget-aware analysis will use `METIS`, `KaHIP`, `SA`, `ILS`, `GRASP`, and `TS`.
+- **Budget protocol:** Frozen grid `[100, 250, 500, 1000, 2000, 3000, 4000, 5000]` ms, with hard cap `T*=5000 ms`.
+- **Environment constraints:** Uses already reviewed raw artifacts from the controlled WSL2 main benchmark campaign; no rerun is authorized by this entry.
+- **Primary metrics:** N/A for result claims; this entry freezes temporal construction rules.
+- **Outputs generated:** Canonical preregistration in `D-022` and methodology updates.
+- **Main finding:** N/A — protocol preregistration only.
+- **Limitations / caveats:** This entry does not support temporal performance conclusions. It only authorizes later construction of `y_i*(t)` under the frozen grid and hard cap.
+- **Can this support prose in the monograph?** Partial, for methodology/protocol prose only.
+- **Mapped in `08_Results_to_Text_Map.md`:** Yes

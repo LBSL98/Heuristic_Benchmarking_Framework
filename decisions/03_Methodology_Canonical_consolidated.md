@@ -413,3 +413,21 @@ because the project minimizes edge cut. Negative values are strong exceptions. V
 ### Selector consequence
 
 A selector may be trained only as an interpretable model over a declared target. It is scientifically useful only if it improves over the SBS, approaches the VBS, or explains mapped exception regions. If the evaluated slice has a nearly degenerate label distribution and no meaningful exception gap, the selector must be reported as limited, trivial, or negative rather than being presented as a positive ASP result.
+
+### Preregistered budget-aware grid for the reviewed R1/R2/R3 campaign
+
+For the first budget-aware exception analysis over the reviewed R1/R2/R3 main benchmark, the temporal grid is frozen as:
+
+`[100, 250, 500, 1000, 2000, 3000, 4000, 5000]` milliseconds.
+
+Operational rules:
+
+1. `5000 ms` is the official fixed budget `T*` and the hard cap for this budget-aware construction.
+2. Checkpoints or final improvements after `5000 ms` must not enter `y_i*(t)`.
+3. For instrumented metaheuristics, the observation at budget `t` is the best validated checkpoint with `checkpoints[].time_ms <= t`.
+4. If a stochastic run has no checkpoint at or before `t`, that run is invalid for that `(instance, algorithm, t)` slice.
+5. For `METIS` and `KaHIP`, the final validated output is available only for budgets `t` such that `elapsed_ms <= t`.
+6. Baseline outputs must not be interpolated backward to budgets smaller than their observed `elapsed_ms`.
+7. Repeated stochastic observations are collapsed at `(instance, algorithm, t)` using median validated quality; ties use median observed time and then lexicographic algorithm identifier.
+8. Winner labels `y_i*(t)` and multilevel exception diagnostics are computed only after this per-budget collapse.
+9. Future budget-aware selector splits must remain instance-level: all temporal rows from the same graph stay entirely in training or entirely in test.

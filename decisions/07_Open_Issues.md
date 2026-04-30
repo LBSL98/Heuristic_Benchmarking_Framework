@@ -139,6 +139,13 @@ This file tracks unresolved project problems that can still affect coherence, co
 - **Current status:** Resolved
 - **Needed action:** Resolved by `EXP-FIXED-BUDGET-EXCEPTION-DIAGNOSTICS-001`. The current fixed-budget table has negligible SBS-VBS gap and nearly degenerate winner labels, so a strong multiclass fixed-budget selector claim is blocked. Limited exception/competitiveness detection remains admissible as exploratory analysis.
 
+### OI-023 — Budget-aware temporal grid must be preregistered
+- **Type:** Methodology / budget-aware analysis
+- **Severity:** High
+- **Origin:** Milestone 4 budget-aware exception analysis
+- **Current status:** Resolved
+- **Needed action:** Resolved by `D-022` and `EXP-BUDGET-AWARE-PROTOCOL-001`. The first budget-aware analysis is restricted to the preregistered grid `[100, 250, 500, 1000, 2000, 3000, 4000, 5000]` ms, with hard cap `T*=5000 ms`, checkpoint-derived metaheuristic observations, and point-output baseline observations only after observed `elapsed_ms`.
+
 ## Notes
 
 - The pilot benchmark review completed successfully on 2026-04-27 (`EXPECTED_TOTAL=112`, `ACTUAL_TOTAL=112`, `SCHEMA_ERRORS=0`, `APPROVAL_CANDIDATE=1`), but that operational milestone does not by itself close the remaining writing, figure-clearance, or publication-surface issues.
