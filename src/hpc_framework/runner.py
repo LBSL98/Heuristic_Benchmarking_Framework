@@ -28,6 +28,7 @@ from heuristics.ts import TSConfig, run_ts_partition
 from hpc_framework.solvers.common import read_partition_labels, write_metis_graph
 from hpc_framework.solvers.kahip import run_kaffpa
 from hpc_framework.solvers.metis import run_gpmetis
+from hpc_framework.ts_rust_adapter import run_ts_rust_binary, ts_rust_available
 
 
 def compute_cutsize_edges_labels(edges: np.ndarray, labels: np.ndarray) -> int:
@@ -174,6 +175,10 @@ def run(
             "exists": bool(_which("kaffpa")),
             "version": _tool_version(["kaffpa"]) if _which("kaffpa") else "",
         },
+        "ts_rust": {
+            "exists": bool(ts_rust_available()),
+            "version": _tool_version(["cargo"]) if _which("cargo") else "",
+        },
     }
 
     workdir.mkdir(parents=True, exist_ok=True)
@@ -298,6 +303,39 @@ def run(
             }
             for cp in ts_result.checkpoints
         ]
+    elif algo == "ts_rust":
+        rust_json = workdir / "ts_rust_result.json"
+        part_file = workdir / "ts_rust.part"
+        rust_result = run_ts_rust_binary(
+            graph_path=graph_path,
+            k=k,
+            beta=beta,
+            seed=seed,
+            budget_time_ms=budget_time_ms,
+            out_json=rust_json,
+            part_path=part_file,
+        )
+        payload = rust_result.payload
+
+        stdout = rust_result.stdout
+        stderr = rust_result.stderr
+        returncode = rust_result.returncode
+        solver_elapsed_ms = int(payload["elapsed_ms"])
+
+        labels = np.asarray(payload["labels"], dtype=int)
+        cut = int(payload["cutsize_best"])
+
+        labels_norm = normalize_labels_zero_based(labels)
+        feasible, validation = feasible_beta(labels_norm, k=k, beta=beta)
+        status_json = str(payload.get("status", "ok"))
+        checkpoints = [
+            {
+                "time_ms": int(cp["time_ms"]),
+                "cutsize_best": int(cp["cutsize_best"]),
+                "nfe": int(cp["nfe"]) if cp.get("nfe") is not None else None,
+            }
+            for cp in payload.get("checkpoints", [])
+        ]
     elif algo == "ils":
         adj = _adj_from_edges(n, edges)
         ils_result = run_ils_partition(
@@ -348,7 +386,9 @@ def run(
                 preset=kahip_preset,
             )
         else:
-            raise ValueError("algo must be 'metis', 'kahip', 'sa', 'ils', 'grasp' or 'ts'")
+            raise ValueError(
+                "algo must be 'metis', 'kahip', 'sa', 'ils', 'grasp', 'ts' or 'ts_rust'"
+            )
 
         elapsed_wall = int((time.perf_counter() - t0_wall) * 1000)
         solver_elapsed_ms = int(res.elapsed_ms) if res.elapsed_ms is not None else elapsed_wall
