@@ -173,3 +173,18 @@ This file is the canonical ledger for experiments, runs, outputs, and traceable 
 - **Limitations / caveats:** This entry does not implement TS-Rust, validate it, or support performance claims. It only defines what future TS-Rust evidence may mean.
 - **Can this support prose in the monograph?** Partial, for methodology/protocol prose only.
 - **Mapped in `08_Results_to_Text_Map.md`:** Yes
+
+### EXP-TS-RUST-VALIDATION-001 — TS-Rust-fidelity semantic/artifact validation
+- **Status:** Completed
+- **Date:** 2026-05-02
+- **Question answered:** Does `ts_rust` satisfy basic semantic and artifact-level invariants before any implementation-maturity ablation?
+- **Code reference / branch / commit:** Merged in PR #71; main at `69a602f3f851fe0835ec2abbebb352704bed1d59`.
+- **Input instances:** Three controlled toy cases: `path12_k3_seed42`, `cycle16_k4_seed7`, and `two_cliques_bridge12_k2_seed123`.
+- **Algorithms compared:** Canonical Python `ts` and `ts_rust`.
+- **Budget protocol:** `1000 ms` wall-clock budget per controlled case.
+- **Primary checks:** cutsize consistency against labels / `.part`, balance feasibility, checkpoint non-emptiness, checkpoint time monotonicity, best-so-far cut monotonicity, NFE monotonicity, and final checkpoint consistency with best cut.
+- **Outputs generated:** `scripts/validate_ts_rust_fidelity.py`, `tests/test_ts_rust_validation_script.py`; local validation reports under `audit_reports/ts_rust_fidelity/`.
+- **Main finding:** All three controlled cases passed the invariant checks. The observed best cuts matched between Python TS and TS-Rust on the controlled cases: `path12_k3_seed42` = 2/2, `cycle16_k4_seed7` = 4/4, and `two_cliques_bridge12_k2_seed123` = 1/1.
+- **Limitations / caveats:** This validation does not prove trajectory equivalence, RNG equivalence, full algorithmic equivalence on all instances, or performance superiority. It only authorizes proceeding to a controlled implementation-maturity ablation.
+- **Can this support prose in the monograph?** Yes, but only as validation/protocol prose. It cannot support claims about speed, superiority, or general metaheuristic competitiveness.
+- **Mapped in `08_Results_to_Text_Map.md`:** Yes
