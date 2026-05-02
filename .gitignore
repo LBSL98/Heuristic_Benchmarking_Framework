@@ -98,3 +98,6 @@ ANALISE_QUALIDADE_REPOSITORIO.md
 REPO_ANALYSIS.md
 audit_reports.tar
 data/results_raw_backup*/
+
+# Rust build artifacts
+rust/**/target/

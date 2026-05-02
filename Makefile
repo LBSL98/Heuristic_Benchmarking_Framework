@@ -272,3 +272,8 @@ docs-api-stubs:
 	@test -f docs/api/heuristics_greedy.md || echo -e "# heuristics.greedy\n\n::: heuristics.greedy" > docs/api/heuristics_greedy.md
 	@test -f docs/api/hpc_framework_cli.md || echo -e "# hpc_framework.cli\n\n::: hpc_framework.cli" > docs/api/hpc_framework_cli.md
 	@test -f docs/api/orchestrator_ssh_executor.md || echo -e "# orchestrator.ssh_executor\n\n::: orchestrator.ssh_executor" > docs/api/orchestrator_ssh_executor.md
+
+# --------- TS-Rust fidelity ----------
+.PHONY: ts-rust-build
+ts-rust-build:
+	cargo build --release --manifest-path rust/ts_rust_fidelity/Cargo.toml
