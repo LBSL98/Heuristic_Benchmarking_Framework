@@ -37,6 +37,7 @@
         "sa",
         "sa_rust",
         "ils",
+        "ils_rust",
         "grasp",
         "ts",
         "ts_rust"
