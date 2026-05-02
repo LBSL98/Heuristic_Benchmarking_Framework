@@ -452,3 +452,50 @@ Allowed implementation changes are restricted to engineering-level improvements:
 Forbidden changes include multilevel/coarsening, warm starts from METIS/KaHIP, per-instance retuning, hidden hybridization, and algorithmic changes that would turn TS-Rust into a different solver.
 
 Claims from this ablation must be scoped to TS implementation maturity. They must not be generalized to ILS, GRASP, SA, or metaheuristics as a whole unless separate ablations are performed.
+
+## Strong-scope CART/Rust execution gate
+
+### Completed TS-Rust evidence status
+
+The TS-Rust implementation-maturity ablation is completed and mapped as TS-specific evidence. The audited ablation used three preregistered instances, five seeds, and a nominal `5000 ms` wall-clock budget. It produced `15/15` valid paired observations, with `TS-Rust-fidelity` obtaining lower final validated cuts than Python `TS` in `15/15` pairs. The median Rust/Python throughput ratio was `38.316x` in NFE/s.
+
+Mandatory interpretation caveat:
+
+- Python `TS` exceeded the nominal `5000 ms` budget in every run of the ablation. The median overshoot was `58 ms`, and the maximum overshoot was `1582 ms`. This favors Python in the final-cut comparison. Therefore, final-cut comparisons from this ablation are not strictly isochronous at exactly `5000 ms`, but the observed Rust advantage is conservative with respect to this overshoot.
+
+Allowed conclusion:
+
+- The ablation supports a TS-specific implementation-maturity claim: Python `TS` produced a conservative wall-clock reading relative to the faithful Rust implementation on the preregistered ablation panel.
+
+Forbidden conclusions:
+
+- `TS-Rust` proves that TS is generally superior to `METIS` or `KaHIP`.
+- The result generalizes automatically to `SA`, `ILS`, `GRASP`, or all metaheuristics.
+- Python and Rust trajectories are equivalent.
+- The Rust ablation replaces the main benchmark.
+
+### Full Rust metaheuristic portfolio layer
+
+The project may expand from the completed TS-Rust ablation to a full Rust implementation-maturity portfolio. This layer may include `SA-Rust`, `TS-Rust`, `ILS-Rust`, and `GRASP-Rust`, provided each implementation is validated against an explicit fidelity contract before result claims.
+
+For each Rust implementation, the project must declare the Python reference implementation and frozen profile being mirrored; the objective, balance semantics, move semantics, acceptance, restart or perturbation semantics, seed policy, checkpoint policy, and artifact schema mapping; known differences in tie-breaking, candidate enumeration, RNG stream, or stopping precision; and conformance tests and smoke runs proving artifact validity and solution feasibility.
+
+The Rust layer must not introduce coarsening, uncoarsening, multilevel refinement, warm starts from `METIS` or `KaHIP`, memetic recombination, new neighborhoods, or per-instance retuning for claims framed as implementation maturity. If such changes are introduced, the method becomes a new algorithmic variant and must be registered separately.
+
+The Rust portfolio is not a correction of an unfair benchmark. The Python benchmark remains a valid `fair(time)` comparison of concrete implementations under the frozen protocol. The Rust layer estimates how much implementation maturity shifts the metaheuristic anytime curves and whether this shift changes winner diversity, exception counts, or selector eligibility.
+
+### CART-validity-oriented expansion gate
+
+The expanded design tests whether CART is empirically justified. It does not assume CART usefulness. Before a CART claim is made under the expanded design, the project must produce a gate report containing the `R1`/`R2`/`R3` instance manifest and morphological coverage summary; the finite budget grid and the inclusion of `T*`; the active algorithm portfolio; collapsed winner tables by `(instance, algorithm, budget)`; `SBS`, `VBS`, oracle gap or regret-equivalent improvement, winner-label distribution, target entropy or equivalent degeneracy measure; exception counts against the multilevel reference; and an explicit recommendation on which selector target is admissible.
+
+Admissible selector targets are fixed-budget winner, budget-aware winner, exception classifier, or no substantive CART claim. Instance selection for this expansion must be based on preregistered morphological coverage rather than observed winners.
+
+### Conditional strong-scope execution gate
+
+The strongest scope is allowed only as a time-boxed attempt. The two-week gate decides whether the full Rust portfolio remains inside the monograph scope or is deferred.
+
+The first two focused weeks after the strong-scope branch begins may be used for implementation, integration, and validation of `SA-Rust`, `ILS-Rust`, and `GRASP-Rust`. The final two weeks of the current delivery window are protected for analysis, result writing, conclusion, threat-to-validity discussion, and committee-driven cleanup. The full Rust portfolio must not consume the full four-week period before writing begins.
+
+To continue the full Rust portfolio after the two-week gate, the project must have strong evidence that completion is realistic. At minimum, the project should have fidelity contracts drafted for `SA-Rust`, `ILS-Rust`, and `GRASP-Rust`; compiling Rust implementation or integration surface for the new participants; runner/adapter path and smoke execution for the new participants; schema-compatible artifacts and independent feasibility validation; and enough passing conformance tests to show that the Rust implementations are not silent algorithmic variants.
+
+If the gate fails, the full Rust portfolio is deferred to future work. The monograph remains methodologically valid with the canonical `fair(time)` benchmark, the completed TS-Rust ablation as TS-specific implementation-maturity evidence, budget-aware diagnostics only if validated and mapped, dominance-conditioned exception analysis, and CART only if selector-eligibility diagnostics support a nontrivial target. A limited or negative CART result is valid and must not be hidden.

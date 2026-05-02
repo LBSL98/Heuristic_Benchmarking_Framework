@@ -56,3 +56,12 @@ The canonical question may be read in two layers:
 This framing does not assume that exceptions exist. A benchmark may validly conclude that the multilevel baseline dominates the evaluated slice and that selector usefulness is limited under that condition. If exceptions are observed, they must be described by their scope: strong wins, near ties, competitive gaps, temporal reversals, implementation-maturity shifts, or selector-level oracle gaps.
 
 No-Free-Lunch is therefore used as a theoretical motivation for conditional behavior, not as a result to be proven by the benchmark. The project must not inflate isolated exceptions into a universal claim that metaheuristics dominate multilevel methods.
+
+### CART validity under expanded controlled variation
+The selector is a product only if the validated data show a nontrivial selection problem. The project may therefore expand the experimental design to test selector validity under controlled variation in three dimensions: graph morphology, available wall-clock budget, and implementation maturity of the metaheuristic portfolio.
+
+This expansion is not a license to force a positive CART result. It reduces the risk that a negative selector result is merely an artifact of a narrow instance panel, a single budget slice, or a slow reference implementation of a metaheuristic. The admissible question is whether the expanded, preregistered evidence contains enough winner diversity, exception structure, or oracle gap to justify an interpretable selector.
+
+The completed TS-Rust ablation can be used as TS-specific evidence that implementation maturity affects wall-clock behavior. It cannot by itself justify claims about all metaheuristics. A full Rust metaheuristic portfolio may support broader implementation-maturity claims only after `SA`, `TS`, `ILS`, and `GRASP` Rust implementations are each validated under explicit fidelity contracts and mapped to result claims.
+
+The project may attempt the full Rust portfolio as a strong-scope extension, but this attempt is schedule-conditioned. If the two-week viability gate is not satisfied, the full Rust portfolio must be deferred and the monograph must preserve the narrower defensible interpretation.

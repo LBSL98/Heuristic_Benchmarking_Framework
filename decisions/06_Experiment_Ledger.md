@@ -193,13 +193,104 @@ This file is the canonical ledger for experiments, runs, outputs, and traceable 
 - **Status:** Completed
 - **Date:** 2026-05-02
 - **Question answered:** Does the Rust implementation of canonical Tabu Search exhibit implementation-maturity advantages over the Python implementation under the frozen TS-Rust-fidelity contract?
-- **Code reference / branch / commit:** `feat/ts-rust-ablation`, commit `5bb12acd33f08b7684749f5898840d63ac285607`.
-- **Protocol:** Preregistered panel in `configs/ts_rust_ablation_panel.yaml`; 3 instances × 5 seeds × 2 algorithms; nominal wall-clock budget of `5000 ms`; paired comparison of `ts` and `ts_rust`.
-- **Instances:** `synthetic_modnull_n3000_p50`, `snap_ca_hepth_gcc`, and `roadnet_ca_bfs_10000_seed42`.
-- **Primary outputs:** `audit_reports/ts_rust_fidelity/509_ts_rust_ablation/`; audited summary in `audit_reports/ts_rust_fidelity/511_ts_rust_ablation_audited_summary.json` and `.md`.
-- **Main finding:** All 15 paired comparisons were valid and feasible. `ts_rust` reached a lower final cut than Python `ts` in `15/15` pairs. The median Rust/Python NFE/s ratio was `38.3160261059614`.
-- **Per-case medians:** `roadnet_ca_bfs_10000_seed42`: median delta cut `-5275`, median throughput ratio `38.3160261059614`; `snap_ca_hepth_gcc`: median delta cut `-11202`, median throughput ratio `30.900840377999074`; `synthetic_modnull_n3000_p50`: median delta cut `-9952`, median throughput ratio `64.69240861995148`.
-- **Artifact validity:** The audit found 30 raw JSON artifacts, 30 run rows, 15 paired rows and 180 trajectory rows. Checkpoint invariants passed for all raw artifacts.
-- **Limitations / caveats:** The comparison is limited to canonical Tabu Search implementation maturity. It does not prove trajectory equivalence, RNG equivalence, full algorithmic equivalence, or superiority of Rust over all metaheuristics. Python `ts` overshot the nominal `5000 ms` budget in all 15 runs, with median overshoot `58 ms` and maximum overshoot `1582 ms`; this favors Python in final-cut comparisons and must be disclosed.
-- **Can this support prose in the monograph?** Yes, but only as TS-specific implementation-maturity evidence. It cannot support claims about SA, ILS, GRASP, the whole benchmark portfolio, or general metaheuristic superiority.
+- **Code reference / branch / commit:** `feat/ts-rust-ablation`, commit `5bb12acd33f08b7684749f5898840d63ac285607`; final merge to `main` through PR `#73` at merge commit `42cee484bd44f0c53d944f556e45486ed6bccb9c`.
+- **Input instances:** `synthetic_modnull_n3000_p50`, `snap_ca_hepth_gcc`, and `roadnet_ca_bfs_10000_seed42`.
+- **Algorithms compared:** Python `TS` and `TS-Rust-fidelity`. This experiment did not compare a multilevel TS, a memetic TS, or a retuned TS variant.
+- **Budget protocol:** Nominal `5000 ms` wall-clock budget, seeds `[42, 43, 44, 45, 46]`, same validation surface, paired comparison by instance and seed.
+- **Environment constraints:** Controlled benchmark environment with Rust binary execution recorded by the ablation harness; artifact validity audited after execution.
+- **Primary metrics:** Final validated edge cut, NFE/s, elapsed time, overshoot relative to nominal budget, trajectory/checkpoint integrity, paired Rust-versus-Python comparison, and TTT on preregistered references when available.
+- **Outputs generated:** `audit_reports/ts_rust_fidelity/509_ts_rust_ablation/report.json`, raw artifacts, `runs.csv`, `paired_summary.csv`, `trajectory_samples.csv`, `510_audit_ts_rust_ablation_artifact_validity.txt`, and `511_ts_rust_ablation_audited_summary.json`.
+- **Main finding:** The ablation produced `15/15` valid pairs. `TS-Rust-fidelity` obtained lower final validated cuts than Python `TS` in `15/15` pairs. The median Rust/Python NFE/s ratio was `38.316x`. Per-case median delta cuts were `-5275` for `roadnet_ca_bfs_10000_seed42`, `-11202` for `snap_ca_hepth_gcc`, and `-9952` for `synthetic_modnull_n3000_p50`.
+- **Limitations / caveats:** The result is TS-specific. It does not prove trajectory equivalence, RNG equivalence, full algorithmic equivalence, or generalization to `SA`, `ILS`, `GRASP`, or all metaheuristics. Python `TS` exceeded the nominal `5000 ms` budget in all runs, with median overshoot `58 ms` and maximum overshoot `1582 ms`; this favors Python in final-cut comparison and must be disclosed.
+- **Can this support prose in the monograph?** Partial. It supports implementation-maturity and validity-of-construct prose for TS only, not general superiority claims.
 - **Mapped in `08_Results_to_Text_Map.md`:** Yes
+
+### EXP-SA-RUST-FIDELITY-001 — SA-Rust fidelity contract, implementation, and validation
+- **Status:** Planned
+- **Date:** 2026-05-02
+- **Question answered:** Can `SA-Rust` faithfully reproduce the canonical Python `SA` semantics closely enough to support implementation-maturity analysis?
+- **Code reference / branch / commit:** To be declared before implementation claim.
+- **Input instances:** Controlled validation panel to be preregistered before execution.
+- **Algorithms compared:** Python `SA` and `SA-Rust` only.
+- **Budget protocol:** Same wall-clock semantics, seed policy, checkpoint contract, and validation contract as the canonical Python `SA` profile.
+- **Primary metrics:** Artifact validity, feasibility, checkpoint monotonicity, NFE monotonicity when exposed, quality-by-wall-clock, quality-by-NFE when comparable, and fidelity caveats.
+- **Outputs generated:** N/A — planned entry only.
+- **Main finding:** N/A — planned entry only.
+- **Limitations / caveats:** No claim may be made until the fidelity contract, implementation, and validation are completed and mapped.
+- **Can this support prose in the monograph?** No while planned.
+- **Mapped in `08_Results_to_Text_Map.md`:** No while planned.
+
+### EXP-ILS-RUST-FIDELITY-001 — ILS-Rust fidelity contract, implementation, and validation
+- **Status:** Planned
+- **Date:** 2026-05-02
+- **Question answered:** Can `ILS-Rust` faithfully reproduce the canonical Python `ILS` semantics closely enough to support implementation-maturity analysis?
+- **Code reference / branch / commit:** To be declared before implementation claim.
+- **Input instances:** Controlled validation panel to be preregistered before execution.
+- **Algorithms compared:** Python `ILS` and `ILS-Rust` only.
+- **Budget protocol:** Same wall-clock semantics, seed policy, perturbation semantics, restart/descent semantics, checkpoint contract, and validation contract as the canonical Python `ILS` profile.
+- **Primary metrics:** Artifact validity, feasibility, checkpoint monotonicity, NFE monotonicity when exposed, quality-by-wall-clock, quality-by-NFE when comparable, and fidelity caveats.
+- **Outputs generated:** N/A — planned entry only.
+- **Main finding:** N/A — planned entry only.
+- **Limitations / caveats:** No claim may be made until the fidelity contract, implementation, and validation are completed and mapped.
+- **Can this support prose in the monograph?** No while planned.
+- **Mapped in `08_Results_to_Text_Map.md`:** No while planned.
+
+### EXP-GRASP-RUST-FIDELITY-001 — GRASP-Rust fidelity contract, implementation, and validation
+- **Status:** Planned
+- **Date:** 2026-05-02
+- **Question answered:** Can `GRASP-Rust` faithfully reproduce the canonical Python `GRASP` semantics closely enough to support implementation-maturity analysis?
+- **Code reference / branch / commit:** To be declared before implementation claim.
+- **Input instances:** Controlled validation panel to be preregistered before execution.
+- **Algorithms compared:** Python `GRASP` and `GRASP-Rust` only.
+- **Budget protocol:** Same wall-clock semantics, seed policy, RCL/greediness semantics, local-search semantics, checkpoint contract, and validation contract as the canonical Python `GRASP` profile.
+- **Primary metrics:** Artifact validity, feasibility, checkpoint monotonicity, NFE monotonicity when exposed, quality-by-wall-clock, quality-by-NFE when comparable, and fidelity caveats.
+- **Outputs generated:** N/A — planned entry only.
+- **Main finding:** N/A — planned entry only.
+- **Limitations / caveats:** No claim may be made until the fidelity contract, implementation, and validation are completed and mapped.
+- **Can this support prose in the monograph?** No while planned.
+- **Mapped in `08_Results_to_Text_Map.md`:** No while planned.
+
+### EXP-RUST-METAHEURISTIC-PORTFOLIO-001 — Full Rust metaheuristic implementation-maturity layer
+- **Status:** Planned
+- **Date:** 2026-05-02
+- **Question answered:** Does extending faithful Rust reimplementations from TS to the full metaheuristic portfolio change throughput, anytime curves, winner diversity, exception counts, or selector eligibility relative to the Python metaheuristic portfolio and multilevel baselines?
+- **Code reference / branch / commit:** To be declared separately for `SA-Rust`, `ILS-Rust`, and `GRASP-Rust`; `TS-Rust` already has completed evidence under `EXP-TS-RUST-ABLATION-001`.
+- **Input instances:** To be derived from the validated `R1`/`R2`/`R3` panel or a preregistered stratified subset. Instance selection must be based on morphological coverage, not observed winners.
+- **Algorithms compared:** `SA-Python`, `TS-Python`, `ILS-Python`, `GRASP-Python`; `SA-Rust`, `TS-Rust`, `ILS-Rust`, `GRASP-Rust`; and, when used for contextual comparison, `METIS` and `KaHIP`.
+- **Budget protocol:** Same wall-clock semantics, finite budget grid when used in the budget-aware surface, same validation contract, same repeated-run policy for stochastic participants, and no per-instance retuning.
+- **Primary metrics:** NFE/s, final validated edge cut by budget, quality by NFE, quality by wall-clock, TTT against preregistered references, exception counts relative to the multilevel reference, and selector-eligibility diagnostics.
+- **Outputs generated:** N/A — planned entry only.
+- **Main finding:** N/A — planned entry only.
+- **Limitations / caveats:** This layer is not a claim that the Python benchmark was invalid or unfair. It estimates implementation-maturity effects. Broader metaheuristic claims require all relevant Rust implementations to be validated and mapped.
+- **Can this support prose in the monograph?** No until completed, validated, and mapped.
+- **Mapped in `08_Results_to_Text_Map.md`:** Yes as prospective guardrail only.
+
+### EXP-CART-VALIDITY-GATE-001 — Selector-eligibility diagnostics under expanded evidence
+- **Status:** Planned
+- **Date:** 2026-05-02
+- **Question answered:** Does the validated evidence support a nontrivial selector target for CART, and if so, which target is admissible?
+- **Code reference / branch / commit:** To be declared before result claim.
+- **Input instances:** Validated `R1`/`R2`/`R3` panel and any preregistered expanded panel admitted before analysis.
+- **Algorithms compared:** The active validated portfolio at gate time.
+- **Budget protocol:** Fixed-budget and/or budget-aware surfaces already frozen in the methodology.
+- **Primary metrics:** `SBS`, `VBS`, oracle gap, winner-label distribution, entropy or equivalent degeneracy diagnostic, temporal winner transitions, and exception counts against the multilevel reference.
+- **Outputs generated:** N/A — planned entry only.
+- **Main finding:** N/A — planned entry only.
+- **Limitations / caveats:** CART is not a product claim until this gate identifies a nontrivial and valid supervised target.
+- **Can this support prose in the monograph?** No while planned, except as governance.
+- **Mapped in `08_Results_to_Text_Map.md`:** Yes as prospective guardrail only.
+
+### EXP-STRONG-SCOPE-VIABILITY-GATE-001 — Two-week strong-scope viability gate
+- **Status:** Planned
+- **Date:** 2026-05-02
+- **Question answered:** Should the full Rust metaheuristic portfolio remain inside the monograph scope after the two-week implementation and validation sprint?
+- **Code reference / branch / commit:** To be declared at gate review.
+- **Input instances:** N/A — project-management and evidence-readiness gate.
+- **Algorithms compared:** N/A — evaluates readiness of `SA-Rust`, `ILS-Rust`, and `GRASP-Rust`.
+- **Budget protocol:** N/A for direct performance claims.
+- **Primary metrics:** Contract completion, compilation/integration status, runner/adapter readiness, smoke execution, artifact validity, conformance tests, and remaining schedule risk.
+- **Outputs generated:** N/A — planned entry only.
+- **Main finding:** N/A — planned entry only.
+- **Limitations / caveats:** This gate supports scope control, not empirical algorithm claims.
+- **Can this support prose in the monograph?** No, except as project governance if needed.
+- **Mapped in `08_Results_to_Text_Map.md`:** Yes as governance only.

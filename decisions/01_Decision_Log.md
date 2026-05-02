@@ -289,3 +289,66 @@ This file records frozen project decisions. A decision only becomes canonical af
 - **Forbidden changes:** No multilevel/coarsening, no METIS/KaHIP warm start, no per-instance retuning, no new solver disguised as TS, no new neighborhood that changes the algorithmic identity, no hidden hybridization, and no claim that TS-Rust results generalize to all metaheuristics.
 - **Required interpretation:** This ablation can support claims about implementation maturity of this TS implementation only. It cannot by itself prove that metaheuristics in general would become competitive with optimized implementations.
 - **Supersedes / Superseded by:** Instantiates the TS-Rust ablation previously listed as planned in the benchmark governance.
+
+### D-024 — CART-validity-oriented scope expansion and completed TS-Rust evidence status
+- **Status:** Frozen
+- **Date:** 2026-05-02
+- **Decision:** The project treats the TS-Rust cycle as completed TS-specific implementation-maturity evidence and may expand the experimental design into a controlled CART-validity-oriented scope combining morphological diversity, budget-aware analysis, and a possible full Rust metaheuristic portfolio. This expansion tests whether the selector target is empirically meaningful; it does not guarantee a positive CART result and does not permit post hoc manipulation of instances, budgets, or implementation variants.
+
+  1. **TS-Rust evidence status**
+     - The TS-Rust implementation-maturity cycle is completed. It includes a frozen fidelity contract, implementation, validation, ablation, CI-accepted merge, and canonical result mapping.
+     - The audited ablation produced `15/15` valid paired observations over three preregistered instances and five seeds, comparing Python `TS` against `TS-Rust-fidelity` under a nominal `5000 ms` wall-clock budget.
+     - In that audited panel, `TS-Rust-fidelity` obtained lower final validated cuts in `15/15` pairs, with median Rust/Python throughput ratio of `38.316x` in NFE/s.
+     - The required caveat is that Python `TS` exceeded the nominal `5000 ms` budget in all runs, with median overshoot `58 ms` and maximum overshoot `1582 ms`; this favors Python in the final-cut comparison and must be disclosed wherever the ablation is interpreted.
+     - This evidence supports only TS-specific implementation-maturity claims. It does not prove trajectory equivalence, RNG equivalence, full algorithmic equivalence, superiority over multilevel solvers, or generalization to `SA`, `ILS`, `GRASP`, or all metaheuristics.
+
+  2. **CART-validity-oriented expansion**
+     - The expanded scope is justified as a controlled test of selector eligibility under richer but preregistered variation, not as a guarantee that CART will become useful.
+     - The explanatory factors admitted by this expansion are graph morphology (`R1`, `R2`, `R3`), wall-clock budget on a finite preregistered grid, and implementation maturity of the metaheuristic portfolio.
+     - The fixed-budget question at `T*` remains recoverable and must still be reported. Budget-aware analysis may be promoted only under the already frozen promotion conditions.
+
+  3. **Full Rust metaheuristic portfolio boundary**
+     - The project may implement `SA-Rust`, `TS-Rust`, `ILS-Rust`, and `GRASP-Rust` as a controlled implementation-maturity layer, provided each Rust implementation has an explicit fidelity contract, conformance tests, declared build/runtime environment, and no hidden per-instance retuning.
+     - Rust implementations must not introduce multilevel coarsening, uncoarsening, warm starts from `METIS` or `KaHIP`, memetic recombination, new neighborhoods, or algorithmic changes unless the affected method is explicitly registered as a new variant rather than a fidelity implementation.
+     - The Rust layer estimates implementation-maturity effects. It must not be described as retroactively making the earlier Python benchmark unfair or invalid.
+
+  4. **Selector eligibility gate**
+     - Before training or claiming any CART result, the project must compute selector-eligibility diagnostics: `SBS`, `VBS`, oracle gap or regret-equivalent improvement, winner-label distribution, target entropy or equivalent degeneracy diagnostic, exception counts against the multilevel reference, and budget-dependent winner transitions.
+     - If the fixed-budget target is degenerate, the fixed-budget CART must be reported as limited or negative. The project may then consider a budget-aware CART, an exception detector, or no substantive CART claim, depending on the validated evidence.
+     - Valid CART targets after the expanded benchmark may include fixed-budget winner `x_i -> y_i*(T*)`, budget-aware winner `(x_i,t) -> y_i*(t)`, or an exception classifier estimating whether the multilevel reference is sufficient on a given `(instance,budget)` slice.
+
+  5. **Instance-selection and bias boundary**
+     - Instance selection must be based on preregistered morphological coverage, not on observed winners or on whether the instances make CART more favorable.
+     - The expansion is admissible only if it improves the validity of the selector test; it must not be used to search for a post hoc panel that produces a desired label distribution.
+
+- **Rationale:** The audited TS-Rust ablation provides concrete evidence that implementation maturity can materially affect the temporal reading of at least one metaheuristic. This justifies considering a broader Rust portfolio and budget-aware surface as a way to test whether ASP/CART has meaningful signal under a more informative design. At the same time, the project constitution requires separating evidence, inference, and hypothesis; therefore the expansion must remain preregistered, claim-bounded, and diagnostic rather than outcome-forcing.
+- **Impact:** `02_Theory_Canonical.md` must treat CART validity as conditional on nontrivial selector evidence. `03_Methodology_Canonical_consolidated.md` must define the full Rust portfolio only as a controlled implementation-maturity layer until all implementations are validated. `06_Experiment_Ledger.md` must record planned entries for any full Rust portfolio benchmark or CART-validity gate. `07_Open_Issues.md` must track the remaining full-portfolio and selector-eligibility issues. `08_Results_to_Text_Map.md` must map TS-Rust result claims and forbid broader Rust/metaheuristic claims until corresponding evidence exists.
+- **Supersedes / Superseded by:** Extends the fixed-budget benchmark, budget-aware, dominance-conditioned selector, R1/R2/R3 panel, fixed-CART, and TS-Rust decisions without superseding them. It updates the empirical status of TS-Rust but does not replace the main benchmark or the fixed-budget reporting obligation.
+
+### D-025 — Conditional two-week strong-scope attempt and fallback rule
+- **Status:** Frozen
+- **Date:** 2026-05-02
+- **Decision:** The project may attempt the strongest version of the monograph scope, including `SA-Rust`, `ILS-Rust`, `GRASP-Rust`, full implementation-maturity analysis, and CART-validity diagnostics, but this attempt is time-boxed by a two-week viability gate. The full four-week period must not be consumed by implementation expansion before result writing and conclusion drafting begin.
+
+  1. **Four-week delivery boundary**
+     - The project currently has approximately four weeks to finish experiments, write results, write conclusions, and perform final cleanup.
+     - The first two weeks may be used as a strong-scope execution sprint.
+     - The final two weeks must remain protected for validated analysis, monograph writing, threat-to-validity framing, conclusion, and committee-driven cleanup.
+
+  2. **Two-week viability gate**
+     - At the end of the strong-scope sprint, the project must decide whether the full Rust portfolio remains in scope.
+     - To continue as full-portfolio evidence, `SA-Rust`, `ILS-Rust`, and `GRASP-Rust` must each have at minimum an explicit fidelity contract, a compiling implementation or documented integration surface, runner/adapter path, smoke execution, artifact validity, and conformance tests sufficient to justify continuing.
+     - To claim the full Rust portfolio in the monograph, all relevant Rust implementations must be validated and mapped to result claims. Partial implementation is not enough for broad metaheuristic claims.
+
+  3. **Fallback rule**
+     - If the two-week gate fails, the full Rust portfolio is deferred to future work.
+     - The monograph then proceeds with the defensible scope: canonical benchmark evidence, budget-aware diagnostics if validated, dominance-conditioned exception analysis, TS-Rust as TS-specific implementation-maturity ablation, and CART only if selector-eligibility diagnostics justify it.
+     - A negative or limited CART result remains acceptable and must be reported honestly.
+
+  4. **No silent promotion**
+     - The strong scope must not be promoted into result prose until the corresponding implementations, validations, experiments, and claim mappings exist.
+     - Planning entries support governance only; they do not support empirical result claims.
+
+- **Rationale:** The project has enough time to attempt a stronger contribution but not enough time to let implementation expansion consume the entire writing window. A fixed gate preserves ambition while protecting delivery and methodological integrity.
+- **Impact:** The next implementation issues must be organized around contracts, validation surfaces, and a viability gate. If the gate fails, the repository and monograph must explicitly defer the full Rust portfolio rather than implying incomplete evidence.
+- **Supersedes / Superseded by:** Extends `D-024` with an operational schedule-control rule. Does not supersede the main benchmark, TS-Rust ablation, or selector-governance decisions.
