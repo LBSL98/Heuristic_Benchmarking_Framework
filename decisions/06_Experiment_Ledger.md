@@ -206,7 +206,7 @@ This file is the canonical ledger for experiments, runs, outputs, and traceable 
 - **Mapped in `08_Results_to_Text_Map.md`:** Yes
 
 ### EXP-SA-RUST-FIDELITY-001 — SA-Rust fidelity contract, implementation, and validation
-- **Status:** Planned
+- **Status:** Contract frozen; implementation and validation pending
 - **Date:** 2026-05-02
 - **Question answered:** Can `SA-Rust` faithfully reproduce the canonical Python `SA` semantics closely enough to support implementation-maturity analysis?
 - **Code reference / branch / commit:** To be declared before implementation claim.
@@ -214,14 +214,13 @@ This file is the canonical ledger for experiments, runs, outputs, and traceable 
 - **Algorithms compared:** Python `SA` and `SA-Rust` only.
 - **Budget protocol:** Same wall-clock semantics, seed policy, checkpoint contract, and validation contract as the canonical Python `SA` profile.
 - **Primary metrics:** Artifact validity, feasibility, checkpoint monotonicity, NFE monotonicity when exposed, quality-by-wall-clock, quality-by-NFE when comparable, and fidelity caveats.
-- **Outputs generated:** N/A — planned entry only.
-- **Main finding:** N/A — planned entry only.
-- **Limitations / caveats:** No claim may be made until the fidelity contract, implementation, and validation are completed and mapped.
-- **Can this support prose in the monograph?** No while planned.
+- **Outputs generated:** Contract in `decisions/12_Rust_Portfolio_Fidelity_Contracts.md`; implementation/validation outputs pending.
+- **Main finding:** The pre-implementation fidelity contract for `SA-Rust` is frozen. No implementation or validation result exists yet.
+- **Limitations / caveats:** No performance, quality, trajectory-equivalence, or selector claim may be made until implementation, validation, and any ablation are completed and mapped.
+- **Can this support prose in the monograph?** Partial, for methodology/contract prose only.
 - **Mapped in `08_Results_to_Text_Map.md`:** No while planned.
-
 ### EXP-ILS-RUST-FIDELITY-001 — ILS-Rust fidelity contract, implementation, and validation
-- **Status:** Planned
+- **Status:** Contract frozen; implementation and validation pending
 - **Date:** 2026-05-02
 - **Question answered:** Can `ILS-Rust` faithfully reproduce the canonical Python `ILS` semantics closely enough to support implementation-maturity analysis?
 - **Code reference / branch / commit:** To be declared before implementation claim.
@@ -229,14 +228,13 @@ This file is the canonical ledger for experiments, runs, outputs, and traceable 
 - **Algorithms compared:** Python `ILS` and `ILS-Rust` only.
 - **Budget protocol:** Same wall-clock semantics, seed policy, perturbation semantics, restart/descent semantics, checkpoint contract, and validation contract as the canonical Python `ILS` profile.
 - **Primary metrics:** Artifact validity, feasibility, checkpoint monotonicity, NFE monotonicity when exposed, quality-by-wall-clock, quality-by-NFE when comparable, and fidelity caveats.
-- **Outputs generated:** N/A — planned entry only.
-- **Main finding:** N/A — planned entry only.
-- **Limitations / caveats:** No claim may be made until the fidelity contract, implementation, and validation are completed and mapped.
-- **Can this support prose in the monograph?** No while planned.
+- **Outputs generated:** Contract in `decisions/12_Rust_Portfolio_Fidelity_Contracts.md`; implementation/validation outputs pending.
+- **Main finding:** The pre-implementation fidelity contract for `ILS-Rust` is frozen. No implementation or validation result exists yet.
+- **Limitations / caveats:** No performance, quality, trajectory-equivalence, or selector claim may be made until implementation, validation, and any ablation are completed and mapped.
+- **Can this support prose in the monograph?** Partial, for methodology/contract prose only.
 - **Mapped in `08_Results_to_Text_Map.md`:** No while planned.
-
 ### EXP-GRASP-RUST-FIDELITY-001 — GRASP-Rust fidelity contract, implementation, and validation
-- **Status:** Planned
+- **Status:** Contract frozen; implementation and validation pending
 - **Date:** 2026-05-02
 - **Question answered:** Can `GRASP-Rust` faithfully reproduce the canonical Python `GRASP` semantics closely enough to support implementation-maturity analysis?
 - **Code reference / branch / commit:** To be declared before implementation claim.
@@ -244,12 +242,11 @@ This file is the canonical ledger for experiments, runs, outputs, and traceable 
 - **Algorithms compared:** Python `GRASP` and `GRASP-Rust` only.
 - **Budget protocol:** Same wall-clock semantics, seed policy, RCL/greediness semantics, local-search semantics, checkpoint contract, and validation contract as the canonical Python `GRASP` profile.
 - **Primary metrics:** Artifact validity, feasibility, checkpoint monotonicity, NFE monotonicity when exposed, quality-by-wall-clock, quality-by-NFE when comparable, and fidelity caveats.
-- **Outputs generated:** N/A — planned entry only.
-- **Main finding:** N/A — planned entry only.
-- **Limitations / caveats:** No claim may be made until the fidelity contract, implementation, and validation are completed and mapped.
-- **Can this support prose in the monograph?** No while planned.
+- **Outputs generated:** Contract in `decisions/12_Rust_Portfolio_Fidelity_Contracts.md`; implementation/validation outputs pending.
+- **Main finding:** The pre-implementation fidelity contract for `GRASP-Rust` is frozen. No implementation or validation result exists yet.
+- **Limitations / caveats:** No performance, quality, trajectory-equivalence, or selector claim may be made until implementation, validation, and any ablation are completed and mapped.
+- **Can this support prose in the monograph?** Partial, for methodology/contract prose only.
 - **Mapped in `08_Results_to_Text_Map.md`:** No while planned.
-
 ### EXP-RUST-METAHEURISTIC-PORTFOLIO-001 — Full Rust metaheuristic implementation-maturity layer
 - **Status:** Planned
 - **Date:** 2026-05-02
@@ -294,3 +291,19 @@ This file is the canonical ledger for experiments, runs, outputs, and traceable 
 - **Limitations / caveats:** This gate supports scope control, not empirical algorithm claims.
 - **Can this support prose in the monograph?** No, except as project governance if needed.
 - **Mapped in `08_Results_to_Text_Map.md`:** Yes as governance only.
+
+### EXP-RUST-PORTFOLIO-CONTRACTS-001 — SA/ILS/GRASP Rust fidelity contracts
+- **Status:** Completed
+- **Date:** 2026-05-02
+- **Question answered:** What fidelity contracts must govern `SA-Rust`, `ILS-Rust`, and `GRASP-Rust` before implementation?
+- **Code reference / branch / commit:** Branch `governance/rust-portfolio-fidelity-contracts`; commit to be recorded after merge.
+- **Input instances:** N/A — contract/governance entry only.
+- **Algorithms compared:** N/A — no solver comparison is performed in this entry.
+- **Budget protocol:** Evidence-bearing future Rust runs must preserve the benchmark profiles frozen in `D-012`: `sa_e_maxsteps_100000`, `ils_b`, and `grasp_b`, with the same wall-clock budget semantics and artifact contract.
+- **Environment constraints:** Future implementation entries must record Rust compiler version, build flags, binary paths, and runtime metadata before any performance claim.
+- **Primary metrics:** N/A for performance. The contract freezes reference implementation, frozen profile, operator semantics, RNG/trajectory caveats, checkpoint/NFE contract, artifact mapping, forbidden changes, validation-panel requirements, and conformance-test requirements.
+- **Outputs generated:** `decisions/12_Rust_Portfolio_Fidelity_Contracts.md`.
+- **Main finding:** The repository now has explicit pre-implementation fidelity contracts for `SA-Rust`, `ILS-Rust`, and `GRASP-Rust`. This authorizes implementation work under issue #76 but does not authorize performance, selector, or full-portfolio result claims.
+- **Limitations / caveats:** These contracts do not require Python RNG stream equivalence and do not establish trajectory equivalence. Validation and ablation remain separate future steps.
+- **Can this support prose in the monograph?** Partial, for methodology/governance prose only.
+- **Mapped in `08_Results_to_Text_Map.md`:** Yes

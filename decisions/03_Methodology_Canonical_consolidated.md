@@ -478,7 +478,7 @@ Forbidden conclusions:
 
 The project may expand from the completed TS-Rust ablation to a full Rust implementation-maturity portfolio. This layer may include `SA-Rust`, `TS-Rust`, `ILS-Rust`, and `GRASP-Rust`, provided each implementation is validated against an explicit fidelity contract before result claims.
 
-For each Rust implementation, the project must declare the Python reference implementation and frozen profile being mirrored; the objective, balance semantics, move semantics, acceptance, restart or perturbation semantics, seed policy, checkpoint policy, and artifact schema mapping; known differences in tie-breaking, candidate enumeration, RNG stream, or stopping precision; and conformance tests and smoke runs proving artifact validity and solution feasibility.
+The concrete contracts for `SA-Rust`, `ILS-Rust`, and `GRASP-Rust` are frozen in `decisions/12_Rust_Portfolio_Fidelity_Contracts.md`. For each Rust implementation, the project must declare the Python reference implementation and frozen profile being mirrored; the objective, balance semantics, move semantics, acceptance, restart or perturbation semantics, seed policy, checkpoint policy, and artifact schema mapping; known differences in tie-breaking, candidate enumeration, RNG stream, or stopping precision; and conformance tests and smoke runs proving artifact validity and solution feasibility.
 
 The Rust layer must not introduce coarsening, uncoarsening, multilevel refinement, warm starts from `METIS` or `KaHIP`, memetic recombination, new neighborhoods, or per-instance retuning for claims framed as implementation maturity. If such changes are introduced, the method becomes a new algorithmic variant and must be registered separately.
 
