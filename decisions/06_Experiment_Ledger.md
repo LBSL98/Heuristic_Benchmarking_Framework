@@ -307,3 +307,19 @@ This file is the canonical ledger for experiments, runs, outputs, and traceable 
 - **Limitations / caveats:** These contracts do not require Python RNG stream equivalence and do not establish trajectory equivalence. Validation and ablation remain separate future steps.
 - **Can this support prose in the monograph?** Partial, for methodology/governance prose only.
 - **Mapped in `08_Results_to_Text_Map.md`:** Yes
+
+### EXP-RUST-FOUNDATION-001 — Shared Rust GPP fidelity foundation
+- **Status:** Completed
+- **Date:** 2026-05-02
+- **Question answered:** Is there a tested shared Rust foundation for future `SA-Rust`, `ILS-Rust`, and `GRASP-Rust` fidelity implementations?
+- **Code reference / branch / commit:** Branch `feat/rust-metaheuristic-foundation`; commit to be recorded after merge.
+- **Input instances:** Deterministic in-crate toy graphs only.
+- **Algorithms compared:** N/A — this is infrastructure, not an algorithm implementation or benchmark comparison.
+- **Budget protocol:** N/A for performance claims. Future algorithms must still use the contracts in `decisions/12_Rust_Portfolio_Fidelity_Contracts.md`.
+- **Environment constraints:** Rust crate `rust/gpp_fidelity_core`; no dependency on changing the already validated `TS-Rust` binary.
+- **Primary metrics:** Unit-test coverage of METIS parsing, cut recomputation, boundary recomputation, balance feasibility, delta-cut evaluation, move application, fallback boundary vertex selection, deterministic initial-state construction, and `.part` writing.
+- **Outputs generated:** `rust/gpp_fidelity_core/`.
+- **Main finding:** A shared Rust infrastructure crate exists and passes its unit tests. It does not expose `SA-Rust`, `ILS-Rust`, or `GRASP-Rust` as runnable algorithms.
+- **Limitations / caveats:** This entry supports implementation readiness only. It does not support performance, quality, selector, or full-portfolio claims.
+- **Can this support prose in the monograph?** Usually no, except as repository engineering/governance detail if needed.
+- **Mapped in `08_Results_to_Text_Map.md`:** No result claim mapped.
