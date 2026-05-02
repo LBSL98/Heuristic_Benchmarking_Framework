@@ -13,7 +13,9 @@ from .runner import run_one
 def _add_single_run_arguments(p: argparse.ArgumentParser) -> None:
     p.add_argument("--instance", required=True, help="Arquivo da instância (.json|.json.gz)")
     p.add_argument(
-        "--algo", required=True, choices=["metis", "kahip", "sa", "ils", "grasp", "ts", "ts_rust"]
+        "--algo",
+        required=True,
+        choices=["metis", "kahip", "sa", "sa_rust", "ils", "grasp", "ts", "ts_rust"],
     )
     p.add_argument("--k", required=True, type=int)
     p.add_argument("--beta", required=True, type=float)
