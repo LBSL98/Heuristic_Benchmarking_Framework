@@ -174,6 +174,34 @@ This file tracks unresolved project problems that can still affect coherence, co
 - **Current status:** Resolved
 - **Needed action:** Resolved by `EXP-TS-RUST-ABLATION-001`. The ablation supports TS-specific implementation-maturity claims only. It does not authorize trajectory-equivalence, full algorithmic-equivalence, all-metaheuristic, or main-portfolio claims. The Python budget overshoot caveat is mandatory in any prose derived from this result.
 
+### OI-028 — Full Rust metaheuristic portfolio still needs implementation contracts
+- **Type:** Methodology / implementation maturity / benchmark expansion
+- **Severity:** High
+- **Origin:** CART-validity-oriented scope expansion after completed TS-Rust ablation
+- **Current status:** Open
+- **Needed action:** Before any full Rust portfolio claim, implement and validate `SA-Rust`, `ILS-Rust`, and `GRASP-Rust` under explicit fidelity contracts. Each contract must declare the Python reference, frozen profile, objective, balance semantics, move/acceptance/restart/perturbation semantics, seed policy, checkpoint contract, artifact mapping, build flags, and known trajectory differences. The Rust layer must not add multilevel refinement, warm starts, new neighborhoods, or per-instance retuning unless registered as a new algorithmic variant.
+
+### OI-029 — CART-validity gate must precede selector training claims
+- **Type:** Methodology / selector validity / ASP governance
+- **Severity:** High
+- **Origin:** Expanded design for morphology, budget, and implementation maturity
+- **Current status:** Open
+- **Needed action:** After validated benchmark and budget-aware tables exist, compute and register selector-eligibility diagnostics before training or claiming CART: `SBS`, `VBS`, oracle gap or regret-equivalent improvement, winner-label distribution, target entropy or equivalent degeneracy measure, exception counts against the multilevel reference, temporal winner transitions, and the admissible selector target. The gate must decide whether the evidence supports fixed-budget CART, budget-aware CART, multilevel-exception classification, or no substantive CART claim.
+
+### OI-030 — Two-week strong-scope viability gate must prevent schedule collapse
+- **Type:** Project management / scope control / delivery risk
+- **Severity:** High
+- **Origin:** Four-week delivery window and proposed full Rust portfolio expansion
+- **Current status:** Open
+- **Needed action:** Run a two-week viability gate for the strong scope. If `SA-Rust`, `ILS-Rust`, and `GRASP-Rust` do not reach sufficient contract, implementation, adapter, smoke, artifact-validity, and conformance-readiness status by the gate, defer the full Rust portfolio and proceed with the defensible thesis scope. Record the gate result before writing broad Rust or CART claims.
+
+### OI-031 — CART/Rust canon update must remain reconciled with current `main` IDs
+- **Type:** Governance / canonical consistency
+- **Severity:** Medium
+- **Origin:** Issue #74 and strong-scope source update
+- **Current status:** Resolved
+- **Needed action:** Resolved in this reconciliation by preserving `D-022`, `D-023`, and `EXP-TS-RUST-ABLATION-001`; using `D-024` and `D-025` for the new decisions; and assigning the new operational issues to `OI-028`, `OI-029`, and `OI-030` instead of reusing `OI-021` through `OI-024`.
+
 ## Notes
 
 - The pilot benchmark review completed successfully on 2026-04-27 (`EXPECTED_TOTAL=112`, `ACTUAL_TOTAL=112`, `SCHEMA_ERRORS=0`, `APPROVAL_CANDIDATE=1`), but that operational milestone does not by itself close the remaining writing, figure-clearance, or publication-surface issues.
