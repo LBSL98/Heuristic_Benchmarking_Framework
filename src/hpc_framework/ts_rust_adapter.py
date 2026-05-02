@@ -25,9 +25,41 @@ class TSRustRun:
     returncode: int
 
 
+def _candidate_repo_roots() -> list[Path]:
+    """Return candidate repository roots that may contain the Rust crate."""
+    candidates: list[Path] = []
+
+    explicit_root = os.environ.get("TS_RUST_REPO_ROOT")
+    if explicit_root:
+        candidates.append(Path(explicit_root))
+
+    candidates.append(Path.cwd())
+
+    source_path = Path(__file__).resolve()
+    candidates.extend(source_path.parents)
+
+    seen: set[Path] = set()
+    unique: list[Path] = []
+    for candidate in candidates:
+        resolved = candidate.resolve()
+        if resolved not in seen:
+            seen.add(resolved)
+            unique.append(resolved)
+    return unique
+
+
 def ts_rust_manifest_path() -> Path:
     """Return the Cargo manifest path for the TS-Rust-fidelity crate."""
-    return Path(__file__).resolve().parents[2] / "rust" / "ts_rust_fidelity" / "Cargo.toml"
+    explicit_manifest = os.environ.get("TS_RUST_MANIFEST_PATH")
+    if explicit_manifest:
+        return Path(explicit_manifest)
+
+    for root in _candidate_repo_roots():
+        candidate = root / "rust" / "ts_rust_fidelity" / "Cargo.toml"
+        if candidate.exists():
+            return candidate
+
+    return Path.cwd() / "rust" / "ts_rust_fidelity" / "Cargo.toml"
 
 
 def ts_rust_binary_path() -> Path:
