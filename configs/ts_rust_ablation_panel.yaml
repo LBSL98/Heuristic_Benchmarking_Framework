@@ -1,0 +1,54 @@
+schema: ts-rust-ablation-v1
+experiment_id: ts_rust_implementation_maturity_ablation
+
+claim_boundary:
+  allowed: >
+    This ablation may support claims about implementation maturity of the
+    canonical Tabu Search implementation only.
+  forbidden:
+    - Do not generalize to ILS, GRASP, SA, or all metaheuristics.
+    - Do not claim trajectory equivalence.
+    - Do not claim full algorithmic equivalence.
+    - Do not use this ablation as main portfolio evidence.
+
+budget:
+  type: wall_clock
+  budget_time_ms: 5000
+
+target_rule:
+  name: python_final
+  description: >
+    For each paired instance/seed run, the time-to-target threshold is the final
+    best cut reached by canonical Python TS under the same budget. This is a
+    preregistered rule, not a claim of optimality.
+
+trajectory_grid_ms:
+  - 0
+  - 250
+  - 500
+  - 1000
+  - 2500
+  - 5000
+
+seeds:
+  - 42
+  - 43
+  - 44
+  - 45
+  - 46
+
+cases:
+  - name: synthetic_modnull_n3000_p50
+    instance: data/instances/synthetic/modnull_n3000_p50.json.gz
+    k: 8
+    beta: 0.03
+
+  - name: snap_ca_hepth_gcc
+    instance: data/instances/real/snap/ca_hepth_gcc.json.gz
+    k: 8
+    beta: 0.03
+
+  - name: roadnet_ca_bfs_10000_seed42
+    instance: data/instances/real/roadnet/roadnet_ca_bfs_10000_seed42.json.gz
+    k: 8
+    beta: 0.03
