@@ -220,19 +220,19 @@ This file is the canonical ledger for experiments, runs, outputs, and traceable 
 - **Can this support prose in the monograph?** Partial, for methodology/validation-readiness prose only.
 - **Mapped in `08_Results_to_Text_Map.md`:** Yes
 ### EXP-ILS-RUST-FIDELITY-001 — ILS-Rust fidelity contract, implementation, and validation
-- **Status:** Contract frozen; implementation and validation pending
+- **Status:** Implementation integrated; formal validation pending
 - **Date:** 2026-05-02
-- **Question answered:** Can `ILS-Rust` faithfully reproduce the canonical Python `ILS` semantics closely enough to support implementation-maturity analysis?
-- **Code reference / branch / commit:** To be declared before implementation claim.
-- **Input instances:** Controlled validation panel to be preregistered before execution.
-- **Algorithms compared:** Python `ILS` and `ILS-Rust` only.
-- **Budget protocol:** Same wall-clock semantics, seed policy, perturbation semantics, restart/descent semantics, checkpoint contract, and validation contract as the canonical Python `ILS` profile.
-- **Primary metrics:** Artifact validity, feasibility, checkpoint monotonicity, NFE monotonicity when exposed, quality-by-wall-clock, quality-by-NFE when comparable, and fidelity caveats.
-- **Outputs generated:** Contract in `decisions/12_Rust_Portfolio_Fidelity_Contracts.md`; implementation/validation outputs pending.
-- **Main finding:** The pre-implementation fidelity contract for `ILS-Rust` is frozen. No implementation or validation result exists yet.
-- **Limitations / caveats:** No performance, quality, trajectory-equivalence, or selector claim may be made until implementation, validation, and any ablation are completed and mapped.
-- **Can this support prose in the monograph?** Partial, for methodology/contract prose only.
-- **Mapped in `08_Results_to_Text_Map.md`:** No while planned.
+- **Question answered:** Can `ILS-Rust` be implemented and integrated as a runnable fidelity target following the frozen ILS-Rust contract?
+- **Code reference / branch / commit:** Branch `feat/ils-rust-fidelity`; commit `93ba591` before PR merge.
+- **Input instances:** Deterministic toy instances in focused unit, runner, CLI, and plan-runner tests.
+- **Algorithms compared:** Python `ILS` and `ILS-Rust` are not yet compared for performance or quality in this entry. This entry covers implementation/integration readiness only.
+- **Budget protocol:** Smoke tests use small budgets or small iteration caps for speed. Evidence-bearing runs must use the frozen `D-012` profile for ILS-Rust: `max_iters=100`, `perturb_moves=4`, `checkpoint_every_iter=1`.
+- **Primary metrics:** Build success, unit-test pass, runner artifact validity, CLI execution, declarative plan execution, schema compatibility, final checkpoint consistency, `.part` output, and cut recomputation from labels in focused tests.
+- **Outputs generated:** `rust/ils_rust_fidelity/`, `src/hpc_framework/ils_rust_adapter.py`, `tests/test_ils_rust_adapter_paths.py`, `tests/test_runner_ils_rust.py`, `tests/test_cli_single_run_ils_rust.py`, and `tests/test_plan_runner_ils_rust.py`.
+- **Main finding:** `ILS-Rust` is now a runnable integrated fidelity target through binary, adapter, `single-run`, CLI, and plan-runner paths. The integration preserves the declared artifact surface and passes focused smoke/schema tests.
+- **Limitations / caveats:** This entry is not formal validation and not an ablation. It does not establish trajectory equivalence, RNG equivalence, performance superiority, quality superiority, selector eligibility, CART usefulness, or full Rust portfolio maturity.
+- **Can this support prose in the monograph?** Partial, for methodology/implementation-readiness prose only.
+- **Mapped in `08_Results_to_Text_Map.md`:** Yes
 ### EXP-GRASP-RUST-FIDELITY-001 — GRASP-Rust fidelity contract, implementation, and validation
 - **Status:** Contract frozen; implementation and validation pending
 - **Date:** 2026-05-02
