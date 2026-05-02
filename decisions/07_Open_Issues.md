@@ -174,13 +174,12 @@ This file tracks unresolved project problems that can still affect coherence, co
 - **Current status:** Resolved
 - **Needed action:** Resolved by `EXP-TS-RUST-ABLATION-001`. The ablation supports TS-specific implementation-maturity claims only. It does not authorize trajectory-equivalence, full algorithmic-equivalence, all-metaheuristic, or main-portfolio claims. The Python budget overshoot caveat is mandatory in any prose derived from this result.
 
-### OI-028 — Full Rust metaheuristic portfolio still needs implementation contracts
+### OI-028 — Full Rust metaheuristic portfolio still needs implementation and validation
 - **Type:** Methodology / implementation maturity / benchmark expansion
 - **Severity:** High
 - **Origin:** CART-validity-oriented scope expansion after completed TS-Rust ablation
 - **Current status:** Open
-- **Needed action:** Before any full Rust portfolio claim, implement and validate `SA-Rust`, `ILS-Rust`, and `GRASP-Rust` under explicit fidelity contracts. Each contract must declare the Python reference, frozen profile, objective, balance semantics, move/acceptance/restart/perturbation semantics, seed policy, checkpoint contract, artifact mapping, build flags, and known trajectory differences. The Rust layer must not add multilevel refinement, warm starts, new neighborhoods, or per-instance retuning unless registered as a new algorithmic variant.
-
+- **Needed action:** The pre-implementation fidelity contracts for `SA-Rust`, `ILS-Rust`, and `GRASP-Rust` are frozen in `decisions/12_Rust_Portfolio_Fidelity_Contracts.md` and registered by `EXP-RUST-PORTFOLIO-CONTRACTS-001`. The remaining work is implementation, adapter integration, smoke execution, artifact validity, conformance validation, and only then any portfolio-level ablation. The Rust layer must still not add multilevel refinement, warm starts, new neighborhoods, or per-instance retuning unless registered as a new algorithmic variant.
 ### OI-029 — CART-validity gate must precede selector training claims
 - **Type:** Methodology / selector validity / ASP governance
 - **Severity:** High
