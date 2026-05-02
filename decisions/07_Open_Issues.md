@@ -167,6 +167,13 @@ This file tracks unresolved project problems that can still affect coherence, co
 - **Current status:** Resolved
 - **Needed action:** Resolved by `EXP-TS-RUST-VALIDATION-001`. TS-Rust passed semantic and artifact-level invariant validation on three controlled toy cases. This authorizes proceeding to the implementation-maturity ablation but does not authorize speed, superiority, trajectory-equivalence, or general metaheuristic claims.
 
+### OI-027 — TS-Rust implementation-maturity ablation
+- **Type:** Experimental result / implementation-maturity ablation
+- **Severity:** High
+- **Origin:** Issue #68
+- **Current status:** Resolved
+- **Needed action:** Resolved by `EXP-TS-RUST-ABLATION-001`. The ablation supports TS-specific implementation-maturity claims only. It does not authorize trajectory-equivalence, full algorithmic-equivalence, all-metaheuristic, or main-portfolio claims. The Python budget overshoot caveat is mandatory in any prose derived from this result.
+
 ## Notes
 
 - The pilot benchmark review completed successfully on 2026-04-27 (`EXPECTED_TOTAL=112`, `ACTUAL_TOTAL=112`, `SCHEMA_ERRORS=0`, `APPROVAL_CANDIDATE=1`), but that operational milestone does not by itself close the remaining writing, figure-clearance, or publication-surface issues.

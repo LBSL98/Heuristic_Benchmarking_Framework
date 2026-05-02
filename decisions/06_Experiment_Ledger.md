@@ -188,3 +188,18 @@ This file is the canonical ledger for experiments, runs, outputs, and traceable 
 - **Limitations / caveats:** This validation does not prove trajectory equivalence, RNG equivalence, full algorithmic equivalence on all instances, or performance superiority. It only authorizes proceeding to a controlled implementation-maturity ablation.
 - **Can this support prose in the monograph?** Yes, but only as validation/protocol prose. It cannot support claims about speed, superiority, or general metaheuristic competitiveness.
 - **Mapped in `08_Results_to_Text_Map.md`:** Yes
+
+### EXP-TS-RUST-ABLATION-001 — TS-Python versus TS-Rust implementation-maturity ablation
+- **Status:** Completed
+- **Date:** 2026-05-02
+- **Question answered:** Does the Rust implementation of canonical Tabu Search exhibit implementation-maturity advantages over the Python implementation under the frozen TS-Rust-fidelity contract?
+- **Code reference / branch / commit:** `feat/ts-rust-ablation`, commit `5bb12acd33f08b7684749f5898840d63ac285607`.
+- **Protocol:** Preregistered panel in `configs/ts_rust_ablation_panel.yaml`; 3 instances × 5 seeds × 2 algorithms; nominal wall-clock budget of `5000 ms`; paired comparison of `ts` and `ts_rust`.
+- **Instances:** `synthetic_modnull_n3000_p50`, `snap_ca_hepth_gcc`, and `roadnet_ca_bfs_10000_seed42`.
+- **Primary outputs:** `audit_reports/ts_rust_fidelity/509_ts_rust_ablation/`; audited summary in `audit_reports/ts_rust_fidelity/511_ts_rust_ablation_audited_summary.json` and `.md`.
+- **Main finding:** All 15 paired comparisons were valid and feasible. `ts_rust` reached a lower final cut than Python `ts` in `15/15` pairs. The median Rust/Python NFE/s ratio was `38.3160261059614`.
+- **Per-case medians:** `roadnet_ca_bfs_10000_seed42`: median delta cut `-5275`, median throughput ratio `38.3160261059614`; `snap_ca_hepth_gcc`: median delta cut `-11202`, median throughput ratio `30.900840377999074`; `synthetic_modnull_n3000_p50`: median delta cut `-9952`, median throughput ratio `64.69240861995148`.
+- **Artifact validity:** The audit found 30 raw JSON artifacts, 30 run rows, 15 paired rows and 180 trajectory rows. Checkpoint invariants passed for all raw artifacts.
+- **Limitations / caveats:** The comparison is limited to canonical Tabu Search implementation maturity. It does not prove trajectory equivalence, RNG equivalence, full algorithmic equivalence, or superiority of Rust over all metaheuristics. Python `ts` overshot the nominal `5000 ms` budget in all 15 runs, with median overshoot `58 ms` and maximum overshoot `1582 ms`; this favors Python in final-cut comparisons and must be disclosed.
+- **Can this support prose in the monograph?** Yes, but only as TS-specific implementation-maturity evidence. It cannot support claims about SA, ILS, GRASP, the whole benchmark portfolio, or general metaheuristic superiority.
+- **Mapped in `08_Results_to_Text_Map.md`:** Yes
