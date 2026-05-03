@@ -234,18 +234,18 @@ This file is the canonical ledger for experiments, runs, outputs, and traceable 
 - **Can this support prose in the monograph?** Partial, for methodology/validation-readiness prose only.
 - **Mapped in `08_Results_to_Text_Map.md`:** Yes
 ### EXP-GRASP-RUST-FIDELITY-001 — GRASP-Rust fidelity contract, implementation, and validation
-- **Status:** Implementation integrated; formal validation pending
+- **Status:** Validated; ablation pending
 - **Date:** 2026-05-02
-- **Question answered:** Can `GRASP-Rust` be implemented and integrated as a runnable fidelity target following the frozen GRASP-Rust contract?
-- **Code reference / branch / commit:** Branch `feat/grasp-rust-fidelity`; commit `4134cda` before PR merge.
-- **Input instances:** Deterministic toy instances in focused unit, runner, CLI, and plan-runner tests.
-- **Algorithms compared:** Python `GRASP` and `GRASP-Rust` are not yet compared for performance or quality in this entry. This entry covers implementation/integration readiness only.
-- **Budget protocol:** Smoke tests use small budgets or small iteration caps for speed. Evidence-bearing runs must use the frozen `D-012` profile for GRASP-Rust: `alpha=0.30`, `max_iters=100`, `checkpoint_every_iter=1`.
-- **Primary metrics:** Build success, unit-test pass, runner artifact validity, CLI execution, declarative plan execution, schema compatibility, final checkpoint consistency, `.part` output, and cut recomputation from labels in focused tests.
-- **Outputs generated:** `rust/grasp_rust_fidelity/`, `src/hpc_framework/grasp_rust_adapter.py`, `tests/test_grasp_rust_adapter_paths.py`, `tests/test_runner_grasp_rust.py`, `tests/test_cli_single_run_grasp_rust.py`, and `tests/test_plan_runner_grasp_rust.py`.
-- **Main finding:** `GRASP-Rust` is now a runnable integrated fidelity target through binary, adapter, `single-run`, CLI, and plan-runner paths. The integration preserves the declared artifact surface and passes focused smoke/schema tests.
-- **Limitations / caveats:** This entry is not formal validation and not an ablation. It does not establish trajectory equivalence, RNG equivalence, performance superiority, quality superiority, selector eligibility, CART usefulness, or full Rust portfolio maturity.
-- **Can this support prose in the monograph?** Partial, for methodology/implementation-readiness prose only.
+- **Question answered:** Can `GRASP-Rust` be implemented, integrated and formally validated as a fidelity target following the frozen GRASP-Rust contract?
+- **Code reference / branch / commit:** Branch `test/grasp-rust-fidelity-validation`; implementation merged in PR #89; validation commit `0fd7f08` before PR merge.
+- **Input instances:** Controlled deterministic validation cases: `path12_k3_seed42`, `cycle16_k4_seed7`, and `two_cliques_bridge12_k2_seed123`.
+- **Algorithms compared:** Python `GRASP` and `GRASP-Rust` are compared only at the level of semantic and artifact invariants. No trajectory-equivalence, RNG-equivalence, performance, quality, or ablation comparison is performed in this entry.
+- **Budget protocol:** Validation uses bounded toy-case settings for speed and reproducibility. Evidence-bearing ablation runs must still use the frozen `D-012` profile for GRASP-Rust: `alpha=0.30`, `max_iters=100`, `checkpoint_every_iter=1`.
+- **Primary metrics:** Independent cut recomputation from labels, beta-feasibility, schema compatibility, `.part` path existence, checkpoint non-emptiness, checkpoint time monotonicity, best-so-far cut monotonicity, NFE monotonicity, final checkpoint best-cut consistency, and final checkpoint NFE consistency against the raw `GRASP-Rust` JSON payload.
+- **Outputs generated:** `scripts/validate_grasp_rust_fidelity.py`, `tests/test_grasp_rust_validation_script.py`, and validation reports under `audit_reports/grasp_rust_validation/`.
+- **Main finding:** `GRASP-Rust` passed formal artifact/semantic invariant validation on the controlled validation panel. It is now an implemented, integrated and validated fidelity target, but it has not yet been used in an implementation-maturity ablation.
+- **Limitations / caveats:** This entry does not establish trajectory equivalence, RNG equivalence, performance superiority, quality superiority, selector eligibility, CART usefulness, or full Rust portfolio maturity.
+- **Can this support prose in the monograph?** Partial, for methodology/validation-readiness prose only.
 - **Mapped in `08_Results_to_Text_Map.md`:** Yes
 ### EXP-RUST-METAHEURISTIC-PORTFOLIO-001 — Full Rust metaheuristic implementation-maturity layer
 - **Status:** Planned
