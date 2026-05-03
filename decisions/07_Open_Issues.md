@@ -182,6 +182,7 @@ This file tracks unresolved project problems that can still affect coherence, co
 - **Needed action:** The pre-implementation fidelity contracts for `SA-Rust`, `ILS-Rust`, and `GRASP-Rust` are frozen in `decisions/12_Rust_Portfolio_Fidelity_Contracts.md` and registered by `EXP-RUST-PORTFOLIO-CONTRACTS-001`. The remaining work is implementation, adapter integration, smoke execution, artifact validity, conformance validation, and only then any portfolio-level ablation. The Rust layer must still not add multilevel refinement, warm starts, new neighborhoods, or per-instance retuning unless registered as a new algorithmic variant.
 - **Progress note 2026-05-02:** `SA-Rust` implementation is integrated through binary, adapter, single-run, CLI and plan-runner paths. Formal validation, ablation, `ILS-Rust`, and `GRASP-Rust` remain pending.
 - **Progress note 2026-05-02:** `SA-Rust` formal validation is completed on the controlled invariant panel. `SA-Rust` ablation, `ILS-Rust`, `GRASP-Rust`, and full-portfolio validation remain pending.
+- **Progress note 2026-05-02:** `ILS-Rust` implementation is integrated through binary, adapter, single-run, CLI and plan-runner paths. `ILS-Rust` formal validation, `SA-Rust` ablation, `GRASP-Rust`, and full-portfolio validation remain pending.
 ### OI-029 — CART-validity gate must precede selector training claims
 - **Type:** Methodology / selector validity / ASP governance
 - **Severity:** High
