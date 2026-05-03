@@ -25,6 +25,7 @@ from heuristics.grasp import GRASPConfig, run_grasp_partition
 from heuristics.ils import ILSConfig, run_ils_partition
 from heuristics.sa import SAConfig, run_sa_partition
 from heuristics.ts import TSConfig, run_ts_partition
+from hpc_framework.grasp_rust_adapter import run_grasp_rust_binary
 from hpc_framework.ils_rust_adapter import run_ils_rust_binary
 from hpc_framework.sa_rust_adapter import run_sa_rust_binary
 from hpc_framework.solvers.common import read_partition_labels, write_metis_graph
@@ -267,6 +268,39 @@ def run(
                 "nfe": int(cp["nfe"]) if cp.get("nfe") is not None else None,
             }
             for cp in sa_payload.get("checkpoints", [])
+        ]
+    elif algo == "grasp_rust":
+        rust_json = workdir / "grasp_rust_result.json"
+        part_file = workdir / "grasp_rust.part"
+        grasp_rust_result = run_grasp_rust_binary(
+            graph_path=graph_path,
+            k=k,
+            beta=beta,
+            seed=seed,
+            budget_time_ms=budget_time_ms,
+            out_json=rust_json,
+            part_path=part_file,
+        )
+        grasp_payload = grasp_rust_result.payload
+
+        stdout = grasp_rust_result.stdout
+        stderr = grasp_rust_result.stderr
+        returncode = grasp_rust_result.returncode
+        solver_elapsed_ms = int(grasp_payload["elapsed_ms"])
+
+        labels = np.asarray(grasp_payload["labels"], dtype=int)
+        cut = int(grasp_payload["cutsize_best"])
+
+        labels_norm = normalize_labels_zero_based(labels)
+        feasible, validation = feasible_beta(labels_norm, k=k, beta=beta)
+        status_json = str(grasp_payload.get("status", "ok"))
+        checkpoints = [
+            {
+                "time_ms": int(cp["time_ms"]),
+                "cutsize_best": int(cp["cutsize_best"]),
+                "nfe": int(cp["nfe"]) if cp.get("nfe") is not None else None,
+            }
+            for cp in grasp_payload.get("checkpoints", [])
         ]
     elif algo == "grasp":
         adj = _adj_from_edges(n, edges)
