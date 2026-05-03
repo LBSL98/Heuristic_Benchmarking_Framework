@@ -2,364 +2,364 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
     <url>
         <loc>https://lbsl98.github.io/Heuristic_Benchmarking_Framework/</loc>
-        <lastmod>2026-05-02</lastmod>
+        <lastmod>2026-05-03</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt" href="https://lbsl98.github.io/Heuristic_Benchmarking_Framework/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://lbsl98.github.io/Heuristic_Benchmarking_Framework/en/"/>
     </url>
     <url>
         <loc>https://lbsl98.github.io/Heuristic_Benchmarking_Framework/00_architectural_overview/</loc>
-        <lastmod>2026-05-02</lastmod>
+        <lastmod>2026-05-03</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt" href="https://lbsl98.github.io/Heuristic_Benchmarking_Framework/00_architectural_overview/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://lbsl98.github.io/Heuristic_Benchmarking_Framework/en/00_architectural_overview/"/>
     </url>
     <url>
         <loc>https://lbsl98.github.io/Heuristic_Benchmarking_Framework/01_project_plan_and_workflow/</loc>
-        <lastmod>2026-05-02</lastmod>
+        <lastmod>2026-05-03</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt" href="https://lbsl98.github.io/Heuristic_Benchmarking_Framework/01_project_plan_and_workflow/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://lbsl98.github.io/Heuristic_Benchmarking_Framework/en/01_project_plan_and_workflow/"/>
     </url>
     <url>
         <loc>https://lbsl98.github.io/Heuristic_Benchmarking_Framework/getting_started/</loc>
-        <lastmod>2026-05-02</lastmod>
+        <lastmod>2026-05-03</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt" href="https://lbsl98.github.io/Heuristic_Benchmarking_Framework/getting_started/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://lbsl98.github.io/Heuristic_Benchmarking_Framework/en/getting_started/"/>
     </url>
     <url>
         <loc>https://lbsl98.github.io/Heuristic_Benchmarking_Framework/api/generator_cli/</loc>
-        <lastmod>2026-05-02</lastmod>
+        <lastmod>2026-05-03</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt" href="https://lbsl98.github.io/Heuristic_Benchmarking_Framework/api/generator_cli/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://lbsl98.github.io/Heuristic_Benchmarking_Framework/en/api/generator_cli/"/>
     </url>
     <url>
         <loc>https://lbsl98.github.io/Heuristic_Benchmarking_Framework/api/heuristics_greedy/</loc>
-        <lastmod>2026-05-02</lastmod>
+        <lastmod>2026-05-03</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt" href="https://lbsl98.github.io/Heuristic_Benchmarking_Framework/api/heuristics_greedy/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://lbsl98.github.io/Heuristic_Benchmarking_Framework/en/api/heuristics_greedy/"/>
     </url>
     <url>
         <loc>https://lbsl98.github.io/Heuristic_Benchmarking_Framework/api/hpc_framework_cli/</loc>
-        <lastmod>2026-05-02</lastmod>
+        <lastmod>2026-05-03</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt" href="https://lbsl98.github.io/Heuristic_Benchmarking_Framework/api/hpc_framework_cli/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://lbsl98.github.io/Heuristic_Benchmarking_Framework/en/api/hpc_framework_cli/"/>
     </url>
     <url>
         <loc>https://lbsl98.github.io/Heuristic_Benchmarking_Framework/api/orchestrator_ssh_executor/</loc>
-        <lastmod>2026-05-02</lastmod>
+        <lastmod>2026-05-03</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt" href="https://lbsl98.github.io/Heuristic_Benchmarking_Framework/api/orchestrator_ssh_executor/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://lbsl98.github.io/Heuristic_Benchmarking_Framework/en/api/orchestrator_ssh_executor/"/>
     </url>
     <url>
         <loc>https://lbsl98.github.io/Heuristic_Benchmarking_Framework/decisions/001_choice_heuristic_language/</loc>
-        <lastmod>2026-05-02</lastmod>
+        <lastmod>2026-05-03</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt" href="https://lbsl98.github.io/Heuristic_Benchmarking_Framework/decisions/001_choice_heuristic_language/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://lbsl98.github.io/Heuristic_Benchmarking_Framework/en/decisions/001_choice_heuristic_language/"/>
     </url>
     <url>
         <loc>https://lbsl98.github.io/Heuristic_Benchmarking_Framework/decisions/003_metodologia_gerador_e_analise/</loc>
-        <lastmod>2026-05-02</lastmod>
+        <lastmod>2026-05-03</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt" href="https://lbsl98.github.io/Heuristic_Benchmarking_Framework/decisions/003_metodologia_gerador_e_analise/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://lbsl98.github.io/Heuristic_Benchmarking_Framework/en/decisions/003_metodologia_gerador_e_analise/"/>
     </url>
     <url>
         <loc>https://lbsl98.github.io/Heuristic_Benchmarking_Framework/decisions/004_testing_and_ci/</loc>
-        <lastmod>2026-05-02</lastmod>
+        <lastmod>2026-05-03</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt" href="https://lbsl98.github.io/Heuristic_Benchmarking_Framework/decisions/004_testing_and_ci/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://lbsl98.github.io/Heuristic_Benchmarking_Framework/en/decisions/004_testing_and_ci/"/>
     </url>
     <url>
         <loc>https://lbsl98.github.io/Heuristic_Benchmarking_Framework/protocol/current_benchmark_contract/</loc>
-        <lastmod>2026-05-02</lastmod>
+        <lastmod>2026-05-03</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt" href="https://lbsl98.github.io/Heuristic_Benchmarking_Framework/protocol/current_benchmark_contract/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://lbsl98.github.io/Heuristic_Benchmarking_Framework/en/protocol/current_benchmark_contract/"/>
     </url>
     <url>
         <loc>https://lbsl98.github.io/Heuristic_Benchmarking_Framework/protocol/proto_v3.1.1/</loc>
-        <lastmod>2026-05-02</lastmod>
+        <lastmod>2026-05-03</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt" href="https://lbsl98.github.io/Heuristic_Benchmarking_Framework/protocol/proto_v3.1.1/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://lbsl98.github.io/Heuristic_Benchmarking_Framework/en/protocol/proto_v3.1.1/"/>
     </url>
     <url>
         <loc>https://lbsl98.github.io/Heuristic_Benchmarking_Framework/reports/01_instance_generator/</loc>
-        <lastmod>2026-05-02</lastmod>
+        <lastmod>2026-05-03</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt" href="https://lbsl98.github.io/Heuristic_Benchmarking_Framework/reports/01_instance_generator/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://lbsl98.github.io/Heuristic_Benchmarking_Framework/en/reports/01_instance_generator/"/>
     </url>
     <url>
         <loc>https://lbsl98.github.io/Heuristic_Benchmarking_Framework/reports/02_experimental_campaign/</loc>
-        <lastmod>2026-05-02</lastmod>
+        <lastmod>2026-05-03</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt" href="https://lbsl98.github.io/Heuristic_Benchmarking_Framework/reports/02_experimental_campaign/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://lbsl98.github.io/Heuristic_Benchmarking_Framework/en/reports/02_experimental_campaign/"/>
     </url>
     <url>
         <loc>https://lbsl98.github.io/Heuristic_Benchmarking_Framework/specs/baseline_evolutive_v1/</loc>
-        <lastmod>2026-05-02</lastmod>
+        <lastmod>2026-05-03</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt" href="https://lbsl98.github.io/Heuristic_Benchmarking_Framework/specs/baseline_evolutive_v1/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://lbsl98.github.io/Heuristic_Benchmarking_Framework/en/specs/baseline_evolutive_v1/"/>
     </url>
     <url>
         <loc>https://lbsl98.github.io/Heuristic_Benchmarking_Framework/specs/mealpy_integration_plan/</loc>
-        <lastmod>2026-05-02</lastmod>
+        <lastmod>2026-05-03</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt" href="https://lbsl98.github.io/Heuristic_Benchmarking_Framework/specs/mealpy_integration_plan/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://lbsl98.github.io/Heuristic_Benchmarking_Framework/en/specs/mealpy_integration_plan/"/>
     </url>
     <url>
         <loc>https://lbsl98.github.io/Heuristic_Benchmarking_Framework/specs/reproducibility_checklist/</loc>
-        <lastmod>2026-05-02</lastmod>
+        <lastmod>2026-05-03</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt" href="https://lbsl98.github.io/Heuristic_Benchmarking_Framework/specs/reproducibility_checklist/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://lbsl98.github.io/Heuristic_Benchmarking_Framework/en/specs/reproducibility_checklist/"/>
     </url>
     <url>
         <loc>https://lbsl98.github.io/Heuristic_Benchmarking_Framework/testing/CI/</loc>
-        <lastmod>2026-05-02</lastmod>
+        <lastmod>2026-05-03</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt" href="https://lbsl98.github.io/Heuristic_Benchmarking_Framework/testing/CI/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://lbsl98.github.io/Heuristic_Benchmarking_Framework/en/testing/CI/"/>
     </url>
     <url>
         <loc>https://lbsl98.github.io/Heuristic_Benchmarking_Framework/testing/TESTING/</loc>
-        <lastmod>2026-05-02</lastmod>
+        <lastmod>2026-05-03</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt" href="https://lbsl98.github.io/Heuristic_Benchmarking_Framework/testing/TESTING/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://lbsl98.github.io/Heuristic_Benchmarking_Framework/en/testing/TESTING/"/>
     </url>
     <url>
         <loc>https://lbsl98.github.io/Heuristic_Benchmarking_Framework/testing/TRACEABILITY/</loc>
-        <lastmod>2026-05-02</lastmod>
+        <lastmod>2026-05-03</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt" href="https://lbsl98.github.io/Heuristic_Benchmarking_Framework/testing/TRACEABILITY/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://lbsl98.github.io/Heuristic_Benchmarking_Framework/en/testing/TRACEABILITY/"/>
     </url>
     <url>
         <loc>https://lbsl98.github.io/Heuristic_Benchmarking_Framework/testing/testcases/TC_001_modularity_gate/</loc>
-        <lastmod>2026-05-02</lastmod>
+        <lastmod>2026-05-03</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt" href="https://lbsl98.github.io/Heuristic_Benchmarking_Framework/testing/testcases/TC_001_modularity_gate/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://lbsl98.github.io/Heuristic_Benchmarking_Framework/en/testing/testcases/TC_001_modularity_gate/"/>
     </url>
     <url>
         <loc>https://lbsl98.github.io/Heuristic_Benchmarking_Framework/testing/testcases/TC_002_cv_ceiling/</loc>
-        <lastmod>2026-05-02</lastmod>
+        <lastmod>2026-05-03</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt" href="https://lbsl98.github.io/Heuristic_Benchmarking_Framework/testing/testcases/TC_002_cv_ceiling/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://lbsl98.github.io/Heuristic_Benchmarking_Framework/en/testing/testcases/TC_002_cv_ceiling/"/>
     </url>
     <url>
         <loc>https://lbsl98.github.io/Heuristic_Benchmarking_Framework/testing/testcases/TC_003_schema_freeze/</loc>
-        <lastmod>2026-05-02</lastmod>
+        <lastmod>2026-05-03</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt" href="https://lbsl98.github.io/Heuristic_Benchmarking_Framework/testing/testcases/TC_003_schema_freeze/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://lbsl98.github.io/Heuristic_Benchmarking_Framework/en/testing/testcases/TC_003_schema_freeze/"/>
     </url>
     <url>
         <loc>https://lbsl98.github.io/Heuristic_Benchmarking_Framework/testing/testcases/TC_004_cli_examples/</loc>
-        <lastmod>2026-05-02</lastmod>
+        <lastmod>2026-05-03</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt" href="https://lbsl98.github.io/Heuristic_Benchmarking_Framework/testing/testcases/TC_004_cli_examples/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://lbsl98.github.io/Heuristic_Benchmarking_Framework/en/testing/testcases/TC_004_cli_examples/"/>
     </url>
     <url>
         <loc>https://lbsl98.github.io/Heuristic_Benchmarking_Framework/testing/testcases/TC_005_perf_smoke/</loc>
-        <lastmod>2026-05-02</lastmod>
+        <lastmod>2026-05-03</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt" href="https://lbsl98.github.io/Heuristic_Benchmarking_Framework/testing/testcases/TC_005_perf_smoke/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://lbsl98.github.io/Heuristic_Benchmarking_Framework/en/testing/testcases/TC_005_perf_smoke/"/>
     </url>
     <url>
         <loc>https://lbsl98.github.io/Heuristic_Benchmarking_Framework/en/</loc>
-        <lastmod>2026-05-02</lastmod>
+        <lastmod>2026-05-03</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://lbsl98.github.io/Heuristic_Benchmarking_Framework/en/"/>
         <xhtml:link rel="alternate" hreflang="pt" href="https://lbsl98.github.io/Heuristic_Benchmarking_Framework/"/>
     </url>
     <url>
         <loc>https://lbsl98.github.io/Heuristic_Benchmarking_Framework/en/00_architectural_overview/</loc>
-        <lastmod>2026-05-02</lastmod>
+        <lastmod>2026-05-03</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://lbsl98.github.io/Heuristic_Benchmarking_Framework/en/00_architectural_overview/"/>
         <xhtml:link rel="alternate" hreflang="pt" href="https://lbsl98.github.io/Heuristic_Benchmarking_Framework/00_architectural_overview/"/>
     </url>
     <url>
         <loc>https://lbsl98.github.io/Heuristic_Benchmarking_Framework/en/01_project_plan_and_workflow/</loc>
-        <lastmod>2026-05-02</lastmod>
+        <lastmod>2026-05-03</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://lbsl98.github.io/Heuristic_Benchmarking_Framework/en/01_project_plan_and_workflow/"/>
         <xhtml:link rel="alternate" hreflang="pt" href="https://lbsl98.github.io/Heuristic_Benchmarking_Framework/01_project_plan_and_workflow/"/>
     </url>
     <url>
         <loc>https://lbsl98.github.io/Heuristic_Benchmarking_Framework/en/getting_started/</loc>
-        <lastmod>2026-05-02</lastmod>
+        <lastmod>2026-05-03</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://lbsl98.github.io/Heuristic_Benchmarking_Framework/en/getting_started/"/>
         <xhtml:link rel="alternate" hreflang="pt" href="https://lbsl98.github.io/Heuristic_Benchmarking_Framework/getting_started/"/>
     </url>
     <url>
         <loc>https://lbsl98.github.io/Heuristic_Benchmarking_Framework/en/api/generator_cli/</loc>
-        <lastmod>2026-05-02</lastmod>
+        <lastmod>2026-05-03</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://lbsl98.github.io/Heuristic_Benchmarking_Framework/en/api/generator_cli/"/>
         <xhtml:link rel="alternate" hreflang="pt" href="https://lbsl98.github.io/Heuristic_Benchmarking_Framework/api/generator_cli/"/>
     </url>
     <url>
         <loc>https://lbsl98.github.io/Heuristic_Benchmarking_Framework/en/api/heuristics_greedy/</loc>
-        <lastmod>2026-05-02</lastmod>
+        <lastmod>2026-05-03</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://lbsl98.github.io/Heuristic_Benchmarking_Framework/en/api/heuristics_greedy/"/>
         <xhtml:link rel="alternate" hreflang="pt" href="https://lbsl98.github.io/Heuristic_Benchmarking_Framework/api/heuristics_greedy/"/>
     </url>
     <url>
         <loc>https://lbsl98.github.io/Heuristic_Benchmarking_Framework/en/api/hpc_framework_cli/</loc>
-        <lastmod>2026-05-02</lastmod>
+        <lastmod>2026-05-03</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://lbsl98.github.io/Heuristic_Benchmarking_Framework/en/api/hpc_framework_cli/"/>
         <xhtml:link rel="alternate" hreflang="pt" href="https://lbsl98.github.io/Heuristic_Benchmarking_Framework/api/hpc_framework_cli/"/>
     </url>
     <url>
         <loc>https://lbsl98.github.io/Heuristic_Benchmarking_Framework/en/api/orchestrator_ssh_executor/</loc>
-        <lastmod>2026-05-02</lastmod>
+        <lastmod>2026-05-03</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://lbsl98.github.io/Heuristic_Benchmarking_Framework/en/api/orchestrator_ssh_executor/"/>
         <xhtml:link rel="alternate" hreflang="pt" href="https://lbsl98.github.io/Heuristic_Benchmarking_Framework/api/orchestrator_ssh_executor/"/>
     </url>
     <url>
         <loc>https://lbsl98.github.io/Heuristic_Benchmarking_Framework/en/decisions/001_choice_heuristic_language/</loc>
-        <lastmod>2026-05-02</lastmod>
+        <lastmod>2026-05-03</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://lbsl98.github.io/Heuristic_Benchmarking_Framework/en/decisions/001_choice_heuristic_language/"/>
         <xhtml:link rel="alternate" hreflang="pt" href="https://lbsl98.github.io/Heuristic_Benchmarking_Framework/decisions/001_choice_heuristic_language/"/>
     </url>
     <url>
         <loc>https://lbsl98.github.io/Heuristic_Benchmarking_Framework/en/decisions/003_metodologia_gerador_e_analise/</loc>
-        <lastmod>2026-05-02</lastmod>
+        <lastmod>2026-05-03</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://lbsl98.github.io/Heuristic_Benchmarking_Framework/en/decisions/003_metodologia_gerador_e_analise/"/>
         <xhtml:link rel="alternate" hreflang="pt" href="https://lbsl98.github.io/Heuristic_Benchmarking_Framework/decisions/003_metodologia_gerador_e_analise/"/>
     </url>
     <url>
         <loc>https://lbsl98.github.io/Heuristic_Benchmarking_Framework/en/decisions/004_testing_and_ci/</loc>
-        <lastmod>2026-05-02</lastmod>
+        <lastmod>2026-05-03</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://lbsl98.github.io/Heuristic_Benchmarking_Framework/en/decisions/004_testing_and_ci/"/>
         <xhtml:link rel="alternate" hreflang="pt" href="https://lbsl98.github.io/Heuristic_Benchmarking_Framework/decisions/004_testing_and_ci/"/>
     </url>
     <url>
         <loc>https://lbsl98.github.io/Heuristic_Benchmarking_Framework/en/protocol/current_benchmark_contract/</loc>
-        <lastmod>2026-05-02</lastmod>
+        <lastmod>2026-05-03</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://lbsl98.github.io/Heuristic_Benchmarking_Framework/en/protocol/current_benchmark_contract/"/>
         <xhtml:link rel="alternate" hreflang="pt" href="https://lbsl98.github.io/Heuristic_Benchmarking_Framework/protocol/current_benchmark_contract/"/>
     </url>
     <url>
         <loc>https://lbsl98.github.io/Heuristic_Benchmarking_Framework/en/protocol/proto_v3.1.1/</loc>
-        <lastmod>2026-05-02</lastmod>
+        <lastmod>2026-05-03</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://lbsl98.github.io/Heuristic_Benchmarking_Framework/en/protocol/proto_v3.1.1/"/>
         <xhtml:link rel="alternate" hreflang="pt" href="https://lbsl98.github.io/Heuristic_Benchmarking_Framework/protocol/proto_v3.1.1/"/>
     </url>
     <url>
         <loc>https://lbsl98.github.io/Heuristic_Benchmarking_Framework/en/reports/01_instance_generator/</loc>
-        <lastmod>2026-05-02</lastmod>
+        <lastmod>2026-05-03</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://lbsl98.github.io/Heuristic_Benchmarking_Framework/en/reports/01_instance_generator/"/>
         <xhtml:link rel="alternate" hreflang="pt" href="https://lbsl98.github.io/Heuristic_Benchmarking_Framework/reports/01_instance_generator/"/>
     </url>
     <url>
         <loc>https://lbsl98.github.io/Heuristic_Benchmarking_Framework/en/reports/02_experimental_campaign/</loc>
-        <lastmod>2026-05-02</lastmod>
+        <lastmod>2026-05-03</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://lbsl98.github.io/Heuristic_Benchmarking_Framework/en/reports/02_experimental_campaign/"/>
         <xhtml:link rel="alternate" hreflang="pt" href="https://lbsl98.github.io/Heuristic_Benchmarking_Framework/reports/02_experimental_campaign/"/>
     </url>
     <url>
         <loc>https://lbsl98.github.io/Heuristic_Benchmarking_Framework/en/specs/baseline_evolutive_v1/</loc>
-        <lastmod>2026-05-02</lastmod>
+        <lastmod>2026-05-03</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://lbsl98.github.io/Heuristic_Benchmarking_Framework/en/specs/baseline_evolutive_v1/"/>
         <xhtml:link rel="alternate" hreflang="pt" href="https://lbsl98.github.io/Heuristic_Benchmarking_Framework/specs/baseline_evolutive_v1/"/>
     </url>
     <url>
         <loc>https://lbsl98.github.io/Heuristic_Benchmarking_Framework/en/specs/mealpy_integration_plan/</loc>
-        <lastmod>2026-05-02</lastmod>
+        <lastmod>2026-05-03</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://lbsl98.github.io/Heuristic_Benchmarking_Framework/en/specs/mealpy_integration_plan/"/>
         <xhtml:link rel="alternate" hreflang="pt" href="https://lbsl98.github.io/Heuristic_Benchmarking_Framework/specs/mealpy_integration_plan/"/>
     </url>
     <url>
         <loc>https://lbsl98.github.io/Heuristic_Benchmarking_Framework/en/specs/reproducibility_checklist/</loc>
-        <lastmod>2026-05-02</lastmod>
+        <lastmod>2026-05-03</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://lbsl98.github.io/Heuristic_Benchmarking_Framework/en/specs/reproducibility_checklist/"/>
         <xhtml:link rel="alternate" hreflang="pt" href="https://lbsl98.github.io/Heuristic_Benchmarking_Framework/specs/reproducibility_checklist/"/>
     </url>
     <url>
         <loc>https://lbsl98.github.io/Heuristic_Benchmarking_Framework/en/testing/CI/</loc>
-        <lastmod>2026-05-02</lastmod>
+        <lastmod>2026-05-03</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://lbsl98.github.io/Heuristic_Benchmarking_Framework/en/testing/CI/"/>
         <xhtml:link rel="alternate" hreflang="pt" href="https://lbsl98.github.io/Heuristic_Benchmarking_Framework/testing/CI/"/>
     </url>
     <url>
         <loc>https://lbsl98.github.io/Heuristic_Benchmarking_Framework/en/testing/TESTING/</loc>
-        <lastmod>2026-05-02</lastmod>
+        <lastmod>2026-05-03</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://lbsl98.github.io/Heuristic_Benchmarking_Framework/en/testing/TESTING/"/>
         <xhtml:link rel="alternate" hreflang="pt" href="https://lbsl98.github.io/Heuristic_Benchmarking_Framework/testing/TESTING/"/>
     </url>
     <url>
         <loc>https://lbsl98.github.io/Heuristic_Benchmarking_Framework/en/testing/TRACEABILITY/</loc>
-        <lastmod>2026-05-02</lastmod>
+        <lastmod>2026-05-03</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://lbsl98.github.io/Heuristic_Benchmarking_Framework/en/testing/TRACEABILITY/"/>
         <xhtml:link rel="alternate" hreflang="pt" href="https://lbsl98.github.io/Heuristic_Benchmarking_Framework/testing/TRACEABILITY/"/>
     </url>
     <url>
         <loc>https://lbsl98.github.io/Heuristic_Benchmarking_Framework/en/testing/testcases/TC_001_modularity_gate/</loc>
-        <lastmod>2026-05-02</lastmod>
+        <lastmod>2026-05-03</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://lbsl98.github.io/Heuristic_Benchmarking_Framework/en/testing/testcases/TC_001_modularity_gate/"/>
         <xhtml:link rel="alternate" hreflang="pt" href="https://lbsl98.github.io/Heuristic_Benchmarking_Framework/testing/testcases/TC_001_modularity_gate/"/>
     </url>
     <url>
         <loc>https://lbsl98.github.io/Heuristic_Benchmarking_Framework/en/testing/testcases/TC_002_cv_ceiling/</loc>
-        <lastmod>2026-05-02</lastmod>
+        <lastmod>2026-05-03</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://lbsl98.github.io/Heuristic_Benchmarking_Framework/en/testing/testcases/TC_002_cv_ceiling/"/>
         <xhtml:link rel="alternate" hreflang="pt" href="https://lbsl98.github.io/Heuristic_Benchmarking_Framework/testing/testcases/TC_002_cv_ceiling/"/>
     </url>
     <url>
         <loc>https://lbsl98.github.io/Heuristic_Benchmarking_Framework/en/testing/testcases/TC_003_schema_freeze/</loc>
-        <lastmod>2026-05-02</lastmod>
+        <lastmod>2026-05-03</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://lbsl98.github.io/Heuristic_Benchmarking_Framework/en/testing/testcases/TC_003_schema_freeze/"/>
         <xhtml:link rel="alternate" hreflang="pt" href="https://lbsl98.github.io/Heuristic_Benchmarking_Framework/testing/testcases/TC_003_schema_freeze/"/>
     </url>
     <url>
         <loc>https://lbsl98.github.io/Heuristic_Benchmarking_Framework/en/testing/testcases/TC_004_cli_examples/</loc>
-        <lastmod>2026-05-02</lastmod>
+        <lastmod>2026-05-03</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://lbsl98.github.io/Heuristic_Benchmarking_Framework/en/testing/testcases/TC_004_cli_examples/"/>
         <xhtml:link rel="alternate" hreflang="pt" href="https://lbsl98.github.io/Heuristic_Benchmarking_Framework/testing/testcases/TC_004_cli_examples/"/>
     </url>
     <url>
         <loc>https://lbsl98.github.io/Heuristic_Benchmarking_Framework/en/testing/testcases/TC_005_perf_smoke/</loc>
-        <lastmod>2026-05-02</lastmod>
+        <lastmod>2026-05-03</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://lbsl98.github.io/Heuristic_Benchmarking_Framework/en/testing/testcases/TC_005_perf_smoke/"/>
         <xhtml:link rel="alternate" hreflang="pt" href="https://lbsl98.github.io/Heuristic_Benchmarking_Framework/testing/testcases/TC_005_perf_smoke/"/>
