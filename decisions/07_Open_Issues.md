@@ -183,6 +183,7 @@ This file tracks unresolved project problems that can still affect coherence, co
 - **Progress note 2026-05-02:** `SA-Rust` implementation is integrated through binary, adapter, single-run, CLI and plan-runner paths. Formal validation, ablation, `ILS-Rust`, and `GRASP-Rust` remain pending.
 - **Progress note 2026-05-02:** `SA-Rust` formal validation is completed on the controlled invariant panel. `SA-Rust` ablation, `ILS-Rust`, `GRASP-Rust`, and full-portfolio validation remain pending.
 - **Progress note 2026-05-02:** `ILS-Rust` implementation is integrated through binary, adapter, single-run, CLI and plan-runner paths. `ILS-Rust` formal validation, `SA-Rust` ablation, `GRASP-Rust`, and full-portfolio validation remain pending.
+- **Progress note 2026-05-02:** `ILS-Rust` formal validation is completed on the controlled invariant panel. `SA-Rust` ablation, `ILS-Rust` ablation, `GRASP-Rust`, and full-portfolio validation remain pending.
 ### OI-029 — CART-validity gate must precede selector training claims
 - **Type:** Methodology / selector validity / ASP governance
 - **Severity:** High
