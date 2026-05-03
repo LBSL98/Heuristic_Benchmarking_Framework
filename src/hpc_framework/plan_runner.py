@@ -31,7 +31,18 @@ from .runner import (
 )
 from .solvers.common import write_metis_graph
 
-SUPPORTED_SOLVERS = ("metis", "kahip", "sa", "sa_rust", "ils", "ils_rust", "grasp", "ts", "ts_rust")
+SUPPORTED_SOLVERS = (
+    "metis",
+    "kahip",
+    "sa",
+    "sa_rust",
+    "ils",
+    "ils_rust",
+    "grasp",
+    "grasp_rust",
+    "ts",
+    "ts_rust",
+)
 MANIFEST_FIELDS = [
     "timestamp",
     "instance_id",

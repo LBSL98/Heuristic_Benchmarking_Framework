@@ -15,7 +15,18 @@ def _add_single_run_arguments(p: argparse.ArgumentParser) -> None:
     p.add_argument(
         "--algo",
         required=True,
-        choices=["metis", "kahip", "sa", "sa_rust", "ils", "ils_rust", "grasp", "ts", "ts_rust"],
+        choices=[
+            "metis",
+            "kahip",
+            "sa",
+            "sa_rust",
+            "ils",
+            "ils_rust",
+            "grasp",
+            "grasp_rust",
+            "ts",
+            "ts_rust",
+        ],
     )
     p.add_argument("--k", required=True, type=int)
     p.add_argument("--beta", required=True, type=float)
