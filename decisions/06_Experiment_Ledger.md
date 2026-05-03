@@ -205,63 +205,48 @@ This file is the canonical ledger for experiments, runs, outputs, and traceable 
 - **Can this support prose in the monograph?** Partial. It supports implementation-maturity and validity-of-construct prose for TS only, not general superiority claims.
 - **Mapped in `08_Results_to_Text_Map.md`:** Yes
 
-### EXP-SA-RUST-FIDELITY-001 — SA-Rust fidelity contract, implementation, and validation
-- **Status:** Validated; ablation pending
-- **Date:** 2026-05-02
-- **Question answered:** Can `SA-Rust` be implemented, integrated and formally validated as a fidelity target following the frozen SA-Rust contract?
-- **Code reference / branch / commit:** Branch `test/sa-rust-fidelity-validation`; implementation merged in PR #81; validation commit `cb7aa76` before PR merge.
-- **Input instances:** Controlled deterministic validation cases: `path12_k3_seed42`, `cycle16_k4_seed7`, and `two_cliques_bridge12_k2_seed123`.
-- **Algorithms compared:** Python `SA` and `SA-Rust` are compared only at the level of semantic and artifact invariants. No trajectory-equivalence, RNG-equivalence, performance, quality, or ablation comparison is performed in this entry.
-- **Budget protocol:** Validation uses bounded toy-case settings for speed and reproducibility. Evidence-bearing ablation runs must still use the frozen `D-012` profile `sa_e_maxsteps_100000`: `initial_temp=1.0`, `cooling=0.997`, `min_temp=0.001`, `max_steps=100000`, `checkpoint_every_nfe=100`.
-- **Primary metrics:** Independent cut recomputation from labels, beta-feasibility, schema compatibility, `.part` path existence, checkpoint non-emptiness, checkpoint time monotonicity, best-so-far cut monotonicity, NFE monotonicity, final checkpoint best-cut consistency, and final checkpoint NFE consistency against the raw `SA-Rust` JSON payload.
-- **Outputs generated:** `scripts/validate_sa_rust_fidelity.py`, `tests/test_sa_rust_validation_script.py`, and validation reports under `audit_reports/sa_rust_validation/`.
-- **Main finding:** `SA-Rust` passed formal artifact/semantic invariant validation on the controlled validation panel. It is now an implemented, integrated and validated fidelity target, but it has not yet been used in an implementation-maturity ablation.
-- **Limitations / caveats:** This entry does not establish trajectory equivalence, RNG equivalence, performance superiority, quality superiority, selector eligibility, CART usefulness, or full Rust portfolio maturity.
-- **Can this support prose in the monograph?** Partial, for methodology/validation-readiness prose only.
+### EXP-SA-RUST-FIDELITY-001 — SA-Rust fidelity contract, implementation, validation, and ablation
+- **Status:** Validated and ablated
+- **Date:** 2026-05-03
+- **Question answered:** Can `SA-Rust` be treated as an implemented, integrated, formally validated, and controlled-ablation-ready fidelity target?
+- **Code reference / branch / commit:** Branch `experiment/rust-metaheuristic-ablation`; harness commit `55e8b0c`; mixed-panel ablation under `audit_reports/rust_metaheuristic_ablation/598_ablation_mixed_panel`.
+- **Input instances:** Mixed morphology panel: `synthetic/modnull_n3000_p50.json.gz`, `real/snap/ca_hepth_gcc.json.gz`, and `real/roadnet/roadnet_ca_bfs_10000_seed42.json.gz`; seeds `42..46`.
+- **Algorithms compared:** Python `SA` vs `SA-Rust` only. No comparison against METIS, KaHIP, selector, CART, or other metaheuristics is claimed in this entry.
+- **Budget protocol:** `budget_time_ms=5000`; frozen profile `initial_temp=1.0`, `cooling=0.997`, `min_temp=0.001`, `max_steps=100000`, `checkpoint_every_nfe=100`.
+- **Primary metrics:** Schema compatibility, feasibility, independent cut recomputation, checkpoint consistency, final checkpoint consistency, elapsed time, NFE, NFE/s ratio, and paired cut delta.
+- **Outputs generated:** `scripts/run_rust_metaheuristic_ablation.py`, `tests/test_rust_metaheuristic_ablation_script.py`, and reports under `audit_reports/rust_metaheuristic_ablation/597_ablation_synthetic_panel` and `audit_reports/rust_metaheuristic_ablation/598_ablation_mixed_panel`.
+- **Main finding:** On the mixed morphology panel, `SA-Rust` produced schema-valid artifacts with zero invalid rows/pairs and achieved higher NFE/s than Python `SA` in the paired comparison. Quality evidence is mixed: `SA-Rust` was better in 7/15 pairs and Python `SA` was better in 8/15 pairs, with median `delta_cut_rust_minus_python=5`.
+- **Limitations / caveats:** This supports implementation-maturity and throughput-readiness, not quality superiority. It does not establish trajectory equivalence, RNG equivalence, benchmark-wide superiority, selector eligibility, CART usefulness, or multilevel competitiveness.
+- **Can this support prose in the monograph?** Yes, with bounded implementation-maturity wording only.
 - **Mapped in `08_Results_to_Text_Map.md`:** Yes
-### EXP-ILS-RUST-FIDELITY-001 — ILS-Rust fidelity contract, implementation, and validation
-- **Status:** Validated; ablation pending
-- **Date:** 2026-05-02
-- **Question answered:** Can `ILS-Rust` be implemented, integrated and formally validated as a fidelity target following the frozen ILS-Rust contract?
-- **Code reference / branch / commit:** Branch `test/ils-rust-fidelity-validation`; implementation merged in PR #85; validation commit `ff05bd1` before PR merge.
-- **Input instances:** Controlled deterministic validation cases: `path12_k3_seed42`, `cycle16_k4_seed7`, and `two_cliques_bridge12_k2_seed123`.
-- **Algorithms compared:** Python `ILS` and `ILS-Rust` are compared only at the level of semantic and artifact invariants. No trajectory-equivalence, RNG-equivalence, performance, quality, or ablation comparison is performed in this entry.
-- **Budget protocol:** Validation uses bounded toy-case settings for speed and reproducibility. Evidence-bearing ablation runs must still use the frozen `D-012` profile for ILS-Rust: `max_iters=100`, `perturb_moves=4`, `checkpoint_every_iter=1`.
-- **Primary metrics:** Independent cut recomputation from labels, beta-feasibility, schema compatibility, `.part` path existence, checkpoint non-emptiness, checkpoint time monotonicity, best-so-far cut monotonicity, NFE monotonicity, final checkpoint best-cut consistency, and final checkpoint NFE consistency against the raw `ILS-Rust` JSON payload.
-- **Outputs generated:** `scripts/validate_ils_rust_fidelity.py`, `tests/test_ils_rust_validation_script.py`, and validation reports under `audit_reports/ils_rust_validation/`.
-- **Main finding:** `ILS-Rust` passed formal artifact/semantic invariant validation on the controlled validation panel. It is now an implemented, integrated and validated fidelity target, but it has not yet been used in an implementation-maturity ablation.
-- **Limitations / caveats:** This entry does not establish trajectory equivalence, RNG equivalence, performance superiority, quality superiority, selector eligibility, CART usefulness, or full Rust portfolio maturity.
-- **Can this support prose in the monograph?** Partial, for methodology/validation-readiness prose only.
+### EXP-ILS-RUST-FIDELITY-001 — ILS-Rust fidelity contract, implementation, validation, and ablation
+- **Status:** Validated and ablated
+- **Date:** 2026-05-03
+- **Question answered:** Can `ILS-Rust` be treated as an implemented, integrated, formally validated, and controlled-ablation-ready fidelity target?
+- **Code reference / branch / commit:** Branch `experiment/rust-metaheuristic-ablation`; harness commit `55e8b0c`; mixed-panel ablation under `audit_reports/rust_metaheuristic_ablation/598_ablation_mixed_panel`.
+- **Input instances:** Mixed morphology panel: `synthetic/modnull_n3000_p50.json.gz`, `real/snap/ca_hepth_gcc.json.gz`, and `real/roadnet/roadnet_ca_bfs_10000_seed42.json.gz`; seeds `42..46`.
+- **Algorithms compared:** Python `ILS` vs `ILS-Rust` only. No comparison against METIS, KaHIP, selector, CART, or other metaheuristics is claimed in this entry.
+- **Budget protocol:** `budget_time_ms=5000`; frozen profile `max_iters=100`, `perturb_moves=4`, `checkpoint_every_iter=1`.
+- **Primary metrics:** Schema compatibility, feasibility, independent cut recomputation, checkpoint consistency, final checkpoint consistency, elapsed time, NFE, NFE/s ratio, and paired cut delta.
+- **Outputs generated:** `scripts/run_rust_metaheuristic_ablation.py`, `tests/test_rust_metaheuristic_ablation_script.py`, and reports under `audit_reports/rust_metaheuristic_ablation/597_ablation_synthetic_panel` and `audit_reports/rust_metaheuristic_ablation/598_ablation_mixed_panel`.
+- **Main finding:** On the mixed morphology panel, `ILS-Rust` produced schema-valid artifacts with zero invalid rows/pairs, was better than Python `ILS` in 14/15 paired runs, and had median `delta_cut_rust_minus_python=-240`. The median NFE/s ratio was approximately `36.97x` in favor of `ILS-Rust`.
+- **Limitations / caveats:** This supports implementation-maturity evidence for the controlled panel. It does not establish trajectory equivalence, RNG equivalence, benchmark-wide superiority, selector eligibility, CART usefulness, or multilevel competitiveness.
+- **Can this support prose in the monograph?** Yes, with bounded implementation-maturity wording only.
 - **Mapped in `08_Results_to_Text_Map.md`:** Yes
-### EXP-GRASP-RUST-FIDELITY-001 — GRASP-Rust fidelity contract, implementation, and validation
-- **Status:** Validated; ablation pending
-- **Date:** 2026-05-02
-- **Question answered:** Can `GRASP-Rust` be implemented, integrated and formally validated as a fidelity target following the frozen GRASP-Rust contract?
-- **Code reference / branch / commit:** Branch `test/grasp-rust-fidelity-validation`; implementation merged in PR #89; validation commit `0fd7f08` before PR merge.
-- **Input instances:** Controlled deterministic validation cases: `path12_k3_seed42`, `cycle16_k4_seed7`, and `two_cliques_bridge12_k2_seed123`.
-- **Algorithms compared:** Python `GRASP` and `GRASP-Rust` are compared only at the level of semantic and artifact invariants. No trajectory-equivalence, RNG-equivalence, performance, quality, or ablation comparison is performed in this entry.
-- **Budget protocol:** Validation uses bounded toy-case settings for speed and reproducibility. Evidence-bearing ablation runs must still use the frozen `D-012` profile for GRASP-Rust: `alpha=0.30`, `max_iters=100`, `checkpoint_every_iter=1`.
-- **Primary metrics:** Independent cut recomputation from labels, beta-feasibility, schema compatibility, `.part` path existence, checkpoint non-emptiness, checkpoint time monotonicity, best-so-far cut monotonicity, NFE monotonicity, final checkpoint best-cut consistency, and final checkpoint NFE consistency against the raw `GRASP-Rust` JSON payload.
-- **Outputs generated:** `scripts/validate_grasp_rust_fidelity.py`, `tests/test_grasp_rust_validation_script.py`, and validation reports under `audit_reports/grasp_rust_validation/`.
-- **Main finding:** `GRASP-Rust` passed formal artifact/semantic invariant validation on the controlled validation panel. It is now an implemented, integrated and validated fidelity target, but it has not yet been used in an implementation-maturity ablation.
-- **Limitations / caveats:** This entry does not establish trajectory equivalence, RNG equivalence, performance superiority, quality superiority, selector eligibility, CART usefulness, or full Rust portfolio maturity.
-- **Can this support prose in the monograph?** Partial, for methodology/validation-readiness prose only.
+### EXP-GRASP-RUST-FIDELITY-001 — GRASP-Rust fidelity contract, implementation, validation, and ablation
+- **Status:** Validated and ablated
+- **Date:** 2026-05-03
+- **Question answered:** Can `GRASP-Rust` be treated as an implemented, integrated, formally validated, and controlled-ablation-ready fidelity target?
+- **Code reference / branch / commit:** Branch `experiment/rust-metaheuristic-ablation`; harness commit `55e8b0c`; mixed-panel ablation under `audit_reports/rust_metaheuristic_ablation/598_ablation_mixed_panel`.
+- **Input instances:** Mixed morphology panel: `synthetic/modnull_n3000_p50.json.gz`, `real/snap/ca_hepth_gcc.json.gz`, and `real/roadnet/roadnet_ca_bfs_10000_seed42.json.gz`; seeds `42..46`.
+- **Algorithms compared:** Python `GRASP` vs `GRASP-Rust` only. No comparison against METIS, KaHIP, selector, CART, or other metaheuristics is claimed in this entry.
+- **Budget protocol:** `budget_time_ms=5000`; frozen profile `alpha=0.30`, `max_iters=100`, `checkpoint_every_iter=1`.
+- **Primary metrics:** Schema compatibility, feasibility, independent cut recomputation, checkpoint consistency, final checkpoint consistency, elapsed time, NFE, NFE/s ratio, and paired cut delta.
+- **Outputs generated:** `scripts/run_rust_metaheuristic_ablation.py`, `tests/test_rust_metaheuristic_ablation_script.py`, and reports under `audit_reports/rust_metaheuristic_ablation/597_ablation_synthetic_panel` and `audit_reports/rust_metaheuristic_ablation/598_ablation_mixed_panel`.
+- **Main finding:** On the mixed morphology panel, `GRASP-Rust` produced schema-valid artifacts with zero invalid rows/pairs, was better than Python `GRASP` in 14/15 paired runs, and had median `delta_cut_rust_minus_python=-328`. The median NFE/s ratio was approximately `36.46x` in favor of `GRASP-Rust`.
+- **Limitations / caveats:** This supports implementation-maturity evidence for the controlled panel. It does not establish trajectory equivalence, RNG equivalence, benchmark-wide superiority, selector eligibility, CART usefulness, or multilevel competitiveness.
+- **Can this support prose in the monograph?** Yes, with bounded implementation-maturity wording only.
 - **Mapped in `08_Results_to_Text_Map.md`:** Yes
-### EXP-RUST-METAHEURISTIC-PORTFOLIO-001 — Full Rust metaheuristic implementation-maturity layer
-- **Status:** Planned
-- **Date:** 2026-05-02
-- **Question answered:** Does extending faithful Rust reimplementations from TS to the full metaheuristic portfolio change throughput, anytime curves, winner diversity, exception counts, or selector eligibility relative to the Python metaheuristic portfolio and multilevel baselines?
-- **Code reference / branch / commit:** To be declared separately for `SA-Rust`, `ILS-Rust`, and `GRASP-Rust`; `TS-Rust` already has completed evidence under `EXP-TS-RUST-ABLATION-001`.
-- **Input instances:** To be derived from the validated `R1`/`R2`/`R3` panel or a preregistered stratified subset. Instance selection must be based on morphological coverage, not observed winners.
-- **Algorithms compared:** `SA-Python`, `TS-Python`, `ILS-Python`, `GRASP-Python`; `SA-Rust`, `TS-Rust`, `ILS-Rust`, `GRASP-Rust`; and, when used for contextual comparison, `METIS` and `KaHIP`.
-- **Budget protocol:** Same wall-clock semantics, finite budget grid when used in the budget-aware surface, same validation contract, same repeated-run policy for stochastic participants, and no per-instance retuning.
-- **Primary metrics:** NFE/s, final validated edge cut by budget, quality by NFE, quality by wall-clock, TTT against preregistered references, exception counts relative to the multilevel reference, and selector-eligibility diagnostics.
-- **Outputs generated:** N/A — planned entry only.
-- **Main finding:** N/A — planned entry only.
-- **Limitations / caveats:** This layer is not a claim that the Python benchmark was invalid or unfair. It estimates implementation-maturity effects. Broader metaheuristic claims require all relevant Rust implementations to be validated and mapped.
-- **Can this support prose in the monograph?** No until completed, validated, and mapped.
-- **Mapped in `08_Results_to_Text_Map.md`:** Yes as prospective guardrail only.
-
 ### EXP-CART-VALIDITY-GATE-001 — Selector-eligibility diagnostics under expanded evidence
 - **Status:** Planned
 - **Date:** 2026-05-02
@@ -323,3 +308,18 @@ This file is the canonical ledger for experiments, runs, outputs, and traceable 
 - **Limitations / caveats:** This entry supports implementation readiness only. It does not support performance, quality, selector, or full-portfolio claims.
 - **Can this support prose in the monograph?** Usually no, except as repository engineering/governance detail if needed.
 - **Mapped in `08_Results_to_Text_Map.md`:** No result claim mapped.
+
+### EXP-RUST-METAHEURISTIC-PORTFOLIO-001 — Rust metaheuristic portfolio maturity
+- **Status:** Implementation-maturity evidence available; benchmark claims pending
+- **Date:** 2026-05-03
+- **Question answered:** Does the Rust metaheuristic portfolio have validated and ablated implementation-maturity evidence sufficient to proceed to benchmark-level use?
+- **Code reference / branch / commit:** Branch `experiment/rust-metaheuristic-ablation`; harness commit `55e8b0c`.
+- **Input instances:** Controlled mixed morphology ablation panel: `synthetic/modnull_n3000_p50.json.gz`, `real/snap/ca_hepth_gcc.json.gz`, and `real/roadnet/roadnet_ca_bfs_10000_seed42.json.gz`; seeds `42..46`.
+- **Algorithms compared:** Python-vs-Rust comparisons within algorithm family only: `SA` vs `SA-Rust`, `ILS` vs `ILS-Rust`, and `GRASP` vs `GRASP-Rust`. `TS-Rust` had already been validated and ablated in its own prior entry.
+- **Budget protocol:** `budget_time_ms=5000`; frozen D-012-compatible profiles for each family.
+- **Primary metrics:** Validity of generated artifacts, feasibility, cut recomputation, checkpoint consistency, paired cut deltas, elapsed time, NFE, and NFE/s ratio.
+- **Outputs generated:** `audit_reports/rust_metaheuristic_ablation/597_ablation_synthetic_panel` and `audit_reports/rust_metaheuristic_ablation/598_ablation_mixed_panel`.
+- **Main finding:** The controlled mixed-panel ablation produced 90 runs and 45 Python-vs-Rust pairs with zero invalid rows and zero invalid pairs. `ILS-Rust` and `GRASP-Rust` showed favorable paired cut and throughput evidence on the mixed panel. `SA-Rust` showed favorable throughput evidence but mixed cut-quality evidence.
+- **Limitations / caveats:** This is not a benchmark-wide performance result, not a multilevel comparison, not selector/CART evidence, and not proof of algorithmic or RNG equivalence. It supports proceeding with Rust metaheuristics as implementation-mature candidates under the frozen protocol.
+- **Can this support prose in the monograph?** Yes, but only as bounded implementation-maturity evidence.
+- **Mapped in `08_Results_to_Text_Map.md`:** Yes
