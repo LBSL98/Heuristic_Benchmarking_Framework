@@ -193,7 +193,7 @@ This file tracks unresolved project problems that can still affect coherence, co
 - **Origin:** Expanded design for morphology, budget, and implementation maturity
 - **Current status:** Open
 - **Needed action:** After validated benchmark and budget-aware tables exist, compute and register selector-eligibility diagnostics before training or claiming CART: `SBS`, `VBS`, oracle gap or regret-equivalent improvement, winner-label distribution, target entropy or equivalent degeneracy measure, exception counts against the multilevel reference, temporal winner transitions, and the admissible selector target. The gate must decide whether the evidence supports fixed-budget CART, budget-aware CART, multilevel-exception classification, or no substantive CART claim.
-
+- **Progress note 2026-05-05:** Before any exception-mining generator is implemented, generated graph instances must follow `decisions/13_Exception_Mining_Instance_Generation_Contract.md`. This preserves seeds, parameters, metrics, lifecycle state, hashes, rejection logs, and visualization inputs for future graph images and audit.
 ### OI-030 — Two-week strong-scope viability gate must prevent schedule collapse
 - **Type:** Project management / scope control / delivery risk
 - **Severity:** High
