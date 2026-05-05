@@ -484,6 +484,14 @@ The Rust layer must not introduce coarsening, uncoarsening, multilevel refinemen
 
 The Rust portfolio is not a correction of an unfair benchmark. The Python benchmark remains a valid `fair(time)` comparison of concrete implementations under the frozen protocol. The Rust layer estimates how much implementation maturity shifts the metaheuristic anytime curves and whether this shift changes winner diversity, exception counts, or selector eligibility.
 
+## Exception-mining campaign protocol
+
+The executable protocol for `EXP-MULTILEVEL-EXCEPTION-MINING-001` is frozen in `decisions/14_Exception_Mining_Campaign_Protocol.md` and mirrored in `configs/exception_mining/EXP-MULTILEVEL-EXCEPTION-MINING-001/protocol_snapshot.*`.
+
+This protocol defines the active solver portfolio, topology families, parameter-grid policy, generator seeds, solver seeds, screening and confirmation budgets, exception labels, candidate-selection rules, holdout policy, artifact roots, CART/ASP boundary, and auto-tuning boundary.
+
+Generated instances, solver screening, candidate confirmation, CART/ASP labels, visualizations, tables, and monograph claims must follow both the campaign protocol and the instance-generation audit contract.
+
 ## Exception-mining instance generation audit contract
 
 Any instance generated for `EXP-MULTILEVEL-EXCEPTION-MINING-001` must follow the audit and visualization contract in `decisions/13_Exception_Mining_Instance_Generation_Contract.md`.

@@ -352,3 +352,12 @@ This file records frozen project decisions. A decision only becomes canonical af
 - **Rationale:** The project has enough time to attempt a stronger contribution but not enough time to let implementation expansion consume the entire writing window. A fixed gate preserves ambition while protecting delivery and methodological integrity.
 - **Impact:** The next implementation issues must be organized around contracts, validation surfaces, and a viability gate. If the gate fails, the repository and monograph must explicitly defer the full Rust portfolio rather than implying incomplete evidence.
 - **Supersedes / Superseded by:** Extends `D-024` with an operational schedule-control rule. Does not supersede the main benchmark, TS-Rust ablation, or selector-governance decisions.
+
+### D-026 — Exception-mining campaign protocol and topology grid
+
+* **Date:** 2026-05-05
+* **Status:** Accepted
+* **Context:** After the auditable instance-generation contract was merged, the project needs a frozen protocol for `EXP-MULTILEVEL-EXCEPTION-MINING-001` before generating or screening candidate graphs.
+* **Decision:** The exception-mining campaign must follow `decisions/14_Exception_Mining_Campaign_Protocol.md` and `configs/exception_mining/EXP-MULTILEVEL-EXCEPTION-MINING-001/protocol_snapshot.*`.
+* **Protocol elements frozen:** topology families, parameter-grid policy, generator seeds, solver seeds, screening and confirmation budgets, full active solver portfolio, exception labels, candidate-selection rules, holdout policy, artifact roots, anti-cherry-picking controls, CART/ASP boundary, and auto-tuning boundary.
+* **Consequence:** No generated instance, screening result, CART/ASP target, figure, table, or monograph claim may bypass the frozen protocol and the instance-generation contract.
