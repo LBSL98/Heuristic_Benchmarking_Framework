@@ -1,0 +1,56 @@
+{
+"campaign_id": "EXP-MULTILEVEL-EXCEPTION-MINING-001",
+"status": "frozen_for_issue_95",
+"contract": "decisions/13_Exception_Mining_Instance_Generation_Contract.md",
+"canonical_protocol": "decisions/14_Exception_Mining_Campaign_Protocol.md",
+"full_confirmation_portfolio": [
+"METIS",
+"KaHIP",
+"SA",
+"ILS",
+"GRASP",
+"TS",
+"SA-Rust",
+"ILS-Rust",
+"GRASP-Rust",
+"TS-Rust"
+],
+"topology_families": [
+"F01_modular_noise_sbm_like",
+"F02_chain_ring_cliques_modules",
+"F03_barbell_lollipop_bottleneck",
+"F04_hub_powerlaw",
+"F05_tree_dense_core_hybrid",
+"F06_road_like_sparse",
+"F07_dense_weak_signal",
+"F08_balance_hard_planted"
+],
+"generator_seeds": [1001, 1002, 1003, 1004, 1005],
+"solver_seeds": {
+"screening": [42],
+"confirmation": [42, 43, 44, 45, 46]
+},
+"budgets_ms": {
+"screening": [1000, 5000],
+"confirmation": [100, 250, 500, 1000, 2000, 3000, 4000, 5000],
+"fixed_budget_T_star": 5000
+},
+"labels": [
+"strong_exception_candidate",
+"robust_strong_exception_candidate",
+"near_tie_candidate",
+"competitive_candidate",
+"availability_only_candidate",
+"non_exception"
+],
+"artifact_roots": {
+"generated_instance_bundles": "data/instances/exception_mining/EXP-MULTILEVEL-EXCEPTION-MINING-001/",
+"generated_pool": "audit_reports/multilevel_exception_mining/generated_pool/",
+"screening": "audit_reports/multilevel_exception_mining/screening/",
+"candidate_freeze": "audit_reports/multilevel_exception_mining/candidate_freeze/",
+"confirmation": "audit_reports/multilevel_exception_mining/confirmation/",
+"cart_asp_gate": "audit_reports/multilevel_exception_mining/cart_asp_gate/"
+},
+"cart_asp_status": "pending_after_exception_mining",
+"autotuning_status": "inactive_contingency_only"
+}
