@@ -484,6 +484,28 @@ The Rust layer must not introduce coarsening, uncoarsening, multilevel refinemen
 
 The Rust portfolio is not a correction of an unfair benchmark. The Python benchmark remains a valid `fair(time)` comparison of concrete implementations under the frozen protocol. The Rust layer estimates how much implementation maturity shifts the metaheuristic anytime curves and whether this shift changes winner diversity, exception counts, or selector eligibility.
 
+## Exception-mining instance generation audit contract
+
+Any instance generated for `EXP-MULTILEVEL-EXCEPTION-MINING-001` must follow the audit and visualization contract in `decisions/13_Exception_Mining_Instance_Generation_Contract.md`.
+
+This requirement is methodological, not merely operational. Because the exception-mining campaign is explicitly designed to search for topologies where the multilevel reference may fail, the project must preserve enough evidence to distinguish legitimate adversarial stress testing from cherry-picking.
+
+No generated instance may support screening, confirmation, CART/ASP labeling, figures, or monograph claims unless its generation seed, parameters, structural metrics, lifecycle state, hashes, rejection/acceptance logs, and visualization inputs are recorded.
+
+At minimum, the campaign must preserve:
+
+- the canonical graph instance;
+- the complete generator configuration;
+- append-only generation logs, including failed and rejected candidates;
+- graph metrics;
+- edge-list and METIS-compatible exports;
+- layout/sample metadata sufficient for future graph images;
+- manifest rows;
+- SHA-256 hashes;
+- lifecycle state transitions.
+
+Generated instances may be used for CART/ASP only after the target, exception labels, SBS/VBS, oracle gap, entropy, multilevel-reference gaps, and instance-level train/test or holdout split are explicitly frozen.
+
 ### CART-validity-oriented expansion gate
 
 The expanded design tests whether CART is empirically justified. It does not assume CART usefulness. Before a CART claim is made under the expanded design, the project must produce a gate report containing the `R1`/`R2`/`R3` instance manifest and morphological coverage summary; the finite budget grid and the inclusion of `T*`; the active algorithm portfolio; collapsed winner tables by `(instance, algorithm, budget)`; `SBS`, `VBS`, oracle gap or regret-equivalent improvement, winner-label distribution, target entropy or equivalent degeneracy measure; exception counts against the multilevel reference; and an explicit recommendation on which selector target is admissible.
