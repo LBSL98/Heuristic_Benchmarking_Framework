@@ -38,11 +38,12 @@ hpc-framework      = "hpc_framework.cli:main"
 # ======================== Config Poetry (pacotes src/) =====================
 [tool.poetry]
 packages = [
-  { include = "generator",     from = "src" },
-  { include = "heuristics",    from = "src" },
-  { include = "hpc_framework", from = "src" },
-  { include = "orchestrator",  from = "src" },
-  { include = "gpp_core",      from = "src" },
+  { include = "generator",         from = "src" },
+  { include = "heuristics",        from = "src" },
+  { include = "hpc_framework",     from = "src" },
+  { include = "orchestrator",      from = "src" },
+  { include = "gpp_core",          from = "src" },
+  { include = "exception_mining",  from = "src" },
 ]
 
 # Dev / ferramentas
