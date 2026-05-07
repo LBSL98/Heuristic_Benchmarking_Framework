@@ -361,3 +361,41 @@ This file records frozen project decisions. A decision only becomes canonical af
 * **Decision:** The exception-mining campaign must follow `decisions/14_Exception_Mining_Campaign_Protocol.md` and `configs/exception_mining/EXP-MULTILEVEL-EXCEPTION-MINING-001/protocol_snapshot.*`.
 * **Protocol elements frozen:** topology families, parameter-grid policy, generator seeds, solver seeds, screening and confirmation budgets, full active solver portfolio, exception labels, candidate-selection rules, holdout policy, artifact roots, anti-cherry-picking controls, CART/ASP boundary, and auto-tuning boundary.
 * **Consequence:** No generated instance, screening result, CART/ASP target, figure, table, or monograph claim may bypass the frozen protocol and the instance-generation contract.
+
+### D-027 — Quality-by-time benchmark interpretation and budget-aware CART target boundary
+
+- **Status:** Frozen
+- **Date:** 2026-05-06
+- **Decision:** The benchmark must be interpreted as a quality-by-wall-clock-time comparison, not as a raw speed ranking. `METIS` and `KaHIP` remain multilevel baselines under the same validation and wall-clock budget contract, but their expected roles differ: `METIS` is primarily a fast baseline, while `KaHIP` is primarily a quality-oriented baseline. Therefore, KaHIP must not be described as methodologically worse merely because it requires more elapsed time than METIS.
+
+  1. **Quality-time surface**
+     - For every algorithm `a`, instance `i`, and budget `t`, the analysis may define `f_{a,i}(t)` as the best validated objective value available from algorithm `a` on instance `i` by wall-clock time `t`.
+     - For instrumented anytime metaheuristics, `f_{a,i}(t)` is reconstructed from validated checkpoints and final artifacts.
+     - For point-output solvers such as `METIS` and `KaHIP`, `f_{a,i}(t)` is a step function: unavailable before the measured completion time and equal to the final validated cut after completion.
+     - A solver that has not produced a valid solution by `t` must not be credited with its final cut at earlier budgets.
+
+  2. **KaHIP/METIS interpretation boundary**
+     - `METIS` may be interpreted as the fast multilevel reference when it delivers acceptable quality at low elapsed time.
+     - `KaHIP` may be interpreted as the quality-oriented multilevel reference when it delivers lower validated cut at a higher elapsed time.
+     - The monograph must avoid wording that treats elapsed-time disadvantage alone as quality inferiority.
+     - Conversely, lower final cut alone must not be described as globally superior if the method only becomes available after a larger elapsed time than the user budget.
+
+  3. **Cost metric boundary**
+     - The universal cross-family effort axis remains runner-measured wall-clock time.
+     - `elapsed_ms`, timeout/budget metadata, and checkpoint `time_ms` are sufficient for the primary cross-family quality-time analysis.
+     - `NFE`, `NFE/s`, and related internal counters remain diagnostic for instrumented metaheuristics and implementation-maturity ablations. They must not be used as the universal effort axis for comparisons involving black-box multilevel solvers unless every compared method exposes a compatible counter.
+
+  4. **CART target boundary**
+     - The fixed-budget target `x_i -> y_i^*(T*)` remains recoverable and must still be reported.
+     - A budget-aware target `(x_i, t) -> y_i^*(t)` is admissible if the selector-eligibility gate shows nontrivial winner diversity, budget-dependent winner transitions, or oracle gap/regret improvement.
+     - A multilevel-sufficiency or exception target `(x_i, t) -> is_multilevel_sufficient` is admissible if algorithm-level winners remain sparse but there are meaningful exceptions or quality gaps relative to the multilevel reference.
+     - If diagnostics show that no nontrivial supervised target exists, the project must report a limited or negative CART result.
+
+  5. **Anti-cherry-picking rule**
+     - Budget-aware analysis must use a finite preregistered budget grid.
+     - Budgets must not be added, removed, or reweighted after observing winners in order to force CART viability.
+     - Any promoted budget-aware CART claim must include fixed-budget `T*` results and the selector-eligibility diagnostics.
+
+- **Rationale:** A benchmark involving `METIS`, `KaHIP`, and anytime metaheuristics cannot be reduced to raw runtime ordering. In practice, different users have different time budgets, and quality-oriented solvers may be preferable when their additional elapsed time produces materially lower validated cuts. A quality-by-time surface preserves the fair(time) protocol while allowing a more informative and decision-relevant analysis. It also creates a legitimate CART target based on `(instance, budget)` rather than forcing a single fixed-budget label.
+- **Impact:** `02_Theory_Canonical.md` must define the quality-time selector interpretation. `06_Experiment_Ledger.md` must include planned quality-time analysis gates. `07_Open_Issues.md` must track implementation of selector-ready quality-time tables. `08_Results_to_Text_Map.md` must forbid claims that KaHIP is worse merely because it is slower, and must map budget-aware CART claims only as conditional.
+- **Supersedes / Superseded by:** Extends the budget-aware, dominance-conditioned selector, exception-mining, and CART-validity decisions without superseding the main fixed-budget reporting obligation.

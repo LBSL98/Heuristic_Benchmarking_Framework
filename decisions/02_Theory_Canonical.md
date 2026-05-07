@@ -57,6 +57,27 @@ This framing does not assume that exceptions exist. A benchmark may validly conc
 
 No-Free-Lunch is therefore used as a theoretical motivation for conditional behavior, not as a result to be proven by the benchmark. The project must not inflate isolated exceptions into a universal claim that metaheuristics dominate multilevel methods.
 
+### Quality-by-time selector interpretation
+
+The benchmark theory must distinguish speed, quality, and availability within a time budget. A solver that finishes quickly with a moderate cut and a solver that finishes later with a better cut answer different user needs. Therefore, the relevant selection question is not simply which algorithm is fastest, nor only which algorithm has the best final cut. The decision-relevant question is which algorithm delivers the best validated solution within a declared wall-clock budget.
+
+This distinction is especially important for the multilevel baselines. `METIS` is primarily useful as a fast reference. `KaHIP` is primarily useful as a quality-oriented reference. It is expected that KaHIP may lose to METIS in elapsed time while still being relevant because it can produce lower edge cuts. Such a result is not a methodological failure; it is part of the time-quality trade-off that the benchmark is meant to expose.
+
+For budget-aware analysis, point-output solvers and anytime solvers can be represented on a common wall-clock axis:
+
+- point-output solvers are unavailable before their measured completion time and available afterward with their final validated solution;
+- anytime solvers are represented by their validated checkpoint trajectory;
+- the common effort axis is wall-clock time, not NFE;
+- NFE remains an internal diagnostic for instrumented metaheuristics and implementation-maturity analysis.
+
+This framing supports three admissible selector targets, depending on evidence:
+
+1. fixed-budget winner: `x_i -> y_i^*(T*)`;
+2. budget-aware winner: `(x_i, t) -> y_i^*(t)`;
+3. multilevel-sufficiency or exception classifier: `(x_i, t) -> whether the multilevel reference is sufficient`.
+
+None of these targets is automatically valid. Selector usefulness requires empirical diagnostics: winner diversity, target entropy, `SBS`/`VBS`, oracle gap or regret-equivalent improvement, exception counts, and budget-dependent winner transitions. If those diagnostics show a degenerate target, the correct theoretical conclusion is that CART is limited or not substantively supported by the observed benchmark surface.
+
 ### CART validity under expanded controlled variation
 The selector is a product only if the validated data show a nontrivial selection problem. The project may therefore expand the experimental design to test selector validity under controlled variation in three dimensions: graph morphology, available wall-clock budget, and implementation maturity of the metaheuristic portfolio.
 

@@ -323,3 +323,38 @@ This file is the canonical ledger for experiments, runs, outputs, and traceable 
 - **Limitations / caveats:** This is not a benchmark-wide performance result, not a multilevel comparison, not selector/CART evidence, and not proof of algorithmic or RNG equivalence. It supports proceeding with Rust metaheuristics as implementation-mature candidates under the frozen protocol.
 - **Can this support prose in the monograph?** Yes, but only as bounded implementation-maturity evidence.
 - **Mapped in `08_Results_to_Text_Map.md`:** Yes
+
+### EXP-QUALITY-TIME-SURFACE-001 — Quality-by-wall-clock-time benchmark surface
+
+- **Status:** Planned
+- **Date:** 2026-05-06
+- **Question answered:** For each instance and finite budget, which algorithm provides the best validated partition quality available by that wall-clock time?
+- **Code reference / branch / commit:** To be declared when selector-ready quality-time table builders are committed.
+- **Input instances:** Validated benchmark panel and/or preregistered exception-mining pool after bundle validation and screening. Instance selection must be based on morphological coverage, not observed winners.
+- **Algorithms compared:** Active validated portfolio at analysis time, including `METIS`, `KaHIP`, Python metaheuristics, and validated Rust metaheuristics if in scope.
+- **Budget protocol:** Finite preregistered wall-clock budget grid including the official `T*`. No post hoc budget insertion to improve CART label distribution.
+- **Point-output treatment:** `METIS` and `KaHIP` are represented as unavailable before measured `elapsed_ms` and available afterward with their final validated cut.
+- **Anytime treatment:** Metaheuristics are reconstructed from validated checkpoints and final artifacts.
+- **Environment constraints:** Analysis-only step over validated benchmark artifacts; no new solver execution is implied by this table-building experiment.
+- **Primary metrics:** Best validated cut by `(instance, algorithm, budget)`, availability/censoring by budget, elapsed time to availability, `SBS`, `VBS`, oracle gap or regret-equivalent improvement, winner-label distribution, entropy/degeneracy diagnostics, exception counts against the multilevel reference, and budget-dependent winner transitions.
+- **Outputs generated:** N/A — planned entry only.
+- **Main finding:** N/A — planned entry only.
+- **Limitations / caveats:** This surface does not replace the fixed-budget `T*` report. NFE-based views remain diagnostic unless every compared participant exposes compatible counters.
+- **Can this support prose in the monograph?** No until completed, validated, and mapped.
+- **Mapped in `08_Results_to_Text_Map.md`:** Yes as prospective guardrail only.
+
+### EXP-KAHIP-METIS-QUALITY-TIME-INTERPRETATION-001 — Multilevel baseline quality-time interpretation
+
+- **Status:** Planned
+- **Date:** 2026-05-06
+- **Question answered:** Under the validated benchmark artifacts, when does the quality-oriented multilevel baseline justify its additional elapsed time relative to the fast multilevel baseline?
+- **Code reference / branch / commit:** To be declared when analysis tables/figures are committed.
+- **Input instances:** Same as `EXP-QUALITY-TIME-SURFACE-001`.
+- **Algorithms compared:** `METIS` and `KaHIP`, optionally contextualized against other active participants.
+- **Budget protocol:** Same finite budget grid and point-output step-function treatment.
+- **Primary metrics:** `elapsed_ms`, final validated cut, availability by budget, cut improvement of `KaHIP` over `METIS` when both are available, budgets where only `METIS` is available, and budgets where `KaHIP` becomes preferable.
+- **Outputs generated:** N/A — planned entry only.
+- **Main finding:** N/A — planned entry only.
+- **Limitations / caveats:** This analysis must not claim that KaHIP is globally better or worse. It only characterizes the time-quality trade-off under the audited environment.
+- **Can this support prose in the monograph?** No until completed, validated, and mapped.
+- **Mapped in `08_Results_to_Text_Map.md`:** Yes as prospective guardrail only.

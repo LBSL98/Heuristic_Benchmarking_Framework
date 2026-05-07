@@ -212,3 +212,30 @@ This file tracks unresolved project problems that can still affect coherence, co
 ## Notes
 
 - The pilot benchmark review completed successfully on 2026-04-27 (`EXPECTED_TOTAL=112`, `ACTUAL_TOTAL=112`, `SCHEMA_ERRORS=0`, `APPROVAL_CANDIDATE=1`), but that operational milestone does not by itself close the remaining writing, figure-clearance, or publication-surface issues.
+
+### OI-032 — Quality-time surface must be implemented before budget-aware CART claims
+
+- **Type:** Methodology / analysis pipeline / selector validity
+- **Severity:** High
+- **Origin:** Need to avoid interpreting the benchmark as a raw speed ranking and to preserve KaHIP as a quality-oriented baseline.
+- **Current status:** Open
+- **Needed action:** Implement selector-ready quality-by-wall-clock-time tables. For each `(instance, algorithm, budget)` slice, record availability, best validated cut by budget, elapsed time, censoring/invalidity flags, and aggregation across stochastic repetitions. Treat `METIS` and `KaHIP` as point-output step functions and metaheuristics as checkpoint-based anytime trajectories.
+- **Closure condition:** Closed only after the table builder is committed, tested, and validated against real artifacts from the benchmark/exception-mining campaign.
+
+### OI-033 — KaHIP/METIS interpretation must distinguish speed from quality
+
+- **Type:** Results interpretation / threat to validity / writing governance
+- **Severity:** Medium
+- **Origin:** KaHIP is expected to trade more elapsed time for higher quality, while METIS is expected to be faster.
+- **Current status:** Open
+- **Needed action:** Ensure monograph prose and result tables do not treat KaHIP as worse merely because it is slower. Report where `METIS` is preferable under small budgets, where `KaHIP` becomes preferable because of lower cut, and where neither materially changes the recommendation.
+- **Closure condition:** Closed after result-writing templates and result-to-text mappings include explicit allowed/forbidden wording.
+
+### OI-034 — Budget-aware CART target must be selected only after diagnostics
+
+- **Type:** ASP governance / CART validity
+- **Severity:** High
+- **Origin:** Budget-aware quality-time surface creates possible selector targets beyond the fixed-budget winner.
+- **Current status:** Open
+- **Needed action:** After validated quality-time tables exist, compute `SBS`, `VBS`, oracle gap or regret-equivalent improvement, winner-label distribution, target entropy or degeneracy diagnostic, exception counts against the multilevel reference, and budget-dependent winner transitions. Decide whether the admissible target is fixed-budget winner, budget-aware winner, multilevel-exception classifier, or no substantive CART claim.
+- **Closure condition:** Closed only after the selector-eligibility gate report is committed and mapped.
