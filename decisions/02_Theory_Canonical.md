@@ -57,6 +57,40 @@ This framing does not assume that exceptions exist. A benchmark may validly conc
 
 No-Free-Lunch is therefore used as a theoretical motivation for conditional behavior, not as a result to be proven by the benchmark. The project must not inflate isolated exceptions into a universal claim that metaheuristics dominate multilevel methods.
 
+### Quality-by-time selector interpretation
+
+The benchmark theory must distinguish speed, quality, and availability within a time budget. A solver that finishes quickly with a moderate cut and a solver that finishes later with a better cut answer different user needs. Therefore, the relevant selection question is not simply which algorithm is fastest, nor only which algorithm has the best final cut. The decision-relevant question is which algorithm delivers the best validated solution within a declared wall-clock budget.
+
+This distinction is especially important for the multilevel baselines. `METIS` is primarily useful as a fast reference. `KaHIP` is primarily useful as a quality-oriented reference. It is expected that KaHIP may lose to METIS in elapsed time while still being relevant because it can produce lower edge cuts. Such a result is not a methodological failure; it is part of the time-quality trade-off that the benchmark is meant to expose.
+
+For budget-aware analysis, point-output solvers and anytime solvers can be represented on a common wall-clock axis:
+
+- point-output solvers are unavailable before their measured completion time and available afterward with their final validated solution;
+- anytime solvers are represented by their validated checkpoint trajectory;
+- the common effort axis is wall-clock time, not NFE;
+- NFE remains an internal diagnostic for instrumented metaheuristics and implementation-maturity analysis.
+
+This framing supports three admissible selector targets, depending on evidence:
+
+1. fixed-budget winner: `x_i -> y_i^*(T*)`;
+2. budget-aware winner: `(x_i, t) -> y_i^*(t)`;
+3. multilevel-sufficiency or exception classifier: `(x_i, t) -> whether the multilevel reference is sufficient`.
+
+None of these targets is automatically valid. Selector usefulness requires empirical diagnostics: winner diversity, target entropy, `SBS`/`VBS`, oracle gap or regret-equivalent improvement, exception counts, and budget-dependent winner transitions. If those diagnostics show a degenerate target, the correct theoretical conclusion is that CART is limited or not substantively supported by the observed benchmark surface.
+
+### Dual-environment benchmark interpretation
+
+A benchmark result is always conditional on the execution environment in which it was produced. In this project, the local WSL/notebook environment and the dedicated machine or server are not equivalent measurement instruments. They may differ in CPU, cache, memory capacity, memory pressure, storage, thermal behavior, scheduler behavior, operating system layer, Docker behavior, and background load. Therefore, elapsed time and memory-sensitive behavior cannot be interpreted as machine-independent facts.
+
+The dual-environment design has two complementary roles:
+
+1. the WSL/notebook campaign preserves the original restricted-resource setting and shows how the framework behaves under the author's local reproducibility context;
+2. the dedicated/server campaign supports the expanded benchmark, with larger memory and more room to explore additional instances, longer budgets, repetitions, and exception-mining candidates.
+
+The theoretical implication is that algorithm comparison is valid primarily within an environment. Cross-environment comparison is not a direct algorithm comparison; it is environmental sensitivity analysis. A change in winner between WSL and server may indicate sensitivity to resource availability or runtime context, not necessarily a change in intrinsic algorithmic quality.
+
+For algorithm selection, the environment must be handled carefully. If the selector is trained with an environment identifier as a feature, it may learn machine identity rather than graph morphology. Therefore, the primary CART/ASP claim should be environment-specific or validated on a carefully defined common intersection. Transfer across environments may be studied as robustness: whether rules learned in the dedicated campaign still behave reasonably in the WSL subset, or whether environmental constraints change the practical recommendation.
+
 ### CART validity under expanded controlled variation
 The selector is a product only if the validated data show a nontrivial selection problem. The project may therefore expand the experimental design to test selector validity under controlled variation in three dimensions: graph morphology, available wall-clock budget, and implementation maturity of the metaheuristic portfolio.
 

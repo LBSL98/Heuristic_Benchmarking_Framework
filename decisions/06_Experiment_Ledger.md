@@ -323,3 +323,102 @@ This file is the canonical ledger for experiments, runs, outputs, and traceable 
 - **Limitations / caveats:** This is not a benchmark-wide performance result, not a multilevel comparison, not selector/CART evidence, and not proof of algorithmic or RNG equivalence. It supports proceeding with Rust metaheuristics as implementation-mature candidates under the frozen protocol.
 - **Can this support prose in the monograph?** Yes, but only as bounded implementation-maturity evidence.
 - **Mapped in `08_Results_to_Text_Map.md`:** Yes
+
+### EXP-QUALITY-TIME-SURFACE-001 — Quality-by-wall-clock-time benchmark surface
+
+- **Status:** Planned
+- **Date:** 2026-05-06
+- **Question answered:** For each instance and finite budget, which algorithm provides the best validated partition quality available by that wall-clock time?
+- **Code reference / branch / commit:** To be declared when selector-ready quality-time table builders are committed.
+- **Input instances:** Validated benchmark panel and/or preregistered exception-mining pool after bundle validation and screening. Instance selection must be based on morphological coverage, not observed winners.
+- **Algorithms compared:** Active validated portfolio at analysis time, including `METIS`, `KaHIP`, Python metaheuristics, and validated Rust metaheuristics if in scope.
+- **Budget protocol:** Finite preregistered wall-clock budget grid including the official `T*`. No post hoc budget insertion to improve CART label distribution.
+- **Point-output treatment:** `METIS` and `KaHIP` are represented as unavailable before measured `elapsed_ms` and available afterward with their final validated cut.
+- **Anytime treatment:** Metaheuristics are reconstructed from validated checkpoints and final artifacts.
+- **Environment constraints:** Analysis-only step over validated benchmark artifacts; no new solver execution is implied by this table-building experiment.
+- **Primary metrics:** Best validated cut by `(instance, algorithm, budget)`, availability/censoring by budget, elapsed time to availability, `SBS`, `VBS`, oracle gap or regret-equivalent improvement, winner-label distribution, entropy/degeneracy diagnostics, exception counts against the multilevel reference, and budget-dependent winner transitions.
+- **Outputs generated:** N/A — planned entry only.
+- **Main finding:** N/A — planned entry only.
+- **Limitations / caveats:** This surface does not replace the fixed-budget `T*` report. NFE-based views remain diagnostic unless every compared participant exposes compatible counters.
+- **Can this support prose in the monograph?** No until completed, validated, and mapped.
+- **Mapped in `08_Results_to_Text_Map.md`:** Yes as prospective guardrail only.
+
+### EXP-KAHIP-METIS-QUALITY-TIME-INTERPRETATION-001 — Multilevel baseline quality-time interpretation
+
+- **Status:** Planned
+- **Date:** 2026-05-06
+- **Question answered:** Under the validated benchmark artifacts, when does the quality-oriented multilevel baseline justify its additional elapsed time relative to the fast multilevel baseline?
+- **Code reference / branch / commit:** To be declared when analysis tables/figures are committed.
+- **Input instances:** Same as `EXP-QUALITY-TIME-SURFACE-001`.
+- **Algorithms compared:** `METIS` and `KaHIP`, optionally contextualized against other active participants.
+- **Budget protocol:** Same finite budget grid and point-output step-function treatment.
+- **Primary metrics:** `elapsed_ms`, final validated cut, availability by budget, cut improvement of `KaHIP` over `METIS` when both are available, budgets where only `METIS` is available, and budgets where `KaHIP` becomes preferable.
+- **Outputs generated:** N/A — planned entry only.
+- **Main finding:** N/A — planned entry only.
+- **Limitations / caveats:** This analysis must not claim that KaHIP is globally better or worse. It only characterizes the time-quality trade-off under the audited environment.
+- **Can this support prose in the monograph?** No until completed, validated, and mapped.
+- **Mapped in `08_Results_to_Text_Map.md`:** Yes as prospective guardrail only.
+
+### EXP-DUAL-ENVIRONMENT-METADATA-001 — Execution-environment metadata capture
+
+- **Status:** Planned
+- **Date:** 2026-05-06
+- **Question answered:** Are the WSL/local and dedicated/server environments sufficiently documented to support stratified benchmark interpretation?
+- **Code reference / branch / commit:** To be declared when metadata capture scripts or manifests are committed.
+- **Input instances:** N/A — metadata and environment audit only.
+- **Algorithms compared:** N/A.
+- **Environment protocol:** Capture WSL/local and dedicated/server hardware/software metadata before campaign execution.
+- **Primary metrics:** CPU, RAM, OS, WSL version when applicable, Docker version, Poetry version, Python version, solver versions, thread-control variables, storage context, exclusivity/shared-load policy, and memory limits.
+- **Outputs generated:** N/A — planned entry only.
+- **Main finding:** N/A — planned entry only.
+- **Limitations / caveats:** Metadata capture does not prove performance equivalence; it only makes the environment auditable.
+- **Can this support prose in the monograph?** No until completed and mapped.
+- **Mapped in `08_Results_to_Text_Map.md`:** Yes as prospective guardrail only.
+
+### EXP-WSL-LOCAL-CAMPAIGN-001 — Restricted local WSL benchmark layer
+
+- **Status:** Planned
+- **Date:** 2026-05-06
+- **Question answered:** Under the originally planned WSL/local notebook environment, what benchmark behavior is observed within the feasible resource envelope?
+- **Code reference / branch / commit:** To be declared when campaign artifacts are produced.
+- **Input instances:** Local feasible subset of the validated panel and/or exception-mining candidates.
+- **Algorithms compared:** Active validated portfolio feasible under WSL constraints.
+- **Budget protocol:** Declared local budget grid compatible with WSL memory and runtime constraints.
+- **Primary metrics:** Validated cut, elapsed wall-clock time, availability by budget, checkpoint trajectories where available, invalid/censored runs, memory-related failures when captured.
+- **Outputs generated:** N/A — planned entry only.
+- **Main finding:** N/A — planned entry only.
+- **Limitations / caveats:** This layer is a restricted-resource baseline. It must not be pooled with the server campaign as one homogeneous benchmark.
+- **Can this support prose in the monograph?** No until completed and mapped.
+- **Mapped in `08_Results_to_Text_Map.md`:** Yes as prospective guardrail only.
+
+### EXP-DEDICATED-SERVER-CAMPAIGN-001 — Expanded dedicated-environment benchmark layer
+
+- **Status:** Planned
+- **Date:** 2026-05-06
+- **Question answered:** Under a higher-capacity dedicated environment, what benchmark behavior is observed when the instance pool, budgets, repetitions, or exception-mining search are expanded?
+- **Code reference / branch / commit:** To be declared when campaign artifacts are produced.
+- **Input instances:** Expanded validated panel and/or generated exception-mining candidate pool.
+- **Algorithms compared:** Active validated portfolio, including METIS, KaHIP, Python metaheuristics, and validated Rust metaheuristics if in scope.
+- **Budget protocol:** Declared dedicated-environment budget grid, including the common intersection with WSL where applicable and any server-only expanded budgets.
+- **Primary metrics:** Validated cut, elapsed wall-clock time, availability by budget, checkpoint trajectories where available, invalid/censored runs, quality-time winners, exception counts, and selector diagnostics.
+- **Outputs generated:** N/A — planned entry only.
+- **Main finding:** N/A — planned entry only.
+- **Limitations / caveats:** Server-only rows support dedicated-environment conclusions, not direct pooled claims with WSL.
+- **Can this support prose in the monograph?** No until completed and mapped.
+- **Mapped in `08_Results_to_Text_Map.md`:** Yes as prospective guardrail only.
+
+### EXP-ENVIRONMENT-SENSITIVITY-001 — WSL/server common-intersection sensitivity analysis
+
+- **Status:** Planned
+- **Date:** 2026-05-06
+- **Question answered:** On the common intersection of instances, budgets, seeds/repetitions, portfolio members, and protocol settings, are algorithm rankings, quality-time winners, or CART-relevant labels stable across WSL and dedicated environments?
+- **Code reference / branch / commit:** To be declared when analysis tables are committed.
+- **Input instances:** Only the common intersection executed in both environments.
+- **Algorithms compared:** Only portfolio members executed under equivalent settings in both environments.
+- **Budget protocol:** Only budgets present in both environments.
+- **Primary metrics:** Winner agreement, rank correlation where appropriate, cut differences, elapsed-time differences, availability/censoring changes, budget-transition stability, and selector-label stability.
+- **Outputs generated:** N/A — planned entry only.
+- **Main finding:** N/A — planned entry only.
+- **Limitations / caveats:** This analysis evaluates environmental sensitivity. It does not prove machine-independent algorithm superiority.
+- **Can this support prose in the monograph?** No until completed and mapped.
+- **Mapped in `08_Results_to_Text_Map.md`:** Yes as prospective guardrail only.
