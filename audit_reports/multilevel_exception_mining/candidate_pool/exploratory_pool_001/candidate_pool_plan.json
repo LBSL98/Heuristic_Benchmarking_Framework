@@ -1,0 +1,776 @@
+[
+  {
+    "candidate_id": "f01_common_a_seed990101",
+    "environment_target": "common",
+    "family": "F01",
+    "intended_hypothesis": "modular-noise stress case for multilevel coarsening and quality-time behavior; intended environment stratum: common",
+    "lifecycle_state": "generated",
+    "params": {},
+    "pool_role": "exploratory_candidate",
+    "seed": 990101,
+    "variant": "common_a"
+  },
+  {
+    "candidate_id": "f01_common_b_seed990102",
+    "environment_target": "common",
+    "family": "F01",
+    "intended_hypothesis": "modular-noise stress case for multilevel coarsening and quality-time behavior; intended environment stratum: common",
+    "lifecycle_state": "generated",
+    "params": {},
+    "pool_role": "exploratory_candidate",
+    "seed": 990102,
+    "variant": "common_b"
+  },
+  {
+    "candidate_id": "f01_common_c_seed990103",
+    "environment_target": "common",
+    "family": "F01",
+    "intended_hypothesis": "modular-noise stress case for multilevel coarsening and quality-time behavior; intended environment stratum: common",
+    "lifecycle_state": "generated",
+    "params": {},
+    "pool_role": "exploratory_candidate",
+    "seed": 990103,
+    "variant": "common_c"
+  },
+  {
+    "candidate_id": "f01_common_scaled_seed990104",
+    "environment_target": "common",
+    "family": "F01",
+    "intended_hypothesis": "modular-noise stress case for multilevel coarsening and quality-time behavior; intended environment stratum: common",
+    "lifecycle_state": "generated",
+    "params": {
+      "communities": 5,
+      "epsilon": 0.033,
+      "n": 216
+    },
+    "pool_role": "exploratory_candidate",
+    "seed": 990104,
+    "variant": "common_scaled"
+  },
+  {
+    "candidate_id": "f01_server_a_seed990105",
+    "environment_target": "server_expanded",
+    "family": "F01",
+    "intended_hypothesis": "modular-noise stress case for multilevel coarsening and quality-time behavior; intended environment stratum: server_expanded",
+    "lifecycle_state": "generated",
+    "params": {},
+    "pool_role": "exploratory_candidate",
+    "seed": 990105,
+    "variant": "server_a"
+  },
+  {
+    "candidate_id": "f01_server_b_seed990106",
+    "environment_target": "server_expanded",
+    "family": "F01",
+    "intended_hypothesis": "modular-noise stress case for multilevel coarsening and quality-time behavior; intended environment stratum: server_expanded",
+    "lifecycle_state": "generated",
+    "params": {},
+    "pool_role": "exploratory_candidate",
+    "seed": 990106,
+    "variant": "server_b"
+  },
+  {
+    "candidate_id": "f01_server_scaled_seed990107",
+    "environment_target": "server_expanded",
+    "family": "F01",
+    "intended_hypothesis": "modular-noise stress case for multilevel coarsening and quality-time behavior; intended environment stratum: server_expanded",
+    "lifecycle_state": "generated",
+    "params": {
+      "communities": 6,
+      "epsilon": 0.036,
+      "n": 280
+    },
+    "pool_role": "exploratory_candidate",
+    "seed": 990107,
+    "variant": "server_scaled"
+  },
+  {
+    "candidate_id": "f01_holdout_a_seed990108",
+    "environment_target": "holdout",
+    "family": "F01",
+    "intended_hypothesis": "modular-noise stress case for multilevel coarsening and quality-time behavior; intended environment stratum: holdout",
+    "lifecycle_state": "holdout_reserved",
+    "params": {},
+    "pool_role": "reserved_holdout",
+    "seed": 990108,
+    "variant": "holdout_a"
+  },
+  {
+    "candidate_id": "f02_common_a_seed990201",
+    "environment_target": "common",
+    "family": "F02",
+    "intended_hypothesis": "chain/ring module topology with narrow inter-module cuts; intended environment stratum: common",
+    "lifecycle_state": "generated",
+    "params": {},
+    "pool_role": "exploratory_candidate",
+    "seed": 990201,
+    "variant": "common_a"
+  },
+  {
+    "candidate_id": "f02_common_b_seed990202",
+    "environment_target": "common",
+    "family": "F02",
+    "intended_hypothesis": "chain/ring module topology with narrow inter-module cuts; intended environment stratum: common",
+    "lifecycle_state": "generated",
+    "params": {},
+    "pool_role": "exploratory_candidate",
+    "seed": 990202,
+    "variant": "common_b"
+  },
+  {
+    "candidate_id": "f02_common_c_seed990203",
+    "environment_target": "common",
+    "family": "F02",
+    "intended_hypothesis": "chain/ring module topology with narrow inter-module cuts; intended environment stratum: common",
+    "lifecycle_state": "generated",
+    "params": {},
+    "pool_role": "exploratory_candidate",
+    "seed": 990203,
+    "variant": "common_c"
+  },
+  {
+    "candidate_id": "f02_common_scaled_seed990204",
+    "environment_target": "common",
+    "family": "F02",
+    "intended_hypothesis": "chain/ring module topology with narrow inter-module cuts; intended environment stratum: common",
+    "lifecycle_state": "generated",
+    "params": {
+      "epsilon": 0.033,
+      "inter_module_edges": 3,
+      "intra_module_density": 0.8800000000000001,
+      "module_count": 9,
+      "module_size": 25
+    },
+    "pool_role": "exploratory_candidate",
+    "seed": 990204,
+    "variant": "common_scaled"
+  },
+  {
+    "candidate_id": "f02_server_a_seed990205",
+    "environment_target": "server_expanded",
+    "family": "F02",
+    "intended_hypothesis": "chain/ring module topology with narrow inter-module cuts; intended environment stratum: server_expanded",
+    "lifecycle_state": "generated",
+    "params": {},
+    "pool_role": "exploratory_candidate",
+    "seed": 990205,
+    "variant": "server_a"
+  },
+  {
+    "candidate_id": "f02_server_b_seed990206",
+    "environment_target": "server_expanded",
+    "family": "F02",
+    "intended_hypothesis": "chain/ring module topology with narrow inter-module cuts; intended environment stratum: server_expanded",
+    "lifecycle_state": "generated",
+    "params": {},
+    "pool_role": "exploratory_candidate",
+    "seed": 990206,
+    "variant": "server_b"
+  },
+  {
+    "candidate_id": "f02_server_scaled_seed990207",
+    "environment_target": "server_expanded",
+    "family": "F02",
+    "intended_hypothesis": "chain/ring module topology with narrow inter-module cuts; intended environment stratum: server_expanded",
+    "lifecycle_state": "generated",
+    "params": {
+      "epsilon": 0.036,
+      "inter_module_edges": 3,
+      "intra_module_density": 0.95,
+      "module_count": 10,
+      "module_size": 32
+    },
+    "pool_role": "exploratory_candidate",
+    "seed": 990207,
+    "variant": "server_scaled"
+  },
+  {
+    "candidate_id": "f02_holdout_a_seed990208",
+    "environment_target": "holdout",
+    "family": "F02",
+    "intended_hypothesis": "chain/ring module topology with narrow inter-module cuts; intended environment stratum: holdout",
+    "lifecycle_state": "holdout_reserved",
+    "params": {},
+    "pool_role": "reserved_holdout",
+    "seed": 990208,
+    "variant": "holdout_a"
+  },
+  {
+    "candidate_id": "f03_common_a_seed990301",
+    "environment_target": "common",
+    "family": "F03",
+    "intended_hypothesis": "barbell/lollipop bottleneck topology with separator sensitivity; intended environment stratum: common",
+    "lifecycle_state": "generated",
+    "params": {},
+    "pool_role": "exploratory_candidate",
+    "seed": 990301,
+    "variant": "common_a"
+  },
+  {
+    "candidate_id": "f03_common_b_seed990302",
+    "environment_target": "common",
+    "family": "F03",
+    "intended_hypothesis": "barbell/lollipop bottleneck topology with separator sensitivity; intended environment stratum: common",
+    "lifecycle_state": "generated",
+    "params": {},
+    "pool_role": "exploratory_candidate",
+    "seed": 990302,
+    "variant": "common_b"
+  },
+  {
+    "candidate_id": "f03_common_c_seed990303",
+    "environment_target": "common",
+    "family": "F03",
+    "intended_hypothesis": "barbell/lollipop bottleneck topology with separator sensitivity; intended environment stratum: common",
+    "lifecycle_state": "generated",
+    "params": {},
+    "pool_role": "exploratory_candidate",
+    "seed": 990303,
+    "variant": "common_c"
+  },
+  {
+    "candidate_id": "f03_common_scaled_seed990304",
+    "environment_target": "common",
+    "family": "F03",
+    "intended_hypothesis": "barbell/lollipop bottleneck topology with separator sensitivity; intended environment stratum: common",
+    "lifecycle_state": "generated",
+    "params": {
+      "bridge_length": 14,
+      "bridge_width": 3,
+      "core_density": 0.33,
+      "epsilon": 0.033
+    },
+    "pool_role": "exploratory_candidate",
+    "seed": 990304,
+    "variant": "common_scaled"
+  },
+  {
+    "candidate_id": "f03_server_a_seed990305",
+    "environment_target": "server_expanded",
+    "family": "F03",
+    "intended_hypothesis": "barbell/lollipop bottleneck topology with separator sensitivity; intended environment stratum: server_expanded",
+    "lifecycle_state": "generated",
+    "params": {},
+    "pool_role": "exploratory_candidate",
+    "seed": 990305,
+    "variant": "server_a"
+  },
+  {
+    "candidate_id": "f03_server_b_seed990306",
+    "environment_target": "server_expanded",
+    "family": "F03",
+    "intended_hypothesis": "barbell/lollipop bottleneck topology with separator sensitivity; intended environment stratum: server_expanded",
+    "lifecycle_state": "generated",
+    "params": {},
+    "pool_role": "exploratory_candidate",
+    "seed": 990306,
+    "variant": "server_b"
+  },
+  {
+    "candidate_id": "f03_server_scaled_seed990307",
+    "environment_target": "server_expanded",
+    "family": "F03",
+    "intended_hypothesis": "barbell/lollipop bottleneck topology with separator sensitivity; intended environment stratum: server_expanded",
+    "lifecycle_state": "generated",
+    "params": {
+      "bridge_length": 18,
+      "bridge_width": 3,
+      "core_density": 0.36,
+      "epsilon": 0.036
+    },
+    "pool_role": "exploratory_candidate",
+    "seed": 990307,
+    "variant": "server_scaled"
+  },
+  {
+    "candidate_id": "f03_holdout_a_seed990308",
+    "environment_target": "holdout",
+    "family": "F03",
+    "intended_hypothesis": "barbell/lollipop bottleneck topology with separator sensitivity; intended environment stratum: holdout",
+    "lifecycle_state": "holdout_reserved",
+    "params": {},
+    "pool_role": "reserved_holdout",
+    "seed": 990308,
+    "variant": "holdout_a"
+  },
+  {
+    "candidate_id": "f04_common_a_seed990401",
+    "environment_target": "common",
+    "family": "F04",
+    "intended_hypothesis": "hub or power-law topology with degree heterogeneity; intended environment stratum: common",
+    "lifecycle_state": "generated",
+    "params": {},
+    "pool_role": "exploratory_candidate",
+    "seed": 990401,
+    "variant": "common_a"
+  },
+  {
+    "candidate_id": "f04_common_b_seed990402",
+    "environment_target": "common",
+    "family": "F04",
+    "intended_hypothesis": "hub or power-law topology with degree heterogeneity; intended environment stratum: common",
+    "lifecycle_state": "generated",
+    "params": {},
+    "pool_role": "exploratory_candidate",
+    "seed": 990402,
+    "variant": "common_b"
+  },
+  {
+    "candidate_id": "f04_common_c_seed990403",
+    "environment_target": "common",
+    "family": "F04",
+    "intended_hypothesis": "hub or power-law topology with degree heterogeneity; intended environment stratum: common",
+    "lifecycle_state": "generated",
+    "params": {},
+    "pool_role": "exploratory_candidate",
+    "seed": 990403,
+    "variant": "common_c"
+  },
+  {
+    "candidate_id": "f04_common_scaled_seed990404",
+    "environment_target": "common",
+    "family": "F04",
+    "intended_hypothesis": "hub or power-law topology with degree heterogeneity; intended environment stratum: common",
+    "lifecycle_state": "generated",
+    "params": {
+      "epsilon": 0.033,
+      "n": 270
+    },
+    "pool_role": "exploratory_candidate",
+    "seed": 990404,
+    "variant": "common_scaled"
+  },
+  {
+    "candidate_id": "f04_server_a_seed990405",
+    "environment_target": "server_expanded",
+    "family": "F04",
+    "intended_hypothesis": "hub or power-law topology with degree heterogeneity; intended environment stratum: server_expanded",
+    "lifecycle_state": "generated",
+    "params": {},
+    "pool_role": "exploratory_candidate",
+    "seed": 990405,
+    "variant": "server_a"
+  },
+  {
+    "candidate_id": "f04_server_b_seed990406",
+    "environment_target": "server_expanded",
+    "family": "F04",
+    "intended_hypothesis": "hub or power-law topology with degree heterogeneity; intended environment stratum: server_expanded",
+    "lifecycle_state": "generated",
+    "params": {},
+    "pool_role": "exploratory_candidate",
+    "seed": 990406,
+    "variant": "server_b"
+  },
+  {
+    "candidate_id": "f04_server_scaled_seed990407",
+    "environment_target": "server_expanded",
+    "family": "F04",
+    "intended_hypothesis": "hub or power-law topology with degree heterogeneity; intended environment stratum: server_expanded",
+    "lifecycle_state": "generated",
+    "params": {
+      "epsilon": 0.036,
+      "n": 350
+    },
+    "pool_role": "exploratory_candidate",
+    "seed": 990407,
+    "variant": "server_scaled"
+  },
+  {
+    "candidate_id": "f04_holdout_a_seed990408",
+    "environment_target": "holdout",
+    "family": "F04",
+    "intended_hypothesis": "hub or power-law topology with degree heterogeneity; intended environment stratum: holdout",
+    "lifecycle_state": "holdout_reserved",
+    "params": {},
+    "pool_role": "reserved_holdout",
+    "seed": 990408,
+    "variant": "holdout_a"
+  },
+  {
+    "candidate_id": "f05_common_a_seed990501",
+    "environment_target": "common",
+    "family": "F05",
+    "intended_hypothesis": "tree plus dense-core topology with mixed local/global structure; intended environment stratum: common",
+    "lifecycle_state": "generated",
+    "params": {},
+    "pool_role": "exploratory_candidate",
+    "seed": 990501,
+    "variant": "common_a"
+  },
+  {
+    "candidate_id": "f05_common_b_seed990502",
+    "environment_target": "common",
+    "family": "F05",
+    "intended_hypothesis": "tree plus dense-core topology with mixed local/global structure; intended environment stratum: common",
+    "lifecycle_state": "generated",
+    "params": {},
+    "pool_role": "exploratory_candidate",
+    "seed": 990502,
+    "variant": "common_b"
+  },
+  {
+    "candidate_id": "f05_common_c_seed990503",
+    "environment_target": "common",
+    "family": "F05",
+    "intended_hypothesis": "tree plus dense-core topology with mixed local/global structure; intended environment stratum: common",
+    "lifecycle_state": "generated",
+    "params": {},
+    "pool_role": "exploratory_candidate",
+    "seed": 990503,
+    "variant": "common_c"
+  },
+  {
+    "candidate_id": "f05_common_scaled_seed990504",
+    "environment_target": "common",
+    "family": "F05",
+    "intended_hypothesis": "tree plus dense-core topology with mixed local/global structure; intended environment stratum: common",
+    "lifecycle_state": "generated",
+    "params": {
+      "core_density": 0.33,
+      "epsilon": 0.033,
+      "n": 270
+    },
+    "pool_role": "exploratory_candidate",
+    "seed": 990504,
+    "variant": "common_scaled"
+  },
+  {
+    "candidate_id": "f05_server_a_seed990505",
+    "environment_target": "server_expanded",
+    "family": "F05",
+    "intended_hypothesis": "tree plus dense-core topology with mixed local/global structure; intended environment stratum: server_expanded",
+    "lifecycle_state": "generated",
+    "params": {},
+    "pool_role": "exploratory_candidate",
+    "seed": 990505,
+    "variant": "server_a"
+  },
+  {
+    "candidate_id": "f05_server_b_seed990506",
+    "environment_target": "server_expanded",
+    "family": "F05",
+    "intended_hypothesis": "tree plus dense-core topology with mixed local/global structure; intended environment stratum: server_expanded",
+    "lifecycle_state": "generated",
+    "params": {},
+    "pool_role": "exploratory_candidate",
+    "seed": 990506,
+    "variant": "server_b"
+  },
+  {
+    "candidate_id": "f05_server_scaled_seed990507",
+    "environment_target": "server_expanded",
+    "family": "F05",
+    "intended_hypothesis": "tree plus dense-core topology with mixed local/global structure; intended environment stratum: server_expanded",
+    "lifecycle_state": "generated",
+    "params": {
+      "core_density": 0.36,
+      "epsilon": 0.036,
+      "n": 350
+    },
+    "pool_role": "exploratory_candidate",
+    "seed": 990507,
+    "variant": "server_scaled"
+  },
+  {
+    "candidate_id": "f05_holdout_a_seed990508",
+    "environment_target": "holdout",
+    "family": "F05",
+    "intended_hypothesis": "tree plus dense-core topology with mixed local/global structure; intended environment stratum: holdout",
+    "lifecycle_state": "holdout_reserved",
+    "params": {},
+    "pool_role": "reserved_holdout",
+    "seed": 990508,
+    "variant": "holdout_a"
+  },
+  {
+    "candidate_id": "f06_common_a_seed990601",
+    "environment_target": "common",
+    "family": "F06",
+    "intended_hypothesis": "road-like sparse topology for spatial/local separator behavior; intended environment stratum: common",
+    "lifecycle_state": "generated",
+    "params": {},
+    "pool_role": "exploratory_candidate",
+    "seed": 990601,
+    "variant": "common_a"
+  },
+  {
+    "candidate_id": "f06_common_b_seed990602",
+    "environment_target": "common",
+    "family": "F06",
+    "intended_hypothesis": "road-like sparse topology for spatial/local separator behavior; intended environment stratum: common",
+    "lifecycle_state": "generated",
+    "params": {},
+    "pool_role": "exploratory_candidate",
+    "seed": 990602,
+    "variant": "common_b"
+  },
+  {
+    "candidate_id": "f06_common_c_seed990603",
+    "environment_target": "common",
+    "family": "F06",
+    "intended_hypothesis": "road-like sparse topology for spatial/local separator behavior; intended environment stratum: common",
+    "lifecycle_state": "generated",
+    "params": {},
+    "pool_role": "exploratory_candidate",
+    "seed": 990603,
+    "variant": "common_c"
+  },
+  {
+    "candidate_id": "f06_common_scaled_seed990604",
+    "environment_target": "common",
+    "family": "F06",
+    "intended_hypothesis": "road-like sparse topology for spatial/local separator behavior; intended environment stratum: common",
+    "lifecycle_state": "generated",
+    "params": {
+      "epsilon": 0.033,
+      "perturbation_rate": 0.05500000000000001
+    },
+    "pool_role": "exploratory_candidate",
+    "seed": 990604,
+    "variant": "common_scaled"
+  },
+  {
+    "candidate_id": "f06_server_a_seed990605",
+    "environment_target": "server_expanded",
+    "family": "F06",
+    "intended_hypothesis": "road-like sparse topology for spatial/local separator behavior; intended environment stratum: server_expanded",
+    "lifecycle_state": "generated",
+    "params": {},
+    "pool_role": "exploratory_candidate",
+    "seed": 990605,
+    "variant": "server_a"
+  },
+  {
+    "candidate_id": "f06_server_b_seed990606",
+    "environment_target": "server_expanded",
+    "family": "F06",
+    "intended_hypothesis": "road-like sparse topology for spatial/local separator behavior; intended environment stratum: server_expanded",
+    "lifecycle_state": "generated",
+    "params": {},
+    "pool_role": "exploratory_candidate",
+    "seed": 990606,
+    "variant": "server_b"
+  },
+  {
+    "candidate_id": "f06_server_scaled_seed990607",
+    "environment_target": "server_expanded",
+    "family": "F06",
+    "intended_hypothesis": "road-like sparse topology for spatial/local separator behavior; intended environment stratum: server_expanded",
+    "lifecycle_state": "generated",
+    "params": {
+      "epsilon": 0.036,
+      "perturbation_rate": 0.06
+    },
+    "pool_role": "exploratory_candidate",
+    "seed": 990607,
+    "variant": "server_scaled"
+  },
+  {
+    "candidate_id": "f06_holdout_a_seed990608",
+    "environment_target": "holdout",
+    "family": "F06",
+    "intended_hypothesis": "road-like sparse topology for spatial/local separator behavior; intended environment stratum: holdout",
+    "lifecycle_state": "holdout_reserved",
+    "params": {},
+    "pool_role": "reserved_holdout",
+    "seed": 990608,
+    "variant": "holdout_a"
+  },
+  {
+    "candidate_id": "f07_common_a_seed990701",
+    "environment_target": "common",
+    "family": "F07",
+    "intended_hypothesis": "dense weak-signal topology for noisy cut structure; intended environment stratum: common",
+    "lifecycle_state": "generated",
+    "params": {},
+    "pool_role": "exploratory_candidate",
+    "seed": 990701,
+    "variant": "common_a"
+  },
+  {
+    "candidate_id": "f07_common_b_seed990702",
+    "environment_target": "common",
+    "family": "F07",
+    "intended_hypothesis": "dense weak-signal topology for noisy cut structure; intended environment stratum: common",
+    "lifecycle_state": "generated",
+    "params": {},
+    "pool_role": "exploratory_candidate",
+    "seed": 990702,
+    "variant": "common_b"
+  },
+  {
+    "candidate_id": "f07_common_c_seed990703",
+    "environment_target": "common",
+    "family": "F07",
+    "intended_hypothesis": "dense weak-signal topology for noisy cut structure; intended environment stratum: common",
+    "lifecycle_state": "generated",
+    "params": {},
+    "pool_role": "exploratory_candidate",
+    "seed": 990703,
+    "variant": "common_c"
+  },
+  {
+    "candidate_id": "f07_common_scaled_seed990704",
+    "environment_target": "common",
+    "family": "F07",
+    "intended_hypothesis": "dense weak-signal topology for noisy cut structure; intended environment stratum: common",
+    "lifecycle_state": "generated",
+    "params": {
+      "edge_density": 0.05500000000000001,
+      "epsilon": 0.033,
+      "n": 216,
+      "planted_signal": 0.05500000000000001
+    },
+    "pool_role": "exploratory_candidate",
+    "seed": 990704,
+    "variant": "common_scaled"
+  },
+  {
+    "candidate_id": "f07_server_a_seed990705",
+    "environment_target": "server_expanded",
+    "family": "F07",
+    "intended_hypothesis": "dense weak-signal topology for noisy cut structure; intended environment stratum: server_expanded",
+    "lifecycle_state": "generated",
+    "params": {},
+    "pool_role": "exploratory_candidate",
+    "seed": 990705,
+    "variant": "server_a"
+  },
+  {
+    "candidate_id": "f07_server_b_seed990706",
+    "environment_target": "server_expanded",
+    "family": "F07",
+    "intended_hypothesis": "dense weak-signal topology for noisy cut structure; intended environment stratum: server_expanded",
+    "lifecycle_state": "generated",
+    "params": {},
+    "pool_role": "exploratory_candidate",
+    "seed": 990706,
+    "variant": "server_b"
+  },
+  {
+    "candidate_id": "f07_server_scaled_seed990707",
+    "environment_target": "server_expanded",
+    "family": "F07",
+    "intended_hypothesis": "dense weak-signal topology for noisy cut structure; intended environment stratum: server_expanded",
+    "lifecycle_state": "generated",
+    "params": {
+      "edge_density": 0.06,
+      "epsilon": 0.036,
+      "n": 280,
+      "planted_signal": 0.06
+    },
+    "pool_role": "exploratory_candidate",
+    "seed": 990707,
+    "variant": "server_scaled"
+  },
+  {
+    "candidate_id": "f07_holdout_a_seed990708",
+    "environment_target": "holdout",
+    "family": "F07",
+    "intended_hypothesis": "dense weak-signal topology for noisy cut structure; intended environment stratum: holdout",
+    "lifecycle_state": "holdout_reserved",
+    "params": {},
+    "pool_role": "reserved_holdout",
+    "seed": 990708,
+    "variant": "holdout_a"
+  },
+  {
+    "candidate_id": "f08_common_a_seed990801",
+    "environment_target": "common",
+    "family": "F08",
+    "intended_hypothesis": "balance-hard planted topology for feasibility and balance stress; intended environment stratum: common",
+    "lifecycle_state": "generated",
+    "params": {},
+    "pool_role": "exploratory_candidate",
+    "seed": 990801,
+    "variant": "common_a"
+  },
+  {
+    "candidate_id": "f08_common_b_seed990802",
+    "environment_target": "common",
+    "family": "F08",
+    "intended_hypothesis": "balance-hard planted topology for feasibility and balance stress; intended environment stratum: common",
+    "lifecycle_state": "generated",
+    "params": {},
+    "pool_role": "exploratory_candidate",
+    "seed": 990802,
+    "variant": "common_b"
+  },
+  {
+    "candidate_id": "f08_common_c_seed990803",
+    "environment_target": "common",
+    "family": "F08",
+    "intended_hypothesis": "balance-hard planted topology for feasibility and balance stress; intended environment stratum: common",
+    "lifecycle_state": "generated",
+    "params": {},
+    "pool_role": "exploratory_candidate",
+    "seed": 990803,
+    "variant": "common_c"
+  },
+  {
+    "candidate_id": "f08_common_scaled_seed990804",
+    "environment_target": "common",
+    "family": "F08",
+    "intended_hypothesis": "balance-hard planted topology for feasibility and balance stress; intended environment stratum: common",
+    "lifecycle_state": "generated",
+    "params": {
+      "block_size_skew": 0.275,
+      "epsilon": 0.033,
+      "n": 243,
+      "planted_blocks": 6
+    },
+    "pool_role": "exploratory_candidate",
+    "seed": 990804,
+    "variant": "common_scaled"
+  },
+  {
+    "candidate_id": "f08_server_a_seed990805",
+    "environment_target": "server_expanded",
+    "family": "F08",
+    "intended_hypothesis": "balance-hard planted topology for feasibility and balance stress; intended environment stratum: server_expanded",
+    "lifecycle_state": "generated",
+    "params": {},
+    "pool_role": "exploratory_candidate",
+    "seed": 990805,
+    "variant": "server_a"
+  },
+  {
+    "candidate_id": "f08_server_b_seed990806",
+    "environment_target": "server_expanded",
+    "family": "F08",
+    "intended_hypothesis": "balance-hard planted topology for feasibility and balance stress; intended environment stratum: server_expanded",
+    "lifecycle_state": "generated",
+    "params": {},
+    "pool_role": "exploratory_candidate",
+    "seed": 990806,
+    "variant": "server_b"
+  },
+  {
+    "candidate_id": "f08_server_scaled_seed990807",
+    "environment_target": "server_expanded",
+    "family": "F08",
+    "intended_hypothesis": "balance-hard planted topology for feasibility and balance stress; intended environment stratum: server_expanded",
+    "lifecycle_state": "generated",
+    "params": {
+      "block_size_skew": 0.275,
+      "epsilon": 0.036,
+      "n": 315,
+      "planted_blocks": 7
+    },
+    "pool_role": "exploratory_candidate",
+    "seed": 990807,
+    "variant": "server_scaled"
+  },
+  {
+    "candidate_id": "f08_holdout_a_seed990808",
+    "environment_target": "holdout",
+    "family": "F08",
+    "intended_hypothesis": "balance-hard planted topology for feasibility and balance stress; intended environment stratum: holdout",
+    "lifecycle_state": "holdout_reserved",
+    "params": {},
+    "pool_role": "reserved_holdout",
+    "seed": 990808,
+    "variant": "holdout_a"
+  }
+]

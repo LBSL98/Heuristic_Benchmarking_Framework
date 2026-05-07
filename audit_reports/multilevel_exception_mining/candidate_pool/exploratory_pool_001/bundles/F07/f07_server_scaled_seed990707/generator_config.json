@@ -1,0 +1,36 @@
+{
+  "balance_tolerance": 0.036,
+  "campaign_id": "EXP-MULTILEVEL-EXCEPTION-MINING-001",
+  "candidate_id": "f07_server_scaled_seed990707",
+  "code_commit": "b560db1c35ad6689fd13a8312963479740604acb",
+  "created_at": "2026-05-07T14:53:02.361619+00:00",
+  "environment": {
+    "machine": "x86_64",
+    "networkx": "3.5",
+    "numpy": "2.3.3",
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.35",
+    "python": "3.11.15"
+  },
+  "environment_target": "server_expanded",
+  "generator_family": "F07",
+  "generator_name": "exception_mining_f07",
+  "generator_version": "0.1.0",
+  "graph_parameters": {
+    "edge_density": 0.06,
+    "epsilon": 0.036,
+    "k": 8,
+    "n": 280,
+    "noise_mode": "block_weak",
+    "planted_signal": 0.06
+  },
+  "instance_id": "f07_server_scaled_seed990707",
+  "intended_hypothesis": "dense weak-signal topology for noisy cut structure; intended environment stratum: server_expanded",
+  "k": 8,
+  "lifecycle_state": "generated",
+  "pool_role": "exploratory_candidate",
+  "seed": 990707,
+  "solver_results_used": false,
+  "target_morphology": "F07",
+  "target_regime": "exception_mining",
+  "variant": "server_scaled"
+}

@@ -1,0 +1,36 @@
+{
+  "balance_tolerance": 0.03,
+  "campaign_id": "EXP-MULTILEVEL-EXCEPTION-MINING-001",
+  "candidate_id": "f06_common_b_seed990602",
+  "code_commit": "b560db1c35ad6689fd13a8312963479740604acb",
+  "created_at": "2026-05-07T14:52:57.930446+00:00",
+  "environment": {
+    "machine": "x86_64",
+    "networkx": "3.5",
+    "numpy": "2.3.3",
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.35",
+    "python": "3.11.15"
+  },
+  "environment_target": "common",
+  "generator_family": "F06",
+  "generator_name": "exception_mining_f06",
+  "generator_version": "0.1.0",
+  "graph_parameters": {
+    "epsilon": 0.03,
+    "grid_shape": "rectangular",
+    "k": 8,
+    "n_approx": 225,
+    "perturbation_rate": 0.05,
+    "shortcut_rate": 0.01
+  },
+  "instance_id": "f06_common_b_seed990602",
+  "intended_hypothesis": "road-like sparse topology for spatial/local separator behavior; intended environment stratum: common",
+  "k": 8,
+  "lifecycle_state": "generated",
+  "pool_role": "exploratory_candidate",
+  "seed": 990602,
+  "solver_results_used": false,
+  "target_morphology": "F06",
+  "target_regime": "exception_mining",
+  "variant": "common_b"
+}

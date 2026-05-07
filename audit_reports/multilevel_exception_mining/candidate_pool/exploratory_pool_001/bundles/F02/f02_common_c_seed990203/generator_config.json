@@ -1,0 +1,37 @@
+{
+  "balance_tolerance": 0.03,
+  "campaign_id": "EXP-MULTILEVEL-EXCEPTION-MINING-001",
+  "candidate_id": "f02_common_c_seed990203",
+  "code_commit": "b560db1c35ad6689fd13a8312963479740604acb",
+  "created_at": "2026-05-07T14:52:46.851409+00:00",
+  "environment": {
+    "machine": "x86_64",
+    "networkx": "3.5",
+    "numpy": "2.3.3",
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.35",
+    "python": "3.11.15"
+  },
+  "environment_target": "common",
+  "generator_family": "F02",
+  "generator_name": "exception_mining_f02",
+  "generator_version": "0.1.0",
+  "graph_parameters": {
+    "epsilon": 0.03,
+    "inter_module_edges": 2,
+    "intra_module_density": 0.8,
+    "k": 8,
+    "module_count": 8,
+    "module_size": 20,
+    "topology": "chain"
+  },
+  "instance_id": "f02_common_c_seed990203",
+  "intended_hypothesis": "chain/ring module topology with narrow inter-module cuts; intended environment stratum: common",
+  "k": 8,
+  "lifecycle_state": "generated",
+  "pool_role": "exploratory_candidate",
+  "seed": 990203,
+  "solver_results_used": false,
+  "target_morphology": "F02",
+  "target_regime": "exception_mining",
+  "variant": "common_c"
+}

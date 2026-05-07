@@ -1,0 +1,27 @@
+{
+  "campaign_id": "EXP-MULTILEVEL-EXCEPTION-MINING-001",
+  "output_root": "/home/brunoonurb/MPP/audit_reports/multilevel_exception_mining/candidate_pool/exploratory_pool_001",
+  "generated_at_utc": "2026-05-07T14:53:06.100537+00:00",
+  "attempt_count": 64,
+  "accepted_count": 64,
+  "rejected_count": 0,
+  "accepted_by_family": {
+    "F01": 8,
+    "F02": 8,
+    "F03": 8,
+    "F04": 8,
+    "F05": 8,
+    "F06": 8,
+    "F07": 8,
+    "F08": 8
+  },
+  "accepted_by_environment_target": {
+    "common": 32,
+    "server_expanded": 24,
+    "holdout": 8
+  },
+  "rejected_by_reason": {},
+  "solver_results_used": false,
+  "contains_solver_results": false,
+  "issue_scope": "generate exploratory candidate pool only; no solver execution"
+}

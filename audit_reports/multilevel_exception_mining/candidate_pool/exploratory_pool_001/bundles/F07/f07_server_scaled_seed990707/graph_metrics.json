@@ -1,0 +1,20 @@
+{
+  "average_degree": 14.6,
+  "connected_component_count": 1,
+  "cv_vel_final": 0.0,
+  "cv_vel_requested": 0.0,
+  "degree_cv": 0.25216538031850666,
+  "degree_max": 24,
+  "degree_mean": 14.6,
+  "degree_min": 6,
+  "degree_std": 3.6816145526501973,
+  "density": 0.052329749103942655,
+  "density_final": 0.052329749103942655,
+  "density_requested": 0.052329749103942655,
+  "largest_component_size": 280,
+  "modularity": 0.3186256323696677,
+  "nodes_final": 280,
+  "nodes_requested": 280,
+  "num_edges": 2044,
+  "num_vertices": 280
+}

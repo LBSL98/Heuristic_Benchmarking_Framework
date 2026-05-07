@@ -1,0 +1,15 @@
+{
+  "bundle_path": "/home/brunoonurb/MPP/audit_reports/multilevel_exception_mining/candidate_pool/exploratory_pool_001/bundles/F06/f06_common_a_seed990601",
+  "campaign_id": "EXP-MULTILEVEL-EXCEPTION-MINING-001",
+  "candidate_id": "f06_common_a_seed990601",
+  "created_at": "2026-05-07T14:52:57.601408+00:00",
+  "environment_target": "common",
+  "family": "F06",
+  "instance_id": "f06_common_a_seed990601",
+  "intended_hypothesis": "road-like sparse topology for spatial/local separator behavior; intended environment stratum: common",
+  "lifecycle_state": "generated",
+  "pool_role": "exploratory_candidate",
+  "seed": "990601",
+  "solver_results_used": false,
+  "variant": "common_a"
+}

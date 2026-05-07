@@ -1,0 +1,15 @@
+{
+  "bundle_path": "/home/brunoonurb/MPP/audit_reports/multilevel_exception_mining/candidate_pool/exploratory_pool_001/bundles/F01/f01_common_c_seed990103",
+  "campaign_id": "EXP-MULTILEVEL-EXCEPTION-MINING-001",
+  "candidate_id": "f01_common_c_seed990103",
+  "created_at": "2026-05-07T14:52:44.674092+00:00",
+  "environment_target": "common",
+  "family": "F01",
+  "instance_id": "f01_common_c_seed990103",
+  "intended_hypothesis": "modular-noise stress case for multilevel coarsening and quality-time behavior; intended environment stratum: common",
+  "lifecycle_state": "generated",
+  "pool_role": "exploratory_candidate",
+  "seed": "990103",
+  "solver_results_used": false,
+  "variant": "common_c"
+}
