@@ -78,6 +78,19 @@ This framing supports three admissible selector targets, depending on evidence:
 
 None of these targets is automatically valid. Selector usefulness requires empirical diagnostics: winner diversity, target entropy, `SBS`/`VBS`, oracle gap or regret-equivalent improvement, exception counts, and budget-dependent winner transitions. If those diagnostics show a degenerate target, the correct theoretical conclusion is that CART is limited or not substantively supported by the observed benchmark surface.
 
+### Dual-environment benchmark interpretation
+
+A benchmark result is always conditional on the execution environment in which it was produced. In this project, the local WSL/notebook environment and the dedicated machine or server are not equivalent measurement instruments. They may differ in CPU, cache, memory capacity, memory pressure, storage, thermal behavior, scheduler behavior, operating system layer, Docker behavior, and background load. Therefore, elapsed time and memory-sensitive behavior cannot be interpreted as machine-independent facts.
+
+The dual-environment design has two complementary roles:
+
+1. the WSL/notebook campaign preserves the original restricted-resource setting and shows how the framework behaves under the author's local reproducibility context;
+2. the dedicated/server campaign supports the expanded benchmark, with larger memory and more room to explore additional instances, longer budgets, repetitions, and exception-mining candidates.
+
+The theoretical implication is that algorithm comparison is valid primarily within an environment. Cross-environment comparison is not a direct algorithm comparison; it is environmental sensitivity analysis. A change in winner between WSL and server may indicate sensitivity to resource availability or runtime context, not necessarily a change in intrinsic algorithmic quality.
+
+For algorithm selection, the environment must be handled carefully. If the selector is trained with an environment identifier as a feature, it may learn machine identity rather than graph morphology. Therefore, the primary CART/ASP claim should be environment-specific or validated on a carefully defined common intersection. Transfer across environments may be studied as robustness: whether rules learned in the dedicated campaign still behave reasonably in the WSL subset, or whether environmental constraints change the practical recommendation.
+
 ### CART validity under expanded controlled variation
 The selector is a product only if the validated data show a nontrivial selection problem. The project may therefore expand the experimental design to test selector validity under controlled variation in three dimensions: graph morphology, available wall-clock budget, and implementation maturity of the metaheuristic portfolio.
 

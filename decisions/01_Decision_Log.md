@@ -399,3 +399,45 @@ This file records frozen project decisions. A decision only becomes canonical af
 - **Rationale:** A benchmark involving `METIS`, `KaHIP`, and anytime metaheuristics cannot be reduced to raw runtime ordering. In practice, different users have different time budgets, and quality-oriented solvers may be preferable when their additional elapsed time produces materially lower validated cuts. A quality-by-time surface preserves the fair(time) protocol while allowing a more informative and decision-relevant analysis. It also creates a legitimate CART target based on `(instance, budget)` rather than forcing a single fixed-budget label.
 - **Impact:** `02_Theory_Canonical.md` must define the quality-time selector interpretation. `06_Experiment_Ledger.md` must include planned quality-time analysis gates. `07_Open_Issues.md` must track implementation of selector-ready quality-time tables. `08_Results_to_Text_Map.md` must forbid claims that KaHIP is worse merely because it is slower, and must map budget-aware CART claims only as conditional.
 - **Supersedes / Superseded by:** Extends the budget-aware, dominance-conditioned selector, exception-mining, and CART-validity decisions without superseding the main fixed-budget reporting obligation.
+
+### D-028 — Dual-environment benchmark design and environmental sensitivity boundary
+
+- **Status:** Frozen
+- **Date:** 2026-05-06
+- **Decision:** The benchmark campaign will be executed in two distinct environments: a local WSL/notebook environment and a dedicated machine or server environment. These environments must be treated as separate experimental strata, not as interchangeable sources of homogeneous observations.
+
+  1. **Environment A — local WSL/notebook**
+     - Preserves the originally planned local execution context.
+     - Serves as a restricted-resource reproducibility baseline.
+     - Captures the practical behavior of the framework under the author's available local environment.
+     - Must record WSL version, host operating system, CPU, available RAM, memory limits, Docker/Poetry/Python versions, storage context, thread limits, and any known thermal or scheduler constraints.
+
+  2. **Environment B — dedicated machine/server**
+     - Becomes the expanded experimental layer for larger benchmark exploration.
+     - Uses greater RAM and more stable or isolated resources to expand the instance pool, budgets, repetitions, and exception-mining search.
+     - Must record CPU, RAM, operating system, storage, Docker/Poetry/Python versions, thread limits, exclusivity/shared-use policy, and any relevant scheduler constraints.
+
+  3. **Analysis boundary**
+     - Algorithm comparisons must primarily be made within each environment.
+     - Results from WSL and the dedicated environment must not be pooled as if they came from a single machine or homogeneous experimental condition.
+     - Cross-environment comparison is admissible only as environmental sensitivity analysis.
+     - The common subset of instances, budgets, portfolio members, seeds/repetitions, and protocol settings executed in both environments defines the valid intersection for robustness checks.
+
+  4. **Expanded campaign boundary**
+     - The dedicated environment may include larger instances, longer budgets, more repetitions, and additional generated candidates that are infeasible or unsafe under the WSL memory limit.
+     - These server-only results may support the main expanded exception-mining analysis, but they must be labeled as belonging to the dedicated-environment stratum.
+     - The WSL campaign does not invalidate the server campaign, and the server campaign does not retroactively make WSL results directly comparable outside the common intersection.
+
+  5. **CART and ASP boundary**
+     - The primary CART/ASP analysis should be trained and evaluated within a clearly declared environment, preferably the dedicated expanded environment if it becomes the main campaign layer.
+     - Environment identifiers must not be used naively as predictive features in a way that lets CART learn machine identity instead of graph morphology.
+     - If cross-environment transfer is analyzed, it must be framed as robustness/sensitivity: for example, whether rules learned in the dedicated environment remain reasonable on the WSL intersection.
+     - If environment changes alter winners or budget transitions, this must be reported as environmental sensitivity, not as a direct algorithmic superiority claim.
+
+  6. **Anti-confounding rule**
+     - A result cannot be attributed to an algorithm if algorithm, hardware, memory limit, instance panel, budget grid, or repetition policy changed simultaneously without stratification.
+     - Any table, figure, or model combining both environments must include an explicit environment field and must state whether the row belongs to the common intersection or to an environment-specific expansion.
+
+- **Rationale:** The local WSL environment has practical resource limits, especially memory, that may constrain graph size, budget, repetitions, and solver behavior. A dedicated machine can expand the search for topological exceptions and support stronger benchmarking, but changing the execution environment changes a major experimental factor. Treating the two campaigns as distinct strata preserves validity while allowing both practical reproducibility and expanded exploration.
+- **Impact:** Experiment manifests must include environment identifiers. Analysis scripts must support environment stratification. `06_Experiment_Ledger.md` must include planned entries for local, dedicated, and intersection/sensitivity analyses. `07_Open_Issues.md` must track environment metadata capture and the risk of invalid pooled conclusions. `08_Results_to_Text_Map.md` must forbid wording that pools WSL and server results as one homogeneous benchmark.
+- **Supersedes / Superseded by:** Extends the fair(time), quality-time, exception-mining, and CART-validity decisions without changing the core rule that the universal cross-family effort axis remains wall-clock time within a controlled environment.

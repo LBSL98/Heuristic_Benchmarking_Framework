@@ -239,3 +239,39 @@ This file tracks unresolved project problems that can still affect coherence, co
 - **Current status:** Open
 - **Needed action:** After validated quality-time tables exist, compute `SBS`, `VBS`, oracle gap or regret-equivalent improvement, winner-label distribution, target entropy or degeneracy diagnostic, exception counts against the multilevel reference, and budget-dependent winner transitions. Decide whether the admissible target is fixed-budget winner, budget-aware winner, multilevel-exception classifier, or no substantive CART claim.
 - **Closure condition:** Closed only after the selector-eligibility gate report is committed and mapped.
+
+### OI-035 — Dual-environment campaign metadata must be captured before benchmark execution
+
+- **Type:** Reproducibility / environment governance
+- **Severity:** High
+- **Origin:** Decision to run the benchmark both under WSL/local notebook and under a dedicated machine/server.
+- **Current status:** Open
+- **Needed action:** Record complete hardware/software metadata for both environments, including CPU, RAM, OS, WSL version and memory limits when applicable, Docker/Poetry/Python versions, solver versions, storage context, thread-control variables, and exclusivity/shared-load policy.
+- **Closure condition:** Closed only after environment metadata artifacts are committed or archived with the campaign and linked from the experiment ledger.
+
+### OI-036 — WSL and server results must not be pooled as one homogeneous benchmark
+
+- **Type:** Methodology / validity threat
+- **Severity:** High
+- **Origin:** Changing environment changes CPU, RAM, memory pressure, scheduler behavior, storage, operating system layer, and possibly solver/runtime behavior.
+- **Current status:** Open
+- **Needed action:** Ensure all analysis tables include an explicit environment identifier and distinguish WSL-local, dedicated-server, and common-intersection rows. Prevent scripts and prose from aggregating both environments without stratification.
+- **Closure condition:** Closed only after analysis scripts and result-to-text mappings enforce environment stratification.
+
+### OI-037 — Common WSL/server intersection must be defined before environmental sensitivity claims
+
+- **Type:** Analysis protocol / robustness
+- **Severity:** Medium
+- **Origin:** Cross-environment comparison is valid only on matched instances, budgets, seeds/repetitions, portfolio members, and solver settings.
+- **Current status:** Open
+- **Needed action:** Define and freeze the common intersection between WSL and server campaigns. Use only this subset for environmental sensitivity analysis.
+- **Closure condition:** Closed after the common-intersection manifest is committed and validated.
+
+### OI-038 — CART must not learn environment identity instead of graph morphology
+
+- **Type:** ASP governance / leakage risk
+- **Severity:** High
+- **Origin:** Dual-environment data may introduce an environment shortcut if machine identity is used naively as a predictive feature.
+- **Current status:** Open
+- **Needed action:** Decide whether CART is trained within one environment or explicitly as an environmental-sensitivity model. If environment is included as a feature, the modeling question must state that it is analyzing environment-conditioned recommendations.
+- **Closure condition:** Closed only after the selector-eligibility gate specifies the allowed treatment of environment variables and verifies no leakage across common-intersection or train/test splits.

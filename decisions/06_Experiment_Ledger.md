@@ -358,3 +358,67 @@ This file is the canonical ledger for experiments, runs, outputs, and traceable 
 - **Limitations / caveats:** This analysis must not claim that KaHIP is globally better or worse. It only characterizes the time-quality trade-off under the audited environment.
 - **Can this support prose in the monograph?** No until completed, validated, and mapped.
 - **Mapped in `08_Results_to_Text_Map.md`:** Yes as prospective guardrail only.
+
+### EXP-DUAL-ENVIRONMENT-METADATA-001 — Execution-environment metadata capture
+
+- **Status:** Planned
+- **Date:** 2026-05-06
+- **Question answered:** Are the WSL/local and dedicated/server environments sufficiently documented to support stratified benchmark interpretation?
+- **Code reference / branch / commit:** To be declared when metadata capture scripts or manifests are committed.
+- **Input instances:** N/A — metadata and environment audit only.
+- **Algorithms compared:** N/A.
+- **Environment protocol:** Capture WSL/local and dedicated/server hardware/software metadata before campaign execution.
+- **Primary metrics:** CPU, RAM, OS, WSL version when applicable, Docker version, Poetry version, Python version, solver versions, thread-control variables, storage context, exclusivity/shared-load policy, and memory limits.
+- **Outputs generated:** N/A — planned entry only.
+- **Main finding:** N/A — planned entry only.
+- **Limitations / caveats:** Metadata capture does not prove performance equivalence; it only makes the environment auditable.
+- **Can this support prose in the monograph?** No until completed and mapped.
+- **Mapped in `08_Results_to_Text_Map.md`:** Yes as prospective guardrail only.
+
+### EXP-WSL-LOCAL-CAMPAIGN-001 — Restricted local WSL benchmark layer
+
+- **Status:** Planned
+- **Date:** 2026-05-06
+- **Question answered:** Under the originally planned WSL/local notebook environment, what benchmark behavior is observed within the feasible resource envelope?
+- **Code reference / branch / commit:** To be declared when campaign artifacts are produced.
+- **Input instances:** Local feasible subset of the validated panel and/or exception-mining candidates.
+- **Algorithms compared:** Active validated portfolio feasible under WSL constraints.
+- **Budget protocol:** Declared local budget grid compatible with WSL memory and runtime constraints.
+- **Primary metrics:** Validated cut, elapsed wall-clock time, availability by budget, checkpoint trajectories where available, invalid/censored runs, memory-related failures when captured.
+- **Outputs generated:** N/A — planned entry only.
+- **Main finding:** N/A — planned entry only.
+- **Limitations / caveats:** This layer is a restricted-resource baseline. It must not be pooled with the server campaign as one homogeneous benchmark.
+- **Can this support prose in the monograph?** No until completed and mapped.
+- **Mapped in `08_Results_to_Text_Map.md`:** Yes as prospective guardrail only.
+
+### EXP-DEDICATED-SERVER-CAMPAIGN-001 — Expanded dedicated-environment benchmark layer
+
+- **Status:** Planned
+- **Date:** 2026-05-06
+- **Question answered:** Under a higher-capacity dedicated environment, what benchmark behavior is observed when the instance pool, budgets, repetitions, or exception-mining search are expanded?
+- **Code reference / branch / commit:** To be declared when campaign artifacts are produced.
+- **Input instances:** Expanded validated panel and/or generated exception-mining candidate pool.
+- **Algorithms compared:** Active validated portfolio, including METIS, KaHIP, Python metaheuristics, and validated Rust metaheuristics if in scope.
+- **Budget protocol:** Declared dedicated-environment budget grid, including the common intersection with WSL where applicable and any server-only expanded budgets.
+- **Primary metrics:** Validated cut, elapsed wall-clock time, availability by budget, checkpoint trajectories where available, invalid/censored runs, quality-time winners, exception counts, and selector diagnostics.
+- **Outputs generated:** N/A — planned entry only.
+- **Main finding:** N/A — planned entry only.
+- **Limitations / caveats:** Server-only rows support dedicated-environment conclusions, not direct pooled claims with WSL.
+- **Can this support prose in the monograph?** No until completed and mapped.
+- **Mapped in `08_Results_to_Text_Map.md`:** Yes as prospective guardrail only.
+
+### EXP-ENVIRONMENT-SENSITIVITY-001 — WSL/server common-intersection sensitivity analysis
+
+- **Status:** Planned
+- **Date:** 2026-05-06
+- **Question answered:** On the common intersection of instances, budgets, seeds/repetitions, portfolio members, and protocol settings, are algorithm rankings, quality-time winners, or CART-relevant labels stable across WSL and dedicated environments?
+- **Code reference / branch / commit:** To be declared when analysis tables are committed.
+- **Input instances:** Only the common intersection executed in both environments.
+- **Algorithms compared:** Only portfolio members executed under equivalent settings in both environments.
+- **Budget protocol:** Only budgets present in both environments.
+- **Primary metrics:** Winner agreement, rank correlation where appropriate, cut differences, elapsed-time differences, availability/censoring changes, budget-transition stability, and selector-label stability.
+- **Outputs generated:** N/A — planned entry only.
+- **Main finding:** N/A — planned entry only.
+- **Limitations / caveats:** This analysis evaluates environmental sensitivity. It does not prove machine-independent algorithm superiority.
+- **Can this support prose in the monograph?** No until completed and mapped.
+- **Mapped in `08_Results_to_Text_Map.md`:** Yes as prospective guardrail only.
