@@ -1,0 +1,11 @@
+{
+  "available_encodings": [
+    "degree",
+    "connected_component_id",
+    "planted_block",
+    "solver_partition"
+  ],
+  "layout_file": "graph_preview_layout.json",
+  "notes": "Preview artifacts are illustrative inputs for the later visualization pipeline.",
+  "sample_file": "graph_preview_sample.json"
+}

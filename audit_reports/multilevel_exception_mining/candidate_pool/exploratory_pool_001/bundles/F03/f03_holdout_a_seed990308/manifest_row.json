@@ -1,0 +1,15 @@
+{
+  "bundle_path": "/home/brunoonurb/MPP/audit_reports/multilevel_exception_mining/candidate_pool/exploratory_pool_001/bundles/F03/f03_holdout_a_seed990308",
+  "campaign_id": "EXP-MULTILEVEL-EXCEPTION-MINING-001",
+  "candidate_id": "f03_holdout_a_seed990308",
+  "created_at": "2026-05-07T14:52:50.225197+00:00",
+  "environment_target": "holdout",
+  "family": "F03",
+  "instance_id": "f03_holdout_a_seed990308",
+  "intended_hypothesis": "barbell/lollipop bottleneck topology with separator sensitivity; intended environment stratum: holdout",
+  "lifecycle_state": "holdout_reserved",
+  "pool_role": "reserved_holdout",
+  "seed": "990308",
+  "solver_results_used": false,
+  "variant": "holdout_a"
+}

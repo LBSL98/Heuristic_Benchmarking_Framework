@@ -1,0 +1,15 @@
+{
+  "bundle_path": "/home/brunoonurb/MPP/audit_reports/multilevel_exception_mining/candidate_pool/exploratory_pool_001/bundles/F08/f08_common_c_seed990803",
+  "campaign_id": "EXP-MULTILEVEL-EXCEPTION-MINING-001",
+  "candidate_id": "f08_common_c_seed990803",
+  "created_at": "2026-05-07T14:53:03.763421+00:00",
+  "environment_target": "common",
+  "family": "F08",
+  "instance_id": "f08_common_c_seed990803",
+  "intended_hypothesis": "balance-hard planted topology for feasibility and balance stress; intended environment stratum: common",
+  "lifecycle_state": "generated",
+  "pool_role": "exploratory_candidate",
+  "seed": "990803",
+  "solver_results_used": false,
+  "variant": "common_c"
+}

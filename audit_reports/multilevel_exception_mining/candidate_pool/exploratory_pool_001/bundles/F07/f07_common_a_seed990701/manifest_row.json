@@ -1,0 +1,15 @@
+{
+  "bundle_path": "/home/brunoonurb/MPP/audit_reports/multilevel_exception_mining/candidate_pool/exploratory_pool_001/bundles/F07/f07_common_a_seed990701",
+  "campaign_id": "EXP-MULTILEVEL-EXCEPTION-MINING-001",
+  "candidate_id": "f07_common_a_seed990701",
+  "created_at": "2026-05-07T14:53:00.276918+00:00",
+  "environment_target": "common",
+  "family": "F07",
+  "instance_id": "f07_common_a_seed990701",
+  "intended_hypothesis": "dense weak-signal topology for noisy cut structure; intended environment stratum: common",
+  "lifecycle_state": "generated",
+  "pool_role": "exploratory_candidate",
+  "seed": "990701",
+  "solver_results_used": false,
+  "variant": "common_a"
+}

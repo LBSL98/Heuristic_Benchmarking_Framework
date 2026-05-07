@@ -1,0 +1,37 @@
+{
+  "balance_tolerance": 0.036,
+  "campaign_id": "EXP-MULTILEVEL-EXCEPTION-MINING-001",
+  "candidate_id": "f08_server_scaled_seed990807",
+  "code_commit": "b560db1c35ad6689fd13a8312963479740604acb",
+  "created_at": "2026-05-07T14:53:05.444154+00:00",
+  "environment": {
+    "machine": "x86_64",
+    "networkx": "3.5",
+    "numpy": "2.3.3",
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.35",
+    "python": "3.11.15"
+  },
+  "environment_target": "server_expanded",
+  "generator_family": "F08",
+  "generator_name": "exception_mining_f08",
+  "generator_version": "0.1.0",
+  "graph_parameters": {
+    "block_size_skew": 0.275,
+    "epsilon": 0.036,
+    "inter_block_noise": 0.15,
+    "k": 8,
+    "n": 315,
+    "planted_blocks": 7,
+    "target_partition_k": 8
+  },
+  "instance_id": "f08_server_scaled_seed990807",
+  "intended_hypothesis": "balance-hard planted topology for feasibility and balance stress; intended environment stratum: server_expanded",
+  "k": 8,
+  "lifecycle_state": "generated",
+  "pool_role": "exploratory_candidate",
+  "seed": 990807,
+  "solver_results_used": false,
+  "target_morphology": "F08",
+  "target_regime": "exception_mining",
+  "variant": "server_scaled"
+}

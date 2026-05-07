@@ -1,0 +1,15 @@
+{
+  "bundle_path": "/home/brunoonurb/MPP/audit_reports/multilevel_exception_mining/candidate_pool/exploratory_pool_001/bundles/F06/f06_holdout_a_seed990608",
+  "campaign_id": "EXP-MULTILEVEL-EXCEPTION-MINING-001",
+  "candidate_id": "f06_holdout_a_seed990608",
+  "created_at": "2026-05-07T14:52:59.972789+00:00",
+  "environment_target": "holdout",
+  "family": "F06",
+  "instance_id": "f06_holdout_a_seed990608",
+  "intended_hypothesis": "road-like sparse topology for spatial/local separator behavior; intended environment stratum: holdout",
+  "lifecycle_state": "holdout_reserved",
+  "pool_role": "reserved_holdout",
+  "seed": "990608",
+  "solver_results_used": false,
+  "variant": "holdout_a"
+}
