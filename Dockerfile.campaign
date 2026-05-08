@@ -49,6 +49,7 @@ RUN git clone --depth 1 --branch "${KAHIP_REF}" https://github.com/KaHIP/KaHIP.g
     && rm -rf /tmp/KaHIP
 
 RUN curl -sSL https://install.python-poetry.org | python3 - --version 2.2.1 \
+    && ln -sf /opt/poetry/bin/poetry /usr/local/bin/poetry \
     && poetry config virtualenvs.create false
 
 COPY pyproject.toml poetry.lock ./
