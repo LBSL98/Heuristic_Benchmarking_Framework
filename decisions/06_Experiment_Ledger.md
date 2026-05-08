@@ -422,3 +422,22 @@ This file is the canonical ledger for experiments, runs, outputs, and traceable 
 - **Limitations / caveats:** This analysis evaluates environmental sensitivity. It does not prove machine-independent algorithm superiority.
 - **Can this support prose in the monograph?** No until completed and mapped.
 - **Mapped in `08_Results_to_Text_Map.md`:** Yes as prospective guardrail only.
+
+<!-- canonical-map:srv-noctua-linux-dedicated-campaign:ledger -->
+
+## EXP-MULTILEVEL-EXCEPTION-MINING-001 — srv-noctua Linux dedicated confirmation
+
+- **Status:** Completed and validated for the explicit environment stratum `srv_noctua_linux_8gb`.
+- **Date:** 2026-05-08.
+- **Repository head:** `354447be68b5f7361afd245897d91bea7329020f`.
+- **Environment:** `srv-noctua`, Linux dedicated campaign image `hbf-confirmation:srv-noctua-campaign-main`.
+- **Execution scope:** 56 candidates, 10 algorithms, 8 budgets, 5 seeds, `22400` planned runs.
+- **Validated counts:** `22400` raw results, `22400` valid results, `0` invalid results, `0` missing artifacts, `0` schema errors, `22400` row artifacts.
+- **Raw status counts:** `{'ok': 18760, 'timeout': 3640}`.
+- **Confirmed labels:** `{'competitive_confirmed': 8, 'near_tie_confirmed': 227, 'non_exception_confirmed': 11, 'strong_exception_confirmed': 202}`.
+- **Digest fields:** SBS algorithm `ts_rust`; VBS mean median cut `80.77678571428571`.
+- **Execution time:** 8782 seconds in the service state record.
+- **Evidence:** `audit_reports/multilevel_exception_mining/confirmation/srv_noctua_linux_dedicated_evidence_bundle_001` and matching local tarball `srv_noctua_linux_dedicated_evidence_bundle_001.tar.gz`.
+- **Validation gate:** `712_validate_srv_noctua_completed_campaign.txt` reported `GATE_RESULT=PASS`.
+- **Issue record:** GitHub Issue #102 received the validated-evidence comment and remains open for canonical mapping and downstream claim decisions.
+- **Claim boundary:** Validated evidence for `srv_noctua_linux_8gb` only. This entry does not authorize final monograph prose, hardware-independent timing generalization, or pooled cross-environment conclusions.
