@@ -243,3 +243,42 @@ def test_confirmation_runner_writes_expected_outputs_with_fake_run_one(
         results = list(csv.DictReader(handle))
     assert "screening_stage" not in results[0]
     assert results[0]["confirmation_stage"] == "full_portfolio_confirmation"
+
+
+def test_write_csv_accepts_heterogeneous_confirmation_rows(tmp_path: Path) -> None:
+    module = runpy.run_path("scripts/run_exception_mining_confirmation.py")
+    write_csv = module["write_csv"]
+
+    rows = [
+        {
+            "run_id": "error_first",
+            "algo": "metis",
+            "status": "error",
+            "error_type": "RuntimeError",
+        },
+        {
+            "run_id": "success_second",
+            "algo": "sa",
+            "status": "ok",
+            "cutsize": 10,
+            "elapsed_ms": 1,
+            "beta": 0.03,
+            "checkpoint_count": 1,
+        },
+    ]
+
+    out_csv = tmp_path / "heterogeneous.csv"
+    write_csv(out_csv, rows)
+
+    with out_csv.open("r", encoding="utf-8", newline="") as handle:
+        loaded = list(csv.DictReader(handle))
+
+    assert len(loaded) == 2
+    assert "error_type" in loaded[0]
+    assert "beta" in loaded[0]
+    assert "checkpoint_count" in loaded[0]
+    assert loaded[0]["run_id"] == "error_first"
+    assert loaded[0]["beta"] == ""
+    assert loaded[1]["run_id"] == "success_second"
+    assert loaded[1]["beta"] == "0.03"
+    assert loaded[1]["checkpoint_count"] == "1"
