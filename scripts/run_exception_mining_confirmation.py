@@ -778,17 +778,31 @@ def write_json(path: Path, payload: Any) -> None:
 
 
 def write_csv(path: Path, rows: list[dict[str, Any]]) -> None:
-    """Write CSV rows."""
+    """Write CSV rows, allowing heterogeneous result dictionaries."""
 
     path.parent.mkdir(parents=True, exist_ok=True)
     if not rows:
         path.write_text("", encoding="utf-8")
         return
 
+    fieldnames = csv_fieldnames(rows)
     with path.open("w", encoding="utf-8", newline="") as handle:
-        writer = csv.DictWriter(handle, fieldnames=list(rows[0].keys()))
+        writer = csv.DictWriter(handle, fieldnames=fieldnames, extrasaction="raise")
         writer.writeheader()
         writer.writerows(rows)
+
+
+def csv_fieldnames(rows: list[dict[str, Any]]) -> list[str]:
+    """Return deterministic CSV fieldnames across heterogeneous rows."""
+
+    fieldnames: list[str] = []
+    seen: set[str] = set()
+    for row in rows:
+        for key in row:
+            if key not in seen:
+                seen.add(key)
+                fieldnames.append(key)
+    return fieldnames
 
 
 def write_summary_md(path: Path, summary: dict[str, Any]) -> None:
