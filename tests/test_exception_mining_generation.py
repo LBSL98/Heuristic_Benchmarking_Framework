@@ -23,6 +23,7 @@ def load_validator_module() -> ModuleType:
     assert spec is not None
     assert spec.loader is not None
     module = importlib.util.module_from_spec(spec)
+    sys.modules[spec.name] = module
     spec.loader.exec_module(module)
     return module
 
@@ -113,3 +114,80 @@ def test_cli_generates_and_validates_bundle(tmp_path: Path) -> None:
     bundle = Path(payload["bundle_dir"])
     assert bundle.exists()
     assert (bundle / "manifest_row.json").exists()
+
+
+# --- srv-noctua frontier pilot profile regression tests ---
+
+
+def _load_candidate_pool_generator_module():
+    import importlib.util
+    from pathlib import Path
+
+    root = Path(__file__).resolve().parents[1]
+    script = root / "scripts" / "generate_exception_mining_candidate_pool.py"
+    spec = importlib.util.spec_from_file_location(
+        "generate_exception_mining_candidate_pool", script
+    )
+    assert spec is not None
+    assert spec.loader is not None
+    module = importlib.util.module_from_spec(spec)
+    sys.modules[spec.name] = module
+    spec.loader.exec_module(module)
+    return module
+
+
+def test_srv_noctua_frontier_pilot_profile_plan_contract():
+    module = _load_candidate_pool_generator_module()
+
+    plan = module.build_candidate_plan(module.FRONTIER_PROFILE)
+
+    assert len(plan) == 58
+    assert len({spec.candidate_id for spec in plan}) == 58
+    assert {spec.scale_factor for spec in plan} == {2.0, 4.0}
+    assert {spec.frontier_profile for spec in plan} == {"srv_noctua_frontier_pilot_001"}
+    assert all(spec.source_parent_candidate_id for spec in plan)
+    assert all("frontier" in spec.variant for spec in plan)
+    assert all(spec.pool_role.startswith("frontier_") for spec in plan)
+    assert {spec.lifecycle_state for spec in plan} == {"generated"}
+
+    parent_ids = {spec.source_parent_candidate_id for spec in plan}
+    assert len(parent_ids) == 29
+    assert "f04_common_a_seed990401" in parent_ids
+    assert "f07_server_scaled_seed990707" in parent_ids
+    assert "f02_common_b_seed990202" in parent_ids
+
+
+def test_srv_noctua_frontier_pilot_profile_scales_size_without_density_increase():
+    module = _load_candidate_pool_generator_module()
+
+    for parent_id in module.FRONTIER_PARENT_CANDIDATE_IDS:
+        family = module._family_from_candidate_id(parent_id)
+        variant = module._variant_from_candidate_id(parent_id)
+        baseline = module.family_defaults(family) | module.variant_parameters(family, variant)
+
+        for scale_factor in module.FRONTIER_SCALE_FACTORS:
+            params = module.frontier_scaled_parameters(family, variant, scale_factor)
+            merged = baseline | params
+
+            if "n" in baseline:
+                assert merged["n"] >= baseline["n"]
+            if "n_approx" in baseline:
+                assert merged["n_approx"] >= baseline["n_approx"]
+
+            for key, value in baseline.items():
+                lower_key = key.lower()
+                if (
+                    isinstance(value, float)
+                    and key != "planted_signal"
+                    and any(
+                        token in lower_key
+                        for token in (
+                            "density",
+                            "prob",
+                            "mixing_mu",
+                            "hub_noise_edges",
+                            "inter_block_noise",
+                        )
+                    )
+                ):
+                    assert merged[key] <= value

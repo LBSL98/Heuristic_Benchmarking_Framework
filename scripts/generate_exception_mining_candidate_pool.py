@@ -37,6 +37,46 @@ class CandidateSpec:
     lifecycle_state: str
     variant: str
     intended_hypothesis: str
+    source_parent_candidate_id: str = ""
+    scale_factor: float | None = None
+    frontier_profile: str = ""
+
+
+FRONTIER_PROFILE = "srv_noctua_frontier_pilot_001"
+FRONTIER_PARENT_CANDIDATE_IDS: tuple[str, ...] = (
+    "f04_common_a_seed990401",
+    "f04_common_b_seed990402",
+    "f04_common_c_seed990403",
+    "f04_common_scaled_seed990404",
+    "f04_server_a_seed990405",
+    "f04_server_b_seed990406",
+    "f04_server_scaled_seed990407",
+    "f07_common_a_seed990701",
+    "f07_common_b_seed990702",
+    "f07_common_c_seed990703",
+    "f07_common_scaled_seed990704",
+    "f07_server_a_seed990705",
+    "f07_server_b_seed990706",
+    "f07_server_scaled_seed990707",
+    "f01_common_scaled_seed990104",
+    "f01_server_scaled_seed990107",
+    "f05_common_b_seed990502",
+    "f05_common_scaled_seed990504",
+    "f05_server_scaled_seed990507",
+    "f06_server_scaled_seed990607",
+    "f08_common_b_seed990802",
+    "f08_server_b_seed990806",
+    "f08_server_scaled_seed990807",
+)
+FRONTIER_NEGATIVE_CONTROL_PARENT_IDS: tuple[str, ...] = (
+    "f02_common_b_seed990202",
+    "f02_common_scaled_seed990204",
+    "f02_server_scaled_seed990207",
+    "f03_common_b_seed990302",
+    "f03_common_scaled_seed990304",
+    "f03_server_scaled_seed990307",
+)
+FRONTIER_SCALE_FACTORS: tuple[float, ...] = (2.0, 4.0)
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -58,7 +98,7 @@ def build_parser() -> argparse.ArgumentParser:
     )
     parser.add_argument(
         "--profile",
-        choices=["issue99", "smoke"],
+        choices=["issue99", "smoke", FRONTIER_PROFILE],
         default="issue99",
         help="Candidate plan profile.",
     )
@@ -138,8 +178,149 @@ def main(argv: Sequence[str] | None = None) -> int:
     return 0
 
 
+def _family_from_candidate_id(candidate_id: str) -> str:
+    """Infer topology family from a frozen candidate id."""
+
+    prefix = candidate_id.split("_", maxsplit=1)[0]
+    if len(prefix) != 3 or not prefix.startswith("f") or not prefix[1:].isdigit():
+        raise ValueError(f"cannot infer family from candidate id: {candidate_id}")
+    return prefix.upper()
+
+
+def _variant_from_candidate_id(candidate_id: str) -> str:
+    """Infer candidate variant from a frozen candidate id."""
+
+    stem = candidate_id.split("_seed", maxsplit=1)[0]
+    parts = stem.split("_")
+    if len(parts) < 2:
+        raise ValueError(f"cannot infer variant from candidate id: {candidate_id}")
+    return "_".join(parts[1:])
+
+
+def _environment_target_from_variant(variant: str) -> EnvironmentTarget:
+    """Infer environment target from a candidate variant name."""
+
+    if variant.startswith("server_"):
+        return "server_expanded"
+    if variant.startswith("common_"):
+        return "common"
+    if variant.startswith("holdout_"):
+        return "holdout"
+    raise ValueError(f"cannot infer environment target from variant: {variant}")
+
+
+def frontier_scaled_parameters(
+    family: str, parent_variant: str, scale_factor: float
+) -> dict[str, Any]:
+    """Return graph-parameter overrides for a frontier scaled successor.
+
+    The srv-noctua frontier pilot expands graph size while preserving or slightly
+    reducing density-like parameters. This follows the validated campaign audit:
+    confirmed exceptions were concentrated in lower-density regimes, so increasing
+    density is not the default expansion direction.
+    """
+
+    defaults = family_defaults(family)
+    parent_overrides = variant_parameters(family, parent_variant)
+    merged = defaults | parent_overrides
+    params = dict(parent_overrides)
+
+    size_exact = {
+        "n",
+        "n_approx",
+        "module_size",
+        "left_core_size",
+        "right_core_size",
+        "bridge_length",
+    }
+    size_tokens = ("node", "nodes", "vertices", "size")
+    density_tokens = (
+        "density",
+        "prob",
+        "mixing_mu",
+        "hub_noise_edges",
+        "inter_block_noise",
+    )
+
+    for key, value in merged.items():
+        lower_key = key.lower()
+
+        if isinstance(value, bool):
+            continue
+
+        if isinstance(value, int):
+            if key in {"k", "target_partition_k"}:
+                continue
+            if lower_key in size_exact or any(token in lower_key for token in size_tokens):
+                params[key] = max(value + 1, int(round(value * scale_factor)))
+            elif lower_key in {"communities", "module_count", "planted_blocks"}:
+                increment = 1 if scale_factor <= 2.0 else 2
+                params[key] = max(value, value + increment)
+
+        elif isinstance(value, float):
+            if lower_key == "epsilon":
+                continue
+            if lower_key == "planted_signal":
+                params[key] = value
+            elif any(token in lower_key for token in density_tokens):
+                factor = 0.95 if scale_factor <= 2.0 else 0.90
+                params[key] = max(0.0, min(value, value * factor))
+            elif "skew" in lower_key or "imbalance" in lower_key:
+                params[key] = min(0.95, max(0.0, value * 1.05))
+
+    return params
+
+
+def build_frontier_candidate_plan() -> list[CandidateSpec]:
+    """Build the deterministic srv-noctua frontier pilot candidate plan."""
+
+    plan: list[CandidateSpec] = []
+    parent_ids = FRONTIER_PARENT_CANDIDATE_IDS + FRONTIER_NEGATIVE_CONTROL_PARENT_IDS
+
+    for parent_index, source_parent_candidate_id in enumerate(parent_ids, start=1):
+        family = _family_from_candidate_id(source_parent_candidate_id)
+        parent_variant = _variant_from_candidate_id(source_parent_candidate_id)
+        environment_target = _environment_target_from_variant(parent_variant)
+        is_negative_control = source_parent_candidate_id in FRONTIER_NEGATIVE_CONTROL_PARENT_IDS
+
+        for scale_index, scale_factor in enumerate(FRONTIER_SCALE_FACTORS, start=1):
+            scale_label = str(scale_factor).replace(".", "p")
+            seed = 991000 + parent_index * 10 + scale_index
+            candidate_id = f"{family.lower()}_{parent_variant}_frontier_x{scale_label}_seed{seed}"
+
+            pool_role = (
+                "frontier_negative_control" if is_negative_control else "frontier_pilot_candidate"
+            )
+            lifecycle_state = "generated"
+
+            plan.append(
+                CandidateSpec(
+                    candidate_id=candidate_id,
+                    family=family,
+                    seed=seed,
+                    params=frontier_scaled_parameters(family, parent_variant, scale_factor),
+                    environment_target=environment_target,
+                    pool_role=pool_role,
+                    lifecycle_state=lifecycle_state,
+                    variant=f"{parent_variant}_frontier_x{scale_label}",
+                    intended_hypothesis=(
+                        f"frontier scaled successor of {source_parent_candidate_id}; "
+                        f"{family_hypothesis(family, environment_target)}"
+                    ),
+                    source_parent_candidate_id=source_parent_candidate_id,
+                    scale_factor=scale_factor,
+                    frontier_profile=FRONTIER_PROFILE,
+                )
+            )
+
+    return plan
+
+
 def build_candidate_plan(profile: str) -> list[CandidateSpec]:
     """Build the deterministic candidate generation plan."""
+
+    if profile == FRONTIER_PROFILE:
+        return build_frontier_candidate_plan()
 
     if profile == "smoke":
         families: tuple[str, ...] = ("F01", "F02")
@@ -340,6 +521,9 @@ def rewrite_bundle_metadata(bundle_dir: Path, spec: CandidateSpec) -> None:
             "variant": spec.variant,
             "intended_hypothesis": spec.intended_hypothesis,
             "solver_results_used": False,
+            "source_parent_candidate_id": spec.source_parent_candidate_id,
+            "scale_factor": spec.scale_factor,
+            "frontier_profile": spec.frontier_profile,
         }
     )
     write_json(manifest_path, manifest)
@@ -356,6 +540,9 @@ def rewrite_bundle_metadata(bundle_dir: Path, spec: CandidateSpec) -> None:
             "variant": spec.variant,
             "intended_hypothesis": spec.intended_hypothesis,
             "solver_results_used": False,
+            "source_parent_candidate_id": spec.source_parent_candidate_id,
+            "scale_factor": spec.scale_factor,
+            "frontier_profile": spec.frontier_profile,
         }
     )
     write_json(config_path, config)
@@ -370,6 +557,9 @@ def rewrite_bundle_metadata(bundle_dir: Path, spec: CandidateSpec) -> None:
             "pool_role": spec.pool_role,
             "lifecycle_state": spec.lifecycle_state,
             "variant": spec.variant,
+            "source_parent_candidate_id": spec.source_parent_candidate_id,
+            "scale_factor": spec.scale_factor,
+            "frontier_profile": spec.frontier_profile,
         },
     )
     write_hashes(bundle_dir)
@@ -464,6 +654,9 @@ def base_row(spec: CandidateSpec) -> dict[str, Any]:
         "lifecycle_state": spec.lifecycle_state,
         "variant": spec.variant,
         "intended_hypothesis": spec.intended_hypothesis,
+        "source_parent_candidate_id": spec.source_parent_candidate_id,
+        "scale_factor": spec.scale_factor,
+        "frontier_profile": spec.frontier_profile,
         "solver_results_used": False,
         "created_at_utc": utc_now(),
         "code_commit": git_commit(),
