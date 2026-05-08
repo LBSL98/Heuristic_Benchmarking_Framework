@@ -1,0 +1,77 @@
+# Campaign image for EXP-MULTILEVEL-EXCEPTION-MINING-001.
+#
+# Purpose:
+# - keep the existing Python/Poetry runner environment;
+# - provide gpmetis for METIS;
+# - provide kaffpa for KaHIP;
+# - provide cargo/rustc so Rust-fidelity binaries can be built from the mounted repo;
+# - preserve mono-thread fairness environment variables.
+#
+# This image is a campaign execution image, not a source of benchmark results by itself.
+
+FROM python:3.11-slim AS campaign
+
+ARG KAHIP_REF=v3.17
+ARG KAHIP_NCORES=2
+
+ENV DEBIAN_FRONTEND=noninteractive \
+    PIP_DISABLE_PIP_VERSION_CHECK=1 \
+    PIP_NO_CACHE_DIR=1 \
+    POETRY_HOME="/opt/poetry" \
+    PATH="/opt/poetry/bin:/usr/local/bin:/usr/local/sbin:/usr/sbin:/usr/bin:/sbin:/bin" \
+    OMP_NUM_THREADS=1 \
+    MKL_NUM_THREADS=1 \
+    OPENBLAS_NUM_THREADS=1 \
+    NUMEXPR_NUM_THREADS=1 \
+    PYTHONHASHSEED=0
+
+WORKDIR /app
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+      ca-certificates \
+      curl \
+      git \
+      build-essential \
+      cmake \
+      pkg-config \
+      metis \
+      cargo \
+      rustc \
+      openmpi-bin \
+      libopenmpi-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN git clone --depth 1 --branch "${KAHIP_REF}" https://github.com/KaHIP/KaHIP.git /tmp/KaHIP \
+    && cd /tmp/KaHIP \
+    && NCORES="${KAHIP_NCORES}" bash ./compile_withcmake.sh \
+    && test -x deploy/kaffpa \
+    && install -m 0755 deploy/kaffpa /usr/local/bin/kaffpa \
+    && rm -rf /tmp/KaHIP
+
+RUN curl -sSL https://install.python-poetry.org | python3 - --version 2.2.1 \
+    && poetry config virtualenvs.create false
+
+COPY pyproject.toml poetry.lock ./
+RUN poetry install --with dev -E metrics --no-root --no-interaction --no-ansi
+
+COPY README.md ./README.md
+COPY src ./src
+COPY tests ./tests
+COPY specs ./specs
+COPY scripts ./scripts
+COPY rust ./rust
+
+RUN poetry install --only-root --no-interaction --no-ansi
+
+RUN python --version \
+    && poetry --version \
+    && command -v gpmetis \
+    && command -v kaffpa \
+    && command -v cargo \
+    && command -v rustc \
+    && gpmetis 2>&1 | sed -n '1,6p' || true \
+    && kaffpa --help 2>&1 | sed -n '1,6p' || true \
+    && cargo --version \
+    && rustc --version
+
+CMD ["/bin/bash"]
