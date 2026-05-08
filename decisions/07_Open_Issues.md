@@ -275,3 +275,13 @@ This file tracks unresolved project problems that can still affect coherence, co
 - **Current status:** Open
 - **Needed action:** Decide whether CART is trained within one environment or explicitly as an environmental-sensitivity model. If environment is included as a feature, the modeling question must state that it is analyzing environment-conditioned recommendations.
 - **Closure condition:** Closed only after the selector-eligibility gate specifies the allowed treatment of environment variables and verifies no leakage across common-intersection or train/test splits.
+
+<!-- canonical-map:srv-noctua-linux-dedicated-campaign:open-issues -->
+
+### OI-EXP-102 — Map validated srv-noctua confirmation evidence into claims
+- **Status:** Partially resolved / still open.
+- **Linked GitHub issue:** #102.
+- **Current state:** The Linux dedicated `srv-noctua` execution of `EXP-MULTILEVEL-EXCEPTION-MINING-001` is complete and validated with `22400` valid results, `0` invalid results, `0` missing artifacts, and `0` schema errors.
+- **Evidence bundle:** `audit_reports/multilevel_exception_mining/confirmation/srv_noctua_linux_dedicated_evidence_bundle_001`.
+- **Open work:** Decide which environment-specific results enter the monograph, update result tables/figures if needed, preserve the single-environment boundary, and define the next execution gate for Windows 11 Docker portability or cross-environment sensitivity.
+- **Blocked claims:** Do not claim cross-environment robustness, Windows portability, hardware-independent timing, or final selector validity from this server-only evidence.

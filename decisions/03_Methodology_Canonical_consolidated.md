@@ -529,3 +529,13 @@ The first two focused weeks after the strong-scope branch begins may be used for
 To continue the full Rust portfolio after the two-week gate, the project must have strong evidence that completion is realistic. At minimum, the project should have fidelity contracts drafted for `SA-Rust`, `ILS-Rust`, and `GRASP-Rust`; compiling Rust implementation or integration surface for the new participants; runner/adapter path and smoke execution for the new participants; schema-compatible artifacts and independent feasibility validation; and enough passing conformance tests to show that the Rust implementations are not silent algorithmic variants.
 
 If the gate fails, the full Rust portfolio is deferred to future work. The monograph remains methodologically valid with the canonical `fair(time)` benchmark, the completed TS-Rust ablation as TS-specific implementation-maturity evidence, budget-aware diagnostics only if validated and mapped, dominance-conditioned exception analysis, and CART only if selector-eligibility diagnostics support a nontrivial target. A limited or negative CART result is valid and must not be hidden.
+
+<!-- canonical-map:srv-noctua-linux-dedicated-campaign:methodology -->
+
+## Validated srv-noctua Linux dedicated confirmation slice
+
+The campaign `EXP-MULTILEVEL-EXCEPTION-MINING-001` now has one validated environment-specific confirmation execution in the stratum `srv_noctua_linux_8gb`. This execution was performed at repository head `354447be68b5f7361afd245897d91bea7329020f` and produced `22400` planned runs, `22400` raw results, `22400` valid results, `0` invalid results, `0` missing artifacts, and `0` schema errors.
+
+The observed raw status counts were `{'ok': 18760, 'timeout': 3640}`. Timeout rows are valid solver outcomes under the confirmation runner status taxonomy; they are not invalid artifacts. The confirmed label counts were `{'competitive_confirmed': 8, 'near_tie_confirmed': 227, 'non_exception_confirmed': 11, 'strong_exception_confirmed': 202}`. In this environment-specific evidence set, the SBS algorithm recorded in the digest is `ts_rust`, and the VBS mean median cut is `80.77678571428571`.
+
+This evidence is not pooled with WSL, Windows, or any other host. Any prose, table, selector claim, or exception-mining claim derived from this campaign must state the environment identifier `srv_noctua_linux_8gb`. Cross-environment claims require a matched common-intersection analysis and remain pending. The artifact-level status remains `pending_mapping_until_canon_update` until the results-to-text mapping is explicitly accepted.
