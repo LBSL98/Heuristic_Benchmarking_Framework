@@ -539,3 +539,19 @@ The campaign `EXP-MULTILEVEL-EXCEPTION-MINING-001` now has one validated environ
 The observed raw status counts were `{'ok': 18760, 'timeout': 3640}`. Timeout rows are valid solver outcomes under the confirmation runner status taxonomy; they are not invalid artifacts. The confirmed label counts were `{'competitive_confirmed': 8, 'near_tie_confirmed': 227, 'non_exception_confirmed': 11, 'strong_exception_confirmed': 202}`. In this environment-specific evidence set, the SBS algorithm recorded in the digest is `ts_rust`, and the VBS mean median cut is `80.77678571428571`.
 
 This evidence is not pooled with WSL, Windows, or any other host. Any prose, table, selector claim, or exception-mining claim derived from this campaign must state the environment identifier `srv_noctua_linux_8gb`. Cross-environment claims require a matched common-intersection analysis and remain pending. The artifact-level status remains `pending_mapping_until_canon_update` until the results-to-text mapping is explicitly accepted.
+
+<!-- HBF-FRONTIER-CONFIRMATION-001:METHODOLOGY_NOTE:START -->
+## Frontier confirmation evidence slice: srv_noctua_frontier_pilot_001
+
+This block records a validated exception-mining confirmation slice. It is evidence-bearing only for the explicit environment slice `srv_noctua_frontier_pilot_001`; it is not, by itself, the final benchmark campaign and does not finalize monograph-level claims.
+
+Source chain: `screening_short_001` → selection plan `750` → schema-compatible confirmation plan `756` → `confirmation_001` → validation report `758` → evidence map `759`.
+
+Methodological status:
+
+- This slice belongs to exception mining and confirmation, not to the final full benchmark campaign.
+- The unit of evidence is the explicit environment slice `srv_noctua_frontier_pilot_001`; environment pooling remains forbidden unless a later protocol explicitly defines comparable slices.
+- The confirmation used `40` selected candidates, `10` algorithms, `2` budgets and `5` seeds, for `4000` planned runs.
+- The confirmation plan used the runner-compatible schema validated in `756_frontier_confirmation_plan_field_mapping_report.*`.
+- The outputs may inform result mapping, instance-selection discussion and CART motivation, but should not be incorporated as final monograph conclusions without a dedicated results-to-text decision.
+<!-- HBF-FRONTIER-CONFIRMATION-001:METHODOLOGY_NOTE:END -->

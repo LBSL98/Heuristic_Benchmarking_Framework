@@ -1,0 +1,110 @@
+{
+  "applied_updates": [
+    {
+      "action": "replaced",
+      "aliases": [
+        "08_Results_to_Text_Map.md"
+      ],
+      "all_matches": [
+        "decisions/08_Results_to_Text_Map.md"
+      ],
+      "backup": "audit_reports/multilevel_exception_mining/frontier_pilot/srv_noctua_frontier_pilot_001/761_canonical_backups/08_Results_to_Text_Map.md.bak",
+      "block_name": "RESULTS_MAP",
+      "changed": false,
+      "logical_name": "08_Results_to_Text_Map.md",
+      "selected_path": "decisions/08_Results_to_Text_Map.md"
+    },
+    {
+      "action": "replaced",
+      "aliases": [
+        "06_Experiment_Ledger.md"
+      ],
+      "all_matches": [
+        "decisions/06_Experiment_Ledger.md"
+      ],
+      "backup": "audit_reports/multilevel_exception_mining/frontier_pilot/srv_noctua_frontier_pilot_001/761_canonical_backups/06_Experiment_Ledger.md.bak",
+      "block_name": "EXPERIMENT_LEDGER",
+      "changed": false,
+      "logical_name": "06_Experiment_Ledger.md",
+      "selected_path": "decisions/06_Experiment_Ledger.md"
+    },
+    {
+      "action": "appended",
+      "aliases": [
+        "03_Methodology_Canonical.md",
+        "03_Methodology_Canonical_consolidated.md"
+      ],
+      "all_matches": [
+        "decisions/03_Methodology_Canonical_consolidated.md"
+      ],
+      "backup": "audit_reports/multilevel_exception_mining/frontier_pilot/srv_noctua_frontier_pilot_001/761_canonical_backups/03_Methodology_Canonical_consolidated.md.bak",
+      "block_name": "METHODOLOGY_NOTE",
+      "changed": true,
+      "logical_name": "03_Methodology_Canonical",
+      "selected_path": "decisions/03_Methodology_Canonical_consolidated.md"
+    },
+    {
+      "action": "appended",
+      "aliases": [
+        "07_Open_Issues.md"
+      ],
+      "all_matches": [
+        "decisions/07_Open_Issues.md"
+      ],
+      "backup": "audit_reports/multilevel_exception_mining/frontier_pilot/srv_noctua_frontier_pilot_001/761_canonical_backups/07_Open_Issues.md.bak",
+      "block_name": "OPEN_ISSUES",
+      "changed": true,
+      "logical_name": "07_Open_Issues.md",
+      "selected_path": "decisions/07_Open_Issues.md"
+    },
+    {
+      "action": "appended",
+      "aliases": [
+        "09_Committee_Issues_Log.md"
+      ],
+      "all_matches": [
+        "decisions/09_Committee_Issues_Log.md"
+      ],
+      "backup": "audit_reports/multilevel_exception_mining/frontier_pilot/srv_noctua_frontier_pilot_001/761_canonical_backups/09_Committee_Issues_Log.md.bak",
+      "block_name": "COMMITTEE_ISSUES",
+      "changed": true,
+      "logical_name": "09_Committee_Issues_Log.md",
+      "selected_path": "decisions/09_Committee_Issues_Log.md"
+    }
+  ],
+  "claim_boundary": "canonical_notes_updated_without_final_monograph_claim",
+  "classification": "frontier_confirmation_canonical_update_recovery_application",
+  "created_at_utc": "2026-05-09T15:17:39.221536+00:00",
+  "evidence_summary": {
+    "candidate_count": 40,
+    "candidate_level_status_counts": {
+      "confirmed_budget_sensitive_strong_exception": 2,
+      "confirmed_competitive_or_mixed": 2,
+      "confirmed_near_tie_or_mixed": 1,
+      "confirmed_stable_non_exception_control": 5,
+      "confirmed_stable_strong_exception": 30
+    },
+    "confirmation_label_counts": {
+      "competitive_confirmed": 5,
+      "near_tie_confirmed": 3,
+      "non_exception_confirmed": 10,
+      "strong_exception_confirmed": 62
+    },
+    "invalid_result_count": 0,
+    "planned_run_count": 4000,
+    "raw_result_count": 4000,
+    "transition_counts": {
+      "downgraded_in_confirmation": 4,
+      "negative_control_changed": 4,
+      "same_tier": 1,
+      "stable_negative_control": 9,
+      "stable_strong": 62
+    },
+    "valid_result_count": 4000
+  },
+  "missing_targets": [],
+  "source_reports": {
+    "evidence_map_759": "audit_reports/multilevel_exception_mining/frontier_pilot/srv_noctua_frontier_pilot_001/759_frontier_confirmation_evidence_map.json",
+    "validation_758": "audit_reports/multilevel_exception_mining/frontier_pilot/srv_noctua_frontier_pilot_001/758_frontier_confirmation_validation_report.json"
+  }
+}

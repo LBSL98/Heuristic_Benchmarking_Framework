@@ -1,0 +1,359 @@
+
+===== 761 RECOVER AND APPLY FRONTIER CONFIRMATION TO AVAILABLE CANONICALS =====
+2026-05-09T12:17:35-03:00
+
+===== LOCAL SURFACE =====
+From github-lbsl:LBSL98/Heuristic_Benchmarking_Framework
+ * branch            main       -> FETCH_HEAD
+Already on 'main'
+M	decisions/06_Experiment_Ledger.md
+M	decisions/08_Results_to_Text_Map.md
+Your branch is up to date with 'origin/main'.
+From github-lbsl:LBSL98/Heuristic_Benchmarking_Framework
+ * branch            main       -> FETCH_HEAD
+Already up to date.
+c9df18e5154a2d6b0a3bdedfc7a6d4dbfc11e992
+ M decisions/06_Experiment_Ledger.md
+ M decisions/08_Results_to_Text_Map.md
+
+===== INSPECT CANONICAL FILE CANDIDATES =====
+./decisions/03_Methodology_Canonical_consolidated.md
+./decisions/06_Experiment_Ledger.md
+./decisions/07_Open_Issues.md
+./decisions/08_Results_to_Text_Map.md
+./decisions/09_Committee_Issues_Log.md
+
+===== VERIFY INPUT REPORTS =====
+{
+  "candidate_level_status_counts": {
+    "confirmed_budget_sensitive_strong_exception": 2,
+    "confirmed_competitive_or_mixed": 2,
+    "confirmed_near_tie_or_mixed": 1,
+    "confirmed_stable_non_exception_control": 5,
+    "confirmed_stable_strong_exception": 30
+  },
+  "confirmation_label_counts": {
+    "competitive_confirmed": 5,
+    "near_tie_confirmed": 3,
+    "non_exception_confirmed": 10,
+    "strong_exception_confirmed": 62
+  },
+  "inputs_ok": true,
+  "transition_counts": {
+    "downgraded_in_confirmation": 4,
+    "negative_control_changed": 4,
+    "same_tier": 1,
+    "stable_negative_control": 9,
+    "stable_strong": 62
+  }
+}
+
+===== WRITE RECOVERY UPDATE SCRIPT =====
+
+===== APPLY RECOVERY CANONICAL UPDATES =====
+{
+  "applied": [
+    {
+      "action": "replaced",
+      "aliases": [
+        "08_Results_to_Text_Map.md"
+      ],
+      "all_matches": [
+        "decisions/08_Results_to_Text_Map.md"
+      ],
+      "backup": "audit_reports/multilevel_exception_mining/frontier_pilot/srv_noctua_frontier_pilot_001/761_canonical_backups/08_Results_to_Text_Map.md.bak",
+      "block_name": "RESULTS_MAP",
+      "changed": false,
+      "logical_name": "08_Results_to_Text_Map.md",
+      "selected_path": "decisions/08_Results_to_Text_Map.md"
+    },
+    {
+      "action": "replaced",
+      "aliases": [
+        "06_Experiment_Ledger.md"
+      ],
+      "all_matches": [
+        "decisions/06_Experiment_Ledger.md"
+      ],
+      "backup": "audit_reports/multilevel_exception_mining/frontier_pilot/srv_noctua_frontier_pilot_001/761_canonical_backups/06_Experiment_Ledger.md.bak",
+      "block_name": "EXPERIMENT_LEDGER",
+      "changed": false,
+      "logical_name": "06_Experiment_Ledger.md",
+      "selected_path": "decisions/06_Experiment_Ledger.md"
+    },
+    {
+      "action": "appended",
+      "aliases": [
+        "03_Methodology_Canonical.md",
+        "03_Methodology_Canonical_consolidated.md"
+      ],
+      "all_matches": [
+        "decisions/03_Methodology_Canonical_consolidated.md"
+      ],
+      "backup": "audit_reports/multilevel_exception_mining/frontier_pilot/srv_noctua_frontier_pilot_001/761_canonical_backups/03_Methodology_Canonical_consolidated.md.bak",
+      "block_name": "METHODOLOGY_NOTE",
+      "changed": true,
+      "logical_name": "03_Methodology_Canonical",
+      "selected_path": "decisions/03_Methodology_Canonical_consolidated.md"
+    },
+    {
+      "action": "appended",
+      "aliases": [
+        "07_Open_Issues.md"
+      ],
+      "all_matches": [
+        "decisions/07_Open_Issues.md"
+      ],
+      "backup": "audit_reports/multilevel_exception_mining/frontier_pilot/srv_noctua_frontier_pilot_001/761_canonical_backups/07_Open_Issues.md.bak",
+      "block_name": "OPEN_ISSUES",
+      "changed": true,
+      "logical_name": "07_Open_Issues.md",
+      "selected_path": "decisions/07_Open_Issues.md"
+    },
+    {
+      "action": "appended",
+      "aliases": [
+        "09_Committee_Issues_Log.md"
+      ],
+      "all_matches": [
+        "decisions/09_Committee_Issues_Log.md"
+      ],
+      "backup": "audit_reports/multilevel_exception_mining/frontier_pilot/srv_noctua_frontier_pilot_001/761_canonical_backups/09_Committee_Issues_Log.md.bak",
+      "block_name": "COMMITTEE_ISSUES",
+      "changed": true,
+      "logical_name": "09_Committee_Issues_Log.md",
+      "selected_path": "decisions/09_Committee_Issues_Log.md"
+    }
+  ],
+  "claim_boundary": "canonical_notes_updated_without_final_monograph_claim",
+  "missing_targets": [],
+  "report_json": "audit_reports/multilevel_exception_mining/frontier_pilot/srv_noctua_frontier_pilot_001/761_canonical_update_recovery_application_report.json",
+  "report_md": "audit_reports/multilevel_exception_mining/frontier_pilot/srv_noctua_frontier_pilot_001/761_canonical_update_recovery_application_report.md"
+}
+
+===== VALIDATE MARKERS =====
+{
+  "claim_boundary": "canonical_notes_updated_without_final_monograph_claim",
+  "markers_ok": true,
+  "missing_targets": [],
+  "updated_files": [
+    "decisions/08_Results_to_Text_Map.md",
+    "decisions/06_Experiment_Ledger.md",
+    "decisions/03_Methodology_Canonical_consolidated.md",
+    "decisions/07_Open_Issues.md",
+    "decisions/09_Committee_Issues_Log.md"
+  ]
+}
+
+===== REPORT PREVIEW =====
+# 761 canonical update recovery application report
+
+- Created at UTC: `2026-05-09T15:17:39.221536+00:00`
+- Claim boundary: `canonical_notes_updated_without_final_monograph_claim`
+
+## Source reports
+
+- Validation 758: `audit_reports/multilevel_exception_mining/frontier_pilot/srv_noctua_frontier_pilot_001/758_frontier_confirmation_validation_report.json`
+- Evidence map 759: `audit_reports/multilevel_exception_mining/frontier_pilot/srv_noctua_frontier_pilot_001/759_frontier_confirmation_evidence_map.json`
+
+## Evidence summary
+
+- Planned/raw/valid results: `4000` / `4000` / `4000`
+- Invalid results: `0`
+- Candidate count: `40`
+- Confirmation label counts: `{"competitive_confirmed": 5, "near_tie_confirmed": 3, "non_exception_confirmed": 10, "strong_exception_confirmed": 62}`
+- Candidate-level status counts: `{"confirmed_budget_sensitive_strong_exception": 2, "confirmed_competitive_or_mixed": 2, "confirmed_near_tie_or_mixed": 1, "confirmed_stable_non_exception_control": 5, "confirmed_stable_strong_exception": 30}`
+- Transition counts: `{"downgraded_in_confirmation": 4, "negative_control_changed": 4, "same_tier": 1, "stable_negative_control": 9, "stable_strong": 62}`
+
+## Applied updates
+
+- `decisions/08_Results_to_Text_Map.md`: logical=`08_Results_to_Text_Map.md`, action=`replaced`, changed=`False`, backup=`audit_reports/multilevel_exception_mining/frontier_pilot/srv_noctua_frontier_pilot_001/761_canonical_backups/08_Results_to_Text_Map.md.bak`
+- `decisions/06_Experiment_Ledger.md`: logical=`06_Experiment_Ledger.md`, action=`replaced`, changed=`False`, backup=`audit_reports/multilevel_exception_mining/frontier_pilot/srv_noctua_frontier_pilot_001/761_canonical_backups/06_Experiment_Ledger.md.bak`
+- `decisions/03_Methodology_Canonical_consolidated.md`: logical=`03_Methodology_Canonical`, action=`appended`, changed=`True`, backup=`audit_reports/multilevel_exception_mining/frontier_pilot/srv_noctua_frontier_pilot_001/761_canonical_backups/03_Methodology_Canonical_consolidated.md.bak`
+- `decisions/07_Open_Issues.md`: logical=`07_Open_Issues.md`, action=`appended`, changed=`True`, backup=`audit_reports/multilevel_exception_mining/frontier_pilot/srv_noctua_frontier_pilot_001/761_canonical_backups/07_Open_Issues.md.bak`
+- `decisions/09_Committee_Issues_Log.md`: logical=`09_Committee_Issues_Log.md`, action=`appended`, changed=`True`, backup=`audit_reports/multilevel_exception_mining/frontier_pilot/srv_noctua_frontier_pilot_001/761_canonical_backups/09_Committee_Issues_Log.md.bak`
+
+## Missing targets
+
+- None.
+
+## Boundary
+
+The available canônicos received traceable notes. This does not finalize monograph claims and does not edit the LaTeX chapters.
+
+===== GIT DIFF SUMMARY =====
+ M decisions/03_Methodology_Canonical_consolidated.md
+ M decisions/06_Experiment_Ledger.md
+ M decisions/07_Open_Issues.md
+ M decisions/08_Results_to_Text_Map.md
+ M decisions/09_Committee_Issues_Log.md
+ decisions/03_Methodology_Canonical_consolidated.md | 16 ++++++++++
+ decisions/06_Experiment_Ledger.md                  | 29 +++++++++++++++++
+ decisions/07_Open_Issues.md                        | 19 ++++++++++++
+ decisions/08_Results_to_Text_Map.md                | 36 ++++++++++++++++++++++
+ decisions/09_Committee_Issues_Log.md               | 15 +++++++++
+ 5 files changed, 115 insertions(+)
+
+===== GIT DIFF CANONICALS =====
+diff --git a/decisions/03_Methodology_Canonical_consolidated.md b/decisions/03_Methodology_Canonical_consolidated.md
+index 6ec0466..3aeb387 100644
+--- a/decisions/03_Methodology_Canonical_consolidated.md
++++ b/decisions/03_Methodology_Canonical_consolidated.md
+@@ -539,3 +539,19 @@ The campaign `EXP-MULTILEVEL-EXCEPTION-MINING-001` now has one validated environ
+ The observed raw status counts were `{'ok': 18760, 'timeout': 3640}`. Timeout rows are valid solver outcomes under the confirmation runner status taxonomy; they are not invalid artifacts. The confirmed label counts were `{'competitive_confirmed': 8, 'near_tie_confirmed': 227, 'non_exception_confirmed': 11, 'strong_exception_confirmed': 202}`. In this environment-specific evidence set, the SBS algorithm recorded in the digest is `ts_rust`, and the VBS mean median cut is `80.77678571428571`.
+
+ This evidence is not pooled with WSL, Windows, or any other host. Any prose, table, selector claim, or exception-mining claim derived from this campaign must state the environment identifier `srv_noctua_linux_8gb`. Cross-environment claims require a matched common-intersection analysis and remain pending. The artifact-level status remains `pending_mapping_until_canon_update` until the results-to-text mapping is explicitly accepted.
++
++<!-- HBF-FRONTIER-CONFIRMATION-001:METHODOLOGY_NOTE:START -->
++## Frontier confirmation evidence slice: srv_noctua_frontier_pilot_001
++
++This block records a validated exception-mining confirmation slice. It is evidence-bearing only for the explicit environment slice `srv_noctua_frontier_pilot_001`; it is not, by itself, the final benchmark campaign and does not finalize monograph-level claims.
++
++Source chain: `screening_short_001` → selection plan `750` → schema-compatible confirmation plan `756` → `confirmation_001` → validation report `758` → evidence map `759`.
++
++Methodological status:
++
++- This slice belongs to exception mining and confirmation, not to the final full benchmark campaign.
++- The unit of evidence is the explicit environment slice `srv_noctua_frontier_pilot_001`; environment pooling remains forbidden unless a later protocol explicitly defines comparable slices.
++- The confirmation used `40` selected candidates, `10` algorithms, `2` budgets and `5` seeds, for `4000` planned runs.
++- The confirmation plan used the runner-compatible schema validated in `756_frontier_confirmation_plan_field_mapping_report.*`.
++- The outputs may inform result mapping, instance-selection discussion and CART motivation, but should not be incorporated as final monograph conclusions without a dedicated results-to-text decision.
++<!-- HBF-FRONTIER-CONFIRMATION-001:METHODOLOGY_NOTE:END -->
+diff --git a/decisions/06_Experiment_Ledger.md b/decisions/06_Experiment_Ledger.md
+index 8ad8c52..e071ebc 100644
+--- a/decisions/06_Experiment_Ledger.md
++++ b/decisions/06_Experiment_Ledger.md
+@@ -441,3 +441,32 @@ This file is the canonical ledger for experiments, runs, outputs, and traceable
+ - **Validation gate:** `712_validate_srv_noctua_completed_campaign.txt` reported `GATE_RESULT=PASS`.
+ - **Issue record:** GitHub Issue #102 received the validated-evidence comment and remains open for canonical mapping and downstream claim decisions.
+ - **Claim boundary:** Validated evidence for `srv_noctua_linux_8gb` only. This entry does not authorize final monograph prose, hardware-independent timing generalization, or pooled cross-environment conclusions.
++
++<!-- HBF-FRONTIER-CONFIRMATION-001:EXPERIMENT_LEDGER:START -->
++## Frontier confirmation evidence slice: srv_noctua_frontier_pilot_001
++
++This block records a validated exception-mining confirmation slice. It is evidence-bearing only for the explicit environment slice `srv_noctua_frontier_pilot_001`; it is not, by itself, the final benchmark campaign and does not finalize monograph-level claims.
++
++Source chain: `screening_short_001` → selection plan `750` → schema-compatible confirmation plan `756` → `confirmation_001` → validation report `758` → evidence map `759`.
++
++Execution ledger entry:
++
++- Environment slice: `srv_noctua_frontier_pilot_001`.
++- Screening artifact: `audit_reports/multilevel_exception_mining/frontier_pilot/srv_noctua_frontier_pilot_001/screening_short_001`.
++- Selection plan: `750_frontier_confirmation_selection_plan.*`.
++- Schema-compatible confirmation plan: `756_frontier_confirmation_run_plan_runner_schema.csv`.
++- Confirmation output: `confirmation_001`.
++- Validation report: `758_frontier_confirmation_validation_report.*`.
++- Evidence map: `759_frontier_confirmation_evidence_map.*`.
++- Service start log: `757_restart_frontier_confirmation_service_with_plan756.txt`.
++
++Validated execution counts:
++
++- Planned/raw/valid results: `4000` / `4000` / `4000`.
++- Invalid results: `0`.
++- Solver result artifacts: `4000` `result.json` files.
++- Confirmation row artifacts: `4000` `confirmation_row.json` files.
++- Error artifacts: `0` `error.txt` files.
++- Raw status counts: `{"ok": 3170, "timeout": 830}`.
++- Confirmation labels: `{"competitive_confirmed": 5, "near_tie_confirmed": 3, "non_exception_confirmed": 10, "strong_exception_confirmed": 62}`.
++<!-- HBF-FRONTIER-CONFIRMATION-001:EXPERIMENT_LEDGER:END -->
+diff --git a/decisions/07_Open_Issues.md b/decisions/07_Open_Issues.md
+index cb3377b..4275060 100644
+--- a/decisions/07_Open_Issues.md
++++ b/decisions/07_Open_Issues.md
+@@ -285,3 +285,22 @@ This file tracks unresolved project problems that can still affect coherence, co
+ - **Evidence bundle:** `audit_reports/multilevel_exception_mining/confirmation/srv_noctua_linux_dedicated_evidence_bundle_001`.
+ - **Open work:** Decide which environment-specific results enter the monograph, update result tables/figures if needed, preserve the single-environment boundary, and define the next execution gate for Windows 11 Docker portability or cross-environment sensitivity.
+ - **Blocked claims:** Do not claim cross-environment robustness, Windows portability, hardware-independent timing, or final selector validity from this server-only evidence.
++
++<!-- HBF-FRONTIER-CONFIRMATION-001:OPEN_ISSUES:START -->
++## Frontier confirmation evidence slice: srv_noctua_frontier_pilot_001
++
++This block records a validated exception-mining confirmation slice. It is evidence-bearing only for the explicit environment slice `srv_noctua_frontier_pilot_001`; it is not, by itself, the final benchmark campaign and does not finalize monograph-level claims.
++
++Source chain: `screening_short_001` → selection plan `750` → schema-compatible confirmation plan `756` → `confirmation_001` → validation report `758` → evidence map `759`.
++
++Issue status update:
++
++- Operationally resolved: frontier confirmation was executed and validated for `srv_noctua_frontier_pilot_001`.
++- Still open analytically: decide how this evidence affects final benchmark scope, result narrative and CART/instance-selection discussion.
++- Still open methodologically: decide whether additional confirmation or a broader final campaign is necessary before the monograph text uses these results as central evidence.
++
++Observed transitions requiring interpretation:
++
++- Transition classes: `{"downgraded_in_confirmation": 4, "negative_control_changed": 4, "same_tier": 1, "stable_negative_control": 9, "stable_strong": 62}`.
++- Preliminary-to-confirmed matrix: `{"competitive_candidate": {"competitive_confirmed": 1}, "non_exception": {"competitive_confirmed": 4, "non_exception_confirmed": 9}, "strong_exception_candidate": {"near_tie_confirmed": 3, "non_exception_confirmed": 1, "strong_exception_confirmed": 62}}`.
++<!-- HBF-FRONTIER-CONFIRMATION-001:OPEN_ISSUES:END -->
+diff --git a/decisions/08_Results_to_Text_Map.md b/decisions/08_Results_to_Text_Map.md
+index 700a9b8..fac342f 100644
+--- a/decisions/08_Results_to_Text_Map.md
++++ b/decisions/08_Results_to_Text_Map.md
+@@ -87,3 +87,39 @@ This file maps empirical results to the exact claims they are allowed to support
+ | C-SRV-NOCTUA-STATUS-001 | Timeout rows occurred but were valid status-coded outcomes. | Raw status counts `{'ok': 18760, 'timeout': 3640}`. | Accepted as artifact/status description | “The campaign produced 18,760 `ok` rows and 3,640 `timeout` rows, all schema-valid.” | “Timeout rows were invalid failures.” | Requires status taxonomy explanation. |
+ | C-SRV-NOCTUA-LABELS-001 | The confirmed exception-label distribution for this stratum is known. | Label counts `{'competitive_confirmed': 8, 'near_tie_confirmed': 227, 'non_exception_confirmed': 11, 'strong_exception_confirmed': 202}`. | Candidate analytical result | “For this environment, the confirmation labels were distributed as recorded in the validated digest.” | “These labels generalize to all machines or to the Windows host.” | Must state environment. |
+ | C-SRV-NOCTUA-SBS-001 | The SBS algorithm in this environment-specific digest is `ts_rust`. | Digest field `sbs_algo = ts_rust`. | Candidate analytical result | “Within the validated `srv-noctua` slice, the digest reports `ts_rust` as SBS.” | “`ts_rust` is universally the best algorithm.” | Requires metric/context explanation before monograph use. |
++
++<!-- HBF-FRONTIER-CONFIRMATION-001:RESULTS_MAP:START -->
++## Frontier confirmation evidence slice: srv_noctua_frontier_pilot_001
++
++This block records a validated exception-mining confirmation slice. It is evidence-bearing only for the explicit environment slice `srv_noctua_frontier_pilot_001`; it is not, by itself, the final benchmark campaign and does not finalize monograph-level claims.
++
++Source chain: `screening_short_001` → selection plan `750` → schema-compatible confirmation plan `756` → `confirmation_001` → validation report `758` → evidence map `759`.
++
++Core validated counts:
++
++- Planned runs: `4000`.
++- Raw results: `4000`.
++- Valid results: `4000`.
++- Invalid results: `0`.
++- Collapsed rows: `800`.
++- Confirmation label rows: `80`.
++- Candidate count: `40`.
++- Raw status counts: `{"ok": 3170, "timeout": 830}`.
++- Confirmation label counts: `{"competitive_confirmed": 5, "near_tie_confirmed": 3, "non_exception_confirmed": 10, "strong_exception_confirmed": 62}`.
++
++Confirmed label concentration:
++
++- By family: `{"F01": {"competitive_confirmed": 1, "strong_exception_confirmed": 5}, "F02": {"strong_exception_confirmed": 6}, "F04": {"strong_exception_confirmed": 28}, "F05": {"competitive_confirmed": 2, "non_exception_confirmed": 10}, "F06": {"strong_exception_confirmed": 4}, "F07": {"near_tie_confirmed": 3, "strong_exception_confirmed": 15}, "F08": {"competitive_confirmed": 2, "strong_exception_confirmed": 4}}`.
++- Main concentration: `F04` produced `28` strong confirmations; `F07` produced `15` strong confirmations and `3` near-tie confirmations; `F05` produced all `10` non-exception confirmations and `2` competitive confirmations.
++
++Candidate-level interpretation:
++
++- Candidate-level status counts: `{"confirmed_budget_sensitive_strong_exception": 2, "confirmed_competitive_or_mixed": 2, "confirmed_near_tie_or_mixed": 1, "confirmed_stable_non_exception_control": 5, "confirmed_stable_strong_exception": 30}`.
++- Confirmation-core outcomes: `{"confirmed_budget_sensitive_strong_exception": 2, "confirmed_near_tie_or_mixed": 1, "confirmed_stable_non_exception_control": 1, "confirmed_stable_strong_exception": 30}`.
++- Negative-control outcomes: `{"confirmed_competitive_or_mixed": 2, "confirmed_stable_non_exception_control": 4}`.
++
++Interpretive boundary:
++
++- These results support the value of exception mining and instance-level selection as an analytical layer.
++- They should not be phrased as final superiority claims for the monograph until explicitly mapped into the final benchmark design and result narrative.
++<!-- HBF-FRONTIER-CONFIRMATION-001:RESULTS_MAP:END -->
+diff --git a/decisions/09_Committee_Issues_Log.md b/decisions/09_Committee_Issues_Log.md
+index acbcac5..9865a9b 100644
+--- a/decisions/09_Committee_Issues_Log.md
++++ b/decisions/09_Committee_Issues_Log.md
+@@ -92,3 +92,18 @@ This file converts committee and reviewer comments into a trackable issue log. E
+ - **Derived rule:** Exploratory baselines may remain in the repository, but they must stay outside official plans, official manifests, and the selector label space unless canon is updated first.
+ - **Affected section:** Methodology / portfolio scope / experimental governance
+ - **Action owner:** Governance and Integrity + Code and Experiments
++
++<!-- HBF-FRONTIER-CONFIRMATION-001:COMMITTEE_ISSUES:START -->
++## Frontier confirmation evidence slice: srv_noctua_frontier_pilot_001
++
++This block records a validated exception-mining confirmation slice. It is evidence-bearing only for the explicit environment slice `srv_noctua_frontier_pilot_001`; it is not, by itself, the final benchmark campaign and does not finalize monograph-level claims.
++
++Source chain: `screening_short_001` → selection plan `750` → schema-compatible confirmation plan `756` → `confirmation_001` → validation report `758` → evidence map `759`.
++
++Committee-facing interpretation:
++
++- The confirmed frontier slice strengthens the motivation for instance-level analysis: many candidates selected by screening remained strong after confirmation.
++- The result should be presented cautiously: it demonstrates that the framework can mine and confirm exception regimes under a controlled slice, not that the final benchmark conclusions are already settled.
++- The negative controls are informative: `5` candidates remained stable non-exception controls, while `2` negative-control candidates became competitive or mixed.
++- This supports a clearer argument for selection-by-instance and explanatory modeling, but the monograph should keep the distinction between exploratory evidence, confirmed slice evidence and final benchmark evidence.
++<!-- HBF-FRONTIER-CONFIRMATION-001:COMMITTEE_ISSUES:END -->
+
+===== SEND BACK =====
+audit_reports/multilevel_exception_mining/761_recover_and_apply_frontier_confirmation_to_available_canonicals.txt
+audit_reports/multilevel_exception_mining/frontier_pilot/srv_noctua_frontier_pilot_001/761_canonical_update_recovery_application_report.json
+audit_reports/multilevel_exception_mining/frontier_pilot/srv_noctua_frontier_pilot_001/761_canonical_update_recovery_application_report.md
+
+===== 761 COMPLETE =====
