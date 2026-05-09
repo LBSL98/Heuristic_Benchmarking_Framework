@@ -87,3 +87,39 @@ This file maps empirical results to the exact claims they are allowed to support
 | C-SRV-NOCTUA-STATUS-001 | Timeout rows occurred but were valid status-coded outcomes. | Raw status counts `{'ok': 18760, 'timeout': 3640}`. | Accepted as artifact/status description | “The campaign produced 18,760 `ok` rows and 3,640 `timeout` rows, all schema-valid.” | “Timeout rows were invalid failures.” | Requires status taxonomy explanation. |
 | C-SRV-NOCTUA-LABELS-001 | The confirmed exception-label distribution for this stratum is known. | Label counts `{'competitive_confirmed': 8, 'near_tie_confirmed': 227, 'non_exception_confirmed': 11, 'strong_exception_confirmed': 202}`. | Candidate analytical result | “For this environment, the confirmation labels were distributed as recorded in the validated digest.” | “These labels generalize to all machines or to the Windows host.” | Must state environment. |
 | C-SRV-NOCTUA-SBS-001 | The SBS algorithm in this environment-specific digest is `ts_rust`. | Digest field `sbs_algo = ts_rust`. | Candidate analytical result | “Within the validated `srv-noctua` slice, the digest reports `ts_rust` as SBS.” | “`ts_rust` is universally the best algorithm.” | Requires metric/context explanation before monograph use. |
+
+<!-- HBF-FRONTIER-CONFIRMATION-001:RESULTS_MAP:START -->
+## Frontier confirmation evidence slice: srv_noctua_frontier_pilot_001
+
+This block records a validated exception-mining confirmation slice. It is evidence-bearing only for the explicit environment slice `srv_noctua_frontier_pilot_001`; it is not, by itself, the final benchmark campaign and does not finalize monograph-level claims.
+
+Source chain: `screening_short_001` → selection plan `750` → schema-compatible confirmation plan `756` → `confirmation_001` → validation report `758` → evidence map `759`.
+
+Core validated counts:
+
+- Planned runs: `4000`.
+- Raw results: `4000`.
+- Valid results: `4000`.
+- Invalid results: `0`.
+- Collapsed rows: `800`.
+- Confirmation label rows: `80`.
+- Candidate count: `40`.
+- Raw status counts: `{"ok": 3170, "timeout": 830}`.
+- Confirmation label counts: `{"competitive_confirmed": 5, "near_tie_confirmed": 3, "non_exception_confirmed": 10, "strong_exception_confirmed": 62}`.
+
+Confirmed label concentration:
+
+- By family: `{"F01": {"competitive_confirmed": 1, "strong_exception_confirmed": 5}, "F02": {"strong_exception_confirmed": 6}, "F04": {"strong_exception_confirmed": 28}, "F05": {"competitive_confirmed": 2, "non_exception_confirmed": 10}, "F06": {"strong_exception_confirmed": 4}, "F07": {"near_tie_confirmed": 3, "strong_exception_confirmed": 15}, "F08": {"competitive_confirmed": 2, "strong_exception_confirmed": 4}}`.
+- Main concentration: `F04` produced `28` strong confirmations; `F07` produced `15` strong confirmations and `3` near-tie confirmations; `F05` produced all `10` non-exception confirmations and `2` competitive confirmations.
+
+Candidate-level interpretation:
+
+- Candidate-level status counts: `{"confirmed_budget_sensitive_strong_exception": 2, "confirmed_competitive_or_mixed": 2, "confirmed_near_tie_or_mixed": 1, "confirmed_stable_non_exception_control": 5, "confirmed_stable_strong_exception": 30}`.
+- Confirmation-core outcomes: `{"confirmed_budget_sensitive_strong_exception": 2, "confirmed_near_tie_or_mixed": 1, "confirmed_stable_non_exception_control": 1, "confirmed_stable_strong_exception": 30}`.
+- Negative-control outcomes: `{"confirmed_competitive_or_mixed": 2, "confirmed_stable_non_exception_control": 4}`.
+
+Interpretive boundary:
+
+- These results support the value of exception mining and instance-level selection as an analytical layer.
+- They should not be phrased as final superiority claims for the monograph until explicitly mapped into the final benchmark design and result narrative.
+<!-- HBF-FRONTIER-CONFIRMATION-001:RESULTS_MAP:END -->

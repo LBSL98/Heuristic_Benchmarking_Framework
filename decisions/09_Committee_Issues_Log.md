@@ -92,3 +92,18 @@ This file converts committee and reviewer comments into a trackable issue log. E
 - **Derived rule:** Exploratory baselines may remain in the repository, but they must stay outside official plans, official manifests, and the selector label space unless canon is updated first.
 - **Affected section:** Methodology / portfolio scope / experimental governance
 - **Action owner:** Governance and Integrity + Code and Experiments
+
+<!-- HBF-FRONTIER-CONFIRMATION-001:COMMITTEE_ISSUES:START -->
+## Frontier confirmation evidence slice: srv_noctua_frontier_pilot_001
+
+This block records a validated exception-mining confirmation slice. It is evidence-bearing only for the explicit environment slice `srv_noctua_frontier_pilot_001`; it is not, by itself, the final benchmark campaign and does not finalize monograph-level claims.
+
+Source chain: `screening_short_001` → selection plan `750` → schema-compatible confirmation plan `756` → `confirmation_001` → validation report `758` → evidence map `759`.
+
+Committee-facing interpretation:
+
+- The confirmed frontier slice strengthens the motivation for instance-level analysis: many candidates selected by screening remained strong after confirmation.
+- The result should be presented cautiously: it demonstrates that the framework can mine and confirm exception regimes under a controlled slice, not that the final benchmark conclusions are already settled.
+- The negative controls are informative: `5` candidates remained stable non-exception controls, while `2` negative-control candidates became competitive or mixed.
+- This supports a clearer argument for selection-by-instance and explanatory modeling, but the monograph should keep the distinction between exploratory evidence, confirmed slice evidence and final benchmark evidence.
+<!-- HBF-FRONTIER-CONFIRMATION-001:COMMITTEE_ISSUES:END -->

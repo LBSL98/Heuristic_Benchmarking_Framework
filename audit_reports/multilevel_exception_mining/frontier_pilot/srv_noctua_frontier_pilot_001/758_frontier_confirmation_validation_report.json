@@ -1,0 +1,1021 @@
+{
+  "claim_boundary": "frontier_confirmation_validation_only_no_monograph_text_claim_until_canon_mapping",
+  "classification": "frontier_confirmation_001_validation",
+  "columns": {
+    "collapsed": [
+      "campaign_id",
+      "confirmation_stage",
+      "environment_id",
+      "candidate_id",
+      "family",
+      "environment_target",
+      "variant",
+      "priority_label_from_screening",
+      "algo_label",
+      "algo",
+      "budget_ms",
+      "attempt_count",
+      "valid_count",
+      "available_count",
+      "invalid_count",
+      "median_valid_cut_by_budget",
+      "median_elapsed_ms",
+      "median_seed",
+      "best_valid_cut_by_budget",
+      "best_elapsed_ms",
+      "best_seed",
+      "available_by_budget",
+      "status_set",
+      "collapse_rule"
+    ],
+    "labels": [
+      "campaign_id",
+      "confirmation_stage",
+      "environment_id",
+      "candidate_id",
+      "family",
+      "environment_target",
+      "variant",
+      "budget_ms",
+      "best_multilevel_algo",
+      "best_multilevel_cut",
+      "best_meta_python_algo",
+      "best_meta_python_cut",
+      "best_meta_rust_algo",
+      "best_meta_rust_cut",
+      "best_meta_all_algo",
+      "best_meta_all_cut",
+      "relative_gap_meta_all_vs_multilevel",
+      "confirmation_exception_label",
+      "label_claim_status"
+    ],
+    "per_instance": [
+      "campaign_id",
+      "confirmation_stage",
+      "environment_id",
+      "candidate_id",
+      "family",
+      "environment_target",
+      "variant",
+      "budget_label_row_count",
+      "collapsed_algo_budget_row_count",
+      "label_counts",
+      "strong_exception_confirmed_count",
+      "near_tie_confirmed_count",
+      "competitive_confirmed_count",
+      "non_exception_confirmed_count",
+      "insufficient_participants_count"
+    ],
+    "results": [
+      "campaign_id",
+      "confirmation_stage",
+      "environment_id",
+      "run_id",
+      "candidate_id",
+      "family",
+      "environment_target",
+      "variant",
+      "priority_label_from_screening",
+      "algo_label",
+      "algo",
+      "seed",
+      "budget_ms",
+      "bundle_path",
+      "instance_path",
+      "artifact_dir",
+      "artifact_json",
+      "workdir",
+      "status",
+      "valid",
+      "feasible",
+      "schema_valid",
+      "schema_error_count",
+      "cutsize",
+      "elapsed_ms",
+      "available_by_budget",
+      "timeout",
+      "returncode",
+      "error_type",
+      "error_message",
+      "monograph_claim_status",
+      "claim_boundary",
+      "schema_errors",
+      "k",
+      "beta",
+      "epsilon",
+      "n",
+      "m",
+      "checkpoint_count",
+      "raw_status"
+    ],
+    "run_plan": [
+      "campaign_id",
+      "confirmation_stage",
+      "environment_id",
+      "run_id",
+      "candidate_id",
+      "family",
+      "environment_target",
+      "variant",
+      "priority_label_from_screening",
+      "algo_label",
+      "algo",
+      "seed",
+      "budget_ms",
+      "bundle_path",
+      "instance_path"
+    ]
+  },
+  "confirmation_labels": {
+    "columns": [
+      "campaign_id",
+      "confirmation_stage",
+      "environment_id",
+      "candidate_id",
+      "family",
+      "environment_target",
+      "variant",
+      "budget_ms",
+      "best_multilevel_algo",
+      "best_multilevel_cut",
+      "best_meta_python_algo",
+      "best_meta_python_cut",
+      "best_meta_rust_algo",
+      "best_meta_rust_cut",
+      "best_meta_all_algo",
+      "best_meta_all_cut",
+      "relative_gap_meta_all_vs_multilevel",
+      "confirmation_exception_label",
+      "label_claim_status"
+    ],
+    "label_by_budget": {
+      "1000": {
+        "competitive_confirmed": 3,
+        "near_tie_confirmed": 2,
+        "non_exception_confirmed": 5,
+        "strong_exception_confirmed": 30
+      },
+      "5000": {
+        "competitive_confirmed": 2,
+        "near_tie_confirmed": 1,
+        "non_exception_confirmed": 5,
+        "strong_exception_confirmed": 32
+      }
+    },
+    "label_by_environment_target": {
+      "common": {
+        "competitive_confirmed": 4,
+        "near_tie_confirmed": 2,
+        "non_exception_confirmed": 6,
+        "strong_exception_confirmed": 30
+      },
+      "server_expanded": {
+        "competitive_confirmed": 1,
+        "near_tie_confirmed": 1,
+        "non_exception_confirmed": 4,
+        "strong_exception_confirmed": 32
+      }
+    },
+    "label_by_family": {
+      "F01": {
+        "competitive_confirmed": 1,
+        "strong_exception_confirmed": 5
+      },
+      "F02": {
+        "strong_exception_confirmed": 6
+      },
+      "F04": {
+        "strong_exception_confirmed": 28
+      },
+      "F05": {
+        "competitive_confirmed": 2,
+        "non_exception_confirmed": 10
+      },
+      "F06": {
+        "strong_exception_confirmed": 4
+      },
+      "F07": {
+        "near_tie_confirmed": 3,
+        "strong_exception_confirmed": 15
+      },
+      "F08": {
+        "competitive_confirmed": 2,
+        "strong_exception_confirmed": 4
+      }
+    },
+    "label_by_priority_label_from_screening": {
+      "": {
+        "competitive_confirmed": 5,
+        "near_tie_confirmed": 3,
+        "non_exception_confirmed": 10,
+        "strong_exception_confirmed": 62
+      }
+    },
+    "label_counts": {
+      "competitive_confirmed": 5,
+      "near_tie_confirmed": 3,
+      "non_exception_confirmed": 10,
+      "strong_exception_confirmed": 62
+    },
+    "row_count": 80,
+    "sample": [
+      {
+        "best_meta_all_algo": "ts_rust",
+        "best_meta_all_cut": 309,
+        "best_meta_python_algo": "ils",
+        "best_meta_python_cut": 345,
+        "best_meta_rust_algo": "ts_rust",
+        "best_meta_rust_cut": 309,
+        "best_multilevel_algo": "metis",
+        "best_multilevel_cut": 345,
+        "budget_ms": 1000,
+        "campaign_id": "EXP-MULTILEVEL-EXCEPTION-MINING-001",
+        "candidate_id": "f01_common_scaled_frontier_x4p0_seed991152",
+        "confirmation_exception_label": "strong_exception_confirmed",
+        "confirmation_stage": "full_portfolio_confirmation_labels",
+        "environment_id": "srv_noctua_frontier_pilot_001",
+        "environment_target": "common",
+        "family": "F01",
+        "label_claim_status": "confirmation_evidence_pending_canon_mapping",
+        "relative_gap_meta_all_vs_multilevel": -0.10434782608695652,
+        "variant": "common_scaled_frontier_x4p0"
+      },
+      {
+        "best_meta_all_algo": "ts_rust",
+        "best_meta_all_cut": 309,
+        "best_meta_python_algo": "ts",
+        "best_meta_python_cut": 319,
+        "best_meta_rust_algo": "ts_rust",
+        "best_meta_rust_cut": 309,
+        "best_multilevel_algo": "metis",
+        "best_multilevel_cut": 345,
+        "budget_ms": 5000,
+        "campaign_id": "EXP-MULTILEVEL-EXCEPTION-MINING-001",
+        "candidate_id": "f01_common_scaled_frontier_x4p0_seed991152",
+        "confirmation_exception_label": "strong_exception_confirmed",
+        "confirmation_stage": "full_portfolio_confirmation_labels",
+        "environment_id": "srv_noctua_frontier_pilot_001",
+        "environment_target": "common",
+        "family": "F01",
+        "label_claim_status": "confirmation_evidence_pending_canon_mapping",
+        "relative_gap_meta_all_vs_multilevel": -0.10434782608695652,
+        "variant": "common_scaled_frontier_x4p0"
+      },
+      {
+        "best_meta_all_algo": "ts_rust",
+        "best_meta_all_cut": 204,
+        "best_meta_python_algo": "ts",
+        "best_meta_python_cut": 228,
+        "best_meta_rust_algo": "ts_rust",
+        "best_meta_rust_cut": 204,
+        "best_multilevel_algo": "metis",
+        "best_multilevel_cut": 259,
+        "budget_ms": 1000,
+        "campaign_id": "EXP-MULTILEVEL-EXCEPTION-MINING-001",
+        "candidate_id": "f01_server_scaled_frontier_x2p0_seed991161",
+        "confirmation_exception_label": "strong_exception_confirmed",
+        "confirmation_stage": "full_portfolio_confirmation_labels",
+        "environment_id": "srv_noctua_frontier_pilot_001",
+        "environment_target": "server_expanded",
+        "family": "F01",
+        "label_claim_status": "confirmation_evidence_pending_canon_mapping",
+        "relative_gap_meta_all_vs_multilevel": -0.21235521235521235,
+        "variant": "server_scaled_frontier_x2p0"
+      },
+      {
+        "best_meta_all_algo": "ts_rust",
+        "best_meta_all_cut": 204,
+        "best_meta_python_algo": "ts",
+        "best_meta_python_cut": 204,
+        "best_meta_rust_algo": "ts_rust",
+        "best_meta_rust_cut": 204,
+        "best_multilevel_algo": "metis",
+        "best_multilevel_cut": 259,
+        "budget_ms": 5000,
+        "campaign_id": "EXP-MULTILEVEL-EXCEPTION-MINING-001",
+        "candidate_id": "f01_server_scaled_frontier_x2p0_seed991161",
+        "confirmation_exception_label": "strong_exception_confirmed",
+        "confirmation_stage": "full_portfolio_confirmation_labels",
+        "environment_id": "srv_noctua_frontier_pilot_001",
+        "environment_target": "server_expanded",
+        "family": "F01",
+        "label_claim_status": "confirmation_evidence_pending_canon_mapping",
+        "relative_gap_meta_all_vs_multilevel": -0.21235521235521235,
+        "variant": "server_scaled_frontier_x2p0"
+      },
+      {
+        "best_meta_all_algo": "ts_rust",
+        "best_meta_all_cut": 335,
+        "best_meta_python_algo": "ils",
+        "best_meta_python_cut": 337,
+        "best_meta_rust_algo": "ts_rust",
+        "best_meta_rust_cut": 335,
+        "best_multilevel_algo": "kahip",
+        "best_multilevel_cut": 321,
+        "budget_ms": 1000,
+        "campaign_id": "EXP-MULTILEVEL-EXCEPTION-MINING-001",
+        "candidate_id": "f01_server_scaled_frontier_x4p0_seed991162",
+        "confirmation_exception_label": "competitive_confirmed",
+        "confirmation_stage": "full_portfolio_confirmation_labels",
+        "environment_id": "srv_noctua_frontier_pilot_001",
+        "environment_target": "server_expanded",
+        "family": "F01",
+        "label_claim_status": "confirmation_evidence_pending_canon_mapping",
+        "relative_gap_meta_all_vs_multilevel": 0.04361370716510903,
+        "variant": "server_scaled_frontier_x4p0"
+      },
+      {
+        "best_meta_all_algo": "grasp_rust",
+        "best_meta_all_cut": 310,
+        "best_meta_python_algo": "ils",
+        "best_meta_python_cut": 337,
+        "best_meta_rust_algo": "grasp_rust",
+        "best_meta_rust_cut": 310,
+        "best_multilevel_algo": "kahip",
+        "best_multilevel_cut": 321,
+        "budget_ms": 5000,
+        "campaign_id": "EXP-MULTILEVEL-EXCEPTION-MINING-001",
+        "candidate_id": "f01_server_scaled_frontier_x4p0_seed991162",
+        "confirmation_exception_label": "strong_exception_confirmed",
+        "confirmation_stage": "full_portfolio_confirmation_labels",
+        "environment_id": "srv_noctua_frontier_pilot_001",
+        "environment_target": "server_expanded",
+        "family": "F01",
+        "label_claim_status": "confirmation_evidence_pending_canon_mapping",
+        "relative_gap_meta_all_vs_multilevel": -0.03426791277258567,
+        "variant": "server_scaled_frontier_x4p0"
+      },
+      {
+        "best_meta_all_algo": "ts_rust",
+        "best_meta_all_cut": 255,
+        "best_meta_python_algo": "ts",
+        "best_meta_python_cut": 256,
+        "best_meta_rust_algo": "ts_rust",
+        "best_meta_rust_cut": 255,
+        "best_multilevel_algo": "metis",
+        "best_multilevel_cut": 259,
+        "budget_ms": 1000,
+        "campaign_id": "EXP-MULTILEVEL-EXCEPTION-MINING-001",
+        "candidate_id": "f02_common_b_frontier_x2p0_seed991241",
+        "confirmation_exception_label": "strong_exception_confirmed",
+        "confirmation_stage": "full_portfolio_confirmation_labels",
+        "environment_id": "srv_noctua_frontier_pilot_001",
+        "environment_target": "common",
+        "family": "F02",
+        "label_claim_status": "confirmation_evidence_pending_canon_mapping",
+        "relative_gap_meta_all_vs_multilevel": -0.015444015444015444,
+        "variant": "common_b_frontier_x2p0"
+      },
+      {
+        "best_meta_all_algo": "ts_rust",
+        "best_meta_all_cut": 255,
+        "best_meta_python_algo": "ts",
+        "best_meta_python_cut": 255,
+        "best_meta_rust_algo": "ts_rust",
+        "best_meta_rust_cut": 255,
+        "best_multilevel_algo": "metis",
+        "best_multilevel_cut": 259,
+        "budget_ms": 5000,
+        "campaign_id": "EXP-MULTILEVEL-EXCEPTION-MINING-001",
+        "candidate_id": "f02_common_b_frontier_x2p0_seed991241",
+        "confirmation_exception_label": "strong_exception_confirmed",
+        "confirmation_stage": "full_portfolio_confirmation_labels",
+        "environment_id": "srv_noctua_frontier_pilot_001",
+        "environment_target": "common",
+        "family": "F02",
+        "label_claim_status": "confirmation_evidence_pending_canon_mapping",
+        "relative_gap_meta_all_vs_multilevel": -0.015444015444015444,
+        "variant": "common_b_frontier_x2p0"
+      },
+      {
+        "best_meta_all_algo": "ts_rust",
+        "best_meta_all_cut": 1665,
+        "best_meta_python_algo": "sa",
+        "best_meta_python_cut": 8440,
+        "best_meta_rust_algo": "ts_rust",
+        "best_meta_rust_cut": 1665,
+        "best_multilevel_algo": "metis",
+        "best_multilevel_cut": 1726,
+        "budget_ms": 1000,
+        "campaign_id": "EXP-MULTILEVEL-EXCEPTION-MINING-001",
+        "candidate_id": "f02_common_scaled_frontier_x4p0_seed991252",
+        "confirmation_exception_label": "strong_exception_confirmed",
+        "confirmation_stage": "full_portfolio_confirmation_labels",
+        "environment_id": "srv_noctua_frontier_pilot_001",
+        "environment_target": "common",
+        "family": "F02",
+        "label_claim_status": "confirmation_evidence_pending_canon_mapping",
+        "relative_gap_meta_all_vs_multilevel": -0.03534183082271147,
+        "variant": "common_scaled_frontier_x4p0"
+      },
+      {
+        "best_meta_all_algo": "ts_rust",
+        "best_meta_all_cut": 1665,
+        "best_meta_python_algo": "ils",
+        "best_meta_python_cut": 8015,
+        "best_meta_rust_algo": "ts_rust",
+        "best_meta_rust_cut": 1665,
+        "best_multilevel_algo": "metis",
+        "best_multilevel_cut": 1726,
+        "budget_ms": 5000,
+        "campaign_id": "EXP-MULTILEVEL-EXCEPTION-MINING-001",
+        "candidate_id": "f02_common_scaled_frontier_x4p0_seed991252",
+        "confirmation_exception_label": "strong_exception_confirmed",
+        "confirmation_stage": "full_portfolio_confirmation_labels",
+        "environment_id": "srv_noctua_frontier_pilot_001",
+        "environment_target": "common",
+        "family": "F02",
+        "label_claim_status": "confirmation_evidence_pending_canon_mapping",
+        "relative_gap_meta_all_vs_multilevel": -0.03534183082271147,
+        "variant": "common_scaled_frontier_x4p0"
+      },
+      {
+        "best_meta_all_algo": "ts_rust",
+        "best_meta_all_cut": 783,
+        "best_meta_python_algo": "ils",
+        "best_meta_python_cut": 1017,
+        "best_meta_rust_algo": "ts_rust",
+        "best_meta_rust_cut": 783,
+        "best_multilevel_algo": "metis",
+        "best_multilevel_cut": 809,
+        "budget_ms": 1000,
+        "campaign_id": "EXP-MULTILEVEL-EXCEPTION-MINING-001",
+        "candidate_id": "f02_server_scaled_frontier_x2p0_seed991261",
+        "confirmation_exception_label": "strong_exception_confirmed",
+        "confirmation_stage": "full_portfolio_confirmation_labels",
+        "environment_id": "srv_noctua_frontier_pilot_001",
+        "environment_target": "server_expanded",
+        "family": "F02",
+        "label_claim_status": "confirmation_evidence_pending_canon_mapping",
+        "relative_gap_meta_all_vs_multilevel": -0.032138442521631644,
+        "variant": "server_scaled_frontier_x2p0"
+      },
+      {
+        "best_meta_all_algo": "ts_rust",
+        "best_meta_all_cut": 783,
+        "best_meta_python_algo": "ts",
+        "best_meta_python_cut": 789,
+        "best_meta_rust_algo": "ts_rust",
+        "best_meta_rust_cut": 783,
+        "best_multilevel_algo": "metis",
+        "best_multilevel_cut": 809,
+        "budget_ms": 5000,
+        "campaign_id": "EXP-MULTILEVEL-EXCEPTION-MINING-001",
+        "candidate_id": "f02_server_scaled_frontier_x2p0_seed991261",
+        "confirmation_exception_label": "strong_exception_confirmed",
+        "confirmation_stage": "full_portfolio_confirmation_labels",
+        "environment_id": "srv_noctua_frontier_pilot_001",
+        "environment_target": "server_expanded",
+        "family": "F02",
+        "label_claim_status": "confirmation_evidence_pending_canon_mapping",
+        "relative_gap_meta_all_vs_multilevel": -0.032138442521631644,
+        "variant": "server_scaled_frontier_x2p0"
+      },
+      {
+        "best_meta_all_algo": "ts_rust",
+        "best_meta_all_cut": 269,
+        "best_meta_python_algo": "ts",
+        "best_meta_python_cut": 291,
+        "best_meta_rust_algo": "ts_rust",
+        "best_meta_rust_cut": 269,
+        "best_multilevel_algo": "metis",
+        "best_multilevel_cut": 294,
+        "budget_ms": 1000,
+        "campaign_id": "EXP-MULTILEVEL-EXCEPTION-MINING-001",
+        "candidate_id": "f04_common_a_frontier_x2p0_seed991011",
+        "confirmation_exception_label": "strong_exception_confirmed",
+        "confirmation_stage": "full_portfolio_confirmation_labels",
+        "environment_id": "srv_noctua_frontier_pilot_001",
+        "environment_target": "common",
+        "family": "F04",
+        "label_claim_status": "confirmation_evidence_pending_canon_mapping",
+        "relative_gap_meta_all_vs_multilevel": -0.08503401360544217,
+        "variant": "common_a_frontier_x2p0"
+      },
+      {
+        "best_meta_all_algo": "ts_rust",
+        "best_meta_all_cut": 269,
+        "best_meta_python_algo": "ts",
+        "best_meta_python_cut": 276,
+        "best_meta_rust_algo": "ts_rust",
+        "best_meta_rust_cut": 269,
+        "best_multilevel_algo": "metis",
+        "best_multilevel_cut": 294,
+        "budget_ms": 5000,
+        "campaign_id": "EXP-MULTILEVEL-EXCEPTION-MINING-001",
+        "candidate_id": "f04_common_a_frontier_x2p0_seed991011",
+        "confirmation_exception_label": "strong_exception_confirmed",
+        "confirmation_stage": "full_portfolio_confirmation_labels",
+        "environment_id": "srv_noctua_frontier_pilot_001",
+        "environment_target": "common",
+        "family": "F04",
+        "label_claim_status": "confirmation_evidence_pending_canon_mapping",
+        "relative_gap_meta_all_vs_multilevel": -0.08503401360544217,
+        "variant": "common_a_frontier_x2p0"
+      },
+      {
+        "best_meta_all_algo": "ts_rust",
+        "best_meta_all_cut": 557,
+        "best_meta_python_algo": "sa",
+        "best_meta_python_cut": 618,
+        "best_meta_rust_algo": "ts_rust",
+        "best_meta_rust_cut": 557,
+        "best_multilevel_algo": "metis",
+        "best_multilevel_cut": 574,
+        "budget_ms": 1000,
+        "campaign_id": "EXP-MULTILEVEL-EXCEPTION-MINING-001",
+        "candidate_id": "f04_common_a_frontier_x4p0_seed991012",
+        "confirmation_exception_label": "strong_exception_confirmed",
+        "confirmation_stage": "full_portfolio_confirmation_labels",
+        "environment_id": "srv_noctua_frontier_pilot_001",
+        "environment_target": "common",
+        "family": "F04",
+        "label_claim_status": "confirmation_evidence_pending_canon_mapping",
+        "relative_gap_meta_all_vs_multilevel": -0.029616724738675958,
+        "variant": "common_a_frontier_x4p0"
+      },
+      {
+        "best_meta_all_algo": "ts_rust",
+        "best_meta_all_cut": 551,
+        "best_meta_python_algo": "ts",
+        "best_meta_python_cut": 555,
+        "best_meta_rust_algo": "ts_rust",
+        "best_meta_rust_cut": 551,
+        "best_multilevel_algo": "metis",
+        "best_multilevel_cut": 574,
+        "budget_ms": 5000,
+        "campaign_id": "EXP-MULTILEVEL-EXCEPTION-MINING-001",
+        "candidate_id": "f04_common_a_frontier_x4p0_seed991012",
+        "confirmation_exception_label": "strong_exception_confirmed",
+        "confirmation_stage": "full_portfolio_confirmation_labels",
+        "environment_id": "srv_noctua_frontier_pilot_001",
+        "environment_target": "common",
+        "family": "F04",
+        "label_claim_status": "confirmation_evidence_pending_canon_mapping",
+        "relative_gap_meta_all_vs_multilevel": -0.04006968641114982,
+        "variant": "common_a_frontier_x4p0"
+      },
+      {
+        "best_meta_all_algo": "ts_rust",
+        "best_meta_all_cut": 277,
+        "best_meta_python_algo": "ts",
+        "best_meta_python_cut": 296,
+        "best_meta_rust_algo": "ts_rust",
+        "best_meta_rust_cut": 277,
+        "best_multilevel_algo": "metis",
+        "best_multilevel_cut": 296,
+        "budget_ms": 1000,
+        "campaign_id": "EXP-MULTILEVEL-EXCEPTION-MINING-001",
+        "candidate_id": "f04_common_b_frontier_x2p0_seed991021",
+        "confirmation_exception_label": "strong_exception_confirmed",
+        "confirmation_stage": "full_portfolio_confirmation_labels",
+        "environment_id": "srv_noctua_frontier_pilot_001",
+        "environment_target": "common",
+        "family": "F04",
+        "label_claim_status": "confirmation_evidence_pending_canon_mapping",
+        "relative_gap_meta_all_vs_multilevel": -0.06418918918918919,
+        "variant": "common_b_frontier_x2p0"
+      },
+      {
+        "best_meta_all_algo": "ts_rust",
+        "best_meta_all_cut": 277,
+        "best_meta_python_algo": "ts",
+        "best_meta_python_cut": 281,
+        "best_meta_rust_algo": "ts_rust",
+        "best_meta_rust_cut": 277,
+        "best_multilevel_algo": "metis",
+        "best_multilevel_cut": 296,
+        "budget_ms": 5000,
+        "campaign_id": "EXP-MULTILEVEL-EXCEPTION-MINING-001",
+        "candidate_id": "f04_common_b_frontier_x2p0_seed991021",
+        "confirmation_exception_label": "strong_exception_confirmed",
+        "confirmation_stage": "full_portfolio_confirmation_labels",
+        "environment_id": "srv_noctua_frontier_pilot_001",
+        "environment_target": "common",
+        "family": "F04",
+        "label_claim_status": "confirmation_evidence_pending_canon_mapping",
+        "relative_gap_meta_all_vs_multilevel": -0.06418918918918919,
+        "variant": "common_b_frontier_x2p0"
+      },
+      {
+        "best_meta_all_algo": "ts_rust",
+        "best_meta_all_cut": 554,
+        "best_meta_python_algo": "sa",
+        "best_meta_python_cut": 618,
+        "best_meta_rust_algo": "ts_rust",
+        "best_meta_rust_cut": 554,
+        "best_multilevel_algo": "metis",
+        "best_multilevel_cut": 575,
+        "budget_ms": 1000,
+        "campaign_id": "EXP-MULTILEVEL-EXCEPTION-MINING-001",
+        "candidate_id": "f04_common_b_frontier_x4p0_seed991022",
+        "confirmation_exception_label": "strong_exception_confirmed",
+        "confirmation_stage": "full_portfolio_confirmation_labels",
+        "environment_id": "srv_noctua_frontier_pilot_001",
+        "environment_target": "common",
+        "family": "F04",
+        "label_claim_status": "confirmation_evidence_pending_canon_mapping",
+        "relative_gap_meta_all_vs_multilevel": -0.036521739130434785,
+        "variant": "common_b_frontier_x4p0"
+      },
+      {
+        "best_meta_all_algo": "ts_rust",
+        "best_meta_all_cut": 548,
+        "best_meta_python_algo": "ts",
+        "best_meta_python_cut": 568,
+        "best_meta_rust_algo": "ts_rust",
+        "best_meta_rust_cut": 548,
+        "best_multilevel_algo": "metis",
+        "best_multilevel_cut": 575,
+        "budget_ms": 5000,
+        "campaign_id": "EXP-MULTILEVEL-EXCEPTION-MINING-001",
+        "candidate_id": "f04_common_b_frontier_x4p0_seed991022",
+        "confirmation_exception_label": "strong_exception_confirmed",
+        "confirmation_stage": "full_portfolio_confirmation_labels",
+        "environment_id": "srv_noctua_frontier_pilot_001",
+        "environment_target": "common",
+        "family": "F04",
+        "label_claim_status": "confirmation_evidence_pending_canon_mapping",
+        "relative_gap_meta_all_vs_multilevel": -0.04695652173913043,
+        "variant": "common_b_frontier_x4p0"
+      }
+    ]
+  },
+  "confirmation_output": "/home/brunno/MPP/audit_reports/multilevel_exception_mining/frontier_pilot/srv_noctua_frontier_pilot_001/confirmation_001",
+  "core_counts": {
+    "collapsed_rows": 800,
+    "confirmation_row_json_count": 4000,
+    "error_txt_count": 0,
+    "exit_status": "0",
+    "labels_rows": 80,
+    "per_instance_rows": 40,
+    "raw_rows": 4000,
+    "result_json_count": 4000,
+    "results_csv_rows": 4000,
+    "run_plan_rows": 4000
+  },
+  "exit_status": "0",
+  "oracle": {
+    "campaign_id": "EXP-MULTILEVEL-EXCEPTION-MINING-001",
+    "claim_boundary": "diagnostic_pending_canon_mapping",
+    "diagnostic": "sbs_vbs_oracle_gap",
+    "oracle_gap_by_algo": [
+      {
+        "algo": "grasp",
+        "available_slice_count": 24,
+        "campaign_id": "EXP-MULTILEVEL-EXCEPTION-MINING-001",
+        "diagnostic": "sbs_vbs_oracle_gap",
+        "mean_median_cut": 658.9583333333334,
+        "oracle_gap_vs_vbs": -0.09742553689340881,
+        "vbs_mean_median_cut": 730.0875
+      },
+      {
+        "algo": "grasp_rust",
+        "available_slice_count": 78,
+        "campaign_id": "EXP-MULTILEVEL-EXCEPTION-MINING-001",
+        "diagnostic": "sbs_vbs_oracle_gap",
+        "mean_median_cut": 1063.871794871795,
+        "oracle_gap_vs_vbs": 0.45718396065101097,
+        "vbs_mean_median_cut": 730.0875
+      },
+      {
+        "algo": "ils",
+        "available_slice_count": 76,
+        "campaign_id": "EXP-MULTILEVEL-EXCEPTION-MINING-001",
+        "diagnostic": "sbs_vbs_oracle_gap",
+        "mean_median_cut": 1085.671052631579,
+        "oracle_gap_vs_vbs": 0.48704237866225486,
+        "vbs_mean_median_cut": 730.0875
+      },
+      {
+        "algo": "ils_rust",
+        "available_slice_count": 80,
+        "campaign_id": "EXP-MULTILEVEL-EXCEPTION-MINING-001",
+        "diagnostic": "sbs_vbs_oracle_gap",
+        "mean_median_cut": 1090.9,
+        "oracle_gap_vs_vbs": 0.4942044617939632,
+        "vbs_mean_median_cut": 730.0875
+      },
+      {
+        "algo": "kahip",
+        "available_slice_count": 80,
+        "campaign_id": "EXP-MULTILEVEL-EXCEPTION-MINING-001",
+        "diagnostic": "sbs_vbs_oracle_gap",
+        "mean_median_cut": 785.625,
+        "oracle_gap_vs_vbs": 0.07606964918588528,
+        "vbs_mean_median_cut": 730.0875
+      },
+      {
+        "algo": "metis",
+        "available_slice_count": 80,
+        "campaign_id": "EXP-MULTILEVEL-EXCEPTION-MINING-001",
+        "diagnostic": "sbs_vbs_oracle_gap",
+        "mean_median_cut": 1198.875,
+        "oracle_gap_vs_vbs": 0.6420976937695825,
+        "vbs_mean_median_cut": 730.0875
+      },
+      {
+        "algo": "sa",
+        "available_slice_count": 80,
+        "campaign_id": "EXP-MULTILEVEL-EXCEPTION-MINING-001",
+        "diagnostic": "sbs_vbs_oracle_gap",
+        "mean_median_cut": 1381.375,
+        "oracle_gap_vs_vbs": 0.8920677316075128,
+        "vbs_mean_median_cut": 730.0875
+      },
+      {
+        "algo": "sa_rust",
+        "available_slice_count": 80,
+        "campaign_id": "EXP-MULTILEVEL-EXCEPTION-MINING-001",
+        "diagnostic": "sbs_vbs_oracle_gap",
+        "mean_median_cut": 1396.6,
+        "oracle_gap_vs_vbs": 0.9129213964079648,
+        "vbs_mean_median_cut": 730.0875
+      },
+      {
+        "algo": "ts",
+        "available_slice_count": 63,
+        "campaign_id": "EXP-MULTILEVEL-EXCEPTION-MINING-001",
+        "diagnostic": "sbs_vbs_oracle_gap",
+        "mean_median_cut": 821.3809523809524,
+        "oracle_gap_vs_vbs": 0.12504453559464096,
+        "vbs_mean_median_cut": 730.0875
+      },
+      {
+        "algo": "ts_rust",
+        "available_slice_count": 80,
+        "campaign_id": "EXP-MULTILEVEL-EXCEPTION-MINING-001",
+        "diagnostic": "sbs_vbs_oracle_gap",
+        "mean_median_cut": 777.8625,
+        "oracle_gap_vs_vbs": 0.065437361960039,
+        "vbs_mean_median_cut": 730.0875
+      }
+    ],
+    "sbs_algo": "grasp",
+    "sbs_mean_median_cut": 658.9583333333334,
+    "slice_count": 80,
+    "vbs_mean_median_cut": 730.0875
+  },
+  "pipeline_valid": true,
+  "raw_results": {
+    "algo_counts": {
+      "grasp": 400,
+      "grasp_rust": 400,
+      "ils": 400,
+      "ils_rust": 400,
+      "kahip": 400,
+      "metis": 400,
+      "sa": 400,
+      "sa_rust": 400,
+      "ts": 400,
+      "ts_rust": 400
+    },
+    "budget_counts": {
+      "1000": 2000,
+      "5000": 2000
+    },
+    "median_elapsed_ms_by_algo": {
+      "grasp": 1216.5,
+      "grasp_rust": 254.5,
+      "ils": 542.5,
+      "ils_rust": 61.0,
+      "kahip": 38.0,
+      "metis": 14.0,
+      "sa": 201.0,
+      "sa_rust": 60.0,
+      "ts": 2498.0,
+      "ts_rust": 766.5
+    },
+    "median_elapsed_ms_by_budget": {
+      "1000": 205.0,
+      "5000": 204.0
+    },
+    "seed_counts": {
+      "42": 800,
+      "43": 800,
+      "44": 800,
+      "45": 800,
+      "46": 800
+    },
+    "status_by_algo": {
+      "grasp": {
+        "ok": 100,
+        "timeout": 300
+      },
+      "grasp_rust": {
+        "ok": 389,
+        "timeout": 11
+      },
+      "ils": {
+        "ok": 361,
+        "timeout": 39
+      },
+      "ils_rust": {
+        "ok": 400
+      },
+      "kahip": {
+        "ok": 400
+      },
+      "metis": {
+        "ok": 400
+      },
+      "sa": {
+        "ok": 400
+      },
+      "sa_rust": {
+        "ok": 400
+      },
+      "ts": {
+        "ok": 5,
+        "timeout": 395
+      },
+      "ts_rust": {
+        "ok": 315,
+        "timeout": 85
+      }
+    },
+    "status_by_budget": {
+      "1000": {
+        "ok": 1465,
+        "timeout": 535
+      },
+      "5000": {
+        "ok": 1705,
+        "timeout": 295
+      }
+    },
+    "status_by_family": {
+      "F01": {
+        "ok": 230,
+        "timeout": 70
+      },
+      "F02": {
+        "ok": 245,
+        "timeout": 55
+      },
+      "F04": {
+        "ok": 1102,
+        "timeout": 298
+      },
+      "F05": {
+        "ok": 474,
+        "timeout": 126
+      },
+      "F06": {
+        "ok": 175,
+        "timeout": 25
+      },
+      "F07": {
+        "ok": 699,
+        "timeout": 201
+      },
+      "F08": {
+        "ok": 245,
+        "timeout": 55
+      }
+    },
+    "status_by_seed": {
+      "42": {
+        "ok": 635,
+        "timeout": 165
+      },
+      "43": {
+        "ok": 635,
+        "timeout": 165
+      },
+      "44": {
+        "ok": 634,
+        "timeout": 166
+      },
+      "45": {
+        "ok": 633,
+        "timeout": 167
+      },
+      "46": {
+        "ok": 633,
+        "timeout": 167
+      }
+    },
+    "status_counts": {
+      "ok": 3170,
+      "timeout": 830
+    },
+    "timeout_counts": {
+      "False": 3170,
+      "True": 830
+    },
+    "timeout_pressure": [
+      {
+        "algo": "ts",
+        "ok": 5,
+        "timeout": 395,
+        "timeout_rate": 0.9875,
+        "total": 400
+      },
+      {
+        "algo": "grasp",
+        "ok": 100,
+        "timeout": 300,
+        "timeout_rate": 0.75,
+        "total": 400
+      },
+      {
+        "algo": "ts_rust",
+        "ok": 315,
+        "timeout": 85,
+        "timeout_rate": 0.2125,
+        "total": 400
+      },
+      {
+        "algo": "ils",
+        "ok": 361,
+        "timeout": 39,
+        "timeout_rate": 0.0975,
+        "total": 400
+      },
+      {
+        "algo": "grasp_rust",
+        "ok": 389,
+        "timeout": 11,
+        "timeout_rate": 0.0275,
+        "total": 400
+      },
+      {
+        "algo": "ils_rust",
+        "ok": 400,
+        "timeout": 0,
+        "timeout_rate": 0.0,
+        "total": 400
+      },
+      {
+        "algo": "kahip",
+        "ok": 400,
+        "timeout": 0,
+        "timeout_rate": 0.0,
+        "total": 400
+      },
+      {
+        "algo": "metis",
+        "ok": 400,
+        "timeout": 0,
+        "timeout_rate": 0.0,
+        "total": 400
+      },
+      {
+        "algo": "sa",
+        "ok": 400,
+        "timeout": 0,
+        "timeout_rate": 0.0,
+        "total": 400
+      },
+      {
+        "algo": "sa_rust",
+        "ok": 400,
+        "timeout": 0,
+        "timeout_rate": 0.0,
+        "total": 400
+      }
+    ],
+    "valid_counts": {
+      "True": 4000
+    }
+  },
+  "service_dir": "/home/brunno/MPP/audit_reports/multilevel_exception_mining/frontier_pilot/srv_noctua_frontier_pilot_001/confirmation_001_service_757",
+  "summary_core": {
+    "algorithm_count": 10,
+    "budget_count": 2,
+    "candidate_count": 40,
+    "claim_boundary": "Confirmation outputs are evidence-bearing only for this explicit environment slice after validation. Monograph claims remain pending until canon mapping.",
+    "collapsed_row_count": 800,
+    "confirmation_label_counts": {
+      "competitive_confirmed": 5,
+      "near_tie_confirmed": 3,
+      "non_exception_confirmed": 10,
+      "strong_exception_confirmed": 62
+    },
+    "invalid_result_count": 0,
+    "label_row_count": 80,
+    "planned_run_count": 4000,
+    "raw_result_count": 4000,
+    "raw_status_counts": {
+      "ok": 3170,
+      "timeout": 830
+    },
+    "seed_count": 5,
+    "valid_result_count": 4000
+  },
+  "validation_errors": [],
+  "validation_report": {
+    "campaign_id": "EXP-MULTILEVEL-EXCEPTION-MINING-001",
+    "claim_boundary": "validation_report_required_before_evidence_use",
+    "confirmation_stage": "full_portfolio_confirmation_validation",
+    "invalid_result_count": 0,
+    "invalid_rows": [],
+    "missing_artifact_count": 0,
+    "missing_artifacts": [],
+    "planned_run_count": 4000,
+    "raw_result_count": 4000,
+    "schema_error_count_total": 0,
+    "valid_result_count": 4000
+  }
+}

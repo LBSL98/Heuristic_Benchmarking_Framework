@@ -441,3 +441,32 @@ This file is the canonical ledger for experiments, runs, outputs, and traceable 
 - **Validation gate:** `712_validate_srv_noctua_completed_campaign.txt` reported `GATE_RESULT=PASS`.
 - **Issue record:** GitHub Issue #102 received the validated-evidence comment and remains open for canonical mapping and downstream claim decisions.
 - **Claim boundary:** Validated evidence for `srv_noctua_linux_8gb` only. This entry does not authorize final monograph prose, hardware-independent timing generalization, or pooled cross-environment conclusions.
+
+<!-- HBF-FRONTIER-CONFIRMATION-001:EXPERIMENT_LEDGER:START -->
+## Frontier confirmation evidence slice: srv_noctua_frontier_pilot_001
+
+This block records a validated exception-mining confirmation slice. It is evidence-bearing only for the explicit environment slice `srv_noctua_frontier_pilot_001`; it is not, by itself, the final benchmark campaign and does not finalize monograph-level claims.
+
+Source chain: `screening_short_001` → selection plan `750` → schema-compatible confirmation plan `756` → `confirmation_001` → validation report `758` → evidence map `759`.
+
+Execution ledger entry:
+
+- Environment slice: `srv_noctua_frontier_pilot_001`.
+- Screening artifact: `audit_reports/multilevel_exception_mining/frontier_pilot/srv_noctua_frontier_pilot_001/screening_short_001`.
+- Selection plan: `750_frontier_confirmation_selection_plan.*`.
+- Schema-compatible confirmation plan: `756_frontier_confirmation_run_plan_runner_schema.csv`.
+- Confirmation output: `confirmation_001`.
+- Validation report: `758_frontier_confirmation_validation_report.*`.
+- Evidence map: `759_frontier_confirmation_evidence_map.*`.
+- Service start log: `757_restart_frontier_confirmation_service_with_plan756.txt`.
+
+Validated execution counts:
+
+- Planned/raw/valid results: `4000` / `4000` / `4000`.
+- Invalid results: `0`.
+- Solver result artifacts: `4000` `result.json` files.
+- Confirmation row artifacts: `4000` `confirmation_row.json` files.
+- Error artifacts: `0` `error.txt` files.
+- Raw status counts: `{"ok": 3170, "timeout": 830}`.
+- Confirmation labels: `{"competitive_confirmed": 5, "near_tie_confirmed": 3, "non_exception_confirmed": 10, "strong_exception_confirmed": 62}`.
+<!-- HBF-FRONTIER-CONFIRMATION-001:EXPERIMENT_LEDGER:END -->

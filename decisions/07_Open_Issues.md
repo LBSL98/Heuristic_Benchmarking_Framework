@@ -285,3 +285,22 @@ This file tracks unresolved project problems that can still affect coherence, co
 - **Evidence bundle:** `audit_reports/multilevel_exception_mining/confirmation/srv_noctua_linux_dedicated_evidence_bundle_001`.
 - **Open work:** Decide which environment-specific results enter the monograph, update result tables/figures if needed, preserve the single-environment boundary, and define the next execution gate for Windows 11 Docker portability or cross-environment sensitivity.
 - **Blocked claims:** Do not claim cross-environment robustness, Windows portability, hardware-independent timing, or final selector validity from this server-only evidence.
+
+<!-- HBF-FRONTIER-CONFIRMATION-001:OPEN_ISSUES:START -->
+## Frontier confirmation evidence slice: srv_noctua_frontier_pilot_001
+
+This block records a validated exception-mining confirmation slice. It is evidence-bearing only for the explicit environment slice `srv_noctua_frontier_pilot_001`; it is not, by itself, the final benchmark campaign and does not finalize monograph-level claims.
+
+Source chain: `screening_short_001` → selection plan `750` → schema-compatible confirmation plan `756` → `confirmation_001` → validation report `758` → evidence map `759`.
+
+Issue status update:
+
+- Operationally resolved: frontier confirmation was executed and validated for `srv_noctua_frontier_pilot_001`.
+- Still open analytically: decide how this evidence affects final benchmark scope, result narrative and CART/instance-selection discussion.
+- Still open methodologically: decide whether additional confirmation or a broader final campaign is necessary before the monograph text uses these results as central evidence.
+
+Observed transitions requiring interpretation:
+
+- Transition classes: `{"downgraded_in_confirmation": 4, "negative_control_changed": 4, "same_tier": 1, "stable_negative_control": 9, "stable_strong": 62}`.
+- Preliminary-to-confirmed matrix: `{"competitive_candidate": {"competitive_confirmed": 1}, "non_exception": {"competitive_confirmed": 4, "non_exception_confirmed": 9}, "strong_exception_candidate": {"near_tie_confirmed": 3, "non_exception_confirmed": 1, "strong_exception_confirmed": 62}}`.
+<!-- HBF-FRONTIER-CONFIRMATION-001:OPEN_ISSUES:END -->
