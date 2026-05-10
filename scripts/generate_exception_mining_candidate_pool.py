@@ -78,6 +78,211 @@ FRONTIER_NEGATIVE_CONTROL_PARENT_IDS: tuple[str, ...] = (
 )
 FRONTIER_SCALE_FACTORS: tuple[float, ...] = (2.0, 4.0)
 
+FRONTIER_EXPANSION_002_PROFILE = "frontier_expansion_002"
+
+FRONTIER_EXPANSION_002_PARENT_SPECS: tuple[tuple[str, tuple[str, ...], str], ...] = (
+    (
+        "f01_common_scaled_frontier_x4p0_seed991152",
+        ("scale_up_next",),
+        "supporting_strong_diversity_anchor",
+    ),
+    (
+        "f01_server_scaled_frontier_x2p0_seed991161",
+        ("scale_up_next",),
+        "supporting_strong_diversity_anchor",
+    ),
+    (
+        "f01_server_scaled_frontier_x4p0_seed991162",
+        ("budget_boundary_variant_if_supported", "scale_up_next"),
+        "budget_sensitivity_probe",
+    ),
+    (
+        "f02_common_b_frontier_x2p0_seed991241",
+        ("scale_up_next",),
+        "supporting_strong_diversity_anchor",
+    ),
+    (
+        "f02_common_scaled_frontier_x4p0_seed991252",
+        ("scale_up_next",),
+        "supporting_strong_diversity_anchor",
+    ),
+    (
+        "f02_server_scaled_frontier_x2p0_seed991261",
+        ("scale_up_next",),
+        "supporting_strong_diversity_anchor",
+    ),
+    (
+        "f04_common_a_frontier_x2p0_seed991011",
+        ("scale_up_next", "scale_up_high", "morphology_neighbor_if_supported"),
+        "primary_expansion_anchor",
+    ),
+    (
+        "f04_common_a_frontier_x4p0_seed991012",
+        ("scale_up_next", "scale_up_high", "morphology_neighbor_if_supported"),
+        "primary_expansion_anchor",
+    ),
+    (
+        "f04_common_b_frontier_x2p0_seed991021",
+        ("scale_up_next", "scale_up_high", "morphology_neighbor_if_supported"),
+        "primary_expansion_anchor",
+    ),
+    (
+        "f04_common_b_frontier_x4p0_seed991022",
+        ("scale_up_next", "scale_up_high", "morphology_neighbor_if_supported"),
+        "primary_expansion_anchor",
+    ),
+    (
+        "f04_common_c_frontier_x2p0_seed991031",
+        ("scale_up_next", "scale_up_high", "morphology_neighbor_if_supported"),
+        "primary_expansion_anchor",
+    ),
+    (
+        "f04_common_c_frontier_x4p0_seed991032",
+        ("scale_up_next", "scale_up_high", "morphology_neighbor_if_supported"),
+        "primary_expansion_anchor",
+    ),
+    (
+        "f04_common_scaled_frontier_x2p0_seed991041",
+        ("scale_up_next", "scale_up_high", "morphology_neighbor_if_supported"),
+        "primary_expansion_anchor",
+    ),
+    (
+        "f04_common_scaled_frontier_x4p0_seed991042",
+        ("scale_up_next", "scale_up_high", "morphology_neighbor_if_supported"),
+        "primary_expansion_anchor",
+    ),
+    (
+        "f04_server_a_frontier_x2p0_seed991051",
+        ("scale_up_next", "scale_up_high", "morphology_neighbor_if_supported"),
+        "primary_expansion_anchor",
+    ),
+    (
+        "f04_server_a_frontier_x4p0_seed991052",
+        ("scale_up_next", "scale_up_high", "morphology_neighbor_if_supported"),
+        "primary_expansion_anchor",
+    ),
+    (
+        "f04_server_b_frontier_x2p0_seed991061",
+        ("scale_up_next", "scale_up_high", "morphology_neighbor_if_supported"),
+        "primary_expansion_anchor",
+    ),
+    (
+        "f04_server_b_frontier_x4p0_seed991062",
+        ("scale_up_next", "scale_up_high", "morphology_neighbor_if_supported"),
+        "primary_expansion_anchor",
+    ),
+    (
+        "f04_server_scaled_frontier_x2p0_seed991071",
+        ("scale_up_next", "scale_up_high", "morphology_neighbor_if_supported"),
+        "primary_expansion_anchor",
+    ),
+    (
+        "f04_server_scaled_frontier_x4p0_seed991072",
+        ("scale_up_next", "scale_up_high", "morphology_neighbor_if_supported"),
+        "primary_expansion_anchor",
+    ),
+    (
+        "f05_common_b_frontier_x2p0_seed991171",
+        ("scale_up_next", "control_neighbor_if_supported"),
+        "negative_control_anchor",
+    ),
+    (
+        "f05_common_b_frontier_x4p0_seed991172",
+        ("scale_up_next", "control_neighbor_if_supported"),
+        "negative_control_anchor",
+    ),
+    (
+        "f05_common_scaled_frontier_x2p0_seed991181",
+        ("near_boundary_variant_if_supported", "scale_up_next"),
+        "decision_boundary_probe",
+    ),
+    (
+        "f05_common_scaled_frontier_x4p0_seed991182",
+        ("scale_up_next", "control_neighbor_if_supported"),
+        "negative_control_anchor",
+    ),
+    (
+        "f05_server_scaled_frontier_x2p0_seed991191",
+        ("scale_up_next", "control_neighbor_if_supported"),
+        "negative_control_anchor",
+    ),
+    (
+        "f05_server_scaled_frontier_x4p0_seed991192",
+        ("scale_up_next", "control_neighbor_if_supported"),
+        "negative_control_anchor",
+    ),
+    (
+        "f06_server_scaled_frontier_x2p0_seed991201",
+        ("scale_up_next",),
+        "supporting_strong_diversity_anchor",
+    ),
+    (
+        "f06_server_scaled_frontier_x4p0_seed991202",
+        ("scale_up_next",),
+        "supporting_strong_diversity_anchor",
+    ),
+    (
+        "f07_common_a_frontier_x2p0_seed991081",
+        ("scale_up_next", "budget_boundary_variant_if_supported"),
+        "primary_expansion_anchor",
+    ),
+    (
+        "f07_common_a_frontier_x4p0_seed991082",
+        ("scale_up_next", "budget_boundary_variant_if_supported"),
+        "primary_expansion_anchor",
+    ),
+    (
+        "f07_common_b_frontier_x2p0_seed991091",
+        ("scale_up_next", "budget_boundary_variant_if_supported"),
+        "primary_expansion_anchor",
+    ),
+    (
+        "f07_common_b_frontier_x4p0_seed991092",
+        ("near_boundary_variant_if_supported", "scale_up_next"),
+        "decision_boundary_probe",
+    ),
+    (
+        "f07_common_c_frontier_x2p0_seed991101",
+        ("scale_up_next", "budget_boundary_variant_if_supported"),
+        "primary_expansion_anchor",
+    ),
+    (
+        "f07_server_a_frontier_x2p0_seed991121",
+        ("scale_up_next", "budget_boundary_variant_if_supported"),
+        "primary_expansion_anchor",
+    ),
+    (
+        "f07_server_a_frontier_x4p0_seed991122",
+        ("scale_up_next", "budget_boundary_variant_if_supported"),
+        "primary_expansion_anchor",
+    ),
+    (
+        "f07_server_b_frontier_x2p0_seed991131",
+        ("scale_up_next", "budget_boundary_variant_if_supported"),
+        "primary_expansion_anchor",
+    ),
+    (
+        "f07_server_scaled_frontier_x4p0_seed991142",
+        ("budget_boundary_variant_if_supported", "scale_up_next"),
+        "budget_sensitivity_probe",
+    ),
+    (
+        "f08_common_b_frontier_x4p0_seed991212",
+        ("near_boundary_variant_if_supported", "scale_up_next"),
+        "decision_boundary_probe",
+    ),
+    (
+        "f08_server_b_frontier_x2p0_seed991221",
+        ("scale_up_next",),
+        "supporting_strong_diversity_anchor",
+    ),
+    (
+        "f08_server_scaled_frontier_x2p0_seed991231",
+        ("scale_up_next",),
+        "supporting_strong_diversity_anchor",
+    ),
+)
+
 
 def build_parser() -> argparse.ArgumentParser:
     """Build the CLI parser."""
@@ -98,7 +303,7 @@ def build_parser() -> argparse.ArgumentParser:
     )
     parser.add_argument(
         "--profile",
-        choices=["issue99", "smoke", FRONTIER_PROFILE],
+        choices=["issue99", "smoke", FRONTIER_PROFILE, FRONTIER_EXPANSION_002_PROFILE],
         default="issue99",
         help="Candidate plan profile.",
     )
@@ -316,11 +521,109 @@ def build_frontier_candidate_plan() -> list[CandidateSpec]:
     return plan
 
 
+def _frontier_expansion_002_base_variant_and_scale(parent_variant: str) -> tuple[str, float]:
+    """Return the original base variant and cumulative frontier scale.
+
+    Expansion 002 uses confirmed frontier candidates as parents. Their variants
+    already contain a suffix such as ``_frontier_x2p0``. The new expansion keeps
+    scale cumulative relative to the original candidate variant instead of
+    treating the frontier suffix as a native generator variant.
+    """
+
+    marker = "_frontier_x"
+    if marker not in parent_variant:
+        return parent_variant, 1.0
+
+    base_variant, scale_token = parent_variant.rsplit(marker, 1)
+    try:
+        return base_variant, float(scale_token.replace("p", "."))
+    except ValueError:
+        return base_variant, 1.0
+
+
+def _frontier_expansion_002_mode_multiplier(mode: str) -> float:
+    """Return the cumulative scale multiplier for an expansion mode."""
+
+    if mode == "scale_up_next":
+        return 1.5
+    if mode == "scale_up_high":
+        return 2.0
+    return 1.0
+
+
+def _frontier_expansion_002_scale_label(scale_factor: float) -> str:
+    """Encode a scale factor in candidate-id form."""
+
+    return str(round(scale_factor, 2)).replace(".", "p")
+
+
+def _frontier_expansion_002_pool_role(expansion_role: str) -> str:
+    """Map evidence-map expansion roles to manifest pool roles."""
+
+    if expansion_role == "negative_control_anchor":
+        return "frontier_expansion_negative_control"
+    if expansion_role == "budget_sensitivity_probe":
+        return "frontier_expansion_budget_probe"
+    if expansion_role == "decision_boundary_probe":
+        return "frontier_expansion_boundary_candidate"
+    return "frontier_expansion_candidate"
+
+
+def build_frontier_expansion_002_candidate_plan() -> list[CandidateSpec]:
+    """Build the deterministic second frontier expansion candidate plan."""
+
+    plan: list[CandidateSpec] = []
+
+    for parent_index, (
+        source_parent_candidate_id,
+        expansion_modes,
+        expansion_role,
+    ) in enumerate(FRONTIER_EXPANSION_002_PARENT_SPECS, start=1):
+        family = _family_from_candidate_id(source_parent_candidate_id)
+        parent_variant = _variant_from_candidate_id(source_parent_candidate_id)
+        base_variant, parent_scale = _frontier_expansion_002_base_variant_and_scale(parent_variant)
+        environment_target = _environment_target_from_variant(base_variant)
+
+        for mode_index, mode in enumerate(expansion_modes, start=1):
+            multiplier = _frontier_expansion_002_mode_multiplier(mode)
+            scale_factor = round(parent_scale * multiplier, 2)
+            scale_label = _frontier_expansion_002_scale_label(scale_factor)
+            seed = 992000 + parent_index * 10 + mode_index
+            variant = f"{base_variant}_frontier_exp002_{mode}_{scale_label}"
+            candidate_id = f"{family.lower()}_{variant}_seed{seed}"
+
+            plan.append(
+                CandidateSpec(
+                    candidate_id=candidate_id,
+                    family=family,
+                    seed=seed,
+                    params=frontier_scaled_parameters(family, base_variant, scale_factor),
+                    environment_target=environment_target,
+                    pool_role=_frontier_expansion_002_pool_role(expansion_role),
+                    lifecycle_state="generated",
+                    variant=variant,
+                    intended_hypothesis=(
+                        f"frontier expansion 002 successor of "
+                        f"{source_parent_candidate_id}; "
+                        f"{family_hypothesis(family, environment_target)}"
+                    ),
+                    source_parent_candidate_id=source_parent_candidate_id,
+                    scale_factor=scale_factor,
+                    frontier_profile=FRONTIER_EXPANSION_002_PROFILE,
+                )
+            )
+
+    return plan
+
+
 def build_candidate_plan(profile: str) -> list[CandidateSpec]:
     """Build the deterministic candidate generation plan."""
 
     if profile == FRONTIER_PROFILE:
         return build_frontier_candidate_plan()
+
+    if profile == FRONTIER_EXPANSION_002_PROFILE:
+        return build_frontier_expansion_002_candidate_plan()
 
     if profile == "smoke":
         families: tuple[str, ...] = ("F01", "F02")

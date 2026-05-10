@@ -191,3 +191,49 @@ def test_srv_noctua_frontier_pilot_profile_scales_size_without_density_increase(
                     )
                 ):
                     assert merged[key] <= value
+
+
+def test_frontier_expansion_002_candidate_plan_contract() -> None:
+    """Expansion 002 is a deterministic profile derived from confirmed frontier evidence."""
+
+    import importlib.util
+    import sys
+    from collections import Counter
+    from pathlib import Path
+
+    script = Path("scripts/generate_exception_mining_candidate_pool.py")
+    spec = importlib.util.spec_from_file_location(
+        "generate_exception_mining_candidate_pool_exp002_contract", script
+    )
+    assert spec is not None
+    assert spec.loader is not None
+
+    module = importlib.util.module_from_spec(spec)
+    sys.modules[spec.name] = module
+    spec.loader.exec_module(module)
+
+    plan = module.build_candidate_plan(module.FRONTIER_EXPANSION_002_PROFILE)
+
+    assert len(plan) == 85
+    assert len({candidate.candidate_id for candidate in plan}) == 85
+    assert {candidate.frontier_profile for candidate in plan} == {
+        module.FRONTIER_EXPANSION_002_PROFILE
+    }
+    assert dict(sorted(Counter(candidate.family for candidate in plan).items())) == {
+        "F01": 4,
+        "F02": 3,
+        "F04": 42,
+        "F05": 12,
+        "F06": 2,
+        "F07": 18,
+        "F08": 4,
+    }
+    assert all(candidate.source_parent_candidate_id for candidate in plan)
+    assert all("_frontier_x" in candidate.source_parent_candidate_id for candidate in plan)
+    assert max(candidate.scale_factor or 0.0 for candidate in plan) > 4.0
+
+    parser = module.build_parser()
+    profile_action = next(
+        action for action in parser._actions if "--profile" in action.option_strings
+    )
+    assert module.FRONTIER_EXPANSION_002_PROFILE in profile_action.choices
