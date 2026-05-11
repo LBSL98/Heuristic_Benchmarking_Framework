@@ -470,3 +470,27 @@ Validated execution counts:
 - Raw status counts: `{"ok": 3170, "timeout": 830}`.
 - Confirmation labels: `{"competitive_confirmed": 5, "near_tie_confirmed": 3, "non_exception_confirmed": 10, "strong_exception_confirmed": 62}`.
 <!-- HBF-FRONTIER-CONFIRMATION-001:EXPERIMENT_LEDGER:END -->
+
+## Frontier expansion 002 confirmation slice — WSL local (2026-05-11)
+
+Evidence source: `audit_reports/multilevel_exception_mining/frontier_expansion_002/791_frontier_expansion_002_confirmation_evidence_map.md`.
+
+This slice confirms the second frontier expansion generated from the official `frontier_expansion_002` profile. It is evidence-bearing only for the explicit execution slice `wsl_local_frontier_expansion_002`; environment pooling remains forbidden.
+
+Validated execution:
+
+- screening: `85` candidates, `1700` planned runs, `1700` valid results, `0` invalid results;
+- confirmation: `40` candidates, `4000` planned runs, `4000` valid results, `0` invalid results;
+- confirmation raw statuses: `{'ok': 3452, 'timeout': 548}`;
+- confirmation label counts: `{'competitive_confirmed': 1, 'near_tie_confirmed': 12, 'non_exception_confirmed': 25, 'strong_exception_confirmed': 42}`;
+- candidate-level status counts: `{'confirmed_budget_sensitive_strong_exception': 4, 'confirmed_competitive_or_mixed': 1, 'confirmed_near_tie_or_mixed': 4, 'confirmed_stable_non_exception_control': 12, 'confirmed_stable_strong_exception': 19}`;
+- family-level status counts: `{'F01': {'confirmed_stable_strong_exception': 2}, 'F02': {'confirmed_stable_non_exception_control': 2}, 'F04': {'confirmed_budget_sensitive_strong_exception': 4, 'confirmed_stable_strong_exception': 16}, 'F05': {'confirmed_competitive_or_mixed': 1, 'confirmed_stable_non_exception_control': 10}, 'F07': {'confirmed_near_tie_or_mixed': 4, 'confirmed_stable_strong_exception': 1}}`.
+
+Interpretive boundary:
+
+- F04 remains the strongest confirmed exception family in this slice: 16 stable strong candidates and 4 budget-sensitive strong candidates.
+- F05 remains primarily a control/non-exception family in this selected confirmation set, with 10 stable non-exception controls and 1 competitive/mixed case.
+- F07 contributes boundary evidence, with 4 near-tie/mixed cases and 1 stable strong case.
+- F01 shifted from near-tie screening hypotheses to 2 stable strong confirmations in this selected subset.
+- F02 acted as stable non-exception control in the selected confirmation subset.
+- These results may guide subsequent CART/readiness work and monograph discussion only after explicit canonical mapping; they do not by themselves finalize final monograph claims.
