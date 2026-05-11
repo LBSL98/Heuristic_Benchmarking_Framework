@@ -304,3 +304,15 @@ Observed transitions requiring interpretation:
 - Transition classes: `{"downgraded_in_confirmation": 4, "negative_control_changed": 4, "same_tier": 1, "stable_negative_control": 9, "stable_strong": 62}`.
 - Preliminary-to-confirmed matrix: `{"competitive_candidate": {"competitive_confirmed": 1}, "non_exception": {"competitive_confirmed": 4, "non_exception_confirmed": 9}, "strong_exception_candidate": {"near_tie_confirmed": 3, "non_exception_confirmed": 1, "strong_exception_confirmed": 62}}`.
 <!-- HBF-FRONTIER-CONFIRMATION-001:OPEN_ISSUES:END -->
+
+## Frontier expansion 002 post-confirmation open issue (2026-05-11)
+
+The `frontier_expansion_002` confirmation slice is validated and mapped as evidence, but final use in the monograph remains open until the broader synthesis decides how to combine it with the earlier srv-noctua frontier evidence and any later CART-preparation dataset.
+
+Validated source slice: `wsl_local_frontier_expansion_002`, with `4000` planned confirmation runs, `4000` valid results and `0` invalid results. This remains a bounded evidence slice, not a final monograph claim.
+
+Required before final claim use:
+
+- decide whether this WSL slice is reported as a separate environment slice or only as internal evidence for selecting subsequent experiments;
+- decide whether additional confirmation is needed on `srv-noctua` or the notebook 16 GB before CART training claims;
+- preserve the claim boundary that environment pooling is forbidden unless explicitly justified.

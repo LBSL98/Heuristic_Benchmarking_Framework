@@ -123,3 +123,20 @@ Interpretive boundary:
 - These results support the value of exception mining and instance-level selection as an analytical layer.
 - They should not be phrased as final superiority claims for the monograph until explicitly mapped into the final benchmark design and result narrative.
 <!-- HBF-FRONTIER-CONFIRMATION-001:RESULTS_MAP:END -->
+
+## Frontier expansion 002 result-to-text map — WSL local (2026-05-11)
+
+Evidence source: `audit_reports/multilevel_exception_mining/frontier_expansion_002/791_frontier_expansion_002_confirmation_evidence_map.md`.
+
+Text-safe claims:
+
+- Under the explicit `wsl_local_frontier_expansion_002` slice, the confirmation campaign executed `4000` planned runs with `4000` valid results and `0` invalid results.
+- The selected confirmation set produced `42` strong-exception labels, `12` near-tie labels, `1` competitive labels and `25` non-exception labels.
+- Candidate-level interpretation: `{'confirmed_budget_sensitive_strong_exception': 4, 'confirmed_competitive_or_mixed': 1, 'confirmed_near_tie_or_mixed': 4, 'confirmed_stable_non_exception_control': 12, 'confirmed_stable_strong_exception': 19}`.
+- Family-level interpretation: `{'F01': {'confirmed_stable_strong_exception': 2}, 'F02': {'confirmed_stable_non_exception_control': 2}, 'F04': {'confirmed_budget_sensitive_strong_exception': 4, 'confirmed_stable_strong_exception': 16}, 'F05': {'confirmed_competitive_or_mixed': 1, 'confirmed_stable_non_exception_control': 10}, 'F07': {'confirmed_near_tie_or_mixed': 4, 'confirmed_stable_strong_exception': 1}}.
+
+Text-forbidden claims:
+
+- Do not use environment pooling: do not pool this evidence with other environments as if hardware/runtime were homogeneous.
+- Do not claim final solver superiority, final CART readiness, or final monograph conclusions from this slice alone.
+- Do not describe screening labels as evidence-bearing; screening remains exploratory and confirmation-only hypotheses.

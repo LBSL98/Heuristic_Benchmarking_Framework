@@ -107,3 +107,14 @@ Committee-facing interpretation:
 - The negative controls are informative: `5` candidates remained stable non-exception controls, while `2` negative-control candidates became competitive or mixed.
 - This supports a clearer argument for selection-by-instance and explanatory modeling, but the monograph should keep the distinction between exploratory evidence, confirmed slice evidence and final benchmark evidence.
 <!-- HBF-FRONTIER-CONFIRMATION-001:COMMITTEE_ISSUES:END -->
+
+## Frontier expansion 002 — committee-facing evidence note (2026-05-11)
+
+The second frontier expansion produced a validated confirmation slice with `4000` planned runs, `4000` valid results and `0` invalid results in `wsl_local_frontier_expansion_002`.
+
+Committee-safe framing:
+
+- The result strengthens the methodological claim that the benchmark can discover and then confirm exception regimes under a controlled protocol.
+- The result does not finalize cross-environment claims; environment pooling remains forbidden unless explicitly justified.
+- The result supports a clearer discussion of why confirmation is necessary after screening: several candidates changed status between screening hypotheses and confirmation labels.
+- The evidence remains bounded to the explicit environment slice until mapped into the broader experimental synthesis.
