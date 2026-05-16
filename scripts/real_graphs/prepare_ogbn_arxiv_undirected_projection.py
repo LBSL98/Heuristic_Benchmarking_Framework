@@ -19,12 +19,17 @@ import json
 import os
 import platform
 import socket
+import time
 import zipfile
-from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
 FIXED_ZIP_TIMESTAMP = (1980, 1, 1, 0, 0, 0)
+
+
+def utc_now_iso() -> str:
+    """Return a Python 3.10-compatible UTC timestamp."""
+    return time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
 
 
 def sha256_file(path: Path) -> str:
@@ -302,7 +307,7 @@ def main() -> int:
 
     metadata = {
         "dataset_id": "ogbn_arxiv_undirected_projection",
-        "prepared_at_utc": datetime.now(UTC).isoformat(),
+        "prepared_at_utc": utc_now_iso(),
         "host": host,
         "platform": platform.platform(),
         "raw_root": str(args.root),
