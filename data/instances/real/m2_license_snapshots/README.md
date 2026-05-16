@@ -13,12 +13,12 @@ A candidate may be promoted to M3 smoke only after a later issue records a final
 
 ## Current status
 
-Both scientific candidates are promising, but neither is admitted.
+The arXiv metadata candidate remains promising but not admitted. The `ogbn-arxiv` candidate is admitted only to M3 smoke acquisition and validation, not to M4 benchmark.
 
 The current interpretation is:
 
 - arXiv metadata: promising under CC0 for descriptive metadata only;
-- `ogbn-arxiv`: promising but still pending review; the current license expectation is ODC-BY, not CC0;
+- `ogbn-arxiv`: admitted only to M3 smoke acquisition and validation; current license expectation is ODC-BY, not CC0; M4 benchmark remains blocked;
 - TIGER/Line: still needs manual review of the Census legal disclaimer and citation documentation.
 
 The `ogbn-arxiv` CC0 interpretation recorded after the `1016` probe was superseded by the `1026` section-boundary probe. That later probe isolated the `ogbn-arxiv` section and inferred `License: ODC-BY` for the candidate.
@@ -29,7 +29,7 @@ The audit evidence used by these manifests is indexed in:
 
 - `PROBE_EVIDENCE_INDEX.md`
 
-The index records the `1016`, `1025`, `1026` and `1027` srv-noctua audit evidence. It does not admit any candidate to execution.
+The index records the `1016`, `1025`, `1026`, `1027`, `1032` and `1033` srv-noctua audit evidence. It does not by itself admit any candidate to execution; `ogbn-arxiv` has a separate M3 smoke-only admission record.
 
 ## Guardrails
 
