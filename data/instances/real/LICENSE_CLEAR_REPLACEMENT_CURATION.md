@@ -12,7 +12,7 @@ This shortlist is not an execution whitelist.
 
 The original SNAP-derived M1 candidates were excluded from the public confirmatory real-graph sample because no explicit dataset-license basis was accepted for `roadNet-CA`, `ca-HepTh` or `ca-AstroPh`.
 
-The replacement path must therefore use license-clear sources. No candidate family in this file is admitted to M3 smoke or M4 confirmatory execution yet.
+The replacement path must therefore use license-clear sources. At this point, `ogbn-arxiv` is admitted only to M3 smoke acquisition and validation; no candidate family is admitted to M4 confirmatory execution.
 
 ## Environment policy
 
@@ -50,6 +50,28 @@ The `ogbn-arxiv` path remains promising, but its license expectation was correct
 The OGB software/package MIT license remains separate from dataset licensing. Neighboring OGB dataset licenses must not be transferred to `ogbn-arxiv`.
 
 TIGER/Line remains a primary target, but it still needs manual review of the Census legal disclaimer and citation documentation before a candidate-level admission decision.
+
+## M3 smoke-only admission for ogbn-arxiv
+
+The `ogbn-arxiv` candidate is admitted only to M3 smoke acquisition and validation.
+
+This is not an M4 benchmark admission.
+
+The decision is recorded in:
+
+- `data/instances/real/m3_smoke_admissions/ogbn_arxiv_undirected_projection_m3_smoke_admission.yaml`.
+
+Allowed M3 smoke work is limited to controlled acquisition on `srv-noctua`, local ignored raw-data storage, hash inventory, attribution metadata, directed-to-undirected transformation review, projected graph counts and local validation artifacts.
+
+Blocked until a later explicit gate decision:
+
+- benchmark campaign;
+- CART training;
+- raw or derived data redistribution;
+- monograph result claims;
+- M4 use of the candidate.
+
+The basis for this restricted admission is the ODC-BY evidence chain already recorded in `PROBE_EVIDENCE_INDEX.md`, especially the `1026` section-boundary probe, the `1032` ODC-BY terms snapshot and the `1033` artifact hash inventory.
 
 ## Admission rule
 

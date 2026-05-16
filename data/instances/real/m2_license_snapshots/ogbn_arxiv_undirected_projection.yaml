@@ -1,6 +1,6 @@
 dataset_id: "ogbn_arxiv_undirected_projection"
 display_name: "OGB ogbn-arxiv undirected projection"
-status: "m2_license_snapshot_pending_review_not_admitted"
+status: "m3_smoke_admitted_not_m4"
 
 source_family: "OGB"
 replacement_role: "scientific citation-like real graph"
@@ -82,13 +82,15 @@ repository_policy:
   raw_data_in_repo: false
   derived_graph_in_repo: "pending explicit review"
   default_storage: "scripts plus hashes plus metadata manifest"
-  no_m3_m4_until_admitted: true
+  no_m3_m4_until_admitted: false
+  m3_smoke_admission: "data/instances/real/m3_smoke_admissions/ogbn_arxiv_undirected_projection_m3_smoke_admission.yaml"
+  m4_benchmark_blocked_until_later_gate: true
 
 probe_evidence_index: "data/instances/real/m2_license_snapshots/PROBE_EVIDENCE_INDEX.md"
 
 decision:
-  admitted_to_m3: false
+  admitted_to_m3: true
   admitted_to_m4: false
   reviewer: "pending"
   decision_date_utc: null
-  decision_notes: "Promising scientific replacement candidate, but this manifest is not an execution whitelist. ODC-BY attribution and transformation review are still required."
+  decision_notes: "Admitted only to M3 smoke acquisition and validation. M4 benchmark, CART training, redistribution and monograph result claims remain blocked until M3 outputs and a later explicit gate decision."

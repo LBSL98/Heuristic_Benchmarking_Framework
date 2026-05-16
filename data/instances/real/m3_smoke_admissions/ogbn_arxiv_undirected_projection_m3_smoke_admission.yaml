@@ -1,0 +1,92 @@
+dataset_id: "ogbn_arxiv_undirected_projection"
+decision_id: "m3_smoke_admission_ogbn_arxiv_undirected_projection"
+decision_date_utc: "2026-05-16"
+decision_status: "admitted_to_m3_smoke_only_not_m4"
+
+scope:
+  admitted_stage: "M3_smoke_acquisition_and_validation_only"
+  not_admitted_stages:
+    - "M4_benchmark"
+    - "benchmark_campaign"
+    - "CART_training"
+    - "monograph_result_claims"
+  allowed_actions:
+    - "prepare controlled acquisition script for OGB ogbn-arxiv on srv-noctua"
+    - "download or cache raw OGB files only in ignored local paths"
+    - "record raw file hashes"
+    - "construct directed-to-undirected projection only after acquisition metadata is recorded"
+    - "record derived graph counts and hashes"
+    - "validate attribution metadata and no-redistribution policy"
+  forbidden_actions:
+    - "commit raw OGB files"
+    - "commit derived graph files"
+    - "run benchmark campaign"
+    - "train CART"
+    - "make performance claims"
+    - "edit monograph results or conclusions"
+    - "redistribute raw or derived data"
+
+execution_environment:
+  required_host: "srv-noctua"
+  policy_file: "data/instances/real/REAL_GRAPH_CURATION_ENVIRONMENT_POLICY.md"
+  override_policy: "ALLOW_NON_NOCTUA_REALGRAPH_EXECUTION=1 requires explicit documented exception"
+
+source:
+  dataset_page: "https://ogb.stanford.edu/docs/nodeprop/#ogbn-arxiv"
+  dataset_page_sha256_from_1032: "00c8d645665e0d2dc1c643872b46f9f34c9fd9c469736fdf3e54b34c881c1b2f"
+  license_url: "https://opendatacommons.org/licenses/by/1-0/"
+  license_url_sha256_from_1032: "681a60875b4d6e125401054eb50d8968374268e808952b1ec640a73f85cfcf1d"
+  evidence_index: "data/instances/real/m2_license_snapshots/PROBE_EVIDENCE_INDEX.md"
+  m2_manifest: "data/instances/real/m2_license_snapshots/ogbn_arxiv_undirected_projection.yaml"
+
+license:
+  expected_name: "Open Data Commons Attribution License (ODC-BY)"
+  attribution_required: true
+  redistribution_policy: "no raw or derived redistribution until later explicit admission"
+  required_notice_template: "Contains information from OGB ogbn-arxiv, made available under the ODC Attribution License. See https://ogb.stanford.edu/docs/nodeprop/#ogbn-arxiv and https://opendatacommons.org/licenses/by/1-0/."
+  unresolved_before_m4:
+    - "Confirm exact OGB dataset-level attribution wording, if any."
+    - "Record citation for OGB benchmark and upstream MAG/arXiv sources used by OGB."
+    - "Record whether any content-level rights exist beyond database rights."
+    - "Record final redistribution policy for derived graph artifacts."
+
+transformation_policy:
+  original_semantics: "directed citation graph"
+  required_gpp_semantics: "undirected simple graph"
+  required_steps:
+    - "load directed edge index from OGB source"
+    - "drop self-loops if present"
+    - "symmetrize by undirected union of directed edges"
+    - "deduplicate undirected edges"
+    - "ignore node features and labels for GPP benchmark input unless later explicitly justified"
+    - "record original node count"
+    - "record original directed edge count"
+    - "record projected undirected edge count"
+    - "record connected-component policy before benchmark use"
+  benchmark_ready_after_m3: false
+
+required_m3_outputs:
+  - "raw acquisition script path"
+  - "raw acquisition timestamp"
+  - "raw file inventory"
+  - "raw file SHA256 hashes"
+  - "license and attribution metadata manifest"
+  - "directed-to-undirected transformation script path"
+  - "transformation log"
+  - "projected graph counts"
+  - "projected graph SHA256 hash if produced"
+  - "decision record for whether graph file remains local-only"
+  - "explicit M4 gate decision"
+
+decision:
+  admitted_to_m3_smoke: true
+  admitted_to_m4_benchmark: false
+  admitted_to_cart_training: false
+  reviewer: "pending human review"
+  issue: "#143"
+  rationale:
+    - "The OGB ogbn-arxiv candidate has clearer admissibility evidence than the blocked SNAP classic candidates."
+    - "The 1026 section-boundary probe supports ODC-BY for ogbn-arxiv."
+    - "The 1032 and 1033 probes record exact ODC-BY and OGB source snapshots and hashes."
+    - "M3 smoke is needed to determine acquisition, hashing, transformation, and attribution feasibility."
+    - "No benchmark or result claim is justified until M3 outputs are produced and reviewed."
