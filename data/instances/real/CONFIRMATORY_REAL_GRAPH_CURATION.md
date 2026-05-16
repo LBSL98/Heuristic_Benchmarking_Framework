@@ -136,6 +136,29 @@ Therefore, this manifest records the license/admissibility state as unresolved:
 
 This is a conservative research-data governance boundary, not an empirical benchmark result. Public availability, citation metadata and downloadable files are not treated as sufficient evidence of reuse permission. A later human or institutional review must either provide an explicit accepted license basis or decide to exclude/replace these candidates before M3/M4 execution.
 
+## M1 gate outcome
+
+The current M1 curation metadata is complete enough to state the gate outcome for the four documented real-graph candidates.
+
+The outcome is blocked, not approved:
+
+- provenance, source URLs, citations and directedness were recorded;
+- local raw-source hash metadata was recorded;
+- independent connectivity was checked;
+- morphology descriptors were recorded;
+- holdout grouping fields are present;
+- license/admissibility remains unresolved.
+
+Therefore, the current candidates remain documented M1 candidates only. They are not an execution whitelist and are not admitted to M3 smoke or M4 confirmatory execution.
+
+The blocking condition is:
+
+- `license_admissibility_status = m1_license_unresolved_human_or_institutional_review_required`;
+- `license_admissibility_decision = not_ready_for_m3_m4_until_explicit_license_basis_or_exclusion_decision`;
+- `candidate_status = candidate_confirmatory_pending`.
+
+A later issue must resolve this by either accepting an explicit license basis through human or institutional review, or excluding/replacing these candidates before any M3/M4 real-graph execution. Until then, no benchmark claim may rely on these candidates as confirmatory real-graph evidence.
+
 ## Raw data policy
 
 Do not add new raw graph archives or large downloaded datasets in M1 unless a later issue explicitly defines that artifact as versioned source.
