@@ -59,6 +59,24 @@ Real-graph candidates must not be selected, excluded, resized or promoted based 
 
 Candidate inclusion must be justified by provenance, license, auditability, morphology coverage, size feasibility and holdout grouping.
 
+## Repository storage policy for M1 source audits
+
+Raw external source files must not be downloaded into `audit_reports/`.
+
+For this project workflow, `audit_reports/` is limited to terminal logs, command outputs, action records and chat-interaction audit notes. It must not be used as a storage area for raw datasets, downloaded source archives, execution inputs, cache files or transformation scratch files.
+
+When M1 source auditing requires local raw files, use an ignored local cache such as:
+
+- `data/cache/external_sources/snap/`
+
+When conversion or inspection requires disposable intermediates, use:
+
+- `data/tmp/`
+
+Curated benchmark instances and lightweight metadata manifests belong under `data/instances/` only after they are intentionally selected as versioned repository inputs.
+
+This policy corrects the earlier workflow error in which raw SNAP files were temporarily downloaded under `audit_reports/`. Those files were removed and no metadata from that incorrect location is accepted as a source-of-truth manifest update.
+
 ## Raw data policy
 
 Do not add new raw graph archives or large downloaded datasets in M1 unless a later issue explicitly defines that artifact as versioned source.
