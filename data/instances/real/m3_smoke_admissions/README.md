@@ -57,3 +57,19 @@ Boundary:
 - no benchmark campaign was run;
 - no CART training was run;
 - no monograph result claim is supported.
+
+## ogbn-arxiv versioned reproducer after PR 153
+
+The raw-CSV projection reproducer for `ogbn-arxiv` was merged through PR `#153` at commit `6cc45206994af72b0df7dbbeb8e9b90d21cbdfba`.
+
+Post-merge validation `1064` confirmed on `srv-noctua` that:
+
+- the merged reproducer is present;
+- the Python 3.10-compatible timestamp guard is present;
+- the 14-file raw inventory remains verified;
+- the legacy M3 projection hash remains `5e3a7c7eea2ef66c46ca9091fc707c27bfd8f0844bacea29d427299d8e3fcf8c`;
+- the versioned reproducer projection hash is `b6533424c1f0b226127130697c7effbab2c1dbfd07c8ed48f0468bbc46e290ba`;
+- the repeated reproducer projection hash matches the first reproducer run;
+- M4 benchmark, benchmark campaigns, CART training and monograph result claims remain blocked.
+
+This record documents reproducibility of the M3 validation procedure. It does not admit `ogbn-arxiv` to M4.

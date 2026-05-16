@@ -114,3 +114,28 @@ m3_smoke_completion_after_1050:
   benchmark_run: false
   cart_training_run: false
   monograph_result_claim_supported: false
+
+versioned_reproducer_after_1064:
+  status: "merged_and_validated_not_m4"
+  pr: 153
+  merge_commit: "6cc45206994af72b0df7dbbeb8e9b90d21cbdfba"
+  postmerge_validation_probe: "1064_close_pr153_postmerge_validation_without_remote_gh"
+  noctua_synced_to_merge_commit: true
+  script_path: "scripts/real_graphs/prepare_ogbn_arxiv_undirected_projection.py"
+  readme_path: "scripts/real_graphs/README.md"
+  python310_compatibility_guard_present: true
+  timestamp_strategy: "time.strftime_with_time.gmtime"
+  raw_inventory_verified: true
+  raw_file_count: 14
+  legacy_1049_projection_sha256: "5e3a7c7eea2ef66c46ca9091fc707c27bfd8f0844bacea29d427299d8e3fcf8c"
+  versioned_1061_reproducer_projection_sha256: "b6533424c1f0b226127130697c7effbab2c1dbfd07c8ed48f0468bbc46e290ba"
+  versioned_1061_repeat_projection_sha256: "b6533424c1f0b226127130697c7effbab2c1dbfd07c8ed48f0468bbc46e290ba"
+  versioned_reproducer_deterministic: true
+  projection_from_raw_csv: true
+  used_torch_load: false
+  used_ogb_processed_cache_for_projection: false
+  m4_benchmark_admitted: false
+  benchmark_run: false
+  cart_training_run: false
+  monograph_result_claim_supported: false
+  m4_gate_status: "blocked_pending_explicit_gate_decision"
