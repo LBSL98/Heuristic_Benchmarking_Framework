@@ -14,6 +14,26 @@ The original SNAP-derived M1 candidates were excluded from the public confirmato
 
 The replacement path must therefore use license-clear sources. No candidate family in this file is admitted to M3 smoke or M4 confirmatory execution yet.
 
+## Environment policy
+
+Real-graph replacement curation follows the `srv-noctua`-first policy recorded in:
+
+- `data/instances/real/REAL_GRAPH_CURATION_ENVIRONMENT_POLICY.md`
+
+Documentation-only changes may be prepared locally, but any step that downloads data, computes hashes, derives graphs, validates non-trivial graph structure, runs M3/M4 or trains CART should run on `srv-noctua` by default.
+
+Future data-producing scripts should include an explicit environment guard requiring `srv-noctua`, unless an exceptional override is documented in the audit log.
+
+## Current M2 primary targets
+
+The current primary targets for the next M2 license/admissibility pass are:
+
+1. `tigerline_roads_state_or_county`;
+2. `arxiv_metadata_hepth_astroph_reconstruction`;
+3. `ogbn_arxiv_undirected_projection`.
+
+This priority follows the M2 probe result that kept every family non-admitted while identifying these three as the primary next targets for manual license snapshot and candidate-level review.
+
 ## Admission rule
 
 A replacement graph may be promoted only after a later issue records:
