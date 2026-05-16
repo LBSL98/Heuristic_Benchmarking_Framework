@@ -90,3 +90,20 @@ decision:
     - "The 1032 and 1033 probes record exact ODC-BY and OGB source snapshots and hashes."
     - "M3 smoke is needed to determine acquisition, hashing, transformation, and attribution feasibility."
     - "No benchmark or result claim is justified until M3 outputs are produced and reviewed."
+
+m3_smoke_completion_after_1050:
+  status: "m3_smoke_completed_not_m4_pending_gate"
+  evidence_manifest: "data/instances/real/m3_smoke_admissions/ogbn_arxiv_undirected_projection_m3_smoke_evidence.yaml"
+  acquisition_smoke_completed: true
+  raw_csv_projection_smoke_completed: true
+  raw_file_count: 14
+  num_nodes: 169343
+  directed_edge_count: 1166243
+  undirected_union_edge_count: 1157799
+  connected_components: 1
+  projection_npz_sha256: "5e3a7c7eea2ef66c46ca9091fc707c27bfd8f0844bacea29d427299d8e3fcf8c"
+  projection_metadata_sha256: "76381d02ddc1e80d37095e9ba6f80f1330ae5800ef6100adcc167c45883c6063"
+  m4_benchmark_blocked: true
+  m4_benchmark_blocked_until_later_gate: true
+  benchmark_run: false
+  cart_training_run: false

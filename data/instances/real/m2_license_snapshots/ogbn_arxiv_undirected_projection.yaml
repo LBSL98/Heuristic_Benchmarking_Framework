@@ -1,6 +1,6 @@
 dataset_id: "ogbn_arxiv_undirected_projection"
 display_name: "OGB ogbn-arxiv undirected projection"
-status: "m3_smoke_admitted_not_m4"
+status: "m3_smoke_completed_not_m4_pending_gate"
 
 source_family: "OGB"
 replacement_role: "scientific citation-like real graph"
@@ -94,3 +94,23 @@ decision:
   reviewer: "pending"
   decision_date_utc: null
   decision_notes: "Admitted only to M3 smoke acquisition and validation. M4 benchmark, CART training, redistribution and monograph result claims remain blocked until M3 outputs and a later explicit gate decision."
+
+m3_smoke_completion_after_1050:
+  evidence_manifest: "data/instances/real/m3_smoke_admissions/ogbn_arxiv_undirected_projection_m3_smoke_evidence.yaml"
+  status: "m3_smoke_completed_not_m4_pending_gate"
+  raw_acquisition_completed: true
+  raw_csv_projection_completed: true
+  projection_from_raw_csv: true
+  used_torch_load: false
+  num_nodes: 169343
+  directed_edge_count: 1166243
+  undirected_union_edge_count: 1157799
+  connected_components: 1
+  projection_npz_sha256: "5e3a7c7eea2ef66c46ca9091fc707c27bfd8f0844bacea29d427299d8e3fcf8c"
+  projection_metadata_sha256: "76381d02ddc1e80d37095e9ba6f80f1330ae5800ef6100adcc167c45883c6063"
+  raw_file_count: 14
+  raw_total_size_bytes: 191275959
+  m4_benchmark_blocked_until_later_gate: true
+  benchmark_run: false
+  cart_training_run: false
+  monograph_result_claim_supported: false

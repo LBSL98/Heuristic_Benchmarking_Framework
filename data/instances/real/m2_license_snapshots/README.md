@@ -40,3 +40,13 @@ The index records the `1016`, `1025`, `1026`, `1027`, `1032` and `1033` srv-noct
 - Do not treat neighboring dataset licenses as applying to `ogbn-arxiv`.
 - Do not admit M3/M4 execution from these manifests alone.
 - Keep issue `#143` open until concrete replacements are admitted or rejected.
+
+## ogbn-arxiv M3 smoke status after 1050
+
+The `ogbn-arxiv` candidate has completed M3 smoke acquisition and validation on `srv-noctua`, but it remains blocked for M4 benchmark execution.
+
+The M3 evidence is recorded in:
+
+- `data/instances/real/m3_smoke_admissions/ogbn_arxiv_undirected_projection_m3_smoke_evidence.yaml`.
+
+This does not admit benchmark campaigns, CART training, raw or derived data redistribution, or monograph result claims.

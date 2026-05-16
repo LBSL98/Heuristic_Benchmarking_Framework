@@ -20,3 +20,40 @@ An admission here is not an M4 benchmark admission.
 - M3 smoke must not train CART.
 - M3 smoke must not edit monograph result claims.
 - M4 remains blocked until a later explicit gate decision.
+
+## ogbn-arxiv M3 smoke evidence after 1050
+
+The `ogbn-arxiv` M3 smoke chain completed on `srv-noctua`.
+
+Recorded evidence:
+
+- environment bootstrap: `1046`;
+- controlled OGB acquisition/cache smoke: `1047`;
+- failed processed-cache projection attempt: `1048`;
+- successful raw-CSV undirected projection smoke: `1049`;
+- artifact hash inventory: `1050`.
+
+The versioned evidence manifest is:
+
+- `data/instances/real/m3_smoke_admissions/ogbn_arxiv_undirected_projection_m3_smoke_evidence.yaml`.
+
+M3 smoke results:
+
+- raw file count: `14`;
+- raw total size: `191275959` bytes;
+- nodes: `169343`;
+- directed edges: `1166243`;
+- self-loops removed: `0`;
+- undirected union edges: `1157799`;
+- connected components: `1`;
+- largest component size: `169343`;
+- projection SHA256: `5e3a7c7eea2ef66c46ca9091fc707c27bfd8f0844bacea29d427299d8e3fcf8c`.
+
+Boundary:
+
+- the projection is local-only under ignored `data/tmp`;
+- the projection is not committed;
+- the projection is not admitted to M4;
+- no benchmark campaign was run;
+- no CART training was run;
+- no monograph result claim is supported.
