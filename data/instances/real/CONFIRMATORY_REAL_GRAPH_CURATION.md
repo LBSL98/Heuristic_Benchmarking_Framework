@@ -122,6 +122,20 @@ The clustering and distance descriptors are explicitly sampled or approximate de
 
 This audit completes the M1 morphology-descriptor step for the current four candidates, but it does not resolve the license field and does not promote candidates to M3/M4. The license field remains `NO_EXPLICIT_LICENSE_FOUND_IN_SNAP_DATASET_PAGE_PENDING_REVIEW`, and each candidate remains `candidate_confirmatory_pending`.
 
+## License and admissibility audit
+
+Probe `991` fetched the official SNAP dataset pages, the SNAP data index, the SNAP home page and the SNAP software page.
+
+The dataset pages for `roadNet-CA`, `ca-HepTh` and `ca-AstroPh` were reachable and provided file/citation evidence, but the automated audit did not find an explicit dataset license grant on those dataset pages. A `BSD license` keyword was found on the SNAP software page, but that evidence refers to the SNAP/GLib software code and is not treated as a license for the dataset files.
+
+Therefore, this manifest records the license/admissibility state as unresolved:
+
+- `source_license = NO_EXPLICIT_LICENSE_FOUND_IN_SNAP_DATASET_PAGE_PENDING_REVIEW`;
+- `license_admissibility_status = m1_license_unresolved_human_or_institutional_review_required`;
+- `candidate_status = candidate_confirmatory_pending`.
+
+This is a conservative research-data governance boundary, not an empirical benchmark result. Public availability, citation metadata and downloadable files are not treated as sufficient evidence of reuse permission. A later human or institutional review must either provide an explicit accepted license basis or decide to exclude/replace these candidates before M3/M4 execution.
+
 ## Raw data policy
 
 Do not add new raw graph archives or large downloaded datasets in M1 unless a later issue explicitly defines that artifact as versioned source.
