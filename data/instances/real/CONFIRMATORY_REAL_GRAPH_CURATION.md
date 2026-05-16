@@ -39,6 +39,20 @@ The initial rows document four existing real-graph assets already present in the
 
 These rows are deliberately conservative. Source URLs, download URLs, licenses, citations and raw-input availability are marked as `TBD_SOURCE_AUDIT_REQUIRED` until a dedicated source audit is performed.
 
+## Source-audit update: official SNAP dataset pages
+
+The current four candidates are derived from official SNAP dataset pages:
+
+- `roadnet_ca_bfs_10000_seed42` and `roadnet_ca_bfs_20000_seed43` use `https://snap.stanford.edu/data/roadNet-CA.html` and download file `https://snap.stanford.edu/data/roadNet-CA.txt.gz`.
+- `ca_hepth_gcc` uses `https://snap.stanford.edu/data/ca-HepTh.html` and download file `https://snap.stanford.edu/data/ca-HepTh.txt.gz`.
+- `ca_astroph_gcc` uses `https://snap.stanford.edu/data/ca-AstroPh.html` and download file `https://snap.stanford.edu/data/ca-AstroPh.txt.gz`.
+
+The SNAP dataset pages provide source/citation information and describe these inputs as undirected graphs or graphs with undirected edges. The manifest therefore records dataset URL, download URL, citation and directedness status.
+
+The license field remains intentionally conservative as `NO_EXPLICIT_LICENSE_FOUND_IN_SNAP_DATASET_PAGE_PENDING_REVIEW`. This means the candidates are still not admitted to M3/M4 execution. A later audit must decide whether the SNAP pages, source papers, repository policy or institutional/legal interpretation are sufficient for the intended benchmark use.
+
+The raw-input field remains `public_snap_download_url_recorded_pending_local_raw_hash_audit` because this patch records the public download URL but does not download, hash or vendor the raw source archives.
+
 ## Anti-winner-conditioned selection rule
 
 Real-graph candidates must not be selected, excluded, resized or promoted based on observed solver winners, exception labels, CART labels, cut quality or runtime outcomes.
