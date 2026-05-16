@@ -77,6 +77,27 @@ Curated benchmark instances and lightweight metadata manifests belong under `dat
 
 This policy corrects the earlier workflow error in which raw SNAP files were temporarily downloaded under `audit_reports/`. Those files were removed and no metadata from that incorrect location is accepted as a source-of-truth manifest update.
 
+## Raw source hash and connectivity audit
+
+Probe `983` downloaded the raw SNAP source files only to the ignored local cache `data/cache/external_sources/snap/`. The raw files are not versioned.
+
+The manifest records derived and reproducible raw-source metadata:
+
+- raw source filename;
+- raw source SHA-256;
+- compressed file size;
+- retrieval timestamp;
+- HTTP `Last-Modified`, `ETag` and `Content-Length` metadata when available;
+- raw edge-record counts;
+- unique raw node counts;
+- unique undirected raw edge counts after self-loop removal;
+- raw self-loop counts;
+- malformed raw-line counts.
+
+The manifest also records an independent connectivity check over each already-curated `.json.gz` candidate. All four current candidates are connected under that check.
+
+This audit resolves the local raw-source hash step but does not resolve the license field, does not complete morphology descriptors and does not promote candidates to M3/M4. The license field remains `NO_EXPLICIT_LICENSE_FOUND_IN_SNAP_DATASET_PAGE_PENDING_REVIEW`, and each candidate remains `candidate_confirmatory_pending`.
+
 ## Raw data policy
 
 Do not add new raw graph archives or large downloaded datasets in M1 unless a later issue explicitly defines that artifact as versioned source.
