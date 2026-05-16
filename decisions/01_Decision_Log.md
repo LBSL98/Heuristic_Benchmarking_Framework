@@ -453,3 +453,21 @@ This file records frozen project decisions. A decision only becomes canonical af
 - **Evidence bundle:** `audit_reports/multilevel_exception_mining/confirmation/srv_noctua_linux_dedicated_evidence_bundle_001`.
 - **Observed summary:** raw status counts `{'ok': 18760, 'timeout': 3640}`; confirmation labels `{'competitive_confirmed': 8, 'near_tie_confirmed': 227, 'non_exception_confirmed': 11, 'strong_exception_confirmed': 202}`; SBS algorithm `ts_rust`; VBS mean median cut `80.77678571428571`.
 - **Supersedes / Superseded by:** Updates the execution status of `EXP-MULTILEVEL-EXCEPTION-MINING-001` under the environment-governance boundary introduced by `D-028`; does not supersede the Windows portability gate, cross-environment sensitivity requirement, or monograph-claim mapping gate.
+
+### D-030 — Confirmatory phase transition and preregistered thesis reframing
+
+- **Status:** Frozen
+- **Date:** 2026-05-16
+- **Decision:** The project enters `CONFIRMATORY-PHASE-001`, tracked by GitHub milestone `#10`, with issue `#126` as the first executable M0 gate. This phase is confirmatory rather than exploratory repair. It materializes the planning package as an ordered M0–M8 workflow: canonical update, real-graph curation, confirmatory synthetic controls, `srv-noctua` smoke, preregistered confirmatory campaign, fixed-target/TTT/ECDF/attainment diagnostics, CART gatekeeper admissibility, Rust/Python implementation-maturity ablation and final claim mapping.
+- **Confirmatory framing:**
+  1. Real graphs are central to external validity.
+  2. Synthetic instances provide controlled morphology coverage, not the sole basis for final claims.
+  3. `METIS` and `KaHIP` are the multilevel reference/incumbents, not strawman baselines.
+  4. CART is an interpretable gatekeeper or exception detector, not a universal multiclass solver selector.
+  5. Fixed-target, TTT, ECDF, attainment, near-tie, exception and SBS/VBS gap diagnostics must precede substantive selector claims.
+  6. Holdout policy must respect family, source and base-graph boundaries.
+  7. Old CART models may be tested on holdout only without opportunistic retraining.
+  8. Any new CART trained after observing holdout behavior is exploratory unless a new preregistered split is frozen first.
+- **Rationale:** The prior repository cleanup, exception-mining closure, `srv-noctua` validation, and negative/limited CART gate result organize the exploratory evidence, but they do not replace the confirmatory plan. In this phase, real graphs provide the central external-validity surface, while synthetic controls provide preregistered morphology coverage. A distinct confirmatory phase prevents the thesis from over-reading prior environment-specific evidence and gives the final result narrative a preregistered path.
+- **Impact:** `10_Current_Execution_Gate.md` must point to M0 as the active gate. `07_Open_Issues.md` must record issues `#126`–`#134` as the confirmatory sequence. `06_Experiment_Ledger.md` may contain only a planned governance entry until M1–M8 generate validated evidence. `08_Results_to_Text_Map.md` must not receive new result claims until new empirical results exist. This is not monograph prose: monograph prose remains blocked by `#49` until the actual text surface is audited.
+- **Supersedes / Superseded by:** Extends `D-024`, `D-027`, `D-028` and `D-029` into a confirmatory workflow. It does not supersede the environment-specific boundary of `D-029`, the negative/limited CART mapping in `C-SRV-NOCTUA-CART-GATE-001`, or the residual writing blocker `#49`.

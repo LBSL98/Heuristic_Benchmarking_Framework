@@ -316,3 +316,90 @@ Required before final claim use:
 - decide whether this WSL slice is reported as a separate environment slice or only as internal evidence for selecting subsequent experiments;
 - decide whether additional confirmation is needed on `srv-noctua` or the notebook 16 GB before CART training claims;
 - preserve the claim boundary that environment pooling is forbidden unless explicitly justified.
+
+<!-- canonical-map:confirmatory-phase-001:open-issues -->
+
+## Confirmatory phase open issue sequence — CONFIRMATORY-PHASE-001
+
+This block records the active confirmatory phase materialized from the `tcc_confirmatory_plan_package.zip` summary. The milestone is GitHub milestone `#10`.
+
+The phase is confirmatory rather than exploratory repair. It must not be used to edit final monograph prose until the evidence path is completed and `#49` is resolved or explicitly scoped.
+
+### OI-CONFIRMATORY-M0 — Canonical update and preregistered thesis reframing
+
+- **Linked GitHub issue:** #126.
+- **Phase:** M0.
+- **Current status:** Open.
+- **Needed action:** Update canonical governance so the active execution gate, decision log and experiment ledger all state that the next phase is `CONFIRMATORY-PHASE-001`.
+- **Closure condition:** Closed only after the M0 canonical branch is merged and the issue records that monograph prose remains untouched.
+
+### OI-CONFIRMATORY-M1 — Real-graph confirmatory curation
+
+- **Linked GitHub issue:** #127.
+- **Phase:** M1.
+- **Current status:** Open.
+- **Needed action:** Curate real graph candidates with source, license, provenance, transformations, hashes, morphology descriptors and holdout boundaries.
+- **Closure condition:** Closed only after the candidate manifest is auditable and no graph was selected based on observed solver winners.
+
+### OI-CONFIRMATORY-M2 — Confirmatory synthetic controls
+
+- **Linked GitHub issue:** #128.
+- **Phase:** M2.
+- **Current status:** Open.
+- **Needed action:** Define synthetic control families and parameter grids for controlled morphology coverage.
+- **Closure condition:** Closed only after generation policy, seeds, rejection criteria, lifecycle metadata and hashes are frozen before execution.
+
+### OI-CONFIRMATORY-M3 — srv-noctua environment and participant smoke
+
+- **Linked GitHub issue:** #129.
+- **Phase:** M3.
+- **Current status:** Open.
+- **Needed action:** Smoke the active `srv-noctua` environment, solver binaries, runner paths, thread limits, schema compatibility and downstream analysis compatibility.
+- **Closure condition:** Closed only after the smoke gate passes for all active participants intended for M4.
+
+### OI-CONFIRMATORY-M4 — Preregistered srv-noctua confirmatory campaign
+
+- **Linked GitHub issue:** #130.
+- **Phase:** M4.
+- **Current status:** Open.
+- **Needed action:** Execute the preregistered confirmatory campaign over curated real graphs and synthetic controls.
+- **Closure condition:** Closed only after artifacts, schema, feasibility, status counts and missing-artifact checks are validated.
+
+### OI-CONFIRMATORY-M5 — Fixed-target, TTT, ECDF, attainment and SBS/VBS diagnostics
+
+- **Linked GitHub issue:** #131.
+- **Phase:** M5.
+- **Current status:** Open.
+- **Needed action:** Compute fixed-target summaries, TTT, ECDF, attainment where supported, near-tie/exception diagnostics and SBS/VBS gap diagnostics.
+- **Closure condition:** Closed only after diagnostics are validated and their claim boundaries are explicit.
+
+### OI-CONFIRMATORY-M6 — CART gatekeeper admissibility
+
+- **Linked GitHub issue:** #132.
+- **Phase:** M6.
+- **Current status:** Open.
+- **Needed action:** Decide whether the admissible target is fixed-budget winner, budget-aware winner, multilevel-sufficiency/exception classifier or no substantive CART claim.
+- **Closure condition:** Closed only after holdout boundaries, leakage exclusions and negative/limited/positive interpretation are mapped.
+
+### OI-CONFIRMATORY-M7 — Rust/Python implementation-maturity ablation
+
+- **Linked GitHub issue:** #133.
+- **Phase:** M7.
+- **Current status:** Open.
+- **Needed action:** Analyze Rust/Python implementation-maturity effects without conflating implementation evidence with universal solver superiority.
+- **Closure condition:** Closed only after implementation-maturity claims are separated from algorithmic superiority and selector utility claims.
+
+### OI-CONFIRMATORY-M8 — Claim ledger, result map and monograph-safe conclusion boundary
+
+- **Linked GitHub issue:** #134.
+- **Phase:** M8.
+- **Current status:** Open.
+- **Needed action:** Update the experiment ledger, result-to-text map, caveat state and monograph-safe conclusion boundaries after M1–M7.
+- **Closure condition:** Closed only after all claims are classified as strong, partial, negative, limited or deferred, with `#49` still respected as the residual writing blocker.
+
+### OI-CONFIRMATORY-WRITING-BLOCKER — Final prose remains blocked outside the confirmatory milestone
+
+- **Linked GitHub issue:** #49.
+- **Current status:** Open.
+- **Needed action:** Keep the final monograph text surface out of scope until the actual source or exported final text is available for audit.
+- **Closure condition:** Closed only after the monograph text surface is audited against the residual writing blockers.
