@@ -37,7 +37,7 @@ The initial rows document four existing real-graph assets already present in the
 - `ca_hepth_gcc`;
 - `ca_astroph_gcc`.
 
-These rows are deliberately conservative. Source URLs, download URLs, licenses, citations and raw-input availability are marked as `TBD_SOURCE_AUDIT_REQUIRED` until a dedicated source audit is performed.
+These rows remain deliberately conservative. Later sections record source URLs, download URLs, citations, raw-source hash metadata and morphology descriptors. The license field remains unresolved, and the rows are still not admitted to M3/M4 execution.
 
 ## Source-audit update: official SNAP dataset pages
 
@@ -97,6 +97,30 @@ The manifest records derived and reproducible raw-source metadata:
 The manifest also records an independent connectivity check over each already-curated `.json.gz` candidate. All four current candidates are connected under that check.
 
 This audit resolves the local raw-source hash step but does not resolve the license field, does not complete morphology descriptors and does not promote candidates to M3/M4. The license field remains `NO_EXPLICIT_LICENSE_FOUND_IN_SNAP_DATASET_PAGE_PENDING_REVIEW`, and each candidate remains `candidate_confirmatory_pending`.
+
+## Morphology descriptor audit
+
+Probe `987` computed morphology descriptors for the four current real-graph candidates without modifying repository inputs or raw graph files.
+
+The manifest records versioned descriptor metadata:
+
+- node and edge counts;
+- density;
+- minimum, maximum and average degree;
+- degree coefficient of variation;
+- degree Gini coefficient;
+- degree percentiles `p50`, `p90` and `p99`;
+- leaf fraction;
+- component count;
+- largest component fraction;
+- sampled average local clustering;
+- sampled transitivity proxy;
+- approximate BFS diameter;
+- approximate mean BFS distance.
+
+The clustering and distance descriptors are explicitly sampled or approximate descriptors. They are intended for curation, coverage and selector-feature traceability, not as exact graph-theoretic claims.
+
+This audit completes the M1 morphology-descriptor step for the current four candidates, but it does not resolve the license field and does not promote candidates to M3/M4. The license field remains `NO_EXPLICIT_LICENSE_FOUND_IN_SNAP_DATASET_PAGE_PENDING_REVIEW`, and each candidate remains `candidate_confirmatory_pending`.
 
 ## Raw data policy
 
