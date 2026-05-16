@@ -34,6 +34,21 @@ The current primary targets for the next M2 license/admissibility pass are:
 
 This priority follows the M2 probe result that kept every family non-admitted while identifying these three as the primary next targets for manual license snapshot and candidate-level review.
 
+## M2 scientific license snapshot manifests
+
+Candidate-level M2 manifests were added for the two strongest scientific targets after the `1016` srv-noctua probe:
+
+- `data/instances/real/m2_license_snapshots/arxiv_metadata_hepth_astroph_reconstruction.yaml`;
+- `data/instances/real/m2_license_snapshots/ogbn_arxiv_undirected_projection.yaml`.
+
+These manifests are not execution whitelists.
+
+The arXiv metadata path is treated as promising only for descriptive metadata under CC0. Full text, PDFs, source files and e-prints remain out of scope unless separately licensed.
+
+The `ogbn-arxiv` path is treated as promising because the `1016` probe found `License: CC-0` adjacent to the `ogbn-arxiv` dataset entry. This corrects the previous shortlist expectation that associated `ogbn-arxiv` with ODC-BY. The OGB software/package MIT license remains separate from dataset licensing.
+
+TIGER/Line remains a primary target, but it still needs manual review of the Census legal disclaimer and citation documentation before a candidate-level admission decision.
+
 ## Admission rule
 
 A replacement graph may be promoted only after a later issue records:

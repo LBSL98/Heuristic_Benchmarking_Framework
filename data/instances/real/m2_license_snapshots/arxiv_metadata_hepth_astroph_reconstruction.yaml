@@ -1,0 +1,67 @@
+dataset_id: "arxiv_metadata_hepth_astroph_reconstruction"
+display_name: "arXiv metadata reconstruction for HEP-TH/ASTRO-PH-like scientific graphs"
+status: "m2_license_snapshot_pending_review_not_admitted"
+
+source_family: "arXiv_metadata"
+replacement_role: "ca-HepTh and ca-AstroPh scientific collaboration replacement"
+
+official_source:
+  bulk_data_url: "https://info.arxiv.org/help/bulk_data.html"
+  api_terms_url: "https://info.arxiv.org/help/api/tou.html"
+  api_manual_url: "https://info.arxiv.org/help/api/user-manual.html"
+  access_probe: "1016_noctua_m2_primary_license_snapshot_probe_no_remote_gh"
+  access_host: "srv-noctua"
+  access_date_utc: "2026-05-16"
+
+license:
+  expected_name: "Creative Commons Universal (CC0 1.0) Public Domain Declaration"
+  scope: "descriptive metadata only"
+  license_url: "https://creativecommons.org/publicdomain/zero/1.0/"
+  evidence_summary:
+    - "The 1016 probe found arXiv API Terms of Use text stating that descriptive metadata about arXiv e-prints may be used under CC0 1.0."
+    - "The same evidence distinguishes metadata from e-prints, PDFs, source files and full text."
+    - "The bulk data page points users to Terms of Use for arXiv APIs before using metadata or full-text access options."
+  restrictions_or_boundaries:
+    - "Do not treat full text, PDFs, source files or e-prints as covered by this metadata-only decision."
+    - "Do not redistribute e-print content unless a separate license permits it."
+    - "Use OAI-PMH/API metadata access respectfully and within arXiv usage terms."
+  attribution_and_citation:
+    required: "To be finalized in candidate-level admission issue."
+    recommended:
+      - "Cite arXiv as the metadata source."
+      - "Cite arXiv API or OAI-PMH documentation if used for acquisition."
+
+graph_transformation:
+  intended_graph: "undirected coauthorship or citation-proxy graph reconstructed from metadata"
+  allowed_inputs:
+    - "title"
+    - "abstract"
+    - "authors"
+    - "identifiers"
+    - "categories/classification terms"
+    - "dates"
+  excluded_inputs:
+    - "full-text PDFs"
+    - "source files"
+    - "e-print content"
+  required_review_before_admission:
+    - "Define exact category filters for HEP-TH/ASTRO-PH-like reconstruction."
+    - "Define time window."
+    - "Define node identity normalization."
+    - "Define edge construction rule."
+    - "Record raw metadata query/acquisition script and hashes if files are stored locally."
+    - "Record derived graph hash if a derived graph is produced."
+    - "Define holdout group fields."
+
+repository_policy:
+  raw_data_in_repo: false
+  derived_graph_in_repo: "pending explicit review"
+  default_storage: "scripts plus hashes plus metadata manifest"
+  no_m3_m4_until_admitted: true
+
+decision:
+  admitted_to_m3: false
+  admitted_to_m4: false
+  reviewer: "pending"
+  decision_date_utc: null
+  decision_notes: "Promising primary scientific replacement, but this manifest is not an execution whitelist."
