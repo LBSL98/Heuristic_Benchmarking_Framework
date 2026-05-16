@@ -126,3 +126,28 @@ Default policy for all candidate families in this shortlist:
 This shortlist does not add empirical benchmark results, does not authorize monograph prose and does not modify `decisions/08_Results_to_Text_Map.md`.
 
 Issue `#143` remains open until concrete license-clear replacement candidates are curated and either admitted for M3 smoke or explicitly rejected.
+
+## M3 smoke completion for ogbn-arxiv
+
+The `ogbn-arxiv` candidate completed M3 smoke acquisition and validation on `srv-noctua` through the `1046` to `1050` evidence chain.
+
+The successful projection route uses raw CSV files and avoids `torch.load` on the OGB processed pickle cache. This is important because the `1048` processed-cache route failed under the current PyTorch `weights_only` behavior.
+
+M3 smoke produced a local ignored projection artifact with:
+
+- `169343` vertices;
+- `1166243` directed input edges;
+- `0` removed self-loops;
+- `1157799` undirected union edges;
+- `1` connected component;
+- projection SHA256 `5e3a7c7eea2ef66c46ca9091fc707c27bfd8f0844bacea29d427299d8e3fcf8c`.
+
+This remains blocked for:
+
+- M4 benchmark;
+- benchmark campaign;
+- CART training;
+- raw or derived data redistribution;
+- monograph result claims.
+
+A later explicit gate decision is still required before any M4 use.

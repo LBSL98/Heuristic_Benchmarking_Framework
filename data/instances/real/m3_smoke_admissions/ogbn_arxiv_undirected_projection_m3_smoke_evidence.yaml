@@ -1,0 +1,214 @@
+dataset_id: "ogbn_arxiv_undirected_projection"
+evidence_id: "m3_smoke_evidence_ogbn_arxiv_after_1050"
+evidence_status: "m3_smoke_completed_not_m4_pending_gate"
+evidence_date_utc: "2026-05-16"
+
+scope:
+  stage_completed: "M3_smoke_acquisition_and_validation"
+  m4_benchmark_admitted: false
+  benchmark_run: false
+  cart_training_run: false
+  monograph_result_claim_supported: false
+  raw_or_derived_redistribution_allowed: false
+  repository_files_modified_by_m3_smoke: false
+
+source_decision:
+  admission_manifest: "data/instances/real/m3_smoke_admissions/ogbn_arxiv_undirected_projection_m3_smoke_admission.yaml"
+  m2_manifest: "data/instances/real/m2_license_snapshots/ogbn_arxiv_undirected_projection.yaml"
+  license_expectation: "Open Data Commons Attribution License (ODC-BY)"
+  required_attribution_notice: "Contains information from OGB ogbn-arxiv, made available under the ODC Attribution License. See https://ogb.stanford.edu/docs/nodeprop/#ogbn-arxiv and https://opendatacommons.org/licenses/by/1-0/."
+
+m3_chain:
+  environment_bootstrap_probe: "1046_noctua_interactive_venv_fix_and_retry_ogbn_env_bootstrap"
+  acquisition_smoke_probe: "1047_noctua_controlled_ogbn_arxiv_acquisition_smoke"
+  failed_processed_cache_projection_probe: "1048_noctua_ogbn_arxiv_projection_smoke"
+  successful_raw_csv_projection_probe: "1049_noctua_ogbn_arxiv_raw_csv_projection_smoke"
+  hash_inventory_probe: "1050_noctua_hash_ogbn_arxiv_m3_smoke_artifacts"
+
+operational_resolution:
+  failed_route: "OGB processed cache via torch.load"
+  failure_reason: "PyTorch weights_only default rejected the processed pickle cache"
+  accepted_m3_route: "raw CSV projection from edge.csv.gz and num-node-list.csv.gz"
+  used_torch_load: false
+  used_ogb_processed_cache_for_projection: false
+
+raw_acquisition:
+  raw_dataset_downloaded_or_cached: true
+  raw_file_count: 14
+  raw_total_size_bytes: 191275959
+  storage_scope: "local_ignored_data_tmp_only"
+  commit_policy: "raw files must not be committed"
+  inventory:
+    - relative_path: "ogbn_arxiv/RELEASE_v1.txt"
+      size_bytes: 71
+      sha256: "e3187440866fa78010168ee76ed60eb791458b7056d5a2e63f525b1bfd0c0623"
+    - relative_path: "ogbn_arxiv/mapping/README.md"
+      size_bytes: 634
+      sha256: "45bb5a72cf18cd0fa2413d076ca24da6b00f13eec99adc9e69c40c16676bd536"
+    - relative_path: "ogbn_arxiv/mapping/labelidx2arxivcategeory.csv.gz"
+      size_bytes: 250
+      sha256: "a516ecd32007acca5817296bdd82f5b5db7e21b0917b94311ef4571e29305577"
+    - relative_path: "ogbn_arxiv/mapping/nodeidx2paperid.csv.gz"
+      size_bytes: 1221183
+      sha256: "3ad84bd49e905f457d1abb8d7586b52d9fa357efeb4a49f04ef2f2516817e2cf"
+    - relative_path: "ogbn_arxiv/processed/data_processed"
+      size_bytes: 108074711
+      sha256: "cbbbdaf2718fd5dad21750f92065a0ac8a8182f0719b583360083920cfe7ccc9"
+    - relative_path: "ogbn_arxiv/raw/edge.csv.gz"
+      size_bytes: 5033515
+      sha256: "47629e986116407d27eff4c9d2e923f06bf5da5c85cbae93b660f530bc9355df"
+    - relative_path: "ogbn_arxiv/raw/node-feat.csv.gz"
+      size_bytes: 76357181
+      sha256: "60a844c7aff2f129335d34da2f6b9271bd1cac03aff8c70c229e6f0d13624718"
+    - relative_path: "ogbn_arxiv/raw/node-label.csv.gz"
+      size_bytes: 123505
+      sha256: "b06e7cf75d909de66ce49bc4188a6dc525224f85dd6dcb36137de3d9321830d1"
+    - relative_path: "ogbn_arxiv/raw/node_year.csv.gz"
+      size_bytes: 73612
+      sha256: "fb97e19d6003deb09197f6df6b10ea1ab86ee49d98885836c3c857ab58d897f3"
+    - relative_path: "ogbn_arxiv/raw/num-edge-list.csv.gz"
+      size_bytes: 52
+      sha256: "430f1e00ae204bbb3208c5f494ab70170e9f2995fd3548d1754a74a8f59250d1"
+    - relative_path: "ogbn_arxiv/raw/num-node-list.csv.gz"
+      size_bytes: 51
+      sha256: "9aa60a342efd209408933ace51e6b0a814e81c2894a993c44f9b173e477e2e82"
+    - relative_path: "ogbn_arxiv/split/time/test.csv.gz"
+      size_bytes: 113234
+      sha256: "588fb66ce57bcaef51ac0235f0a49a056370ac31fc27c8ebf556d3f5cdd02545"
+    - relative_path: "ogbn_arxiv/split/time/train.csv.gz"
+      size_bytes: 211044
+      sha256: "84983391900af45194e5db8d977ec9e01d4eda96e20328f3d7575fdd45c6797c"
+    - relative_path: "ogbn_arxiv/split/time/valid.csv.gz"
+      size_bytes: 66916
+      sha256: "ebe6cdcd77c75eedbce2064a05a49bc28e2c4a631f49d66b9e9ff317eef993eb"
+
+raw_csv_projection:
+  project_derived_graph_produced: true
+  derived_graph_scope: "local_ignored_m3_validation_artifact_not_benchmark_input"
+  projection_from_raw_csv: true
+  used_torch_load: false
+  used_ogb_processed_cache: false
+  node_features_used: false
+  labels_used: false
+  commit_policy: "derived files must not be committed until a later explicit gate permits it"
+  counts:
+    num_nodes: 169343
+    directed_edge_count: 1166243
+    self_loop_count_removed: 0
+    directed_edges_after_self_loop_removal: 1166243
+    undirected_union_edge_count: 1157799
+    duplicate_or_reciprocal_directed_edges_removed_by_projection: 8444
+    connected_components: 1
+    largest_component_size: 169343
+    isolated_vertices: 0
+  projection_artifact:
+    path: "data/tmp/real_graph_m3_smoke/ogbn_arxiv/derived/1049_raw_csv_undirected_projection_smoke/ogbn_arxiv_undirected_union_edges_from_raw_csv.npz"
+    size_bytes: 3885785
+    sha256: "5e3a7c7eea2ef66c46ca9091fc707c27bfd8f0844bacea29d427299d8e3fcf8c"
+  projection_metadata:
+    path: "data/tmp/real_graph_m3_smoke/ogbn_arxiv/derived/1049_raw_csv_undirected_projection_smoke/ogbn_arxiv_raw_csv_undirected_projection_metadata.json"
+    size_bytes: 3233
+    sha256: "76381d02ddc1e80d37095e9ba6f80f1330ae5800ef6100adcc167c45883c6063"
+
+important_hashes:
+  1047_dataset_summary_sha256: "bed3535c51264e77dd45d9b224bf3fad149bdf0c872a07d2c0ae0247c345430b"
+  1047_raw_inventory_json_sha256: "3dd922ac7a938083c2c2f5a8df5ff7a08aa63f3019ebcf17d093debf665ccc35"
+  1049_projection_log_sha256: "a907f3e3fd7001fd9621a3cb5733dff4e428d870c79865c4a2463bbc9a650e11"
+  1049_projection_metadata_sha256: "76381d02ddc1e80d37095e9ba6f80f1330ae5800ef6100adcc167c45883c6063"
+  1049_projection_npz_sha256: "5e3a7c7eea2ef66c46ca9091fc707c27bfd8f0844bacea29d427299d8e3fcf8c"
+
+hash_inventory:
+  artifact_records:
+    - path: "audit_reports/confirmatory_plan_956/1046_noctua_interactive_venv_fix_and_retry_ogbn_env_bootstrap.remote.txt"
+      size_bytes: 20685
+      sha256: "525beb94112437ad2370f581abad36d7df0cf02af36a42021fd3688eb190d490"
+    - path: "audit_reports/confirmatory_plan_956/1046_noctua_interactive_venv_fix_and_retry_ogbn_env_bootstrap.json"
+      size_bytes: 2242
+      sha256: "845c4ffbe0f60b1e5fd55588b43cb828f766e1f32384980a21bfdd3a1f60a881"
+    - path: "audit_reports/confirmatory_plan_956/1046_noctua_interactive_venv_fix_and_retry_ogbn_env_bootstrap.md"
+      size_bytes: 1120
+      sha256: "5ae7819f48b307a63e082212bcd2a3d2bea7d0163f2c937dee6c277dd74a3c74"
+    - path: "data/tmp/real_graph_m3_smoke/ogbn_arxiv/metadata/1046_apt_install_python_venv.log"
+      size_bytes: 2857
+      sha256: "d8aac07a5fa9a89f34e507e1b069de1a942fea9489d4ffe3a817c7e290ef940a"
+    - path: "data/tmp/real_graph_m3_smoke/ogbn_arxiv/metadata/1046_pip_freeze.txt"
+      size_bytes: 496
+      sha256: "6494f57dd870a8c18f8daab8ad644f85dfe600b05fa5f3d664cd756e0ac0c26b"
+    - path: "data/tmp/real_graph_m3_smoke/ogbn_arxiv/metadata/1046_pip_install.log"
+      size_bytes: 11510
+      sha256: "377a593eb8c42f4777b267f9a58c034eebb4f1e44c45130bbc097291337554f7"
+    - path: "data/tmp/real_graph_m3_smoke/ogbn_arxiv/metadata/1046_import_checks.txt"
+      size_bytes: 283
+      sha256: "7d83a0037dca877c358f1e6faa97e4fe0977314d42fa991437ce71a9faf86d1a"
+    - path: "data/tmp/real_graph_m3_smoke/ogbn_arxiv/metadata/1046_import_versions.json"
+      size_bytes: 191
+      sha256: "20dcc8b747de09151606eb18a43ee0e788051b2c115d2649c30e96459ac121b8"
+    - path: "audit_reports/confirmatory_plan_956/1047_noctua_controlled_ogbn_arxiv_acquisition_smoke.remote.txt"
+      size_bytes: 17859
+      sha256: "2234d6513532c37ee697598b14819e280e7294fd74aeb42be0c980fdd7b9ef61"
+    - path: "audit_reports/confirmatory_plan_956/1047_noctua_controlled_ogbn_arxiv_acquisition_smoke.json"
+      size_bytes: 10731
+      sha256: "475afbaaf2ad2aca1610d7061a9319c4b0fd77f563d4295af55c61270221bde8"
+    - path: "audit_reports/confirmatory_plan_956/1047_noctua_controlled_ogbn_arxiv_acquisition_smoke.md"
+      size_bytes: 3358
+      sha256: "9d47a538e4b4d0d03617f5996dae13fc59dc1fea295c413dcb7f514eca5c35e6"
+    - path: "data/tmp/real_graph_m3_smoke/ogbn_arxiv/metadata/1047_dataset_summary.json"
+      size_bytes: 3278
+      sha256: "bed3535c51264e77dd45d9b224bf3fad149bdf0c872a07d2c0ae0247c345430b"
+    - path: "data/tmp/real_graph_m3_smoke/ogbn_arxiv/metadata/1047_raw_file_inventory.json"
+      size_bytes: 2432
+      sha256: "3dd922ac7a938083c2c2f5a8df5ff7a08aa63f3019ebcf17d093debf665ccc35"
+    - path: "data/tmp/real_graph_m3_smoke/ogbn_arxiv/metadata/1047_raw_file_inventory.csv"
+      size_bytes: 1525
+      sha256: "fd891b0de9bb105e4e9792a803432d551263b2407590073eaf6ac6feb9a439e6"
+    - path: "data/tmp/real_graph_m3_smoke/ogbn_arxiv/metadata/1047_acquisition_stdout.log"
+      size_bytes: 10194
+      sha256: "ba2b09481bca36c6c4684ac091bad599745fcae32967a097b56616be7e16b75b"
+    - path: "audit_reports/confirmatory_plan_956/1048_noctua_ogbn_arxiv_projection_smoke.remote.txt"
+      size_bytes: 3533
+      sha256: "e83045a4162677d718662a30f3fba1538c2d78aaa1a98b5c47919d8a6db4821f"
+    - path: "audit_reports/confirmatory_plan_956/1049_noctua_ogbn_arxiv_raw_csv_projection_smoke.remote.txt"
+      size_bytes: 7679
+      sha256: "b548b0f29611f908f76b4bf2ea8311947f092c96819874235e370e3fae15b589"
+    - path: "audit_reports/confirmatory_plan_956/1049_noctua_ogbn_arxiv_raw_csv_projection_smoke.json"
+      size_bytes: 5650
+      sha256: "9cb0f0cf4d89f85b869641b7480bcf8afbfbdd605025065decead05fb32d73c7"
+    - path: "audit_reports/confirmatory_plan_956/1049_noctua_ogbn_arxiv_raw_csv_projection_smoke.md"
+      size_bytes: 1929
+      sha256: "cbb54b1e8237fd2fea7fcd03a6252a62a0caa183253ee314f10b92353746d33f"
+    - path: "data/tmp/real_graph_m3_smoke/ogbn_arxiv/metadata/1049_raw_csv_projection_stdout.log"
+      size_bytes: 956
+      sha256: "a907f3e3fd7001fd9621a3cb5733dff4e428d870c79865c4a2463bbc9a650e11"
+    - path: "data/tmp/real_graph_m3_smoke/ogbn_arxiv/derived/1049_raw_csv_undirected_projection_smoke/ogbn_arxiv_undirected_union_edges_from_raw_csv.npz"
+      size_bytes: 3885785
+      sha256: "5e3a7c7eea2ef66c46ca9091fc707c27bfd8f0844bacea29d427299d8e3fcf8c"
+    - path: "data/tmp/real_graph_m3_smoke/ogbn_arxiv/derived/1049_raw_csv_undirected_projection_smoke/ogbn_arxiv_raw_csv_undirected_projection_metadata.json"
+      size_bytes: 3233
+      sha256: "76381d02ddc1e80d37095e9ba6f80f1330ae5800ef6100adcc167c45883c6063"
+  self_artifact_records:
+    - path: "audit_reports/confirmatory_plan_956/1050_noctua_hash_ogbn_arxiv_m3_smoke_artifacts.remote.txt"
+      size_bytes: 10737
+      sha256: "68a8519c60df259b43aa3ef062bf112cf624261e916c60e45150d8ced2c1b570"
+    - path: "audit_reports/confirmatory_plan_956/1050_noctua_hash_ogbn_arxiv_m3_smoke_artifacts.json"
+      size_bytes: 11415
+      sha256: "f66113400d8286756398a827a0301d6fd0ff80629ccd95431408dc4e806d5f6b"
+    - path: "audit_reports/confirmatory_plan_956/1050_noctua_hash_ogbn_arxiv_m3_smoke_artifacts.md"
+      size_bytes: 7766
+      sha256: "6b04df4dc6b77af1ea6635088e50167cc84aab8a54598e9f4caf92b0df6eeb0d"
+
+m4_gate:
+  status: "blocked_pending_explicit_gate_decision"
+  required_before_m4:
+    - "Patch and review versioned M3 evidence."
+    - "Decide whether local derived projection may become a benchmark input."
+    - "Decide redistribution policy for raw and derived artifacts."
+    - "Record exact citation and attribution text for any benchmark metadata."
+    - "Record holdout grouping and benchmark inclusion rationale."
+    - "Run only an explicit M4 smoke gate before any campaign."
+
+guardrails:
+  - "This evidence file does not admit M4 benchmark execution."
+  - "This evidence file does not admit CART training."
+  - "This evidence file does not support monograph result claims."
+  - "Raw and derived files remain local-only and ignored."
+  - "No raw or derived graph file may be committed by this patch."
