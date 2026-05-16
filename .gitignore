@@ -101,3 +101,9 @@ data/results_raw_backup*/
 
 # Rust build artifacts
 rust/**/target/
+
+# Local audit/report artifacts; never version these.
+/audit_reports/
+/audit_layer_tars/
+/planning_input_packet_*/
+/planning_input_packet_*.tar.gz
