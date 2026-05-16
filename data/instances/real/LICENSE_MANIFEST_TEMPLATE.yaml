@@ -1,0 +1,67 @@
+# Template for license/admissibility manifests for real-graph candidates.
+# Fill one copy per admitted or rejected candidate family before M3/M4 execution.
+
+dataset_id: "REPLACE_ME"
+display_name: "REPLACE_ME"
+status: "candidate_pending_license_snapshot"
+
+official_source:
+  dataset_url: "https://example.org/dataset"
+  download_url: "https://example.org/dataset/raw"
+  access_date_utc: "YYYY-MM-DD"
+  source_owner: "REPLACE_ME"
+
+acquisition:
+  method: "script"
+  script_path: "scripts/REPLACE_ME.py"
+  raw_artifact_name: "REPLACE_ME"
+  raw_sha256: "REPLACE_ME"
+  raw_size_bytes: null
+  raw_in_repo: false
+
+derived_artifact:
+  produced: false
+  path: null
+  sha256: null
+  size_bytes: null
+  in_repo: false
+
+graph_semantics:
+  directed_original: null
+  converted_to_undirected: null
+  weighted_original: null
+  weighted_after_conversion: null
+  bipartite_or_heterogeneous: null
+  self_loops_removed: null
+  multiedges_removed: null
+  node_relabeling: "REPLACE_ME"
+  holdout_group_family: "REPLACE_ME"
+  holdout_group_source: "REPLACE_ME"
+  holdout_group_base_graph: "REPLACE_ME"
+
+license:
+  name: "REPLACE_ME"
+  scope: "data_or_metadata_or_software_or_documentation"
+  license_url: "https://example.org/license"
+  attribution_required: null
+  share_alike: null
+  noncommercial_only: null
+  redistribution_allowed: null
+  modifications_allowed: null
+  license_text_snapshot_path: "third_party/licenses/REPLACE_ME/LICENSE_SNAPSHOT.txt"
+  notes: "REPLACE_ME"
+
+citations:
+  required:
+    - "REPLACE_ME"
+  optional: []
+
+provenance_chain:
+  - "REPLACE_ME"
+
+review:
+  risk_level: "unset"
+  reviewer: "REPLACE_ME"
+  review_date_utc: "YYYY-MM-DD"
+  decision: "pending"
+  decision_notes: "REPLACE_ME"
