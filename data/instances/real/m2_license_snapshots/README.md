@@ -21,6 +21,14 @@ The `1016` srv-noctua probe found stronger evidence for the scientific candidate
 - ogbn-arxiv: promising because OGB documentation placed `License: CC-0` adjacent to the ogbn-arxiv entry;
 - TIGER/Line: still needs manual review of the Census technical documentation chapter on legal disclaimer and citation.
 
+## Probe evidence index
+
+The audit evidence used by these manifests is indexed in:
+
+- `PROBE_EVIDENCE_INDEX.md`
+
+The index records the `1016` srv-noctua audit artifacts and hashes confirmed by the `1020` synchronization check. It does not admit any candidate to execution.
+
 ## Guardrails
 
 - Do not download raw datasets as part of this documentation patch.
