@@ -106,6 +106,10 @@ m3_smoke_completion_after_1050:
   directed_edge_count: 1166243
   undirected_union_edge_count: 1157799
   connected_components: 1
+  projection_npz_sha256: "5e3a7c7eea2ef66c46ca9091fc707c27bfd8f0844bacea29d427299d8e3fcf8c"
+  projection_metadata_sha256: "76381d02ddc1e80d37095e9ba6f80f1330ae5800ef6100adcc167c45883c6063"
+  raw_file_count: 14
+  raw_total_size_bytes: 191275959
   m4_benchmark_blocked_until_later_gate: true
   benchmark_run: false
   cart_training_run: false
