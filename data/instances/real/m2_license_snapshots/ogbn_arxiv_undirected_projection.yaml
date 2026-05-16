@@ -9,26 +9,33 @@ official_source:
   ogb_nodeprop_url: "https://ogb.stanford.edu/docs/nodeprop/#ogbn-arxiv"
   ogb_home_url: "https://ogb.stanford.edu/docs/home/"
   ogb_github_url: "https://github.com/snap-stanford/ogb"
-  access_probe: "1016_noctua_m2_primary_license_snapshot_probe_no_remote_gh"
+  initial_access_probe: "1016_noctua_m2_primary_license_snapshot_probe_no_remote_gh"
+  focused_context_probe: "1025_noctua_focused_ogbn_arxiv_license_context_probe"
+  section_boundary_probe: "1026_noctua_ogbn_arxiv_section_boundary_license_probe"
+  hash_inventory: "1027_noctua_hash_ogbn_license_probe_artifacts"
   access_host: "srv-noctua"
-  access_date_utc: "2026-05-16"
+  latest_review_date_utc: "2026-05-16"
 
 license:
-  expected_name: "CC-0 / CC0"
-  scope: "dataset entry for ogbn-arxiv, pending exact snapshot"
+  expected_name: "Open Data Commons Attribution License (ODC-BY)"
+  scope: "dataset entry for ogbn-arxiv, pending exact authoritative snapshot"
   license_url: "pending_exact_snapshot"
   evidence_summary:
-    - "The 1016 probe found OGB node property documentation with 'License: CC-0' adjacent to the ogbn-arxiv dataset entry."
-    - "The same OGB page also contains ODC-BY references for other datasets such as ogbn-papers100M and ogbn-mag."
-    - "The OGB GitHub repository exposes an MIT license for software/package code, which must not be confused with the per-dataset license."
-  correction_from_shortlist:
-    previous_expectation: "ODC_BY_expected_from_OGB_dataset_documentation"
-    corrected_expectation: "CC0_expected_from_OGB_dataset_documentation_after_1016_probe"
-    rationale: "1016 probe evidence places CC-0 next to ogbn-arxiv, while ODC-BY appears next to other OGB datasets."
+    - "The 1016 probe initially suggested a possible CC0 interpretation because a CC-0 mention appeared near the ogbn-arxiv text."
+    - "The 1025 focused context probe classified the ogbn-arxiv license context as mixed and did not admit the candidate."
+    - "The 1026 section-boundary probe isolated the section from 'Dataset ogbn-arxiv' to the next dataset heading and inferred License: ODC-BY for ogbn-arxiv."
+    - "The 1027 inventory recorded hashes for the 1025 and 1026 audit artifacts and marked the prior CC0 correction as superseded by the 1026 section-boundary probe."
+  expectation_revision:
+    original_shortlist_expectation: "ODC_BY_expected_from_OGB_dataset_documentation"
+    temporary_revision_after_1016: "CC0_expected_from_OGB_dataset_documentation_after_1016_probe"
+    current_expectation_after_1026: "ODC_BY_supported_by_1026_section_boundary_probe"
+    rationale: "The CC-0 mention belongs to the neighboring section context, while the isolated ogbn-arxiv section ends with License: ODC-BY."
   restrictions_or_boundaries:
     - "Do not infer that the OGB software MIT license covers the dataset."
-    - "Do not infer that licenses of other OGB datasets apply to ogbn-arxiv."
-    - "Do not admit until the exact license text or authoritative dataset-level license statement is snapshotted."
+    - "Do not infer that licenses of neighboring OGB datasets apply to ogbn-arxiv."
+    - "Do not admit until the exact ODC-BY dataset-level license statement is snapshotted."
+    - "ODC-BY attribution requirements must be reviewed before any M3/M4 promotion."
+    - "Repository redistribution remains disabled unless a later issue explicitly permits it."
 
 graph_transformation:
   original_semantics: "directed citation graph between Computer Science arXiv papers indexed by MAG"
@@ -56,4 +63,4 @@ decision:
   admitted_to_m4: false
   reviewer: "pending"
   decision_date_utc: null
-  decision_notes: "Promising primary scientific replacement, but this manifest is not an execution whitelist."
+  decision_notes: "Promising scientific replacement candidate, but this manifest is not an execution whitelist. ODC-BY attribution and transformation review are still required."
