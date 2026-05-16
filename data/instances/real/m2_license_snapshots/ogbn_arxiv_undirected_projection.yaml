@@ -15,21 +15,49 @@ official_source:
   hash_inventory: "1027_noctua_hash_ogbn_license_probe_artifacts"
   access_host: "srv-noctua"
   latest_review_date_utc: "2026-05-16"
+  odc_by_terms_probe: "1032_noctua_odc_by_terms_snapshot_probe"
+  odc_by_terms_hash_inventory: "1033_noctua_hash_odc_by_terms_probe_artifacts"
 
 license:
   expected_name: "Open Data Commons Attribution License (ODC-BY)"
   scope: "dataset entry for ogbn-arxiv, pending exact authoritative snapshot"
-  license_url: "pending_exact_snapshot"
+  license_url: "https://opendatacommons.org/licenses/by/1-0/"
+  exact_terms_snapshot:
+    source_probe: "1032_noctua_odc_by_terms_snapshot_probe"
+    hash_inventory: "1033_noctua_hash_odc_by_terms_probe_artifacts"
+    odc_by_url: "https://opendatacommons.org/licenses/by/1-0/"
+    odc_by_index_url: "https://opendatacommons.org/licenses/by/1-0/index.html"
+    odc_by_body_sha256: "681a60875b4d6e125401054eb50d8968374268e808952b1ec640a73f85cfcf1d"
+    odc_by_text_length: 21384
+    ogb_ogbn_arxiv_url: "https://ogb.stanford.edu/docs/nodeprop/#ogbn-arxiv"
+    ogb_ogbn_arxiv_body_sha256: "00c8d645665e0d2dc1c643872b46f9f34c9fd9c469736fdf3e54b34c881c1b2f"
+    ogb_ogbn_arxiv_text_length: 15005
   evidence_summary:
     - "The 1016 probe initially suggested a possible CC0 interpretation because a CC-0 mention appeared near the ogbn-arxiv text."
     - "The 1025 focused context probe classified the ogbn-arxiv license context as mixed and did not admit the candidate."
     - "The 1026 section-boundary probe isolated the section from 'Dataset ogbn-arxiv' to the next dataset heading and inferred License: ODC-BY for ogbn-arxiv."
     - "The 1027 inventory recorded hashes for the 1025 and 1026 audit artifacts and marked the prior CC0 correction as superseded by the 1026 section-boundary probe."
+    - "The 1032 probe snapshotted the ODC-BY terms and the OGB ogbn-arxiv source page; the 1033 inventory recorded hashes for those audit artifacts."
   expectation_revision:
     original_shortlist_expectation: "ODC_BY_expected_from_OGB_dataset_documentation"
     temporary_revision_after_1016: "CC0_expected_from_OGB_dataset_documentation_after_1016_probe"
     current_expectation_after_1026: "ODC_BY_supported_by_1026_section_boundary_probe"
     rationale: "The CC-0 mention belongs to the neighboring section context, while the isolated ogbn-arxiv section ends with License: ODC-BY."
+  attribution_obligations:
+    preliminary_status: "must_be_satisfied_before_m3_promotion"
+    evidence_basis:
+      - "The 1032 ODC-BY terms snapshot records that ODC-BY permits sharing, modification and use of the database subject to attribution requirements."
+      - "The 1032 snapshot records ODC-BY Section 4-style notice language requiring notice that content was obtained from the database and is available under the ODC Attribution License."
+      - "The 1032 snapshot also records that ODC-BY governs database rights and may not cover individual contents independently."
+    required_notice_template: "Contains information from OGB ogbn-arxiv, made available under the ODC Attribution License. See https://ogb.stanford.edu/docs/nodeprop/#ogbn-arxiv and https://opendatacommons.org/licenses/by/1-0/."
+    required_before_m3:
+      - "Confirm exact OGB dataset-level attribution wording, if any."
+      - "Record citation for the OGB benchmark and the MAG/arXiv source references used by OGB."
+      - "Record whether derived undirected projection must carry the same ODC-BY notice."
+      - "Record whether raw OGB files may be redistributed, or only acquired through scripts."
+      - "Record citation and attribution text in any generated metadata manifest."
+    redistribution_policy: "raw and derived redistribution remain disabled until a later explicit admission issue"
+
   restrictions_or_boundaries:
     - "Do not infer that the OGB software MIT license covers the dataset."
     - "Do not infer that licenses of neighboring OGB datasets apply to ogbn-arxiv."
