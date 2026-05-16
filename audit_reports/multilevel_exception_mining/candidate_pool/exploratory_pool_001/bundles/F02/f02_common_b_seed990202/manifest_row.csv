@@ -1,2 +1,0 @@
-bundle_path,campaign_id,candidate_id,created_at,environment_target,family,instance_id,intended_hypothesis,lifecycle_state,pool_role,seed,solver_results_used,variant
-/home/brunoonurb/MPP/audit_reports/multilevel_exception_mining/candidate_pool/exploratory_pool_001/bundles/F02/f02_common_b_seed990202,EXP-MULTILEVEL-EXCEPTION-MINING-001,f02_common_b_seed990202,2026-05-07T14:52:46.569717+00:00,common,F02,f02_common_b_seed990202,chain/ring module topology with narrow inter-module cuts; intended environment stratum: common,generated,exploratory_candidate,990202,False,common_b

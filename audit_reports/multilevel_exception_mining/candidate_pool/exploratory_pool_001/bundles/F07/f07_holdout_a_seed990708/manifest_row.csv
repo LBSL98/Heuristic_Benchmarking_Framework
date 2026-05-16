@@ -1,2 +1,0 @@
-bundle_path,campaign_id,candidate_id,created_at,environment_target,family,instance_id,intended_hypothesis,lifecycle_state,pool_role,seed,solver_results_used,variant
-/home/brunoonurb/MPP/audit_reports/multilevel_exception_mining/candidate_pool/exploratory_pool_001/bundles/F07/f07_holdout_a_seed990708,EXP-MULTILEVEL-EXCEPTION-MINING-001,f07_holdout_a_seed990708,2026-05-07T14:53:02.706914+00:00,holdout,F07,f07_holdout_a_seed990708,dense weak-signal topology for noisy cut structure; intended environment stratum: holdout,holdout_reserved,reserved_holdout,990708,False,holdout_a

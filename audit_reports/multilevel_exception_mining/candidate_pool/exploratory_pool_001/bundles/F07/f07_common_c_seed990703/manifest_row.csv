@@ -1,2 +1,0 @@
-bundle_path,campaign_id,candidate_id,created_at,environment_target,family,instance_id,intended_hypothesis,lifecycle_state,pool_role,seed,solver_results_used,variant
-/home/brunoonurb/MPP/audit_reports/multilevel_exception_mining/candidate_pool/exploratory_pool_001/bundles/F07/f07_common_c_seed990703,EXP-MULTILEVEL-EXCEPTION-MINING-001,f07_common_c_seed990703,2026-05-07T14:53:00.966759+00:00,common,F07,f07_common_c_seed990703,dense weak-signal topology for noisy cut structure; intended environment stratum: common,generated,exploratory_candidate,990703,False,common_c
