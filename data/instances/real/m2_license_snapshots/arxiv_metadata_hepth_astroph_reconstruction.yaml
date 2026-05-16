@@ -59,6 +59,8 @@ repository_policy:
   default_storage: "scripts plus hashes plus metadata manifest"
   no_m3_m4_until_admitted: true
 
+probe_evidence_index: "data/instances/real/m2_license_snapshots/PROBE_EVIDENCE_INDEX.md"
+
 decision:
   admitted_to_m3: false
   admitted_to_m4: false
