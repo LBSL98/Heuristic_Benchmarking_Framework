@@ -36,7 +36,7 @@ This priority follows the M2 probe result that kept every family non-admitted wh
 
 ## M2 scientific license snapshot manifests
 
-Candidate-level M2 manifests were added for the two strongest scientific targets after the `1016` srv-noctua probe:
+Candidate-level M2 manifests exist for the two strongest scientific targets:
 
 - `data/instances/real/m2_license_snapshots/arxiv_metadata_hepth_astroph_reconstruction.yaml`;
 - `data/instances/real/m2_license_snapshots/ogbn_arxiv_undirected_projection.yaml`.
@@ -45,7 +45,9 @@ These manifests are not execution whitelists.
 
 The arXiv metadata path is treated as promising only for descriptive metadata under CC0. Full text, PDFs, source files and e-prints remain out of scope unless separately licensed.
 
-The `ogbn-arxiv` path is treated as promising because the `1016` probe found `License: CC-0` adjacent to the `ogbn-arxiv` dataset entry. This corrects the previous shortlist expectation that associated `ogbn-arxiv` with ODC-BY. The OGB software/package MIT license remains separate from dataset licensing.
+The `ogbn-arxiv` path remains promising, but its license expectation was corrected back to ODC-BY after the focused `1025` and section-boundary `1026` srv-noctua probes. The earlier CC0 interpretation from the broad `1016` probe is superseded. The `1026` probe isolated the `ogbn-arxiv` section and inferred `License: ODC-BY` for that candidate.
+
+The OGB software/package MIT license remains separate from dataset licensing. Neighboring OGB dataset licenses must not be transferred to `ogbn-arxiv`.
 
 TIGER/Line remains a primary target, but it still needs manual review of the Census legal disclaimer and citation documentation before a candidate-level admission decision.
 

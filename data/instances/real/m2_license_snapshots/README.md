@@ -15,11 +15,13 @@ A candidate may be promoted to M3 smoke only after a later issue records a final
 
 Both scientific candidates are promising, but neither is admitted.
 
-The `1016` srv-noctua probe found stronger evidence for the scientific candidates than for TIGER/Line:
+The current interpretation is:
 
 - arXiv metadata: promising under CC0 for descriptive metadata only;
-- ogbn-arxiv: promising because OGB documentation placed `License: CC-0` adjacent to the ogbn-arxiv entry;
-- TIGER/Line: still needs manual review of the Census technical documentation chapter on legal disclaimer and citation.
+- `ogbn-arxiv`: promising but still pending review; the current license expectation is ODC-BY, not CC0;
+- TIGER/Line: still needs manual review of the Census legal disclaimer and citation documentation.
+
+The `ogbn-arxiv` CC0 interpretation recorded after the `1016` probe was superseded by the `1026` section-boundary probe. That later probe isolated the `ogbn-arxiv` section and inferred `License: ODC-BY` for the candidate.
 
 ## Probe evidence index
 
@@ -27,13 +29,14 @@ The audit evidence used by these manifests is indexed in:
 
 - `PROBE_EVIDENCE_INDEX.md`
 
-The index records the `1016` srv-noctua audit artifacts and hashes confirmed by the `1020` synchronization check. It does not admit any candidate to execution.
+The index records the `1016`, `1025`, `1026` and `1027` srv-noctua audit evidence. It does not admit any candidate to execution.
 
 ## Guardrails
 
-- Do not download raw datasets as part of this documentation patch.
+- Do not download raw datasets as part of documentation patches.
 - Do not commit raw datasets.
 - Do not commit derived graphs unless a later admission issue explicitly permits it.
 - Do not treat software licenses as dataset licenses.
+- Do not treat neighboring dataset licenses as applying to `ogbn-arxiv`.
 - Do not admit M3/M4 execution from these manifests alone.
 - Keep issue `#143` open until concrete replacements are admitted or rejected.
