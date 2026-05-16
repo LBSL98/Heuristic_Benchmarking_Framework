@@ -1,0 +1,57 @@
+dataset_id: "ogbn_arxiv_undirected_projection"
+display_name: "OGB ogbn-arxiv undirected projection"
+status: "m2_license_snapshot_pending_review_not_admitted"
+
+source_family: "OGB"
+replacement_role: "scientific citation-like real graph"
+
+official_source:
+  ogb_nodeprop_url: "https://ogb.stanford.edu/docs/nodeprop/#ogbn-arxiv"
+  ogb_home_url: "https://ogb.stanford.edu/docs/home/"
+  ogb_github_url: "https://github.com/snap-stanford/ogb"
+  access_probe: "1016_noctua_m2_primary_license_snapshot_probe_no_remote_gh"
+  access_host: "srv-noctua"
+  access_date_utc: "2026-05-16"
+
+license:
+  expected_name: "CC-0 / CC0"
+  scope: "dataset entry for ogbn-arxiv, pending exact snapshot"
+  license_url: "pending_exact_snapshot"
+  evidence_summary:
+    - "The 1016 probe found OGB node property documentation with 'License: CC-0' adjacent to the ogbn-arxiv dataset entry."
+    - "The same OGB page also contains ODC-BY references for other datasets such as ogbn-papers100M and ogbn-mag."
+    - "The OGB GitHub repository exposes an MIT license for software/package code, which must not be confused with the per-dataset license."
+  correction_from_shortlist:
+    previous_expectation: "ODC_BY_expected_from_OGB_dataset_documentation"
+    corrected_expectation: "CC0_expected_from_OGB_dataset_documentation_after_1016_probe"
+    rationale: "1016 probe evidence places CC-0 next to ogbn-arxiv, while ODC-BY appears next to other OGB datasets."
+  restrictions_or_boundaries:
+    - "Do not infer that the OGB software MIT license covers the dataset."
+    - "Do not infer that licenses of other OGB datasets apply to ogbn-arxiv."
+    - "Do not admit until the exact license text or authoritative dataset-level license statement is snapshotted."
+
+graph_transformation:
+  original_semantics: "directed citation graph between Computer Science arXiv papers indexed by MAG"
+  required_projection_for_gpp: "explicit directed-to-undirected conversion"
+  required_review_before_admission:
+    - "Record whether symmetrization uses union of directed edges."
+    - "Remove self-loops if present."
+    - "Deduplicate edges after projection."
+    - "Record whether node features and labels are ignored."
+    - "Record original and projected graph counts."
+    - "Record acquisition script and raw hashes if downloaded."
+    - "Record derived graph hash if produced."
+    - "Define holdout group fields."
+
+repository_policy:
+  raw_data_in_repo: false
+  derived_graph_in_repo: "pending explicit review"
+  default_storage: "scripts plus hashes plus metadata manifest"
+  no_m3_m4_until_admitted: true
+
+decision:
+  admitted_to_m3: false
+  admitted_to_m4: false
+  reviewer: "pending"
+  decision_date_utc: null
+  decision_notes: "Promising primary scientific replacement, but this manifest is not an execution whitelist."
