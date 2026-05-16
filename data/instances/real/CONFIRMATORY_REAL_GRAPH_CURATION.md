@@ -51,7 +51,7 @@ The SNAP dataset pages provide source/citation information and describe these in
 
 The license field remains intentionally conservative as `NO_EXPLICIT_LICENSE_FOUND_IN_SNAP_DATASET_PAGE_PENDING_REVIEW`. This means the candidates are still not admitted to M3/M4 execution. A later audit must decide whether the SNAP pages, source papers, repository policy or institutional/legal interpretation are sufficient for the intended benchmark use.
 
-The raw-input field remains `public_snap_download_url_recorded_pending_local_raw_hash_audit` because this patch records the public download URL but does not download, hash or vendor the raw source archives.
+The raw-input field was later updated by the raw-source hash audit. The raw SNAP source archives are not versioned; only reproducible metadata are recorded.
 
 ## Anti-winner-conditioned selection rule
 
@@ -151,13 +151,49 @@ The outcome is blocked, not approved:
 
 Therefore, the current candidates remain documented M1 candidates only. They are not an execution whitelist and are not admitted to M3 smoke or M4 confirmatory execution.
 
-The blocking condition is:
+The original blocking condition was:
 
 - `license_admissibility_status = m1_license_unresolved_human_or_institutional_review_required`;
 - `license_admissibility_decision = not_ready_for_m3_m4_until_explicit_license_basis_or_exclusion_decision`;
 - `candidate_status = candidate_confirmatory_pending`.
 
-A later issue must resolve this by either accepting an explicit license basis through human or institutional review, or excluding/replacing these candidates before any M3/M4 real-graph execution. Until then, no benchmark claim may rely on these candidates as confirmatory real-graph evidence.
+Issue `#143` then resolved this decision path conservatively by excluding these SNAP classic candidates from the public confirmatory sample and requiring license-clear replacements before any M3/M4 real-graph execution. No benchmark claim may rely on these candidates as confirmatory real-graph evidence.
+
+## SNAP classic exclusion decision
+
+The successor license/admissibility review in issue `#143`, together with the deeper probe `998` and the external admissibility research, changes the final treatment of the current SNAP-derived candidates.
+
+The current candidates are no longer merely pending. They are excluded from the public confirmatory real-graph sample unless a later issue reopens them with an explicit accepted dataset-license basis.
+
+The excluded SNAP classic candidates are:
+
+- `roadnet_ca_bfs_10000_seed42`;
+- `roadnet_ca_bfs_20000_seed43`;
+- `ca_astroph_gcc`;
+- `ca_hepth_gcc`.
+
+The exclusion rationale is:
+
+- the official SNAP pages for `roadNet-CA`, `ca-HepTh` and `ca-AstroPh` did not provide an explicit dataset license in the project audits;
+- the SNAP BSD license is treated as a software license for SNAP/GLib, not as a license for the dataset files;
+- the SNAP `telecom-graph` control case shows that some SNAP datasets expose a dataset-specific `LICENSE`, so dataset licensing must be handled dataset by dataset;
+- public availability, citation metadata and downloadable files are not sufficient to admit a dataset to the public confirmatory sample.
+
+The manifest records this as:
+
+- `snap_classic_exclusion_status = excluded_from_confirmatory_public_sample`;
+- `replacement_required = true`;
+- `candidate_status = candidate_excluded_license_unresolved_replacement_required`;
+- `license_admissibility_decision = excluded_from_m3_m4_until_license_clear_replacement_is_curated`.
+
+Replacement should prioritize license-clear sources:
+
+- TIGER/Line or OSM/Geofabrik for road graphs;
+- arXiv metadata under CC0 for scientific collaboration/citation reconstructions;
+- OGB datasets with explicit compatible dataset licenses;
+- SuiteSparse only as a controlled fallback, preferably without redistributing raw or derived graph files by default.
+
+This decision does not remove the historical audit value of the four candidates. It records that they are documented negative/admissibility cases, not M3/M4 execution inputs.
 
 ## Raw data policy
 
@@ -179,4 +215,4 @@ For the current initial assets, both RoadNet-derived slices share base graph `ro
 
 This M1 manifest does not add an empirical result, does not authorize monograph prose, and does not modify `decisions/08_Results_to_Text_Map.md`.
 
-Issue `#49` remains the residual writing blocker. Issue `#127` remains open until curation metadata is complete enough to decide whether candidates are excluded or ready for M3/M4.
+Issue `#49` remains the residual writing blocker. Issue `#127` was closed after the M1 curation/audit scope reached a documented blocked gate. Issue `#143` tracks the remaining license-clear replacement path.
