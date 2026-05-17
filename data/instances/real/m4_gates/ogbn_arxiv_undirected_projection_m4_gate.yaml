@@ -86,3 +86,21 @@ m4_smoke_stop_conditions:
 next_required_step:
   issue_or_patch: "Create a separate M4 smoke execution issue or command plan."
   benchmark_campaign_status: "blocked_until_after_successful_m4_smoke_and_separate_gate"
+
+m4_smoke_after_1076:
+  smoke_status: "completed_passed"
+  smoke_result_manifest: "data/instances/real/m4_smoke_results/ogbn_arxiv_undirected_projection_1076_smoke_result.yaml"
+  smoke_issue: 157
+  smoke_probe: "1076_noctua_run_ogbn_arxiv_m4_smoke_bounded"
+  m4_smoke_completed: true
+  benchmark_input_interface_check_passed: true
+  projection_hash_verified: true
+  graph_counts_verified: true
+  attribution_metadata_present: true
+  benchmark_campaign_run: false
+  solver_invoked: false
+  cart_training_run: false
+  redistribution_allowed: false
+  raw_or_derived_files_committed: false
+  monograph_result_claim_supported: false
+  full_benchmark_campaign_status: "blocked_until_separate_campaign_gate"
