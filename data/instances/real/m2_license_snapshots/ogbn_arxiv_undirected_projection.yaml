@@ -139,3 +139,16 @@ versioned_reproducer_after_1064:
   cart_training_run: false
   monograph_result_claim_supported: false
   m4_gate_status: "blocked_pending_explicit_gate_decision"
+
+m4_gate_after_1070:
+  gate_status: "admit_to_m4_smoke_only"
+  gate_manifest: "data/instances/real/m4_gates/ogbn_arxiv_undirected_projection_m4_gate.yaml"
+  gate_issue: 155
+  main_commit_at_gate: "0c876b0765fbad9452bb2c84c3b618764b73b60f"
+  m4_smoke_admitted: true
+  m4_benchmark_campaign_admitted: false
+  cart_training_admitted: false
+  redistribution_allowed: false
+  monograph_result_claim_supported: false
+  raw_files_committable: false
+  derived_files_committable: false
