@@ -152,3 +152,18 @@ m4_gate_after_1070:
   monograph_result_claim_supported: false
   raw_files_committable: false
   derived_files_committable: false
+
+m4_smoke_after_1076:
+  smoke_status: "completed_passed"
+  smoke_result_manifest: "data/instances/real/m4_smoke_results/ogbn_arxiv_undirected_projection_1076_smoke_result.yaml"
+  smoke_issue: 157
+  main_commit_at_smoke: "849db4d9e0f5191a5ddb204cde9bad00520311a5"
+  m4_smoke_completed: true
+  benchmark_input_interface_check_passed: true
+  projection_sha256: "b6533424c1f0b226127130697c7effbab2c1dbfd07c8ed48f0468bbc46e290ba"
+  projection_hash_verified: true
+  benchmark_campaign_run: false
+  cart_training_run: false
+  redistribution_allowed: false
+  raw_or_derived_files_committed: false
+  monograph_result_claim_supported: false

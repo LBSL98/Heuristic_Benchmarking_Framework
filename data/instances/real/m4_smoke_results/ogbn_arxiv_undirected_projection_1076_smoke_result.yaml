@@ -1,0 +1,71 @@
+dataset_id: "ogbn_arxiv_undirected_projection"
+smoke_id: "1076_noctua_run_ogbn_arxiv_m4_smoke_bounded"
+smoke_status: "completed_passed"
+issue: 157
+gate_issue: 155
+parent_issue: 143
+main_commit_at_smoke: "849db4d9e0f5191a5ddb204cde9bad00520311a5"
+host: "srv-noctua"
+
+scope:
+  label: "bounded_input_interface_validation_only"
+  m4_smoke_completed: true
+  full_benchmark_campaign_admitted: false
+  benchmark_campaign_run: false
+  solver_invoked: false
+  solver_comparison_run: false
+  cart_training_run: false
+  redistribution_allowed: false
+  raw_or_derived_files_committed: false
+  monograph_result_claim_supported: false
+
+validated_artifacts:
+  raw_inventory_verified: true
+  raw_file_count: 14
+  projection_hash_verified: true
+  projection_sha256: "b6533424c1f0b226127130697c7effbab2c1dbfd07c8ed48f0468bbc46e290ba"
+  attribution_metadata_present: true
+  benchmark_input_interface_check_passed: true
+  recognized_minimal_benchmark_input_contract: true
+  local_output_scope: "ignored_data_tmp_only"
+
+graph_counts:
+  num_nodes: 169343
+  directed_edge_count: 1166243
+  self_loop_count_removed: 0
+  directed_edges_after_self_loop_removal: 1166243
+  undirected_union_edge_count: 1157799
+  duplicate_or_reciprocal_directed_edges_removed_by_projection: 8444
+  connected_components: 1
+  largest_component_size: 169343
+  isolated_vertices: 0
+
+attribution:
+  license: "Open Data Commons Attribution License (ODC-BY)"
+  source: "Open Graph Benchmark ogbn-arxiv"
+  source_url: "https://ogb.stanford.edu/docs/nodeprop/#ogbn-arxiv"
+  license_url: "https://opendatacommons.org/licenses/by/1-0/"
+  notice_verified: true
+  redistribution_authorized_by_smoke: false
+
+audit_outputs:
+  local_wrapper: "audit_reports/confirmatory_plan_956/1076_noctua_run_ogbn_arxiv_m4_smoke_bounded.txt"
+  remote_log: "audit_reports/confirmatory_plan_956/1076_noctua_run_ogbn_arxiv_m4_smoke_bounded.remote.txt"
+  remote_summary_json: "audit_reports/confirmatory_plan_956/1076_noctua_run_ogbn_arxiv_m4_smoke_bounded.json"
+  remote_summary_md: "audit_reports/confirmatory_plan_956/1076_noctua_run_ogbn_arxiv_m4_smoke_bounded.md"
+
+stop_conditions:
+  triggered: []
+  tracked_working_tree_changed: false
+  data_tmp_tracked: false
+  hash_mismatch: false
+  graph_count_mismatch: false
+  benchmark_campaign_attempted: false
+  cart_training_attempted: false
+  attribution_metadata_missing: false
+
+next_boundary:
+  issue_157_closeout_allowed_after_versioned_record: true
+  full_benchmark_campaign_status: "blocked_until_separate_campaign_gate"
+  cart_training_status: "blocked_until_separate_cart_gate"
+  monograph_claim_status: "blocked_until_results_and_claim_map_audit"
