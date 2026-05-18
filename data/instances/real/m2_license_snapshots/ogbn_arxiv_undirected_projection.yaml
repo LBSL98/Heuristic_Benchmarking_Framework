@@ -203,3 +203,21 @@ m4_campaign_setup_smoke_after_1086B:
   redistribution_allowed: false
   raw_or_derived_files_committed: false
   monograph_result_claim_supported: false
+
+m4_execution_gate_after_1090:
+  gate_status: "admit_to_limited_campaign_pilot_only"
+  gate_manifest: "data/instances/real/m4_execution_gates/ogbn_arxiv_undirected_projection_execution_gate.yaml"
+  execution_gate_issue: 163
+  main_commit_at_gate: "7d1dc3bd674c2c855c7bd1691b544416930b2ad6"
+  limited_campaign_pilot_admitted: true
+  full_campaign_execution_admitted: false
+  full_campaign_execution_requires_later_gate: true
+  solver_invocation_admitted_for_limited_pilot: true
+  solver_comparison_admitted_for_limited_pilot: true
+  cart_training_admitted: false
+  redistribution_allowed: false
+  raw_files_committable: false
+  derived_files_committable: false
+  monograph_result_claim_supported: false
+  projection_sha256: "b6533424c1f0b226127130697c7effbab2c1dbfd07c8ed48f0468bbc46e290ba"
+  next_required_step: "bounded_limited_pilot_execution_command_plan"
