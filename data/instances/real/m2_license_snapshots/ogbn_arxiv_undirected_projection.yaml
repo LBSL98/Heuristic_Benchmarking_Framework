@@ -167,3 +167,20 @@ m4_smoke_after_1076:
   redistribution_allowed: false
   raw_or_derived_files_committed: false
   monograph_result_claim_supported: false
+
+m4_campaign_gate_after_1081:
+  gate_status: "admit_to_campaign_input"
+  gate_manifest: "data/instances/real/m4_campaign_gates/ogbn_arxiv_undirected_projection_campaign_gate.yaml"
+  campaign_gate_issue: 159
+  main_commit_at_gate: "44704282fda192e464c8d054d0800ff2c09f6da0"
+  campaign_input_admitted: true
+  campaign_setup_smoke_required_before_full_run: true
+  full_benchmark_campaign_run_admitted_by_this_gate: false
+  solver_comparison_admitted_by_this_gate: false
+  cart_training_admitted: false
+  redistribution_allowed: false
+  raw_files_committable: false
+  derived_files_committable: false
+  monograph_result_claim_supported: false
+  projection_sha256: "b6533424c1f0b226127130697c7effbab2c1dbfd07c8ed48f0468bbc46e290ba"
+  next_required_step: "bounded_campaign_setup_smoke_issue_or_command_plan"
