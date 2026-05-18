@@ -307,3 +307,29 @@ m4_calibrated_multilevel_review_after_1113:
   derived_files_committable: false
   local_pilot_outputs_committable: false
   monograph_result_claim_supported: false
+
+m4_summary_ingestion_plan_after_1113:
+  ingestion_plan: "data/instances/real/m4_summary_ingestion_plans/ogbn_arxiv_1113_reduced_summary_ingestion_plan.yaml"
+  ingestion_gate_issue: 177
+  source_review_issue: 175
+  source_run_id: "1113_ogbn_arxiv_calibrated_multilevel_metis5000_kahip30000_seed42"
+  plan_scope: "bounded_reduced_summary_ingestion_plan_only"
+  proposed_target_file: "data/instances/real/m4_reduced_execution_summaries/ogbn_arxiv_1113_calibrated_multilevel_summary.v1.yaml"
+  proposed_schema_id: "m4_reduced_execution_summary_v1"
+  source_record_type: "versioned_review_manifest"
+  metis_cutsize_best: 223376
+  metis_elapsed_ms: 1216
+  kahip_cutsize_best: 361338
+  kahip_elapsed_ms: 9341
+  reduced_summary_plan_admitted: true
+  reduced_summary_record_pr_admitted: true
+  reduced_summary_record_created_by_this_plan: false
+  local_output_ingestion_admitted: false
+  raw_solver_output_json_admitted: false
+  partition_file_ingestion_admitted: false
+  raw_ogb_file_ingestion_admitted: false
+  derived_graph_file_ingestion_admitted: false
+  multi_dataset_campaign_ingestion_admitted: false
+  cart_training_admitted: false
+  redistribution_allowed: false
+  monograph_result_claim_supported: false

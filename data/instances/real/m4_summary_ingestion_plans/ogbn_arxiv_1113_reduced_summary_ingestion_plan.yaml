@@ -1,0 +1,181 @@
+plan_id: "1120_ogbn_arxiv_1113_reduced_summary_ingestion_plan"
+dataset_id: "ogbn_arxiv_undirected_projection"
+source_run_id: "1113_ogbn_arxiv_calibrated_multilevel_metis5000_kahip30000_seed42"
+source_review_issue: 175
+ingestion_gate_issue: 177
+parent_campaign_issue: 130
+parent_license_issue: 143
+main_commit_at_plan: "695ae143d3d6829286652f8a2a93d8fbfd9bdb86"
+
+plan_scope:
+  scope: "bounded_reduced_summary_ingestion_plan_only"
+  dataset: "ogbn_arxiv_undirected_projection"
+  participant_class: "multilevel_only"
+  participants:
+    - "metis"
+    - "kahip"
+  source_record_type: "versioned_review_manifest"
+  source_review_manifest: "data/instances/real/m4_limited_pilot_reviews/ogbn_arxiv_1113_calibrated_multilevel_review.yaml"
+  proposed_target_file: "data/instances/real/m4_reduced_execution_summaries/ogbn_arxiv_1113_calibrated_multilevel_summary.v1.yaml"
+  proposed_schema_id: "m4_reduced_execution_summary_v1"
+  proposed_format: "yaml"
+
+admitted_ingestion:
+  reduced_summary_plan_admitted: true
+  reduced_summary_record_pr_admitted: true
+  reduced_summary_record_created_by_this_plan: false
+  local_output_ingestion_admitted: false
+  raw_solver_output_json_admitted: false
+  partition_file_ingestion_admitted: false
+  raw_ogb_file_ingestion_admitted: false
+  derived_graph_file_ingestion_admitted: false
+  multi_dataset_campaign_ingestion_admitted: false
+  cart_training_admitted: false
+  monograph_result_claim_supported: false
+  redistribution_allowed: false
+
+reduced_fields_allowed:
+  run_metadata:
+    - "dataset_id"
+    - "source_run_id"
+    - "source_review_issue"
+    - "source_review_manifest"
+    - "participant_class"
+    - "k"
+    - "beta"
+    - "seed"
+    - "runtime_label"
+    - "host_label"
+    - "bounded_validation_label"
+  participant_results:
+    - "algorithm"
+    - "budget_time_ms"
+    - "status"
+    - "feasible"
+    - "elapsed_ms"
+    - "cutsize_best"
+    - "returncode"
+    - "max_allowed"
+    - "partition_counts"
+  admissibility_metadata:
+    - "license_family"
+    - "attribution_required"
+    - "required_notice"
+    - "redistribution_allowed"
+    - "raw_outputs_excluded"
+    - "partition_files_excluded"
+    - "raw_or_derived_graph_files_excluded"
+  interpretation_boundary:
+    - "single_dataset_bounded_validation_only"
+    - "not_multi_dataset_campaign"
+    - "not_cart_training_input"
+    - "not_monograph_claim"
+
+values_source_decision:
+  primary_source: "versioned_review_manifest"
+  local_ignored_outputs_used_directly: false
+  local_ignored_output_hashes_recorded: false
+  local_ignored_output_hash_decision: "not_recorded_in_v1"
+  rationale:
+    - "The 1113 result values have already been reviewed and versioned in the calibrated multilevel review manifest."
+    - "The reduced summary should avoid depending on local ignored output JSON for normal repository use."
+    - "Raw output hashes can be added later only through a separate provenance gate if needed."
+    - "Avoiding raw output hashes in v1 reduces pressure to expose or preserve ignored local artifacts."
+
+proposed_reduced_summary_values:
+  k: 8
+  beta: 0.03
+  seed: 42
+  participants:
+    metis:
+      budget_time_ms: 5000
+      status: "ok"
+      feasible: true
+      elapsed_ms: 1216
+      cutsize_best: 223376
+      returncode: 0
+      partition_counts:
+        - 21429
+        - 20550
+        - 20552
+        - 21802
+        - 20948
+        - 21803
+        - 20710
+        - 21549
+      max_allowed: 21803
+    kahip:
+      budget_time_ms: 30000
+      status: "ok"
+      feasible: true
+      elapsed_ms: 9341
+      cutsize_best: 361338
+      returncode: 0
+      partition_counts:
+        - 21802
+        - 21802
+        - 21802
+        - 21802
+        - 21802
+        - 21802
+        - 21802
+        - 16729
+      max_allowed: 21803
+
+explicit_exclusions:
+  raw_solver_output_json:
+    excluded: true
+    reason: "Contains local execution output; not needed for reduced summary and not authorized for ingestion by this gate."
+  partition_files:
+    excluded: true
+    reason: "Partition assignments are local execution artifacts and are not needed for the reduced summary."
+  raw_ogb_files:
+    excluded: true
+    reason: "Original OGB data is not redistributed by this repository."
+  derived_graph_files:
+    excluded: true
+    reason: "Derived graph artifact remains local/ignored unless a separate artifact gate authorizes it."
+  cart_training:
+    excluded: true
+    reason: "A single bounded two-participant result is not a CART training dataset."
+  monograph_claims:
+    excluded: true
+    reason: "The result is single-dataset bounded validation, not a campaign-level finding."
+  multi_dataset_campaign_conclusions:
+    excluded: true
+    reason: "Only ogbn-arxiv was executed in this bounded calibrated multilevel run."
+
+attribution_boundary:
+  license_family: "ODC-BY-1.0"
+  attribution_required: true
+  required_notice: "Contains information from OGB ogbn-arxiv."
+  redistribution_allowed: false
+  summary_must_preserve_notice: true
+
+next_step_after_plan:
+  expected_next_issue: "record_reduced_summary_from_versioned_review_manifest"
+  expected_next_pr_scope: "create_reduced_summary_yaml_only"
+  allowed_next_target_file: "data/instances/real/m4_reduced_execution_summaries/ogbn_arxiv_1113_calibrated_multilevel_summary.v1.yaml"
+  still_blocked:
+    - "raw solver output JSON"
+    - "partition files"
+    - "raw OGB files"
+    - "derived graph files"
+    - "multi-dataset campaign execution"
+    - "broader participant execution"
+    - "CART training"
+    - "monograph result claims"
+    - "decisions/08_Results_to_Text_Map.md edits"
+
+stop_conditions:
+  - "Repository not on expected main."
+  - "Tracked working tree dirty."
+  - "data/tmp or result paths become tracked."
+  - "Raw solver output JSON is staged."
+  - "Partition file is staged."
+  - "Raw or derived graph file is staged."
+  - "CART training is attempted."
+  - "Monograph claim is generated."
+  - "Redistribution is attempted."
+  - "ODC-BY attribution boundary is missing."
+  - "Reduced summary is worded as final campaign evidence rather than bounded single-dataset validation."
