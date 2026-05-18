@@ -1,0 +1,98 @@
+dataset_id: "ogbn_arxiv_undirected_projection"
+review_id: "1102_review_after_1099B_limited_pilot"
+source_run_id: "1099B_ogbn_arxiv_limited_pilot_baselines_metis_kahip_5000ms_seed42"
+source_monitor_issue: 166
+review_issue: 167
+parent_campaign_issue: 130
+parent_license_issue: 143
+main_commit_at_review: "0dd1606703a6385e703a119ea2ce5a9bc0cbdd15"
+
+pilot_scope:
+  scope: "bounded_limited_pilot_baseline_only"
+  dataset: "ogbn_arxiv_undirected_projection"
+  algorithms:
+    - "metis"
+    - "kahip"
+  k: 8
+  beta: 0.03
+  budget_time_ms: 5000
+  seed: 42
+  runtime: "docker"
+  image_tag: "mpp-campaign:ogbn-limited-pilot-0dd1606-1098"
+  host: "srv-noctua"
+
+observed_result:
+  pilot_status: "completed_with_kahip_timeout"
+  driver_completed: true
+  driver_failed: false
+  metis:
+    status: "ok"
+    feasible: true
+    elapsed_ms: 1197
+    cutsize_best: 223376
+    returncode: 0
+    partition_counts:
+      - 21429
+      - 20550
+      - 20552
+      - 21802
+      - 20948
+      - 21803
+      - 20710
+      - 21549
+    max_allowed: 21803
+  kahip:
+    status: "timeout"
+    feasible: false
+    elapsed_ms: 5021
+    cutsize_best: null
+    returncode: null
+    stdout_excerpt: "io time: 0.377125; graph has 169343 nodes and 2315598 edges; performing partitioning!"
+
+review_decision:
+  decision_label: "admit_kahip_budget_ramp_pilot_only"
+  rationale:
+    - "The Docker runtime and hpc_framework single-run path were validated end-to-end on ogbn-arxiv."
+    - "METIS completed successfully under the 5000 ms limited pilot budget."
+    - "KaHIP reached the controlled 5000 ms timeout before producing a feasible partition."
+    - "A full campaign gate would be premature before calibrating a minimally viable KaHIP budget for this graph size."
+  admitted_next_scope: "bounded_kahip_budget_ramp_pilot"
+  admitted_algorithms:
+    - "kahip"
+  proposed_budget_time_ms_grid:
+    - 30000
+    - 120000
+    - 300000
+  proposed_seed_policy:
+    - 42
+  proposed_k: 8
+  proposed_beta: 0.03
+  proposed_kahip_preset: "fast"
+  metis_rerun_required_before_ramp: false
+  full_campaign_execution_admitted: false
+  full_campaign_execution_requires_later_gate: true
+  cart_training_admitted: false
+  redistribution_allowed: false
+  raw_files_committable: false
+  derived_files_committable: false
+  local_pilot_outputs_committable: false
+  monograph_result_claim_supported: false
+
+required_next_step:
+  command_plan_issue_required: true
+  next_issue_purpose: "Create bounded KaHIP budget-ramp command plan for ogbn-arxiv."
+  stop_conditions:
+    - "Repository not on expected main."
+    - "Tracked working tree dirty."
+    - "data/tmp or result paths become tracked."
+    - "Command expands beyond KaHIP-only ogbn-arxiv budget ramp."
+    - "CART training attempted."
+    - "Monograph claim generated."
+    - "Redistribution or raw/derived commit attempted."
+    - "Missing ODC-BY attribution metadata."
+  result_interpretation_boundary:
+    - "The 1099B result is a limited pilot only."
+    - "The KaHIP timeout is evidence of insufficient pilot budget, not solver inferiority."
+    - "No full campaign conclusion is supported."
+    - "No CART training is supported."
+    - "No monograph result claim is supported."

@@ -221,3 +221,28 @@ m4_execution_gate_after_1090:
   monograph_result_claim_supported: false
   projection_sha256: "b6533424c1f0b226127130697c7effbab2c1dbfd07c8ed48f0468bbc46e290ba"
   next_required_step: "bounded_limited_pilot_execution_command_plan"
+
+m4_limited_pilot_review_after_1099B:
+  review_manifest: "data/instances/real/m4_limited_pilot_reviews/ogbn_arxiv_1099B_limited_pilot_review.yaml"
+  review_issue: 167
+  source_monitor_issue: 166
+  source_run_id: "1099B_ogbn_arxiv_limited_pilot_baselines_metis_kahip_5000ms_seed42"
+  pilot_status: "completed_with_kahip_timeout"
+  metis_status: "ok"
+  metis_feasible: true
+  metis_elapsed_ms: 1197
+  metis_cutsize_best: 223376
+  kahip_status: "timeout"
+  kahip_feasible: false
+  kahip_elapsed_ms: 5021
+  kahip_cutsize_best: null
+  review_decision: "admit_kahip_budget_ramp_pilot_only"
+  admitted_next_scope: "bounded_kahip_budget_ramp_pilot"
+  full_campaign_execution_admitted: false
+  full_campaign_execution_requires_later_gate: true
+  cart_training_admitted: false
+  redistribution_allowed: false
+  raw_files_committable: false
+  derived_files_committable: false
+  local_pilot_outputs_committable: false
+  monograph_result_claim_supported: false
