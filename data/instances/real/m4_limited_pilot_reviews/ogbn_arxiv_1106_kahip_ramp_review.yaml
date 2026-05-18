@@ -1,0 +1,139 @@
+dataset_id: "ogbn_arxiv_undirected_projection"
+review_id: "1109_review_after_1106_kahip_budget_ramp"
+source_run_id: "1106_ogbn_arxiv_kahip_budget_ramp_30s_120s_300s_seed42"
+source_monitor_issue: 170
+review_issue: 171
+parent_campaign_issue: 130
+parent_license_issue: 143
+main_commit_at_review: "3f29642b45cf6894cff5331576c31bd0d031e8ad"
+
+ramp_scope:
+  scope: "bounded_kahip_budget_ramp_pilot_only"
+  dataset: "ogbn_arxiv_undirected_projection"
+  algorithm: "kahip"
+  k: 8
+  beta: 0.03
+  seed: 42
+  kahip_preset: "fast"
+  budget_time_ms_grid:
+    - 30000
+    - 120000
+    - 300000
+  runtime: "docker"
+  image_tag: "mpp-campaign:ogbn-limited-pilot-0dd1606-1098"
+  host: "srv-noctua"
+
+observed_result:
+  ramp_status: "completed_all_budgets_ok"
+  driver_completed: true
+  driver_failed: false
+  metis_rerun: false
+  kahip_results:
+    budget_30000:
+      status: "ok"
+      feasible: true
+      elapsed_ms: 9334
+      cutsize_best: 361338
+      returncode: 0
+      partition_counts:
+        - 21802
+        - 21802
+        - 21802
+        - 21802
+        - 21802
+        - 21802
+        - 21802
+        - 16729
+      max_allowed: 21803
+    budget_120000:
+      status: "ok"
+      feasible: true
+      elapsed_ms: 9326
+      cutsize_best: 361338
+      returncode: 0
+      partition_counts:
+        - 21802
+        - 21802
+        - 21802
+        - 21802
+        - 21802
+        - 21802
+        - 21802
+        - 16729
+      max_allowed: 21803
+    budget_300000:
+      status: "ok"
+      feasible: true
+      elapsed_ms: 9333
+      cutsize_best: 361338
+      returncode: 0
+      partition_counts:
+        - 21802
+        - 21802
+        - 21802
+        - 21802
+        - 21802
+        - 21802
+        - 21802
+        - 16729
+      max_allowed: 21803
+
+review_decision:
+  decision_label: "admit_ogbn_arxiv_calibrated_campaign_command_plan_only"
+  rationale:
+    - "The 1099B limited pilot validated METIS on ogbn-arxiv and showed that a 5000 ms KaHIP budget was insufficient."
+    - "The 1106 KaHIP ramp showed that KaHIP completed successfully for all tested larger budgets."
+    - "All three KaHIP ramp budgets converged to the same cutsize_best under the tested seed and preset."
+    - "A 30000 ms KaHIP budget is a conservative bounded choice for the next ogbn-arxiv command-plan gate because the observed runtime was about 9.3 seconds in all ramp runs."
+    - "The evidence supports preparing an ogbn-arxiv calibrated campaign command plan, but it still does not authorize execution, CART training or result claims."
+  admitted_next_scope: "bounded_ogbn_arxiv_calibrated_campaign_command_plan"
+  calibrated_multilevel_participants:
+    - "metis"
+    - "kahip"
+  metis_reference_budget_time_ms: 5000
+  kahip_recommended_budget_time_ms: 30000
+  kahip_reference_cutsize_best: 361338
+  kahip_reference_elapsed_ms_range:
+    min: 9326
+    max: 9334
+  participant_set_must_be_decided_in_command_plan: true
+  non_multilevel_participants_require_command_plan_preflight: true
+  full_campaign_command_plan_admitted: true
+  full_campaign_execution_admitted: false
+  full_campaign_execution_requires_later_gate: true
+  cart_training_admitted: false
+  redistribution_allowed: false
+  raw_files_committable: false
+  derived_files_committable: false
+  local_pilot_outputs_committable: false
+  monograph_result_claim_supported: false
+
+required_next_step:
+  command_plan_issue_required: true
+  next_issue_purpose: "Create bounded ogbn-arxiv calibrated campaign command plan."
+  command_plan_must_define:
+    - "exact solver participant set"
+    - "whether the next run is multilevel-only or includes additional participants after preflight"
+    - "METIS and KaHIP budgets"
+    - "seed and repetition policy"
+    - "output, log, metadata and monitoring paths"
+    - "ODC-BY attribution propagation"
+    - "explicit CART exclusion"
+    - "explicit monograph-claim exclusion"
+    - "stop conditions"
+  stop_conditions:
+    - "Repository not on expected main."
+    - "Tracked working tree dirty."
+    - "data/tmp or result paths become tracked."
+    - "Command expands beyond ogbn-arxiv calibrated command-plan scope."
+    - "Unvalidated participant is included without command-plan preflight."
+    - "CART training attempted."
+    - "Monograph claim generated."
+    - "Redistribution or raw/derived/output commit attempted."
+    - "Missing ODC-BY attribution metadata."
+  result_interpretation_boundary:
+    - "The 1106 result is a KaHIP-only ramp pilot."
+    - "The ramp calibrates a conservative KaHIP runtime budget for ogbn-arxiv."
+    - "It does not establish full-campaign comparative conclusions."
+    - "It does not authorize CART training."
+    - "It does not authorize monograph result claims."
