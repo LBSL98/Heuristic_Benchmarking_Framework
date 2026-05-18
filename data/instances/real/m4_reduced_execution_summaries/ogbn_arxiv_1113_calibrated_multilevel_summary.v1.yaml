@@ -1,0 +1,104 @@
+schema_id: "m4_reduced_execution_summary_v1"
+record_id: "1124_ogbn_arxiv_1113_calibrated_multilevel_summary"
+dataset_id: "ogbn_arxiv_undirected_projection"
+source_run_id: "1113_ogbn_arxiv_calibrated_multilevel_metis5000_kahip30000_seed42"
+source_review_issue: 175
+source_record_issue: 179
+parent_campaign_issue: 130
+parent_license_issue: 143
+source_review_manifest: "data/instances/real/m4_limited_pilot_reviews/ogbn_arxiv_1113_calibrated_multilevel_review.yaml"
+source_ingestion_plan: "data/instances/real/m4_summary_ingestion_plans/ogbn_arxiv_1113_reduced_summary_ingestion_plan.yaml"
+created_from: "versioned_review_manifest"
+local_ignored_outputs_used_directly: false
+local_ignored_output_hashes_recorded: false
+main_commit_at_record_creation: "bd582c0e8b13c32baab4c8719c3d57e520b093b1"
+
+scope:
+  summary_type: "bounded_single_dataset_execution_validation"
+  dataset_scope: "single_dataset_only"
+  dataset: "ogbn_arxiv_undirected_projection"
+  participant_class: "multilevel_only"
+  participants:
+    - "metis"
+    - "kahip"
+  not_multi_dataset_campaign: true
+  not_cart_training_input: true
+  not_monograph_claim: true
+
+execution_parameters:
+  k: 8
+  beta: 0.03
+  seed: 42
+  runtime_label: "docker"
+  image_tag: "mpp-campaign:ogbn-limited-pilot-0dd1606-1098"
+  host_label: "srv-noctua"
+
+participant_results:
+  metis:
+    algorithm: "metis"
+    budget_time_ms: 5000
+    status: "ok"
+    feasible: true
+    elapsed_ms: 1216
+    cutsize_best: 223376
+    returncode: 0
+    max_allowed: 21803
+    partition_counts:
+      - 21429
+      - 20550
+      - 20552
+      - 21802
+      - 20948
+      - 21803
+      - 20710
+      - 21549
+  kahip:
+    algorithm: "kahip"
+    budget_time_ms: 30000
+    status: "ok"
+    feasible: true
+    elapsed_ms: 9341
+    cutsize_best: 361338
+    returncode: 0
+    max_allowed: 21803
+    partition_counts:
+      - 21802
+      - 21802
+      - 21802
+      - 21802
+      - 21802
+      - 21802
+      - 21802
+      - 16729
+
+admissibility_metadata:
+  license_family: "ODC-BY-1.0"
+  attribution_required: true
+  required_notice: "Contains information from OGB ogbn-arxiv."
+  redistribution_allowed: false
+  raw_solver_outputs_excluded: true
+  partition_files_excluded: true
+  raw_ogb_files_excluded: true
+  derived_graph_files_excluded: true
+
+interpretation_boundary:
+  supported_statements:
+    - "METIS and KaHIP completed successfully on the bounded ogbn-arxiv instance under the calibrated multilevel command plan."
+    - "In this single bounded execution, METIS produced cutsize_best=223376 and KaHIP produced cutsize_best=361338."
+    - "This record supports execution-path validation and reduced-summary review."
+  unsupported_statements:
+    - "multi-dataset campaign conclusion"
+    - "general solver dominance conclusion"
+    - "CART training dataset"
+    - "monograph result claim"
+    - "redistribution authorization"
+
+explicit_exclusions:
+  raw_solver_output_json_committed: false
+  partition_files_committed: false
+  raw_ogb_files_committed: false
+  derived_graph_files_committed: false
+  data_tmp_used_as_primary_source: false
+  cart_training_run: false
+  monograph_result_claim_supported: false
+  decisions_result_map_modified: false
