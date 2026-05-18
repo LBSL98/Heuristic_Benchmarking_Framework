@@ -1,0 +1,78 @@
+dataset_id: "ogbn_arxiv_undirected_projection"
+setup_smoke_id: "1086B_noctua_run_ogbn_arxiv_campaign_setup_smoke_with_venv"
+setup_smoke_status: "completed_passed"
+issue: 161
+campaign_gate_issue: 159
+parent_campaign_issue: 130
+parent_license_issue: 143
+main_commit_at_setup_smoke: "89b827466ff97aa7ca5bee39add60a15eb9db203"
+host: "srv-noctua"
+
+scope:
+  label: "bounded_campaign_setup_wiring_validation_only"
+  campaign_input_admitted: true
+  campaign_setup_smoke_completed: true
+  full_benchmark_campaign_run: false
+  solver_comparison_run: false
+  solver_invoked: false
+  cart_training_run: false
+  redistribution_allowed: false
+  raw_or_derived_files_committed: false
+  monograph_result_claim_supported: false
+
+validated_setup:
+  campaign_input_manifest_check_passed: true
+  campaign_manifest_reference_checked: true
+  projection_hash_verified: true
+  projection_sha256: "b6533424c1f0b226127130697c7effbab2c1dbfd07c8ed48f0468bbc46e290ba"
+  graph_counts_verified: true
+  attribution_metadata_propagated: true
+  local_output_scope: "ignored_data_tmp_only"
+  venv_python_used: "data/tmp/real_graph_m3_smoke/ogbn_arxiv/venv_1046/bin/python"
+  numpy_available_in_venv: true
+  previous_1086_system_python_failure_reason: "system_python_missing_numpy"
+
+graph_counts:
+  num_nodes: 169343
+  directed_edge_count: 1166243
+  self_loop_count_removed: 0
+  directed_edges_after_self_loop_removal: 1166243
+  undirected_union_edge_count: 1157799
+  duplicate_or_reciprocal_directed_edges_removed_by_projection: 8444
+  connected_components: 1
+  largest_component_size: 169343
+  isolated_vertices: 0
+
+attribution:
+  license: "Open Data Commons Attribution License (ODC-BY)"
+  source: "Open Graph Benchmark ogbn-arxiv"
+  source_url: "https://ogb.stanford.edu/docs/nodeprop/#ogbn-arxiv"
+  license_url: "https://opendatacommons.org/licenses/by/1-0/"
+  attribution_metadata_propagated: true
+  redistribution_authorized_by_setup_smoke: false
+
+audit_outputs:
+  failed_predecessor_local_wrapper: "audit_reports/confirmatory_plan_956/1086_noctua_run_ogbn_arxiv_campaign_setup_smoke.txt"
+  local_wrapper: "audit_reports/confirmatory_plan_956/1086B_noctua_run_ogbn_arxiv_campaign_setup_smoke_with_venv.txt"
+  remote_log: "audit_reports/confirmatory_plan_956/1086B_noctua_run_ogbn_arxiv_campaign_setup_smoke_with_venv.remote.txt"
+  remote_summary_json: "audit_reports/confirmatory_plan_956/1086B_noctua_run_ogbn_arxiv_campaign_setup_smoke_with_venv.json"
+  remote_summary_md: "audit_reports/confirmatory_plan_956/1086B_noctua_run_ogbn_arxiv_campaign_setup_smoke_with_venv.md"
+
+stop_conditions:
+  triggered: []
+  tracked_working_tree_changed: false
+  data_tmp_tracked: false
+  projection_hash_mismatch: false
+  graph_count_mismatch: false
+  attribution_metadata_missing: false
+  solver_comparison_attempted: false
+  full_benchmark_campaign_attempted: false
+  cart_training_attempted: false
+  result_claim_generated: false
+
+next_boundary:
+  issue_161_closeout_allowed_after_versioned_record: true
+  full_campaign_execution_status: "blocked_until_separate_execution_gate"
+  solver_comparison_status: "blocked_until_separate_execution_gate"
+  cart_training_status: "blocked_until_campaign_outputs_exist_and_separate_cart_gate"
+  monograph_claim_status: "blocked_until_results_and_claim_map_audit"

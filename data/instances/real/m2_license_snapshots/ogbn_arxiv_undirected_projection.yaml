@@ -184,3 +184,22 @@ m4_campaign_gate_after_1081:
   monograph_result_claim_supported: false
   projection_sha256: "b6533424c1f0b226127130697c7effbab2c1dbfd07c8ed48f0468bbc46e290ba"
   next_required_step: "bounded_campaign_setup_smoke_issue_or_command_plan"
+
+m4_campaign_setup_smoke_after_1086B:
+  setup_smoke_status: "completed_passed"
+  setup_smoke_result_manifest: "data/instances/real/m4_campaign_setup_smoke_results/ogbn_arxiv_undirected_projection_1086B_setup_smoke_result.yaml"
+  setup_smoke_issue: 161
+  main_commit_at_setup_smoke: "89b827466ff97aa7ca5bee39add60a15eb9db203"
+  campaign_setup_smoke_completed: true
+  campaign_input_manifest_check_passed: true
+  projection_hash_verified: true
+  projection_sha256: "b6533424c1f0b226127130697c7effbab2c1dbfd07c8ed48f0468bbc46e290ba"
+  graph_counts_verified: true
+  attribution_metadata_propagated: true
+  full_benchmark_campaign_run: false
+  solver_comparison_run: false
+  solver_invoked: false
+  cart_training_run: false
+  redistribution_allowed: false
+  raw_or_derived_files_committed: false
+  monograph_result_claim_supported: false

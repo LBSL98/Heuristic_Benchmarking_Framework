@@ -104,3 +104,22 @@ next_required_step:
   full_campaign_status: "blocked_until_campaign_setup_smoke_passes_and_separate_execution_gate"
   cart_training_status: "blocked_until_campaign_outputs_exist_and_separate_cart_gate"
   monograph_claim_status: "blocked_until_results_and_claim_map_audit"
+
+campaign_setup_smoke_after_1086B:
+  setup_smoke_status: "completed_passed"
+  setup_smoke_result_manifest: "data/instances/real/m4_campaign_setup_smoke_results/ogbn_arxiv_undirected_projection_1086B_setup_smoke_result.yaml"
+  setup_smoke_issue: 161
+  setup_smoke_probe: "1086B_noctua_run_ogbn_arxiv_campaign_setup_smoke_with_venv"
+  campaign_setup_smoke_completed: true
+  campaign_input_manifest_check_passed: true
+  projection_hash_verified: true
+  graph_counts_verified: true
+  attribution_metadata_propagated: true
+  full_benchmark_campaign_run: false
+  solver_comparison_run: false
+  solver_invoked: false
+  cart_training_run: false
+  redistribution_allowed: false
+  raw_or_derived_files_committed: false
+  monograph_result_claim_supported: false
+  full_campaign_execution_status: "blocked_until_separate_execution_gate"
