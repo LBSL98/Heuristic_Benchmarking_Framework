@@ -1,0 +1,106 @@
+dataset_id: "ogbn_arxiv_undirected_projection"
+gate_id: "campaign_gate_ogbn_arxiv_after_1081"
+gate_status: "admit_to_campaign_input"
+decision_date_utc: "2026-05-16"
+
+issues:
+  campaign_gate_issue: 159
+  smoke_issue: 157
+  smoke_gate_issue: 155
+  parent_license_issue: 143
+  parent_campaign_issue: 130
+  milestone: "CONFIRMATORY-PHASE-001"
+
+repository_state:
+  main_commit_at_gate: "44704282fda192e464c8d054d0800ff2c09f6da0"
+  last_noctua_sync_probe: "1080_noctua_sync_after_pr158_and_close_issue157"
+
+evidence_chain:
+  odc_by_terms_documented: true
+  m3_smoke_completed: true
+  raw_inventory_verified: true
+  raw_csv_projection_validated: true
+  versioned_reproducer_merged_pr153: true
+  postmerge_reproducer_validation_recorded_pr154: true
+  m4_smoke_gate_merged_pr156: true
+  bounded_m4_smoke_executed_probe1076: true
+  m4_smoke_result_recorded_pr158: true
+  issue157_closed_after_1080: true
+
+decision:
+  decision_label: "admit_to_campaign_input"
+  campaign_input_admitted: true
+  campaign_holdout_only: false
+  campaign_setup_smoke_required_before_full_run: true
+  full_benchmark_campaign_run_admitted_by_this_gate: false
+  solver_comparison_admitted_by_this_gate: false
+  cart_training_admitted: false
+  redistribution_allowed: false
+  raw_files_committable: false
+  derived_files_committable: false
+  monograph_result_claim_supported: false
+
+campaign_scope:
+  role: "main_campaign_input_after_bounded_campaign_setup_smoke"
+  allowed_next_step:
+    - "Create a separate bounded campaign setup/smoke issue or command plan."
+    - "Validate that the campaign manifest can reference the local projection artifact by hash."
+    - "Validate ODC-BY attribution propagation into campaign metadata."
+    - "Validate resource assumptions on srv-noctua before full campaign execution."
+  forbidden_until_later_gate:
+    - "No full confirmatory benchmark campaign run."
+    - "No solver comparison run."
+    - "No CART training."
+    - "No raw OGB file commit."
+    - "No derived graph file commit."
+    - "No redistribution authorization."
+    - "No monograph result claim."
+    - "No edit to decisions/08_Results_to_Text_Map.md."
+
+artifact_policy:
+  accepted_representation: "versioned raw-CSV directed-to-undirected projection"
+  accepted_reproducer_script: "scripts/real_graphs/prepare_ogbn_arxiv_undirected_projection.py"
+  raw_storage_policy: "local_ignored_data_tmp_only"
+  derived_storage_policy: "local_ignored_data_tmp_only"
+  versioned_artifact_policy: "scripts_hashes_metadata_gate_records_only"
+  raw_file_count: 14
+  projection_sha256: "b6533424c1f0b226127130697c7effbab2c1dbfd07c8ed48f0468bbc46e290ba"
+  projection_hash_verified: true
+  benchmark_input_interface_check_passed: true
+  recognized_minimal_benchmark_input_contract: true
+
+graph_counts:
+  num_nodes: 169343
+  directed_edge_count: 1166243
+  self_loop_count_removed: 0
+  directed_edges_after_self_loop_removal: 1166243
+  undirected_union_edge_count: 1157799
+  duplicate_or_reciprocal_directed_edges_removed_by_projection: 8444
+  connected_components: 1
+  largest_component_size: 169343
+  isolated_vertices: 0
+
+license_and_attribution:
+  license: "Open Data Commons Attribution License (ODC-BY)"
+  attribution_required: true
+  source: "Open Graph Benchmark ogbn-arxiv"
+  source_url: "https://ogb.stanford.edu/docs/nodeprop/#ogbn-arxiv"
+  license_url: "https://opendatacommons.org/licenses/by/1-0/"
+  required_notice: "Contains information from OGB ogbn-arxiv, made available under the ODC Attribution License. See https://ogb.stanford.edu/docs/nodeprop/#ogbn-arxiv and https://opendatacommons.org/licenses/by/1-0/."
+
+campaign_setup_stop_conditions:
+  - "Any tracked working-tree change outside explicit documentation patches."
+  - "Any data/tmp path becoming tracked."
+  - "Any raw inventory hash mismatch."
+  - "Any projection hash mismatch."
+  - "Any graph count mismatch."
+  - "Any missing ODC-BY attribution metadata."
+  - "Any solver comparison or full campaign command being invoked before a separate setup-smoke passes."
+  - "Any CART training command being invoked."
+  - "Any attempt to support monograph result claims."
+
+next_required_step:
+  issue_or_patch: "Create separate bounded campaign setup/smoke execution issue or command plan."
+  full_campaign_status: "blocked_until_campaign_setup_smoke_passes_and_separate_execution_gate"
+  cart_training_status: "blocked_until_campaign_outputs_exist_and_separate_cart_gate"
+  monograph_claim_status: "blocked_until_results_and_claim_map_audit"
