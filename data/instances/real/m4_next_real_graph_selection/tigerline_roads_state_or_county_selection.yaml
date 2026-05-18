@@ -62,3 +62,15 @@ interpretation_boundary:
     - "raw or derived graph files may be committed"
     - "CART can be trained"
     - "monograph result claims can be written"
+
+license_snapshot_after_1136:
+  snapshot_file: "data/instances/real/m4_license_snapshots/tigerline_roads_2025_06037_los_angeles_county.yaml"
+  snapshot_issue: 185
+  selected_instance_id: "tigerline_roads_2025_06037_los_angeles_county"
+  selected_instance_label: "2025 TIGER/Line roads, Los Angeles County, California"
+  definitive_dataset_instance_selected: true
+  definitive_license_snapshot_completed: true
+  benchmark_execution_admitted: false
+  download_admitted_by_snapshot: false
+  graph_construction_admitted_by_snapshot: false
+  next_required_gate: "M4 TigerLine preparation plan: Los Angeles County roads 2025"
