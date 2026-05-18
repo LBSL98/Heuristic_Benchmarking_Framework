@@ -42,3 +42,25 @@ Review decision:
 - raw/derived/output commits allowed: false.
 
 The next step is a separate bounded command-plan issue. This review does not itself start execution.
+
+## ogbn-arxiv after 1113 calibrated multilevel execution
+
+The 1113 calibrated multilevel execution completed with:
+
+- METIS: `status=ok`, `feasible=true`, `elapsed_ms=1216`, `cutsize_best=223376`;
+- KaHIP: `status=ok`, `feasible=true`, `elapsed_ms=9341`, `cutsize_best=361338`.
+
+Review decision:
+
+- admit an ogbn-arxiv local reduced-summary ingestion/review gate: true;
+- local summary ingestion execution admitted: false;
+- raw output ingestion admitted: false;
+- partition file ingestion admitted: false;
+- multi-dataset campaign admitted: false;
+- broader participant gate admitted: false;
+- CART training admitted: false;
+- monograph result claims supported: false;
+- redistribution allowed: false;
+- raw/derived/output commits allowed: false.
+
+The next step is a separate bounded ingestion/review issue. This review does not itself ingest outputs or start broader execution.

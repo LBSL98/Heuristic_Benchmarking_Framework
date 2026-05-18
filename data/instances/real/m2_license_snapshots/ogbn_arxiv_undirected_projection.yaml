@@ -277,3 +277,33 @@ m4_kahip_ramp_review_after_1106:
   derived_files_committable: false
   local_pilot_outputs_committable: false
   monograph_result_claim_supported: false
+
+m4_calibrated_multilevel_review_after_1113:
+  review_manifest: "data/instances/real/m4_limited_pilot_reviews/ogbn_arxiv_1113_calibrated_multilevel_review.yaml"
+  review_issue: 175
+  source_monitor_issue: 174
+  source_run_id: "1113_ogbn_arxiv_calibrated_multilevel_metis5000_kahip30000_seed42"
+  execution_status: "completed_all_participants_ok"
+  metis_status: "ok"
+  metis_feasible: true
+  metis_elapsed_ms: 1216
+  metis_cutsize_best: 223376
+  kahip_status: "ok"
+  kahip_feasible: true
+  kahip_elapsed_ms: 9341
+  kahip_cutsize_best: 361338
+  review_decision: "admit_ogbn_arxiv_local_summary_ingestion_gate_only"
+  admitted_next_scope: "bounded_ogbn_arxiv_local_summary_ingestion_review_gate"
+  local_summary_ingestion_gate_admitted: true
+  local_summary_ingestion_execution_admitted: false
+  raw_output_ingestion_admitted: false
+  partition_file_ingestion_admitted: false
+  raw_or_derived_graph_ingestion_admitted: false
+  multi_dataset_campaign_admitted: false
+  broader_participant_gate_admitted: false
+  cart_training_admitted: false
+  redistribution_allowed: false
+  raw_files_committable: false
+  derived_files_committable: false
+  local_pilot_outputs_committable: false
+  monograph_result_claim_supported: false
