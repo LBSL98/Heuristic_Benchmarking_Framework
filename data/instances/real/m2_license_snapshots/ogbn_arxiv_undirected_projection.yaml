@@ -246,3 +246,34 @@ m4_limited_pilot_review_after_1099B:
   derived_files_committable: false
   local_pilot_outputs_committable: false
   monograph_result_claim_supported: false
+
+m4_kahip_ramp_review_after_1106:
+  review_manifest: "data/instances/real/m4_limited_pilot_reviews/ogbn_arxiv_1106_kahip_ramp_review.yaml"
+  review_issue: 171
+  source_monitor_issue: 170
+  source_run_id: "1106_ogbn_arxiv_kahip_budget_ramp_30s_120s_300s_seed42"
+  ramp_status: "completed_all_budgets_ok"
+  kahip_30000_status: "ok"
+  kahip_30000_feasible: true
+  kahip_30000_elapsed_ms: 9334
+  kahip_30000_cutsize_best: 361338
+  kahip_120000_status: "ok"
+  kahip_120000_feasible: true
+  kahip_120000_elapsed_ms: 9326
+  kahip_120000_cutsize_best: 361338
+  kahip_300000_status: "ok"
+  kahip_300000_feasible: true
+  kahip_300000_elapsed_ms: 9333
+  kahip_300000_cutsize_best: 361338
+  review_decision: "admit_ogbn_arxiv_calibrated_campaign_command_plan_only"
+  admitted_next_scope: "bounded_ogbn_arxiv_calibrated_campaign_command_plan"
+  recommended_kahip_budget_time_ms: 30000
+  full_campaign_command_plan_admitted: true
+  full_campaign_execution_admitted: false
+  full_campaign_execution_requires_later_gate: true
+  cart_training_admitted: false
+  redistribution_allowed: false
+  raw_files_committable: false
+  derived_files_committable: false
+  local_pilot_outputs_committable: false
+  monograph_result_claim_supported: false
