@@ -333,3 +333,20 @@ m4_summary_ingestion_plan_after_1113:
   cart_training_admitted: false
   redistribution_allowed: false
   monograph_result_claim_supported: false
+
+m4_next_scope_after_1113_summary:
+  next_scope_decision: "data/instances/real/m4_next_scope_reviews/after_ogbn_arxiv_1113_reduced_summary.yaml"
+  next_scope_review_issue: 181
+  source_record_issue: 179
+  completed_artifact: "data/instances/real/m4_reduced_execution_summaries/ogbn_arxiv_1113_calibrated_multilevel_summary.v1.yaml"
+  decision: "close_ogbn_arxiv_as_bounded_validation_and_select_next_admissible_real_graph"
+  chosen_next_scope: "select_next_license_admissible_real_graph_gate"
+  ogbn_arxiv_status_after_decision: "complete_as_bounded_validation_artifact"
+  broaden_ogbn_arxiv_now: false
+  admit_ogbn_arxiv_broader_participant_preflight_now: false
+  admit_multi_dataset_command_plan_now: false
+  admit_cart_training_now: false
+  admit_monograph_claims_now: false
+  admit_result_map_updates_now: false
+  admit_raw_or_derived_graph_commits_now: false
+  allow_snap_unresolved_datasets: false

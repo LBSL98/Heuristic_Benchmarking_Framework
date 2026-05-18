@@ -1,0 +1,88 @@
+decision_id: "1128_next_scope_after_ogbn_arxiv_1113_reduced_summary"
+next_scope_review_issue: 181
+source_record_issue: 179
+parent_campaign_issue: 130
+parent_license_issue: 143
+main_commit_at_decision: "3eb2bcadb35a2d1856fb09306774d4bcef57c421"
+
+completed_artifact:
+  dataset_id: "ogbn_arxiv_undirected_projection"
+  summary_file: "data/instances/real/m4_reduced_execution_summaries/ogbn_arxiv_1113_calibrated_multilevel_summary.v1.yaml"
+  source_run_id: "1113_ogbn_arxiv_calibrated_multilevel_metis5000_kahip30000_seed42"
+  source_review_manifest: "data/instances/real/m4_limited_pilot_reviews/ogbn_arxiv_1113_calibrated_multilevel_review.yaml"
+  ingestion_plan: "data/instances/real/m4_summary_ingestion_plans/ogbn_arxiv_1113_reduced_summary_ingestion_plan.yaml"
+  status: "bounded_single_dataset_validation_artifact_complete"
+  metis:
+    budget_time_ms: 5000
+    status: "ok"
+    feasible: true
+    elapsed_ms: 1216
+    cutsize_best: 223376
+  kahip:
+    budget_time_ms: 30000
+    status: "ok"
+    feasible: true
+    elapsed_ms: 9341
+    cutsize_best: 361338
+
+decision:
+  label: "close_ogbn_arxiv_as_bounded_validation_and_select_next_admissible_real_graph"
+  rationale:
+    - "The ogbn-arxiv path now has a reduced summary record derived from a versioned review manifest."
+    - "The artifact is sufficient for execution-path validation and wiring validation."
+    - "It is not sufficient for multi-dataset campaign conclusions, CART training, solver dominance claims, or monograph result claims."
+    - "Broader ogbn-arxiv participant expansion would increase scope before the real-graph admissibility set is resolved."
+    - "A multi-dataset command plan should wait until the next admissible real graph is selected under explicit license/admissibility constraints."
+  chosen_next_scope: "select_next_license_admissible_real_graph_gate"
+  ogbn_arxiv_status_after_decision: "complete_as_bounded_validation_artifact"
+  broaden_ogbn_arxiv_now: false
+  admit_ogbn_arxiv_broader_participant_preflight_now: false
+  admit_multi_dataset_command_plan_now: false
+  admit_cart_training_now: false
+  admit_monograph_claims_now: false
+  admit_result_map_updates_now: false
+  admit_raw_or_derived_graph_commits_now: false
+  admit_raw_solver_output_commits_now: false
+  allow_snap_unresolved_datasets: false
+
+required_next_gate:
+  purpose: "Select the next real graph candidate with clear admissibility before any broader execution."
+  must_define:
+    - "candidate dataset id"
+    - "license family"
+    - "source URL or source package identity"
+    - "citation or attribution requirement"
+    - "redistribution policy"
+    - "whether repository stores only scripts/metadata or can store derived summaries"
+    - "whether raw or derived graph files remain local-only"
+    - "benchmark input preparation plan"
+    - "smoke or limited-pilot command plan before any full campaign"
+  candidate_constraints:
+    - "Do not use unresolved SNAP datasets unless an explicit dataset-specific license/admissibility record exists."
+    - "Prefer datasets with clear terms, citation and attribution requirements."
+    - "If uncertainty remains, store scripts, hashes and metadata rather than redistributing graph files."
+    - "Do not train CART from ogbn-arxiv alone."
+    - "Do not write monograph result claims from ogbn-arxiv alone."
+
+blocked_until_later_gate:
+  - "multi-dataset command plan"
+  - "full campaign execution"
+  - "broader ogbn-arxiv participant expansion"
+  - "CART training"
+  - "result-map updates"
+  - "monograph claims"
+  - "raw solver output commits"
+  - "partition file commits"
+  - "raw graph commits"
+  - "derived graph commits"
+  - "unresolved SNAP dataset execution"
+
+interpretation_boundary:
+  supported:
+    - "ogbn-arxiv execution wiring was validated for METIS and KaHIP under bounded calibrated settings."
+    - "The reduced summary is a traceable single-dataset validation artifact."
+  unsupported:
+    - "multi-dataset comparative conclusion"
+    - "general METIS dominance claim"
+    - "CART gatekeeper admissibility"
+    - "monograph result claim"
