@@ -1,0 +1,64 @@
+selection_id: "1132_select_tigerline_roads_state_or_county_next_real_graph_candidate"
+selection_issue: 183
+parent_campaign_issue: 130
+parent_license_issue: 143
+source_next_scope_decision: "data/instances/real/m4_next_scope_reviews/after_ogbn_arxiv_1113_reduced_summary.yaml"
+main_commit_at_selection: "73373f04108d24c2756e0486e33e27e479154a4f"
+
+selected_candidate:
+  candidate_family_id: "tigerline_roads_state_or_county"
+  selection_status: "selected_for_license_snapshot_gate_only"
+  selected_as: "next_real_graph_candidate_for_admissibility_review"
+  definitive_dataset_instance_selected: false
+  definitive_license_snapshot_completed: false
+  benchmark_execution_admitted: false
+
+selection_rationale:
+  - "The current next-scope decision admits only selection of the next license/admissibility-cleared real graph candidate."
+  - "This record selects tigerline_roads_state_or_county only as the next candidate to receive a license/admissibility snapshot."
+  - "The selection does not assert final benchmark admissibility."
+  - "The selection does not authorize download, derived graph construction, benchmark execution, CART training, result-map updates, or monograph claims."
+  - "A later gate must define the exact geographic unit, source package identity, license/terms, citation/attribution, redistribution boundary, and preparation plan."
+
+required_follow_up_gate:
+  title: "M4 license snapshot: tigerline roads state-or-county candidate"
+  purpose: "Resolve exact source identity and admissibility before any data preparation or execution."
+  must_define:
+    - "exact geographic unit or units"
+    - "source URL or source package identity"
+    - "dataset version or release year if applicable"
+    - "license family or public-use terms"
+    - "citation or attribution requirement"
+    - "redistribution policy"
+    - "whether raw files remain local-only"
+    - "whether derived graph files remain local-only"
+    - "whether only scripts, hashes, metadata and reduced summaries may be committed"
+    - "benchmark input preparation plan"
+    - "smoke or limited-pilot command plan before broader execution"
+
+blocked_until_follow_up_gate:
+  - "dataset download"
+  - "raw graph commit"
+  - "derived graph commit"
+  - "benchmark input generation"
+  - "smoke execution"
+  - "limited pilot execution"
+  - "multi-dataset command plan"
+  - "full campaign execution"
+  - "CART training"
+  - "result-map updates"
+  - "monograph claims"
+
+snap_boundary:
+  unresolved_snap_datasets_allowed: false
+  reason: "SNAP candidates remain blocked unless explicit dataset-specific license/admissibility records are added."
+
+interpretation_boundary:
+  supported:
+    - "tigerline_roads_state_or_county is selected as the next candidate for license/admissibility review."
+  unsupported:
+    - "the candidate is already benchmark-admissible"
+    - "the candidate may be executed"
+    - "raw or derived graph files may be committed"
+    - "CART can be trained"
+    - "monograph result claims can be written"
