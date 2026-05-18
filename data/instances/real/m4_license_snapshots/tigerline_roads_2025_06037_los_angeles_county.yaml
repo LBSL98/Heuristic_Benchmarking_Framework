@@ -1,0 +1,121 @@
+snapshot_id: "1136_tigerline_roads_2025_06037_los_angeles_county_license_snapshot"
+snapshot_issue: 185
+selection_issue: 183
+parent_campaign_issue: 130
+parent_license_issue: 143
+main_commit_at_snapshot: "29846abd6b4a6c879ac6b004e4e0f679cc122a24"
+
+candidate:
+  candidate_family_id: "tigerline_roads_state_or_county"
+  selected_instance_id: "tigerline_roads_2025_06037_los_angeles_county"
+  selected_instance_label: "2025 TIGER/Line roads, Los Angeles County, California"
+  source_family: "U.S. Census Bureau TIGER/Line Shapefiles"
+  product_year: 2025
+  geographic_unit_type: "county"
+  state_fips: "06"
+  county_fips: "037"
+  geoid: "06037"
+  county_name: "Los Angeles County"
+  state_name: "California"
+  layer_family: "ROADS"
+  source_package_name: "tl_2025_06037_roads.zip"
+  source_package_listed_size: "19M"
+  source_package_listed_modified: "2025-09-22 19:49"
+  official_landing_page: "https://www.census.gov/geographies/mapping-files/time-series/geo/tiger-line-file.html"
+  official_archive_directory: "https://www2.census.gov/geo/tiger/TIGER2025/ROADS/"
+  official_source_package_url: "https://www2.census.gov/geo/tiger/TIGER2025/ROADS/tl_2025_06037_roads.zip"
+  official_technical_documentation: "https://www.census.gov/programs-surveys/geography/technical-documentation/complete-technical-documentation/tiger-geo-line.html"
+  official_legal_citation_chapter: "https://www2.census.gov/geo/pdfs/maps-data/data/tiger/tgrshp2025/TGRSHP2025_TechDoc_Ch1.pdf"
+
+source_verification:
+  official_source_verified: true
+  verified_from_official_census_domain: true
+  source_release_statement:
+    - "2025 TIGER/Line Shapefiles were released on 2025-09-23."
+    - "All legal boundaries and names are as of 2025-01-01."
+  package_listing_verified: true
+  package_listing:
+    filename: "tl_2025_06037_roads.zip"
+    listed_modified: "2025-09-22 19:49"
+    listed_size: "19M"
+  data_downloaded_by_this_snapshot: false
+  graph_constructed_by_this_snapshot: false
+  benchmark_input_created_by_this_snapshot: false
+
+license_and_terms:
+  license_family: "US_Government_work_no_copyright_protection_with_census_source_citation_request"
+  copyright_status: "copyright_protection_not_available_for_us_government_work_under_17_usc_105"
+  census_source_citation_requested: true
+  required_project_notice: "Contains information from the U.S. Census Bureau TIGER/Line Shapefiles; cite the U.S. Census Bureau as the source."
+  trademark_notice_required: true
+  trademark_notice: "TIGER/Line is a registered trademark of the U.S. Census Bureau and should not be used as a proprietary product name."
+  warranty_disclaimer_present: true
+  legal_boundary_disclaimer_present: true
+  official_disclaimer_summary:
+    - "No warranty is made regarding TIGER/Line Shapefile data accuracy."
+    - "Boundary information is for statistical data collection and tabulation purposes only."
+    - "Depictions do not determine jurisdictional authority, ownership, entitlement, or legal land descriptions."
+
+project_admissibility_decision:
+  decision_label: "admissible_for_follow_up_metadata_and_preparation_gate_only"
+  license_snapshot_completed: true
+  definitive_dataset_instance_selected: true
+  benchmark_execution_admitted: false
+  download_admitted_by_this_snapshot: false
+  graph_construction_admitted_by_this_snapshot: false
+  benchmark_input_generation_admitted_by_this_snapshot: false
+  smoke_execution_admitted_by_this_snapshot: false
+  limited_pilot_execution_admitted_by_this_snapshot: false
+  multi_dataset_command_plan_admitted: false
+  cart_training_admitted: false
+  result_map_updates_admitted: false
+  monograph_claims_admitted: false
+
+redistribution_policy:
+  raw_source_package_committable: false
+  derived_graph_files_committable: false
+  partition_files_committable: false
+  raw_solver_outputs_committable: false
+  scripts_metadata_hashes_and_reduced_summaries_committable: true
+  rationale:
+    - "Although Census materials can be reproduced with source citation, the project keeps raw source packages and derived graph artifacts local-only by policy."
+    - "Future preparation gates may record scripts, hashes, metadata, and reduced summaries instead of redistributing raw or derived graph files."
+
+required_follow_up_gate:
+  title: "M4 TigerLine preparation plan: Los Angeles County roads 2025"
+  purpose: "Define metadata-only download/preparation procedure before any graph construction or execution."
+  must_define:
+    - "local download path policy"
+    - "source package hash policy"
+    - "scripted preparation plan"
+    - "graph construction method from road geometries"
+    - "node and edge interpretation"
+    - "handling of disconnected components"
+    - "whether undirected projection is used"
+    - "validation checks before benchmark input generation"
+    - "whether a later smoke gate can be admitted"
+
+blocked_until_later_gate:
+  - "data download"
+  - "graph construction"
+  - "benchmark input generation"
+  - "smoke execution"
+  - "limited pilot execution"
+  - "multi-dataset command plan"
+  - "full campaign execution"
+  - "CART training"
+  - "result-map updates"
+  - "monograph claims"
+  - "raw source package commit"
+  - "derived graph file commit"
+
+interpretation_boundary:
+  supported:
+    - "The selected TigerLine Los Angeles County roads 2025 package has an official Census source and a recorded project admissibility snapshot."
+    - "The candidate may proceed to a separate preparation-plan gate."
+  unsupported:
+    - "The data has been downloaded."
+    - "A graph has been constructed."
+    - "The dataset is ready for benchmark execution."
+    - "The candidate supports campaign conclusions."
+    - "The candidate supports CART training or monograph claims."
