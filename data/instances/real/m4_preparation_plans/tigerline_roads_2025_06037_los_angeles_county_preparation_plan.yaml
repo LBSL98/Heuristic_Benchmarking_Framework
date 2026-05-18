@@ -1,0 +1,176 @@
+plan_id: "1140_tigerline_roads_2025_06037_los_angeles_county_preparation_plan"
+preparation_plan_issue: 187
+source_snapshot_issue: 185
+parent_campaign_issue: 130
+parent_license_issue: 143
+main_commit_at_plan: "25cd1337d1e3e4c955b5afd90a02f9ee82e3ba77"
+
+source_snapshot:
+  snapshot_file: "data/instances/real/m4_license_snapshots/tigerline_roads_2025_06037_los_angeles_county.yaml"
+  snapshot_id: "1136_tigerline_roads_2025_06037_los_angeles_county_license_snapshot"
+  selected_instance_id: "tigerline_roads_2025_06037_los_angeles_county"
+  source_package_name: "tl_2025_06037_roads.zip"
+  official_source_package_url: "https://www2.census.gov/geo/tiger/TIGER2025/ROADS/tl_2025_06037_roads.zip"
+
+plan_scope:
+  scope: "metadata_only_preparation_plan"
+  plan_created: true
+  data_downloaded_by_this_plan: false
+  source_package_inspected_by_this_plan: false
+  shapefile_unzipped_or_read_by_this_plan: false
+  graph_constructed_by_this_plan: false
+  benchmark_input_created_by_this_plan: false
+  smoke_execution_run_by_this_plan: false
+  limited_pilot_execution_run_by_this_plan: false
+  campaign_execution_run_by_this_plan: false
+  cart_training_run_by_this_plan: false
+  result_map_updated_by_this_plan: false
+  monograph_claim_supported_by_this_plan: false
+
+local_artifact_policy:
+  raw_source_package_local_only: true
+  derived_graph_files_local_only: true
+  benchmark_input_files_local_only_until_later_gate: true
+  raw_solver_outputs_local_only: true
+  partition_files_local_only: true
+  committable_after_later_gate:
+    - "preparation scripts"
+    - "metadata manifests"
+    - "source package hashes"
+    - "reduced summaries"
+  forbidden_in_this_plan:
+    - "raw source package"
+    - "unzipped shapefile contents"
+    - "derived graph files"
+    - "benchmark input files"
+    - "raw solver outputs"
+    - "partition files"
+
+planned_local_paths:
+  cache_root: "data/cache/real_graphs/tigerline/2025/06037"
+  raw_package_path: "data/cache/real_graphs/tigerline/2025/06037/raw/tl_2025_06037_roads.zip"
+  extracted_root: "data/cache/real_graphs/tigerline/2025/06037/extracted"
+  derived_root: "data/cache/real_graphs/tigerline/2025/06037/derived"
+  metadata_root: "data/instances/real/m4_preparation_metadata/tigerline_roads_2025_06037_los_angeles_county"
+  note: "cache paths are intentionally local/ignored unless a later gate explicitly admits metadata-only records"
+
+source_package_hash_policy:
+  hash_algorithm: "sha256"
+  hash_recording_admitted_in_later_gate: true
+  hash_recording_by_this_plan: false
+  expected_record_fields:
+    - "source_package_name"
+    - "source_package_url"
+    - "download_timestamp_utc"
+    - "file_size_bytes"
+    - "sha256"
+    - "tool_versions"
+    - "operator_host_label"
+  reason: "The package is not downloaded in this issue, so no hash can be truthfully recorded here."
+
+scripted_preparation_plan:
+  implementation_status: "not_implemented_by_this_plan"
+  allowed_later_script_location: "scripts/real_graphs/tigerline_prepare_06037_roads.py"
+  required_later_script_properties:
+    - "download source package only from the official Census URL recorded in the snapshot"
+    - "verify sha256 after download"
+    - "extract only to ignored local cache paths"
+    - "read road geometries without committing raw or extracted shapefile contents"
+    - "emit metadata and validation summaries separately from derived graph artifacts"
+    - "fail closed if source URL, filename, hash policy or expected layer identity changes"
+  prohibited_later_script_properties_without_extra_gate:
+    - "committing raw source package"
+    - "committing extracted shapefiles"
+    - "committing derived graph files"
+    - "running METIS or KaHIP"
+    - "running meta-heuristics"
+    - "training CART"
+
+planned_graph_construction_method:
+  graph_type: "undirected_unweighted_simple_graph"
+  source_geometry_type: "road polylines from TIGER/Line ROADS shapefile"
+  selected_interpretation: "segment_vertex_graph_from_polyline_coordinate_sequences"
+  node_interpretation:
+    - "Each unique normalized coordinate vertex appearing in road polyline coordinate sequences becomes a candidate graph node."
+    - "Coordinate normalization and precision policy must be explicitly fixed in the later implementation gate."
+    - "No semantic node labels from the source file are assumed by this plan."
+  edge_interpretation:
+    - "Each consecutive pair of coordinate vertices in a road polyline contributes an undirected candidate edge."
+    - "Self-loops are removed."
+    - "Parallel duplicate edges are collapsed for the unweighted simple graph."
+    - "No length, road class or direction weight is admitted in the first preparation plan."
+  intersection_policy:
+    - "This plan does not infer intersection nodes from geometric crossings unless a shared coordinate vertex exists."
+    - "A later graph-construction gate may compare this conservative policy with explicit planarization, but planarization is not admitted here."
+  disconnected_components_policy:
+    - "Retain the full graph for metadata review."
+    - "Record number of connected components, largest component size, isolated nodes and component-size distribution."
+    - "Do not discard components unless a later benchmark-input gate explicitly decides so."
+  projection_policy:
+    undirected_projection_selected_for_initial_plan: true
+    directed_or_weighted_graph_selected: false
+    rationale: "The current benchmark interface expects an undirected graph-partitioning input; weights and directionality remain later extensions."
+
+validation_checks_before_benchmark_input_generation:
+  required_metadata_checks:
+    - "source package exists only in ignored cache"
+    - "source package sha256 recorded"
+    - "expected shapefile layer family is ROADS"
+    - "feature count recorded"
+    - "coordinate vertex count recorded"
+    - "candidate node count recorded"
+    - "candidate edge count before simplification recorded"
+    - "candidate edge count after simplification recorded"
+    - "self-loop count removed recorded"
+    - "duplicate-edge count collapsed recorded"
+    - "connected component count recorded"
+    - "largest component size recorded"
+    - "isolated node count recorded"
+    - "no raw source package staged"
+    - "no extracted shapefile staged"
+    - "no derived graph file staged"
+  benchmark_input_generation_admitted_after_checks: false
+  reason: "Input generation must be authorized by a separate gate after metadata review."
+
+follow_up_gate_recommendation:
+  next_issue_title: "M4 TigerLine download/hash metadata gate: Los Angeles County roads 2025"
+  next_scope: "download_source_package_to_ignored_cache_and_record_hash_metadata"
+  next_gate_may_download_source_package: true
+  next_gate_may_unzip_for_metadata: false
+  next_gate_may_construct_graph: false
+  next_gate_may_generate_benchmark_input: false
+  next_gate_may_run_smoke: false
+  next_gate_may_run_pilot: false
+  next_gate_may_train_cart: false
+  next_gate_may_update_result_map: false
+  next_gate_may_write_monograph_claims: false
+
+blocked_until_later_gate:
+  - "source package download"
+  - "shapefile extraction or inspection"
+  - "graph construction"
+  - "benchmark input generation"
+  - "smoke execution"
+  - "limited pilot execution"
+  - "multi-dataset command plan"
+  - "full campaign execution"
+  - "CART training"
+  - "result-map updates"
+  - "monograph claims"
+  - "raw source package commit"
+  - "derived graph file commit"
+  - "partition file commit"
+  - "raw solver output commit"
+
+interpretation_boundary:
+  supported:
+    - "A preparation plan exists for the TigerLine Los Angeles County roads 2025 candidate."
+    - "The next safe step is a separate download/hash metadata gate using ignored local cache paths."
+  unsupported:
+    - "The data has been downloaded."
+    - "The shapefile has been inspected."
+    - "A graph has been constructed."
+    - "A benchmark input exists."
+    - "Any solver has been run."
+    - "The instance supports campaign conclusions."
+    - "The instance supports CART training or monograph claims."

@@ -119,3 +119,19 @@ interpretation_boundary:
     - "The dataset is ready for benchmark execution."
     - "The candidate supports campaign conclusions."
     - "The candidate supports CART training or monograph claims."
+
+preparation_plan_after_1140:
+  preparation_plan: "data/instances/real/m4_preparation_plans/tigerline_roads_2025_06037_los_angeles_county_preparation_plan.yaml"
+  preparation_plan_issue: 187
+  plan_scope: "metadata_only_preparation_plan"
+  preparation_plan_completed: true
+  data_downloaded_by_plan: false
+  graph_constructed_by_plan: false
+  benchmark_input_created_by_plan: false
+  next_recommended_gate: "M4 TigerLine download/hash metadata gate: Los Angeles County roads 2025"
+  next_gate_may_download_source_package: true
+  next_gate_may_construct_graph: false
+  next_gate_may_generate_benchmark_input: false
+  next_gate_may_run_smoke: false
+  cart_training_admitted: false
+  monograph_claims_admitted: false
