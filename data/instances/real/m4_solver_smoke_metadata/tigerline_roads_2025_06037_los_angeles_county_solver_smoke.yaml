@@ -127,3 +127,25 @@ interpretation_boundary:
     - "No solver quality or runtime comparison is supported."
     - "No CART training is supported."
     - "No result-map update or monograph claim is supported."
+
+limited_pilot_plan_after_1173:
+  limited_pilot_plan_manifest: "data/instances/real/m4_limited_pilot_plans/tigerline_roads_2025_06037_los_angeles_county_limited_pilot_plan.yaml"
+  limited_pilot_planning_issue: 204
+  limited_pilot_plan_created: true
+  planning_only: true
+  planned_pilot_type: "single_instance_bounded_multilevel_only"
+  planned_participants:
+    - "gpmetis_k2"
+    - "kaffpa_k2_fast"
+  planned_execution_host: "srv-noctua"
+  requires_cache_restoration_or_reconstruction_before_execution: true
+  solver_execution_run: false
+  pilot_execution_run: false
+  campaign_execution_run: false
+  multi_dataset_command_plan_created: false
+  metaheuristic_execution_run: false
+  performance_or_quality_comparison_claim_supported: false
+  cart_training_run: false
+  result_map_updated: false
+  monograph_claim_supported: false
+  next_recommended_gate: "M4 TigerLine limited pilot execution gate: Los Angeles County roads 2025"
