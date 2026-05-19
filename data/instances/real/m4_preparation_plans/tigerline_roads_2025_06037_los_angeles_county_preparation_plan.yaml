@@ -174,3 +174,20 @@ interpretation_boundary:
     - "Any solver has been run."
     - "The instance supports campaign conclusions."
     - "The instance supports CART training or monograph claims."
+
+download_hash_metadata_after_1144:
+  metadata_manifest: "data/instances/real/m4_download_hash_metadata/tigerline_roads_2025_06037_los_angeles_county_download_hash.yaml"
+  download_hash_issue: 189
+  source_package_downloaded_to_ignored_cache: true
+  local_path: "data/cache/real_graphs/tigerline/2025/06037/raw/tl_2025_06037_roads.zip"
+  file_size_bytes: 19938690
+  sha256: "242425987631ce0edb0a41d447e73e6dca31432a9168f322fb55c1d00cf34871"
+  raw_source_package_committed: false
+  source_package_unzipped: false
+  shapefile_inspected: false
+  graph_constructed: false
+  benchmark_input_created: false
+  smoke_execution_run: false
+  cart_training_run: false
+  monograph_claim_supported: false
+  next_recommended_gate: "M4 TigerLine shapefile inventory metadata gate: Los Angeles County roads 2025"
