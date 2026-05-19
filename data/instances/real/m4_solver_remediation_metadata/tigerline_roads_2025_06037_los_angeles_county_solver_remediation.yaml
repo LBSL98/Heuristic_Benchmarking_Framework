@@ -1,0 +1,100 @@
+solver_remediation_metadata_id: "1182_tigerline_roads_2025_06037_los_angeles_county_solver_remediation"
+solver_remediation_issue: 209
+source_limited_pilot_review_issue: 208
+source_limited_pilot_execution_issue: 206
+source_limited_pilot_planning_issue: 204
+source_solver_smoke_issue: 201
+parent_campaign_issue: 130
+parent_license_issue: 143
+main_commit_at_solver_remediation: "bd5581b90a753ea843d0b35da15e6b424ed1c2d2"
+
+execution_environment:
+  execution_host_label: "srv-noctua"
+  platform: "Linux-5.15.0-177-generic-x86_64-with-glibc2.35"
+  python_version: "3.10.12"
+  git_head_observed: "bd5581b90a753ea843d0b35da15e6b424ed1c2d2"
+
+selected_instance_context:
+  selected_instance_id: "tigerline_roads_2025_06037_los_angeles_county"
+  input_path: "data/cache/real_graphs/tigerline/2025/06037/benchmark_inputs/tigerline_roads_2025_06037_los_angeles_county.metis.graph"
+  input_stats_path: "data/cache/real_graphs/tigerline/2025/06037/benchmark_inputs/tigerline_roads_2025_06037_los_angeles_county_input_stats.json"
+  input_sha256_expected: "df31d8c3e671e9010fa9f9d06b00cda80781a5a9140b214e5e08962192bf2b42"
+  input_sha256_observed: "df31d8c3e671e9010fa9f9d06b00cda80781a5a9140b214e5e08962192bf2b42"
+  input_stats_sha256_expected: "2e6fc3539d21b97b57ada3d892bdf081d1f0608b25541ae6eb18e6f60dcff683"
+  input_stats_sha256_observed: "2e6fc3539d21b97b57ada3d892bdf081d1f0608b25541ae6eb18e6f60dcff683"
+  cache_restored_or_verified_on_srv_noctua: true
+
+pre_remediation_binary_availability:
+  gpmetis_available: false
+  gpmetis_path: null
+  kahip_available: false
+  kaffpa_path: null
+  kaffpaE_path: null
+  kahip_selected_path: null
+
+remediation_attempt:
+  solver_remediation_status: "solver_environment_remediation_blocked"
+  remediation_attempted: true
+  install_attempted: false
+  installation_method: "apt_get_noninteractive_if_available"
+  apt_get_path: "/usr/bin/apt-get"
+  apt_cache_path: "/usr/bin/apt-cache"
+  sudo_path: "/usr/bin/sudo"
+  sudo_noninteractive_available: false
+  packages_considered_for_install: ["metis"]
+  solver_execution_run: false
+  limited_pilot_execution_run: false
+  campaign_execution_run: false
+  multi_dataset_command_plan_created: false
+  metaheuristic_execution_run: false
+  performance_or_quality_comparison_claim_supported: false
+  cart_training_run: false
+  result_map_updated: false
+  monograph_claim_supported: false
+  benchmark_input_committed: false
+  partition_file_committed: false
+  raw_solver_output_committed: false
+
+post_remediation_binary_availability:
+  gpmetis_available: false
+  gpmetis_path: null
+  kahip_available: false
+  kaffpa_path: null
+  kaffpaE_path: null
+  kahip_selected_path: null
+
+binary_checks:
+  gpmetis_sha256: null
+  gpmetis_help_first_line: null
+  kaffpa_sha256: null
+  kaffpa_help_first_line: null
+  kaffpaE_sha256: null
+  kaffpaE_help_first_line: null
+
+remediation_errors:
+  - "sudo_noninteractive_not_available"
+
+commands_executed:
+  []
+
+next_gate_recommendation:
+  next_issue_title_if_remediated: "M4 TigerLine limited pilot retry gate: Los Angeles County roads 2025"
+  next_issue_title_if_blocked: "M4 TigerLine solver remediation review: decide next scope"
+  next_gate_may_retry_limited_pilot: false
+  next_gate_may_install_or_build_more_solvers: true
+  next_gate_may_run_campaign: false
+  next_gate_may_create_multi_dataset_command_plan: false
+  next_gate_may_run_metaheuristics: false
+  next_gate_may_train_cart: false
+  next_gate_may_update_result_map: false
+  next_gate_may_write_monograph_claims: false
+
+interpretation_boundary:
+  supported:
+    - "The srv-noctua solver environment remediation attempt produced the recorded binary availability status."
+    - "Only package-manager operations and version/help or binary-availability probes were admitted."
+    - "The restored TigerLine input cache remained local-only and ignored."
+  unsupported:
+    - "No TigerLine solver execution was run in this gate."
+    - "No pilot retry was run in this gate."
+    - "No campaign, multi-dataset conclusion, performance/quality comparison, CART training, result-map update or monograph claim is supported."
