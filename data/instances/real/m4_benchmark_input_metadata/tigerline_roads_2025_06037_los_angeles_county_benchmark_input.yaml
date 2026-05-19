@@ -116,3 +116,24 @@ interpretation_boundary:
     - "A smoke, pilot or campaign execution has been run."
     - "The instance supports CART training."
     - "The instance supports result-map updates or monograph claims."
+
+input_validation_smoke_after_1164:
+  input_smoke_manifest: "data/instances/real/m4_benchmark_input_smoke_metadata/tigerline_roads_2025_06037_los_angeles_county_input_smoke.yaml"
+  benchmark_input_smoke_issue: 199
+  input_validation_smoke_run: true
+  solver_invoked: false
+  metis_invoked: false
+  kahip_invoked: false
+  metaheuristic_invoked: false
+  partition_file_created: false
+  raw_solver_output_created: false
+  benchmark_input_committed: false
+  solver_execution_run: false
+  solver_smoke_execution_run: false
+  cart_training_run: false
+  monograph_claim_supported: false
+  adjacency_line_count: 1199509
+  half_edge_count: 2589348
+  undirected_symmetry_validated: true
+  asymmetric_pair_count: 0
+  next_recommended_gate: "M4 TigerLine solver smoke gate: Los Angeles County roads 2025"
