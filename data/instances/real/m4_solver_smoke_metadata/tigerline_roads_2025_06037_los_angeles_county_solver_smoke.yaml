@@ -1,0 +1,129 @@
+solver_smoke_metadata_id: "1168_tigerline_roads_2025_06037_los_angeles_county_solver_smoke"
+solver_smoke_issue: 201
+source_benchmark_input_smoke_issue: 199
+source_benchmark_input_issue: 197
+source_graph_construction_execution_issue: 195
+source_graph_construction_metadata_issue: 193
+source_inventory_issue: 191
+source_download_hash_issue: 189
+source_preparation_plan_issue: 187
+source_snapshot_issue: 185
+parent_campaign_issue: 130
+parent_license_issue: 143
+main_commit_at_solver_smoke_metadata_creation: "fa6ec4bcf4c2023bfe2c6f70a1388f1cd02aaea4"
+
+source_input:
+  selected_instance_id: "tigerline_roads_2025_06037_los_angeles_county"
+  input_format: "metis_unweighted_undirected_graph"
+  local_input_path: "data/cache/real_graphs/tigerline/2025/06037/benchmark_inputs/tigerline_roads_2025_06037_los_angeles_county.metis.graph"
+  input_sha256_expected: "df31d8c3e671e9010fa9f9d06b00cda80781a5a9140b214e5e08962192bf2b42"
+  input_sha256_observed: "df31d8c3e671e9010fa9f9d06b00cda80781a5a9140b214e5e08962192bf2b42"
+  input_stats_sha256_expected: "2e6fc3539d21b97b57ada3d892bdf081d1f0608b25541ae6eb18e6f60dcff683"
+  input_stats_sha256_observed: "2e6fc3539d21b97b57ada3d892bdf081d1f0608b25541ae6eb18e6f60dcff683"
+  local_input_verified_before_solver_smoke: true
+  node_count: 1199509
+  edge_count: 1294674
+
+execution_environment:
+  operator_host_label: "BrunnoS"
+  platform: "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.35"
+  python_version: "3.10.12"
+  git_version: "git version 2.34.1"
+
+solver_availability:
+  gpmetis_path: "/usr/bin/gpmetis"
+  gpmetis_version_probe: "Usage: gpmetis [options] graphfile nparts"
+  kaffpa_path: "/home/brunoonurb/MPP/KaHIP/build/kaffpa"
+  kaffpa_version_probe: "Usage: /home/brunoonurb/MPP/KaHIP/build/kaffpa [--help] FILE [--seed=<int>] [--version] [--mmap_io] --k=<int> [--imbalance=<double>] --preconfiguration=VARIANT [--time_limit=<double>] [--enforce_balance] [--balance_edges] [--enable_mapping] [--hierarchy_parameter_string=<string>] [--distance_parameter_string=<string>] [--online_distances] [--output_filename=<string>]"
+
+solver_smoke:
+  solver_smoke_metadata_record_created: true
+  bounded_solver_interface_smoke_attempted: true
+  smoke_status: "passed_at_least_one_solver_interface_smoke"
+  timeout_seconds_per_solver: 90
+  solver_invoked: true
+  metis_invoked: true
+  kahip_invoked: true
+  metaheuristic_invoked: false
+  successful_solver_interface_smoke_count: 2
+  partition_file_created: true
+  raw_solver_output_created: true
+  partition_files_written_to_ignored_cache: true
+  raw_solver_outputs_written_to_ignored_cache: true
+  benchmark_input_committed: false
+  partition_file_committed: false
+  raw_solver_output_committed: false
+  pilot_execution_run: false
+  campaign_execution_run: false
+  performance_or_quality_comparison_claim_supported: false
+  cart_training_run: false
+  result_map_updated: false
+  monograph_claim_supported: false
+
+solver_runs:
+  - name: "gpmetis_k2"
+    command: "/usr/bin/gpmetis data/cache/real_graphs/tigerline/2025/06037/benchmark_inputs/tigerline_roads_2025_06037_los_angeles_county.metis.graph 2"
+    timeout_seconds: 90
+    return_code: 0
+    timed_out: false
+    runtime_seconds: 0.579269
+    stdout_stderr_path: "data/cache/real_graphs/tigerline/2025/06037/solver_smoke/gpmetis_k2_stdout_stderr.txt"
+    stdout_stderr_sha256: "31efd213d9bf182ba28a728283d0168a126e2f30f616574e959821228ce37818"
+    stdout_stderr_file_size_bytes: 1575
+    partition_path: "data/cache/real_graphs/tigerline/2025/06037/benchmark_inputs/tigerline_roads_2025_06037_los_angeles_county.metis.graph.part.2"
+    partition_created: true
+    partition_sha256: "94d991311d24386b5291c633e81196eb61344d052cf2b764f2c2d4ede90cff14"
+    partition_file_size_bytes: 2399018
+    partition_line_count: 1199509
+    partition_parseable: true
+    distinct_partition_labels: 2
+    interface_smoke_passed: true
+  - name: "kaffpa_k2_fast"
+    command: "/home/brunoonurb/MPP/KaHIP/build/kaffpa data/cache/real_graphs/tigerline/2025/06037/benchmark_inputs/tigerline_roads_2025_06037_los_angeles_county.metis.graph --k 2 --preconfiguration fast --imbalance 3 --output_filename data/cache/real_graphs/tigerline/2025/06037/solver_smoke/kaffpa_k2_partition.txt"
+    timeout_seconds: 90
+    return_code: 0
+    timed_out: false
+    runtime_seconds: 0.485479
+    stdout_stderr_path: "data/cache/real_graphs/tigerline/2025/06037/solver_smoke/kaffpa_k2_fast_stdout_stderr.txt"
+    stdout_stderr_sha256: "4304a26673e6fa93ea77f0af560e347eed5c1646b60686236ee6a93e48a0aee6"
+    stdout_stderr_file_size_bytes: 300
+    partition_path: "data/cache/real_graphs/tigerline/2025/06037/solver_smoke/kaffpa_k2_partition.txt"
+    partition_created: true
+    partition_sha256: "942e3d7e72814ed48b96b044d160f4c72c7ac007903ff0199615e5e569741b42"
+    partition_file_size_bytes: 2399018
+    partition_line_count: 1199509
+    partition_parseable: true
+    distinct_partition_labels: 2
+    interface_smoke_passed: true
+
+next_gate_recommendation:
+  next_issue_title: "M4 TigerLine solver-smoke review: decide next execution scope"
+  next_scope: "review_solver_smoke_and_decide_pilot_or_blocked_path"
+  next_gate_may_run_limited_pilot: false
+  next_gate_may_run_campaign: false
+  next_gate_may_create_multi_dataset_command_plan: false
+  next_gate_may_train_cart: false
+  next_gate_may_update_result_map: false
+  next_gate_may_write_monograph_claims: false
+
+blocked_until_later_gate:
+  - "limited pilot execution"
+  - "multi-dataset command plan"
+  - "full campaign execution"
+  - "CART training"
+  - "result-map updates"
+  - "monograph claims"
+  - "benchmark input commit"
+  - "partition file commit"
+  - "raw solver output commit"
+
+interpretation_boundary:
+  supported:
+    - "A bounded solver-interface smoke gate was attempted or explicitly blocked according to local binary availability."
+    - "Any solver outputs or partitions created by this gate are local-only and ignored."
+    - "Only command, timeout, exit status, output presence and basic partition parseability are recorded."
+  unsupported:
+    - "No pilot or campaign execution has been run."
+    - "No solver quality or runtime comparison is supported."
+    - "No CART training is supported."
+    - "No result-map update or monograph claim is supported."
