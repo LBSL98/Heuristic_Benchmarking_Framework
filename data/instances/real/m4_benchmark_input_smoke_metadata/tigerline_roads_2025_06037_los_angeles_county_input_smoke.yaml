@@ -1,0 +1,108 @@
+benchmark_input_smoke_metadata_id: "1164_tigerline_roads_2025_06037_los_angeles_county_input_smoke"
+benchmark_input_smoke_issue: 199
+source_benchmark_input_issue: 197
+source_graph_construction_execution_issue: 195
+source_graph_construction_metadata_issue: 193
+source_inventory_issue: 191
+source_download_hash_issue: 189
+source_preparation_plan_issue: 187
+source_snapshot_issue: 185
+parent_campaign_issue: 130
+parent_license_issue: 143
+main_commit_at_input_smoke_metadata_creation: "06fbb0ace612008352a9a25b504aea9a2567749c"
+
+source_input:
+  selected_instance_id: "tigerline_roads_2025_06037_los_angeles_county"
+  input_format: "metis_unweighted_undirected_graph"
+  local_input_path: "data/cache/real_graphs/tigerline/2025/06037/benchmark_inputs/tigerline_roads_2025_06037_los_angeles_county.metis.graph"
+  local_input_path_policy: "ignored_cache_local_only"
+  input_sha256_expected: "df31d8c3e671e9010fa9f9d06b00cda80781a5a9140b214e5e08962192bf2b42"
+  input_sha256_observed: "df31d8c3e671e9010fa9f9d06b00cda80781a5a9140b214e5e08962192bf2b42"
+  input_stats_sha256_expected: "2e6fc3539d21b97b57ada3d892bdf081d1f0608b25541ae6eb18e6f60dcff683"
+  input_stats_sha256_observed: "2e6fc3539d21b97b57ada3d892bdf081d1f0608b25541ae6eb18e6f60dcff683"
+  local_input_verified_before_validation: true
+
+input_validation:
+  input_validation_smoke_run: true
+  solver_invoked: false
+  metis_invoked: false
+  kahip_invoked: false
+  metaheuristic_invoked: false
+  partition_file_created: false
+  raw_solver_output_created: false
+  header_validated: true
+  header: "1199509 1294674"
+  node_count: 1199509
+  edge_count: 1294674
+  adjacency_line_count: 1199509
+  half_edge_count: 2589348
+  one_based_adjacency_validated: true
+  adjacency_indices_in_range: true
+  self_loop_count: 0
+  duplicate_adjacency_lines: 0
+  undirected_symmetry_validated: true
+  asymmetric_pair_count: 0
+  unique_undirected_edge_count_from_adjacency: 1294674
+  min_degree: 1
+  max_degree: 7
+  zero_degree_nodes: 0
+  validation_runtime_seconds: 3.628877
+
+execution_environment:
+  operator_host_label: "BrunnoS"
+  platform: "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.35"
+  python_version: "3.10.12"
+  git_version: "git version 2.34.1"
+
+scope:
+  input_validation_smoke_metadata_record_created: true
+  benchmark_input_file_read: true
+  benchmark_input_committed: false
+  solver_execution_run: false
+  metis_execution_run: false
+  kahip_execution_run: false
+  metaheuristic_execution_run: false
+  solver_smoke_execution_run: false
+  pilot_execution_run: false
+  campaign_execution_run: false
+  partition_file_created: false
+  raw_solver_output_created: false
+  partition_file_committed: false
+  raw_solver_output_committed: false
+  cart_training_run: false
+  result_map_updated: false
+  monograph_claim_supported: false
+
+next_gate_recommendation:
+  next_issue_title: "M4 TigerLine solver smoke gate: Los Angeles County roads 2025"
+  next_scope: "run_bounded_solver_interface_smoke_without_campaign_or_claims"
+  next_gate_may_run_solver_smoke: true
+  next_gate_may_run_pilot: false
+  next_gate_may_run_campaign: false
+  next_gate_may_train_cart: false
+  next_gate_may_update_result_map: false
+  next_gate_may_write_monograph_claims: false
+
+blocked_until_later_gate:
+  - "solver smoke execution"
+  - "limited pilot execution"
+  - "multi-dataset command plan"
+  - "full campaign execution"
+  - "CART training"
+  - "result-map updates"
+  - "monograph claims"
+  - "benchmark input commit"
+  - "partition file commit"
+  - "raw solver output commit"
+
+interpretation_boundary:
+  supported:
+    - "The local-only benchmark input was parsed and validated without invoking solvers."
+    - "Header, node count, edge count, half-edge count, adjacency indices, self-loops and undirected symmetry were validated."
+    - "The next safe step may run a bounded solver-interface smoke in a separate gate."
+  unsupported:
+    - "METIS, KaHIP or any meta-heuristic has been run on this instance."
+    - "Any partition or raw solver output exists."
+    - "A pilot or campaign execution has been run."
+    - "The instance supports CART training."
+    - "The instance supports result-map updates or monograph claims."
