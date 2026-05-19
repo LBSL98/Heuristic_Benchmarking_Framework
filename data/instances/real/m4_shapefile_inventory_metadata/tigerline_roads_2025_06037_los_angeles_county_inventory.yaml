@@ -173,3 +173,19 @@ interpretation_boundary:
     - "A benchmark input exists."
     - "Any solver has been run."
     - "The instance supports campaign conclusions, CART training or monograph claims."
+
+graph_construction_metadata_after_1152:
+  metadata_manifest: "data/instances/real/m4_graph_construction_metadata/tigerline_roads_2025_06037_los_angeles_county_graph_construction_metadata.yaml"
+  graph_construction_metadata_issue: 193
+  metadata_only_graph_construction_plan_created: true
+  actual_graph_construction_executed: false
+  node_or_edge_materialization_executed: false
+  derived_graph_file_created: false
+  benchmark_input_created: false
+  smoke_execution_run: false
+  cart_training_run: false
+  monograph_claim_supported: false
+  planned_graph_type: "undirected_unweighted_simple_graph"
+  planned_construction_policy: "no_planarization_shared_coordinate_vertices_only"
+  planned_coordinate_normalization: "decimal_rounding_7_places"
+  next_recommended_gate: "M4 TigerLine graph construction execution metadata gate: Los Angeles County roads 2025"

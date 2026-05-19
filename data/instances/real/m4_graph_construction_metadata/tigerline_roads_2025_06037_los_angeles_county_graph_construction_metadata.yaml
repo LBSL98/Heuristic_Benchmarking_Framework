@@ -1,0 +1,164 @@
+graph_construction_metadata_id: "1152_tigerline_roads_2025_06037_los_angeles_county_graph_construction_metadata"
+graph_construction_metadata_issue: 193
+source_inventory_issue: 191
+source_download_hash_issue: 189
+source_preparation_plan_issue: 187
+source_snapshot_issue: 185
+parent_campaign_issue: 130
+parent_license_issue: 143
+main_commit_at_metadata_creation: "70908f1a5d402c69bf6926c05173fba4b695ca70"
+
+source_inventory:
+  inventory_manifest: "data/instances/real/m4_shapefile_inventory_metadata/tigerline_roads_2025_06037_los_angeles_county_inventory.yaml"
+  inventory_id: "1148_tigerline_roads_2025_06037_los_angeles_county_shapefile_inventory"
+  selected_instance_id: "tigerline_roads_2025_06037_los_angeles_county"
+  source_package_name: "tl_2025_06037_roads.zip"
+  expected_sha256: "242425987631ce0edb0a41d447e73e6dca31432a9168f322fb55c1d00cf34871"
+  expected_file_size_bytes: 19938690
+  archive_member_count: 7
+  shape_type_code: 3
+  shape_type_name: "PolyLine"
+  dbf_feature_count_from_header: 121296
+  dbf_field_count: 4
+
+scope:
+  metadata_only_graph_construction_plan_created: true
+  actual_graph_construction_executed: false
+  node_or_edge_materialization_executed: false
+  derived_graph_file_created: false
+  benchmark_input_created: false
+  smoke_execution_run: false
+  limited_pilot_execution_run: false
+  campaign_execution_run: false
+  cart_training_run: false
+  result_map_updated: false
+  monograph_claim_supported: false
+  raw_source_package_committed: false
+  extracted_shapefile_committed: false
+  derived_graph_committed: false
+
+planned_script_surface:
+  implementation_status: "not_implemented_and_not_executed_by_this_metadata_gate"
+  allowed_later_script_location: "scripts/real_graphs/tigerline_construct_06037_roads_graph.py"
+  allowed_later_metadata_location: "data/instances/real/m4_graph_construction_execution_metadata/tigerline_roads_2025_06037_los_angeles_county_graph_construction.yaml"
+  local_only_inputs:
+    - "data/cache/real_graphs/tigerline/2025/06037/raw/tl_2025_06037_roads.zip"
+  local_only_outputs:
+    derived_graph_root: "data/cache/real_graphs/tigerline/2025/06037/derived"
+    edge_list_path: "data/cache/real_graphs/tigerline/2025/06037/derived/tigerline_roads_2025_06037_los_angeles_county.edgelist"
+    node_map_path: "data/cache/real_graphs/tigerline/2025/06037/derived/tigerline_roads_2025_06037_los_angeles_county_nodes.csv"
+    graph_stats_path: "data/cache/real_graphs/tigerline/2025/06037/derived/tigerline_roads_2025_06037_los_angeles_county_stats.json"
+  versionable_outputs_after_later_gate:
+    - "construction metadata manifest"
+    - "script source if reviewed and non-executing during review"
+    - "hashes and reduced summaries"
+  forbidden_outputs:
+    - "raw ZIP commit"
+    - "extracted shapefile commit"
+    - "derived graph commit"
+    - "benchmark input commit"
+    - "partition file commit"
+    - "raw solver output commit"
+
+planned_fail_closed_guards:
+  - "verify source package SHA-256 before any read"
+  - "verify source package file size before any read"
+  - "verify source filename is tl_2025_06037_roads.zip"
+  - "verify inventory manifest id is 1148_tigerline_roads_2025_06037_los_angeles_county_shapefile_inventory"
+  - "verify SHP shape type is PolyLine"
+  - "verify DBF feature count from header is 121296 unless later gate explicitly records a changed source"
+  - "write all derived artifacts only under ignored cache paths"
+  - "abort if git status would expose raw, extracted or derived graph artifacts"
+  - "do not generate benchmark input files"
+  - "do not invoke METIS, KaHIP or meta-heuristics"
+
+planned_graph_model:
+  graph_family: "road_polyline_segment_vertex_graph"
+  graph_type: "undirected_unweighted_simple_graph"
+  source_shape_type: "PolyLine"
+  first_construction_policy: "no_planarization_shared_coordinate_vertices_only"
+  coordinate_reference_policy:
+    source_prj_from_inventory_used_as_metadata: true
+    reprojection_in_first_construction: false
+    coordinate_order: "x_y_as_read_from_shapefile"
+  coordinate_normalization_policy:
+    selected_policy: "decimal_rounding"
+    decimal_places: 7
+    normalized_node_key_format: "x_round_7_decimal_places,y_round_7_decimal_places"
+    rationale:
+      - "The first construction policy needs deterministic duplicate-coordinate handling."
+      - "A sensitivity comparison may be opened later, but this gate defines only the initial policy."
+  node_interpretation:
+    - "Each unique normalized coordinate vertex appearing in a PolyLine part becomes one graph node."
+    - "Node identifiers are assigned deterministically after sorting normalized coordinate keys lexicographically."
+    - "No DBF attribute is used as a node identifier in the first construction policy."
+  edge_interpretation:
+    - "Within each PolyLine part, each consecutive coordinate pair contributes one undirected candidate edge."
+    - "No edge is created between the last point of one part and the first point of the next part."
+    - "Self-loops after coordinate normalization are removed."
+    - "Parallel duplicate undirected edges are collapsed."
+    - "No edge weights, road classes, road names or directionality are used in the first construction policy."
+  crossing_policy:
+    - "Geometric crossings that do not share an explicit coordinate vertex are not split in the first construction policy."
+    - "Planarization is deferred to a later sensitivity gate if needed."
+  component_policy:
+    - "Do not discard connected components during construction."
+    - "Record connected component count, largest component node count, largest component edge count, isolated node count and component-size distribution."
+    - "Any decision to retain only the largest component must be a later benchmark-input gate."
+  expected_metadata_after_actual_construction:
+    - "source sha256 revalidated"
+    - "feature records read"
+    - "polyline parts read"
+    - "raw coordinate points read"
+    - "candidate node keys before deduplication"
+    - "unique node count"
+    - "candidate edge count before simplification"
+    - "self-loop count removed"
+    - "duplicate edge count collapsed"
+    - "final undirected edge count"
+    - "connected component count"
+    - "largest component node count"
+    - "largest component edge count"
+    - "isolated node count"
+    - "graph construction runtime seconds"
+    - "tool versions"
+
+quality_and_methodological_boundaries:
+  supported_by_this_metadata_gate:
+    - "A deterministic graph construction policy is specified."
+    - "The next safe step may construct a derived graph only under ignored cache and record metadata."
+  unsupported_by_this_metadata_gate:
+    - "A graph exists."
+    - "Nodes or edges have been materialized."
+    - "The instance is ready for benchmark input generation."
+    - "The instance is ready for METIS, KaHIP or meta-heuristic execution."
+    - "The instance supports CART training."
+    - "The instance supports result-map updates or monograph claims."
+
+next_gate_recommendation:
+  next_issue_title: "M4 TigerLine graph construction execution metadata gate: Los Angeles County roads 2025"
+  next_scope: "construct_graph_to_ignored_cache_and_record_metadata_only"
+  next_gate_may_construct_graph_to_ignored_cache: true
+  next_gate_may_commit_derived_graph: false
+  next_gate_may_generate_benchmark_input: false
+  next_gate_may_run_smoke: false
+  next_gate_may_run_pilot: false
+  next_gate_may_train_cart: false
+  next_gate_may_update_result_map: false
+  next_gate_may_write_monograph_claims: false
+
+blocked_until_later_gate:
+  - "actual graph construction"
+  - "benchmark input generation"
+  - "smoke execution"
+  - "limited pilot execution"
+  - "multi-dataset command plan"
+  - "full campaign execution"
+  - "CART training"
+  - "result-map updates"
+  - "monograph claims"
+  - "raw source package commit"
+  - "extracted shapefile commit"
+  - "derived graph file commit"
+  - "partition file commit"
+  - "raw solver output commit"
