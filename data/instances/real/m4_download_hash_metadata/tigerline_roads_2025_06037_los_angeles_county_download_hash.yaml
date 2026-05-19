@@ -85,3 +85,20 @@ interpretation_boundary:
     - "A benchmark input exists."
     - "Any solver has been run."
     - "The instance supports campaign conclusions, CART training or monograph claims."
+
+shapefile_inventory_after_1148:
+  inventory_manifest: "data/instances/real/m4_shapefile_inventory_metadata/tigerline_roads_2025_06037_los_angeles_county_inventory.yaml"
+  inventory_issue: 191
+  sha256_verified_before_inventory: true
+  archive_member_count: 7
+  dbf_feature_count_from_header: 121296
+  dbf_field_count: 4
+  shape_type_code: 3
+  shape_type_name: "PolyLine"
+  graph_constructed: false
+  node_or_edge_inference_performed: false
+  benchmark_input_created: false
+  smoke_execution_run: false
+  cart_training_run: false
+  monograph_claim_supported: false
+  next_recommended_gate: "M4 TigerLine graph construction metadata gate: Los Angeles County roads 2025"
