@@ -1,0 +1,175 @@
+inventory_id: "1148_tigerline_roads_2025_06037_los_angeles_county_shapefile_inventory"
+inventory_issue: 191
+download_hash_issue: 189
+source_preparation_plan_issue: 187
+source_snapshot_issue: 185
+parent_campaign_issue: 130
+parent_license_issue: 143
+main_commit_at_inventory_creation: "ce1c0bf459753f39e07be898b43e700bc5883033"
+
+source:
+  selected_instance_id: "tigerline_roads_2025_06037_los_angeles_county"
+  source_package_name: "tl_2025_06037_roads.zip"
+  local_path: "data/cache/real_graphs/tigerline/2025/06037/raw/tl_2025_06037_roads.zip"
+  expected_file_size_bytes: 19938690
+  observed_file_size_bytes: 19938690
+  expected_sha256: "242425987631ce0edb0a41d447e73e6dca31432a9168f322fb55c1d00cf34871"
+  observed_sha256: "242425987631ce0edb0a41d447e73e6dca31432a9168f322fb55c1d00cf34871"
+  sha256_verified_before_inventory: true
+  local_path_policy: "ignored_cache_local_only"
+
+scope:
+  shapefile_inventory_record_created: true
+  metadata_inventory_only: true
+  raw_source_package_committed: false
+  zip_member_inventory_created: true
+  extracted_files_committed: false
+  graph_constructed: false
+  node_or_edge_inference_performed: false
+  benchmark_input_created: false
+  smoke_execution_run: false
+  limited_pilot_execution_run: false
+  campaign_execution_run: false
+  cart_training_run: false
+  result_map_updated: false
+  monograph_claim_supported: false
+
+archive_inventory:
+  member_count: 7
+  extension_counts:
+    ".cpg": 1
+    ".dbf": 1
+    ".prj": 1
+    ".shp": 1
+    ".shx": 1
+    ".xml": 2
+  members:
+    - name: "tl_2025_06037_roads.cpg"
+      compressed_size: 5
+      uncompressed_size: 5
+      crc32: "0e813c50"
+    - name: "tl_2025_06037_roads.dbf"
+      compressed_size: 1320883
+      uncompressed_size: 15647346
+      crc32: "f9968353"
+    - name: "tl_2025_06037_roads.prj"
+      compressed_size: 133
+      uncompressed_size: 165
+      crc32: "aa147e60"
+    - name: "tl_2025_06037_roads.shp"
+      compressed_size: 18142173
+      uncompressed_size: 31126356
+      crc32: "64fd51a6"
+    - name: "tl_2025_06037_roads.shp.ea.iso.xml"
+      compressed_size: 2019
+      uncompressed_size: 21866
+      crc32: "c7783432"
+    - name: "tl_2025_06037_roads.shp.iso.xml"
+      compressed_size: 7039
+      uncompressed_size: 50359
+      crc32: "19eb529c"
+    - name: "tl_2025_06037_roads.shx"
+      compressed_size: 465160
+      uncompressed_size: 970468
+      crc32: "78d761f6"
+
+sidecar_inventory:
+  expected_stem: "tl_2025_06037_roads"
+  sidecars_present:
+    ".shp": true
+    ".shx": true
+    ".dbf": true
+    ".prj": true
+    ".cpg": true
+    ".xml": false
+
+shp_header_metadata:
+  source_member: "tl_2025_06037_roads.shp"
+  file_code: 9994
+  file_length_16bit_words: 15563178
+  version: 1000
+  shape_type_code: 3
+  shape_type_name: "PolyLine"
+  bbox:
+    xmin: -118.944502
+    ymin: 32.806279
+    xmax: -117.649664
+    ymax: 34.823301
+
+dbf_schema_metadata:
+  source_member: "tl_2025_06037_roads.dbf"
+  dbf_version_byte: 3
+  last_update_date: "2025-09-12"
+  feature_count_from_dbf_header: 121296
+  header_length_bytes: 161
+  record_length_bytes: 129
+  field_count: 4
+  fields:
+    - name: "LINEARID"
+      type: "C"
+      type_name: "Character"
+      length: 22
+      decimal_count: 0
+    - name: "FULLNAME"
+      type: "C"
+      type_name: "Character"
+      length: 100
+      decimal_count: 0
+    - name: "RTTYP"
+      type: "C"
+      type_name: "Character"
+      length: 1
+      decimal_count: 0
+    - name: "MTFCC"
+      type: "C"
+      type_name: "Character"
+      length: 5
+      decimal_count: 0
+
+projection_metadata:
+  prj_member_present: true
+  prj_member: "tl_2025_06037_roads.prj"
+  prj_snippet: "GEOGCS[\"GCS_North_American_1983\",DATUM[\"D_North_American_1983\",SPHEROID[\"GRS_1980\",6378137,298.257222101]],PRIMEM[\"Greenwich\",0],UNIT[\"Degree\",0.017453292519943295]]"
+  cpg_member_present: true
+  cpg_member: "tl_2025_06037_roads.cpg"
+  cpg_value: "UTF-8"
+
+next_gate_recommendation:
+  next_issue_title: "M4 TigerLine graph construction metadata gate: Los Angeles County roads 2025"
+  next_scope: "metadata_only_graph_construction_plan_or_script_without_benchmark_execution"
+  next_gate_may_construct_graph_to_ignored_cache: false
+  next_gate_may_define_graph_construction_script: true
+  next_gate_may_generate_benchmark_input: false
+  next_gate_may_run_smoke: false
+  next_gate_may_run_pilot: false
+  next_gate_may_train_cart: false
+  next_gate_may_update_result_map: false
+  next_gate_may_write_monograph_claims: false
+
+blocked_until_later_gate:
+  - "graph construction"
+  - "benchmark input generation"
+  - "smoke execution"
+  - "limited pilot execution"
+  - "multi-dataset command plan"
+  - "full campaign execution"
+  - "CART training"
+  - "result-map updates"
+  - "monograph claims"
+  - "raw source package commit"
+  - "extracted shapefile commit"
+  - "derived graph file commit"
+  - "partition file commit"
+  - "raw solver output commit"
+
+interpretation_boundary:
+  supported:
+    - "The TigerLine ZIP hash was verified before metadata inventory."
+    - "Archive members and shapefile sidecar/schema/header metadata were recorded."
+    - "A later gate may define graph construction logic."
+  unsupported:
+    - "A graph has been constructed."
+    - "Nodes or edges have been inferred."
+    - "A benchmark input exists."
+    - "Any solver has been run."
+    - "The instance supports campaign conclusions, CART training or monograph claims."
