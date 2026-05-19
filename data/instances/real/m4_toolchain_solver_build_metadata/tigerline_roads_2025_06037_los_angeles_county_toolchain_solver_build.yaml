@@ -1,0 +1,181 @@
+toolchain_solver_build_metadata_id: "1191_tigerline_roads_2025_06037_los_angeles_county_toolchain_solver_build"
+toolchain_solver_build_issue: 214
+source_user_local_solver_build_issue: 212
+source_solver_remediation_issue: 209
+source_limited_pilot_execution_issue: 206
+parent_campaign_issue: 130
+parent_license_issue: 143
+main_commit_at_toolchain_solver_build: "52e654e74f2eb9f7170b2b9953ec6f3ceb6af818"
+
+execution_environment:
+  execution_host_label: "srv-noctua"
+  platform: "Linux-5.15.0-177-generic-x86_64-with-glibc2.35"
+  python_version: "3.10.12"
+  git_head_observed: "52e654e74f2eb9f7170b2b9953ec6f3ceb6af818"
+
+selected_instance_context:
+  selected_instance_id: "tigerline_roads_2025_06037_los_angeles_county"
+  input_sha256_expected: "df31d8c3e671e9010fa9f9d06b00cda80781a5a9140b214e5e08962192bf2b42"
+  input_sha256_observed: "df31d8c3e671e9010fa9f9d06b00cda80781a5a9140b214e5e08962192bf2b42"
+  input_stats_sha256_expected: "2e6fc3539d21b97b57ada3d892bdf081d1f0608b25541ae6eb18e6f60dcff683"
+  input_stats_sha256_observed: "2e6fc3539d21b97b57ada3d892bdf081d1f0608b25541ae6eb18e6f60dcff683"
+  cache_restored_or_verified_on_srv_noctua: true
+
+toolchain_remediation:
+  toolchain_install_needed_before_attempt: true
+  apt_install_attempted: true
+  sudo_v_exit: 0
+  apt_update_exit: 0
+  apt_install_exit: 0
+  toolchain_log_excerpt: "===== TOOLCHAIN INSTALL LOG =====\n2026-05-19T17:15:33-03:00\nneed_toolchain=1\nToolchain is incomplete. Requesting sudo credentials interactively if needed.\nNo solver will be executed in this gate.\nsudo_v_exit=0\nHit:1 https://download.docker.com/linux/ubuntu jammy InRelease\nGet:2 https://pkgs.tailscale.com/stable/ubuntu jammy InRelease\nHit:3 https://deb.nodesource.com/node_22.x nodistro InRelease\nHit:4 http://security.ubuntu.com/ubuntu jammy-security InRelease\nHit:5 http://archive.ubuntu.com/ubuntu jammy InRelease\nHit:6 http://archive.ubuntu.com/ubuntu jammy-updates InRelease\nHit:7 http://archive.ubuntu.com/ubuntu jammy-backports InRelease\nFetched 6581 B in 2s (3480 B/s)\nReading package lists...\napt_update_exit=0\nReading package lists...\nBuilding dependency tree...\nReading state information...\nca-certificates is already the newest version (20240203~22.04.1).\nThe following package was automatically installed and is no longer required:\n  lynx-common\nUse 'sudo apt autoremove' to remove it.\nThe following additional packages will be installed:\n  cmake-data cpp cpp-11 dh-elpa-helper dpkg-dev fakeroot g++ g++-11 gcc gcc-11\n  gcc-11-base libalgorithm-diff-perl libalgorithm-diff-xs-perl\n  libalgorithm-merge-perl libasan6 libatomic1 libc-dev-bin libc-devtools\n  libc6-dev libcc1-0 libcrypt-dev libdpkg-perl libfakeroot\n  libfile-fcntllock-perl libgcc-11-dev libgd3 libgomp1 libisl23 libitm1\n  libjsoncpp25 liblsan0 libmpc3 libnsl-dev libquadmath0 librhash0\n  libstdc++-11-dev libtirpc-dev libtsan0 libubsan1 libxpm4 linux-libc-dev\n  lto-disabled-list make manpages-dev rpcsvc-proto\nSuggested packages:\n  cmake-doc ninja-build cmake-format cpp-doc gcc-11-locales debian-keyring\n  g++-multilib g++-11-multilib gcc-11-doc gcc-multilib autoconf automake\n  libtool flex bison gdb gcc-doc gcc-11-multilib glibc-doc bzr libgd-tools\n  libstdc++-11-doc make-doc\nThe following NEW packages will be installed:\n  build-essential cmake cmake-data cpp cpp-11 dh-elpa-helper dpkg-dev fakeroot\n  g++ g++-11 gcc gcc-11 gcc-11-base libalgorithm-diff-perl\n  libalgorithm-diff-xs-perl libalgorithm-merge-perl libasan6 libatomic1\n  libc-dev-bin libc-devtools libc6-dev libcc1-0 libcrypt-dev libdpkg-perl\n  libfakeroot libfile-fcntllock-perl libgcc-11-dev libgd3 libgomp1 libisl23\n  libitm1 libjsoncpp25 liblsan0 libmpc3 libnsl-dev libquadmath0 librhash0\n  libstdc++-11-dev libtirpc-dev libtsan0 libubsan1 libxpm4 linux-libc-dev\n  lto-disabled-list make manpages-dev rpcsvc-proto\n0 upgraded, 47 newly installed, 0 to remove and 32 not upgraded.\nNeed to get 69.2 MB of archives.\nAfter this operation, 234 MB of additional disk space will be used.\nGet:1 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libc-dev-bin amd64 2.35-0ubuntu3.13 [20.3 kB]\nGet:2 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 linux-libc-dev amd64 5.15.0-179.189 [1312 kB]\nGet:3 http://archive.ubuntu.com/ubuntu jammy/main amd64 libcrypt-dev amd64 1:4.4.27-1 [112 kB]\nGet:4 http://archive.ubuntu.com/ubuntu jammy/main amd64 rpcsvc-proto amd64 1.4.2-0ubuntu6 [68.5 kB]\nGet:5 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libtirpc-dev amd64 1.3.2-2ubuntu0.1 [192 kB]\nGet:6 http://archive.ubuntu.com/ubuntu jammy/main amd64 libnsl-dev amd64 1.3.0-2build2 [71.3 kB]\nGet:7 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libc6-dev amd64 2.35-0ubuntu3.13 [2101 kB]\nGet:8 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 gcc-11-base amd64 11.4.0-1ubuntu1~22.04.3 [216 kB]\nGet:9 http://archive.ubun\n...[truncated]..."
+
+toolchain_final:
+  git: "/usr/bin/git"
+  curl: "/usr/bin/curl"
+  wget: "/usr/bin/wget"
+  tar: "/usr/bin/tar"
+  cmake: "/usr/bin/cmake"
+  make: "/usr/bin/make"
+  gcc: "/usr/bin/gcc"
+  gpp: "/usr/bin/g++"
+  python3: "/usr/bin/python3"
+
+user_local_prefix:
+  prefix: "/home/brunno/.local/mpp_solvers"
+  src_root: "/home/brunno/.local/mpp_solvers/src"
+  build_root: "/home/brunno/.local/mpp_solvers/build"
+  bin_dir: "/home/brunno/.local/mpp_solvers/bin"
+
+pre_build_binary_availability:
+  gpmetis_available: false
+  gpmetis_path: null
+  kahip_available: false
+  kaffpa_path: null
+  kaffpaE_path: null
+  kahip_selected_path: null
+
+source_records:
+  metis_source_url: "https://github.com/KarypisLab/METIS.git"
+  metis_source_path: "/home/brunno/.local/mpp_solvers/src/METIS"
+  metis_git_commit: "dfded64f24664caa8809cacf416d378112e8867f"
+  kahip_source_url: "https://github.com/KaHIP/KaHIP.git"
+  kahip_source_path: "/home/brunno/.local/mpp_solvers/src/KaHIP"
+  kahip_git_commit: "5935f349f65f1788a9b68fcf6d853e698d86956d"
+
+toolchain_solver_build_attempt:
+  toolchain_solver_build_status: "toolchain_or_solver_build_blocked"
+  build_attempted: true
+  solver_execution_run: false
+  limited_pilot_execution_run: false
+  graph_partition_generation_run: false
+  campaign_execution_run: false
+  multi_dataset_command_plan_created: false
+  metaheuristic_execution_run: false
+  performance_or_quality_comparison_claim_supported: false
+  cart_training_run: false
+  result_map_updated: false
+  monograph_claim_supported: false
+  benchmark_input_committed: false
+  partition_file_committed: false
+  raw_solver_output_committed: false
+
+post_build_binary_availability:
+  gpmetis_available: false
+  gpmetis_path: null
+  kahip_available: false
+  kaffpa_path: null
+  kaffpaE_path: null
+  kahip_selected_path: null
+
+binary_checks:
+  gpmetis_sha256: null
+  gpmetis_help_first_line: null
+  kaffpa_sha256: null
+  kaffpa_help_first_line: null
+  kaffpaE_sha256: null
+  kaffpaE_help_first_line: null
+
+build_errors:
+  - "metis_make_failed"
+  - "kahip_cmake_configure_failed"
+
+commands_executed:
+  - command_index: 1
+    command_id: "git_clone_metis"
+    args: "git clone --depth 1 https://github.com/KarypisLab/METIS.git /home/brunno/.local/mpp_solvers/src/METIS"
+    cwd: null
+    return_code: 0
+    timed_out: false
+    duration_seconds: 1.189737
+    stdout_stderr_excerpt: "Cloning into '/home/brunno/.local/mpp_solvers/src/METIS'...\n"
+  - command_index: 2
+    command_id: "metis_make_config"
+    args: "make config prefix=/home/brunno/.local/mpp_solvers shared=1 cc=gcc"
+    cwd: "/home/brunno/.local/mpp_solvers/src/METIS"
+    return_code: 0
+    timed_out: false
+    duration_seconds: 1.159454
+    stdout_stderr_excerpt: "rm -rf build\nmkdir -p build\nmkdir -p build/xinclude\necho \"#define IDXTYPEWIDTH 32\" > build/xinclude/metis.h\necho \"#define REALTYPEWIDTH 32\" >> build/xinclude/metis.h\ncat include/metis.h >> build/xinclude/metis.h\ncp include/CMakeLists.txt build/xinclude\ncd build && cmake /home/brunno/.local/mpp_solvers/src/METIS -DCMAKE_VERBOSE_MAKEFILE=1 -DGKLIB_PATH=/home/brunno/.local/mpp_solvers/src/METIS/~/local -DCMAKE_INSTALL_PREFIX=/home/brunno/.local/mpp_solvers -DSHARED=1 -DCMAKE_C_COMPILER=gcc\n-- The C compiler identification is GNU 11.4.0\n-- Detecting C compiler ABI info\n-- Detecting C compiler ABI info - done\n-- Check for working C compiler: /usr/bin/gcc - skipped\n-- Detecting C compile features\n-- Detecting C compile features - done\n-- Looking for execinfo.h\n-- Looking for execinfo.h - found\n-- Looking for getline\n-- Looking for getline - found\n-- Configuring done\n-- Generating done\n-- Build files have been written to: /home/brunno/.local/mpp_solvers/src/METIS/build\n"
+  - command_index: 3
+    command_id: "metis_make"
+    args: "make -j 4"
+    cwd: "/home/brunno/.local/mpp_solvers/src/METIS"
+    return_code: 2
+    timed_out: false
+    duration_seconds: 0.182568
+    stdout_stderr_excerpt: "make[1]: warning: -j4 forced in submake: resetting jobserver mode.\nmake[1]: Entering directory '/home/brunno/.local/mpp_solvers/src/METIS/build'\n/usr/bin/cmake -S/home/brunno/.local/mpp_solvers/src/METIS -B/home/brunno/.local/mpp_solvers/src/METIS/build --check-build-system CMakeFiles/Makefile.cmake 0\n/usr/bin/cmake -E cmake_progress_start /home/brunno/.local/mpp_solvers/src/METIS/build/CMakeFiles /home/brunno/.local/mpp_solvers/src/METIS/build//CMakeFiles/progress.marks\nmake  -f CMakeFiles/Makefile2 all\nmake[2]: Entering directory '/home/brunno/.local/mpp_solvers/src/METIS/build'\nmake  -f libmetis/CMakeFiles/metis.dir/build.make libmetis/CMakeFiles/metis.dir/depend\nmake[3]: Entering directory '/home/brunno/.local/mpp_solvers/src/METIS/build'\ncd /home/brunno/.local/mpp_solvers/src/METIS/build && /usr/bin/cmake -E cmake_depends \"Unix Makefiles\" /home/brunno/.local/mpp_solvers/src/METIS /home/brunno/.local/mpp_solvers/src/METIS/libmetis /home/brunno/.local/mpp_solvers/src/METIS/build /home/brunno/.local/mpp_solvers/src/METIS/build/libmetis /home/brunno/.local/mpp_solvers/src/METIS/build/libmetis/CMakeFiles/metis.dir/DependInfo.cmake --color=\nmake[3]: Leaving directory '/home/brunno/.local/mpp_solvers/src/METIS/build'\nmake  -f libmetis/CMakeFiles/metis.dir/build.make libmetis/CMakeFiles/metis.dir/build\nmake[3]: Entering directory '/home/brunno/.local/mpp_solvers/src/METIS/build'\n[  1%] Building C object libmetis/CMakeFiles/metis.dir/checkgraph.c.o\n[  3%] Building C object libmetis/CMakeFiles/metis.dir/bucketsort.c.o\ncd /home/brunno/.local/mpp_solvers/src/METIS/build/libmetis && /usr/bin/gcc -Dmetis_EXPORTS -I/home/brunno/.local/mpp_solvers/src/METIS/build/xinclude -I\"/home/brunno/.local/mpp_solvers/src/METIS/~/local/include\" -I/home/brunno/.local/mpp_solvers/include -I/home/brunno/.local/mpp_solvers/src/METIS/libmetis/. -DLINUX -D_FILE_OFFSET_BITS=64 -std=c99 -fno-strict-aliasing -march=native -Werror -Wall -pedantic -Wno-unused-function -Wno-unused-but-set-variable -Wno-unused-variable -Wno-unknown-pragmas -Wno-unused-label -DNDEBUG -DNDEBUG2 -DHAVE_EXECINFO_H -DHAVE_GETLINE -O3 -fPIC -MD -MT libmetis/CMakeFiles/metis.dir/checkgraph.c.o -MF CMakeFiles/metis.dir/checkgraph.c.o.d -o CMakeFiles/metis.dir/checkgraph.c.o -c /home/brunno/.local/mpp_solvers/src/METIS/libmetis/checkgraph.c\ncd /home/brunno/.local/mpp_solvers/src/METIS/build/libmetis && /usr/bin/gcc -Dmetis_EXPORTS -I/home/brunno/.local/mpp_solvers/src/METIS/build/xinclude -I\"/home/brunno/.local/mpp_solvers/src/METIS/~/local/include\" -I/home/brunno/.local/mpp_solvers/include -I/home/brunno/.local/mpp_solvers/src/METIS/libmetis/. -DLINUX -D_FILE_OFFSET_BITS=64 -std=c99 -fno-strict-aliasing -march=native -Werror -Wall -pedantic -Wno-unused-function -Wno-unused-but-set-variable -Wno-unused-variable -Wno-unknown-pragmas -Wno-unused-label -DNDEBUG -DNDEBUG2 -DHAVE_EXECINFO_H -DHAVE_GETLINE -O3 -fPIC -MD -MT libmetis/CMakeFiles/metis.dir/bucketsort.c.o -MF CMakeFiles/metis.dir/bucketsort.c.o.d -o CMakeFiles/metis.dir/bucketsort.c.o -c /home/brunno/.local/mpp_solvers/src/METIS/libmetis/bucketsort.c\n[  4%] Building C object libmetis/CMakeFiles/metis.dir/balance.c.o\ncd /home/brunno/.local/mpp_solvers/src/METIS/build/libmetis && /usr/bin/gcc -Dmetis_EXPORTS -I/home/brunno/.local/mpp_solvers/src/METIS/build/xinclude -I\"/home/brunno/.local/mpp_solvers/src/METIS/~/local/include\" -I/home/brunno/.local/mpp_solvers/include -I/home/brunno/.local/mpp_solvers/src/METIS/libmetis/. -DLINUX -D_FILE_OFFS\n...[truncated]..."
+  - command_index: 4
+    command_id: "git_clone_kahip"
+    args: "git clone --depth 1 https://github.com/KaHIP/KaHIP.git /home/brunno/.local/mpp_solvers/src/KaHIP"
+    cwd: null
+    return_code: 0
+    timed_out: false
+    duration_seconds: 1.361048
+    stdout_stderr_excerpt: "Cloning into '/home/brunno/.local/mpp_solvers/src/KaHIP'...\n"
+  - command_index: 5
+    command_id: "kahip_cmake_configure"
+    args: "cmake -S /home/brunno/.local/mpp_solvers/src/KaHIP -B /home/brunno/.local/mpp_solvers/build/kahip -DCMAKE_INSTALL_PREFIX=/home/brunno/.local/mpp_solvers -DCMAKE_BUILD_TYPE=Release"
+    cwd: null
+    return_code: 1
+    timed_out: false
+    duration_seconds: 4.46697
+    stdout_stderr_excerpt: "CMake Warning (dev) at /usr/share/cmake-3.22/Modules/GNUInstallDirs.cmake:239 (message):\n  Unable to determine default CMAKE_INSTALL_LIBDIR directory because no\n  target architecture is known.  Please enable at least one language before\n  including GNUInstallDirs.\nCall Stack (most recent call first):\n  CMakeLists.txt:3 (include)\nThis warning is for project developers.  Use -Wno-dev to suppress it.\n\n-- The C compiler identification is GNU 11.4.0\n-- The CXX compiler identification is GNU 11.4.0\n-- Detecting C compiler ABI info\n-- Detecting C compiler ABI info - done\n-- Check for working C compiler: /usr/bin/cc - skipped\n-- Detecting C compile features\n-- Detecting C compile features - done\n-- Detecting CXX compiler ABI info\n-- Detecting CXX compiler ABI info - done\n-- Check for working CXX compiler: /usr/bin/c++ - skipped\n-- Detecting CXX compile features\n-- Detecting CXX compile features - done\n-- Performing Test COMPILER_SUPPORTS_FUNROLL_LOOPS\n-- Performing Test COMPILER_SUPPORTS_FUNROLL_LOOPS - Success\n-- Performing Test COMPILER_SUPPORTS_FNOSTACKLIMITS\n-- Performing Test COMPILER_SUPPORTS_FNOSTACKLIMITS - Success\n-- Performing Test COMPILER_SUPPORTS_WALL\n-- Performing Test COMPILER_SUPPORTS_WALL - Success\n-- Performing Test COMPILER_SUPPORTS_MARCH_NATIVE\n-- Performing Test COMPILER_SUPPORTS_MARCH_NATIVE - Success\n-- Performing Test COMPILER_SUPPORTS_FPERMISSIVE\n-- Performing Test COMPILER_SUPPORTS_FPERMISSIVE - Success\n-- Performing Test COMPILER_SUPPORTS_UNUSED\n-- Performing Test COMPILER_SUPPORTS_UNUSED - Success\n-- Performing Test COMPILER_SUPPORTS_NOSIGNCOMP\n-- Performing Test COMPILER_SUPPORTS_NOSIGNCOMP - Success\n-- Found OpenMP_C: -fopenmp (found version \"4.5\") \n-- Found OpenMP_CXX: -fopenmp (found version \"4.5\") \n-- Found OpenMP: TRUE (found version \"4.5\")  \n-- OpenMP support detected\n-- Could NOT find MPI_C (missing: MPI_C_LIB_NAMES MPI_C_HEADER_DIR MPI_C_WORKS) \n-- Could NOT find MPI_CXX (missing: MPI_CXX_LIB_NAMES MPI_CXX_HEADER_DIR MPI_CXX_WORKS) \nCMake Error at /usr/share/cmake-3.22/Modules/FindPackageHandleStandardArgs.cmake:230 (message):\n  Could NOT find MPI (missing: MPI_C_FOUND MPI_CXX_FOUND)\nCall Stack (most recent call first):\n  /usr/share/cmake-3.22/Modules/FindPackageHandleStandardArgs.cmake:594 (_FPHSA_FAILURE_MESSAGE)\n  /usr/share/cmake-3.22/Modules/FindMPI.cmake:1830 (find_package_handle_standard_args)\n  CMakeLists.txt:127 (find_package)\n\n\n-- Configuring incomplete, errors occurred!\nSee also \"/home/brunno/.local/mpp_solvers/build/kahip/CMakeFiles/CMakeOutput.log\".\nSee also \"/home/brunno/.local/mpp_solvers/build/kahip/CMakeFiles/CMakeError.log\".\n"
+
+next_gate_recommendation:
+  next_issue_title_if_remediated: "M4 TigerLine limited pilot retry gate: Los Angeles County roads 2025"
+  next_issue_title_if_blocked: "M4 TigerLine toolchain solver build review: decide next scope"
+  next_gate_may_retry_limited_pilot: false
+  next_gate_may_remediate_toolchain_or_build_more_solvers: true
+  next_gate_may_run_campaign: false
+  next_gate_may_create_multi_dataset_command_plan: false
+  next_gate_may_run_metaheuristics: false
+  next_gate_may_train_cart: false
+  next_gate_may_update_result_map: false
+  next_gate_may_write_monograph_claims: false
+
+interpretation_boundary:
+  supported:
+    - "The srv-noctua toolchain remediation and user-local solver build attempt produced the recorded binary availability status."
+    - "Only toolchain remediation, user-local build actions and help/version or binary-availability probes were admitted."
+    - "The restored TigerLine input cache remained local-only and ignored."
+  unsupported:
+    - "No TigerLine solver execution was run in this gate."
+    - "No pilot retry was run in this gate."
+    - "No graph partition generation, campaign, multi-dataset conclusion, performance/quality comparison, CART training, result-map update or monograph claim is supported."
+
+toolchain_solver_build_retry_after_1192:
+  toolchain_solver_build_retry_manifest: "data/instances/real/m4_toolchain_solver_build_metadata/tigerline_roads_2025_06037_los_angeles_county_toolchain_solver_build_retry_1192.yaml"
+  toolchain_solver_build_issue: 214
+  toolchain_solver_build_retry_status: "toolchain_dependency_retry_partially_remediated"
+  gpmetis_available_after_retry: false
+  kahip_available_after_retry: true
+  solver_execution_run: false
+  limited_pilot_execution_run: false
+  graph_partition_generation_run: false
+  campaign_execution_run: false
+  multi_dataset_command_plan_created: false
+  metaheuristic_execution_run: false
+  performance_or_quality_comparison_claim_supported: false
+  cart_training_run: false
+  result_map_updated: false
+  monograph_claim_supported: false

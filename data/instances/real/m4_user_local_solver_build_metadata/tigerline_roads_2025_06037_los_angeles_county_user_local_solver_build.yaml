@@ -119,3 +119,25 @@ interpretation_boundary:
     - "No TigerLine solver execution was run in this gate."
     - "No pilot retry was run in this gate."
     - "No graph partition generation, campaign, multi-dataset conclusion, performance/quality comparison, CART training, result-map update or monograph claim is supported."
+
+toolchain_solver_build_after_1191:
+  toolchain_solver_build_manifest: "data/instances/real/m4_toolchain_solver_build_metadata/tigerline_roads_2025_06037_los_angeles_county_toolchain_solver_build.yaml"
+  toolchain_solver_build_issue: 214
+  toolchain_solver_build_status: "toolchain_or_solver_build_blocked"
+  gpmetis_available_after_toolchain_solver_build: false
+  kahip_available_after_toolchain_solver_build: false
+  solver_execution_run: false
+  limited_pilot_execution_run: false
+  graph_partition_generation_run: false
+  campaign_execution_run: false
+  multi_dataset_command_plan_created: false
+  metaheuristic_execution_run: false
+  performance_or_quality_comparison_claim_supported: false
+  cart_training_run: false
+  result_map_updated: false
+  monograph_claim_supported: false
+  benchmark_input_committed: false
+  partition_file_committed: false
+  raw_solver_output_committed: false
+  next_recommended_gate_if_remediated: "M4 TigerLine limited pilot retry gate: Los Angeles County roads 2025"
+  next_recommended_gate_if_blocked: "M4 TigerLine toolchain solver build review: decide next scope"

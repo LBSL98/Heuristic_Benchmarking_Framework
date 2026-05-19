@@ -1,0 +1,171 @@
+toolchain_solver_build_retry_metadata_id: "1192_tigerline_roads_2025_06037_los_angeles_county_toolchain_solver_build_retry"
+toolchain_solver_build_issue: 214
+source_toolchain_solver_build_metadata_id: "1191_tigerline_roads_2025_06037_los_angeles_county_toolchain_solver_build"
+source_user_local_solver_build_issue: 212
+source_solver_remediation_issue: 209
+source_limited_pilot_execution_issue: 206
+parent_campaign_issue: 130
+parent_license_issue: 143
+main_commit_at_toolchain_solver_build_retry: "52e654e74f2eb9f7170b2b9953ec6f3ceb6af818"
+
+execution_environment:
+  execution_host_label: "srv-noctua"
+  platform: "Linux-5.15.0-177-generic-x86_64-with-glibc2.35"
+  python_version: "3.10.12"
+  git_head_observed: "52e654e74f2eb9f7170b2b9953ec6f3ceb6af818"
+
+selected_instance_context:
+  selected_instance_id: "tigerline_roads_2025_06037_los_angeles_county"
+  input_sha256_observed: "df31d8c3e671e9010fa9f9d06b00cda80781a5a9140b214e5e08962192bf2b42"
+  input_stats_sha256_observed: "2e6fc3539d21b97b57ada3d892bdf081d1f0608b25541ae6eb18e6f60dcff683"
+  cache_restored_or_verified_on_srv_noctua: true
+
+dependency_remediation:
+  dep_install_attempted: true
+  sudo_v_exit: 0
+  apt_update_exit: 0
+  apt_install_exit: 0
+  dependency_install_log_excerpt: "===== 1192 DEPENDENCY INSTALL LOG =====\n2026-05-19T17:22:10-03:00\nInstalling/validating MPI build dependencies only.\nNo solver will be executed on TigerLine in this gate.\nsudo_v_exit=0\nHit:1 https://download.docker.com/linux/ubuntu jammy InRelease\nHit:2 https://deb.nodesource.com/node_22.x nodistro InRelease\nGet:3 https://pkgs.tailscale.com/stable/ubuntu jammy InRelease\nHit:4 http://security.ubuntu.com/ubuntu jammy-security InRelease\nHit:5 http://archive.ubuntu.com/ubuntu jammy InRelease\nHit:6 http://archive.ubuntu.com/ubuntu jammy-updates InRelease\nHit:7 http://archive.ubuntu.com/ubuntu jammy-backports InRelease\nFetched 6581 B in 2s (3544 B/s)\nReading package lists...\napt_update_exit=0\nReading package lists...\nBuilding dependency tree...\nReading state information...\nThe following package was automatically installed and is no longer required:\n  lynx-common\nUse 'sudo apt autoremove' to remove it.\nThe following additional packages will be installed:\n  autoconf automake autotools-dev gfortran gfortran-11 ibverbs-providers\n  libcaf-openmpi-3 libcoarrays-dev libcoarrays-openmpi-dev libevent-2.1-7\n  libevent-dev libevent-extra-2.1-7 libevent-openssl-2.1-7\n  libevent-pthreads-2.1-7 libfabric1 libgfortran-11-dev libgfortran5\n  libhwloc-dev libhwloc-plugins libhwloc15 libibverbs-dev libibverbs1\n  libjs-jquery-ui libltdl-dev libnl-3-dev libnl-route-3-dev libnuma-dev\n  libopenmpi3 libpciaccess0 libpmix-dev libpmix2 libpsm-infinipath1 libpsm2-2\n  librdmacm1 libtool libucx0 libxnvctrl0 m4 ocl-icd-libopencl1 openmpi-common\n  zlib1g-dev\nSuggested packages:\n  autoconf-archive gnu-standards autoconf-doc gettext gfortran-multilib\n  gfortran-doc gfortran-11-multilib gfortran-11-doc libhwloc-contrib-plugins\n  libjs-jquery-ui-docs libtool-doc openmpi-doc gcj-jdk m4-doc opencl-icd\nThe following NEW packages will be installed:\n  autoconf automake autotools-dev gfortran gfortran-11 ibverbs-providers\n  libcaf-openmpi-3 libcoarrays-dev libcoarrays-openmpi-dev libevent-2.1-7\n  libevent-dev libevent-extra-2.1-7 libevent-openssl-2.1-7\n  libevent-pthreads-2.1-7 libfabric1 libgfortran-11-dev libgfortran5\n  libhwloc-dev libhwloc-plugins libhwloc15 libibverbs-dev libibverbs1\n  libjs-jquery-ui libltdl-dev libnl-3-dev libnl-route-3-dev libnuma-dev\n  libopenmpi-dev libopenmpi3 libpciaccess0 libpmix-dev libpmix2\n  libpsm-infinipath1 libpsm2-2 librdmacm1 libtool libucx0 libxnvctrl0 m4\n  ocl-icd-libopencl1 openmpi-bin openmpi-common zlib1g-dev\n0 upgraded, 43 newly installed, 0 to remove and 32 not upgraded.\nNeed to get 24.8 MB of archives.\nAfter this operation, 98.1 MB of additional disk space will be used.\nGet:1 http://archive.ubuntu.com/ubuntu jammy/main amd64 m4 amd64 1.4.18-5ubuntu2 [199 kB]\nGet:2 http://archive.ubuntu.com/ubuntu jammy/main amd64 autoconf all 2.71-2 [338 kB]\nGet:3 http://archive.ubuntu.com/ubuntu jammy/main amd64 autotools-dev all 20220109.1 [44.9 kB]\nGet:4 http://archive.ubuntu.com/ubuntu jammy/main amd64 automake all 1:1.16.5-1.3 [558 kB]\nGet:5 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libgfortran5 amd64 12.3.0-1ubuntu1~22.04.3 [879 kB]\nGet:6 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libgfortran-11-dev amd64 11.4.0-1ubuntu1~22.04.3 [842 kB]\nGet:7 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 gfortran-11 amd64 11.4.0-1ubuntu1~22.04.3 [11.2 MB]\nGet:8 http://archive.ubuntu.com/ubuntu jammy/main amd64 gfortran amd64 4:11.2.0-1ubuntu1 [1182 B]\nGet:9 http://archive.ubuntu.com/ubuntu jammy/main amd64 libibverbs1 amd64 39.0-1 [69.3 kB]\nGet:10 http://archive.ubuntu.com/ubuntu jammy/main amd64 ibverbs-providers amd64 39.0-1 [341 kB]\nGet:11 http://archive.ubuntu.com/ubuntu jammy/main amd64 libevent-pthreads-2.1-7 amd64 2.1.12-stable-1build3 [7642 B]\nGet:12 http://archive.ubuntu.com/ubuntu jammy/universe amd64 libpsm-infinipath1 amd64 3.3+20.604758e7-6.1 [170 kB]\nGet:13 http://archive.ubuntu.com/ubuntu jammy/universe amd64 libpsm2-2 amd64 11.2.185-1 [182 kB]\nGet:14 http://archive.ubuntu.com/ubuntu jammy/main amd64 librdmacm1 amd64 39.0-1 [71.2 kB]\nGet:15 http://archive.ubuntu.com/ubuntu jammy/universe amd64 libfabric1 amd64 1.11.0-3 [558 kB]\nGet:16 http://archive.ubuntu.com/ubuntu jammy-updates/universe amd64 libhwloc15 amd64 2.7.0-2ubuntu1 [159 kB]\nGet:17 http://archive.ubuntu.com/ubuntu jammy/main amd64 libpciaccess0 amd64 0.16-3 [19.1 kB]\nGet:18 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libxnvctrl0 amd64 510.47.03-0ubuntu1.22.04.1 [11.4 kB]\nGet:19 http://archive.ubuntu.com/ubuntu ja\n...[truncated]..."
+
+toolchain_final:
+  git: "/usr/bin/git"
+  cmake: "/usr/bin/cmake"
+  make: "/usr/bin/make"
+  gcc: "/usr/bin/gcc"
+  gpp: "/usr/bin/g++"
+  mpicc: "/usr/bin/mpicc"
+  mpicxx: "/usr/bin/mpicxx"
+  python3: "/usr/bin/python3"
+
+pre_retry_binary_availability:
+  gpmetis_available: false
+  gpmetis_path: null
+  kahip_available: false
+  kaffpa_path: null
+  kaffpaE_path: null
+
+source_records:
+  gklib_source_url: "https://github.com/KarypisLab/GKlib.git"
+  gklib_source_path: "/home/brunno/.local/mpp_solvers/src/GKlib"
+  gklib_git_commit: "e2856c2f595b153ca1ce9258c5301dbabc4f39f5"
+  metis_source_url: "https://github.com/KarypisLab/METIS.git"
+  metis_source_path: "/home/brunno/.local/mpp_solvers/src/METIS"
+  metis_git_commit: "dfded64f24664caa8809cacf416d378112e8867f"
+  kahip_source_url: "https://github.com/KaHIP/KaHIP.git"
+  kahip_source_path: "/home/brunno/.local/mpp_solvers/src/KaHIP"
+  kahip_git_commit: "5935f349f65f1788a9b68fcf6d853e698d86956d"
+
+toolchain_solver_build_retry_attempt:
+  toolchain_solver_build_retry_status: "toolchain_dependency_retry_partially_remediated"
+  build_attempted: true
+  solver_execution_run: false
+  limited_pilot_execution_run: false
+  graph_partition_generation_run: false
+  campaign_execution_run: false
+  multi_dataset_command_plan_created: false
+  metaheuristic_execution_run: false
+  performance_or_quality_comparison_claim_supported: false
+  cart_training_run: false
+  result_map_updated: false
+  monograph_claim_supported: false
+  benchmark_input_committed: false
+  partition_file_committed: false
+  raw_solver_output_committed: false
+
+post_retry_binary_availability:
+  gpmetis_available: false
+  gpmetis_path: null
+  kahip_available: true
+  kaffpa_path: "/home/brunno/.local/mpp_solvers/bin/kaffpa"
+  kaffpaE_path: "/home/brunno/.local/mpp_solvers/bin/kaffpaE"
+  kahip_selected_path: "/home/brunno/.local/mpp_solvers/bin/kaffpa"
+
+binary_checks:
+  gpmetis_sha256: null
+  gpmetis_help_first_line: null
+  kaffpa_sha256: "a91d9f76c80c406cec597a89845179bab359b0942c1f38b049f08959342f9392"
+  kaffpa_help_first_line: "Usage: /home/brunno/.local/mpp_solvers/bin/kaffpa [--help] FILE [--seed=<int>] [--version] [--mmap_io] --k=<int> [--imbalance=<double>] --preconfiguration=VARIANT [--time_limit=<double>] [--enforce_balance] [--balance_edges] [--enable_mapping] [--connected_blocks] [--hierarchy_parameter_string=<string>] [--distance_parameter_string=<string>] [--online_distances] [--output_filename=<string>]"
+  kaffpaE_sha256: "efe053fa9c4d2a09623779d9f0fc4fc69a374ef12094bd1bf2b82cc19e659815"
+  kaffpaE_help_first_line: "Usage: /home/brunno/.local/mpp_solvers/bin/kaffpaE [--help] FILE [--seed=<int>] [--version] --k=<int> [--imbalance=<double>] [--preconfiguration=VARIANT] [--time_limit=<double>] [--mh_enable_quickstart] [--mh_print_log] [--mh_optimize_communication_volume] [--mh_enable_tabu_search] [--maxT=<int>] [--maxIter=<int>] [--mh_enable_kabapE] [--kabaE_internal_bal=<double>] [--balance_edges] [--connected_blocks] [--input_partition=<string>] [--output_filename=<string>]"
+
+build_errors:
+  - "metis_retry_make_failed"
+
+commands_executed:
+  - command_index: 1
+    command_id: "git_clone_gklib"
+    args: "git clone --depth 1 https://github.com/KarypisLab/GKlib.git /home/brunno/.local/mpp_solvers/src/GKlib"
+    cwd: null
+    return_code: 0
+    timed_out: false
+    duration_seconds: 0.897187
+    stdout_stderr_excerpt: "Cloning into '/home/brunno/.local/mpp_solvers/src/GKlib'...\n"
+  - command_index: 2
+    command_id: "git_fetch_metis"
+    args: "git fetch --depth 1 origin master"
+    cwd: "/home/brunno/.local/mpp_solvers/src/METIS"
+    return_code: 0
+    timed_out: false
+    duration_seconds: 0.653316
+    stdout_stderr_excerpt: "From https://github.com/KarypisLab/METIS\n * branch            master     -> FETCH_HEAD\n"
+  - command_index: 3
+    command_id: "metis_retry_make_config_with_gklib"
+    args: "make config prefix=/home/brunno/.local/mpp_solvers gklib_path=/home/brunno/.local/mpp_solvers/src/GKlib shared=1 cc=gcc"
+    cwd: "/home/brunno/.local/mpp_solvers/src/METIS"
+    return_code: 0
+    timed_out: false
+    duration_seconds: 1.149833
+    stdout_stderr_excerpt: "rm -rf build\nmkdir -p build\nmkdir -p build/xinclude\necho \"#define IDXTYPEWIDTH 32\" > build/xinclude/metis.h\necho \"#define REALTYPEWIDTH 32\" >> build/xinclude/metis.h\ncat include/metis.h >> build/xinclude/metis.h\ncp include/CMakeLists.txt build/xinclude\ncd build && cmake /home/brunno/.local/mpp_solvers/src/METIS -DCMAKE_VERBOSE_MAKEFILE=1 -DGKLIB_PATH=/home/brunno/.local/mpp_solvers/src/GKlib -DCMAKE_INSTALL_PREFIX=/home/brunno/.local/mpp_solvers -DSHARED=1 -DCMAKE_C_COMPILER=gcc\n-- The C compiler identification is GNU 11.4.0\n-- Detecting C compiler ABI info\n-- Detecting C compiler ABI info - done\n-- Check for working C compiler: /usr/bin/gcc - skipped\n-- Detecting C compile features\n-- Detecting C compile features - done\n-- Looking for execinfo.h\n-- Looking for execinfo.h - found\n-- Looking for getline\n-- Looking for getline - found\n-- Configuring done\n-- Generating done\n-- Build files have been written to: /home/brunno/.local/mpp_solvers/src/METIS/build\n"
+  - command_index: 4
+    command_id: "metis_retry_make"
+    args: "make -j 4"
+    cwd: "/home/brunno/.local/mpp_solvers/src/METIS"
+    return_code: 2
+    timed_out: false
+    duration_seconds: 3.472882
+    stdout_stderr_excerpt: "make[1]: warning: -j4 forced in submake: resetting jobserver mode.\nmake[1]: Entering directory '/home/brunno/.local/mpp_solvers/src/METIS/build'\n/usr/bin/cmake -S/home/brunno/.local/mpp_solvers/src/METIS -B/home/brunno/.local/mpp_solvers/src/METIS/build --check-build-system CMakeFiles/Makefile.cmake 0\n/usr/bin/cmake -E cmake_progress_start /home/brunno/.local/mpp_solvers/src/METIS/build/CMakeFiles /home/brunno/.local/mpp_solvers/src/METIS/build//CMakeFiles/progress.marks\nmake  -f CMakeFiles/Makefile2 all\nmake[2]: Entering directory '/home/brunno/.local/mpp_solvers/src/METIS/build'\nmake  -f libmetis/CMakeFiles/metis.dir/build.make libmetis/CMakeFiles/metis.dir/depend\nmake[3]: Entering directory '/home/brunno/.local/mpp_solvers/src/METIS/build'\ncd /home/brunno/.local/mpp_solvers/src/METIS/build && /usr/bin/cmake -E cmake_depends \"Unix Makefiles\" /home/brunno/.local/mpp_solvers/src/METIS /home/brunno/.local/mpp_solvers/src/METIS/libmetis /home/brunno/.local/mpp_solvers/src/METIS/build /home/brunno/.local/mpp_solvers/src/METIS/build/libmetis /home/brunno/.local/mpp_solvers/src/METIS/build/libmetis/CMakeFiles/metis.dir/DependInfo.cmake --color=\nmake[3]: Leaving directory '/home/brunno/.local/mpp_solvers/src/METIS/build'\nmake  -f libmetis/CMakeFiles/metis.dir/build.make libmetis/CMakeFiles/metis.dir/build\nmake[3]: Entering directory '/home/brunno/.local/mpp_solvers/src/METIS/build'\n[  1%] Building C object libmetis/CMakeFiles/metis.dir/checkgraph.c.o\n[  3%] Building C object libmetis/CMakeFiles/metis.dir/bucketsort.c.o\ncd /home/brunno/.local/mpp_solvers/src/METIS/build/libmetis && /usr/bin/gcc -Dmetis_EXPORTS -I/home/brunno/.local/mpp_solvers/src/METIS/build/xinclude -I/home/brunno/.local/mpp_solvers/src/GKlib/include -I/home/brunno/.local/mpp_solvers/include -I/home/brunno/.local/mpp_solvers/src/METIS/libmetis/. -DLINUX -D_FILE_OFFSET_BITS=64 -std=c99 -fno-strict-aliasing -march=native -Werror -Wall -pedantic -Wno-unused-function -Wno-unused-but-set-variable -Wno-unused-variable -Wno-unknown-pragmas -Wno-unused-label -DNDEBUG -DNDEBUG2 -DHAVE_EXECINFO_H -DHAVE_GETLINE -O3 -fPIC -MD -MT libmetis/CMakeFiles/metis.dir/checkgraph.c.o -MF CMakeFiles/metis.dir/checkgraph.c.o.d -o CMakeFiles/metis.dir/checkgraph.c.o -c /home/brunno/.local/mpp_solvers/src/METIS/libmetis/checkgraph.c\ncd /home/brunno/.local/mpp_solvers/src/METIS/build/libmetis && /usr/bin/gcc -Dmetis_EXPORTS -I/home/brunno/.local/mpp_solvers/src/METIS/build/xinclude -I/home/brunno/.local/mpp_solvers/src/GKlib/include -I/home/brunno/.local/mpp_solvers/include -I/home/brunno/.local/mpp_solvers/src/METIS/libmetis/. -DLINUX -D_FILE_OFFSET_BITS=64 -std=c99 -fno-strict-aliasing -march=native -Werror -Wall -pedantic -Wno-unused-function -Wno-unused-but-set-variable -Wno-unused-variable -Wno-unknown-pragmas -Wno-unused-label -DNDEBUG -DNDEBUG2 -DHAVE_EXECINFO_H -DHAVE_GETLINE -O3 -fPIC -MD -MT libmetis/CMakeFiles/metis.dir/bucketsort.c.o -MF CMakeFiles/metis.dir/bucketsort.c.o.d -o CMakeFiles/metis.dir/bucketsort.c.o -c /home/brunno/.local/mpp_solvers/src/METIS/libmetis/bucketsort.c\n[  4%] Building C object libmetis/CMakeFiles/metis.dir/balance.c.o\ncd /home/brunno/.local/mpp_solvers/src/METIS/build/libmetis && /usr/bin/gcc -Dmetis_EXPORTS -I/home/brunno/.local/mpp_solvers/src/METIS/build/xinclude -I/home/brunno/.local/mpp_solvers/src/GKlib/include -I/home/brunno/.local/mpp_solvers/include -I/home/brunno/.local/mpp_solvers/src/METIS/libmetis/. -DLINUX -D_FILE_OFFSET_BITS=64 -std=c99 -fno-strict-aliasing -march=native -Werror -Wall -pedantic -Wno-unused-function -Wno-unused-but-set-variable -Wno-unused-variable -Wno-unknown-pragmas -Wno-unused-label -DNDEBUG -DNDEBUG2 -DHAVE_EXECINFO_H -DHAVE_GETLINE -O3 -fPIC -MD -MT libmetis/CMakeFiles/metis.dir/balance.c.o -MF CMakeFiles/metis.dir/balance.c.o.d -o CMakeFiles/metis.dir/balance.c.o -c /home/brunno/.local/mpp_solvers/src/METIS/libmetis/balance.c\n[  6%] Building C object libmetis/CMakeFiles/metis.dir/auxapi.c.o\ncd /home/brunno/.local/mpp_solvers/src/METIS/build/libmetis && /usr/bin/gcc -Dmetis_EXPORTS -I/home/brunno/.local/mpp_solvers/src/METIS/build/xinclude -I/home/brunno/.local/mpp_solvers/src/GKlib/include -I/home/brunno/.local/mpp_solvers/include -I/home/brunno/.local/mpp_solvers/src/METIS/libmetis/. -DLINUX -D_FILE_OFFSET_BITS=64 -std=c99 -fno-strict-aliasing -march=native -Werror -Wall -pedantic -Wno-unused-function -Wno-unused-but-set-variable -Wno-unused-variable -Wno-unknown-pragmas -Wno-unused-label -DNDEBUG -DNDEB\n...[truncated]..."
+  - command_index: 5
+    command_id: "git_fetch_kahip"
+    args: "git fetch --depth 1 origin master"
+    cwd: "/home/brunno/.local/mpp_solvers/src/KaHIP"
+    return_code: 0
+    timed_out: false
+    duration_seconds: 0.668561
+    stdout_stderr_excerpt: "From https://github.com/KaHIP/KaHIP\n * branch            master     -> FETCH_HEAD\n"
+  - command_index: 6
+    command_id: "kahip_retry_cmake_configure_with_mpi"
+    args: "cmake -S /home/brunno/.local/mpp_solvers/src/KaHIP -B /home/brunno/.local/mpp_solvers/build/kahip_retry_1192 -DCMAKE_INSTALL_PREFIX=/home/brunno/.local/mpp_solvers -DCMAKE_BUILD_TYPE=Release"
+    cwd: null
+    return_code: 0
+    timed_out: false
+    duration_seconds: 6.852876
+    stdout_stderr_excerpt: "CMake Warning (dev) at /usr/share/cmake-3.22/Modules/GNUInstallDirs.cmake:239 (message):\n  Unable to determine default CMAKE_INSTALL_LIBDIR directory because no\n  target architecture is known.  Please enable at least one language before\n  including GNUInstallDirs.\nCall Stack (most recent call first):\n  CMakeLists.txt:3 (include)\nThis warning is for project developers.  Use -Wno-dev to suppress it.\n\n-- The C compiler identification is GNU 11.4.0\n-- The CXX compiler identification is GNU 11.4.0\n-- Detecting C compiler ABI info\n-- Detecting C compiler ABI info - done\n-- Check for working C compiler: /usr/bin/cc - skipped\n-- Detecting C compile features\n-- Detecting C compile features - done\n-- Detecting CXX compiler ABI info\n-- Detecting CXX compiler ABI info - done\n-- Check for working CXX compiler: /usr/bin/c++ - skipped\n-- Detecting CXX compile features\n-- Detecting CXX compile features - done\n-- Performing Test COMPILER_SUPPORTS_FUNROLL_LOOPS\n-- Performing Test COMPILER_SUPPORTS_FUNROLL_LOOPS - Success\n-- Performing Test COMPILER_SUPPORTS_FNOSTACKLIMITS\n-- Performing Test COMPILER_SUPPORTS_FNOSTACKLIMITS - Success\n-- Performing Test COMPILER_SUPPORTS_WALL\n-- Performing Test COMPILER_SUPPORTS_WALL - Success\n-- Performing Test COMPILER_SUPPORTS_MARCH_NATIVE\n-- Performing Test COMPILER_SUPPORTS_MARCH_NATIVE - Success\n-- Performing Test COMPILER_SUPPORTS_FPERMISSIVE\n-- Performing Test COMPILER_SUPPORTS_FPERMISSIVE - Success\n-- Performing Test COMPILER_SUPPORTS_UNUSED\n-- Performing Test COMPILER_SUPPORTS_UNUSED - Success\n-- Performing Test COMPILER_SUPPORTS_NOSIGNCOMP\n-- Performing Test COMPILER_SUPPORTS_NOSIGNCOMP - Success\n-- Found OpenMP_C: -fopenmp (found version \"4.5\") \n-- Found OpenMP_CXX: -fopenmp (found version \"4.5\") \n-- Found OpenMP: TRUE (found version \"4.5\")  \n-- OpenMP support detected\n-- Found MPI_C: /usr/lib/x86_64-linux-gnu/openmpi/lib/libmpi.so (found version \"3.1\") \n-- Found MPI_CXX: /usr/lib/x86_64-linux-gnu/openmpi/lib/libmpi_cxx.so (found version \"3.1\") \n-- Found MPI: TRUE (found version \"3.1\")  \nMPI detected (can use MPI_HOME hint to direct the detection...)\n-- MPI include: /usr/lib/x86_64-linux-gnu/openmpi/include;/usr/lib/x86_64-linux-gnu/openmpi/include/openmpi\n-- MPI library: /usr/lib/x86_64-linux-gnu/openmpi/lib/libmpi.so\n-- ParHIP build requested\n-- Configuring done\n-- Generating done\n-- Build files have been written to: /home/brunno/.local/mpp_solvers/build/kahip_retry_1192\n"
+  - command_index: 7
+    command_id: "kahip_retry_cmake_build"
+    args: "cmake --build /home/brunno/.local/mpp_solvers/build/kahip_retry_1192 --parallel 4"
+    cwd: null
+    return_code: 0
+    timed_out: false
+    duration_seconds: 113.866183
+    stdout_stderr_excerpt: "[  1%] Building CXX object CMakeFiles/libkaffpa_parallel.dir/lib/parallel_mh/parallel_mh_async.cpp.o\n[  1%] Building CXX object CMakeFiles/libspac.dir/lib/spac/spac.cpp.o\n[  2%] Building CXX object CMakeFiles/libmapping.dir/lib/mapping/local_search_mapping.cpp.o\n[  2%] Building CXX object CMakeFiles/libkaffpa.dir/lib/data_structure/graph_hierarchy.cpp.o\n[  2%] Building CXX object CMakeFiles/libmapping.dir/lib/mapping/full_search_space.cpp.o\n[  3%] Building CXX object CMakeFiles/libkaffpa.dir/lib/algorithms/strongly_connected_components.cpp.o\n[  3%] Built target libspac\n[  3%] Building CXX object CMakeFiles/libnodeordering.dir/lib/node_ordering/min_degree_ordering.cpp.o\n[  4%] Building CXX object CMakeFiles/libmapping.dir/lib/mapping/full_search_space_pruned.cpp.o\n[  4%] Building CXX object CMakeFiles/libkaffpa.dir/lib/algorithms/topological_sort.cpp.o\n[  4%] Building CXX object CMakeFiles/libmapping.dir/lib/mapping/communication_graph_search_space.cpp.o\n[  4%] Building CXX object CMakeFiles/libkaffpa_parallel.dir/lib/parallel_mh/population.cpp.o\n[  5%] Building CXX object CMakeFiles/libkaffpa.dir/lib/algorithms/push_relabel.cpp.o\n[  6%] Building CXX object CMakeFiles/libnodeordering.dir/lib/node_ordering/nested_dissection.cpp.o\n[  6%] Building CXX object CMakeFiles/libkaffpa.dir/lib/io/graph_io.cpp.o\n[  6%] Building CXX object CMakeFiles/libmapping.dir/lib/mapping/fast_construct_mapping.cpp.o\n[  7%] Building CXX object CMakeFiles/libkaffpa.dir/lib/tools/quality_metrics.cpp.o\n[  7%] Building CXX object CMakeFiles/libnodeordering.dir/lib/node_ordering/ordering_tools.cpp.o\n[  8%] Building CXX object CMakeFiles/libmapping.dir/lib/mapping/construct_distance_matrix.cpp.o\n[  8%] Building CXX object CMakeFiles/libkaffpa.dir/lib/tools/random_functions.cpp.o\n[  9%] Building CXX object CMakeFiles/libnodeordering.dir/lib/node_ordering/reductions.cpp.o\n[ 10%] Building CXX object CMakeFiles/libkaffpa_parallel.dir/lib/parallel_mh/galinier_combine/gal_combine.cpp.o\n[ 10%] Building CXX object CMakeFiles/libmapping.dir/lib/mapping/mapping_algorithms.cpp.o\n[ 10%] Building CXX object CMakeFiles/libkaffpa.dir/lib/tools/graph_extractor.cpp.o\n[ 11%] Building CXX object CMakeFiles/libkaffpa.dir/lib/tools/misc.cpp.o\n[ 12%] Building CXX object CMakeFiles/libmapping.dir/lib/mapping/construct_mapping.cpp.o\n[ 12%] Building CXX object CMakeFiles/libkaffpa.dir/lib/tools/partition_snapshooter.cpp.o\n[ 12%] Building CXX object CMakeFiles/libkaffpa_parallel.dir/lib/parallel_mh/galinier_combine/construct_partition.cpp.o\n[ 13%] Building CXX object CMakeFiles/libkaffpa.dir/lib/partition/graph_partitioner.cpp.o\n[ 13%] Built target libmapping\n[ 13%] Building CXX object parallel/modified_kahip/CMakeFiles/libmodified_kaffpa.dir/lib/data_structure/graph_hierarchy.cpp.o\n[ 14%] Building CXX object parallel/modified_kahip/CMakeFiles/libmodified_kaffpa.dir/lib/algorithms/strongly_connected_components.cpp.o\n[ 14%] Built target libnodeordering\n[ 14%] Building CXX object parallel/modified_kahip/CMakeFiles/libmodified_kaffpa_async.dir/lib/parallel_mh/parallel_mh_async.cpp.o\n[ 14%] Building CXX object parallel/modified_kahip/CMakeFiles/libmodified_kaffpa.dir/lib/algorithms/topological_sort.cpp.o\n[ 14%] Building CXX object CMakeFiles/libkaffpa.dir/lib/partition/w_cycles/wcycle_partitioner.cpp.o\n[ 14%] Building CXX object CMakeFiles/libkaffpa_parallel.dir/lib/parallel_mh/exchange/exchanger.cpp.o\n[ 15%] Building CXX object parallel/modified_kahip/CMakeFiles/libmodified_kaffpa.dir/lib/io/graph_io.cpp.o\n[ 16%] Building CXX object parallel/modified_kahip/CMakeFiles/libmodified_kaffpa_async.dir/lib/parallel_mh/population.cpp.o\n[ 16%] Building CXX object parallel/modified_kahip/CMakeFiles/libmodified_kaffpa.dir/lib/tools/quality_metrics.cpp.o\n[ 17%] Building CXX object CMakeFiles/libkaffpa.dir/lib/partition/coarsening/coarsening.cpp.o\n[ 18%] Building CXX object CMakeFiles/libkaffpa_parallel.dir/lib/tools/graph_communication.cpp.o\n[ 18%] Building CXX object parallel/modified_kahip/CMakeFiles/libmodified_kaffpa.dir/lib/tools/random_functions.cpp.o\n[ 18%] Building CXX object CMakeFiles/libkaffpa.dir/lib/partition/coarsening/contraction.cpp.o\n[ 19%] Building CXX object parallel/modified_kahip/CMakeFiles/libmodified_kaffpa.dir/lib/tools/graph_extractor.cpp.o\n[ 19%] Building CXX object parallel/modified_kahip/CMakeFiles/libmodified_kaffpa.dir/lib/tools/misc.cpp.o\n[ 19%] Building CXX object CMakeFiles/libkaffpa_parallel.dir/lib/tools/mpi_tools.cpp.o\n[ 19%] Building CXX object CMakeF\n...[truncated]..."
+
+next_gate_recommendation:
+  next_issue_title_if_remediated: "M4 TigerLine limited pilot retry gate: Los Angeles County roads 2025"
+  next_issue_title_if_blocked: "M4 TigerLine toolchain solver build review: decide next scope"
+  next_gate_may_retry_limited_pilot: false
+  next_gate_may_remediate_or_retry_solver_build: true
+  next_gate_may_run_campaign: false
+  next_gate_may_create_multi_dataset_command_plan: false
+  next_gate_may_run_metaheuristics: false
+  next_gate_may_train_cart: false
+  next_gate_may_update_result_map: false
+  next_gate_may_write_monograph_claims: false
+
+interpretation_boundary:
+  supported:
+    - "The 1192 dependency/build retry produced the recorded binary availability status."
+    - "Only dependency remediation, user-local build actions and help/version or binary-availability probes were admitted."
+  unsupported:
+    - "No TigerLine solver execution was run in this gate."
+    - "No pilot retry was run in this gate."
+    - "No graph partition generation, campaign, multi-dataset conclusion, performance/quality comparison, CART training, result-map update or monograph claim is supported."
