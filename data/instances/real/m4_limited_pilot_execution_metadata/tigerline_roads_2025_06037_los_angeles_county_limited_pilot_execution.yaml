@@ -144,3 +144,24 @@ interpretation_boundary:
     - "No multi-dataset conclusion is supported."
     - "No performance or quality comparison claim is supported."
     - "No CART training, result-map update or monograph claim is supported."
+
+solver_remediation_after_1182:
+  solver_remediation_manifest: "data/instances/real/m4_solver_remediation_metadata/tigerline_roads_2025_06037_los_angeles_county_solver_remediation.yaml"
+  solver_remediation_issue: 209
+  solver_remediation_status: "solver_environment_remediation_blocked"
+  gpmetis_available_after_remediation: false
+  kahip_available_after_remediation: false
+  solver_execution_run: false
+  limited_pilot_execution_run: false
+  campaign_execution_run: false
+  multi_dataset_command_plan_created: false
+  metaheuristic_execution_run: false
+  performance_or_quality_comparison_claim_supported: false
+  cart_training_run: false
+  result_map_updated: false
+  monograph_claim_supported: false
+  benchmark_input_committed: false
+  partition_file_committed: false
+  raw_solver_output_committed: false
+  next_recommended_gate_if_remediated: "M4 TigerLine limited pilot retry gate: Los Angeles County roads 2025"
+  next_recommended_gate_if_blocked: "M4 TigerLine solver remediation review: decide next scope"
