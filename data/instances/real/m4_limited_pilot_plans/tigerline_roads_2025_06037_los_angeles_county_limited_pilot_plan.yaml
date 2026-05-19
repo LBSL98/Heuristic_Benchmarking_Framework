@@ -169,3 +169,23 @@ interpretation_boundary:
     - "Any solver is better or faster on TigerLine."
     - "Meta-heuristics are admissible for TigerLine execution."
     - "TigerLine supports CART training, result-map updates or monograph claims."
+
+limited_pilot_execution_after_1177:
+  limited_pilot_execution_manifest: "data/instances/real/m4_limited_pilot_execution_metadata/tigerline_roads_2025_06037_los_angeles_county_limited_pilot_execution.yaml"
+  limited_pilot_execution_issue: 206
+  limited_pilot_execution_status: "blocked_before_solver_invocation"
+  invoked_participant_count: 0
+  successful_participant_count: 0
+  solver_execution_run: false
+  limited_pilot_execution_run: false
+  campaign_execution_run: false
+  multi_dataset_command_plan_created: false
+  metaheuristic_execution_run: false
+  performance_or_quality_comparison_claim_supported: false
+  cart_training_run: false
+  result_map_updated: false
+  monograph_claim_supported: false
+  benchmark_input_committed: false
+  partition_file_committed: false
+  raw_solver_output_committed: false
+  next_recommended_gate: "M4 TigerLine limited pilot review: decide next execution scope"

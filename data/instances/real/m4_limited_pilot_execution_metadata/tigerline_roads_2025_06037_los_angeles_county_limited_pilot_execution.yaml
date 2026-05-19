@@ -1,0 +1,146 @@
+limited_pilot_execution_metadata_id: "1177_tigerline_roads_2025_06037_los_angeles_county_limited_pilot_execution"
+limited_pilot_execution_issue: 206
+source_limited_pilot_planning_issue: 204
+source_solver_smoke_review_issue: 203
+source_solver_smoke_issue: 201
+source_benchmark_input_smoke_issue: 199
+source_benchmark_input_issue: 197
+source_graph_construction_execution_issue: 195
+source_graph_construction_metadata_issue: 193
+source_inventory_issue: 191
+source_download_hash_issue: 189
+source_preparation_plan_issue: 187
+source_snapshot_issue: 185
+parent_campaign_issue: 130
+parent_license_issue: 143
+main_commit_at_limited_pilot_execution: "38a9b0a7aeca4bd9d631ceeed6852217ef85177d"
+
+execution_environment:
+  execution_host_label: "srv-noctua"
+  platform: "Linux-5.15.0-177-generic-x86_64-with-glibc2.35"
+  python_version: "3.10.12"
+  git_version: "git version 2.34.1"
+  git_head_observed: "38a9b0a7aeca4bd9d631ceeed6852217ef85177d"
+
+selected_instance:
+  selected_instance_id: "tigerline_roads_2025_06037_los_angeles_county"
+  input_format: "metis_unweighted_undirected_graph"
+  input_path: "data/cache/real_graphs/tigerline/2025/06037/benchmark_inputs/tigerline_roads_2025_06037_los_angeles_county.metis.graph"
+  input_stats_path: "data/cache/real_graphs/tigerline/2025/06037/benchmark_inputs/tigerline_roads_2025_06037_los_angeles_county_input_stats.json"
+  input_sha256_expected: "df31d8c3e671e9010fa9f9d06b00cda80781a5a9140b214e5e08962192bf2b42"
+  input_sha256_observed: "df31d8c3e671e9010fa9f9d06b00cda80781a5a9140b214e5e08962192bf2b42"
+  input_stats_sha256_expected: "2e6fc3539d21b97b57ada3d892bdf081d1f0608b25541ae6eb18e6f60dcff683"
+  input_stats_sha256_observed: "2e6fc3539d21b97b57ada3d892bdf081d1f0608b25541ae6eb18e6f60dcff683"
+  node_count: 1199509
+  edge_count: 1294674
+  cache_restored_or_verified_on_srv_noctua: true
+  benchmark_input_committed: false
+
+limited_pilot_execution:
+  pilot_type: "single_instance_bounded_multilevel_only"
+  execution_host_target: "srv-noctua"
+  limited_pilot_execution_status: "blocked_before_solver_invocation"
+  block_reason: "planned_multilevel_solver_binaries_not_found_on_srv_noctua"
+  cache_restoration_completed_before_block: true
+  planned_participant_count: 2
+  invoked_participant_count: 0
+  successful_participant_count: 0
+  timeout_seconds_per_solver: 900
+  pilot_output_dir: "data/cache/real_graphs/tigerline/2025/06037/limited_pilot"
+  pilot_output_dir_gitignored: true
+  solver_execution_run: false
+  limited_pilot_execution_run: false
+  campaign_execution_run: false
+  multi_dataset_command_plan_created: false
+  metaheuristic_execution_run: false
+  performance_or_quality_comparison_claim_supported: false
+  cart_training_run: false
+  result_map_updated: false
+  monograph_claim_supported: false
+  benchmark_input_committed: false
+  partition_file_committed: false
+  raw_solver_output_committed: false
+
+solver_availability:
+  gpmetis_path: null
+  gpmetis_version_probe: "not_found"
+  kaffpa_path: null
+  kaffpa_version_probe: "not_found"
+
+execution_errors:
+  - "gpmetis_not_found"
+  - "kaffpa_not_found"
+
+participants:
+  - participant_id: "gpmetis_k2"
+    blocked_before_invocation: true
+    block_reason: "gpmetis_not_found"
+    timeout_seconds: null
+    return_code: null
+    timed_out: false
+    runtime_seconds: null
+    stdout_stderr_path: null
+    stdout_stderr_sha256: null
+    stdout_stderr_file_size_bytes: null
+    partition_path: null
+    partition_sha256: null
+    partition_file_size_bytes: null
+    partition_created: false
+    partition_line_count: null
+    partition_parseable: false
+    distinct_partition_labels: null
+    partition_min_label: null
+    partition_max_label: null
+    limited_pilot_participant_passed: false
+  - participant_id: "kaffpa_k2_fast"
+    blocked_before_invocation: true
+    block_reason: "kaffpa_not_found"
+    timeout_seconds: null
+    return_code: null
+    timed_out: false
+    runtime_seconds: null
+    stdout_stderr_path: null
+    stdout_stderr_sha256: null
+    stdout_stderr_file_size_bytes: null
+    partition_path: null
+    partition_sha256: null
+    partition_file_size_bytes: null
+    partition_created: false
+    partition_line_count: null
+    partition_parseable: false
+    distinct_partition_labels: null
+    partition_min_label: null
+    partition_max_label: null
+    limited_pilot_participant_passed: false
+
+next_gate_recommendation:
+  next_issue_title: "M4 TigerLine limited pilot review: decide next execution scope"
+  next_scope: "review_limited_pilot_execution_metadata_before_any_expansion"
+  next_gate_may_run_additional_limited_pilot: false
+  next_gate_may_run_metaheuristics: false
+  next_gate_may_run_campaign: false
+  next_gate_may_create_multi_dataset_command_plan: false
+  next_gate_may_train_cart: false
+  next_gate_may_update_result_map: false
+  next_gate_may_write_monograph_claims: false
+
+blocked_until_follow_up_gate:
+  - "additional solver execution"
+  - "meta-heuristic execution"
+  - "multi-dataset command plan"
+  - "campaign execution"
+  - "performance or quality comparison claims"
+  - "CART training"
+  - "result-map updates"
+  - "monograph claims"
+
+interpretation_boundary:
+  supported:
+    - "The bounded TigerLine limited-pilot execution gate produced the recorded execution or block status."
+    - "Partitions and raw solver outputs, if created, remain local-only under ignored cache."
+    - "Only exit status, timeout status, output hashes and partition parseability are recorded."
+  unsupported:
+    - "No campaign execution is supported."
+    - "No multi-dataset conclusion is supported."
+    - "No performance or quality comparison claim is supported."
+    - "No CART training, result-map update or monograph claim is supported."
