@@ -1,0 +1,87 @@
+metadata_id: "1144_tigerline_roads_2025_06037_los_angeles_county_download_hash_metadata"
+download_hash_issue: 189
+source_preparation_plan_issue: 187
+source_snapshot_issue: 185
+parent_campaign_issue: 130
+parent_license_issue: 143
+main_commit_at_metadata_creation: "9ca4ebe6e4367a741873586aeebe6e6ae969034d"
+
+source:
+  selected_instance_id: "tigerline_roads_2025_06037_los_angeles_county"
+  source_package_name: "tl_2025_06037_roads.zip"
+  source_url: "https://www2.census.gov/geo/tiger/TIGER2025/ROADS/tl_2025_06037_roads.zip"
+  source_domain: "www2.census.gov"
+  source_policy: "official_census_url_only"
+
+local_file:
+  local_path: "data/cache/real_graphs/tigerline/2025/06037/raw/tl_2025_06037_roads.zip"
+  local_path_policy: "ignored_cache_local_only"
+  gitignored_verified: true
+  file_size_bytes: 19938690
+  sha256: "242425987631ce0edb0a41d447e73e6dca31432a9168f322fb55c1d00cf34871"
+  download_timestamp_utc: "2026-05-19T12:05:06Z"
+
+tooling:
+  operator_host_label: "BrunnoS"
+  platform: "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.35"
+  python_version: "3.10.12"
+  curl_version: "curl 7.81.0 (x86_64-pc-linux-gnu) libcurl/7.81.0 OpenSSL/3.0.2 zlib/1.2.11 brotli/1.0.9 zstd/1.4.8 libidn2/2.3.2 libpsl/0.21.0 (+libidn2/2.3.2) libssh/0.9.6/openssl/zlib nghttp2/1.43.0 librtmp/2.3 OpenLDAP/2.5.20"
+  wget_version: "GNU Wget 1.21.2 built on linux-gnu."
+  git_version: "git version 2.34.1"
+
+scope:
+  source_package_downloaded_to_ignored_cache: true
+  metadata_hash_record_created: true
+  versioned_metadata_only: true
+  raw_source_package_committed: false
+  source_package_unzipped: false
+  shapefile_inspected: false
+  graph_constructed: false
+  benchmark_input_created: false
+  smoke_execution_run: false
+  limited_pilot_execution_run: false
+  campaign_execution_run: false
+  cart_training_run: false
+  result_map_updated: false
+  monograph_claim_supported: false
+
+next_gate_recommendation:
+  next_issue_title: "M4 TigerLine shapefile inventory metadata gate: Los Angeles County roads 2025"
+  next_scope: "unzip_or_inspect_shapefile_metadata_only"
+  next_gate_may_unzip_for_metadata: true
+  next_gate_may_inspect_schema_and_feature_count: true
+  next_gate_may_construct_graph: false
+  next_gate_may_generate_benchmark_input: false
+  next_gate_may_run_smoke: false
+  next_gate_may_run_pilot: false
+  next_gate_may_train_cart: false
+  next_gate_may_update_result_map: false
+  next_gate_may_write_monograph_claims: false
+
+blocked_until_later_gate:
+  - "graph construction"
+  - "benchmark input generation"
+  - "smoke execution"
+  - "limited pilot execution"
+  - "multi-dataset command plan"
+  - "full campaign execution"
+  - "CART training"
+  - "result-map updates"
+  - "monograph claims"
+  - "raw source package commit"
+  - "extracted shapefile commit"
+  - "derived graph file commit"
+  - "partition file commit"
+  - "raw solver output commit"
+
+interpretation_boundary:
+  supported:
+    - "The official TigerLine ZIP was downloaded to an ignored local cache path."
+    - "A SHA-256 hash and file-size metadata record exists."
+  unsupported:
+    - "The ZIP has been unzipped."
+    - "The shapefile has been inspected."
+    - "A graph has been constructed."
+    - "A benchmark input exists."
+    - "Any solver has been run."
+    - "The instance supports campaign conclusions, CART training or monograph claims."
