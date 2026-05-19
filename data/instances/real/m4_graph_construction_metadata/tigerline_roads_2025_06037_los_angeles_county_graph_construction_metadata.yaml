@@ -162,3 +162,26 @@ blocked_until_later_gate:
   - "derived graph file commit"
   - "partition file commit"
   - "raw solver output commit"
+
+graph_construction_execution_after_1156:
+  execution_manifest: "data/instances/real/m4_graph_construction_execution_metadata/tigerline_roads_2025_06037_los_angeles_county_graph_construction_execution.yaml"
+  graph_construction_execution_issue: 195
+  actual_graph_construction_executed: true
+  node_or_edge_materialization_executed: true
+  derived_graph_file_created: true
+  derived_graph_written_to_ignored_cache: true
+  derived_graph_committed: false
+  benchmark_input_created: false
+  smoke_execution_run: false
+  cart_training_run: false
+  monograph_claim_supported: false
+  unique_node_count: 1199509
+  final_undirected_edge_count: 1294674
+  connected_component_count: 125
+  largest_component_node_count: 1178451
+  largest_component_edge_count: 1273578
+  isolated_node_count: 0
+  edge_list_sha256: "1e348c196df1a9d26692350b7863185feb351e412cc9ce71e60bfab767c8cc0c"
+  node_map_sha256: "ba1456a8150f30ac392010b664a701eb2112f2539d467eec270859545b93e619"
+  graph_stats_sha256: "2bc1c5b033f300bf61eb638c6a1a19b8ad1bf62cf7ac6f32d0ea9c596ee80453"
+  next_recommended_gate: "M4 TigerLine benchmark input metadata gate: Los Angeles County roads 2025"

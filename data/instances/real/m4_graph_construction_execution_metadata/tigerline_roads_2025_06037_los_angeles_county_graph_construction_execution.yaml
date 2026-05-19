@@ -1,0 +1,150 @@
+graph_construction_execution_metadata_id: "1156_tigerline_roads_2025_06037_los_angeles_county_graph_construction_execution"
+graph_construction_execution_issue: 195
+source_graph_construction_metadata_issue: 193
+source_inventory_issue: 191
+source_download_hash_issue: 189
+source_preparation_plan_issue: 187
+source_snapshot_issue: 185
+parent_campaign_issue: 130
+parent_license_issue: 143
+main_commit_at_execution_metadata_creation: "542db942878a21fcd5b956f49d5ffca19aed3fa3"
+
+source:
+  selected_instance_id: "tigerline_roads_2025_06037_los_angeles_county"
+  source_package_name: "tl_2025_06037_roads.zip"
+  local_source_path: "data/cache/real_graphs/tigerline/2025/06037/raw/tl_2025_06037_roads.zip"
+  source_sha256_expected: "242425987631ce0edb0a41d447e73e6dca31432a9168f322fb55c1d00cf34871"
+  source_sha256_observed: "242425987631ce0edb0a41d447e73e6dca31432a9168f322fb55c1d00cf34871"
+  source_sha256_verified_before_construction: true
+  source_file_size_bytes_expected: 19938690
+  source_file_size_bytes_observed: 19938690
+
+execution_environment:
+  operator_host_label: "BrunnoS"
+  platform: "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.35"
+  python_version: "3.10.12"
+  git_version: "git version 2.34.1"
+
+construction_policy:
+  graph_family: "road_polyline_segment_vertex_graph"
+  graph_type: "undirected_unweighted_simple_graph"
+  source_shape_type: "PolyLine"
+  construction_policy: "no_planarization_shared_coordinate_vertices_only"
+  coordinate_normalization: "decimal_rounding_7_places"
+  coordinate_decimal_places: 7
+  node_identifier_policy: "deterministic_lexicographic_sort_of_normalized_coordinate_keys"
+  edge_policy: "consecutive_vertices_within_each_polyline_part"
+  self_loop_policy: "removed_after_coordinate_normalization"
+  duplicate_edge_policy: "collapsed_as_undirected_edges"
+  component_policy: "retain_all_components_and_record_metadata"
+  planarization_performed: false
+  weights_used: false
+  directionality_used: false
+
+scope:
+  actual_graph_construction_executed: true
+  node_or_edge_materialization_executed: true
+  derived_graph_file_created: true
+  derived_graph_written_to_ignored_cache: true
+  metadata_record_created: true
+  raw_source_package_committed: false
+  extracted_shapefile_committed: false
+  derived_graph_committed: false
+  benchmark_input_created: false
+  metis_or_kmetis_input_created: false
+  kahip_input_created: false
+  smoke_execution_run: false
+  limited_pilot_execution_run: false
+  campaign_execution_run: false
+  cart_training_run: false
+  result_map_updated: false
+  monograph_claim_supported: false
+
+derived_artifacts_local_only:
+  edge_list_path: "data/cache/real_graphs/tigerline/2025/06037/derived/tigerline_roads_2025_06037_los_angeles_county.edgelist"
+  edge_list_sha256: "1e348c196df1a9d26692350b7863185feb351e412cc9ce71e60bfab767c8cc0c"
+  edge_list_file_size_bytes: 18302001
+  node_map_path: "data/cache/real_graphs/tigerline/2025/06037/derived/tigerline_roads_2025_06037_los_angeles_county_nodes.csv"
+  node_map_sha256: "ba1456a8150f30ac392010b664a701eb2112f2539d467eec270859545b93e619"
+  node_map_file_size_bytes: 38472700
+  graph_stats_path: "data/cache/real_graphs/tigerline/2025/06037/derived/tigerline_roads_2025_06037_los_angeles_county_stats.json"
+  graph_stats_sha256: "2bc1c5b033f300bf61eb638c6a1a19b8ad1bf62cf7ac6f32d0ea9c596ee80453"
+  graph_stats_file_size_bytes: 1768
+  derived_artifacts_committed: false
+
+graph_summary:
+  feature_records_read: 121296
+  null_shape_records: 0
+  polyline_parts_read: 121296
+  raw_coordinate_points_read: 1520855
+  unique_node_count: 1199509
+  candidate_edge_observations_before_simplification: 1399559
+  self_loop_count_removed: 0
+  nonself_edge_observations: 1399559
+  duplicate_edge_count_collapsed: 104885
+  final_undirected_edge_count: 1294674
+  connected_component_count: 125
+  largest_component_node_count: 1178451
+  largest_component_edge_count: 1273578
+  isolated_node_count: 0
+  construction_runtime_seconds: 3.641876
+
+top_component_node_counts:
+  - 1178451
+  - 14701
+  - 3958
+  - 264
+  - 145
+  - 140
+  - 122
+  - 115
+  - 103
+  - 99
+  - 86
+  - 75
+  - 50
+  - 48
+  - 47
+  - 45
+  - 45
+  - 40
+  - 39
+  - 37
+
+next_gate_recommendation:
+  next_issue_title: "M4 TigerLine benchmark input metadata gate: Los Angeles County roads 2025"
+  next_scope: "create_benchmark_input_from_ignored_graph_cache_and_record_metadata_only"
+  next_gate_may_generate_benchmark_input_to_ignored_cache: true
+  next_gate_may_commit_benchmark_input: false
+  next_gate_may_run_smoke: false
+  next_gate_may_run_pilot: false
+  next_gate_may_train_cart: false
+  next_gate_may_update_result_map: false
+  next_gate_may_write_monograph_claims: false
+
+blocked_until_later_gate:
+  - "benchmark input generation"
+  - "smoke execution"
+  - "limited pilot execution"
+  - "multi-dataset command plan"
+  - "full campaign execution"
+  - "CART training"
+  - "result-map updates"
+  - "monograph claims"
+  - "raw source package commit"
+  - "extracted shapefile commit"
+  - "derived graph file commit"
+  - "benchmark input commit"
+  - "partition file commit"
+  - "raw solver output commit"
+
+interpretation_boundary:
+  supported:
+    - "The TigerLine graph was constructed under ignored local cache using the specified deterministic policy."
+    - "Reduced construction metadata, graph summary and local-only artifact hashes were recorded."
+    - "The next safe step may generate benchmark input under ignored cache and record metadata."
+  unsupported:
+    - "A benchmark input exists."
+    - "METIS, KaHIP or any meta-heuristic has been run on this instance."
+    - "The instance supports CART training."
+    - "The instance supports result-map updates or monograph claims."
