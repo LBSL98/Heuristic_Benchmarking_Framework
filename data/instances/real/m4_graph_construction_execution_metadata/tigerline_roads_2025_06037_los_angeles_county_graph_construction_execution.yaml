@@ -148,3 +148,22 @@ interpretation_boundary:
     - "METIS, KaHIP or any meta-heuristic has been run on this instance."
     - "The instance supports CART training."
     - "The instance supports result-map updates or monograph claims."
+
+benchmark_input_after_1160:
+  benchmark_input_manifest: "data/instances/real/m4_benchmark_input_metadata/tigerline_roads_2025_06037_los_angeles_county_benchmark_input.yaml"
+  benchmark_input_issue: 197
+  benchmark_input_created: true
+  metis_or_kmetis_input_created: true
+  kahip_input_created: true
+  benchmark_input_written_to_ignored_cache: true
+  benchmark_input_committed: false
+  smoke_execution_run: false
+  solver_execution_run: false
+  cart_training_run: false
+  monograph_claim_supported: false
+  input_format: "metis_unweighted_undirected_graph"
+  node_count: 1199509
+  edge_count: 1294674
+  input_sha256: "df31d8c3e671e9010fa9f9d06b00cda80781a5a9140b214e5e08962192bf2b42"
+  input_stats_sha256: "2e6fc3539d21b97b57ada3d892bdf081d1f0608b25541ae6eb18e6f60dcff683"
+  next_recommended_gate: "M4 TigerLine benchmark input smoke gate: Los Angeles County roads 2025"
