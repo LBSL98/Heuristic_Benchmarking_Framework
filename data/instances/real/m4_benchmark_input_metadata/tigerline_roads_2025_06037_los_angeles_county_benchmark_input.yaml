@@ -1,0 +1,118 @@
+benchmark_input_metadata_id: "1160_tigerline_roads_2025_06037_los_angeles_county_benchmark_input"
+benchmark_input_issue: 197
+source_graph_construction_execution_issue: 195
+source_graph_construction_metadata_issue: 193
+source_inventory_issue: 191
+source_download_hash_issue: 189
+source_preparation_plan_issue: 187
+source_snapshot_issue: 185
+parent_campaign_issue: 130
+parent_license_issue: 143
+main_commit_at_input_metadata_creation: "f3645adb4247ecb057b6a8ed78695247a42ebf4e"
+
+source_graph:
+  selected_instance_id: "tigerline_roads_2025_06037_los_angeles_county"
+  graph_type: "undirected_unweighted_simple_graph"
+  construction_policy: "no_planarization_shared_coordinate_vertices_only"
+  coordinate_normalization: "decimal_rounding_7_places"
+  source_edge_list_path: "data/cache/real_graphs/tigerline/2025/06037/derived/tigerline_roads_2025_06037_los_angeles_county.edgelist"
+  source_edge_list_sha256_expected: "1e348c196df1a9d26692350b7863185feb351e412cc9ce71e60bfab767c8cc0c"
+  source_edge_list_sha256_observed: "1e348c196df1a9d26692350b7863185feb351e412cc9ce71e60bfab767c8cc0c"
+  source_node_map_sha256_expected: "ba1456a8150f30ac392010b664a701eb2112f2539d467eec270859545b93e619"
+  source_node_map_sha256_observed: "ba1456a8150f30ac392010b664a701eb2112f2539d467eec270859545b93e619"
+  source_graph_stats_sha256_expected: "2bc1c5b033f300bf61eb638c6a1a19b8ad1bf62cf7ac6f32d0ea9c596ee80453"
+  source_graph_stats_sha256_observed: "2bc1c5b033f300bf61eb638c6a1a19b8ad1bf62cf7ac6f32d0ea9c596ee80453"
+  local_derived_graph_verified_before_input_generation: true
+
+benchmark_input:
+  format: "metis_unweighted_undirected_graph"
+  compatible_targets:
+    - "METIS"
+    - "KMETIS"
+    - "KaHIP"
+  local_input_path: "data/cache/real_graphs/tigerline/2025/06037/benchmark_inputs/tigerline_roads_2025_06037_los_angeles_county.metis.graph"
+  local_input_path_policy: "ignored_cache_local_only"
+  node_count: 1199509
+  edge_count: 1294674
+  header: "1199509 1294674"
+  one_based_adjacency: true
+  zero_based_source_edge_list: true
+  half_edge_count: 2589348
+  input_sha256: "df31d8c3e671e9010fa9f9d06b00cda80781a5a9140b214e5e08962192bf2b42"
+  input_file_size_bytes: 18302028
+  input_stats_path: "data/cache/real_graphs/tigerline/2025/06037/benchmark_inputs/tigerline_roads_2025_06037_los_angeles_county_input_stats.json"
+  input_stats_sha256: "2e6fc3539d21b97b57ada3d892bdf081d1f0608b25541ae6eb18e6f60dcff683"
+  input_stats_file_size_bytes: 1134
+  benchmark_input_written_to_ignored_cache: true
+  benchmark_input_committed: false
+
+execution_environment:
+  operator_host_label: "BrunnoS"
+  platform: "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.35"
+  python_version: "3.10.12"
+  git_version: "git version 2.34.1"
+  conversion_runtime_seconds: 1.959171
+
+graph_summary_preserved:
+  connected_component_count: 125
+  largest_component_node_count: 1178451
+  largest_component_edge_count: 1273578
+  isolated_node_count: 0
+
+scope:
+  benchmark_input_created: true
+  metis_or_kmetis_input_created: true
+  kahip_input_created: true
+  benchmark_input_written_to_ignored_cache: true
+  benchmark_input_metadata_record_created: true
+  raw_source_package_committed: false
+  extracted_shapefile_committed: false
+  derived_graph_committed: false
+  benchmark_input_committed: false
+  partition_file_committed: false
+  raw_solver_output_committed: false
+  smoke_execution_run: false
+  limited_pilot_execution_run: false
+  campaign_execution_run: false
+  solver_execution_run: false
+  cart_training_run: false
+  result_map_updated: false
+  monograph_claim_supported: false
+
+next_gate_recommendation:
+  next_issue_title: "M4 TigerLine benchmark input smoke gate: Los Angeles County roads 2025"
+  next_scope: "validate_input_interface_without_campaign_or_claims"
+  next_gate_may_run_input_validation_smoke: true
+  next_gate_may_run_solver_smoke: false
+  next_gate_may_run_pilot: false
+  next_gate_may_run_campaign: false
+  next_gate_may_train_cart: false
+  next_gate_may_update_result_map: false
+  next_gate_may_write_monograph_claims: false
+
+blocked_until_later_gate:
+  - "solver execution"
+  - "smoke execution with solvers"
+  - "limited pilot execution"
+  - "multi-dataset command plan"
+  - "full campaign execution"
+  - "CART training"
+  - "result-map updates"
+  - "monograph claims"
+  - "raw source package commit"
+  - "extracted shapefile commit"
+  - "derived graph file commit"
+  - "benchmark input commit"
+  - "partition file commit"
+  - "raw solver output commit"
+
+interpretation_boundary:
+  supported:
+    - "A METIS/KMETIS/KaHIP-compatible benchmark input was generated under ignored local cache."
+    - "Input metadata, graph counts, input hash and conversion metadata were recorded."
+    - "The next safe step may validate the input interface without campaign or monograph claims."
+  unsupported:
+    - "METIS, KaHIP or any meta-heuristic has been run on this instance."
+    - "A smoke, pilot or campaign execution has been run."
+    - "The instance supports CART training."
+    - "The instance supports result-map updates or monograph claims."
