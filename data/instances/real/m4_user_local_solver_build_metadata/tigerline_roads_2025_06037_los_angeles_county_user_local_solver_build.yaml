@@ -1,0 +1,121 @@
+user_local_solver_build_metadata_id: "1187_tigerline_roads_2025_06037_los_angeles_county_user_local_solver_build"
+user_local_solver_build_issue: 212
+source_solver_remediation_review_issue: 211
+source_solver_remediation_issue: 209
+source_limited_pilot_execution_issue: 206
+parent_campaign_issue: 130
+parent_license_issue: 143
+main_commit_at_user_local_solver_build: "9eedb5b9b352521cf4247e0ec5a25000440531d1"
+
+execution_environment:
+  execution_host_label: "srv-noctua"
+  platform: "Linux-5.15.0-177-generic-x86_64-with-glibc2.35"
+  python_version: "3.10.12"
+  git_head_observed: "9eedb5b9b352521cf4247e0ec5a25000440531d1"
+
+selected_instance_context:
+  selected_instance_id: "tigerline_roads_2025_06037_los_angeles_county"
+  input_sha256_expected: "df31d8c3e671e9010fa9f9d06b00cda80781a5a9140b214e5e08962192bf2b42"
+  input_sha256_observed: "df31d8c3e671e9010fa9f9d06b00cda80781a5a9140b214e5e08962192bf2b42"
+  input_stats_sha256_expected: "2e6fc3539d21b97b57ada3d892bdf081d1f0608b25541ae6eb18e6f60dcff683"
+  input_stats_sha256_observed: "2e6fc3539d21b97b57ada3d892bdf081d1f0608b25541ae6eb18e6f60dcff683"
+  cache_restored_or_verified_on_srv_noctua: true
+
+user_local_prefix:
+  prefix: "/home/brunno/.local/mpp_solvers"
+  src_root: "/home/brunno/.local/mpp_solvers/src"
+  build_root: "/home/brunno/.local/mpp_solvers/build"
+  bin_dir: "/home/brunno/.local/mpp_solvers/bin"
+
+toolchain:
+  git: "/usr/bin/git"
+  curl: "/usr/bin/curl"
+  wget: "/usr/bin/wget"
+  tar: "/usr/bin/tar"
+  cmake: null
+  make: null
+  gcc: null
+  gpp: null
+  brew: null
+  python3: "/usr/bin/python3"
+
+pre_build_binary_availability:
+  gpmetis_available: false
+  gpmetis_path: null
+  kahip_available: false
+  kaffpa_path: null
+  kaffpaE_path: null
+  kahip_selected_path: null
+
+source_records:
+  metis_source_url: null
+  metis_source_path: null
+  metis_git_commit: null
+  kahip_source_url: null
+  kahip_source_path: null
+  kahip_git_commit: null
+
+user_local_solver_build_attempt:
+  user_local_solver_build_status: "user_local_solver_build_blocked"
+  build_attempted: false
+  install_attempted: false
+  sudo_used: false
+  apt_get_install_run: false
+  solver_execution_run: false
+  limited_pilot_execution_run: false
+  graph_partition_generation_run: false
+  campaign_execution_run: false
+  multi_dataset_command_plan_created: false
+  metaheuristic_execution_run: false
+  performance_or_quality_comparison_claim_supported: false
+  cart_training_run: false
+  result_map_updated: false
+  monograph_claim_supported: false
+  benchmark_input_committed: false
+  partition_file_committed: false
+  raw_solver_output_committed: false
+
+post_build_binary_availability:
+  gpmetis_available: false
+  gpmetis_path: null
+  kahip_available: false
+  kaffpa_path: null
+  kaffpaE_path: null
+  kahip_selected_path: null
+
+binary_checks:
+  gpmetis_sha256: null
+  gpmetis_help_first_line: null
+  kaffpa_sha256: null
+  kaffpa_help_first_line: null
+  kaffpaE_sha256: null
+  kaffpaE_help_first_line: null
+
+build_errors:
+  - "metis_source_build_missing_toolchain:make,gcc"
+  - "kahip_source_build_missing_toolchain:cmake,make,gcc,g++"
+
+commands_executed:
+  []
+
+next_gate_recommendation:
+  next_issue_title_if_remediated: "M4 TigerLine limited pilot retry gate: Los Angeles County roads 2025"
+  next_issue_title_if_blocked: "M4 TigerLine user-local solver build review: decide next scope"
+  next_gate_may_retry_limited_pilot: false
+  next_gate_may_build_or_install_more_solvers: true
+  next_gate_may_run_campaign: false
+  next_gate_may_create_multi_dataset_command_plan: false
+  next_gate_may_run_metaheuristics: false
+  next_gate_may_train_cart: false
+  next_gate_may_update_result_map: false
+  next_gate_may_write_monograph_claims: false
+
+interpretation_boundary:
+  supported:
+    - "The srv-noctua user-local solver build or install attempt produced the recorded binary availability status."
+    - "Only user-local install/build actions and help/version or binary-availability probes were admitted."
+    - "The restored TigerLine input cache remained local-only and ignored."
+  unsupported:
+    - "No TigerLine solver execution was run in this gate."
+    - "No pilot retry was run in this gate."
+    - "No graph partition generation, campaign, multi-dataset conclusion, performance/quality comparison, CART training, result-map update or monograph claim is supported."
