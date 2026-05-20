@@ -1,0 +1,180 @@
+bounded_solver_execution_review_metadata_id: "1215_tigerline_roads_2025_06037_los_angeles_county_bounded_solver_execution_review"
+bounded_solver_execution_review_issue: 226
+source_bounded_solver_execution_issue: 224
+source_bounded_command_plan_issue: 222
+source_post_pilot_review_issue: 220
+source_limited_pilot_retry_issue: 218
+source_metis_gpmetis_remediation_issue: 216
+source_limited_pilot_execution_issue: 206
+source_limited_pilot_plan_issue: 204
+parent_campaign_issue: 130
+parent_license_issue: 143
+main_commit_at_bounded_solver_execution_review: "e5a906d34479510292c9f832d923d7014489d3e5"
+
+execution_environment:
+  execution_host_label: "srv-noctua"
+  platform: "Linux-5.15.0-177-generic-x86_64-with-glibc2.35"
+  python_version: "3.10.12"
+  git_head_observed: "e5a906d34479510292c9f832d923d7014489d3e5"
+
+selected_instance_context:
+  selected_instance_id: "tigerline_roads_2025_06037_los_angeles_county"
+  expected_vertices_from_metis_header: 1199509
+  expected_edges_from_metis_header: 1294674
+  source_bounded_solver_execution_status: "bounded_solver_execution_completed_parseable_partitions"
+  source_planned_command_count: 6
+  source_executed_command_count: 6
+  source_all_recorded_partitions_parseable: true
+
+runtime_artifact_review:
+  run_dir: "data/results_raw/real/tigerline/2025/06037/bounded_solver_execution_1208"
+  remote_validation_status: "bounded_solver_execution_review_mechanical_status_validated"
+  all_partition_hashes_and_line_counts_match: true
+  partition_artifacts:
+    gpmetis_k2:
+      path: "data/results_raw/real/tigerline/2025/06037/bounded_solver_execution_1208/input.metis.graph.part.2"
+      exists: true
+      tracked: false
+      ignored: true
+      sha256: "94d991311d24386b5291c633e81196eb61344d052cf2b764f2c2d4ede90cff14"
+      sha256_matches: true
+      line_count: 1199509
+      line_count_matches: true
+      expected_k: 2
+    gpmetis_k4:
+      path: "data/results_raw/real/tigerline/2025/06037/bounded_solver_execution_1208/input.metis.graph.part.4"
+      exists: true
+      tracked: false
+      ignored: true
+      sha256: "b5e1a71cb1f7c09e634c20c4648612fe20dd7c92ad0d18b31450756c4449afa6"
+      sha256_matches: true
+      line_count: 1199509
+      line_count_matches: true
+      expected_k: 4
+    gpmetis_k8:
+      path: "data/results_raw/real/tigerline/2025/06037/bounded_solver_execution_1208/input.metis.graph.part.8"
+      exists: true
+      tracked: false
+      ignored: true
+      sha256: "58ee3fa9bae1cecdcdbccfd6fe2010f929f77b7245eff7970773a3d99a695c4b"
+      sha256_matches: true
+      line_count: 1199509
+      line_count_matches: true
+      expected_k: 8
+    kaffpa_fast_k2:
+      path: "data/results_raw/real/tigerline/2025/06037/bounded_solver_execution_1208/kaffpa_fast_k2.partition"
+      exists: true
+      tracked: false
+      ignored: true
+      sha256: "b765b32166894510807bf0c5f1a6ed20ed0c5ab964e9feb027a875bb56ef5d15"
+      sha256_matches: true
+      line_count: 1199509
+      line_count_matches: true
+      expected_k: 2
+    kaffpa_fast_k4:
+      path: "data/results_raw/real/tigerline/2025/06037/bounded_solver_execution_1208/kaffpa_fast_k4.partition"
+      exists: true
+      tracked: false
+      ignored: true
+      sha256: "f2df5d46bb6df90ab94ed8438ed3785bdda761e6b1f31b5a9ee84b746cd0a8e1"
+      sha256_matches: true
+      line_count: 1199509
+      line_count_matches: true
+      expected_k: 4
+    kaffpa_fast_k8:
+      path: "data/results_raw/real/tigerline/2025/06037/bounded_solver_execution_1208/kaffpa_fast_k8.partition"
+      exists: true
+      tracked: false
+      ignored: true
+      sha256: "186b2c715a68817a4cc96e94ab325ff3d5254f0485cb76d23a4466f201268161"
+      sha256_matches: true
+      line_count: 1199509
+      line_count_matches: true
+      expected_k: 8
+  stdout_artifacts:
+    gpmetis_k2:
+      path: "data/results_raw/real/tigerline/2025/06037/bounded_solver_execution_1208/gpmetis_k2.stdout_stderr.txt"
+      exists: true
+      tracked: false
+      ignored: true
+      sha256: "03a7a511def3b35f932a6c1e3d87e9d1a9f08e70ec50b6d731d7efe8219ea83e"
+      sha256_matches: true
+    gpmetis_k4:
+      path: "data/results_raw/real/tigerline/2025/06037/bounded_solver_execution_1208/gpmetis_k4.stdout_stderr.txt"
+      exists: true
+      tracked: false
+      ignored: true
+      sha256: "a9a8a72aa0b1a2c9e03f29450044e20298df68c5ca977be7d2ed5049c2f4f512"
+      sha256_matches: true
+    gpmetis_k8:
+      path: "data/results_raw/real/tigerline/2025/06037/bounded_solver_execution_1208/gpmetis_k8.stdout_stderr.txt"
+      exists: true
+      tracked: false
+      ignored: true
+      sha256: "13bda5b10298ade6182a6373ea396e2d168047c6d975d9434624c3d3be954301"
+      sha256_matches: true
+    kaffpa_fast_k2:
+      path: "data/results_raw/real/tigerline/2025/06037/bounded_solver_execution_1208/kaffpa_fast_k2.stdout_stderr.txt"
+      exists: true
+      tracked: false
+      ignored: true
+      sha256: "f421652dc1f18fbc11b1b30e8fc20d780a330c8317b554ad235e183b350daaf3"
+      sha256_matches: true
+    kaffpa_fast_k4:
+      path: "data/results_raw/real/tigerline/2025/06037/bounded_solver_execution_1208/kaffpa_fast_k4.stdout_stderr.txt"
+      exists: true
+      tracked: false
+      ignored: true
+      sha256: "a1542e426d8f1a6bc2be3c57d3a91b8fd34646d4002b580c5f396c0e798add89"
+      sha256_matches: true
+    kaffpa_fast_k8:
+      path: "data/results_raw/real/tigerline/2025/06037/bounded_solver_execution_1208/kaffpa_fast_k8.stdout_stderr.txt"
+      exists: true
+      tracked: false
+      ignored: true
+      sha256: "b5535b19a386d8cc260f8f121bfd3ad3e3916e0e6b43b7830de15db46513edd5"
+      sha256_matches: true
+
+bounded_solver_execution_review:
+  bounded_solver_execution_review_status: "bounded_solver_execution_review_completed_quality_metric_extraction_gate_required"
+  mechanical_execution_status_accepted: true
+  review_decision: "open_bounded_quality_metric_extraction_gate"
+  next_recommended_issue_title: "M4 TigerLine bounded quality-metric extraction gate: Los Angeles County roads 2025"
+  next_gate_may_extract_bounded_quality_metrics: true
+  next_gate_may_run_solver_execution: false
+  next_gate_may_run_campaign: false
+  next_gate_may_create_multi_dataset_command_plan: false
+  next_gate_may_run_metaheuristics: false
+  next_gate_may_train_cart: false
+  next_gate_may_update_result_map: false
+  next_gate_may_write_monograph_claims: false
+
+review_errors:
+  []
+
+boundary_flags:
+  solver_execution_run: false
+  quality_metric_extraction_run: false
+  campaign_execution_run: false
+  multi_dataset_command_plan_created: false
+  synthetic_benchmark_expansion_run: false
+  additional_real_graph_execution_run: false
+  metaheuristic_execution_run: false
+  performance_or_quality_comparison_claim_supported: false
+  cart_training_run: false
+  result_map_updated: false
+  monograph_claim_supported: false
+  raw_graph_input_committed: false
+  benchmark_input_committed: false
+  partition_file_committed: false
+  raw_solver_output_committed: false
+
+interpretation_boundary:
+  supported:
+    - "The 1211 bounded solver execution metadata and ignored runtime artifacts were mechanically validated for the single TigerLine instance."
+    - "The review may recommend a separate bounded quality-metric extraction gate."
+  unsupported:
+    - "This review did not compute cut, imbalance or other quality metrics."
+    - "This review does not support campaign-level conclusions."
+    - "This review does not support multi-dataset conclusions."
+    - "This review does not support solver-family performance or quality claims, CART training, result-map updates or monograph claims."

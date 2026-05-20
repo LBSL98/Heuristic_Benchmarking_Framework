@@ -242,3 +242,25 @@ interpretation_boundary:
     - "This record does not support multi-dataset conclusions."
     - "This record does not support solver-family performance or quality claims."
     - "This record does not support CART training, result-map updates or monograph claims."
+
+bounded_solver_execution_review_after_1215:
+  bounded_solver_execution_review_manifest: "data/instances/real/m4_bounded_solver_execution_review_metadata/tigerline_roads_2025_06037_los_angeles_county_bounded_solver_execution_review_1215.yaml"
+  bounded_solver_execution_review_issue: 226
+  bounded_solver_execution_review_status: "bounded_solver_execution_review_completed_quality_metric_extraction_gate_required"
+  review_decision: "open_bounded_quality_metric_extraction_gate"
+  next_recommended_issue_title: "M4 TigerLine bounded quality-metric extraction gate: Los Angeles County roads 2025"
+  solver_execution_run: false
+  quality_metric_extraction_run: false
+  campaign_execution_run: false
+  multi_dataset_command_plan_created: false
+  synthetic_benchmark_expansion_run: false
+  additional_real_graph_execution_run: false
+  metaheuristic_execution_run: false
+  performance_or_quality_comparison_claim_supported: false
+  cart_training_run: false
+  result_map_updated: false
+  monograph_claim_supported: false
+  raw_graph_input_committed: false
+  benchmark_input_committed: false
+  partition_file_committed: false
+  raw_solver_output_committed: false
