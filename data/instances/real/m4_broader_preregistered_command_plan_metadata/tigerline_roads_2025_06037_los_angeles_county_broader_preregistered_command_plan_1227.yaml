@@ -406,3 +406,26 @@ interpretation_boundary:
   - This record does not authorize a full campaign.
   - This record does not support solver-family performance or quality claims, CART training, result-map updates or monograph
     claims.
+broader_solver_execution_after_1233:
+  broader_solver_execution_manifest: data/instances/real/m4_broader_solver_execution_metadata/tigerline_roads_2025_06037_los_angeles_county_broader_solver_execution_1233.yaml
+  broader_solver_execution_issue: 234
+  execution_status: completed_success
+  command_record_count: 10
+  expected_command_record_count: 10
+  next_recommended_issue_title: 'M4 TigerLine broader solver execution review: validate execution metadata'
+  solver_execution_observed: true
+  metadata_recording_solver_execution_run: false
+  quality_metric_extraction_run: false
+  campaign_execution_run: false
+  multi_dataset_command_plan_created: false
+  synthetic_benchmark_expansion_run: false
+  additional_real_graph_execution_run: false
+  metaheuristic_execution_run: false
+  performance_or_quality_comparison_claim_supported: false
+  cart_training_run: false
+  result_map_updated: false
+  monograph_claim_supported: false
+  raw_graph_input_committed: false
+  benchmark_input_committed: false
+  partition_file_committed: false
+  raw_solver_output_committed: false
