@@ -178,3 +178,26 @@ interpretation_boundary:
     - "This review does not support campaign-level conclusions."
     - "This review does not support multi-dataset conclusions."
     - "This review does not support solver-family performance or quality claims, CART training, result-map updates or monograph claims."
+
+bounded_quality_metric_extraction_after_1219:
+  bounded_quality_metric_manifest: "data/instances/real/m4_bounded_quality_metric_metadata/tigerline_roads_2025_06037_los_angeles_county_bounded_quality_metrics_1219.yaml"
+  bounded_quality_metric_extraction_issue: 228
+  quality_metric_extraction_status: "bounded_quality_metric_extraction_completed"
+  metric_record_count: 6
+  expected_metric_record_count: 6
+  next_recommended_issue_title: "M4 TigerLine bounded quality-metric review: decide next scope"
+  solver_execution_run: false
+  quality_metric_extraction_run: true
+  campaign_execution_run: false
+  multi_dataset_command_plan_created: false
+  synthetic_benchmark_expansion_run: false
+  additional_real_graph_execution_run: false
+  metaheuristic_execution_run: false
+  performance_or_quality_comparison_claim_supported: false
+  cart_training_run: false
+  result_map_updated: false
+  monograph_claim_supported: false
+  raw_graph_input_committed: false
+  benchmark_input_committed: false
+  partition_file_committed: false
+  raw_solver_output_committed: false
