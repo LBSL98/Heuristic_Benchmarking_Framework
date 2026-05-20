@@ -507,3 +507,22 @@ interpretation_boundary:
   - This record does not support campaign-level conclusions.
   - This record does not support solver-family performance or quality comparison claims.
   - This record does not support CART training, result-map updates or monograph claims.
+broader_quality_metric_extraction_after_1236:
+  broader_quality_metric_manifest: data/instances/real/m4_broader_quality_metric_metadata/tigerline_roads_2025_06037_los_angeles_county_broader_quality_metrics_1236.yaml
+  broader_execution_review_and_quality_metric_issue: 236
+  quality_metric_extraction_status: completed_success
+  metric_record_count: 10
+  expected_metric_record_count: 10
+  next_recommended_issue_title: 'M4 TigerLine broader result synthesis: bounded real-graph evidence'
+  quality_metric_extraction_run: true
+  solver_execution_run: false
+  campaign_execution_run: false
+  metaheuristic_execution_run: false
+  performance_or_quality_comparison_claim_supported: false
+  cart_training_run: false
+  result_map_updated: false
+  monograph_claim_supported: false
+  raw_graph_input_committed: false
+  benchmark_input_committed: false
+  partition_file_committed: false
+  raw_solver_output_committed: false
