@@ -169,3 +169,20 @@ interpretation_boundary:
     - "No TigerLine solver execution was run in this gate."
     - "No pilot retry was run in this gate."
     - "No graph partition generation, campaign, multi-dataset conclusion, performance/quality comparison, CART training, result-map update or monograph claim is supported."
+
+metis_gpmetis_remediation_after_1195:
+  metis_gpmetis_remediation_manifest: "data/instances/real/m4_metis_gpmetis_remediation_metadata/tigerline_roads_2025_06037_los_angeles_county_metis_gpmetis_remediation.yaml"
+  metis_gpmetis_remediation_issue: 216
+  metis_gpmetis_remediation_status: "metis_gpmetis_remediated"
+  gpmetis_available_after_remediation: true
+  kahip_available_after_remediation: true
+  solver_execution_run: false
+  limited_pilot_execution_run: false
+  graph_partition_generation_run: false
+  campaign_execution_run: false
+  multi_dataset_command_plan_created: false
+  metaheuristic_execution_run: false
+  performance_or_quality_comparison_claim_supported: false
+  cart_training_run: false
+  result_map_updated: false
+  monograph_claim_supported: false

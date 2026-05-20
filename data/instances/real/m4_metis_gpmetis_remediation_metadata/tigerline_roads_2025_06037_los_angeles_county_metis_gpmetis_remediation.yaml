@@ -1,0 +1,84 @@
+metis_gpmetis_remediation_metadata_id: "1195_tigerline_roads_2025_06037_los_angeles_county_metis_gpmetis_remediation"
+metis_gpmetis_remediation_issue: 216
+source_toolchain_solver_build_issue: 214
+source_toolchain_solver_build_retry_metadata_id: "1192_tigerline_roads_2025_06037_los_angeles_county_toolchain_solver_build_retry"
+source_user_local_solver_build_issue: 212
+source_solver_remediation_issue: 209
+source_limited_pilot_execution_issue: 206
+parent_campaign_issue: 130
+parent_license_issue: 143
+main_commit_at_metis_gpmetis_remediation: "991a76f45ba9e0192005a3cb8af9c4912b0b94d6"
+
+execution_environment:
+  execution_host_label: "srv-noctua"
+  platform: "Linux-5.15.0-177-generic-x86_64-with-glibc2.35"
+  python_version: "3.10.12"
+  git_head_observed: "991a76f45ba9e0192005a3cb8af9c4912b0b94d6"
+
+selected_instance_context:
+  selected_instance_id: "tigerline_roads_2025_06037_los_angeles_county"
+  input_sha256_observed: "df31d8c3e671e9010fa9f9d06b00cda80781a5a9140b214e5e08962192bf2b42"
+  input_stats_sha256_observed: "2e6fc3539d21b97b57ada3d892bdf081d1f0608b25541ae6eb18e6f60dcff683"
+  cache_restored_or_verified_on_srv_noctua: true
+
+metis_package_remediation:
+  apt_install_attempted: true
+  sudo_v_exit: 0
+  apt_update_exit: 0
+  apt_install_exit: 0
+  install_log_excerpt: "===== 1195 METIS APT INSTALL LOG =====\n2026-05-20T08:04:25-03:00\nInstalling/validating Ubuntu metis package only.\nNo solver will be executed on TigerLine in this gate.\nsudo_v_exit=0\nHit:1 https://download.docker.com/linux/ubuntu jammy InRelease\nHit:2 http://archive.ubuntu.com/ubuntu jammy InRelease\nGet:3 https://pkgs.tailscale.com/stable/ubuntu jammy InRelease\nHit:4 https://deb.nodesource.com/node_22.x nodistro InRelease\nHit:5 http://archive.ubuntu.com/ubuntu jammy-updates InRelease\nHit:6 http://archive.ubuntu.com/ubuntu jammy-backports InRelease\nHit:7 http://security.ubuntu.com/ubuntu jammy-security InRelease\nFetched 6581 B in 2s (3160 B/s)\nReading package lists...\napt_update_exit=0\nReading package lists...\nBuilding dependency tree...\nReading state information...\nThe following package was automatically installed and is no longer required:\n  lynx-common\nUse 'sudo apt autoremove' to remove it.\nThe following additional packages will be installed:\n  libmetis5\nThe following NEW packages will be installed:\n  libmetis5 metis\n0 upgraded, 2 newly installed, 0 to remove and 29 not upgraded.\nNeed to get 223 kB of archives.\nAfter this operation, 721 kB of additional disk space will be used.\nGet:1 http://archive.ubuntu.com/ubuntu jammy/universe amd64 libmetis5 amd64 5.1.0.dfsg-7build2 [181 kB]\nGet:2 http://archive.ubuntu.com/ubuntu jammy/universe amd64 metis amd64 5.1.0.dfsg-7build2 [42.7 kB]\nFetched 223 kB in 0s (1925 kB/s)\nSelecting previously unselected package libmetis5:amd64.\n(Reading database ... \n(Reading database ... 5%\n(Reading database ... 10%\n(Reading database ... 15%\n(Reading database ... 20%\n(Reading database ... 25%\n(Reading database ... 30%\n(Reading database ... 35%\n(Reading database ... 40%\n(Reading database ... 45%\n(Reading database ... 50%\n(Reading database ... 55%\n(Reading database ... 60%\n(Reading database ... 65%\n(Reading database ... 70%\n(Reading database ... 75%\n(Reading database ... 80%\n(Reading database ... 85%\n(Reading database ... 90%\n(Reading database ... 95%\n(Reading database ... 100%\n(Reading database ... 151166 files and directories currently installed.)\nPreparing to unpack .../libmetis5_5.1.0.dfsg-7build2_amd64.deb ...\nUnpacking libmetis5:amd64 (5.1.0.dfsg-7build2) ...\nSelecting previously unselected package metis.\nPreparing to unpack .../metis_5.1.0.dfsg-7build2_amd64.deb ...\nUnpacking metis (5.1.0.dfsg-7build2) ...\nSetting up libmetis5:amd64 (5.1.0.dfsg-7build2) ...\nSetting up metis (5.1.0.dfsg-7build2) ...\nProcessing triggers for man-db (2.10.2-1) ...\nProcessing triggers for libc-bin (2.35-0ubuntu3.13) ...\n\nPending kernel upgrade!\n\nRunning kernel version:\n  5.15.0-177-generic\n\nDiagnostics:\n  The currently running kernel version is not the expected kernel version 5.15.0-179-generic.\n\nRestarting the system to load the new kernel will not be handled automatically, so you should consider rebooting. [Return]\n\nThe processor microcode seems to be up-to-date.\n\nNo services need to be restarted.\n\nNo containers need to be restarted.\n\nNo user sessions are running outdated binaries.\n\nNo VM guests are running outdated hypervisor (qemu) binaries on this host.\napt_install_exit=0\n"
+
+post_remediation_binary_availability:
+  gpmetis_available: true
+  gpmetis_path: "/usr/bin/gpmetis"
+  kahip_available: true
+  kaffpa_path: "/home/brunno/.local/mpp_solvers/bin/kaffpa"
+  kaffpaE_path: "/home/brunno/.local/mpp_solvers/bin/kaffpaE"
+
+binary_checks:
+  gpmetis_sha256: "3b26536a307459b1483e1eaf148271eda9bb2dbbe04890813f2c371dc6477d04"
+  gpmetis_help_first_line: "Usage: gpmetis [options] graphfile nparts"
+  kaffpa_sha256: "a91d9f76c80c406cec597a89845179bab359b0942c1f38b049f08959342f9392"
+  kaffpa_help_first_line: "Usage: /home/brunno/.local/mpp_solvers/bin/kaffpa [--help] FILE [--seed=<int>] [--version] [--mmap_io] --k=<int> [--imbalance=<double>] --preconfiguration=VARIANT [--time_limit=<double>] [--enforce_balance] [--balance_edges] [--enable_mapping] [--connected_blocks] [--hierarchy_parameter_string=<string>] [--distance_parameter_string=<string>] [--online_distances] [--output_filename=<string>]"
+  kaffpaE_sha256: "efe053fa9c4d2a09623779d9f0fc4fc69a374ef12094bd1bf2b82cc19e659815"
+  kaffpaE_help_first_line: "Usage: /home/brunno/.local/mpp_solvers/bin/kaffpaE [--help] FILE [--seed=<int>] [--version] --k=<int> [--imbalance=<double>] [--preconfiguration=VARIANT] [--time_limit=<double>] [--mh_enable_quickstart] [--mh_print_log] [--mh_optimize_communication_volume] [--mh_enable_tabu_search] [--maxT=<int>] [--maxIter=<int>] [--mh_enable_kabapE] [--kabaE_internal_bal=<double>] [--balance_edges] [--connected_blocks] [--input_partition=<string>] [--output_filename=<string>]"
+
+metis_gpmetis_remediation_attempt:
+  metis_gpmetis_remediation_status: "metis_gpmetis_remediated"
+  solver_execution_run: false
+  limited_pilot_execution_run: false
+  graph_partition_generation_run: false
+  campaign_execution_run: false
+  multi_dataset_command_plan_created: false
+  metaheuristic_execution_run: false
+  performance_or_quality_comparison_claim_supported: false
+  cart_training_run: false
+  result_map_updated: false
+  monograph_claim_supported: false
+  benchmark_input_committed: false
+  partition_file_committed: false
+  raw_solver_output_committed: false
+
+remediation_errors:
+  []
+
+next_gate_recommendation:
+  next_issue_title_if_remediated: "M4 TigerLine limited pilot retry gate: Los Angeles County roads 2025"
+  next_issue_title_if_blocked: "M4 TigerLine METIS gpmetis remediation review: decide next scope"
+  next_gate_may_retry_limited_pilot: true
+  next_gate_may_remediate_metis_gpmetis: false
+  next_gate_may_run_campaign: false
+  next_gate_may_create_multi_dataset_command_plan: false
+  next_gate_may_run_metaheuristics: false
+  next_gate_may_train_cart: false
+  next_gate_may_update_result_map: false
+  next_gate_may_write_monograph_claims: false
+
+interpretation_boundary:
+  supported:
+    - "The 1195 METIS/gpmetis remediation attempt produced the recorded binary availability status."
+    - "Only package installation and help/version or binary-availability probes were admitted."
+  unsupported:
+    - "No TigerLine solver execution was run in this gate."
+    - "No pilot retry was run in this gate."
+    - "No graph partition generation, campaign, multi-dataset conclusion, performance/quality comparison, CART training, result-map update or monograph claim is supported."
