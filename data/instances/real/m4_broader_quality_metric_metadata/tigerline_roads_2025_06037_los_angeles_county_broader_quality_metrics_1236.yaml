@@ -1,0 +1,652 @@
+broader_quality_metric_metadata_id: 1236_tigerline_roads_2025_06037_los_angeles_county_broader_quality_metrics
+broader_execution_review_and_quality_metric_issue: 236
+source_broader_solver_execution_issue: 234
+source_broader_preregistered_command_plan_issue: 232
+parent_campaign_issue: 130
+parent_license_issue: 143
+main_commit_at_quality_metric_extraction: f31328a9deafaa1969339b97372266af8f741085
+execution_review:
+  source_execution_metadata_accepted: true
+  source_execution_status: completed_success
+  source_command_record_count: 10
+  source_all_commands_returned_zero: true
+  source_all_commands_parse_ok: true
+selected_instance_context:
+  selected_instance_id: tigerline_roads_2025_06037_los_angeles_county
+  expected_vertices_from_metis_header: 1199509
+  expected_edges_from_metis_header: 1294674
+  metis_input_sha256: df31d8c3e671e9010fa9f9d06b00cda80781a5a9140b214e5e08962192bf2b42
+  edge_count_observed_from_upper_triangle: 1294674
+quality_metric_extraction:
+  quality_metric_extraction_status: completed_success
+  metric_record_count: 10
+  expected_metric_record_count: 10
+  all_expected_metric_records_present: true
+  quality_metric_extraction_run: true
+  solver_execution_run: false
+  campaign_execution_run: false
+  multi_dataset_command_plan_created: false
+  synthetic_benchmark_expansion_run: false
+  additional_real_graph_execution_run: false
+  metaheuristic_execution_run: false
+  performance_or_quality_comparison_claim_supported: false
+  cart_training_run: false
+  result_map_updated: false
+  monograph_claim_supported: false
+  raw_graph_input_committed: false
+  benchmark_input_committed: false
+  partition_file_committed: false
+  raw_solver_output_committed: false
+  raw_intermediate_metric_artifact_committed: false
+metric_records:
+  gpmetis_k16:
+    balance:
+      block_count_max: 75279
+      block_count_min: 74621
+      ideal_block_size: 74969.3125
+      max_over_ideal_percent: 0.41308568756048825
+      max_over_ideal_ratio: 1.0041308568756049
+    block_counts:
+      '0': 75041
+      '1': 74971
+      '10': 74930
+      '11': 74875
+      '12': 74883
+      '13': 74951
+      '14': 74886
+      '15': 74927
+      '2': 74962
+      '3': 74958
+      '4': 75041
+      '5': 75279
+      '6': 74945
+      '7': 74621
+      '8': 75010
+      '9': 75229
+    command_id: gpmetis_k16
+    cut_edges: 612
+    cut_ratio: 0.00047270587035809784
+    expected_labels:
+    - 0
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+    - 6
+    - 7
+    - 8
+    - 9
+    - 10
+    - 11
+    - 12
+    - 13
+    - 14
+    - 15
+    expected_line_count: 1199509
+    internal_edges: 1294062
+    k: 16
+    labels:
+    - 0
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+    - 6
+    - 7
+    - 8
+    - 9
+    - 10
+    - 11
+    - 12
+    - 13
+    - 14
+    - 15
+    line_count: 1199509
+    parse_ok: true
+    partition_path: data/results_raw/real/tigerline/2025/06037/broader_solver_execution_1227/input.metis.graph.part.16
+    partition_sha256: 5bc5bab6af04b331b16310359922b4360d529d73a7534c85f2d1ce01acc30198
+    solver_family: METIS/gpmetis
+    total_edges_observed: 1294674
+  gpmetis_k2:
+    balance:
+      block_count_max: 599755
+      block_count_min: 599754
+      ideal_block_size: 599754.5
+      max_over_ideal_percent: 8.33674445033239e-05
+      max_over_ideal_ratio: 1.000000833674445
+    block_counts:
+      '0': 599755
+      '1': 599754
+    command_id: gpmetis_k2
+    cut_edges: 62
+    cut_ratio: 4.788850320621253e-05
+    expected_labels:
+    - 0
+    - 1
+    expected_line_count: 1199509
+    internal_edges: 1294612
+    k: 2
+    labels:
+    - 0
+    - 1
+    line_count: 1199509
+    parse_ok: true
+    partition_path: data/results_raw/real/tigerline/2025/06037/broader_solver_execution_1227/input.metis.graph.part.2
+    partition_sha256: 94d991311d24386b5291c633e81196eb61344d052cf2b764f2c2d4ede90cff14
+    solver_family: METIS/gpmetis
+    total_edges_observed: 1294674
+  gpmetis_k32:
+    balance:
+      block_count_max: 37975
+      block_count_min: 36958
+      ideal_block_size: 37484.65625
+      max_over_ideal_percent: 1.3081185718489818
+      max_over_ideal_ratio: 1.0130811857184898
+    block_counts:
+      '0': 37652
+      '1': 36958
+      '10': 37657
+      '11': 37565
+      '12': 37566
+      '13': 37062
+      '14': 37758
+      '15': 37791
+      '16': 37258
+      '17': 37249
+      '18': 37271
+      '19': 37263
+      '2': 37941
+      '20': 37923
+      '21': 37104
+      '22': 37564
+      '23': 37416
+      '24': 37558
+      '25': 37347
+      '26': 37561
+      '27': 37571
+      '28': 37341
+      '29': 37336
+      '3': 37600
+      '30': 37632
+      '31': 37655
+      '4': 37255
+      '5': 37402
+      '6': 37468
+      '7': 37975
+      '8': 37643
+      '9': 37167
+    command_id: gpmetis_k32
+    cut_edges: 1033
+    cut_ratio: 0.000797884255032541
+    expected_labels:
+    - 0
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+    - 6
+    - 7
+    - 8
+    - 9
+    - 10
+    - 11
+    - 12
+    - 13
+    - 14
+    - 15
+    - 16
+    - 17
+    - 18
+    - 19
+    - 20
+    - 21
+    - 22
+    - 23
+    - 24
+    - 25
+    - 26
+    - 27
+    - 28
+    - 29
+    - 30
+    - 31
+    expected_line_count: 1199509
+    internal_edges: 1293641
+    k: 32
+    labels:
+    - 0
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+    - 6
+    - 7
+    - 8
+    - 9
+    - 10
+    - 11
+    - 12
+    - 13
+    - 14
+    - 15
+    - 16
+    - 17
+    - 18
+    - 19
+    - 20
+    - 21
+    - 22
+    - 23
+    - 24
+    - 25
+    - 26
+    - 27
+    - 28
+    - 29
+    - 30
+    - 31
+    line_count: 1199509
+    parse_ok: true
+    partition_path: data/results_raw/real/tigerline/2025/06037/broader_solver_execution_1227/input.metis.graph.part.32
+    partition_sha256: ad7b4b52394d5a00562dc9d4a3ce18adf233dfa6c68bcef8750405180876120e
+    solver_family: METIS/gpmetis
+    total_edges_observed: 1294674
+  gpmetis_k4:
+    balance:
+      block_count_max: 299881
+      block_count_min: 299869
+      ideal_block_size: 299877.25
+      max_over_ideal_percent: 0.0012505116676830852
+      max_over_ideal_ratio: 1.0000125051166768
+    block_counts:
+      '0': 299869
+      '1': 299879
+      '2': 299880
+      '3': 299881
+    command_id: gpmetis_k4
+    cut_edges: 163
+    cut_ratio: 0.00012590041971955875
+    expected_labels:
+    - 0
+    - 1
+    - 2
+    - 3
+    expected_line_count: 1199509
+    internal_edges: 1294511
+    k: 4
+    labels:
+    - 0
+    - 1
+    - 2
+    - 3
+    line_count: 1199509
+    parse_ok: true
+    partition_path: data/results_raw/real/tigerline/2025/06037/broader_solver_execution_1227/input.metis.graph.part.4
+    partition_sha256: b5e1a71cb1f7c09e634c20c4648612fe20dd7c92ad0d18b31450756c4449afa6
+    solver_family: METIS/gpmetis
+    total_edges_observed: 1294674
+  gpmetis_k8:
+    balance:
+      block_count_max: 150242
+      block_count_min: 148872
+      ideal_block_size: 149938.625
+      max_over_ideal_percent: 0.20233278783234887
+      max_over_ideal_ratio: 1.0020233278783235
+    block_counts:
+      '0': 149939
+      '1': 150047
+      '2': 150206
+      '3': 149966
+      '4': 150123
+      '5': 150114
+      '6': 150242
+      '7': 148872
+    command_id: gpmetis_k8
+    cut_edges: 344
+    cut_ratio: 0.0002657039532731792
+    expected_labels:
+    - 0
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+    - 6
+    - 7
+    expected_line_count: 1199509
+    internal_edges: 1294330
+    k: 8
+    labels:
+    - 0
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+    - 6
+    - 7
+    line_count: 1199509
+    parse_ok: true
+    partition_path: data/results_raw/real/tigerline/2025/06037/broader_solver_execution_1227/input.metis.graph.part.8
+    partition_sha256: 58ee3fa9bae1cecdcdbccfd6fe2010f929f77b7245eff7970773a3d99a695c4b
+    solver_family: METIS/gpmetis
+    total_edges_observed: 1294674
+  kaffpa_fast_k16:
+    balance:
+      block_count_max: 77214
+      block_count_min: 63045
+      ideal_block_size: 74969.3125
+      max_over_ideal_percent: 2.994141769674097
+      max_over_ideal_ratio: 1.029941417696741
+    block_counts:
+      '0': 76172
+      '1': 72389
+      '10': 75454
+      '11': 74882
+      '12': 77162
+      '13': 76560
+      '14': 76610
+      '15': 75505
+      '2': 77209
+      '3': 77155
+      '4': 75193
+      '5': 76911
+      '6': 76831
+      '7': 63045
+      '8': 77214
+      '9': 71217
+    command_id: kaffpa_fast_k16
+    cut_edges: 612
+    cut_ratio: 0.00047270587035809784
+    expected_labels:
+    - 0
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+    - 6
+    - 7
+    - 8
+    - 9
+    - 10
+    - 11
+    - 12
+    - 13
+    - 14
+    - 15
+    expected_line_count: 1199509
+    internal_edges: 1294062
+    k: 16
+    labels:
+    - 0
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+    - 6
+    - 7
+    - 8
+    - 9
+    - 10
+    - 11
+    - 12
+    - 13
+    - 14
+    - 15
+    line_count: 1199509
+    parse_ok: true
+    partition_path: data/results_raw/real/tigerline/2025/06037/broader_solver_execution_1227/kaffpa_fast_k16.partition
+    partition_sha256: 0730824dc19e0c51705f26d8fc276fea0375534c1415c300d42d4f9f6e7c7d52
+    solver_family: KaHIP/kaffpa
+    total_edges_observed: 1294674
+  kaffpa_fast_k2:
+    balance:
+      block_count_max: 607955
+      block_count_min: 591554
+      ideal_block_size: 599754.5
+      max_over_ideal_percent: 1.3673094574530031
+      max_over_ideal_ratio: 1.01367309457453
+    block_counts:
+      '0': 607955
+      '1': 591554
+    command_id: kaffpa_fast_k2
+    cut_edges: 99
+    cut_ratio: 7.646712608733937e-05
+    expected_labels:
+    - 0
+    - 1
+    expected_line_count: 1199509
+    internal_edges: 1294575
+    k: 2
+    labels:
+    - 0
+    - 1
+    line_count: 1199509
+    parse_ok: true
+    partition_path: data/results_raw/real/tigerline/2025/06037/broader_solver_execution_1227/kaffpa_fast_k2.partition
+    partition_sha256: 942e3d7e72814ed48b96b044d160f4c72c7ac007903ff0199615e5e569741b42
+    solver_family: KaHIP/kaffpa
+    total_edges_observed: 1294674
+  kaffpa_fast_k32:
+    balance:
+      block_count_max: 38608
+      block_count_min: 29958
+      ideal_block_size: 37484.65625
+      max_over_ideal_percent: 2.996809527898492
+      max_over_ideal_ratio: 1.029968095278985
+    block_counts:
+      '0': 37279
+      '1': 38590
+      '10': 37881
+      '11': 38587
+      '12': 37885
+      '13': 37997
+      '14': 38586
+      '15': 38608
+      '16': 37986
+      '17': 37976
+      '18': 36868
+      '19': 38533
+      '2': 38535
+      '20': 38431
+      '21': 37721
+      '22': 37304
+      '23': 29958
+      '24': 36611
+      '25': 38474
+      '26': 38607
+      '27': 37770
+      '28': 33745
+      '29': 37869
+      '3': 37246
+      '30': 37944
+      '31': 36717
+      '4': 37240
+      '5': 38477
+      '6': 34306
+      '7': 38595
+      '8': 38607
+      '9': 38576
+    command_id: kaffpa_fast_k32
+    cut_edges: 1050
+    cut_ratio: 0.0008110149736535992
+    expected_labels:
+    - 0
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+    - 6
+    - 7
+    - 8
+    - 9
+    - 10
+    - 11
+    - 12
+    - 13
+    - 14
+    - 15
+    - 16
+    - 17
+    - 18
+    - 19
+    - 20
+    - 21
+    - 22
+    - 23
+    - 24
+    - 25
+    - 26
+    - 27
+    - 28
+    - 29
+    - 30
+    - 31
+    expected_line_count: 1199509
+    internal_edges: 1293624
+    k: 32
+    labels:
+    - 0
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+    - 6
+    - 7
+    - 8
+    - 9
+    - 10
+    - 11
+    - 12
+    - 13
+    - 14
+    - 15
+    - 16
+    - 17
+    - 18
+    - 19
+    - 20
+    - 21
+    - 22
+    - 23
+    - 24
+    - 25
+    - 26
+    - 27
+    - 28
+    - 29
+    - 30
+    - 31
+    line_count: 1199509
+    parse_ok: true
+    partition_path: data/results_raw/real/tigerline/2025/06037/broader_solver_execution_1227/kaffpa_fast_k32.partition
+    partition_sha256: 91154359b15dbf35d9d813b2f221c0b9aaac951cefbcf285e2b155713cad10a2
+    solver_family: KaHIP/kaffpa
+    total_edges_observed: 1294674
+  kaffpa_fast_k4:
+    balance:
+      block_count_max: 302307
+      block_count_min: 297788
+      ideal_block_size: 299877.25
+      max_over_ideal_percent: 0.8102481932190653
+      max_over_ideal_ratio: 1.0081024819321907
+    block_counts:
+      '0': 301625
+      '1': 297788
+      '2': 302307
+      '3': 297789
+    command_id: kaffpa_fast_k4
+    cut_edges: 169
+    cut_ratio: 0.0001305347909975793
+    expected_labels:
+    - 0
+    - 1
+    - 2
+    - 3
+    expected_line_count: 1199509
+    internal_edges: 1294505
+    k: 4
+    labels:
+    - 0
+    - 1
+    - 2
+    - 3
+    line_count: 1199509
+    parse_ok: true
+    partition_path: data/results_raw/real/tigerline/2025/06037/broader_solver_execution_1227/kaffpa_fast_k4.partition
+    partition_sha256: be085cfc770c41e947b464b7456883bea42d3f11d3ea974801fe602a98769c58
+    solver_family: KaHIP/kaffpa
+    total_edges_observed: 1294674
+  kaffpa_fast_k8:
+    balance:
+      block_count_max: 152885
+      block_count_min: 147568
+      ideal_block_size: 149938.625
+      max_over_ideal_percent: 1.9650540346091594
+      max_over_ideal_ratio: 1.0196505403460916
+    block_counts:
+      '0': 151872
+      '1': 149753
+      '2': 147610
+      '3': 152211
+      '4': 149988
+      '5': 147568
+      '6': 152885
+      '7': 147622
+    command_id: kaffpa_fast_k8
+    cut_edges: 372
+    cut_ratio: 0.0002873310192372752
+    expected_labels:
+    - 0
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+    - 6
+    - 7
+    expected_line_count: 1199509
+    internal_edges: 1294302
+    k: 8
+    labels:
+    - 0
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+    - 6
+    - 7
+    line_count: 1199509
+    parse_ok: true
+    partition_path: data/results_raw/real/tigerline/2025/06037/broader_solver_execution_1227/kaffpa_fast_k8.partition
+    partition_sha256: 34b04dd882e748d512421089a6f5d03d07dd2e407a9cd2cc237d89b23e7d7a08
+    solver_family: KaHIP/kaffpa
+    total_edges_observed: 1294674
+quality_metric_extraction_errors: []
+next_gate_recommendation:
+  next_recommended_issue_title: 'M4 TigerLine broader result synthesis: bounded real-graph evidence'
+  next_gate_may_synthesize_bounded_real_graph_evidence: true
+  next_gate_may_update_result_map: true
+  next_gate_may_write_limited_monograph_text: true
+  next_gate_may_train_cart: false
+  next_gate_may_run_campaign: false
+  next_gate_may_run_solver_execution: false
+  next_gate_may_run_metaheuristics: false
+interpretation_boundary:
+  supported:
+  - The ten preregistered TigerLine broader solver partitions have reduced quality metrics.
+  - The record supports bounded single-instance evidence synthesis for this TigerLine graph.
+  unsupported:
+  - This record does not support multi-dataset conclusions.
+  - This record does not support full campaign conclusions.
+  - This record does not support CART training.
+  - This record does not support broad solver-family performance claims beyond this bounded single real graph.
