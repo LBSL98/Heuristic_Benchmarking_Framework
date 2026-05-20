@@ -1,0 +1,244 @@
+bounded_solver_execution_metadata_id: "1211_tigerline_roads_2025_06037_los_angeles_county_bounded_solver_execution"
+bounded_solver_execution_issue: 224
+source_bounded_command_plan_issue: 222
+source_post_pilot_review_issue: 220
+source_limited_pilot_retry_issue: 218
+source_metis_gpmetis_remediation_issue: 216
+source_limited_pilot_execution_issue: 206
+source_limited_pilot_plan_issue: 204
+parent_campaign_issue: 130
+parent_license_issue: 143
+main_commit_at_bounded_solver_execution: "9a70a1857d1919f275ec53358ee81476ecbf4673"
+
+execution_environment:
+  execution_host_label: "srv-noctua"
+  platform: "Linux-5.15.0-177-generic-x86_64-with-glibc2.35"
+  python_version: "3.10.12"
+  git_head_observed: "9a70a1857d1919f275ec53358ee81476ecbf4673"
+
+selected_instance_context:
+  selected_instance_id: "tigerline_roads_2025_06037_los_angeles_county"
+  expected_vertices_from_metis_header: 1199509
+  expected_edges_from_metis_header: 1294674
+  metis_header_raw: "1199509 1294674"
+  input_sha256_observed: "df31d8c3e671e9010fa9f9d06b00cda80781a5a9140b214e5e08962192bf2b42"
+  input_stats_sha256_observed: "2e6fc3539d21b97b57ada3d892bdf081d1f0608b25541ae6eb18e6f60dcff683"
+  input_copy_sha256_observed: "df31d8c3e671e9010fa9f9d06b00cda80781a5a9140b214e5e08962192bf2b42"
+  cache_restored_or_verified_on_srv_noctua: true
+
+runtime_artifacts:
+  run_dir: "data/results_raw/real/tigerline/2025/06037/bounded_solver_execution_1208"
+  input_copy_path: "data/results_raw/real/tigerline/2025/06037/bounded_solver_execution_1208/input.metis.graph"
+  raw_outputs_written_only_to_ignored_runtime_paths: true
+
+solver_binaries:
+  gpmetis_path: "/usr/bin/gpmetis"
+  gpmetis_sha256: "3b26536a307459b1483e1eaf148271eda9bb2dbbe04890813f2c371dc6477d04"
+  gpmetis_help_first_line: "Usage: gpmetis [options] graphfile nparts"
+  kaffpa_path: "/home/brunno/.local/mpp_solvers/bin/kaffpa"
+  kaffpa_sha256: "a91d9f76c80c406cec597a89845179bab359b0942c1f38b049f08959342f9392"
+  kaffpa_help_first_line: "Usage: /home/brunno/.local/mpp_solvers/bin/kaffpa [--help] FILE [--seed=<int>] [--version] [--mmap_io] --k=<int> [--imbalance=<double>] --preconfiguration=VARIANT [--time_limit=<double>] [--enforce_balance] [--balance_edges] [--enable_mapping] [--connected_blocks] [--hierarchy_parameter_string=<string>] [--distance_parameter_string=<string>] [--online_distances] [--output_filename=<string>]"
+  kaffpaE_path: "/home/brunno/.local/mpp_solvers/bin/kaffpaE"
+  kaffpaE_sha256: "efe053fa9c4d2a09623779d9f0fc4fc69a374ef12094bd1bf2b82cc19e659815"
+  kaffpaE_help_first_line: "Usage: /home/brunno/.local/mpp_solvers/bin/kaffpaE [--help] FILE [--seed=<int>] [--version] --k=<int> [--imbalance=<double>] [--preconfiguration=VARIANT] [--time_limit=<double>] [--mh_enable_quickstart] [--mh_print_log] [--mh_optimize_communication_volume] [--mh_enable_tabu_search] [--maxT=<int>] [--maxIter=<int>] [--mh_enable_kabapE] [--kabaE_internal_bal=<double>] [--balance_edges] [--connected_blocks] [--input_partition=<string>] [--output_filename=<string>]"
+
+bounded_solver_execution:
+  bounded_solver_execution_status: "bounded_solver_execution_completed_parseable_partitions"
+  planned_command_count: 6
+  executed_command_count: 6
+  all_recorded_partitions_parseable: true
+  bounded_solver_execution_run: true
+  gpmetis_execution_run: true
+  kaffpa_execution_run: true
+  kaffpaE_execution_run: false
+  campaign_execution_run: false
+  multi_dataset_command_plan_created: false
+  synthetic_benchmark_expansion_run: false
+  additional_real_graph_execution_run: false
+  metaheuristic_execution_run: false
+  performance_or_quality_comparison_claim_supported: false
+  cart_training_run: false
+  result_map_updated: false
+  monograph_claim_supported: false
+  raw_graph_input_committed: false
+  benchmark_input_committed: false
+  partition_file_committed: false
+  raw_solver_output_committed: false
+
+commands_executed:
+  - command_index: 1
+    command_id: "gpmetis_k2"
+    solver_family: "METIS/gpmetis"
+    k: 2
+    args: "/usr/bin/gpmetis input.metis.graph 2"
+    cwd: "data/results_raw/real/tigerline/2025/06037/bounded_solver_execution_1208"
+    return_code: 0
+    timed_out: false
+    duration_seconds: 2.045585
+    expected_partition_path: "data/results_raw/real/tigerline/2025/06037/bounded_solver_execution_1208/input.metis.graph.part.2"
+    stdout_stderr_path: "data/results_raw/real/tigerline/2025/06037/bounded_solver_execution_1208/gpmetis_k2.stdout_stderr.txt"
+    stdout_stderr_sha256: "03a7a511def3b35f932a6c1e3d87e9d1a9f08e70ec50b6d731d7efe8219ea83e"
+    stdout_stderr_excerpt: "******************************************************************************\nMETIS 5.0 Copyright 1998-13, Regents of the University of Minnesota\n (HEAD: , Built on: Mar 24 2022, 16:16:52)\n size of idx_t: 32bits, real_t: 32bits, idx_t *: 64bits\n\nGraph Information -----------------------------------------------------------\n Name: input.metis.graph, #Vertices: 1199509, #Edges: 1294674, #Parts: 2\n\nOptions ---------------------------------------------------------------------\n ptype=kway, objtype=cut, ctype=shem, rtype=greedy, iptype=metisrb\n dbglvl=0, ufactor=1.030, no2hop=NO, minconn=NO, contig=NO, nooutput=NO\n seed=-1, niter=10, ncuts=1\n\nDirect k-way Partitioning ---------------------------------------------------\n - Edgecut: 62, communication volume: 123.\n\n - Balance:\n     constraint #0:  1.000 out of 0.000\n\n - Most overweight partition:\n     pid: 0, actual: 599755, desired: 599754, ratio: 1.00.\n\n - Subdomain connectivity: max: 1, min: 1, avg: 1.00\n\n - The original graph had 125 connected components and the resulting\n   partitioning after removing the cut edges has 126 components.\nTiming Information ----------------------------------------------------------\n  I/O:          \t\t   0.344 sec\n  Partitioning: \t\t   0.917 sec   (METIS time)\n  Reporting:    \t\t   0.779 sec\n\nMemory Information ----------------------------------------------------------\n  Max memory used:\t\t  95.105 MB\n******************************************************************************\n"
+  - command_index: 2
+    command_id: "gpmetis_k4"
+    solver_family: "METIS/gpmetis"
+    k: 4
+    args: "/usr/bin/gpmetis input.metis.graph 4"
+    cwd: "data/results_raw/real/tigerline/2025/06037/bounded_solver_execution_1208"
+    return_code: 0
+    timed_out: false
+    duration_seconds: 2.05643
+    expected_partition_path: "data/results_raw/real/tigerline/2025/06037/bounded_solver_execution_1208/input.metis.graph.part.4"
+    stdout_stderr_path: "data/results_raw/real/tigerline/2025/06037/bounded_solver_execution_1208/gpmetis_k4.stdout_stderr.txt"
+    stdout_stderr_sha256: "a9a8a72aa0b1a2c9e03f29450044e20298df68c5ca977be7d2ed5049c2f4f512"
+    stdout_stderr_excerpt: "******************************************************************************\nMETIS 5.0 Copyright 1998-13, Regents of the University of Minnesota\n (HEAD: , Built on: Mar 24 2022, 16:16:52)\n size of idx_t: 32bits, real_t: 32bits, idx_t *: 64bits\n\nGraph Information -----------------------------------------------------------\n Name: input.metis.graph, #Vertices: 1199509, #Edges: 1294674, #Parts: 4\n\nOptions ---------------------------------------------------------------------\n ptype=kway, objtype=cut, ctype=shem, rtype=greedy, iptype=metisrb\n dbglvl=0, ufactor=1.030, no2hop=NO, minconn=NO, contig=NO, nooutput=NO\n seed=-1, niter=10, ncuts=1\n\nDirect k-way Partitioning ---------------------------------------------------\n - Edgecut: 163, communication volume: 325.\n\n - Balance:\n     constraint #0:  1.000 out of 0.000\n\n - Most overweight partition:\n     pid: 3, actual: 299881, desired: 299877, ratio: 1.00.\n\n - Subdomain connectivity: max: 3, min: 1, avg: 2.00\n\n - The original graph had 125 connected components and the resulting\n   partitioning after removing the cut edges has 128 components.\nTiming Information ----------------------------------------------------------\n  I/O:          \t\t   0.350 sec\n  Partitioning: \t\t   0.912 sec   (METIS time)\n  Reporting:    \t\t   0.788 sec\n\nMemory Information ----------------------------------------------------------\n  Max memory used:\t\t  93.865 MB\n******************************************************************************\n"
+  - command_index: 3
+    command_id: "gpmetis_k8"
+    solver_family: "METIS/gpmetis"
+    k: 8
+    args: "/usr/bin/gpmetis input.metis.graph 8"
+    cwd: "data/results_raw/real/tigerline/2025/06037/bounded_solver_execution_1208"
+    return_code: 0
+    timed_out: false
+    duration_seconds: 2.070651
+    expected_partition_path: "data/results_raw/real/tigerline/2025/06037/bounded_solver_execution_1208/input.metis.graph.part.8"
+    stdout_stderr_path: "data/results_raw/real/tigerline/2025/06037/bounded_solver_execution_1208/gpmetis_k8.stdout_stderr.txt"
+    stdout_stderr_sha256: "13bda5b10298ade6182a6373ea396e2d168047c6d975d9434624c3d3be954301"
+    stdout_stderr_excerpt: "******************************************************************************\nMETIS 5.0 Copyright 1998-13, Regents of the University of Minnesota\n (HEAD: , Built on: Mar 24 2022, 16:16:52)\n size of idx_t: 32bits, real_t: 32bits, idx_t *: 64bits\n\nGraph Information -----------------------------------------------------------\n Name: input.metis.graph, #Vertices: 1199509, #Edges: 1294674, #Parts: 8\n\nOptions ---------------------------------------------------------------------\n ptype=kway, objtype=cut, ctype=shem, rtype=greedy, iptype=metisrb\n dbglvl=0, ufactor=1.030, no2hop=NO, minconn=NO, contig=NO, nooutput=NO\n seed=-1, niter=10, ncuts=1\n\nDirect k-way Partitioning ---------------------------------------------------\n - Edgecut: 344, communication volume: 686.\n\n - Balance:\n     constraint #0:  1.002 out of 0.000\n\n - Most overweight partition:\n     pid: 6, actual: 150242, desired: 149938, ratio: 1.00.\n\n - Subdomain connectivity: max: 6, min: 2, avg: 3.50\n\n - The original graph had 125 connected components and the resulting\n   partitioning after removing the cut edges has 134 components.\nTiming Information ----------------------------------------------------------\n  I/O:          \t\t   0.360 sec\n  Partitioning: \t\t   0.924 sec   (METIS time)\n  Reporting:    \t\t   0.780 sec\n\nMemory Information ----------------------------------------------------------\n  Max memory used:\t\t  93.382 MB\n******************************************************************************\n"
+  - command_index: 4
+    command_id: "kaffpa_fast_k2"
+    solver_family: "KaHIP/kaffpa"
+    k: 2
+    args: "/home/brunno/.local/mpp_solvers/bin/kaffpa input.metis.graph --k=2 --imbalance=3 --preconfiguration=fast --time_limit=600 --output_filename=kaffpa_fast_k2.partition"
+    cwd: "data/results_raw/real/tigerline/2025/06037/bounded_solver_execution_1208"
+    return_code: 0
+    timed_out: false
+    duration_seconds: 601.226805
+    expected_partition_path: "data/results_raw/real/tigerline/2025/06037/bounded_solver_execution_1208/kaffpa_fast_k2.partition"
+    stdout_stderr_path: "data/results_raw/real/tigerline/2025/06037/bounded_solver_execution_1208/kaffpa_fast_k2.stdout_stderr.txt"
+    stdout_stderr_sha256: "f421652dc1f18fbc11b1b30e8fc20d780a330c8317b554ad235e183b350daaf3"
+    stdout_stderr_excerpt: "io time: 0.749359\ngraph has 1199509 nodes and 2589348 edges\nperforming partitioning!\ntime spent for partitioning 600.201\ncut \t\t64\nfinalobjective  64\nbnd \t\t126\nbalance \t1.0243\nmax_comm_vol \t63\nwriting partition to kaffpa_fast_k2.partition ... \n"
+  - command_index: 5
+    command_id: "kaffpa_fast_k4"
+    solver_family: "KaHIP/kaffpa"
+    k: 4
+    args: "/home/brunno/.local/mpp_solvers/bin/kaffpa input.metis.graph --k=4 --imbalance=3 --preconfiguration=fast --time_limit=600 --output_filename=kaffpa_fast_k4.partition"
+    cwd: "data/results_raw/real/tigerline/2025/06037/bounded_solver_execution_1208"
+    return_code: 0
+    timed_out: false
+    duration_seconds: 601.307636
+    expected_partition_path: "data/results_raw/real/tigerline/2025/06037/bounded_solver_execution_1208/kaffpa_fast_k4.partition"
+    stdout_stderr_path: "data/results_raw/real/tigerline/2025/06037/bounded_solver_execution_1208/kaffpa_fast_k4.stdout_stderr.txt"
+    stdout_stderr_sha256: "a1542e426d8f1a6bc2be3c57d3a91b8fd34646d4002b580c5f396c0e798add89"
+    stdout_stderr_excerpt: "io time: 0.765527\ngraph has 1199509 nodes and 2589348 edges\nperforming partitioning!\ntime spent for partitioning 600.313\ncut \t\t153\nfinalobjective  153\nbnd \t\t305\nbalance \t1.02859\nmax_comm_vol \t107\nwriting partition to kaffpa_fast_k4.partition ... \n"
+  - command_index: 6
+    command_id: "kaffpa_fast_k8"
+    solver_family: "KaHIP/kaffpa"
+    k: 8
+    args: "/home/brunno/.local/mpp_solvers/bin/kaffpa input.metis.graph --k=8 --imbalance=3 --preconfiguration=fast --time_limit=600 --output_filename=kaffpa_fast_k8.partition"
+    cwd: "data/results_raw/real/tigerline/2025/06037/bounded_solver_execution_1208"
+    return_code: 0
+    timed_out: false
+    duration_seconds: 601.159603
+    expected_partition_path: "data/results_raw/real/tigerline/2025/06037/bounded_solver_execution_1208/kaffpa_fast_k8.partition"
+    stdout_stderr_path: "data/results_raw/real/tigerline/2025/06037/bounded_solver_execution_1208/kaffpa_fast_k8.stdout_stderr.txt"
+    stdout_stderr_sha256: "b5535b19a386d8cc260f8f121bfd3ad3e3916e0e6b43b7830de15db46513edd5"
+    stdout_stderr_excerpt: "io time: 0.726542\ngraph has 1199509 nodes and 2589348 edges\nperforming partitioning!\ntime spent for partitioning 600.202\ncut \t\t302\nfinalobjective  302\nbnd \t\t601\nbalance \t1.01905\nmax_comm_vol \t141\nwriting partition to kaffpa_fast_k8.partition ... \n"
+
+partition_parse_status:
+  gpmetis_k2:
+    path: "data/results_raw/real/tigerline/2025/06037/bounded_solver_execution_1208/input.metis.graph.part.2"
+    exists: true
+    size_bytes: 2399018
+    sha256: "94d991311d24386b5291c633e81196eb61344d052cf2b764f2c2d4ede90cff14"
+    expected_n: 1199509
+    expected_k: 2
+    line_count: 1199509
+    parse_ok: true
+    labels: [0, 1]
+    block_counts: {"0": 599755, "1": 599754}
+    error: null
+  gpmetis_k4:
+    path: "data/results_raw/real/tigerline/2025/06037/bounded_solver_execution_1208/input.metis.graph.part.4"
+    exists: true
+    size_bytes: 2399018
+    sha256: "b5e1a71cb1f7c09e634c20c4648612fe20dd7c92ad0d18b31450756c4449afa6"
+    expected_n: 1199509
+    expected_k: 4
+    line_count: 1199509
+    parse_ok: true
+    labels: [0, 1, 2, 3]
+    block_counts: {"0": 299869, "1": 299879, "2": 299880, "3": 299881}
+    error: null
+  gpmetis_k8:
+    path: "data/results_raw/real/tigerline/2025/06037/bounded_solver_execution_1208/input.metis.graph.part.8"
+    exists: true
+    size_bytes: 2399018
+    sha256: "58ee3fa9bae1cecdcdbccfd6fe2010f929f77b7245eff7970773a3d99a695c4b"
+    expected_n: 1199509
+    expected_k: 8
+    line_count: 1199509
+    parse_ok: true
+    labels: [0, 1, 2, 3, 4, 5, 6, 7]
+    block_counts: {"0": 149939, "1": 150047, "2": 150206, "3": 149966, "4": 150123, "5": 150114, "6": 150242, "7": 148872}
+    error: null
+  kaffpa_fast_k2:
+    path: "data/results_raw/real/tigerline/2025/06037/bounded_solver_execution_1208/kaffpa_fast_k2.partition"
+    exists: true
+    size_bytes: 2399018
+    sha256: "b765b32166894510807bf0c5f1a6ed20ed0c5ab964e9feb027a875bb56ef5d15"
+    expected_n: 1199509
+    expected_k: 2
+    line_count: 1199509
+    parse_ok: true
+    labels: [0, 1]
+    block_counts: {"0": 585178, "1": 614331}
+    error: null
+  kaffpa_fast_k4:
+    path: "data/results_raw/real/tigerline/2025/06037/bounded_solver_execution_1208/kaffpa_fast_k4.partition"
+    exists: true
+    size_bytes: 2399018
+    sha256: "f2df5d46bb6df90ab94ed8438ed3785bdda761e6b1f31b5a9ee84b746cd0a8e1"
+    expected_n: 1199509
+    expected_k: 4
+    line_count: 1199509
+    parse_ok: true
+    labels: [0, 1, 2, 3]
+    block_counts: {"0": 308451, "1": 299667, "2": 298214, "3": 293177}
+    error: null
+  kaffpa_fast_k8:
+    path: "data/results_raw/real/tigerline/2025/06037/bounded_solver_execution_1208/kaffpa_fast_k8.partition"
+    exists: true
+    size_bytes: 2399018
+    sha256: "186b2c715a68817a4cc96e94ab325ff3d5254f0485cb76d23a4466f201268161"
+    expected_n: 1199509
+    expected_k: 8
+    line_count: 1199509
+    parse_ok: true
+    labels: [0, 1, 2, 3, 4, 5, 6, 7]
+    block_counts: {"0": 151508, "1": 139452, "2": 151303, "3": 151525, "4": 152420, "5": 148997, "6": 152795, "7": 151509}
+    error: null
+
+execution_errors:
+  []
+
+next_gate_recommendation:
+  next_recommended_issue_title: "M4 TigerLine bounded solver execution review: decide next scope"
+  next_gate_may_review_bounded_solver_execution: true
+  next_gate_may_run_campaign: false
+  next_gate_may_create_multi_dataset_command_plan: false
+  next_gate_may_run_metaheuristics: false
+  next_gate_may_train_cart: false
+  next_gate_may_update_result_map: false
+  next_gate_may_write_monograph_claims: false
+
+interpretation_boundary:
+  supported:
+    - "The 1211 bounded solver execution produced the recorded mechanical execution and partition-parse status for the single TigerLine instance."
+    - "The execution was limited to k values 2, 4 and 8, one gpmetis configuration and one KaHIP kaffpa fast configuration."
+    - "Raw outputs and partitions were written only under ignored runtime/result paths."
+  unsupported:
+    - "This record does not support campaign-level conclusions."
+    - "This record does not support multi-dataset conclusions."
+    - "This record does not support solver-family performance or quality claims."
+    - "This record does not support CART training, result-map updates or monograph claims."
