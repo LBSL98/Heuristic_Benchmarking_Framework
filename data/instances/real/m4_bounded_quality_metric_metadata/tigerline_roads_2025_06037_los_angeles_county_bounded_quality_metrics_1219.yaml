@@ -1,4 +1,4 @@
-bounded_quality_metric_metadata_id: "1219_tigerline_roads_2025_06037_los_angeles_county_bounded_quality_metrics"
+bounded_quality_metric_metadata_id: 1219_tigerline_roads_2025_06037_los_angeles_county_bounded_quality_metrics
 bounded_quality_metric_extraction_issue: 228
 source_bounded_solver_execution_review_issue: 226
 source_bounded_solver_execution_issue: 224
@@ -10,25 +10,22 @@ source_limited_pilot_execution_issue: 206
 source_limited_pilot_plan_issue: 204
 parent_campaign_issue: 130
 parent_license_issue: 143
-main_commit_at_bounded_quality_metric_extraction: "953edff126e8646aa960bc2a2276d95a6eec3a62"
-
+main_commit_at_bounded_quality_metric_extraction: 953edff126e8646aa960bc2a2276d95a6eec3a62
 execution_environment:
-  execution_host_label: "srv-noctua"
-  platform: "Linux-5.15.0-177-generic-x86_64-with-glibc2.35"
-  python_version: "3.10.12"
-  git_head_observed: "953edff126e8646aa960bc2a2276d95a6eec3a62"
-
+  execution_host_label: srv-noctua
+  platform: Linux-5.15.0-177-generic-x86_64-with-glibc2.35
+  python_version: 3.10.12
+  git_head_observed: 953edff126e8646aa960bc2a2276d95a6eec3a62
 selected_instance_context:
-  selected_instance_id: "tigerline_roads_2025_06037_los_angeles_county"
+  selected_instance_id: tigerline_roads_2025_06037_los_angeles_county
   expected_vertices_from_metis_header: 1199509
   expected_edges_from_metis_header: 1294674
-  metis_header_raw: "1199509 1294674"
-  metis_input_path: "data/cache/real_graphs/tigerline/2025/06037/benchmark_inputs/tigerline_roads_2025_06037_los_angeles_county.metis.graph"
-  metis_input_sha256: "df31d8c3e671e9010fa9f9d06b00cda80781a5a9140b214e5e08962192bf2b42"
+  metis_header_raw: 1199509 1294674
+  metis_input_path: data/cache/real_graphs/tigerline/2025/06037/benchmark_inputs/tigerline_roads_2025_06037_los_angeles_county.metis.graph
+  metis_input_sha256: df31d8c3e671e9010fa9f9d06b00cda80781a5a9140b214e5e08962192bf2b42
   edge_count_observed_from_upper_triangle: 1294674
-
 bounded_quality_metric_extraction:
-  quality_metric_extraction_status: "bounded_quality_metric_extraction_completed"
+  quality_metric_extraction_status: bounded_quality_metric_extraction_completed
   metric_record_count: 6
   expected_metric_record_count: 6
   all_expected_metric_records_present: true
@@ -50,17 +47,20 @@ bounded_quality_metric_extraction:
   raw_intermediate_metric_artifact_committed: false
   total_metric_extraction_duration_seconds: 10.844392
   graph_scan_duration_seconds: 5.424118
-
 metric_records:
   gpmetis_k2:
-    solver_family: "METIS/gpmetis"
+    solver_family: METIS/gpmetis
     k: 2
-    partition_path: "data/results_raw/real/tigerline/2025/06037/bounded_solver_execution_1208/input.metis.graph.part.2"
-    partition_sha256: "94d991311d24386b5291c633e81196eb61344d052cf2b764f2c2d4ede90cff14"
+    partition_path: data/results_raw/real/tigerline/2025/06037/bounded_solver_execution_1208/input.metis.graph.part.2
+    partition_sha256: 94d991311d24386b5291c633e81196eb61344d052cf2b764f2c2d4ede90cff14
     parse_ok: true
     line_count: 1199509
-    labels: [0, 1]
-    block_counts: {"0": 599755, "1": 599754}
+    labels:
+    - 0
+    - 1
+    block_counts:
+      '0': 599755
+      '1': 599754
     cut_edges: 62
     internal_edges: 1294612
     total_edges_observed: 1294674
@@ -74,14 +74,22 @@ metric_records:
       max_over_ideal_excess: 8.33674445033239e-07
       max_over_ideal_percent: 8.33674445033239e-05
   gpmetis_k4:
-    solver_family: "METIS/gpmetis"
+    solver_family: METIS/gpmetis
     k: 4
-    partition_path: "data/results_raw/real/tigerline/2025/06037/bounded_solver_execution_1208/input.metis.graph.part.4"
-    partition_sha256: "b5e1a71cb1f7c09e634c20c4648612fe20dd7c92ad0d18b31450756c4449afa6"
+    partition_path: data/results_raw/real/tigerline/2025/06037/bounded_solver_execution_1208/input.metis.graph.part.4
+    partition_sha256: b5e1a71cb1f7c09e634c20c4648612fe20dd7c92ad0d18b31450756c4449afa6
     parse_ok: true
     line_count: 1199509
-    labels: [0, 1, 2, 3]
-    block_counts: {"0": 299869, "1": 299879, "2": 299880, "3": 299881}
+    labels:
+    - 0
+    - 1
+    - 2
+    - 3
+    block_counts:
+      '0': 299869
+      '1': 299879
+      '2': 299880
+      '3': 299881
     cut_edges: 163
     internal_edges: 1294511
     total_edges_observed: 1294674
@@ -95,14 +103,30 @@ metric_records:
       max_over_ideal_excess: 1.2505116676830852e-05
       max_over_ideal_percent: 0.0012505116676830852
   gpmetis_k8:
-    solver_family: "METIS/gpmetis"
+    solver_family: METIS/gpmetis
     k: 8
-    partition_path: "data/results_raw/real/tigerline/2025/06037/bounded_solver_execution_1208/input.metis.graph.part.8"
-    partition_sha256: "58ee3fa9bae1cecdcdbccfd6fe2010f929f77b7245eff7970773a3d99a695c4b"
+    partition_path: data/results_raw/real/tigerline/2025/06037/bounded_solver_execution_1208/input.metis.graph.part.8
+    partition_sha256: 58ee3fa9bae1cecdcdbccfd6fe2010f929f77b7245eff7970773a3d99a695c4b
     parse_ok: true
     line_count: 1199509
-    labels: [0, 1, 2, 3, 4, 5, 6, 7]
-    block_counts: {"0": 149939, "1": 150047, "2": 150206, "3": 149966, "4": 150123, "5": 150114, "6": 150242, "7": 148872}
+    labels:
+    - 0
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+    - 6
+    - 7
+    block_counts:
+      '0': 149939
+      '1': 150047
+      '2': 150206
+      '3': 149966
+      '4': 150123
+      '5': 150114
+      '6': 150242
+      '7': 148872
     cut_edges: 344
     internal_edges: 1294330
     total_edges_observed: 1294674
@@ -116,14 +140,18 @@ metric_records:
       max_over_ideal_excess: 0.0020233278783234887
       max_over_ideal_percent: 0.20233278783234887
   kaffpa_fast_k2:
-    solver_family: "KaHIP/kaffpa"
+    solver_family: KaHIP/kaffpa
     k: 2
-    partition_path: "data/results_raw/real/tigerline/2025/06037/bounded_solver_execution_1208/kaffpa_fast_k2.partition"
-    partition_sha256: "b765b32166894510807bf0c5f1a6ed20ed0c5ab964e9feb027a875bb56ef5d15"
+    partition_path: data/results_raw/real/tigerline/2025/06037/bounded_solver_execution_1208/kaffpa_fast_k2.partition
+    partition_sha256: b765b32166894510807bf0c5f1a6ed20ed0c5ab964e9feb027a875bb56ef5d15
     parse_ok: true
     line_count: 1199509
-    labels: [0, 1]
-    block_counts: {"0": 585178, "1": 614331}
+    labels:
+    - 0
+    - 1
+    block_counts:
+      '0': 585178
+      '1': 614331
     cut_edges: 64
     internal_edges: 1294610
     total_edges_observed: 1294674
@@ -137,14 +165,22 @@ metric_records:
       max_over_ideal_excess: 0.02430411109879116
       max_over_ideal_percent: 2.430411109879116
   kaffpa_fast_k4:
-    solver_family: "KaHIP/kaffpa"
+    solver_family: KaHIP/kaffpa
     k: 4
-    partition_path: "data/results_raw/real/tigerline/2025/06037/bounded_solver_execution_1208/kaffpa_fast_k4.partition"
-    partition_sha256: "f2df5d46bb6df90ab94ed8438ed3785bdda761e6b1f31b5a9ee84b746cd0a8e1"
+    partition_path: data/results_raw/real/tigerline/2025/06037/bounded_solver_execution_1208/kaffpa_fast_k4.partition
+    partition_sha256: f2df5d46bb6df90ab94ed8438ed3785bdda761e6b1f31b5a9ee84b746cd0a8e1
     parse_ok: true
     line_count: 1199509
-    labels: [0, 1, 2, 3]
-    block_counts: {"0": 308451, "1": 299667, "2": 298214, "3": 293177}
+    labels:
+    - 0
+    - 1
+    - 2
+    - 3
+    block_counts:
+      '0': 308451
+      '1': 299667
+      '2': 298214
+      '3': 293177
     cut_edges: 153
     internal_edges: 1294521
     total_edges_observed: 1294674
@@ -158,14 +194,30 @@ metric_records:
       max_over_ideal_excess: 0.02859086509563502
       max_over_ideal_percent: 2.859086509563502
   kaffpa_fast_k8:
-    solver_family: "KaHIP/kaffpa"
+    solver_family: KaHIP/kaffpa
     k: 8
-    partition_path: "data/results_raw/real/tigerline/2025/06037/bounded_solver_execution_1208/kaffpa_fast_k8.partition"
-    partition_sha256: "186b2c715a68817a4cc96e94ab325ff3d5254f0485cb76d23a4466f201268161"
+    partition_path: data/results_raw/real/tigerline/2025/06037/bounded_solver_execution_1208/kaffpa_fast_k8.partition
+    partition_sha256: 186b2c715a68817a4cc96e94ab325ff3d5254f0485cb76d23a4466f201268161
     parse_ok: true
     line_count: 1199509
-    labels: [0, 1, 2, 3, 4, 5, 6, 7]
-    block_counts: {"0": 151508, "1": 139452, "2": 151303, "3": 151525, "4": 152420, "5": 148997, "6": 152795, "7": 151509}
+    labels:
+    - 0
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+    - 6
+    - 7
+    block_counts:
+      '0': 151508
+      '1': 139452
+      '2': 151303
+      '3': 151525
+      '4': 152420
+      '5': 148997
+      '6': 152795
+      '7': 151509
     cut_edges: 302
     internal_edges: 1294372
     total_edges_observed: 1294674
@@ -178,12 +230,9 @@ metric_records:
       max_over_ideal_ratio: 1.0190502947456002
       max_over_ideal_excess: 0.01905029474560016
       max_over_ideal_percent: 1.905029474560016
-
-quality_metric_extraction_errors:
-  []
-
+quality_metric_extraction_errors: []
 next_gate_recommendation:
-  next_recommended_issue_title: "M4 TigerLine bounded quality-metric review: decide next scope"
+  next_recommended_issue_title: 'M4 TigerLine bounded quality-metric review: decide next scope'
   next_gate_may_review_bounded_quality_metrics: true
   next_gate_may_run_solver_execution: false
   next_gate_may_run_campaign: false
@@ -192,13 +241,34 @@ next_gate_recommendation:
   next_gate_may_train_cart: false
   next_gate_may_update_result_map: false
   next_gate_may_write_monograph_claims: false
-
 interpretation_boundary:
   supported:
-    - "This record contains reduced quality metrics for the six already-existing bounded TigerLine solver partitions."
-    - "The metrics include cut edge count, block sizes and imbalance summaries for a single graph instance."
+  - This record contains reduced quality metrics for the six already-existing bounded TigerLine solver partitions.
+  - The metrics include cut edge count, block sizes and imbalance summaries for a single graph instance.
   unsupported:
-    - "This record did not execute any solver."
-    - "This record does not support campaign-level conclusions."
-    - "This record does not support multi-dataset conclusions."
-    - "This record does not support solver-family performance or quality claims, CART training, result-map updates or monograph claims."
+  - This record did not execute any solver.
+  - This record does not support campaign-level conclusions.
+  - This record does not support multi-dataset conclusions.
+  - This record does not support solver-family performance or quality claims, CART training, result-map updates or monograph
+    claims.
+bounded_quality_metric_review_after_1223:
+  bounded_quality_metric_review_manifest: data/instances/real/m4_bounded_quality_metric_review_metadata/tigerline_roads_2025_06037_los_angeles_county_bounded_quality_metric_review_1223.yaml
+  bounded_quality_metric_review_issue: 230
+  bounded_quality_metric_review_status: bounded_quality_metric_review_completed_broader_command_plan_gate_required
+  review_decision: open_broader_preregistered_real_graph_command_plan_gate
+  next_recommended_issue_title: 'M4 TigerLine broader preregistered real-graph command plan: define next bounded scope'
+  solver_execution_run: false
+  quality_metric_extraction_run: false
+  campaign_execution_run: false
+  multi_dataset_command_plan_created: false
+  synthetic_benchmark_expansion_run: false
+  additional_real_graph_execution_run: false
+  metaheuristic_execution_run: false
+  performance_or_quality_comparison_claim_supported: false
+  cart_training_run: false
+  result_map_updated: false
+  monograph_claim_supported: false
+  raw_graph_input_committed: false
+  benchmark_input_committed: false
+  partition_file_committed: false
+  raw_solver_output_committed: false
