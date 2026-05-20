@@ -94,3 +94,25 @@ interpretation_boundary:
     - "This review does not support multi-dataset conclusions."
     - "This review does not support solver-family performance or quality claims."
     - "This review does not authorize campaign execution, meta-heuristics, CART training, result-map updates or monograph claims."
+
+bounded_real_graph_command_plan_after_1207:
+  bounded_real_graph_command_plan_manifest: "data/instances/real/m4_bounded_real_graph_command_plan_metadata/tigerline_roads_2025_06037_los_angeles_county_command_plan_1207.yaml"
+  bounded_real_graph_command_plan_issue: 222
+  command_plan_status: "bounded_command_plan_ready_for_separate_execution_gate"
+  selected_k_values: [2, 4, 8]
+  planned_command_count: 6
+  next_recommended_issue_title: "M4 TigerLine bounded solver execution gate: Los Angeles County roads 2025"
+  solver_execution_run: false
+  campaign_execution_run: false
+  multi_dataset_command_plan_created: false
+  synthetic_benchmark_expansion_run: false
+  additional_real_graph_execution_run: false
+  metaheuristic_execution_run: false
+  performance_or_quality_comparison_claim_supported: false
+  cart_training_run: false
+  result_map_updated: false
+  monograph_claim_supported: false
+  raw_graph_input_committed: false
+  benchmark_input_committed: false
+  partition_file_committed: false
+  raw_solver_output_committed: false

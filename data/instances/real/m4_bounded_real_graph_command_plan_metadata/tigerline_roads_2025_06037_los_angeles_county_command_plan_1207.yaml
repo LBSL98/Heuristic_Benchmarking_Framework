@@ -1,0 +1,167 @@
+bounded_real_graph_command_plan_metadata_id: "1207_tigerline_roads_2025_06037_los_angeles_county_command_plan"
+bounded_real_graph_command_plan_issue: 222
+source_post_pilot_review_issue: 220
+source_limited_pilot_retry_issue: 218
+source_metis_gpmetis_remediation_issue: 216
+source_limited_pilot_execution_issue: 206
+source_limited_pilot_plan_issue: 204
+parent_campaign_issue: 130
+parent_license_issue: 143
+main_commit_at_command_plan: "03ae8ae71f8792361c888ca7f4cd29aa78c7e597"
+
+execution_environment:
+  execution_host_label: "srv-noctua"
+  platform: "Linux-5.15.0-177-generic-x86_64-with-glibc2.35"
+  python_version: "3.10.12"
+  git_head_observed: "03ae8ae71f8792361c888ca7f4cd29aa78c7e597"
+
+selected_instance_context:
+  selected_instance_id: "tigerline_roads_2025_06037_los_angeles_county"
+  expected_vertices_from_metis_header: 1199509
+  expected_edges_from_metis_header: 1294674
+  metis_header_raw: "1199509 1294674"
+  metis_input_path: "data/cache/real_graphs/tigerline/2025/06037/benchmark_inputs/tigerline_roads_2025_06037_los_angeles_county.metis.graph"
+  metis_input_sha256: "df31d8c3e671e9010fa9f9d06b00cda80781a5a9140b214e5e08962192bf2b42"
+  metis_input_sha256_matches: true
+  metis_input_ignored: true
+  metis_input_tracked: false
+  input_stats_path: "data/cache/real_graphs/tigerline/2025/06037/benchmark_inputs/tigerline_roads_2025_06037_los_angeles_county_input_stats.json"
+  input_stats_sha256: "2e6fc3539d21b97b57ada3d892bdf081d1f0608b25541ae6eb18e6f60dcff683"
+  input_stats_sha256_matches: true
+  input_stats_ignored: true
+  input_stats_tracked: false
+
+solver_binaries:
+  gpmetis_path: "/usr/bin/gpmetis"
+  gpmetis_sha256: "3b26536a307459b1483e1eaf148271eda9bb2dbbe04890813f2c371dc6477d04"
+  gpmetis_sha256_matches: true
+  gpmetis_help_first_line: "Usage: gpmetis [options] graphfile nparts"
+  kaffpa_path: "/home/brunno/.local/mpp_solvers/bin/kaffpa"
+  kaffpa_sha256: "a91d9f76c80c406cec597a89845179bab359b0942c1f38b049f08959342f9392"
+  kaffpa_sha256_matches: true
+  kaffpa_help_first_line: "Usage: /home/brunno/.local/mpp_solvers/bin/kaffpa [--help] FILE [--seed=<int>] [--version] [--mmap_io] --k=<int> [--imbalance=<double>] --preconfiguration=VARIANT [--time_limit=<double>] [--enforce_balance] [--balance_edges] [--enable_mapping] [--connected_blocks] [--hierarchy_parameter_string=<string>] [--distance_parameter_string=<string>] [--online_distances] [--output_filename=<string>]"
+  kaffpaE_path: "/home/brunno/.local/mpp_solvers/bin/kaffpaE"
+  kaffpaE_sha256: "efe053fa9c4d2a09623779d9f0fc4fc69a374ef12094bd1bf2b82cc19e659815"
+  kaffpaE_sha256_matches: true
+  kaffpaE_help_first_line: "Usage: /home/brunno/.local/mpp_solvers/bin/kaffpaE [--help] FILE [--seed=<int>] [--version] --k=<int> [--imbalance=<double>] [--preconfiguration=VARIANT] [--time_limit=<double>] [--mh_enable_quickstart] [--mh_print_log] [--mh_optimize_communication_volume] [--mh_enable_tabu_search] [--maxT=<int>] [--maxIter=<int>] [--mh_enable_kabapE] [--kabaE_internal_bal=<double>] [--balance_edges] [--connected_blocks] [--input_partition=<string>] [--output_filename=<string>]"
+
+bounded_execution_scope:
+  command_plan_status: "bounded_command_plan_ready_for_separate_execution_gate"
+  remote_validation_status: "command_plan_pre_execution_validation_passed"
+  scope_kind: "single_dataset_solver_only_bounded_execution"
+  dataset_count: 1
+  selected_k_values: [2, 4, 8]
+  planned_solver_families: ["METIS/gpmetis", "KaHIP/kaffpa"]
+  planned_command_count: 6
+  repetition_policy: "one_run_per_solver_and_k_no_repetition_in_this_gate"
+  timeout_policy: "1800_seconds_process_timeout_per_command"
+  kahip_internal_time_limit_seconds: 600
+  imbalance_policy: "KaHIP --imbalance=3; METIS default imbalance"
+  thread_policy: "mono-thread environment variables set to 1 for OMP, MKL, OPENBLAS and NUMEXPR"
+  metaheuristics_included: false
+  kaffpaE_execution_included: false
+  exclusion_reason: "Keep the next execution bounded and solver-only after the first successful pilot; KaHIP evolutionary mode and meta-heuristics require separate gates."
+
+runtime_plan:
+  execution_dir: "data/results_raw/real/tigerline/2025/06037/bounded_solver_execution_1208"
+  input_copy_path: "data/results_raw/real/tigerline/2025/06037/bounded_solver_execution_1208/input.metis.graph"
+  raw_outputs_written_only_to_ignored_runtime_paths: true
+  commit_raw_graph_input: false
+  commit_benchmark_input: false
+  commit_partition_files: false
+  commit_raw_solver_outputs: false
+
+planned_commands:
+  - command_index: 1
+    command_id: "gpmetis_k2"
+    solver_family: "METIS/gpmetis"
+    k: 2
+    process_timeout_seconds: 1800
+    cwd: "data/results_raw/real/tigerline/2025/06037/bounded_solver_execution_1208"
+    args_template: "/usr/bin/gpmetis input.metis.graph 2"
+    expected_partition_path: "data/results_raw/real/tigerline/2025/06037/bounded_solver_execution_1208/input.metis.graph.part.2"
+    stdout_stderr_path: "data/results_raw/real/tigerline/2025/06037/bounded_solver_execution_1208/gpmetis_k2.stdout_stderr.txt"
+  - command_index: 2
+    command_id: "gpmetis_k4"
+    solver_family: "METIS/gpmetis"
+    k: 4
+    process_timeout_seconds: 1800
+    cwd: "data/results_raw/real/tigerline/2025/06037/bounded_solver_execution_1208"
+    args_template: "/usr/bin/gpmetis input.metis.graph 4"
+    expected_partition_path: "data/results_raw/real/tigerline/2025/06037/bounded_solver_execution_1208/input.metis.graph.part.4"
+    stdout_stderr_path: "data/results_raw/real/tigerline/2025/06037/bounded_solver_execution_1208/gpmetis_k4.stdout_stderr.txt"
+  - command_index: 3
+    command_id: "gpmetis_k8"
+    solver_family: "METIS/gpmetis"
+    k: 8
+    process_timeout_seconds: 1800
+    cwd: "data/results_raw/real/tigerline/2025/06037/bounded_solver_execution_1208"
+    args_template: "/usr/bin/gpmetis input.metis.graph 8"
+    expected_partition_path: "data/results_raw/real/tigerline/2025/06037/bounded_solver_execution_1208/input.metis.graph.part.8"
+    stdout_stderr_path: "data/results_raw/real/tigerline/2025/06037/bounded_solver_execution_1208/gpmetis_k8.stdout_stderr.txt"
+  - command_index: 4
+    command_id: "kaffpa_fast_k2"
+    solver_family: "KaHIP/kaffpa"
+    k: 2
+    process_timeout_seconds: 1800
+    cwd: "data/results_raw/real/tigerline/2025/06037/bounded_solver_execution_1208"
+    args_template: "/home/brunno/.local/mpp_solvers/bin/kaffpa input.metis.graph --k=2 --imbalance=3 --preconfiguration=fast --time_limit=600 --output_filename=kaffpa_fast_k2.partition"
+    expected_partition_path: "data/results_raw/real/tigerline/2025/06037/bounded_solver_execution_1208/kaffpa_fast_k2.partition"
+    stdout_stderr_path: "data/results_raw/real/tigerline/2025/06037/bounded_solver_execution_1208/kaffpa_fast_k2.stdout_stderr.txt"
+  - command_index: 5
+    command_id: "kaffpa_fast_k4"
+    solver_family: "KaHIP/kaffpa"
+    k: 4
+    process_timeout_seconds: 1800
+    cwd: "data/results_raw/real/tigerline/2025/06037/bounded_solver_execution_1208"
+    args_template: "/home/brunno/.local/mpp_solvers/bin/kaffpa input.metis.graph --k=4 --imbalance=3 --preconfiguration=fast --time_limit=600 --output_filename=kaffpa_fast_k4.partition"
+    expected_partition_path: "data/results_raw/real/tigerline/2025/06037/bounded_solver_execution_1208/kaffpa_fast_k4.partition"
+    stdout_stderr_path: "data/results_raw/real/tigerline/2025/06037/bounded_solver_execution_1208/kaffpa_fast_k4.stdout_stderr.txt"
+  - command_index: 6
+    command_id: "kaffpa_fast_k8"
+    solver_family: "KaHIP/kaffpa"
+    k: 8
+    process_timeout_seconds: 1800
+    cwd: "data/results_raw/real/tigerline/2025/06037/bounded_solver_execution_1208"
+    args_template: "/home/brunno/.local/mpp_solvers/bin/kaffpa input.metis.graph --k=8 --imbalance=3 --preconfiguration=fast --time_limit=600 --output_filename=kaffpa_fast_k8.partition"
+    expected_partition_path: "data/results_raw/real/tigerline/2025/06037/bounded_solver_execution_1208/kaffpa_fast_k8.partition"
+    stdout_stderr_path: "data/results_raw/real/tigerline/2025/06037/bounded_solver_execution_1208/kaffpa_fast_k8.stdout_stderr.txt"
+
+command_plan_errors:
+  []
+
+boundary_flags:
+  solver_execution_run: false
+  campaign_execution_run: false
+  multi_dataset_command_plan_created: false
+  synthetic_benchmark_expansion_run: false
+  additional_real_graph_execution_run: false
+  metaheuristic_execution_run: false
+  performance_or_quality_comparison_claim_supported: false
+  cart_training_run: false
+  result_map_updated: false
+  monograph_claim_supported: false
+  raw_graph_input_committed: false
+  benchmark_input_committed: false
+  partition_file_committed: false
+  raw_solver_output_committed: false
+
+next_gate_recommendation:
+  next_recommended_issue_title: "M4 TigerLine bounded solver execution gate: Los Angeles County roads 2025"
+  next_gate_may_run_bounded_solver_execution: true
+  next_gate_may_run_campaign: false
+  next_gate_may_create_multi_dataset_command_plan: false
+  next_gate_may_run_metaheuristics: false
+  next_gate_may_train_cart: false
+  next_gate_may_update_result_map: false
+  next_gate_may_write_monograph_claims: false
+
+interpretation_boundary:
+  supported:
+    - "The next bounded execution plan is limited to one TigerLine instance, k values 2, 4 and 8, one gpmetis configuration and one KaHIP kaffpa fast configuration."
+    - "The plan records command templates, solver binaries, hashes, output locations and guards."
+  unsupported:
+    - "This command plan did not execute any solver."
+    - "This command plan does not support campaign-level conclusions."
+    - "This command plan does not support multi-dataset conclusions."
+    - "This command plan does not support solver-family performance or quality claims, CART training, result-map updates or monograph claims."
