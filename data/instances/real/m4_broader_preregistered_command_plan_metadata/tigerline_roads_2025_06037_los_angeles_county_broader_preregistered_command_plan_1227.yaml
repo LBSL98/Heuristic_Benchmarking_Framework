@@ -1,0 +1,408 @@
+broader_preregistered_command_plan_metadata_id: 1227_tigerline_roads_2025_06037_los_angeles_county_broader_preregistered_command_plan
+broader_preregistered_command_plan_issue: 232
+source_bounded_quality_metric_review_issue: 230
+source_bounded_quality_metric_extraction_issue: 228
+source_bounded_solver_execution_review_issue: 226
+source_bounded_solver_execution_issue: 224
+source_bounded_command_plan_issue: 222
+source_post_pilot_review_issue: 220
+source_limited_pilot_retry_issue: 218
+source_metis_gpmetis_remediation_issue: 216
+source_limited_pilot_execution_issue: 206
+source_limited_pilot_plan_issue: 204
+parent_campaign_issue: 130
+parent_license_issue: 143
+main_commit_at_broader_preregistered_command_plan: 52e0b222575ec178a5f37f56323e1dea3fc55b35
+planning_scope:
+  plan_status: broader_preregistered_real_graph_command_plan_completed_execution_gate_required
+  plan_decision: open_broader_preregistered_real_graph_execution_gate
+  scope_kind: bounded_single_dataset_real_graph_expansion
+  full_campaign_plan_created: false
+  multi_dataset_command_plan_created: false
+  synthetic_benchmark_expansion_planned: false
+  metaheuristic_execution_planned: false
+  cart_training_planned: false
+  result_map_update_planned: false
+  monograph_claim_planned: false
+  next_recommended_issue_title: 'M4 TigerLine broader preregistered real-graph execution gate: Los Angeles County roads 2025'
+dataset_scope:
+  included_instances:
+  - selected_instance_id: tigerline_roads_2025_06037_los_angeles_county
+    candidate_family_id: tigerline_roads_state_or_county
+    dataset_family: US Census TIGER/Line roads
+    geography: Los Angeles County, California
+    vintage: 2025
+    license_admissibility_status: low_license_risk_broader_preregistered_command_plan_required_no_campaign
+    metis_input_path: data/cache/real_graphs/tigerline/2025/06037/benchmark_inputs/tigerline_roads_2025_06037_los_angeles_county.metis.graph
+    metis_input_sha256: df31d8c3e671e9010fa9f9d06b00cda80781a5a9140b214e5e08962192bf2b42
+    expected_vertices_from_metis_header: 1199509
+    expected_edges_from_metis_header: 1294674
+  explicitly_excluded_or_blocked:
+  - candidate_family_id: snap_roadnet_ca
+    reason: SNAP dataset admissibility remains unresolved; excluded from this plan.
+  - candidate_family_id: snap_ca_hepth
+    reason: SNAP dataset admissibility remains unresolved; excluded from this plan.
+  - candidate_family_id: snap_ca_astroph
+    reason: SNAP dataset admissibility remains unresolved; excluded from this plan.
+command_plan:
+  command_count: 10
+  solver_families:
+  - METIS/gpmetis
+  - KaHIP/kaffpa
+  k_values:
+  - 2
+  - 4
+  - 8
+  - 16
+  - 32
+  commands:
+    gpmetis_k2:
+      command_id: gpmetis_k2
+      solver_family: METIS/gpmetis
+      executable: gpmetis
+      k: 2
+      preconfiguration: null
+      timeout_seconds: 7200
+      mono_thread_required: true
+      working_directory: data/results_raw/real/tigerline/2025/06037/broader_solver_execution_1227
+      metis_input_path: data/cache/real_graphs/tigerline/2025/06037/benchmark_inputs/tigerline_roads_2025_06037_los_angeles_county.metis.graph
+      partition_output_relpath: data/results_raw/real/tigerline/2025/06037/broader_solver_execution_1227/input.metis.graph.part.2
+      stdout_stderr_relpath: data/results_raw/real/tigerline/2025/06037/broader_solver_execution_1227/gpmetis_k2.stdout_stderr.txt
+      command_template: gpmetis {metis_input_path} {k}
+      expected_partition_line_count: 1199509
+      expected_partition_labels:
+      - 0
+      - 1
+      raw_outputs_must_remain_ignored: true
+    gpmetis_k4:
+      command_id: gpmetis_k4
+      solver_family: METIS/gpmetis
+      executable: gpmetis
+      k: 4
+      preconfiguration: null
+      timeout_seconds: 7200
+      mono_thread_required: true
+      working_directory: data/results_raw/real/tigerline/2025/06037/broader_solver_execution_1227
+      metis_input_path: data/cache/real_graphs/tigerline/2025/06037/benchmark_inputs/tigerline_roads_2025_06037_los_angeles_county.metis.graph
+      partition_output_relpath: data/results_raw/real/tigerline/2025/06037/broader_solver_execution_1227/input.metis.graph.part.4
+      stdout_stderr_relpath: data/results_raw/real/tigerline/2025/06037/broader_solver_execution_1227/gpmetis_k4.stdout_stderr.txt
+      command_template: gpmetis {metis_input_path} {k}
+      expected_partition_line_count: 1199509
+      expected_partition_labels:
+      - 0
+      - 1
+      - 2
+      - 3
+      raw_outputs_must_remain_ignored: true
+    gpmetis_k8:
+      command_id: gpmetis_k8
+      solver_family: METIS/gpmetis
+      executable: gpmetis
+      k: 8
+      preconfiguration: null
+      timeout_seconds: 7200
+      mono_thread_required: true
+      working_directory: data/results_raw/real/tigerline/2025/06037/broader_solver_execution_1227
+      metis_input_path: data/cache/real_graphs/tigerline/2025/06037/benchmark_inputs/tigerline_roads_2025_06037_los_angeles_county.metis.graph
+      partition_output_relpath: data/results_raw/real/tigerline/2025/06037/broader_solver_execution_1227/input.metis.graph.part.8
+      stdout_stderr_relpath: data/results_raw/real/tigerline/2025/06037/broader_solver_execution_1227/gpmetis_k8.stdout_stderr.txt
+      command_template: gpmetis {metis_input_path} {k}
+      expected_partition_line_count: 1199509
+      expected_partition_labels:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      - 7
+      raw_outputs_must_remain_ignored: true
+    gpmetis_k16:
+      command_id: gpmetis_k16
+      solver_family: METIS/gpmetis
+      executable: gpmetis
+      k: 16
+      preconfiguration: null
+      timeout_seconds: 7200
+      mono_thread_required: true
+      working_directory: data/results_raw/real/tigerline/2025/06037/broader_solver_execution_1227
+      metis_input_path: data/cache/real_graphs/tigerline/2025/06037/benchmark_inputs/tigerline_roads_2025_06037_los_angeles_county.metis.graph
+      partition_output_relpath: data/results_raw/real/tigerline/2025/06037/broader_solver_execution_1227/input.metis.graph.part.16
+      stdout_stderr_relpath: data/results_raw/real/tigerline/2025/06037/broader_solver_execution_1227/gpmetis_k16.stdout_stderr.txt
+      command_template: gpmetis {metis_input_path} {k}
+      expected_partition_line_count: 1199509
+      expected_partition_labels:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      - 7
+      - 8
+      - 9
+      - 10
+      - 11
+      - 12
+      - 13
+      - 14
+      - 15
+      raw_outputs_must_remain_ignored: true
+    gpmetis_k32:
+      command_id: gpmetis_k32
+      solver_family: METIS/gpmetis
+      executable: gpmetis
+      k: 32
+      preconfiguration: null
+      timeout_seconds: 7200
+      mono_thread_required: true
+      working_directory: data/results_raw/real/tigerline/2025/06037/broader_solver_execution_1227
+      metis_input_path: data/cache/real_graphs/tigerline/2025/06037/benchmark_inputs/tigerline_roads_2025_06037_los_angeles_county.metis.graph
+      partition_output_relpath: data/results_raw/real/tigerline/2025/06037/broader_solver_execution_1227/input.metis.graph.part.32
+      stdout_stderr_relpath: data/results_raw/real/tigerline/2025/06037/broader_solver_execution_1227/gpmetis_k32.stdout_stderr.txt
+      command_template: gpmetis {metis_input_path} {k}
+      expected_partition_line_count: 1199509
+      expected_partition_labels:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      - 7
+      - 8
+      - 9
+      - 10
+      - 11
+      - 12
+      - 13
+      - 14
+      - 15
+      - 16
+      - 17
+      - 18
+      - 19
+      - 20
+      - 21
+      - 22
+      - 23
+      - 24
+      - 25
+      - 26
+      - 27
+      - 28
+      - 29
+      - 30
+      - 31
+      raw_outputs_must_remain_ignored: true
+    kaffpa_fast_k2:
+      command_id: kaffpa_fast_k2
+      solver_family: KaHIP/kaffpa
+      executable: kaffpa
+      k: 2
+      preconfiguration: fast
+      timeout_seconds: 10800
+      mono_thread_required: true
+      working_directory: data/results_raw/real/tigerline/2025/06037/broader_solver_execution_1227
+      metis_input_path: data/cache/real_graphs/tigerline/2025/06037/benchmark_inputs/tigerline_roads_2025_06037_los_angeles_county.metis.graph
+      partition_output_relpath: data/results_raw/real/tigerline/2025/06037/broader_solver_execution_1227/kaffpa_fast_k2.partition
+      stdout_stderr_relpath: data/results_raw/real/tigerline/2025/06037/broader_solver_execution_1227/kaffpa_fast_k2.stdout_stderr.txt
+      command_template: kaffpa {metis_input_path} --k {k} --preconfiguration=fast --output_filename {partition_output_path}
+      expected_partition_line_count: 1199509
+      expected_partition_labels:
+      - 0
+      - 1
+      raw_outputs_must_remain_ignored: true
+    kaffpa_fast_k4:
+      command_id: kaffpa_fast_k4
+      solver_family: KaHIP/kaffpa
+      executable: kaffpa
+      k: 4
+      preconfiguration: fast
+      timeout_seconds: 10800
+      mono_thread_required: true
+      working_directory: data/results_raw/real/tigerline/2025/06037/broader_solver_execution_1227
+      metis_input_path: data/cache/real_graphs/tigerline/2025/06037/benchmark_inputs/tigerline_roads_2025_06037_los_angeles_county.metis.graph
+      partition_output_relpath: data/results_raw/real/tigerline/2025/06037/broader_solver_execution_1227/kaffpa_fast_k4.partition
+      stdout_stderr_relpath: data/results_raw/real/tigerline/2025/06037/broader_solver_execution_1227/kaffpa_fast_k4.stdout_stderr.txt
+      command_template: kaffpa {metis_input_path} --k {k} --preconfiguration=fast --output_filename {partition_output_path}
+      expected_partition_line_count: 1199509
+      expected_partition_labels:
+      - 0
+      - 1
+      - 2
+      - 3
+      raw_outputs_must_remain_ignored: true
+    kaffpa_fast_k8:
+      command_id: kaffpa_fast_k8
+      solver_family: KaHIP/kaffpa
+      executable: kaffpa
+      k: 8
+      preconfiguration: fast
+      timeout_seconds: 10800
+      mono_thread_required: true
+      working_directory: data/results_raw/real/tigerline/2025/06037/broader_solver_execution_1227
+      metis_input_path: data/cache/real_graphs/tigerline/2025/06037/benchmark_inputs/tigerline_roads_2025_06037_los_angeles_county.metis.graph
+      partition_output_relpath: data/results_raw/real/tigerline/2025/06037/broader_solver_execution_1227/kaffpa_fast_k8.partition
+      stdout_stderr_relpath: data/results_raw/real/tigerline/2025/06037/broader_solver_execution_1227/kaffpa_fast_k8.stdout_stderr.txt
+      command_template: kaffpa {metis_input_path} --k {k} --preconfiguration=fast --output_filename {partition_output_path}
+      expected_partition_line_count: 1199509
+      expected_partition_labels:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      - 7
+      raw_outputs_must_remain_ignored: true
+    kaffpa_fast_k16:
+      command_id: kaffpa_fast_k16
+      solver_family: KaHIP/kaffpa
+      executable: kaffpa
+      k: 16
+      preconfiguration: fast
+      timeout_seconds: 10800
+      mono_thread_required: true
+      working_directory: data/results_raw/real/tigerline/2025/06037/broader_solver_execution_1227
+      metis_input_path: data/cache/real_graphs/tigerline/2025/06037/benchmark_inputs/tigerline_roads_2025_06037_los_angeles_county.metis.graph
+      partition_output_relpath: data/results_raw/real/tigerline/2025/06037/broader_solver_execution_1227/kaffpa_fast_k16.partition
+      stdout_stderr_relpath: data/results_raw/real/tigerline/2025/06037/broader_solver_execution_1227/kaffpa_fast_k16.stdout_stderr.txt
+      command_template: kaffpa {metis_input_path} --k {k} --preconfiguration=fast --output_filename {partition_output_path}
+      expected_partition_line_count: 1199509
+      expected_partition_labels:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      - 7
+      - 8
+      - 9
+      - 10
+      - 11
+      - 12
+      - 13
+      - 14
+      - 15
+      raw_outputs_must_remain_ignored: true
+    kaffpa_fast_k32:
+      command_id: kaffpa_fast_k32
+      solver_family: KaHIP/kaffpa
+      executable: kaffpa
+      k: 32
+      preconfiguration: fast
+      timeout_seconds: 10800
+      mono_thread_required: true
+      working_directory: data/results_raw/real/tigerline/2025/06037/broader_solver_execution_1227
+      metis_input_path: data/cache/real_graphs/tigerline/2025/06037/benchmark_inputs/tigerline_roads_2025_06037_los_angeles_county.metis.graph
+      partition_output_relpath: data/results_raw/real/tigerline/2025/06037/broader_solver_execution_1227/kaffpa_fast_k32.partition
+      stdout_stderr_relpath: data/results_raw/real/tigerline/2025/06037/broader_solver_execution_1227/kaffpa_fast_k32.stdout_stderr.txt
+      command_template: kaffpa {metis_input_path} --k {k} --preconfiguration=fast --output_filename {partition_output_path}
+      expected_partition_line_count: 1199509
+      expected_partition_labels:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      - 7
+      - 8
+      - 9
+      - 10
+      - 11
+      - 12
+      - 13
+      - 14
+      - 15
+      - 16
+      - 17
+      - 18
+      - 19
+      - 20
+      - 21
+      - 22
+      - 23
+      - 24
+      - 25
+      - 26
+      - 27
+      - 28
+      - 29
+      - 30
+      - 31
+      raw_outputs_must_remain_ignored: true
+resource_and_execution_protocol:
+  execution_host_label: srv-noctua
+  execution_must_be_detached_from_wsl_or_notebook: true
+  required_detached_session_tool: tmux
+  tmux_session_name: m4_tigerline_broader_1227
+  server_side_launch_pattern: ssh srv-noctua 'cd /home/brunno/MPP && tmux new-session -d -s m4_tigerline_broader_1227 "bash
+    /tmp/1227_broader_execution_gate.sh"'
+  server_side_status_files_required: true
+  server_side_log_directory: data/results_raw/real/tigerline/2025/06037/broader_solver_execution_1227/logs
+  local_wsl_or_notebook_required_after_launch: false
+  mono_thread_environment:
+    OMP_NUM_THREADS: '1'
+    OPENBLAS_NUM_THREADS: '1'
+    MKL_NUM_THREADS: '1'
+    NUMEXPR_NUM_THREADS: '1'
+    RAYON_NUM_THREADS: '1'
+  raw_runtime_artifacts_must_remain_ignored: true
+validation_requirements_for_execution_gate:
+  validate_host_is_srv_noctua: true
+  validate_main_commit_before_execution: 52e0b222575ec178a5f37f56323e1dea3fc55b35
+  validate_input_sha256_before_execution: df31d8c3e671e9010fa9f9d06b00cda80781a5a9140b214e5e08962192bf2b42
+  validate_input_is_ignored_and_untracked: true
+  validate_each_partition_line_count: 1199509
+  validate_each_partition_label_domain: true
+  record_return_code_timeout_wall_seconds_sha256_and_parse_status: true
+  version_only_reduced_execution_metadata: true
+  open_separate_execution_review_gate_after_metadata_is_versioned: true
+boundary_flags:
+  solver_execution_run: false
+  quality_metric_extraction_run: false
+  campaign_execution_run: false
+  multi_dataset_command_plan_created: false
+  synthetic_benchmark_expansion_run: false
+  additional_real_graph_execution_run: false
+  metaheuristic_execution_run: false
+  performance_or_quality_comparison_claim_supported: false
+  cart_training_run: false
+  result_map_updated: false
+  monograph_claim_supported: false
+  raw_graph_input_committed: false
+  benchmark_input_committed: false
+  partition_file_committed: false
+  raw_solver_output_committed: false
+  raw_intermediate_metric_artifact_committed: false
+next_gate_recommendation:
+  next_recommended_issue_title: 'M4 TigerLine broader preregistered real-graph execution gate: Los Angeles County roads 2025'
+  next_gate_may_run_only_preregistered_broader_execution: true
+  next_gate_must_launch_detached_on_srv_noctua: true
+  next_gate_may_run_full_campaign: false
+  next_gate_may_add_datasets: false
+  next_gate_may_run_metaheuristics: false
+  next_gate_may_train_cart: false
+  next_gate_may_update_result_map: false
+  next_gate_may_write_monograph_claims: false
+interpretation_boundary:
+  supported:
+  - This record preregisters a bounded single-dataset real-graph command plan for TigerLine Los Angeles County roads 2025.
+  - The plan expands the existing bounded pilot to METIS/gpmetis and KaHIP/kaffpa fast at k values 2, 4, 8, 16 and 32.
+  - Any long-running execution derived from this plan must be launched detached on srv-noctua so that WSL/notebook does not
+    need to remain online.
+  unsupported:
+  - This record did not execute solvers.
+  - This record did not extract or recompute quality metrics.
+  - This record does not authorize a full campaign.
+  - This record does not support solver-family performance or quality claims, CART training, result-map updates or monograph
+    claims.
