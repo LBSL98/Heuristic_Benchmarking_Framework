@@ -82,3 +82,23 @@ interpretation_boundary:
     - "No TigerLine solver execution was run in this gate."
     - "No pilot retry was run in this gate."
     - "No graph partition generation, campaign, multi-dataset conclusion, performance/quality comparison, CART training, result-map update or monograph claim is supported."
+
+limited_pilot_retry_after_1199:
+  limited_pilot_retry_manifest: "data/instances/real/m4_limited_pilot_retry_metadata/tigerline_roads_2025_06037_los_angeles_county_limited_pilot_retry_1199.yaml"
+  limited_pilot_retry_issue: 218
+  limited_pilot_retry_status: "limited_pilot_retry_completed_parseable_partitions"
+  gpmetis_partition_parse_ok: true
+  kaffpa_partition_parse_ok: true
+  campaign_execution_run: false
+  multi_dataset_command_plan_created: false
+  synthetic_benchmark_expansion_run: false
+  additional_real_graph_execution_run: false
+  metaheuristic_execution_run: false
+  performance_or_quality_comparison_claim_supported: false
+  cart_training_run: false
+  result_map_updated: false
+  monograph_claim_supported: false
+  raw_graph_input_committed: false
+  benchmark_input_committed: false
+  partition_file_committed: false
+  raw_solver_output_committed: false

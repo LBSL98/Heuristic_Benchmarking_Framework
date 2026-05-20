@@ -1,0 +1,124 @@
+limited_pilot_retry_metadata_id: "1199_tigerline_roads_2025_06037_los_angeles_county_limited_pilot_retry"
+limited_pilot_retry_issue: 218
+source_metis_gpmetis_remediation_issue: 216
+source_limited_pilot_execution_issue: 206
+source_limited_pilot_plan_issue: 204
+parent_campaign_issue: 130
+parent_license_issue: 143
+main_commit_at_limited_pilot_retry: "b1fa97890e659a2873de53023abf08abfb6d8394"
+
+execution_environment:
+  execution_host_label: "srv-noctua"
+  platform: "Linux-5.15.0-177-generic-x86_64-with-glibc2.35"
+  python_version: "3.10.12"
+  git_head_observed: "b1fa97890e659a2873de53023abf08abfb6d8394"
+
+selected_instance_context:
+  selected_instance_id: "tigerline_roads_2025_06037_los_angeles_county"
+  k: 2
+  expected_vertices_from_metis_header: 1199509
+  input_sha256_observed: "df31d8c3e671e9010fa9f9d06b00cda80781a5a9140b214e5e08962192bf2b42"
+  input_stats_sha256_observed: "2e6fc3539d21b97b57ada3d892bdf081d1f0608b25541ae6eb18e6f60dcff683"
+  cache_restored_or_verified_on_srv_noctua: true
+
+runtime_artifacts:
+  run_dir: "data/results_raw/real/tigerline/2025/06037/limited_pilot_retry_1199"
+  input_copy_path: "data/results_raw/real/tigerline/2025/06037/limited_pilot_retry_1199/input.metis.graph"
+  raw_outputs_written_only_to_ignored_runtime_paths: true
+
+solver_binaries:
+  gpmetis_path: "/usr/bin/gpmetis"
+  gpmetis_sha256: "3b26536a307459b1483e1eaf148271eda9bb2dbbe04890813f2c371dc6477d04"
+  gpmetis_help_first_line: "Usage: gpmetis [options] graphfile nparts"
+  kaffpa_path: "/home/brunno/.local/mpp_solvers/bin/kaffpa"
+  kaffpa_sha256: "a91d9f76c80c406cec597a89845179bab359b0942c1f38b049f08959342f9392"
+  kaffpa_help_first_line: "Usage: /home/brunno/.local/mpp_solvers/bin/kaffpa [--help] FILE [--seed=<int>] [--version] [--mmap_io] --k=<int> [--imbalance=<double>] --preconfiguration=VARIANT [--time_limit=<double>] [--enforce_balance] [--balance_edges] [--enable_mapping] [--connected_blocks] [--hierarchy_parameter_string=<string>] [--distance_parameter_string=<string>] [--online_distances] [--output_filename=<string>]"
+  kaffpaE_path: "/home/brunno/.local/mpp_solvers/bin/kaffpaE"
+  kaffpaE_sha256: "efe053fa9c4d2a09623779d9f0fc4fc69a374ef12094bd1bf2b82cc19e659815"
+  kaffpaE_help_first_line: "Usage: /home/brunno/.local/mpp_solvers/bin/kaffpaE [--help] FILE [--seed=<int>] [--version] --k=<int> [--imbalance=<double>] [--preconfiguration=VARIANT] [--time_limit=<double>] [--mh_enable_quickstart] [--mh_print_log] [--mh_optimize_communication_volume] [--mh_enable_tabu_search] [--maxT=<int>] [--maxIter=<int>] [--mh_enable_kabapE] [--kabaE_internal_bal=<double>] [--balance_edges] [--connected_blocks] [--input_partition=<string>] [--output_filename=<string>]"
+
+limited_pilot_retry_attempt:
+  limited_pilot_retry_status: "limited_pilot_retry_completed_parseable_partitions"
+  limited_pilot_retry_execution_run: true
+  gpmetis_execution_run: true
+  kaffpa_execution_run: true
+  campaign_execution_run: false
+  multi_dataset_command_plan_created: false
+  synthetic_benchmark_expansion_run: false
+  additional_real_graph_execution_run: false
+  metaheuristic_execution_run: false
+  performance_or_quality_comparison_claim_supported: false
+  cart_training_run: false
+  result_map_updated: false
+  monograph_claim_supported: false
+  raw_graph_input_committed: false
+  benchmark_input_committed: false
+  partition_file_committed: false
+  raw_solver_output_committed: false
+
+commands_executed:
+  - command_index: 1
+    command_id: "gpmetis_k2"
+    args: "/usr/bin/gpmetis input.metis.graph 2"
+    cwd: "data/results_raw/real/tigerline/2025/06037/limited_pilot_retry_1199"
+    return_code: 0
+    timed_out: false
+    duration_seconds: 2.049052
+    stdout_stderr_excerpt: "******************************************************************************\nMETIS 5.0 Copyright 1998-13, Regents of the University of Minnesota\n (HEAD: , Built on: Mar 24 2022, 16:16:52)\n size of idx_t: 32bits, real_t: 32bits, idx_t *: 64bits\n\nGraph Information -----------------------------------------------------------\n Name: input.metis.graph, #Vertices: 1199509, #Edges: 1294674, #Parts: 2\n\nOptions ---------------------------------------------------------------------\n ptype=kway, objtype=cut, ctype=shem, rtype=greedy, iptype=metisrb\n dbglvl=0, ufactor=1.030, no2hop=NO, minconn=NO, contig=NO, nooutput=NO\n seed=-1, niter=10, ncuts=1\n\nDirect k-way Partitioning ---------------------------------------------------\n - Edgecut: 62, communication volume: 123.\n\n - Balance:\n     constraint #0:  1.000 out of 0.000\n\n - Most overweight partition:\n     pid: 0, actual: 599755, desired: 599754, ratio: 1.00.\n\n - Subdomain connectivity: max: 1, min: 1, avg: 1.00\n\n - The original graph had 125 connected components and the resulting\n   partitioning after removing the cut edges has 126 components.\nTiming Information ----------------------------------------------------------\n  I/O:          \t\t   0.343 sec\n  Partitioning: \t\t   0.919 sec   (METIS time)\n  Reporting:    \t\t   0.780 sec\n\nMemory Information ----------------------------------------------------------\n  Max memory used:\t\t  95.105 MB\n******************************************************************************\n"
+  - command_index: 2
+    command_id: "kaffpa_k2_fast"
+    args: "/home/brunno/.local/mpp_solvers/bin/kaffpa input.metis.graph --k=2 --imbalance=3 --preconfiguration=fast --time_limit=60 --output_filename=kahip_k2_fast.partition"
+    cwd: "data/results_raw/real/tigerline/2025/06037/limited_pilot_retry_1199"
+    return_code: 0
+    timed_out: false
+    duration_seconds: 61.008875
+    stdout_stderr_excerpt: "io time: 0.775175\ngraph has 1199509 nodes and 2589348 edges\nperforming partitioning!\ntime spent for partitioning 60.0054\ncut \t\t67\nfinalobjective  67\nbnd \t\t134\nbalance \t1.02701\nmax_comm_vol \t67\nwriting partition to kahip_k2_fast.partition ... \n"
+
+partition_parse_status:
+  gpmetis_k2:
+    path: "data/results_raw/real/tigerline/2025/06037/limited_pilot_retry_1199/input.metis.graph.part.2"
+    exists: true
+    size_bytes: 2399018
+    sha256: "94d991311d24386b5291c633e81196eb61344d052cf2b764f2c2d4ede90cff14"
+    expected_n: 1199509
+    line_count: 1199509
+    parse_ok: true
+    labels: [0, 1]
+    block_counts: {"0": 599755, "1": 599754}
+    error: null
+  kaffpa_k2_fast:
+    path: "data/results_raw/real/tigerline/2025/06037/limited_pilot_retry_1199/kahip_k2_fast.partition"
+    exists: true
+    size_bytes: 2399018
+    sha256: "b8b35f9ec577cba8fca41c1f593e988c712f53878d2d70f314dd6e3b96bea3f9"
+    expected_n: 1199509
+    line_count: 1199509
+    parse_ok: true
+    labels: [0, 1]
+    block_counts: {"0": 615953, "1": 583556}
+    error: null
+
+pilot_retry_errors:
+  []
+
+next_gate_recommendation:
+  next_issue_title_if_completed: "M4 TigerLine limited pilot retry review: decide next execution scope"
+  next_issue_title_if_blocked: "M4 TigerLine limited pilot retry review: diagnose blocker"
+  next_gate_may_review_pilot_status: true
+  next_gate_may_run_campaign: false
+  next_gate_may_create_multi_dataset_command_plan: false
+  next_gate_may_run_metaheuristics: false
+  next_gate_may_train_cart: false
+  next_gate_may_update_result_map: false
+  next_gate_may_write_monograph_claims: false
+
+interpretation_boundary:
+  supported:
+    - "The 1199 limited-pilot retry produced the recorded mechanical execution and partition-parse status."
+    - "The retry was limited to one TigerLine instance, k=2, one gpmetis configuration and one KaHIP configuration."
+    - "Raw outputs and partitions were written only under ignored runtime/result paths."
+  unsupported:
+    - "This record does not support campaign-level conclusions."
+    - "This record does not support multi-dataset conclusions."
+    - "This record does not support solver-family performance or quality claims."
+    - "This record does not support CART training, result-map updates or monograph claims."
