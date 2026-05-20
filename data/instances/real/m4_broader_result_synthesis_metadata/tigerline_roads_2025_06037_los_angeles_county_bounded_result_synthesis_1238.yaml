@@ -1,0 +1,93 @@
+bounded_result_synthesis_metadata_id: 1238_tigerline_roads_2025_06037_los_angeles_county_bounded_result_synthesis
+bounded_result_synthesis_issue: 238
+source_quality_metric_issue: 236
+source_solver_execution_issue: 234
+parent_campaign_issue: 130
+parent_license_issue: 143
+main_commit_at_synthesis: e8c04e6a2573dbfff78979792681700b3b8b1115
+selected_instance_context:
+  selected_instance_id: tigerline_roads_2025_06037_los_angeles_county
+  expected_vertices_from_metis_header: 1199509
+  expected_edges_from_metis_header: 1294674
+  dataset_family: US Census TIGER/Line roads
+  geography: Los Angeles County, California
+  vintage: 2025
+compact_result_table:
+- k: 2
+  gpmetis_cut_edges: 62
+  kaffpa_fast_cut_edges: 99
+  cut_edge_delta_kaffpa_minus_gpmetis: 37
+  lower_cut_solver: METIS/gpmetis
+  gpmetis_max_over_ideal_percent: 8.33674445033239e-05
+  kaffpa_fast_max_over_ideal_percent: 1.3673094574530031
+- k: 4
+  gpmetis_cut_edges: 163
+  kaffpa_fast_cut_edges: 169
+  cut_edge_delta_kaffpa_minus_gpmetis: 6
+  lower_cut_solver: METIS/gpmetis
+  gpmetis_max_over_ideal_percent: 0.0012505116676830852
+  kaffpa_fast_max_over_ideal_percent: 0.8102481932190653
+- k: 8
+  gpmetis_cut_edges: 344
+  kaffpa_fast_cut_edges: 372
+  cut_edge_delta_kaffpa_minus_gpmetis: 28
+  lower_cut_solver: METIS/gpmetis
+  gpmetis_max_over_ideal_percent: 0.20233278783234887
+  kaffpa_fast_max_over_ideal_percent: 1.9650540346091594
+- k: 16
+  gpmetis_cut_edges: 612
+  kaffpa_fast_cut_edges: 612
+  cut_edge_delta_kaffpa_minus_gpmetis: 0
+  lower_cut_solver: tie
+  gpmetis_max_over_ideal_percent: 0.41308568756048825
+  kaffpa_fast_max_over_ideal_percent: 2.994141769674097
+- k: 32
+  gpmetis_cut_edges: 1033
+  kaffpa_fast_cut_edges: 1050
+  cut_edge_delta_kaffpa_minus_gpmetis: 17
+  lower_cut_solver: METIS/gpmetis
+  gpmetis_max_over_ideal_percent: 1.3081185718489818
+  kaffpa_fast_max_over_ideal_percent: 2.996809527898492
+bounded_synthesis_summary:
+  k_values:
+  - 2
+  - 4
+  - 8
+  - 16
+  - 32
+  gpmetis_lower_cut_count: 4
+  kaffpa_lower_cut_count: 0
+  tie_count: 1
+  largest_abs_cut_delta: 37
+  largest_abs_cut_delta_k: 2
+monograph_safe_text_pt_br: Neste grafo real TigerLine de Los Angeles County, com 1.199.509 vértices e 1.294.674 arestas observadas,
+  METIS/gpmetis obteve corte menor que KaHIP/kaffpa fast em k=2, k=4, k=8 e k=32, enquanto houve empate em k=16. As diferenças
+  absolutas de corte foram pequenas no contexto do número total de arestas, variando de 0 a 37 arestas. Esse resultado é evidência
+  limitada a uma instância real e a duas configurações de solvers; ele não sustenta, isoladamente, uma conclusão geral sobre
+  dominância de famílias de algoritmos, nem treinamento CART.
+result_map_update:
+  result_map_path: decisions/08_Results_to_Text_Map.md
+  result_map_updated: true
+  claim_scope: single_real_graph_limited_evidence
+boundary_flags:
+  solver_execution_run: false
+  quality_metric_recomputation_run: false
+  campaign_execution_run: false
+  new_dataset_added: false
+  synthetic_benchmark_expansion_run: false
+  metaheuristic_execution_run: false
+  cart_training_run: false
+  broad_solver_family_generalization_supported: false
+  monograph_claim_supported_only_with_single_graph_limitation: true
+  raw_runtime_artifact_committed: false
+interpretation_boundary:
+  supported:
+  - Bounded single-real-graph comparison between METIS/gpmetis and KaHIP/kaffpa fast on TigerLine Los Angeles County roads
+    2025.
+  - Compact reporting of cut edges, cut deltas and balance summaries for k={2,4,8,16,32}.
+  - Monograph-safe text may discuss this as limited real-graph evidence only.
+  unsupported:
+  - No full campaign conclusion is supported by this record.
+  - No multi-dataset conclusion is supported by this record.
+  - No CART training or CART admissibility conclusion is supported by this record.
+  - No broad solver-family dominance claim is supported by this record.
