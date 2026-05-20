@@ -650,3 +650,15 @@ interpretation_boundary:
   - This record does not support full campaign conclusions.
   - This record does not support CART training.
   - This record does not support broad solver-family performance claims beyond this bounded single real graph.
+bounded_result_synthesis_after_1238:
+  bounded_result_synthesis_manifest: data/instances/real/m4_broader_result_synthesis_metadata/tigerline_roads_2025_06037_los_angeles_county_bounded_result_synthesis_1238.yaml
+  bounded_result_synthesis_issue: 238
+  result_map_updated: true
+  monograph_safe_text_prepared: true
+  solver_execution_run: false
+  quality_metric_recomputation_run: false
+  campaign_execution_run: false
+  new_dataset_added: false
+  metaheuristic_execution_run: false
+  cart_training_run: false
+  broad_solver_family_generalization_supported: false

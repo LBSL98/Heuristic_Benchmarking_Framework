@@ -141,3 +141,20 @@ Text-forbidden claims:
 - Do not use environment pooling: do not pool this evidence with other environments as if hardware/runtime were homogeneous.
 - Do not claim final solver superiority, final CART readiness, or final monograph conclusions from this slice alone.
 - Do not describe screening labels as evidence-bearing; screening remains exploratory and confirmation-only hypotheses.
+
+<!-- TIGERLINE_BROADER_SYNTHESIS_1238 -->
+## TigerLine broader real-graph evidence, bounded synthesis 1238
+
+Source metadata: `data/instances/real/m4_broader_quality_metric_metadata/tigerline_roads_2025_06037_los_angeles_county_broader_quality_metrics_1236.yaml`.
+
+Scope: one real graph only, `tigerline_roads_2025_06037_los_angeles_county`, with 1,199,509 vertices and 1,294,674 observed edges. This entry must not be used as a full campaign result, multi-dataset conclusion, CART-training basis, or broad solver-family dominance claim.
+
+| k | METIS/gpmetis cut | KaHIP/kaffpa fast cut | Δ KaHIP − METIS | Lower cut |
+|---:|---:|---:|---:|---|
+| 2 | 62 | 99 | 37 | METIS/gpmetis |
+| 4 | 163 | 169 | 6 | METIS/gpmetis |
+| 8 | 344 | 372 | 28 | METIS/gpmetis |
+| 16 | 612 | 612 | 0 | tie |
+| 32 | 1033 | 1050 | 17 | METIS/gpmetis |
+
+Monograph-safe wording, if used: Neste grafo real TigerLine de Los Angeles County, com 1.199.509 vértices e 1.294.674 arestas observadas, METIS/gpmetis obteve corte menor que KaHIP/kaffpa fast em k=2, k=4, k=8 e k=32, enquanto houve empate em k=16. As diferenças absolutas de corte foram pequenas no contexto do número total de arestas, variando de 0 a 37 arestas. Esse resultado é evidência limitada a uma instância real e a duas configurações de solvers; ele não sustenta, isoladamente, uma conclusão geral sobre dominância de famílias de algoritmos, nem treinamento CART.
