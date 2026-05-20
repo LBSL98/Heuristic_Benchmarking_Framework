@@ -1,0 +1,129 @@
+packet_id: 1242c_consolidated_results_integration_packet
+main_commit: b2d3d0f7e18db37ec7907ec8c62c3423005a9deb
+created_from_existing_evidence_only: true
+no_new_execution: true
+no_metric_recomputation: true
+no_cart_training: true
+no_tex_edit: true
+evidence_blocks:
+  srv_noctua_dedicated_confirmation_campaign:
+    source_json: audit_reports/multilevel_exception_mining/confirmation/srv_noctua_linux_dedicated_evidence_bundle_001/checks/campaign_digest.json
+    source_md: audit_reports/multilevel_exception_mining/confirmation/srv_noctua_linux_dedicated_evidence_bundle_001/checks/campaign_digest.md
+    planned_runs: 22400
+    valid_results: 22400
+    invalid_results: 0
+    raw_status_counts:
+      ok: 18760
+      timeout: 3640
+    confirmation_label_counts:
+      competitive_confirmed: 8
+      near_tie_confirmed: 227
+      non_exception_confirmed: 11
+      strong_exception_confirmed: 202
+    sbs_algorithm: ts_rust
+    vbs_mean_median_cut: 80.77678571428571
+    claim_boundary: compact_digest_for_traceability_not_full_interpretive_analysis
+  cart_diagnostic_model:
+    final_report_source: audit_reports/final_benchmark_001/cart_modeling_831/834_cart_ml_final_report.json
+    acceptance_source: audit_reports/final_benchmark_001/cart_modeling_831/835_cart_modeling_acceptance_record.json
+    review_packet_source: audit_reports/final_benchmark_001/cart_modeling_831/836_cart_modeling_review_packet.json
+    acceptance_result: PASS
+    dataset_rows: 120
+    candidate_groups: 107
+    target_counts:
+      '0': 47
+      '1': 73
+    baseline_balanced_accuracy: 0.5
+    loso_balanced_accuracy: 0.8310988050131157
+    sgkf_balanced_accuracy: 0.7816962984552609
+    feature_importances:
+    - feature: num__num_edges
+      importance: 0.8459122545318334
+    - feature: num__degree_cv
+      importance: 0.1540877454681666
+    claim_boundary: Accepted for monograph as diagnostic, candidate-level CART analysis. Do not present as universal algorithm
+      selector. Do not claim causal law; report as morphology-associated empirical separation within confirmed benchmark slices.
+  tigerline_bounded_real_graph:
+    quality_source: data/instances/real/m4_broader_quality_metric_metadata/tigerline_roads_2025_06037_los_angeles_county_broader_quality_metrics_1236.yaml
+    synthesis_source: data/instances/real/m4_broader_result_synthesis_metadata/tigerline_roads_2025_06037_los_angeles_county_bounded_result_synthesis_1238.yaml
+    selected_instance:
+      selected_instance_id: tigerline_roads_2025_06037_los_angeles_county
+      expected_vertices_from_metis_header: 1199509
+      expected_edges_from_metis_header: 1294674
+      dataset_family: US Census TIGER/Line roads
+      geography: Los Angeles County, California
+      vintage: 2025
+    compact_table:
+    - k: 2
+      metis_gpmetis_cut: 62
+      kahip_kaffpa_fast_cut: 99
+      delta_kahip_minus_metis: 37
+    - k: 4
+      metis_gpmetis_cut: 163
+      kahip_kaffpa_fast_cut: 169
+      delta_kahip_minus_metis: 6
+    - k: 8
+      metis_gpmetis_cut: 344
+      kahip_kaffpa_fast_cut: 372
+      delta_kahip_minus_metis: 28
+    - k: 16
+      metis_gpmetis_cut: 612
+      kahip_kaffpa_fast_cut: 612
+      delta_kahip_minus_metis: 0
+    - k: 32
+      metis_gpmetis_cut: 1033
+      kahip_kaffpa_fast_cut: 1050
+      delta_kahip_minus_metis: 17
+    bounded_summary:
+      k_values:
+      - 2
+      - 4
+      - 8
+      - 16
+      - 32
+      gpmetis_lower_cut_count: 4
+      kaffpa_lower_cut_count: 0
+      tie_count: 1
+      largest_abs_cut_delta: 37
+      largest_abs_cut_delta_k: 2
+    monograph_safe_text_pt_br: Neste grafo real TigerLine de Los Angeles County, com 1.199.509 vértices e 1.294.674 arestas
+      observadas, METIS/gpmetis obteve corte menor que KaHIP/kaffpa fast em k=2, k=4, k=8 e k=32, enquanto houve empate em
+      k=16. As diferenças absolutas de corte foram pequenas no contexto do número total de arestas, variando de 0 a 37 arestas.
+      Esse resultado é evidência limitada a uma instância real e a duas configurações de solvers; ele não sustenta, isoladamente,
+      uma conclusão geral sobre dominância de famílias de algoritmos, nem treinamento CART.
+    license_shortlist_status:
+      candidate_family_id: tigerline_roads_state_or_county
+      priority: high
+      replacement_role: roadNet-CA road-graph replacement
+      source_family: TIGER_Line
+      source_name: U.S. Census Bureau TIGER/Line roads
+      official_source_url: https://www.census.gov/geographies/mapping-files/time-series/geo/tiger-line-file.html
+      license_basis_to_verify: US_government_work_no_copyright_expected_cite_Census_source
+      license_scope_to_verify: data
+      default_repo_policy: script_plus_hash_manifest; derived graph only after license snapshot and citation review
+      transformation_policy: derive simple undirected road graph from road geometries; remove self-loops; deduplicate edges;
+        document geographic cut
+      technical_fit: excellent_for_road_graph_partitioning_with_controllable_geographic_scale
+      risk_level: low_license_risk_single_graph_synthesis_available_no_broad_claim
+      admission_status: bounded_result_synthesis_metadata_complete_single_graph_evidence_available
+      notes: Bounded result synthesis metadata 1238 summarizes the TigerLine broader quality metrics. METIS/gpmetis had lower
+        cut than KaHIP/kaffpa fast for k=2,4,8,32 and tied at k=16 on this single graph. This supports only single-real-graph
+        limited evidence; it does not support full campaign claims, CART training, or broad solver-family generalization.
+    claim_boundary:
+    - No full campaign conclusion is supported by this record.
+    - No multi-dataset conclusion is supported by this record.
+    - No CART training or CART admissibility conclusion is supported by this record.
+    - No broad solver-family dominance claim is supported by this record.
+safe_claims_pt_br:
+- A campanha dedicada em srv-noctua produziu 22.400 resultados válidos, sem resultados inválidos, sob o protocolo confirmatório
+  registrado.
+- Nas fatias confirmadas, a modelagem CART foi aceita como análise diagnóstica interpretável, com acurácia balanceada LOSO
+  de 0,8311 e SGKF de 0,7817.
+- No grafo TigerLine de Los Angeles County, METIS/gpmetis obteve corte menor que KaHIP/kaffpa fast em quatro dos cinco valores
+  de k avaliados e empatou em k=16; essa evidência é limitada a uma única instância real.
+forbidden_claims_pt_br:
+- Não afirmar que o CART é um seletor universal de algoritmos.
+- Não afirmar dominância geral de METIS, KaHIP ou meta-heurísticas a partir do TigerLine.
+- Não afirmar que SNAP foi licenciado ou resolvido.
+- Não combinar evidência local, WSL e srv-noctua como se pertencessem ao mesmo ambiente experimental.
+- Não usar TigerLine isoladamente para treinar CART ou sustentar conclusão multi-dataset.
