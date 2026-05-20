@@ -1,0 +1,96 @@
+post_pilot_review_metadata_id: "1203_tigerline_roads_2025_06037_los_angeles_county_post_pilot_review"
+post_pilot_review_issue: 220
+source_limited_pilot_retry_issue: 218
+source_metis_gpmetis_remediation_issue: 216
+source_limited_pilot_execution_issue: 206
+source_limited_pilot_plan_issue: 204
+parent_campaign_issue: 130
+parent_license_issue: 143
+main_commit_at_post_pilot_review: "102cb440b801108b55a4a1d3c8a761661be94444"
+
+execution_environment:
+  execution_host_label: "srv-noctua"
+  platform: "Linux-5.15.0-177-generic-x86_64-with-glibc2.35"
+  python_version: "3.10.12"
+  git_head_observed: "102cb440b801108b55a4a1d3c8a761661be94444"
+
+selected_instance_context:
+  selected_instance_id: "tigerline_roads_2025_06037_los_angeles_county"
+  expected_vertices: 1199509
+  k: 2
+
+artifact_validation:
+  metis_input_path: "data/cache/real_graphs/tigerline/2025/06037/benchmark_inputs/tigerline_roads_2025_06037_los_angeles_county.metis.graph"
+  metis_input_sha256: "df31d8c3e671e9010fa9f9d06b00cda80781a5a9140b214e5e08962192bf2b42"
+  metis_input_sha256_matches: true
+  metis_input_ignored: true
+  metis_input_tracked: false
+  input_stats_path: "data/cache/real_graphs/tigerline/2025/06037/benchmark_inputs/tigerline_roads_2025_06037_los_angeles_county_input_stats.json"
+  input_stats_sha256: "2e6fc3539d21b97b57ada3d892bdf081d1f0608b25541ae6eb18e6f60dcff683"
+  input_stats_sha256_matches: true
+  input_stats_ignored: true
+  input_stats_tracked: false
+  runtime_input_copy_path: "data/results_raw/real/tigerline/2025/06037/limited_pilot_retry_1199/input.metis.graph"
+  runtime_input_copy_sha256: "df31d8c3e671e9010fa9f9d06b00cda80781a5a9140b214e5e08962192bf2b42"
+  runtime_input_copy_sha256_matches: true
+  runtime_input_copy_ignored: true
+  runtime_input_copy_tracked: false
+  gpmetis_partition_path: "data/results_raw/real/tigerline/2025/06037/limited_pilot_retry_1199/input.metis.graph.part.2"
+  gpmetis_partition_sha256: "94d991311d24386b5291c633e81196eb61344d052cf2b764f2c2d4ede90cff14"
+  gpmetis_partition_sha256_matches: true
+  gpmetis_partition_line_count: 1199509
+  gpmetis_partition_line_count_matches: true
+  gpmetis_partition_ignored: true
+  gpmetis_partition_tracked: false
+  kahip_partition_path: "data/results_raw/real/tigerline/2025/06037/limited_pilot_retry_1199/kahip_k2_fast.partition"
+  kahip_partition_sha256: "b8b35f9ec577cba8fca41c1f593e988c712f53878d2d70f314dd6e3b96bea3f9"
+  kahip_partition_sha256_matches: true
+  kahip_partition_line_count: 1199509
+  kahip_partition_line_count_matches: true
+  kahip_partition_ignored: true
+  kahip_partition_tracked: false
+
+post_pilot_review:
+  remote_validation_status: "post_pilot_review_mechanical_success_ready_for_followup_command_plan_gate"
+  post_pilot_review_status: "post_pilot_review_completed_followup_command_plan_gate_required"
+  pilot_mechanical_status_accepted: true
+  review_decision: "open_bounded_tigerline_real_graph_command_plan_gate"
+  next_recommended_issue_title: "M4 TigerLine bounded real-graph execution command plan: Los Angeles County roads 2025"
+  next_gate_may_prepare_bounded_real_graph_command_plan: true
+  next_gate_may_run_solver_execution: false
+  next_gate_may_run_campaign: false
+  next_gate_may_create_multi_dataset_command_plan: false
+  next_gate_may_run_metaheuristics: false
+  next_gate_may_train_cart: false
+  next_gate_may_update_result_map: false
+  next_gate_may_write_monograph_claims: false
+
+review_errors:
+  []
+
+boundary_flags:
+  solver_execution_run: false
+  campaign_execution_run: false
+  multi_dataset_command_plan_created: false
+  synthetic_benchmark_expansion_run: false
+  additional_real_graph_execution_run: false
+  metaheuristic_execution_run: false
+  performance_or_quality_comparison_claim_supported: false
+  cart_training_run: false
+  result_map_updated: false
+  monograph_claim_supported: false
+  raw_graph_input_committed: false
+  benchmark_input_committed: false
+  partition_file_committed: false
+  raw_solver_output_committed: false
+
+interpretation_boundary:
+  supported:
+    - "The 1199 limited-pilot retry produced parseable gpmetis and KaHIP k=2 partitions for the single TigerLine Los Angeles County roads instance."
+    - "The ignored runtime artifacts still match the recorded SHA-256 values and line counts."
+    - "A separate follow-up gate may prepare a bounded real-graph execution command plan."
+  unsupported:
+    - "This review does not support campaign-level conclusions."
+    - "This review does not support multi-dataset conclusions."
+    - "This review does not support solver-family performance or quality claims."
+    - "This review does not authorize campaign execution, meta-heuristics, CART training, result-map updates or monograph claims."
