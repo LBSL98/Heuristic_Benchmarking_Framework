@@ -158,3 +158,16 @@ Scope: one real graph only, `tigerline_roads_2025_06037_los_angeles_county`, wit
 | 32 | 1033 | 1050 | 17 | METIS/gpmetis |
 
 Monograph-safe wording, if used: Neste grafo real TigerLine de Los Angeles County, com 1.199.509 vértices e 1.294.674 arestas observadas, METIS/gpmetis obteve corte menor que KaHIP/kaffpa fast em k=2, k=4, k=8 e k=32, enquanto houve empate em k=16. As diferenças absolutas de corte foram pequenas no contexto do número total de arestas, variando de 0 a 37 arestas. Esse resultado é evidência limitada a uma instância real e a duas configurações de solvers; ele não sustenta, isoladamente, uma conclusão geral sobre dominância de famílias de algoritmos, nem treinamento CART.
+
+<!-- CONSOLIDATED_RESULTS_INTEGRATION_PACKET_1242D -->
+## Consolidated results integration packet 1242D
+
+Source packet: `docs/results_integration/consolidated_results_integration_packet.md`.
+
+This packet consolidates the already validated evidence for text integration:
+
+- srv-noctua confirmation campaign: 22,400 planned and valid runs, 0 invalid results, with the campaign digest retained as compact traceability evidence.
+- CART diagnostic model: accepted candidate-level diagnostic CART, with LOSO balanced accuracy 0.8311 and SGKF balanced accuracy 0.7817.
+- TigerLine real graph: bounded single-instance evidence only; METIS/gpmetis had lower cut than KaHIP/kaffpa fast for k=2,4,8,32 and tied at k=16.
+
+Writing boundary: this packet does not support a universal selector claim, broad solver-family dominance claim, SNAP admissibility claim, or multi-dataset real-graph conclusion.
