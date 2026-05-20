@@ -1,0 +1,141 @@
+bounded_quality_metric_review_metadata_id: 1223_tigerline_roads_2025_06037_los_angeles_county_bounded_quality_metric_review
+bounded_quality_metric_review_issue: 230
+source_bounded_quality_metric_extraction_issue: 228
+source_bounded_solver_execution_review_issue: 226
+source_bounded_solver_execution_issue: 224
+source_bounded_command_plan_issue: 222
+source_post_pilot_review_issue: 220
+source_limited_pilot_retry_issue: 218
+source_metis_gpmetis_remediation_issue: 216
+source_limited_pilot_execution_issue: 206
+source_limited_pilot_plan_issue: 204
+parent_campaign_issue: 130
+parent_license_issue: 143
+main_commit_at_bounded_quality_metric_review: bf7645f86cce2c83f77dd259c594c47aa9a12ffb
+selected_instance_context:
+  selected_instance_id: tigerline_roads_2025_06037_los_angeles_county
+  expected_vertices_from_metis_header: 1199509
+  expected_edges_from_metis_header: 1294674
+  source_quality_metric_extraction_status: bounded_quality_metric_extraction_completed
+  source_metric_record_count: 6
+  source_expected_metric_record_count: 6
+  source_all_expected_metric_records_present: true
+reviewed_metric_summary:
+  cut_edges:
+    gpmetis_k2: 62
+    gpmetis_k4: 163
+    gpmetis_k8: 344
+    kaffpa_fast_k2: 64
+    kaffpa_fast_k4: 153
+    kaffpa_fast_k8: 302
+  block_counts:
+    gpmetis_k2:
+      '0': 599755
+      '1': 599754
+    gpmetis_k4:
+      '0': 299869
+      '1': 299879
+      '2': 299880
+      '3': 299881
+    gpmetis_k8:
+      '0': 149939
+      '1': 150047
+      '2': 150206
+      '3': 149966
+      '4': 150123
+      '5': 150114
+      '6': 150242
+      '7': 148872
+    kaffpa_fast_k2:
+      '0': 585178
+      '1': 614331
+    kaffpa_fast_k4:
+      '0': 308451
+      '1': 299667
+      '2': 298214
+      '3': 293177
+    kaffpa_fast_k8:
+      '0': 151508
+      '1': 139452
+      '2': 151303
+      '3': 151525
+      '4': 152420
+      '5': 148997
+      '6': 152795
+      '7': 151509
+  balance_summary:
+    gpmetis_k2:
+      block_count_min: 599754
+      block_count_max: 599755
+      ideal_block_size: 599754.5
+      max_over_ideal_percent: 8.33674445033239e-05
+    gpmetis_k4:
+      block_count_min: 299869
+      block_count_max: 299881
+      ideal_block_size: 299877.25
+      max_over_ideal_percent: 0.0012505116676830852
+    gpmetis_k8:
+      block_count_min: 148872
+      block_count_max: 150242
+      ideal_block_size: 149938.625
+      max_over_ideal_percent: 0.20233278783234887
+    kaffpa_fast_k2:
+      block_count_min: 585178
+      block_count_max: 614331
+      ideal_block_size: 599754.5
+      max_over_ideal_percent: 2.430411109879116
+    kaffpa_fast_k4:
+      block_count_min: 293177
+      block_count_max: 308451
+      ideal_block_size: 299877.25
+      max_over_ideal_percent: 2.859086509563502
+    kaffpa_fast_k8:
+      block_count_min: 139452
+      block_count_max: 152795
+      ideal_block_size: 149938.625
+      max_over_ideal_percent: 1.905029474560016
+bounded_quality_metric_review:
+  bounded_quality_metric_review_status: bounded_quality_metric_review_completed_broader_command_plan_gate_required
+  review_decision: open_broader_preregistered_real_graph_command_plan_gate
+  mechanical_quality_metric_record_accepted: true
+  bounded_tigerline_pilot_mechanically_sufficient_for_command_plan_gate: true
+  next_recommended_issue_title: 'M4 TigerLine broader preregistered real-graph command plan: define next bounded scope'
+  next_gate_may_create_broader_preregistered_command_plan: true
+  next_gate_may_run_solver_execution: false
+  next_gate_may_extract_quality_metrics: false
+  next_gate_may_run_campaign: false
+  next_gate_may_create_multi_dataset_command_plan: false
+  next_gate_may_run_metaheuristics: false
+  next_gate_may_train_cart: false
+  next_gate_may_update_result_map: false
+  next_gate_may_write_monograph_claims: false
+review_errors: []
+boundary_flags:
+  solver_execution_run: false
+  quality_metric_extraction_run: false
+  campaign_execution_run: false
+  multi_dataset_command_plan_created: false
+  synthetic_benchmark_expansion_run: false
+  additional_real_graph_execution_run: false
+  metaheuristic_execution_run: false
+  performance_or_quality_comparison_claim_supported: false
+  cart_training_run: false
+  result_map_updated: false
+  monograph_claim_supported: false
+  raw_graph_input_committed: false
+  benchmark_input_committed: false
+  partition_file_committed: false
+  raw_solver_output_committed: false
+  raw_intermediate_metric_artifact_committed: false
+interpretation_boundary:
+  supported:
+  - The 1219 reduced quality-metric metadata is complete and internally consistent for the six already-existing TigerLine
+    bounded solver partitions.
+  - The bounded TigerLine pilot is mechanically sufficient to justify opening a separate broader preregistered real-graph
+    command-plan gate.
+  unsupported:
+  - This review did not execute solvers or recompute quality metrics.
+  - This review does not support campaign-level conclusions.
+  - This review does not support multi-dataset conclusions.
+  - This review does not support solver-family performance or quality claims, CART training, result-map updates or monograph
+    claims.
